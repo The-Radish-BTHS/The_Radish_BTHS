@@ -1,7 +1,10 @@
 import React from "react";
+import Layout from "../components/Layout"
 
 export default function TempThing() {
   return (
-    <h1>Heyy</h1>
+    <Layout>
+      <h1>Articles</h1>
+    </Layout>
   )
 }
