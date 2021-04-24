@@ -4,5 +4,12 @@
 
 body {
   background-color: #360000;
-  color: #FAE8E8;
+  color: #ffeeeb;
+  margin: 0px;
+}
+
+main {
+  margin-left: 2ch; /* lines up w/ navbar */
+  padding: 1ch;
+  word-wrap: break-word;
 }
