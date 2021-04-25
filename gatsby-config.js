@@ -6,9 +6,9 @@
 
 module.exports = {
   /* Your site config here */
-  siteMetadata: {
-    title: `The Radish`,
-    description: `Brooklyn Technical's first, worst, and only satirical newspaper.`
-  },
+  // siteMetadata: {
+  //   title: `The Radish`,
+  //   description: `Brooklyn Technical's first, worst, and only satirical newspaper.`
+  // },
   plugins: [`gatsby-plugin-netlify-cms`],
 }
