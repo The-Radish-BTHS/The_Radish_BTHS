@@ -19,7 +19,6 @@
 
 backend:
   name: git-gateway
-  branch: master
   repo: AwareErmine/The_Radish
   branch: main
 
