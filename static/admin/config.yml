@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: awareermine/The_Radish
+  repo: AwareErmine/The_Radish
   branch: main
 
 media_folder: static/assets
