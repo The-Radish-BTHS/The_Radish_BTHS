@@ -1,7 +1,7 @@
 {
-  "name": "The Radish",
+  "name": "TheRadish",
   "private": true,
-  "description": "Brooklyn Technical's first, worst, and only satirical newspaper.",
+  "description": "Brooklyn Tech's first, worst, and only satirical newspaper.",
   "version": "0.1.0",
   "license": "0BSD",
   "scripts": {
