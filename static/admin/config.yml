@@ -1,5 +1,25 @@
+# backend:
+#   name: github
+#   repo: AwareErmine/The_Radish
+#   branch: main
+#
+# media_folder: static/assets
+# public_folder: /assets
+#
+# collections:
+#   - name: blog
+#     label: Blog
+#     folder: blog
+#     create: true
+#     fields:
+#       - { name: path, label: Path }
+#       - { name: date, label: Date, widget: datetime }
+#       - { name: title, label: Title }
+#       - { name: body, label: Body, widget: markdown }
+
 backend:
-  name: github
+  name: git-gateway
+  branch: master
   repo: AwareErmine/The_Radish
   branch: main
 
@@ -7,12 +27,18 @@ media_folder: static/assets
 public_folder: /assets
 
 collections:
-  - name: blog
-    label: Blog
-    folder: blog
+  - name: 'blog'
+    label: 'Blog'
+    folder: 'content/blog'
     create: true
+    slug: 'index'
+    media_folder: ''
+    public_folder: ''
+    path: '{{title}}/index'
+    # editor:
+    #   preview: false
     fields:
-      - { name: path, label: Path }
-      - { name: date, label: Date, widget: datetime }
-      - { name: title, label: Title }
-      - { name: body, label: Body, widget: markdown }
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+      - { label: 'Description', name: 'description', widget: 'string' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
