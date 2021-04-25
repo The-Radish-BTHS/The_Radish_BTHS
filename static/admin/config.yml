@@ -1,5 +1,7 @@
 backend:
-  name: the-radish
+  name: github
+  repo: awareermine/The_Radish
+  branch: main
 
 media_folder: static/assets
 public_folder: /assets
