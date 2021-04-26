@@ -40,4 +40,5 @@ collections:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
       - { label: 'Description', name: 'description', widget: 'string' }
+      - { label: 'Issue url', name: 'issue', widget: 'string'}
       - { label: 'Body', name: 'body', widget: 'markdown' }
