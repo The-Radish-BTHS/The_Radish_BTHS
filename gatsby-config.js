@@ -15,20 +15,20 @@ module.exports = {
     `gatsby-transformer-remark`,
     `gatsby-plugin-emotion`,
     `gatsby-plugin-typography`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `src`,
-        path: `${__dirname}/src`,
-      },
-    },
     // {
     //   resolve: `gatsby-source-filesystem`,
     //   options: {
-    //     name: `markdown-pages`,
-    //     path: `${__dirname}/blog`,
+    //     name: `src`,
+    //     path: `${__dirname}/src`,
     //   },
     // },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `markdown-pages`,
+        path: `${__dirname}/blog`,
+      },
+    },
     // {
     //   resolve: `gatsby-plugin-typography`,
     //   options: {
