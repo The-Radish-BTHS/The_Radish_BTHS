@@ -18,10 +18,17 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `content`,
-        path: `${__dirname}/content/blog/`,
+        name: `src`,
+        path: `${__dirname}/src`,
       },
     },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `markdown-pages`,
+    //     path: `${__dirname}/blog`,
+    //   },
+    // },
     // {
     //   resolve: `gatsby-plugin-typography`,
     //   options: {
