@@ -14,14 +14,21 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
+    "@emotion/react": "^11.1.5",
     "gatsby": "^3.3.1",
+    "gatsby-plugin-emotion": "^6.3.0",
     "gatsby-plugin-netlify": "^3.3.0",
     "gatsby-plugin-netlify-cms": "^5.3.0",
+    "gatsby-plugin-typography": "^3.3.0",
+    "gatsby-source-filesystem": "^3.3.0",
+    "gatsby-transformer-remark": "^4.0.0",
     "netlify": "^6.1.20",
     "netlify-cms-app": "^2.14.46",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-markdown": "^6.0.0",
+    "react-typography": "^0.16.19",
+    "typography": "^0.16.19",
     "webpack": "^5.34.0"
   },
   "devDependencies": {

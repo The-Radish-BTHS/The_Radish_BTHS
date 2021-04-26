@@ -23,17 +23,17 @@ backend:
   branch: main
 
 media_folder: static/assets
-public_folder: /assets
+# public_folder: /assets
 
 collections:
   - name: 'blog'
     label: 'Blog'
     folder: 'content/blog'
     create: true
-    slug: 'index'
-    media_folder: ''
-    public_folder: ''
-    path: '{{title}}/index'
+    # slug: 'index'
+    # media_folder: ''
+    # public_folder: ''
+    # path: '{{title}}/index'
     # editor:
     #   preview: false
     fields:
