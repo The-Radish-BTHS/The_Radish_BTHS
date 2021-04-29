@@ -42,3 +42,10 @@ collections:
       - { label: 'Description', name: 'description', widget: 'string' }
       - { label: 'Issue url', name: 'issue', widget: 'string'}
       - { label: 'Body', name: 'body', widget: 'markdown' }
+      - label: Authors
+        name: authors
+        widget: list
+        fields:
+          - {label: Name, name: name, widget: string}
+          - {label: Position, name: position, widget: string}
+          - {label: Photo, name: photo, widget: image}
