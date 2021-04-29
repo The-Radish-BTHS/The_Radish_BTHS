@@ -49,3 +49,25 @@ collections:
           - {label: Name, name: name, widget: string}
           - {label: Position, name: position, widget: string}
           - {label: Photo, name: photo, widget: image}
+
+# Search for an author
+# {
+#   allMarkdownRemark(
+#     filter:{
+#       frontmatter:{
+#         authors: {elemMatch: {name: {eq: "Aramie Ewen"}}}
+#       }
+#     }
+# ) {
+#     edges {
+#       node {
+#         frontmatter {
+#           authors {
+#             name
+#             position
+#           }
+#         }
+#       }
+#     }
+#   }
+# }
