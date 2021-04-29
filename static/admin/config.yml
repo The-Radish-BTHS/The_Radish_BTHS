@@ -48,7 +48,7 @@ collections:
         fields:
           - {label: Name, name: name, widget: string}
           - {label: Position, name: position, widget: string}
-          - {label: Photo, name: photo, widget: image}
+          - {label: Photo, name: photo, widget: image, default: "/static/assets/radimir-rootin.png"}
 
 # Search for an author
 # {
