@@ -1,0 +1,32 @@
+.frontpage {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background-color: #000000f0;
+}
+
+.fp-cell {
+  border-radius: 1px;
+  padding: 1em;
+  padding: 5px;
+  /* box-shadow:
+    0 5px 10px rgba(255, 255, 255, 0.1),
+    0 20px 20px rgba(255, 255, 255, 0.05); */
+}
+
+.content {
+  padding: 2ch;
+  background-color: #360000;
+}
+
+.content a {
+  font-size: 3ch;
+  font-weight: bold;
+}
+
+/* Single column display for phones */
+@media (max-width: 459px) {
+  .frontpage {
+    display: flex;
+    flex-direction: column;
+  }
+}

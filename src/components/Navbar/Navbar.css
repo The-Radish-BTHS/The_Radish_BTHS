@@ -9,19 +9,10 @@ nav {
 nav a {
   /* font-size: clamp(14px, 1rem + 2vw, 40px); very big */
   padding: 1ch;
-  text-decoration: none;
   word-wrap: break-word;
 }
 
 nav a:first-child {
   align-self: center;
   font-weight: bold;
-}
-
-nav a:visited {
-  color: inherit;
-}
-
-nav a:hover {
-  color: #e8faeff0;
 }

@@ -10,6 +10,21 @@ body {
 
 main {
   margin-left: 2ch; /* lines up w/ navbar */
+  margin-right: 2ch;
+  margin-top: 2ch;
   padding: 1ch;
   word-wrap: break-word;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:visited {
+  color: inherit;
+}
+
+a:hover {
+  opacity: 0.95;
 }

@@ -1,5 +1,6 @@
 import React from "react"
 import { Link, graphql, useStaticQuery } from "gatsby"
+import "./Articles.css"
 
 export default function Articles() {
   const data = useStaticQuery(graphql`
@@ -10,6 +11,7 @@ export default function Articles() {
       ) {
         edges {
           node {
+            id
             frontmatter {
               title
               description
@@ -23,12 +25,20 @@ export default function Articles() {
     }
   `)
 
-  return data.allMarkdownRemark.edges.map(node => {
-    return (
-      <div>
-        <Link to={node.node.fields.slug}>{node.node.frontmatter.title}</Link>
-        <p>{node.node.frontmatter.description}</p>
-      </div>
-    )
-  })
+  return (
+    <div className="frontpage">
+      {
+        data.allMarkdownRemark.edges.map(node => {
+          return (
+            <div className="fp-cell" key={node.node.id}>
+              <div className="content">
+                <Link to={node.node.fields.slug}>{node.node.frontmatter.title}</Link>
+                <p>{node.node.frontmatter.description}</p>
+              </div>
+            </div>
+          )
+        })
+      }
+    </div>
+  )
 }
