@@ -6,7 +6,6 @@ export default function Navbar() {
   return (
     <nav>
       <Link to="/">The Radish</Link>
-      <Link to="/articles">articles</Link>
     </nav>
   )
 }
