@@ -12,7 +12,7 @@ collections:
     folder: 'content/issues'
     create: true
     fields:
-      - { label: 'Cover image', 'cover', widget: 'image', default: '/static/assets/radimir-rootin.png'}
+      - { label: 'Cover image', name: 'cover', widget: 'image', default: '/static/assets/radimir-rootin.png'}
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
       - { label: 'PDF url', name: 'url', widget: 'string'}
