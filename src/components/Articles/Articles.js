@@ -35,7 +35,7 @@ export default function Articles() {
                 <h1>{node.node.frontmatter.title}</h1>
                 <p>{node.node.excerpt}</p>
               </Link>
-              
+
             </div>
           )
         })
