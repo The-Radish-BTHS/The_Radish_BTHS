@@ -10,7 +10,7 @@ export default function Template({
   return (
     <Layout>
       <h1>{frontmatter.title}</h1>
-      <h2>{frontmatter.date}</h2>
+      <h3>{frontmatter.date}</h3>
       <div dangerouslySetInnerHTML={{ __html: html }} />
     </Layout>
   )
@@ -23,6 +23,11 @@ export const pageQuery = graphql`
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         title
+        authors {
+          name
+          position
+          photo
+        }
       }
     }
   }

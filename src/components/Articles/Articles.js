@@ -31,8 +31,11 @@ export default function Articles() {
         data.allMarkdownRemark.edges.map(node => {
           return (
             <div className="fp-cell" key={node.node.id}>
-              <Link to={node.node.fields.slug}>{node.node.frontmatter.title}</Link>
-              <p>{node.node.excerpt}</p>
+              <Link to={node.node.fields.slug}>
+                <h1>{node.node.frontmatter.title}</h1>
+                <p>{node.node.excerpt}</p>
+              </Link>
+              
             </div>
           )
         })

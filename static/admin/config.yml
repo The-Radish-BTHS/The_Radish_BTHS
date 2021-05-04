@@ -1,22 +1,3 @@
-# backend:
-#   name: github
-#   repo: AwareErmine/The_Radish
-#   branch: main
-#
-# media_folder: static/assets
-# public_folder: /assets
-#
-# collections:
-#   - name: blog
-#     label: Blog
-#     folder: blog
-#     create: true
-#     fields:
-#       - { name: path, label: Path }
-#       - { name: date, label: Date, widget: datetime }
-#       - { name: title, label: Title }
-#       - { name: body, label: Body, widget: markdown }
-
 backend:
   name: git-gateway
   repo: AwareErmine/The_Radish
@@ -26,9 +7,9 @@ media_folder: static/assets
 # public_folder: /assets
 
 collections:
-  - name: 'blog'
-    label: 'Blog'
-    folder: 'content/blog'
+  - name: 'article'
+    label: 'Articles'
+    folder: 'content/article'
     create: true
     # slug: 'index'
     # media_folder: ''
@@ -47,7 +28,6 @@ collections:
         fields:
           - {label: Name, name: name, widget: string}
           - {label: Position, name: position, widget: string}
-          - {label: Photo, name: photo, widget: image, default: "/static/assets/radimir-rootin.png"}
 
 # Search for an author
 # {
