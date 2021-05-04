@@ -14,31 +14,31 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 }
 
 // https://www.gatsbyjs.com/docs/tutorial/part-seven/
-// exports.createPages = async ({ graphql, actions }) => {
-//   const { createPage } = actions
-//   const result = await graphql(`
-//     query {
-//       allMarkdownRemark {
-//         edges {
-//           node {
-//             fields {
-//               slug
-//             }
-//           }
-//         }
-//       }
-//     }
-//   `)
-//
-//   result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-//     createPage({
-//       path: node.fields.slug,
-//       component: path.resolve(`./src/templates/blog-post.js`),
-//       context: {
-//         // Data passed to context is available
-//         // in page queries as GraphQL variables.
-//         slug: node.fields.slug,
-//       },
-//     })
-//   })
-// }
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions
+  const result = await graphql(`
+    query {
+      allMarkdownRemark {
+        edges {
+          node {
+            fields {
+              slug
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    createPage({
+      path: node.fields.slug,
+      component: node.fields.label == "Article" ?  path.resolve(`./src/templates/article.js`) : path.resolve(`./src/templates/issue.js`),
+      context: {
+        // Data passed to context is available
+        // in page queries as GraphQL variables.
+        slug: node.fields.slug,
+      },
+    })
+  })
+}
