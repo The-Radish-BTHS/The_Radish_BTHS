@@ -8,7 +8,7 @@ media_folder: static/assets
 
 collections:
   - name: 'article'
-    label: 'Articles'
+    label: 'Article'
     folder: 'content/articles'
     create: true
     # slug: 'index'
