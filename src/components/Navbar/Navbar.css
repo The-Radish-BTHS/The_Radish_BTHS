@@ -6,6 +6,12 @@ nav {
   /* box-shadow: inset -35px -60px 10px -52px rgba(0, 0, 0, 0.32); */
 }
 
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
 nav a {
   /* font-size: clamp(14px, 1rem + 2vw, 40px); very big */
   padding: 1ch;
