@@ -21,6 +21,11 @@
     display: flex;
     flex-direction: column;
     grid-gap: 1ch;
+    margin: -2ch;
+  }
+
+  .fp-cell {
+    border-radius: 2px;
   }
 }
 
