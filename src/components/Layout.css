@@ -13,7 +13,10 @@ main {
   margin-right: 2ch;
   margin-top: 2ch;
   padding: 1ch;
-  word-wrap: break-word;
+
+  /* wrapping */
+  overflow-wrap: anywhere;
+  hyphens: auto;
 }
 
 a {

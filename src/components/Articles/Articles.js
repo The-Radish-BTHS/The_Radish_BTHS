@@ -12,9 +12,9 @@ export default function Articles() {
         edges {
           node {
             id
+            excerpt(pruneLength: 200)
             frontmatter {
               title
-              description
             }
             fields {
               slug
@@ -32,7 +32,7 @@ export default function Articles() {
           return (
             <div className="fp-cell" key={node.node.id}>
               <Link to={node.node.fields.slug}>{node.node.frontmatter.title}</Link>
-              <p>{node.node.frontmatter.description}</p>
+              <p>{node.node.excerpt}</p>
             </div>
           )
         })

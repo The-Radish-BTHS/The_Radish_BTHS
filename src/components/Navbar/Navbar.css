@@ -9,7 +9,6 @@ nav {
 nav a {
   /* font-size: clamp(14px, 1rem + 2vw, 40px); very big */
   padding: 1ch;
-  word-wrap: break-word;
 }
 
 nav a:first-child {
