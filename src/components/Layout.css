@@ -9,14 +9,19 @@ body {
 }
 
 main {
-  margin-left: 2ch; /* lines up w/ navbar */
-  margin-right: 2ch;
-  margin-top: 2ch;
+  margin: 2ch;
   padding: 1ch;
 
   /* wrapping */
   overflow-wrap: anywhere;
   hyphens: auto;
+}
+
+@media (max-width: 600px) {
+  main {
+    padding: 0ch;
+    margin: 1ch;
+  }
 }
 
 /* Styling links? */

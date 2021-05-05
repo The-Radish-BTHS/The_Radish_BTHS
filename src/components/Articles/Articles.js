@@ -8,6 +8,7 @@ export default function Articles() {
       allMarkdownRemark(
         sort: {order: DESC, fields: [frontmatter___date]}
         limit: 1000
+        filter: {fields: {slug: {regex: "^/articles/"}}}
       ) {
         edges {
           node {
@@ -35,7 +36,6 @@ export default function Articles() {
                 <h1>{node.node.frontmatter.title}</h1>
                 <p>{node.node.excerpt}</p>
               </Link>
-
             </div>
           )
         })

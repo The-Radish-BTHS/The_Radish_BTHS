@@ -27,13 +27,18 @@ exports.createPages = async ({ graphql, actions }) => {
             fields {
               slug
             }
+            frontmatter {
+              date(formatString: "YYYY-MM")
+            }
           }
         }
       }
     }
-  `)
+  `) 
 
   result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    let mindate = node.frontmatter.date;
+    let maxdate = mindate.slice(5)+toString(Number(mindate.slice(-2))+1);
     createPage({
       path: node.fields.slug,
       component: node.fileAbsolutePath.includes('/articles/') ?  path.resolve(`./src/templates/article.js`) : path.resolve(`./src/templates/issue.js`),
@@ -41,6 +46,8 @@ exports.createPages = async ({ graphql, actions }) => {
         // Data passed to context is available
         // in page queries as GraphQL variables.
         slug: node.fields.slug,
+        mindate: mindate,
+        maxdate: maxdate,
       },
     })
   })
