@@ -10,8 +10,10 @@ body {
 
 main {
   margin: 2ch;
-  margin-left: calc(20% + 2ch);
   padding: 1ch;
+
+  /* HANDLE THE ISSUE VIEW */
+  margin-left: calc(20% + 2ch);
 
   /* wrapping */
   overflow-wrap: anywhere;
@@ -39,6 +41,7 @@ main {
   main {
     padding: 0ch;
     margin: 1ch;
+    margin-left: calc(20% + 2ch);
   }
 }
 

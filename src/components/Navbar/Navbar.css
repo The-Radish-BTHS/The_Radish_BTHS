@@ -3,6 +3,8 @@ nav {
   margin-left: 0px;
   padding: 2ch;
   background-color: #00570d;
+
+  /* HANDLE THE ISSUE VIEW */
   margin-left: calc(20%);
 
   position: sticky;
@@ -21,6 +23,7 @@ nav a:first-child {
 
 @media (max-width: 600px) {
   nav {
+    margin-left: calc(20%);
     padding-top: 1ch;
     padding-bottom: 1ch;
     padding-left: 0ch;

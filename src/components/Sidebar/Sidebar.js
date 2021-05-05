@@ -31,7 +31,7 @@ export default function Navbar() {
 
   // const [scrolled, setScrolled] = useState(false);
   //
-  // const handleScroll = () => {
+  // const handleResize = () => {
   //     const offset = window.scrollY;
   //     let navbar = document.getElementById("navbar");
   //     if(offset > navbar.offsetHeight ){
@@ -43,10 +43,8 @@ export default function Navbar() {
   //   }
   //
   // useEffect(() => {
-  //   window.addEventListener('scroll', handleScroll)
+  //   window.addEventListener('resize', handleResize)
   // })
-
-  // let navbarClasses = scrolled ? 'sticky' : '';
 
   return (
     <div className="sidebar">
