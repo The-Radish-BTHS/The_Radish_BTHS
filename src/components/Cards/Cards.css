@@ -1,0 +1,16 @@
+.card {
+  background-color: #c40000ad;
+  padding: 2ch;
+  border-radius: 5px;
+}
+
+.card h1 {
+  font-size: 3ch;
+  font-weight: bold;
+}
+
+@media (max-width: 600px) {
+  .card {
+    border-radius: 2px;
+  }
+}

@@ -1,5 +1,7 @@
 import React from "react"
-import { Link, graphql, useStaticQuery } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
+
+import Articard from "../Cards/Articard.js"
 import "./Articles.css"
 
 export default function Articles() {
@@ -29,14 +31,14 @@ export default function Articles() {
   return (
     <div className="frontpage">
       {
-        data.allMarkdownRemark.edges.map(node => {
+        data.allMarkdownRemark.edges.map(({node}) => {
           return (
-            <div className="fp-cell" key={node.node.id}>
-              <Link to={node.node.fields.slug}>
-                <h1>{node.node.frontmatter.title}</h1>
-                <p>{node.node.excerpt}</p>
-              </Link>
-            </div>
+            <Articard
+              key={node.id}
+              slug={node.fields.slug}
+              title={node.frontmatter.title}
+              excerpt={node.excerpt}
+            />
           )
         })
       }

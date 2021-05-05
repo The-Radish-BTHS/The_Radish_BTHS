@@ -3,6 +3,7 @@ nav {
   margin-left: 0px;
   padding: 2ch;
   background-color: #00570d;
+  margin-left: calc(20%);
   /* box-shadow: inset -35px -60px 10px -52px rgba(0, 0, 0, 0.32); */
 }
 

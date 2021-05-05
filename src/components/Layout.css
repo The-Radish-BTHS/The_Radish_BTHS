@@ -10,6 +10,7 @@ body {
 
 main {
   margin: 2ch;
+  margin-left: calc(20% + 2ch);
   padding: 1ch;
 
   /* wrapping */

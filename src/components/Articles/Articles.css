@@ -4,27 +4,12 @@
   grid-gap: 2ch;
 }
 
-.fp-cell {
-  background-color: #c40000ad;
-  padding: 2ch;
-  border-radius: 5px;
-}
-
-.fp-cell h1 {
-  font-size: 3ch;
-  font-weight: bold;
-}
-
 /* Smaller column display for smaller screens */
 @media (max-width: 600px) {
   .frontpage {
     display: flex;
     flex-direction: column;
     grid-gap: 1ch;
-  }
-
-  .fp-cell {
-    border-radius: 2px;
   }
 }
 
