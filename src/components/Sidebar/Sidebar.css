@@ -1,12 +1,13 @@
 .sidebar {
-  margin-top: 8ch;
+  margin-top: 7ch;
+  /* padding-top: 1ch; */
 
   height: 100vh;
-  overflow: scroll;
+  overflow-y: scroll;
   width: 20%;
   display: flex;
   flex-direction: column;
-  grid-gap: 1ch;
+  /* grid-gap: 1ch; */
 
   position: fixed;
   top: 0px;
@@ -19,6 +20,10 @@
   /* -ms-overflow-style: none;
   scrollbar-width: none; */
 }
+
+/* h1 {
+  margin-bottom: 0ch;
+} */
 
 /* .sidebar::-webkit-scrollbar {
   display: none;
