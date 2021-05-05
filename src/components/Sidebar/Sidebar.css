@@ -1,4 +1,6 @@
 .sidebar {
+  margin-top: 8ch;
+
   height: 100vh;
   overflow: scroll;
   width: 20%;
@@ -21,3 +23,9 @@
 /* .sidebar::-webkit-scrollbar {
   display: none;
 } */
+@media (max-width: 600px) {
+  .sidebar {
+    margin-top: 5ch;
+    padding: 1ch;
+  }
+}

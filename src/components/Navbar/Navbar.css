@@ -4,8 +4,10 @@ nav {
   padding: 2ch;
   background-color: #00570d;
 
+  height: 7ch;
+
   /* HANDLE THE ISSUE VIEW */
-  margin-left: calc(20%);
+  /* margin-left: calc(20%); */
 
   position: sticky;
   top: 0;
@@ -23,7 +25,8 @@ nav a:first-child {
 
 @media (max-width: 600px) {
   nav {
-    margin-left: calc(20%);
+    /* margin-left: calc(20%); */
+    height: 5ch;
     padding-top: 1ch;
     padding-bottom: 1ch;
     padding-left: 0ch;
