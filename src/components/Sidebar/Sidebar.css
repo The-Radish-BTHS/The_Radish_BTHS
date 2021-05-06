@@ -22,6 +22,25 @@
   scrollbar-width: none; */
 }
 
+/* Would slide in the thing */
+/* https://stackoverflow.com/questions/40463173/swipe-effect-in-react-js */
+/* .overlay {
+  position: fixed;
+  top: 0px;
+  padding: 2ch;
+  left: -100px;
+  width: 100px;
+  height: 100%;
+
+  background-color: #008CBA;
+  overflow: hidden;
+  transition: .4s ease;
+}
+
+.container:hover .overlay {
+  left: 0px;
+} */
+
 /* h1 {
   margin-bottom: 0ch;
 } */

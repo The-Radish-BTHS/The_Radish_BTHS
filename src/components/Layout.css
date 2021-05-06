@@ -56,6 +56,12 @@ main {
   }
 }
 
+@media (min-width: 1300px) {
+  main {
+    margin-right: calc(20% + 2ch);
+  }
+}
+
 /* Styling links? */
 
 a {
