@@ -25,7 +25,7 @@ main {
 
 ::-webkit-scrollbar {
   width: 10px;
-  background-color: #2b0000;
+  background: #ffffff0a;
 }
 /* ::-webkit-scrollbar-thumb {
   background: black;

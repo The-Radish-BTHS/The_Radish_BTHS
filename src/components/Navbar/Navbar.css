@@ -1,11 +1,13 @@
 nav {
   color: #f0fff6;
   margin-left: 0px;
-  padding-top: 1ch;
+  padding: 2ch;
+  /* padding: 2ch;
+  padding-top: 1ch; */
   background-color: #00570d;
   z-index: 1;
 
-  height: 7ch;
+  /* height: 7ch; */
 
   /* HANDLE THE ISSUE VIEW */
   /* margin-left: calc(20%); */
@@ -16,22 +18,23 @@ nav {
 
 nav a {
   /* font-size: clamp(14px, 1rem + 2vw, 40px); very big */
-  padding: 1ch;
+  padding-right: 1ch;
+  /* padding-top: 2ch; */
 }
 
 nav a:first-child {
-  align-self: center;
+  text-align: center;
   font-weight: bold;
   font-size: 3ch;
-  padding: auto;
 }
 
 @media (max-width: 600px) {
   nav {
     /* margin-left: calc(20%); */
-    height: 5ch;
-    padding-top: 1ch;
+    /* height: 5ch; */
+    padding: 1ch;
+    /* padding-top: 1ch;
     padding-bottom: 1ch;
-    padding-left: 0ch;
+    padding-left: 0ch; */
   }
 }
