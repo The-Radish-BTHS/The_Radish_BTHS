@@ -36,19 +36,12 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  console.log("============================ DATES ============================")
-
   result.data.allMarkdownRemark.edges.forEach(({ node }) => {
     let mindate = node.frontmatter.date.slice(0, 7);
 
     let next_month = (Number(mindate.slice(5, 7))+1).toString();
     next_month = (next_month.length === 2) ? next_month : "0"+next_month;
     let maxdate = mindate.slice(0, 5)+next_month;
-
-    console.log("--------------------------------------------------------------")
-    console.log("MIN:", mindate)
-    console.log("MAX:", maxdate)
-    console.log("--------------------------------------------------------------")
 
     createPage({
       path: node.fields.slug,

@@ -25,6 +25,7 @@ export default function Template({
                 slug={node.fields.slug}
                 title={node.frontmatter.title}
                 excerpt={node.excerpt}
+                authors={node.frontmatter.authors}
               />
             )
           })
@@ -52,6 +53,10 @@ export const pageQuery = graphql`
           excerpt(pruneLength: 200)
           frontmatter {
             title
+            authors {
+              name
+              position
+            }
           }
           fields {
             slug

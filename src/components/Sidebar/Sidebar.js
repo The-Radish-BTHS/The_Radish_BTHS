@@ -19,6 +19,7 @@ export default function Navbar() {
               date(formatString: "MMMM DD, YYYY")
               title
               url
+              cover
             }
             fields {
               slug
@@ -55,6 +56,7 @@ export default function Navbar() {
               key={node.id}
               slug={node.fields.slug}
               title={node.frontmatter.title}
+              cover={node.frontmatter.cover}
             />
           )
         })

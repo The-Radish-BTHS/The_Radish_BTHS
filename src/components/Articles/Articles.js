@@ -15,9 +15,13 @@ export default function Articles() {
         edges {
           node {
             id
-            excerpt(pruneLength: 200)
+            excerpt(pruneLength: 100)
             frontmatter {
               title
+              authors {
+                name
+                position
+              }
             }
             fields {
               slug
@@ -38,6 +42,7 @@ export default function Articles() {
               slug={node.fields.slug}
               title={node.frontmatter.title}
               excerpt={node.excerpt}
+              authors={node.frontmatter.authors}
             />
           )
         })

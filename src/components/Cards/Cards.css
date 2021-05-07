@@ -13,3 +13,9 @@
 .card a h2:hover {
   text-decoration: underline;
 }
+
+.authors {
+  background-color: blue;
+  right: 0px;
+  bottom: 0px;
+}
