@@ -14,8 +14,7 @@
   text-decoration: underline;
 }
 
-.authors {
-  background-color: blue;
-  right: 0px;
-  bottom: 0px;
+.card a img {
+  opacity: 1.0;
+  border-radius: 5px;
 }

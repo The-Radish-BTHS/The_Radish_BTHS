@@ -16,6 +16,7 @@
   "dependencies": {
     "@emotion/react": "^11.1.5",
     "gatsby": "^3.3.1",
+    "gatsby-image": "^3.4.0",
     "gatsby-plugin-emotion": "^6.3.0",
     "gatsby-plugin-image": "^1.4.0",
     "gatsby-plugin-netlify": "^3.3.0",

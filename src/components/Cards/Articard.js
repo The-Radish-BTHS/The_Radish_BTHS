@@ -9,14 +9,6 @@ export default function Articard(props) {
         <h2>{props.title}</h2>
         <p>{props.excerpt}</p>
       </Link>
-
-      <div className="authors">
-        {
-          props.authors.map((author) => {
-            return <div>{author.name}</div>
-          })
-        }
-      </div>
     </div>
   )
 }

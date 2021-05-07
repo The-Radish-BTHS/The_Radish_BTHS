@@ -19,7 +19,13 @@ export default function Navbar() {
               date(formatString: "MMMM DD, YYYY")
               title
               url
-              cover
+              cover {
+                childImageSharp {
+                  gatsbyImageData(
+                    placeholder: BLURRED
+                  )
+                }
+              }
             }
             fields {
               slug
