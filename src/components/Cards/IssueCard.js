@@ -8,8 +8,8 @@ export default function Articard(props) {
   const image = getImage(props.cover)
 
   console.log("--------------------cover--------------------")
-  console.log(props.cover)
-  console.log(image)
+  console.log(JSON.stringify(props.cover, null, 5))
+  // console.log(image)
   console.log("--------------------cover--------------------")
 
   return (

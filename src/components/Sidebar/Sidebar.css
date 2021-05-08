@@ -17,6 +17,8 @@
   /* Avoid horizontal scrollbars */
   overflow-x: hidden;
 
+  grid-gap: 2ch;
+
   /* Hiding scrollbars */
   /* -ms-overflow-style: none;
   scrollbar-width: none; */
@@ -52,7 +54,7 @@
   .sidebar {
     /* ACCOUNT FOR NAVBAR */
     margin-top: 57px;
-
+    grid-gap: 1ch;
     width: 10%;
     padding: 1ch;
   }
