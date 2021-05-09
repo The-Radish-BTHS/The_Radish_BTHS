@@ -9,7 +9,7 @@ export default function Layout({ children }) {
     <>
       <Navbar />
       <Sidebar />
-      <main>{children}</main>  
+      <main>{children}</main>
     </>
   )
 }

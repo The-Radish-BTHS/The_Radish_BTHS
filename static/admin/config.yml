@@ -3,9 +3,9 @@ backend:
   repo: AwareErmine/The_Radish
   branch: main
 
-media_folder: /static/assets
+media_folder: ../../static/assets/
 # public_folder_relative
-public_folder: /assets
+public_folder: /assets/
 
 collections:
   - name: 'issue'

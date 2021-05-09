@@ -1,7 +1,7 @@
 .sidebar {
   /* ACCOUNT FOR NAVBAR */
   /* document.getElementsByTagName("nav")[0].offsetHeight */
-  margin-top: 74px;
+  /* margin: 2ch; */
   /* padding-top: 1ch; */
 
   height: 100vh;
@@ -11,7 +11,7 @@
   flex-direction: column;
 
   position: fixed;
-  top: 0px;
+  top: 74px;
   padding: 2ch;
 
   /* Avoid horizontal scrollbars */
@@ -53,7 +53,7 @@
 @media (max-width: 600px) {
   .sidebar {
     /* ACCOUNT FOR NAVBAR */
-    margin-top: 57px;
+    top: 57px;
     grid-gap: 1ch;
     width: 10%;
     padding: 1ch;
