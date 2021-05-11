@@ -3,8 +3,7 @@ backend:
   repo: AwareErmine/The_Radish
   branch: main
 
-media_folder: /static/assets/ # Maybe??
-# public_folder_relative
+media_folder: /static/assets/
 public_folder: /assets/
 
 collections:
