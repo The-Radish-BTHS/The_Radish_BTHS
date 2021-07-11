@@ -4,20 +4,23 @@
   /* margin: 2ch; */
   /* padding-top: 1ch; */
 
-  height: 100vh;
-  overflow-y: scroll;
+  height: 90vh;
   width: 20%;
+
+  overflow-y: scroll;
   display: flex;
   flex-direction: column;
+  /* Avoid horizontal scrollbars */
+  overflow-x: hidden;
+  grid-gap: 2ch;
 
   position: fixed;
   top: 74px;
   padding: 2ch;
+  padding-top: 3ch;
+  padding-bottom: 6ch;
 
-  /* Avoid horizontal scrollbars */
-  overflow-x: hidden;
-
-  grid-gap: 2ch;
+  border-right: 2px solid var(--highlight);
 
   /* Hiding scrollbars */
   /* -ms-overflow-style: none;

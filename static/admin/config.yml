@@ -7,19 +7,24 @@ media_folder: /static/assets/
 public_folder: /assets/
 
 collections:
-  - name: 'issue'
-    label: 'Issue'
-    folder: 'content/issues'
+  - name: "issue"
+    label: "Issue"
+    folder: "content/issues"
     create: true
     fields:
-      - { label: 'Cover image', name: 'cover', widget: 'image', default: '/static/assets/radimir-rootin.png'}
-      - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
-      - { label: 'PDF url', name: 'url', widget: 'string'}
+      - {
+          label: "Cover image",
+          name: "cover",
+          widget: "image",
+          default: "../../static/assets/radimir-rootin.png",
+        }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "PDF url", name: "url", widget: "string" }
 
-  - name: 'article'
-    label: 'Article'
-    folder: 'content/articles'
+  - name: "article"
+    label: "Article"
+    folder: "content/articles"
     create: true
     # slug: 'index'
     # media_folder: ''
@@ -28,16 +33,20 @@ collections:
     # editor:
     #   preview: false
     fields:
-      - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
-      - { label: 'Body', name: 'body', widget: 'markdown' }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Body", name: "body", widget: "markdown" }
       - label: Authors
         name: authors
         widget: list
         fields:
-          - {label: Name, name: name, widget: string}
-          - {label: Position, name: position, widget: string, default: 'writer'}
-
+          - { label: Name, name: name, widget: string }
+          - {
+              label: Position,
+              name: position,
+              widget: string,
+              default: "writer",
+            }
 # Search for an author
 # {
 #   allMarkdownRemark(

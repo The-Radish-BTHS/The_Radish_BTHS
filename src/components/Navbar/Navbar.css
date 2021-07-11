@@ -1,31 +1,43 @@
 nav {
-  color: #f0fff6;
-  margin-left: 0px;
-  padding: 2ch;
-  /* padding: 2ch;
-  padding-top: 1ch; */
-  background-color: #00570d;
+  color: var(--highlight);
+  background-color: var(--bg);
+  border-bottom: 2px solid var(--highlight);
+  text-align: center;
+
   z-index: 1;
 
-  /* height: 7ch; */
-
-  /* HANDLE THE ISSUE VIEW */
-  /* margin-left: calc(20%); */
-
+  margin-left: 0px;
+  padding: 2ch;
   position: sticky;
   top: 0;
+  /* padding: 2ch;
+  padding-top: 1ch; */
+  /* height: 7ch; */
+  /* HANDLE THE ISSUE VIEW */
+  /* margin-left: calc(20%); */
 }
 
 nav a {
   /* font-size: clamp(14px, 1rem + 2vw, 40px); very big */
   padding-right: 1ch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   /* padding-top: 2ch; */
 }
 
 nav a:first-child {
   text-align: center;
-  font-weight: bold;
-  font-size: 3ch;
+  font-size: 4ch;
+  font-family: "Raleway", sans-serif;
+}
+
+.Radamir {
+  margin-right: 15px;
+}
+
+.Radamir path {
+  fill: var(--highlight);
 }
 
 @media (max-width: 600px) {

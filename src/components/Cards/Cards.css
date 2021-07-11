@@ -1,7 +1,15 @@
 .card {
-  background-color: #c40000ad;
   padding: 2ch;
   border-radius: 5px;
+}
+
+.issueCard {
+  /*border: 3px solid var(--green_1);*/
+  background-color: /*transparent*/ var(--green_2);
+}
+.articleCard {
+  /*border: 3px solid var(--light_red);*/
+  background-color: /*transparent*/ var(--red);
 }
 
 @media (max-width: 600px) {
@@ -15,6 +23,6 @@
 }
 
 .card a img {
-  opacity: 1.0;
+  opacity: 1;
   border-radius: 5px;
 }

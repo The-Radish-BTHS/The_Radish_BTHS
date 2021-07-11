@@ -5,6 +5,7 @@ import Articles from "../components/Articles/Articles"
 export default function Home() {
   return (
     <Layout>
+      <title>The Radish</title>
       <Articles />
     </Layout>
   )
