@@ -4,7 +4,7 @@ import "./Cards.css"
 
 export default function Articard(props) {
   return (
-    <div className="card">
+    <div className="card articleCard">
       <Link to={props.slug}>
         <h2>{props.title}</h2>
         <p>{props.excerpt}</p>
