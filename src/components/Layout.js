@@ -7,6 +7,7 @@ import "./Layout.css"
 export default function Layout({ children }) {
   return (
     <>
+      <title>The Radish</title>
       <Navbar />
       <Sidebar />
       <main>{children}</main>
