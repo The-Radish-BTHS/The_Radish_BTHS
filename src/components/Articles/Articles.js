@@ -19,8 +19,7 @@ export default function Articles() {
             frontmatter {
               title
               authors {
-                name
-                position
+                author
               }
             }
             fields {
@@ -32,10 +31,15 @@ export default function Articles() {
     }
   `)
 
+
+
   return (
     <div className="frontpage">
       {
         data.allMarkdownRemark.edges.map(({node}) => {
+          console.log("-----------------------------------------------")
+          console.log(JSON.stringify(node.frontmatter.authors, null, 5))
+          console.log("-----------------------------------------------")
           return (
             <Articard
               key={node.id}

@@ -54,8 +54,7 @@ export const pageQuery = graphql`
           frontmatter {
             title
             authors {
-              name
-              position
+              author
             }
           }
           fields {

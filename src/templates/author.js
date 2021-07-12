@@ -47,7 +47,7 @@ export const pageQuery = graphql`
       }
     }
     articles: allMarkdownRemark(
-      filter: {frontmatter: {authors: {elemMatch: {name: {eq: $name}}}}}
+      filter: {frontmatter: {authors: {elemMatch: {author: {eq: $name}}}}}
     ) {
       edges {
         node {
@@ -56,8 +56,7 @@ export const pageQuery = graphql`
           frontmatter {
             title
             authors {
-              name
-              position
+              author
             }
           }
           fields {
