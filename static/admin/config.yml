@@ -31,8 +31,8 @@ collections:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
-      - label: 'Author'
-        name: 'author'
+      - label: 'Authors'
+        name: 'authors'
         widget: 'relation'
         collection: 'author'
         search_fields: ["title", "position"]
