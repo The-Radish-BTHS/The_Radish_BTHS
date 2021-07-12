@@ -45,7 +45,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
     createPage({
       path: node.fields.slug,
-      component: node.fileAbsolutePath.includes('/articles/') ?  path.resolve(`./src/templates/article.js`) : path.resolve(`./src/templates/issue.js`),
+      component: node.fileAbsolutePath.includes('/articles/') ? path.resolve(`./src/templates/article.js`) : path.resolve(`./src/templates/issue.js`),
       context: {
         // Data passed to context is available
         // in page queries as GraphQL variables.
