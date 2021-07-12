@@ -28,7 +28,7 @@ export const pageQuery = graphql`
     markdownRemark(fields: {slug: {eq: $slug}}) {
       html
       frontmatter {
-        grad
+        date
         title
         position
       }

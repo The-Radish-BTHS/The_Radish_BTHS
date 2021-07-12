@@ -26,8 +26,8 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         title
         authors {
-          name
           position
+          name
         }
       }
     }

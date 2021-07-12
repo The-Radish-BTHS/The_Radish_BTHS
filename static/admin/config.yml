@@ -46,4 +46,4 @@ collections:
     fields:
       - { label: 'Name', name: 'title', widget: 'string' }
       - { label: 'Position', name: 'position', widget: 'string', default: 'writer' }
-      - { label: 'Grad year', name: 'grad', widget: 'string' }
+      - { label: 'Grad year', name: 'date', widget: 'string' }
