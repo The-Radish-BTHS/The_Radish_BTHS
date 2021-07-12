@@ -14,17 +14,20 @@ export default function Template({
   return (
     <Layout>
       <h1>{frontmatter.title}</h1>
-      <div className="authors">
-        {
-          frontmatter.authors.map(({ author }) => {
-            let slug = '/authors/'+author.toLowerCase().replaceAll(' ', '-')
-            return (
-              <Link to={slug}>{author}</Link>
-            )
-          })
-        }
-      </div>
-      <h3>{frontmatter.date}</h3>
+      <h4>{frontmatter.date}</h4>
+      <h4>
+        {frontmatter.authors.map((author, index) => (
+          <Link
+            to={`/authors/${author.author.toLowerCase().replaceAll(' ', '-')}`}
+            key={index}
+            className="AuthorLink"
+          >
+            {`${author.author}${
+              index < frontmatter.authors.length - 1 ? ", " : ""
+            }`}
+          </Link>
+        ))}
+      </h4>
       <div dangerouslySetInnerHTML={{ __html: html }} />
     </Layout>
   )

@@ -1,3 +1,4 @@
-.authors a {
-  margin-right: 10px;
+.AuthorLink:hover {
+  text-decoration: underline;
+  opacity: 0.95;
 }

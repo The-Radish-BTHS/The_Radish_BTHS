@@ -1,5 +1,5 @@
 ---
 title: Aramie
-position: writer
+position: CEO
 date: "2023"
 ---
