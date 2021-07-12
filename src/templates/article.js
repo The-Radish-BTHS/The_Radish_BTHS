@@ -2,24 +2,24 @@
 
 import React from "react"
 import Layout from "../components/Layout"
-import { graphql } from "gatsby"
-import { Link } from "gatsby"
 import "./article.css"
+import { graphql, Link } from "gatsby"
 
 export default function Template({
   data, // this prop will be injected by the GraphQL query below.
 }) {
   const { markdownRemark } = data // data.markdownRemark holds your post data
   const { frontmatter, html } = markdownRemark
+
   return (
     <Layout>
       <h1>{frontmatter.title}</h1>
-      <h3>{frontmatter.date}</h3>
+      <h4>{frontmatter.date}</h4>
       <h4>
         Written by:
         {frontmatter.authors.map((author, index) => (
           <Link
-            to={`/authors/${author.author.toLowerCase()}`}
+            to={`/authors/${author.author.toLowerCase().replaceAll(' ', '-')}`}
             key={index}
             className="AuthorLink"
           >

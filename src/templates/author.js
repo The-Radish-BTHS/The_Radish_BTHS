@@ -16,6 +16,7 @@ export default function Template({
   return (
     <Layout>
       <h1>{author.frontmatter.title}</h1>
+      <h3><i>{author.frontmatter.position}</i></h3>
       <h3>{"Graduating "+author.frontmatter.date}</h3>
       <div className="frontpage">
         {
