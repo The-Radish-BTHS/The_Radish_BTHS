@@ -44,9 +44,10 @@ collections:
     folder: 'content/authors'
     create: true
     fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Name', name: 'name', widget: 'string' }
       - { label: 'Position', name: 'position', widget: 'string', default: 'writer' }
-      - { label: 'Grad year', name: 'date', widget: 'datetime' }
+      - { label: 'Grad year', name: 'date', widget: 'string' }
 
 # Search for an author
 # {
