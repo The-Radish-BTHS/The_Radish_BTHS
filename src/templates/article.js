@@ -16,14 +16,15 @@ export default function Template({
       <h1>{frontmatter.title}</h1>
       <h3>{frontmatter.date}</h3>
       <h4>
+        Written by:
         {frontmatter.authors.map((author, index) => (
           <Link
             to={`/authors/${author.author.toLowerCase()}`}
             key={index}
             className="AuthorLink"
           >
-            {`${author.author}${
-              index < frontmatter.authors.length - 1 ? ", " : ""
+            {` ${author.author}${
+              index < frontmatter.authors.length - 1 ? "," : ""
             }`}
           </Link>
         ))}
