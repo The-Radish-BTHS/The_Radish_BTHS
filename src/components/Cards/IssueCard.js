@@ -7,10 +7,10 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 export default function Articard(props) {
   const image = getImage(props.cover)
 
-  console.log("--------------------cover--------------------")
-  console.log(JSON.stringify(props.cover, null, 5))
-  // console.log(image)
-  console.log("--------------------cover--------------------")
+  // console.log("--------------------cover--------------------")
+  // console.log(JSON.stringify(props.cover, null, 5))
+  // // console.log(image)
+  // console.log("--------------------cover--------------------")
 
   return (
     <div className="card issueCard">

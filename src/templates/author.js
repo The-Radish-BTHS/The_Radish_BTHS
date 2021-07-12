@@ -16,13 +16,13 @@ export default function Template({
   return (
     <Layout>
       <h1>{author.frontmatter.title}</h1>
-      <h3>{"Graduating "+author.frontmatter.grad}</h3>
+      <h3>{"Graduating "+author.frontmatter.date}</h3>
       <div className="frontpage">
         {
           articles.edges.map(({node}) => {
             return (
               <Articard
-                key={node.id} 
+                key={node.id}
                 slug={node.fields.slug}
                 title={node.frontmatter.title}
                 excerpt={node.excerpt}
