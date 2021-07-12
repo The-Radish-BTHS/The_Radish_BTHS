@@ -5,7 +5,7 @@
 
 .issueCard {
   /*border: 3px solid var(--green_1);*/
-  background-color: /*transparent*/ var(--green_2);
+  background-color: /*transparent*/ /*var(--green_2)*/ var(--red);
 }
 .articleCard {
   /*border: 3px solid var(--light_red);*/

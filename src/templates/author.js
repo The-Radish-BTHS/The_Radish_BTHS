@@ -3,6 +3,10 @@ import Layout from "../components/Layout"
 import "../components/Articles/Articles.css"
 import { graphql } from "gatsby"
 
+// Same layout as homepage
+import Articard from "../components/Cards/Articard.js"
+import "../components/Articles/Articles.css"
+
 export default function Template({
   data, // this prop will be injected by the GraphQL query below.
 }) {
@@ -14,11 +18,11 @@ export default function Template({
       <h1>{author.frontmatter.title}</h1>
       <h3>{"Graduating "+author.frontmatter.grad}</h3>
       <div className="frontpage">
-        { // Yes this is exactly the same as in issues
-          data.articles.edges.map(({node}) => {
+        {
+          articles.edges.map(({node}) => {
             return (
               <Articard
-                key={node.id} // We could probably unpack more to not have to use so much dot notation but
+                key={node.id} 
                 slug={node.fields.slug}
                 title={node.frontmatter.title}
                 excerpt={node.excerpt}
@@ -27,7 +31,7 @@ export default function Template({
             )
           })
         }
-      </div
+      </div>
     </Layout>
   )
 }
