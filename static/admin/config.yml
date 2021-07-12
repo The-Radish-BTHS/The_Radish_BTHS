@@ -35,16 +35,16 @@ collections:
         name: 'author'
         widget: 'relation'
         collection: 'author'
-        search_fields: ["name", "position"]
-        value_field: "name"
-        display_fields: ["name"]
+        search_fields: ["title", "position"]
+        value_field: "title"
+        display_fields: ["title"]
 
   - name: 'author'
     label: 'Author'
     folder: 'content/authors'
     create: true
     fields:
-      - { label: 'Name', name: 'name', widget: 'string' }
+      - { label: 'Name', name: 'title', widget: 'string' }
       - { label: 'Position', name: 'position', widget: 'string', default: 'writer' }
       - { label: 'Grad year', name: 'date', widget: 'string' }
 
