@@ -31,13 +31,17 @@ collections:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
-      - label: 'Authors'
+      - label: "Authors"
         name: 'authors'
-        widget: 'relation'
-        collection: 'author'
-        search_fields: ["title", "position"]
-        value_field: "title"
-        display_fields: ["title"]
+        widget: 'list'
+        fields:
+          - label: 'Author'
+            name: 'author'
+            widget: 'relation'
+            collection: 'author'
+            search_fields: ["title", "position"]
+            value_field: "title"
+            display_fields: ["title"]
 
   - name: 'author'
     label: 'Author'
