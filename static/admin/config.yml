@@ -37,7 +37,7 @@ collections:
         collection: 'author'
         search_fields: ["name", "position"]
         value_field: "name"
-        display_fields: ["name", "position"]
+        display_fields: ["name"]
 
   - name: 'author'
     label: 'Author'
