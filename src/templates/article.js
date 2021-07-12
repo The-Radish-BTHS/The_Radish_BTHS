@@ -18,7 +18,7 @@ export default function Template({
       <h4>
         {frontmatter.authors.map((author, index) => (
           <Link
-            to={`/authors/${author.author}`}
+            to={`/authors/${author.author.toLowerCase()}`}
             key={index}
             className="AuthorLink"
           >
