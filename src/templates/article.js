@@ -19,10 +19,12 @@ export default function Template({
         Written by:
         {
           frontmatter.authors.map(({ author }, index) => {
-            let slugable = author.toLowerCase().replaceAll(' ', '-') // Having it part of the string netlify gets confused?
+            console.log("-------------------------------------------------------")
+            console.log(author.toLowerCase())
+            console.log("-------------------------------------------------------")
             return (
               <Link
-                to={`/authors/${slugable}`}
+                to={`/authors/${author.toLowerCase().replaceAll(' ', '-')}`}
                 key={index}
                 className="AuthorLink"
               >
