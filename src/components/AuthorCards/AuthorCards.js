@@ -40,6 +40,7 @@ export default function AuthorCards() {
               key={node.id}
               slug={node.fields.slug}
               title={node.frontmatter.title}
+              position={node.frontmatter.position}
             />
           )
         })
