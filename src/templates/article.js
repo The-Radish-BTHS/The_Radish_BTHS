@@ -18,17 +18,20 @@ export default function Template({
       <h4>
         Written by:
         {
-          frontmatter.authors.map(({ author }, index) => (
-            <Link
-              to={`/authors/${author.toLowerCase().replaceAll(' ', '-')}`}
-              key={index}
-              className="AuthorLink"
-            >
-              {` ${author}${
-                index < frontmatter.authors.length - 1 ? "," : ""
-              }`}
-            </Link>
-          ))
+          frontmatter.authors.map(({ author }, index) => {
+            let slugable = author.toLowerCase().replaceAll(' ', '-') // Having it part of the string netlify gets confused?
+            return (
+              <Link
+                to={`/authors/${slugable}`}
+                key={index}
+                className="AuthorLink"
+              >
+                {` ${author}${
+                  index < frontmatter.authors.length - 1 ? "," : ""
+                }`}
+              </Link>
+            )
+          })
         }
       </h4>
       <div dangerouslySetInnerHTML={{ __html: html }} />
