@@ -23,12 +23,14 @@ body {
 main {
   margin: 2ch;
 
-  /* HANDLE THE ISSUE VIEW */
-  margin-left: calc(20% + 2ch);
-
   /* wrapping */
   overflow-wrap: anywhere;
   hyphens: auto;
+}
+
+.mainAccountForSidebar {
+  /* HANDLE THE ISSUE VIEW */
+  margin-left: calc(20% + 2ch);
 }
 
 /* body:hover {

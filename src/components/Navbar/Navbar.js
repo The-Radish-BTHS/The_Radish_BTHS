@@ -4,14 +4,32 @@ import "./Navbar.css"
 
 import Radamir from "./Radamir"
 
-export default function Navbar() {
+function CloseHamburger({ showSidebar, setShowSidebar }) {
+  return (
+    <div className="closeBurger">
+      <input
+        type="checkbox"
+        id="toggle"
+        checked={showSidebar}
+        onClick={() => setShowSidebar(!showSidebar)}
+      ></input>
+      <label htmlFor="toggle" />
+    </div>
+  )
+}
+
+export default function Navbar({ setShowSidebar, showSidebar }) {
   return (
     <nav id="navbar">
+      <CloseHamburger
+        setShowSidebar={setShowSidebar}
+        showSidebar={showSidebar}
+      />
       <Link to="/authors">Authors</Link>
       <Link to="/">
         <Radamir /> The Radish
       </Link>
-      <Link to='/'>A search bar here?</Link>
+      <Link to="/">A search bar here?</Link>
     </nav>
   )
 }
