@@ -37,9 +37,9 @@ export default function Articles() {
     <div className="frontpage">
       {
         data.allMarkdownRemark.edges.map(({node}) => {
-          console.log("-----------------------------------------------")
-          console.log(JSON.stringify(node.frontmatter.authors, null, 5))
-          console.log("-----------------------------------------------")
+          // console.log("-----------------------------------------------")
+          // console.log(JSON.stringify(node.frontmatter.authors, null, 5))
+          // console.log("-----------------------------------------------")
           return (
             <Articard
               key={node.id}

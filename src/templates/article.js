@@ -17,17 +17,19 @@ export default function Template({
       <h4>{frontmatter.date}</h4>
       <h4>
         Written by:
-        {frontmatter.authors.map((author, index) => (
-          <Link
-            to={`/authors/${author.author.toLowerCase().replaceAll(' ', '-')}`}
-            key={index}
-            className="AuthorLink"
-          >
-            {` ${author.author}${
-              index < frontmatter.authors.length - 1 ? "," : ""
-            }`}
-          </Link>
-        ))}
+        {
+          frontmatter.authors.map(({ author }, index) => (
+            <Link
+              to={`/authors/${author.toLowerCase().replaceAll(' ', '-')}`}
+              key={index}
+              className="AuthorLink"
+            >
+              {` ${author}${
+                index < frontmatter.authors.length - 1 ? "," : ""
+              }`}
+            </Link>
+          ))
+        }
       </h4>
       <div dangerouslySetInnerHTML={{ __html: html }} />
     </Layout>
