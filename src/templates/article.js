@@ -20,7 +20,7 @@ export default function Template({
         {
           frontmatter.authors.map(({ author }, index) => {
             console.log("-------------------------------------------------------")
-            console.log(author.toLowerCase())
+            console.log(author.toLowerCase().replaceAll(' ', '-'))
             console.log("-------------------------------------------------------")
             return (
               <Link
