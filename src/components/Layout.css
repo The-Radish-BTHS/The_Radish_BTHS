@@ -96,7 +96,7 @@ a * {
 a:visited * {
   color: inherit;
 }
-
+/* 
 a:hover * {
   opacity: 0.95;
-}
+} */

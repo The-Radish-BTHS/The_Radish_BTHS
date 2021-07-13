@@ -25,4 +25,12 @@
 .card a img {
   opacity: 1;
   border-radius: 5px;
+  transition-duration: 400ms;
+}
+
+.card a img:hover {
+  opacity: 1 !important;
+  transform: scale(1.02, 1.02);
+  -webkit-filter: drop-shadow(2px 2px 2px rgb(29, 29, 29));
+  filter: drop-shadow(2px 2px 2px rgb(29, 29, 29));
 }
