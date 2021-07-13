@@ -12,6 +12,10 @@
   background-color: /*transparent*/ var(--red);
 }
 
+.authorCard {
+  background-color: /*transparent*/ var(--red);
+}
+
 @media (max-width: 600px) {
   .card {
     border-radius: 2px;

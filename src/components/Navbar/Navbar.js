@@ -25,9 +25,11 @@ export default function Navbar({ setShowSidebar, showSidebar }) {
         setShowSidebar={setShowSidebar}
         showSidebar={showSidebar}
       />
+      <Link to="/authors">Authors</Link>
       <Link to="/">
         <Radamir /> The Radish
       </Link>
+      <Link to="/">A search bar here?</Link>
     </nav>
   )
 }
