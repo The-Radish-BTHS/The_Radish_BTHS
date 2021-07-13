@@ -4,13 +4,13 @@ import { graphql, useStaticQuery } from "gatsby"
 import IssueCard from "../Cards/IssueCard.js"
 import "./Sidebar.css"
 
-export default function Navbar() {
+export default function Sidebar({ showSidebar }) {
   const data = useStaticQuery(graphql`
     {
       allMarkdownRemark(
-        sort: {order: DESC, fields: [frontmatter___date]}
+        sort: { order: DESC, fields: [frontmatter___date] }
         limit: 1000
-        filter: {fields: {slug: {regex: "^/issues/"}}}
+        filter: { fields: { slug: { regex: "^/issues/" } } }
       ) {
         edges {
           node {
@@ -21,9 +21,7 @@ export default function Navbar() {
               url
               cover {
                 childImageSharp {
-                  gatsbyImageData(
-                    placeholder: BLURRED
-                  )
+                  gatsbyImageData(placeholder: BLURRED)
                 }
               }
             }
@@ -54,19 +52,17 @@ export default function Navbar() {
   // })
 
   return (
-    <div className="sidebar">
-      {
-        data.allMarkdownRemark.edges.map(({node}) => {
-          return (
-            <IssueCard
-              key={node.id}
-              slug={node.fields.slug}
-              title={node.frontmatter.title}
-              cover={node.frontmatter.cover}
-            />
-          )
-        })
-      }
+    <div className={`sidebar ${showSidebar && "sidebarHidden"}`}>
+      {data.allMarkdownRemark.edges.map(({ node }) => {
+        return (
+          <IssueCard
+            key={node.id}
+            slug={node.fields.slug}
+            title={node.frontmatter.title}
+            cover={node.frontmatter.cover}
+          />
+        )
+      })}
     </div>
   )
 }

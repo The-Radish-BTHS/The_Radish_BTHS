@@ -10,7 +10,7 @@ function CloseHamburger({ showSidebar, setShowSidebar }) {
       <input
         type="checkbox"
         id="toggle"
-        checked={showSidebar}
+        defaultChecked={!showSidebar}
         onClick={() => setShowSidebar(!showSidebar)}
       ></input>
       <label htmlFor="toggle" />
