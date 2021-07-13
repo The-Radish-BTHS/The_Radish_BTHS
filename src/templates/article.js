@@ -19,10 +19,12 @@ export default function Template({
         Written by:
         {
           frontmatter.authors.map(({ author }, index) => {
-            // console.log("-------------------------------------------------------")
-            // // console.log(typeof author.toLowerCase() == 'string')
+            console.log("-------------------------------------------------------")
+            console.log(typeof author.toLowerCase() == 'string')
+            console.log(typeof author.toLowerCase())
+            console.log(author.toLowerCase())
             // console.log(typeof author.toLowerCase() == 'string' ? author.toLowerCase().replaceAll(' ', '-') : author.toLowerCase())
-            // console.log("-------------------------------------------------------")
+            console.log("-------------------------------------------------------")
             return (
               <Link
                 to={`/authors/${typeof author.toLowerCase() == 'string' ? author.toLowerCase().replaceAll(' ', '-') : author.toLowerCase()}`}
