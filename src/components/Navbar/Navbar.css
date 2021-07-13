@@ -32,7 +32,6 @@ nav a {
 }
 
 nav a:nth-child(2) {
-  text-align: center;
   font-size: 4ch;
   font-family: "Raleway", sans-serif;
 }

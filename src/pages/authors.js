@@ -5,7 +5,7 @@ import AuthorCards from "../components/AuthorCards/AuthorCards"
 export default function Authors() {
   return (
     <Layout>
-      <title>Authors</title>
+      <h1>Authors</h1>
       <AuthorCards />
     </Layout>
   )
