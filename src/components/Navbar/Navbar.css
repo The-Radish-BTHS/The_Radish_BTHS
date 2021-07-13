@@ -6,6 +6,10 @@ nav {
 
   z-index: 1;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   margin-left: 0px;
   padding: 2ch;
   position: sticky;
@@ -19,14 +23,15 @@ nav {
 
 nav a {
   /* font-size: clamp(14px, 1rem + 2vw, 40px); very big */
-  padding-right: 1ch;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding-right: 2ch;
+  /* display: flex; */
+  /* align-items: center;
+  justify-content: center; */
+  /* background-color: red; */
   /* padding-top: 2ch; */
 }
 
-nav a:first-child {
+nav a:nth-child(2) {
   text-align: center;
   font-size: 4ch;
   font-family: "Raleway", sans-serif;
