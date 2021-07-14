@@ -5,13 +5,15 @@ import Sidebar from "./Sidebar/Sidebar"
 import "./Layout.css"
 
 export default function Layout({ children }) {
-  const [showSidebar, setShowSidebar] = useState(false)
+  const [showSidebar, setShowSidebar] = useState(true)
   return (
     <>
       <title>The Radish</title>
       <Navbar setShowSidebar={setShowSidebar} showSidebar={showSidebar} />
-      {showSidebar && <Sidebar />}
-      <main className={showSidebar && "mainAccountForSidebar"}>{children}</main>
+      <Sidebar showSidebar={showSidebar} />
+      <main className={!showSidebar && "mainAccountForSidebar"}>
+        {children}
+      </main>
     </>
   )
 }
