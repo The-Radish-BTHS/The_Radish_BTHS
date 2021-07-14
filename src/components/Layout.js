@@ -16,7 +16,29 @@ function useStickyState(defaultValue, key) {
 }
 
 export default function Layout({ children }) {
-  const [showSidebar, setShowSidebar] = useStickyState(false, showSidebar)
+  const [showSidebar, setShowSidebar] = /*useStickyState*/ useStickyState(
+    false,
+    "showSidebar"
+  )
+  // const [
+  //   sidebarScrollPosition,
+  //   setSidebarScrollPosition,
+  // ] = /*useStickyState*/ useState(0, "sidebarScrollPosition")
+
+  // useEffect(() => {
+  //   window.scrollTo(0, sidebarScrollPosition)
+
+  //   const handleScroll = () => {
+  //     setSidebarScrollPosition(window.pageYOffset)
+  //   }
+
+  //   window.addEventListener("scroll", handleScroll, { passive: true })
+
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll)
+  //   }
+  // }, [sidebarScrollPosition])
+
   return (
     <>
       <title>The Radish</title>
