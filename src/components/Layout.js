@@ -1,15 +1,15 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import Navbar from "./Navbar/Navbar"
 import Sidebar from "./Sidebar/Sidebar"
 
 import "./Layout.css"
 
 function useStickyState(defaultValue, key) {
-  const [value, setValue] = React.useState(() => {
+  const [value, setValue] = useState(() => {
     const stickyValue = window.localStorage.getItem(key)
     return stickyValue !== null ? JSON.parse(stickyValue) : defaultValue
   })
-  React.useEffect(() => {
+  useEffect(() => {
     window.localStorage.setItem(key, JSON.stringify(value))
   }, [key, value])
   return [value, setValue]

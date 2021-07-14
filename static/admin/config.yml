@@ -1,5 +1,6 @@
 backend:
   name: git-gateway
+  local_backend: true
   repo: AwareErmine/The_Radish
   branch: main
 
