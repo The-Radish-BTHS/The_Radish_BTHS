@@ -50,9 +50,10 @@ export default function Sidebar({ showSidebar }) {
   // useEffect(() => {
   //   window.addEventListener('resize', handleResize)
   // })
-
+  const sidebarClassName = `sidebar ${!showSidebar ? "sidebarHidden" : ""}`
+  console.log(sidebarClassName)
   return (
-    <div className={`sidebar ${showSidebar ? "sidebarHidden" : ""}`}>
+    <div className={sidebarClassName}>
       {data.allMarkdownRemark.edges.map(({ node }) => {
         return (
           <IssueCard

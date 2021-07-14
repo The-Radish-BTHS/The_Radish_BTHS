@@ -14,7 +14,9 @@ function SocialLink({ children, to }) {
 
 export default function Footer({ showSidebar }) {
   return (
-    <footer className={`footer ${!showSidebar && "footerAccountForSidebar"}`}>
+    <footer
+      className={`footer ${showSidebar ? "footerAccountForSidebar" : ""}`}
+    >
       <h1 className="footerWackyMessage">Does the email link work?</h1>
       <div className="footerSocialsLinks">
         <SocialLink to="https://discord.gg/MBw8T37">

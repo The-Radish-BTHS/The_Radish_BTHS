@@ -5,12 +5,14 @@ import "./Navbar.css"
 import Radamir from "./Radamir"
 
 function CloseHamburger({ showSidebar, setShowSidebar }) {
+  //checked is in the X position
+  console.log(showSidebar)
   return (
     <div className="closeBurger">
       <input
         type="checkbox"
         id="toggle"
-        defaultChecked={!showSidebar}
+        defaultChecked={showSidebar}
         onClick={() => setShowSidebar(!showSidebar)}
       ></input>
       <label htmlFor="toggle" />

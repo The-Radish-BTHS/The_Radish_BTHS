@@ -16,6 +16,7 @@ function useStickyState(defaultValue, key) {
   })
   useEffect(() => {
     window.localStorage.setItem(key, JSON.stringify(value))
+    console.log(window.localStorage.getItem(key))
   }, [key, value])
   return [value, setValue]
 }
@@ -43,14 +44,16 @@ export default function Layout({ children }) {
   // }, [sidebarScrollPosition])
 
   return (
-    <div className="layoutWrapper">
+    <>
       <title>The Radish</title>
       <Navbar setShowSidebar={setShowSidebar} showSidebar={showSidebar} />
       <Sidebar showSidebar={showSidebar} />
-      <main className={!showSidebar && "mainAccountForSidebar"}>
-        {children}
-      </main>
-      <Footer showSidebar={showSidebar} />
-    </div>
+      <div className="layoutWrapper">
+        <main className={showSidebar ? "mainAccountForSidebar" : ""}>
+          {children}
+        </main>
+        <Footer showSidebar={showSidebar} />
+      </div>
+    </>
   )
 }
