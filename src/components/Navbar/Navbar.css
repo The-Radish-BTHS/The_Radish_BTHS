@@ -74,16 +74,21 @@ nav #name {
   --closeburger-height: 0.25em;
 }
 
-#toggle ~ label {
+.closeBurgerLabel {
   width: var(--closeburger-width);
   height: var(--closeburger-height);
   background-color: white;
+
   position: absolute;
+  margin-top: auto;
+  margin-bottom: auto;
+
   cursor: pointer;
+  transition: all 0.5s var(--animation-curve);
 }
 
-#toggle ~ label::before,
-#toggle ~ label::after {
+.closeBurgerLabel::before,
+.closeBurgerLabel::after {
   content: "";
   width: var(--closeburger-width);
   height: var(--closeburger-height);
@@ -92,47 +97,48 @@ nav #name {
   display: block;
   transition: all 0.6s var(--animation-curve);
 }
-
-#toggle ~ label::before {
+.closeBurgerLabel::before {
   top: -250%;
   left: 0%;
   transform: rotateZ(0deg);
   transform-origin: left top;
 }
 
-#toggle ~ label::after {
+.closeBurgerLabel::after {
   bottom: -250%;
   left: 0%;
   transform: rotateZ(0deg);
   transform-origin: left bottom;
 }
 
-#toggle:checked ~ label::before {
+#toggle:checked .closeBurgerLabel::before {
   content: "";
   transform: rotateZ(41deg);
   left: 10%;
 }
 
-#toggle:checked ~ label::after {
+#toggle:checked .closeBurgerLabel::after {
   content: "";
   transform: rotateZ(-41deg);
   left: 10%;
 }
 
-#toggle:checked ~ label {
+#toggle:checked .closeBurgerLabel {
   background-color: transparent;
 }
 
-#toggle ~ label {
-  transition: all 0.5s var(--animation-curve);
-}
-
 #toggle {
-  display: none;
+  opacity: 0;
+  width: var(--closeburger-width);
+  height: calc(var(--closeburger-height) * 8);
+  position: relative;
+  top: 0;
+  cursor: pointer;
 }
 
 .closeBurger {
   position: absolute;
   top: 4ch;
   left: 3ch;
+  cursor: pointer;
 }

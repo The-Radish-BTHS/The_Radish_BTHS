@@ -9,13 +9,15 @@ function CloseHamburger({ showSidebar, setShowSidebar }) {
   console.log(showSidebar)
   return (
     <div className="closeBurger">
-      <input
-        type="checkbox"
-        id="toggle"
-        defaultChecked={showSidebar}
-        onClick={() => setShowSidebar(!showSidebar)}
-      ></input>
-      <label htmlFor="toggle" />
+      <label htmlFor="toggle" className="closeBurgerLabel">
+        <input
+          type="checkbox"
+          id="toggle"
+          defaultChecked={showSidebar}
+          onClick={() => setShowSidebar(!showSidebar)}
+          className="closeBurgerInput"
+        ></input>
+      </label>
     </div>
   )
 }
