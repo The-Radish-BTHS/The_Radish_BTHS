@@ -51,6 +51,7 @@ export default function Sidebar({ showSidebar }) {
   //   window.addEventListener('resize', handleResize)
   // })
   const sidebarClassName = `sidebar ${!showSidebar ? "sidebarHidden" : ""}`
+  console.log(showSidebar)
   console.log(sidebarClassName)
   return (
     <div className={sidebarClassName}>

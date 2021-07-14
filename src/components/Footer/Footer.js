@@ -1,4 +1,3 @@
-import { Link } from "gatsby"
 import React from "react"
 import "./Footer.css"
 
@@ -6,9 +5,9 @@ import { Instagram, Twitter, Discord, Email } from "./socialsIcons/index"
 
 function SocialLink({ children, to }) {
   return (
-    <Link to={to} target="_blank">
+    <a href={to} target="_blank" rel="noreferrer">
       {children}
-    </Link>
+    </a>
   )
 }
 

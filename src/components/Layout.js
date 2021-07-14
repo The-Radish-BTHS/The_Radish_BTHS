@@ -16,7 +16,6 @@ function useStickyState(defaultValue, key) {
   })
   useEffect(() => {
     window.localStorage.setItem(key, JSON.stringify(value))
-    console.log(window.localStorage.getItem(key))
   }, [key, value])
   return [value, setValue]
 }
