@@ -111,22 +111,20 @@ nav #name {
   transform-origin: left bottom;
 }
 
-#toggle:checked .closeBurgerLabel::before {
+.toggleChecked::before {
   content: "";
   transform: rotateZ(41deg);
   left: 10%;
 }
 
-#toggle:checked .closeBurgerLabel::after {
+.toggleChecked::after {
   content: "";
   transform: rotateZ(-41deg);
   left: 10%;
 }
-
-#toggle:checked .closeBurgerLabel {
+.toggleChecked {
   background-color: transparent;
 }
-
 #toggle {
   opacity: 0;
   width: var(--closeburger-width);

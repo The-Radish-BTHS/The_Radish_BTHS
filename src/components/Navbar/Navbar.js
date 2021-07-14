@@ -9,7 +9,10 @@ function CloseHamburger({ showSidebar, setShowSidebar }) {
   console.log(showSidebar)
   return (
     <div className="closeBurger">
-      <label htmlFor="toggle" className="closeBurgerLabel">
+      <label
+        htmlFor="toggle"
+        className={`closeBurgerLabel ${showSidebar ? "toggleChecked" : ""}`}
+      >
         <input
           type="checkbox"
           id="toggle"
