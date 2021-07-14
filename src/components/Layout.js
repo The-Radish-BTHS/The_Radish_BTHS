@@ -47,10 +47,12 @@ export default function Layout({ children }) {
       <title>The Radish</title>
       <Navbar setShowSidebar={setShowSidebar} showSidebar={showSidebar} />
       <Sidebar showSidebar={showSidebar} />
-      <div className="layoutWrapper">
-        <main className={showSidebar ? "mainAccountForSidebar" : ""}>
-          {children}
-        </main>
+      <div
+        className={`layoutWrapper ${
+          showSidebar ? "layoutWrapperAccountForSidebar" : ""
+        }`}
+      >
+        <main>{children}</main>
         <Footer showSidebar={showSidebar} />
       </div>
     </>

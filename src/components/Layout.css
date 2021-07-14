@@ -27,19 +27,19 @@ main {
   /* wrapping */
   overflow-wrap: anywhere;
   hyphens: auto;
-  transition: 0.4s ease;
 }
 
 .layoutWrapper {
   position: relative;
   min-height: calc(100vh - 10ch);
   overflow-x: hidden;
+  transition: 0.4s ease;
 }
 
-.mainAccountForSidebar {
+.layoutWrapperAccountForSidebar {
   /* HANDLE THE ISSUE VIEW */
   transition: 0.4s ease;
-  margin-left: calc(20% + 2ch);
+  margin-left: calc(20%);
 }
 
 /* body:hover {
