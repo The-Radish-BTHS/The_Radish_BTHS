@@ -3,7 +3,7 @@ footer {
   background-color: var(--bg);
   border-top: 2px solid var(--highlight);
 
-  padding: 2ch 1ch;
+  padding: 2ch;
   transition: 0.4s ease;
 
   width: 100%;
@@ -21,10 +21,14 @@ footer {
   width: 80%;
 }
 
+.footerWackyMessage {
+  flex: 2;
+}
+
 .footerSocialsLinks {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
   flex: 1;
 }
 
