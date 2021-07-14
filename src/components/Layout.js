@@ -4,10 +4,14 @@ import Sidebar from "./Sidebar/Sidebar"
 
 import "./Layout.css"
 
+const isBrowser = typeof window !== "undefined"
+
 function useStickyState(defaultValue, key) {
   const [value, setValue] = useState(() => {
-    const stickyValue = window.localStorage.getItem(key)
-    return stickyValue !== null ? JSON.parse(stickyValue) : defaultValue
+    if (isBrowser) {
+      const stickyValue = window.localStorage.getItem(key)
+      return stickyValue !== null ? JSON.parse(stickyValue) : defaultValue
+    }
   })
   useEffect(() => {
     window.localStorage.setItem(key, JSON.stringify(value))
@@ -16,10 +20,8 @@ function useStickyState(defaultValue, key) {
 }
 
 export default function Layout({ children }) {
-  const [showSidebar, setShowSidebar] = /*useStickyState*/ useStickyState(
-    false,
-    "showSidebar"
-  )
+  const [showSidebar, setShowSidebar] = useStickyState(false, "showSidebar")
+
   // const [
   //   sidebarScrollPosition,
   //   setSidebarScrollPosition,
