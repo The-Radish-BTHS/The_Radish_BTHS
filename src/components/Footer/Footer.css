@@ -1,0 +1,34 @@
+footer {
+  color: var(--highlight);
+  background-color: var(--bg);
+  border-top: 2px solid var(--highlight);
+
+  padding: 2ch 1ch;
+  transition: 0.4s ease;
+
+  width: 100%;
+  height: 13ch;
+  display: flex;
+  align-items: center;
+
+  position: absolute;
+  bottom: 0;
+}
+
+.footerAccountForSidebar {
+  transition: 0.4s ease;
+  margin-left: 20%;
+  width: 80%;
+}
+
+.footerSocialsLinks {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex: 1;
+}
+
+.footerSocialsLinks svg {
+  height: 40px;
+  width: 40px;
+}

@@ -22,11 +22,18 @@ body {
 
 main {
   margin: 2ch;
+  margin-bottom: 15ch;
 
   /* wrapping */
   overflow-wrap: anywhere;
   hyphens: auto;
   transition: 0.4s ease;
+}
+
+.layoutWrapper {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .mainAccountForSidebar {

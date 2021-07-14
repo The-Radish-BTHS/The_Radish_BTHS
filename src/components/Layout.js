@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import Navbar from "./Navbar/Navbar"
 import Sidebar from "./Sidebar/Sidebar"
+import Footer from "./Footer/Footer"
 
 import "./Layout.css"
 
@@ -42,13 +43,14 @@ export default function Layout({ children }) {
   // }, [sidebarScrollPosition])
 
   return (
-    <>
+    <div className="layoutWrapper">
       <title>The Radish</title>
       <Navbar setShowSidebar={setShowSidebar} showSidebar={showSidebar} />
       <Sidebar showSidebar={showSidebar} />
       <main className={!showSidebar && "mainAccountForSidebar"}>
         {children}
       </main>
-    </>
+      <Footer showSidebar={showSidebar} />
+    </div>
   )
 }
