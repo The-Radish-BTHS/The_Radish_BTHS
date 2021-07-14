@@ -41,6 +41,11 @@ nav #name {
   font-family: "Raleway", sans-serif;
 }
 
+.NavbarHomeLink {
+  display: flex;
+  align-items: center;
+}
+
 .Radamir {
   margin-right: 15px;
 }
