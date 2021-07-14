@@ -52,7 +52,7 @@ export default function Sidebar({ showSidebar }) {
   // })
 
   return (
-    <div className={`sidebar ${showSidebar && "sidebarHidden"}`}>
+    <div className={`sidebar ${showSidebar ? "sidebarHidden" : ""}`}>
       {data.allMarkdownRemark.edges.map(({ node }) => {
         return (
           <IssueCard
