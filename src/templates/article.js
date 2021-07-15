@@ -16,22 +16,22 @@ export default function Template({
       <h1>{frontmatter.title}</h1>
       <h4>{frontmatter.date}</h4>
       <h4>
-        Written by:
-        {
-          frontmatter.authors.map(({ author }, index) => {
-            return (
-              <Link
-                to={`/authors/${typeof author.toLowerCase() == 'string' ? author.toLowerCase().replace(/ /g, '-') : author.toLowerCase()}`}
-                key={index}
-                className="AuthorLink"
-              >
-                {` ${author}${
-                  index < frontmatter.authors.length - 1 ? "," : ""
-                }`}
-              </Link>
-            )
-          })
-        }
+        {`Written by: `}
+        {frontmatter.authors.map(({ author }, index) => {
+          return (
+            <Link
+              to={`/authors/${
+                typeof author.toLowerCase() == "string"
+                  ? author.toLowerCase().replace(/ /g, "-")
+                  : author.toLowerCase()
+              }`}
+              key={index}
+              className="AuthorLink"
+            >
+              {`${author}${index < frontmatter.authors.length - 1 ? "," : ""}`}
+            </Link>
+          )
+        })}
       </h4>
       <div dangerouslySetInnerHTML={{ __html: html }} />
     </Layout>
