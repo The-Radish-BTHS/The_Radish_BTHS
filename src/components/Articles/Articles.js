@@ -8,9 +8,9 @@ export default function Articles() {
   const data = useStaticQuery(graphql`
     {
       allMarkdownRemark(
-        sort: {order: DESC, fields: [frontmatter___date]}
+        sort: { order: DESC, fields: [frontmatter___date] }
         limit: 1000
-        filter: {fields: {slug: {regex: "^/articles/"}}}
+        filter: { fields: { slug: { regex: "^/articles/" } } }
       ) {
         edges {
           node {
@@ -31,26 +31,22 @@ export default function Articles() {
     }
   `)
 
-
-
   return (
     <div className="frontpage">
-      {
-        data.allMarkdownRemark.edges.map(({node}) => {
-          // console.log("-----------------------------------------------")
-          // console.log(JSON.stringify(node.frontmatter.authors, null, 5))
-          // console.log("-----------------------------------------------")
-          return (
-            <Articard
-              key={node.id}
-              slug={node.fields.slug}
-              title={node.frontmatter.title}
-              excerpt={node.excerpt}
-              authors={node.frontmatter.authors}
-            />
-          )
-        })
-      }
+      {data.allMarkdownRemark.edges.map(({ node }) => {
+        // console.log("-----------------------------------------------")
+        // console.log(JSON.stringify(node.frontmatter.authors, null, 5))
+        // console.log("-----------------------------------------------")
+        return (
+          <Articard
+            key={node.id}
+            slug={node.fields.slug}
+            title={node.frontmatter.title}
+            excerpt={node.excerpt}
+            authors={node.frontmatter.authors}
+          />
+        )
+      })}
     </div>
   )
 }
