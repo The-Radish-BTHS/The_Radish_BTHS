@@ -8,7 +8,7 @@ module.exports = {
   /* Your site config here */
   siteMetadata: {
     title: `The Radish`,
-    description: `Brooklyn Technical's first, worst, and only satirical newspaper.`
+    description: `Brooklyn Technical's first, worst, and only satirical newspaper.`,
   },
   plugins: [
     `gatsby-plugin-image`,
@@ -25,8 +25,8 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/static/assets/`,
-        name: 'assets',
+        path: `${__dirname}/content/covers/`,
+        name: "covers",
       },
     },
 
@@ -64,7 +64,6 @@ module.exports = {
     // `gatsby-transformer-sharp`,
     // `gatsby-plugin-sharp`,
     `gatsby-remark-images`,
-
 
     // OTHER
     `gatsby-plugin-netlify-cms`,
