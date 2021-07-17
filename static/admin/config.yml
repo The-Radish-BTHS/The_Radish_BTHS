@@ -4,23 +4,28 @@ backend:
   repo: AwareErmine/The_Radish
   branch: main
 
-media_folder: /static/assets/
-public_folder: /assets/
+media_folder: /content/covers/
+public_folder: /covers/
 
 collections:
-  - name: 'issue'
-    label: 'Issue'
-    folder: 'content/issues'
+  - name: "issue"
+    label: "Issue"
+    folder: "content/issues"
     create: true
     fields:
-      - { label: 'Cover image', name: 'cover', widget: 'image', default: '/static/assets/radimir-rootin.png'}
-      - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
-      - { label: 'PDF url', name: 'url', widget: 'string'}
+      - {
+          label: "Cover image",
+          name: "cover",
+          widget: "image",
+          default: "/static/assets/radimir-rootin.png",
+        }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "PDF url", name: "url", widget: "string" }
 
-  - name: 'article'
-    label: 'Article'
-    folder: 'content/articles'
+  - name: "article"
+    label: "Article"
+    folder: "content/articles"
     create: true
     # slug: 'index'
     # media_folder: ''
@@ -29,26 +34,31 @@ collections:
     # editor:
     #   preview: false
     fields:
-      - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
-      - { label: 'Body', name: 'body', widget: 'markdown' }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Body", name: "body", widget: "markdown" }
       - label: "Authors"
-        name: 'authors'
-        widget: 'list'
+        name: "authors"
+        widget: "list"
         fields:
-          - label: 'Author'
-            name: 'author'
-            widget: 'relation'
-            collection: 'author'
+          - label: "Author"
+            name: "author"
+            widget: "relation"
+            collection: "author"
             search_fields: ["title", "position"]
             value_field: "title"
             display_fields: ["title"]
 
-  - name: 'author'
-    label: 'Author'
-    folder: 'content/authors'
+  - name: "author"
+    label: "Author"
+    folder: "content/authors"
     create: true
     fields:
-      - { label: 'Name', name: 'title', widget: 'string' }
-      - { label: 'Position', name: 'position', widget: 'string', default: 'writer' }
-      - { label: 'Grad year', name: 'date', widget: 'string' }
+      - { label: "Name", name: "title", widget: "string" }
+      - {
+          label: "Position",
+          name: "position",
+          widget: "string",
+          default: "writer",
+        }
+      - { label: "Grad year", name: "date", widget: "string" }
