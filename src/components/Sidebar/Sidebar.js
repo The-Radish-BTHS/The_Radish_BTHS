@@ -19,11 +19,11 @@ export default function Sidebar({ showSidebar }) {
               date(formatString: "MMMM DD, YYYY")
               title
               url
-              cover {
-                childImageSharp {
-                  gatsbyImageData(placeholder: BLURRED)
-                }
-              }
+              #cover {
+              #  childImageSharp {
+              #    gatsbyImageData(placeholder: BLURRED)
+              #  }
+              #}
             }
             fields {
               slug
