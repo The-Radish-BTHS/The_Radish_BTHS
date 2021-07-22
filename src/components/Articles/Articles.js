@@ -19,6 +19,7 @@ export default function Articles() {
             excerpt(pruneLength: 100)
             frontmatter {
               title
+              date
               authors {
                 author
               }
@@ -46,7 +47,7 @@ export default function Articles() {
     >
       {data.allMarkdownRemark.edges.map(({ node }) => {
         // console.log("-----------------------------------------------")
-        // console.log(JSON.stringify(node.frontmatter.authors, null, 5))
+        //console.log(JSON.stringify(node, null, 5))
         // console.log("-----------------------------------------------")
         return (
           <Articard
@@ -55,6 +56,7 @@ export default function Articles() {
             title={node.frontmatter.title}
             excerpt={node.excerpt}
             authors={node.frontmatter.authors}
+            date={node.frontmatter.date}
           />
         )
       })}

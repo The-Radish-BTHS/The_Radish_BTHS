@@ -12,6 +12,10 @@
   background-color: /*transparent*/ var(--red);
 }
 
+.articleCard h2 {
+  margin-bottom: 0.5ch;
+}
+
 .authorCard {
   background-color: /*transparent*/ var(--red);
 }
