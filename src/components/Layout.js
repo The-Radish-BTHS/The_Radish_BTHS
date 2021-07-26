@@ -1,27 +1,30 @@
-import React, { useState, useEffect } from "react"
+import React, {
+  useState,
+  // useEffect
+} from "react"
 import Navbar from "./Navbar/Navbar"
 import Sidebar from "./Sidebar/Sidebar"
 import Footer from "./Footer/Footer"
 
 import "./Layout.css"
 
-const isBrowser = typeof window !== "undefined"
-
-function useStickyState(defaultValue, key) {
-  const [value, setValue] = useState(() => {
-    if (isBrowser) {
-      const stickyValue = window.localStorage.getItem(key)
-      return stickyValue !== null ? JSON.parse(stickyValue) : defaultValue
-    }
-  })
-  useEffect(() => {
-    window.localStorage.setItem(key, JSON.stringify(value))
-  }, [key, value])
-  return [value, setValue]
-}
+// const isBrowser = typeof window !== "undefined"
+//
+// function useStickyState(defaultValue, key) {
+//   const [value, setValue] = useState(() => {
+//     if (isBrowser) {
+//       const stickyValue = window.localStorage.getItem(key)
+//       return stickyValue !== null ? JSON.parse(stickyValue) : defaultValue
+//     }
+//   })
+//   useEffect(() => {
+//     window.localStorage.setItem(key, JSON.stringify(value))
+//   }, [key, value])
+//   return [value, setValue]
+// }
 
 export default function Layout({ children }) {
-  const [showSidebar, setShowSidebar] = useStickyState(false, "showSidebar")
+  const [showSidebar, setShowSidebar] = useState(false, "showSidebar")
 
   // const [
   //   sidebarScrollPosition,
@@ -46,15 +49,10 @@ export default function Layout({ children }) {
     <>
       <title>The Radish</title>
       <Navbar setShowSidebar={setShowSidebar} showSidebar={showSidebar} />
+      <div className={`${showSidebar ? "blur" : ""}`} onClick={() => setShowSidebar(!showSidebar)}></div>
       <Sidebar showSidebar={showSidebar} />
-      <div
-        className={`layoutWrapper ${
-          showSidebar ? "layoutWrapperAccountForSidebar" : ""
-        }`}
-      >
-        <main>{children}</main>
-        <Footer showSidebar={showSidebar} />
-      </div>
+      <main>{children}</main>
+      <Footer showSidebar={showSidebar} />
     </>
   )
 }

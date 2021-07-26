@@ -6,7 +6,7 @@ import Radamir from "./Radamir"
 
 function CloseHamburger({ showSidebar, setShowSidebar }) {
   //checked is in the X position
-  console.log(showSidebar)
+  // console.log(showSidebar)
   return (
     <div className="closeBurger">
       <label

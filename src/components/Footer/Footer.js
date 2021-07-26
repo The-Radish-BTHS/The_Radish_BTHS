@@ -16,7 +16,6 @@ export default function Footer({ showSidebar }) {
     <footer
       className={`footer ${showSidebar ? "footerAccountForSidebar" : ""}`}
     >
-      <h1 className="footerWackyMessage">Does the email link work?</h1>
       <div className="footerSocialsLinks">
         <SocialLink to="https://discord.gg/MBw8T37">
           <Discord />
@@ -27,7 +26,7 @@ export default function Footer({ showSidebar }) {
         <SocialLink to="https://twitter.com/theradishbths">
           <Twitter />
         </SocialLink>
-        <SocialLink to="https://mail.google.com/mail/u/0/#inbox?compose=GTvVlcSKjRJcbBCXWqtmfthDsZxXkhPkJZCbscwKVhbZmHPQQLRgzmZpJrNzswVvmhgjbdKjwvmxJ">
+        <SocialLink to="mailto:theradishbths@gmail.com">
           <Email />
         </SocialLink>
       </div>

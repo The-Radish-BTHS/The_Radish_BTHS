@@ -2,8 +2,8 @@
 
 :root {
   --light_red: #ff0000ad;
-  --red: #c40000ad;
-  --dark_red: #c05e5e;
+  --red: #ad1507;
+  --dark_red: #b51607;
   --darker_red: #9e535b;
   --green_1: #53be79;
   --green_2: #00570d;
@@ -78,6 +78,23 @@ main {
   }
 }
 
+.blur {
+  width: 100%;
+  height: 100%;
+
+  z-index: 1;
+  position: fixed;
+
+  transition: 0.3s ease;
+
+  background-color: #ffffffaf;
+  filter: blur(2%);
+
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+
 /* @media (min-width: 1300px) {
   main {
     margin-right: calc(20% + 2ch);
@@ -107,7 +124,7 @@ a * {
 a:visited * {
   color: inherit;
 }
-/* 
+/*
 a:hover * {
   opacity: 0.95;
 } */

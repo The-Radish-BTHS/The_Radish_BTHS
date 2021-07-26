@@ -5,20 +5,21 @@
   /* padding-top: 1ch; */
 
   height: 90vh;
-  width: 20%;
+  width: 40%;
 
+  z-index: 2;
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
   /* Avoid horizontal scrollbars */
   overflow-x: hidden;
-  grid-gap: 2ch;
+  grid-gap: 1ch;
 
   position: fixed;
-  top: 74px;
-  padding: 2ch;
-  padding-top: 3ch;
-  padding-bottom: 6ch;
+  /* top: 74px;*/ /*Sketchy navbar height shhhhh*/
+  padding: 1ch;
+  /* padding-top: 3ch;
+  padding-bottom: 6ch; */
 
   border-right: 2px solid var(--highlight);
 
@@ -34,8 +35,8 @@
 /* Would slide in the thing */
 /* https://stackoverflow.com/questions/40463173/swipe-effect-in-react-js */
 .sidebarHidden {
-  left: -20%;
-  transition: 0.4s ease;
+  left: -50%;
+  transition: 0.3s ease;
 }
 /*
 .overlay {
@@ -67,7 +68,12 @@
     /* ACCOUNT FOR NAVBAR */
     top: 57px;
     grid-gap: 1ch;
-    width: 10%;
+    width: 80%;
     padding: 1ch;
+  }
+
+  .sidebarHidden {
+    left: -80%;
+    transition: 0.2s ease;
   }
 }

@@ -51,20 +51,22 @@ export default function Sidebar({ showSidebar }) {
   //   window.addEventListener('resize', handleResize)
   // })
   const sidebarClassName = `sidebar ${!showSidebar ? "sidebarHidden" : ""}`
-  console.log(showSidebar)
-  console.log(sidebarClassName)
+  // console.log(showSidebar)
+  // console.log(sidebarClassName)
   return (
-    <div className={sidebarClassName}>
-      {data.allMarkdownRemark.edges.map(({ node }) => {
-        return (
-          <IssueCard
-            key={node.id}
-            slug={node.fields.slug}
-            title={node.frontmatter.title}
-            cover={node.frontmatter.cover}
-          />
-        )
-      })}
-    </div>
+    <>
+      <div className={sidebarClassName}>
+        {data.allMarkdownRemark.edges.map(({ node }) => {
+          return (
+            <IssueCard
+              key={node.id}
+              slug={node.fields.slug}
+              title={node.frontmatter.title}
+              cover={node.frontmatter.cover}
+            />
+          )
+        })}
+      </div>
+    </>
   )
 }
