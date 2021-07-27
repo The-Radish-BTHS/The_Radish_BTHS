@@ -22,11 +22,17 @@ body {
 
 main {
   margin: 2ch;
-  margin-bottom: 15ch;
+  margin-bottom: 1ch;
 
   /* wrapping */
   overflow-wrap: anywhere;
   hyphens: auto;
+}
+
+.rest-of-page {
+  position: relative;
+  min-height: calc(100vh - 12ch);
+  padding-bottom: 10ch;
 }
 
 .layoutWrapper {
@@ -70,7 +76,6 @@ main {
   main {
     padding: 0ch;
     margin: 1ch;
-    margin-left: calc(10% + 1ch);
   }
   ::-webkit-scrollbar {
     width: 5px;
@@ -87,8 +92,7 @@ main {
 
   transition: 0.3s ease;
 
-  background-color: #ffffffaf;
-  filter: blur(2%);
+  background-color: #ffffff9c;
 
   overflow-x: hidden;
   overflow-y: hidden;

@@ -2,25 +2,22 @@ import React from "react"
 import { Link } from "gatsby"
 import "./Navbar.css"
 
-import Radamir from "./Radamir"
+import Radimir from "./Radimir"
 
-function CloseHamburger({ showSidebar, setShowSidebar }) {
+function Hamburger({ showSidebar, setShowSidebar }) {
   //checked is in the X position
   // console.log(showSidebar)
   return (
-    <div className="closeBurger">
-      <label
-        htmlFor="toggle"
-        className={`closeBurgerLabel ${showSidebar ? "toggleChecked" : ""}`}
-      >
-        <input
-          type="checkbox"
-          id="toggle"
-          defaultChecked={showSidebar}
-          onClick={() => setShowSidebar(!showSidebar)}
-          className="closeBurgerInput"
-        ></input>
-      </label>
+    <div
+      role="button"
+      tabIndex={0}
+      className="burger"
+      onClick={() => setShowSidebar(!showSidebar)}
+      onKeyDown={(ev) => ev.keyCode===13 ? setShowSidebar(!showSidebar) : ""}
+    >
+      <div className={`${showSidebar ? "closed" : ""}`} />
+      <div className={`${showSidebar ? "closed" : ""}`} />
+      <div className={`${showSidebar ? "closed" : ""}`} />
     </div>
   )
 }
@@ -28,15 +25,13 @@ function CloseHamburger({ showSidebar, setShowSidebar }) {
 export default function Navbar({ setShowSidebar, showSidebar }) {
   return (
     <nav id="navbar">
-      <CloseHamburger
+      <Hamburger
         setShowSidebar={setShowSidebar}
         showSidebar={showSidebar}
       />
       <Link to="/authors">Authors</Link>
-      <Link to="/" id="name" className="NavbarHomeLink">
-        <Radamir /> The Radish
-      </Link>
-      <Link to="/">A search bar here?</Link>
+      <Link to="/" id="name" className="NavbarHomeLink"><Radimir />The Radish</Link>
+      <Link to="/">?</Link>
     </nav>
   )
 }

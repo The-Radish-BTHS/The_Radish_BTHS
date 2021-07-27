@@ -3,20 +3,13 @@ footer {
   background-color: var(--bg);
   border-top: 2px solid var(--highlight);
 
-  padding: 2ch;
-  transition: 0.4s ease;
-
   width: 100%;
-  height: 13ch;
+  height: 10ch;
   display: flex;
   align-items: center;
 
   position: absolute;
   bottom: 0;
-}
-
-.footerWackyMessage {
-  flex: 2;
 }
 
 .footerSocialsLinks {

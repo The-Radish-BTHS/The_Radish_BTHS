@@ -49,10 +49,19 @@ export default function Layout({ children }) {
     <>
       <title>The Radish</title>
       <Navbar setShowSidebar={setShowSidebar} showSidebar={showSidebar} />
-      <div className={`${showSidebar ? "blur" : ""}`} onClick={() => setShowSidebar(!showSidebar)}></div>
+      <div
+        role="button"
+        tabIndex={0}
+        className={`${showSidebar ? "blur" : ""}`}
+        onClick={() => setShowSidebar(!showSidebar)}
+        onKeyDown={(ev) => ev.keyCode===13 ? setShowSidebar(!showSidebar) : ""}
+      >
+      </div>
       <Sidebar showSidebar={showSidebar} />
-      <main>{children}</main>
-      <Footer showSidebar={showSidebar} />
+      <div className="rest-of-page">
+        <main>{children}</main>
+        <Footer showSidebar={showSidebar} />
+      </div>
     </>
   )
 }

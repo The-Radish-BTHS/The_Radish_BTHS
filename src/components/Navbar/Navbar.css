@@ -11,7 +11,8 @@ nav {
   justify-content: center;
 
   margin-left: 0px;
-  padding: 2ch;
+  padding-right: 2ch;
+  padding-left: 2ch;
   position: sticky;
   top: 0;
 
@@ -29,8 +30,10 @@ nav {
 }
 
 nav a {
+  padding: 2ch;
   /* font-size: clamp(14px, 1rem + 2vw, 40px); very big */
-  padding-right: 2ch;
+  /* padding-right: 2ch; */
+  /* justify-content: center; */
   /* display: flex; */
   /* align-items: center;
   justify-content: center; */
@@ -38,9 +41,10 @@ nav a {
   /* padding-top: 2ch; */
 }
 
-nav #name {
+#name {
   font-size: 4ch;
   font-family: "Raleway", sans-serif;
+  /* text-align: center; */
 }
 
 .NavbarHomeLink {
@@ -59,7 +63,7 @@ nav #name {
 @media (max-width: 600px) {
   nav {
     /* margin-left: calc(20%); */
-    /* height: 5ch; */
+    height: 5ch;
     padding: 1ch;
     /* padding-top: 1ch;
     padding-bottom: 1ch;
@@ -68,7 +72,44 @@ nav #name {
 }
 
 /* Closeburger button */
-:root {
+/* https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_menu_icon_js */
+.burger {
+  display: inline-block;
+  cursor: pointer;
+
+  position: absolute;
+  top: 3ch;
+  left: 2ch;
+}
+
+.burger div {
+  width: 35px;
+  height: 5px;
+  background-color: var(--highlight);
+
+  margin-top: 3px;
+
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+/* .burger div:nth-child(1) {
+  margin-top: 0px;
+} */
+
+.closed:nth-child(1) {
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+  transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+.closed:nth-child(2) { opacity: 0; }
+
+.closed:nth-child(3) {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-8px, -8px);
+}
+
+/* :root {
   --animation-curve: cubic-bezier(1, 0, 0, 1);
   --closeburger-width: 2em;
   --closeburger-height: 0.25em;
@@ -139,4 +180,4 @@ nav #name {
   top: 4ch;
   left: 3ch;
   cursor: pointer;
-}
+} */

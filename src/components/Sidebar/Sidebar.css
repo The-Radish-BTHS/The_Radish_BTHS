@@ -5,25 +5,29 @@
   /* padding-top: 1ch; */
 
   height: 90vh;
-  width: 40%;
+  width: 50%;
 
   z-index: 2;
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
-  /* Avoid horizontal scrollbars */
-  overflow-x: hidden;
+
+  overflow-x: hidden; /* Avoid horizontal scrollbars */
+
   grid-gap: 1ch;
 
   position: fixed;
   /* top: 74px;*/ /*Sketchy navbar height shhhhh*/
-  padding: 1ch;
+
   /* padding-top: 3ch;
   padding-bottom: 6ch; */
 
   border-right: 2px solid var(--highlight);
+  background-color: var(--bg);
 
+  padding: 2ch;
   overflow-x: hidden;
+
   transition: 0.4s ease;
   left: 0px;
 
@@ -38,6 +42,7 @@
   left: -50%;
   transition: 0.3s ease;
 }
+
 /*
 .overlay {
   position: fixed;
@@ -52,9 +57,9 @@
   transition: 0.4s ease;
 }*/
 
-.container:hover .overlay {
+/* .container:hover .overlay {
   left: 0px;
-}
+} */
 
 /* h1 {
   margin-bottom: 0ch;
@@ -65,11 +70,11 @@
 } */
 @media (max-width: 600px) {
   .sidebar {
-    /* ACCOUNT FOR NAVBAR */
-    top: 57px;
+    top: 5ch;
     grid-gap: 1ch;
     width: 80%;
     padding: 1ch;
+    height: 100vh;
   }
 
   .sidebarHidden {
