@@ -21,6 +21,7 @@ collections:
         }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
+      # Change name to "pdf"
       - { label: "PDF url", name: "url", widget: "string" }
 
   - name: "article"

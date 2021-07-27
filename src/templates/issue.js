@@ -26,6 +26,7 @@ export default function Template({
                 title={node.frontmatter.title}
                 excerpt={node.excerpt}
                 authors={node.frontmatter.authors}
+                date={node.frontmatter.date}
               />
             )
           })
@@ -52,6 +53,7 @@ export const pageQuery = graphql`
           id
           excerpt(pruneLength: 200)
           frontmatter {
+            date(formatString: "MMMM DD, YYYY")
             title
             authors {
               author

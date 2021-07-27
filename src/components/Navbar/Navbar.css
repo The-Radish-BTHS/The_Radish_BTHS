@@ -52,11 +52,11 @@ nav a {
   align-items: center;
 }
 
-.Radamir {
+/* .Radamir {
   margin-right: 15px;
-}
+} */
 
-.Radamir path {
+.radimir path {
   fill: var(--highlight);
 }
 
@@ -86,9 +86,6 @@ nav a {
   width: 35px;
   height: 5px;
   background-color: var(--highlight);
-
-  margin-top: 3px;
-
   margin: 6px 0;
   transition: 0.4s;
 }
@@ -98,15 +95,15 @@ nav a {
 } */
 
 .closed:nth-child(1) {
-  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
-  transform: rotate(-45deg) translate(-9px, 6px);
+  -webkit-transform: rotate(-45deg) translate(-9px, 5px);
+  transform: rotate(-45deg) translate(-8px, 6px);
 }
 
 .closed:nth-child(2) { opacity: 0; }
 
 .closed:nth-child(3) {
   -webkit-transform: rotate(45deg) translate(-8px, -8px);
-  transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-9px, -8px);
 }
 
 /* :root {

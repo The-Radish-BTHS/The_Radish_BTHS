@@ -22,7 +22,7 @@ body {
 
 main {
   margin: 2ch;
-  margin-bottom: 1ch;
+  margin-bottom: 2ch;
 
   /* wrapping */
   overflow-wrap: anywhere;
@@ -48,9 +48,26 @@ main {
   margin-left: calc(20%);
 }
 
+.blur {
+  width: 100%;
+  height: 100%;
+
+  z-index: 1;
+  position: fixed;
+
+  transition: 0.3s ease;
+
+  background-color: #ffffff9c;
+
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
 /* body:hover {
   overflow-y: scroll;
 } */
+
+/* Scrollbars --------------------------------------------------------------- */
 
 ::-webkit-scrollbar {
   width: 10px;
@@ -72,6 +89,17 @@ main {
   box-shadow: inset 0 0 10px 10px var(--red);
 }
 
+/* Highlighting ------------------------------------------------------------- */
+
+::selection {
+  background:#ffffff9c; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: #ffffff9c; /* Gecko Browsers */
+}
+
+/* Resizing ------------------------------------------------------------ */
+
 @media (max-width: 600px) {
   main {
     padding: 0ch;
@@ -83,29 +111,13 @@ main {
   }
 }
 
-.blur {
-  width: 100%;
-  height: 100%;
-
-  z-index: 1;
-  position: fixed;
-
-  transition: 0.3s ease;
-
-  background-color: #ffffff9c;
-
-  overflow-x: hidden;
-  overflow-y: hidden;
-}
-
-
 /* @media (min-width: 1300px) {
   main {
     margin-right: calc(20% + 2ch);
   }
 } */
 
-/* Styling links? */
+/* Styling links -------------------------------------------------------------*/
 
 a {
   color: inherit;

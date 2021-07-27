@@ -1,44 +1,44 @@
 .card {
   padding: 2ch;
-  border-radius: 5px;
+  border-radius: 3px;
+  background-color: var(--red);
 }
 
 .issueCard {
   /*border: 3px solid var(--green_1);*/
-  background-color: /*transparent*/ /*var(--green_2)*/ var(--red);
+  /*background-color:*/ /*transparent*/ /*var(--green_2)*/ /*var(--red);*/
 }
 .articleCard {
   /*border: 3px solid var(--light_red);*/
-  background-color: /*transparent*/ var(--red);
+  /* background-color: var(--red); */ /*transparent*/
 }
 
 .articleCard h2 {
-  margin-bottom: 0.5ch;
+  /* margin-bottom: 0.5ch; */
 }
 
 .authorCard {
-  background-color: /*transparent*/ var(--red);
-}
-
-@media (max-width: 600px) {
-  .card {
-    border-radius: 2px;
-  }
+  /* background-color:*/ /*transparent*/ /*var(--red); */
 }
 
 .card a h2:hover {
   text-decoration: underline;
+  /* text-decoration-color: var(--green_1); */
 }
 
-.card a img {
+.card:hover {
+  opacity: 0.98;
+}
+
+/* .card a img {
   opacity: 1;
   border-radius: 5px;
   transition-duration: 400ms;
-}
+} */
 
-.card a img:hover {
+/* .card a img:hover {
   opacity: 1 !important;
   transform: scale(1.02, 1.02);
   -webkit-filter: drop-shadow(2px 2px 2px rgb(29, 29, 29));
   filter: drop-shadow(2px 2px 2px rgb(29, 29, 29));
-}
+} */

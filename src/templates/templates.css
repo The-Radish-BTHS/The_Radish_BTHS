@@ -1,4 +1,5 @@
 .AuthorLink:hover {
   text-decoration: underline;
+  /* text-decoration-color: var(--green_1); */
   opacity: 0.95;
 }

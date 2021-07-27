@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
-import Masonry from "react-masonry-css"
+// import Masonry from "react-masonry-css"
 
 import Articard from "../Cards/Articard.js"
 import "./Articles.css"
@@ -19,7 +19,7 @@ export default function Articles() {
             excerpt(pruneLength: 100)
             frontmatter {
               title
-              date
+              date(formatString: "MMMM DD, YYYY")
               authors {
                 author
               }
@@ -33,18 +33,21 @@ export default function Articles() {
     }
   `)
 
-  const breakpointColumnsObj = {
-    default: 3,
-    1000: 2,
-    600: 1,
-  }
+  // const breakpointColumnsObj = {
+  //   default: 3,
+  //   1000: 2,
+  //   600: 1,
+  // }
 
   return (
-    <Masonry
-      breakpointCols={breakpointColumnsObj}
-      className="my-masonry-grid"
-      columnClassName="my-masonry-grid_column"
-    >
+    <div className="frontpage">
+      {
+      // <Masonry
+      //   breakpointCols={breakpointColumnsObj}
+      //   className="my-masonry-grid"
+      //   columnClassName="my-masonry-grid_column"
+      // >
+      }
       {data.allMarkdownRemark.edges.map(({ node }) => {
         // console.log("-----------------------------------------------")
         //console.log(JSON.stringify(node, null, 5))
@@ -60,6 +63,9 @@ export default function Articles() {
           />
         )
       })}
-    </Masonry>
+      {
+        // </Masonry>
+      }
+    </div>
   )
 }

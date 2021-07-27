@@ -8,7 +8,7 @@ export default function Radamir() {
       xlink="http://www.w3.org/1999/xlink"
       width="40"
       viewBox="0, 0, 400,400"
-      className="Radamir"
+      className="radimir"
     >
       <g id="svgg">
         <path

@@ -2,7 +2,7 @@
 
 import React from "react"
 import Layout from "../components/Layout"
-import "./article.css"
+import "./templates.css"
 import { graphql, Link } from "gatsby"
 
 export default function Template({
@@ -28,12 +28,12 @@ export default function Template({
               key={index}
               className="AuthorLink"
             >
-              {`${author}${index < frontmatter.authors.length - 1 ? "," : ""}`}
+              {`${author}${index < frontmatter.authors.length - 1 ? ", " : ""}`}
             </Link>
           )
         })}
-      </h4>
-      <div dangerouslySetInnerHTML={{ __html: html }} />
+    </h4>
+    <div dangerouslySetInnerHTML={{ __html: html }} />
     </Layout>
   )
 }
