@@ -42,7 +42,7 @@ nav a {
 }
 
 #name {
-  font-size: 4ch;
+  font-size: clamp(1rem, 2.5vw, 2rem);
   font-family: "Raleway", sans-serif;
   /* text-align: center; */
 }
@@ -60,16 +60,6 @@ nav a {
   fill: var(--highlight);
 }
 
-@media (max-width: 600px) {
-  nav {
-    /* margin-left: calc(20%); */
-    height: 5ch;
-    padding: 1ch;
-    /* padding-top: 1ch;
-    padding-bottom: 1ch;
-    padding-left: 0ch; */
-  }
-}
 
 /* Closeburger button */
 /* https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_menu_icon_js */
@@ -104,6 +94,24 @@ nav a {
 .closed:nth-child(3) {
   -webkit-transform: rotate(45deg) translate(-8px, -8px);
   transform: rotate(45deg) translate(-9px, -8px);
+}
+
+
+@media (max-width: 600px) {
+  nav {
+    /* margin-left: calc(20%); */
+    height: 5ch;
+    padding: 1ch;
+    padding-left: calc(35px + 1ch); /*Squished burgers are sad */
+    /* padding-top: 1ch;
+    padding-bottom: 1ch;
+    padding-left: 0ch; */
+  }
+
+  .burger {
+    top: 0.5ch;
+    left: 1ch;
+  }
 }
 
 /* :root {

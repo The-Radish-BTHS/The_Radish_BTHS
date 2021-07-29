@@ -18,7 +18,7 @@ export default function Article({
 
       <h1>Authors</h1>
       <h2>We exist</h2>
-      <div className="frontpage">
+      <div className="card-grid">
         {
           allMarkdownRemark.edges.map(({ node }) => {
             // console.log("-----------------------------------------------")
