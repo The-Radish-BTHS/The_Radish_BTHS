@@ -23,7 +23,6 @@
 
 .card a h2 {
   text-decoration-color: var(--highlight);
-  transition-delay: 150ms;
   /* text-decoration: none;
   text-decoration-color: var(--highlight); */
   /* margin-bottom: -3px; */

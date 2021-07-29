@@ -26,7 +26,7 @@ export default function Article({
                   : author.toLowerCase()
               }`}
               key={index}
-              className="author-link"
+              className="green-under-link"
             >
               {`${author}${index < frontmatter.authors.length - 1 ? ", " : ""}`}
             </Link>

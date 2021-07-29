@@ -8,7 +8,7 @@
   --green_1: #53be79;
   --green_2: #00570d;
   --bg: #090909;
-  /* --highlight: #f3f2f2; */
+  /* --highlight: #f3f2f2; light white color*/
   --highlight: #07ad36;
 }
 * {
@@ -113,11 +113,12 @@ main {
   }
 }
 
-/* @media (min-width: 1300px) {
+@media (min-width: 1300px) {
   main {
-    margin-right: calc(20% + 2ch);
+    margin-left: calc(15% + 2ch);
+    margin-right: calc(15% + 2ch);
   }
-} */
+}
 
 /* Styling links -------------------------------------------------------------*/
 

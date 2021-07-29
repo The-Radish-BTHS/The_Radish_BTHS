@@ -22,6 +22,9 @@ nav {
   align-items: center;
   justify-content: center;
 
+  overflow-x: hidden;
+  overflow-y: hidden;
+
   /* padding: 2ch;
   padding-top: 1ch; */
   /* height: 7ch; */
@@ -102,7 +105,7 @@ nav a {
     /* margin-left: calc(20%); */
     height: 5ch;
     padding: 1ch;
-    padding-left: calc(35px + 1ch); /*Squished burgers are sad */
+    padding-left: calc(35px + 2ch); /*Squished burgers are sad */
     /* padding-top: 1ch;
     padding-bottom: 1ch;
     padding-left: 0ch; */

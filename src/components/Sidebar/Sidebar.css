@@ -1,8 +1,5 @@
 .sidebar {
-  /* ACCOUNT FOR NAVBAR */
-  /* document.getElementsByTagName("nav")[0].offsetHeight */
-  /* margin: 2ch; */
-  /* padding-top: 1ch; */
+  text-align: right;
 
   height: 90vh;
   width: 30%;
@@ -43,6 +40,22 @@
   transition: 0.3s ease;
 }
 
+.sidebar-link {
+  text-decoration-color: var(--highlight);
+  /* text-decoration: none;
+  text-decoration-color: var(--highlight); */
+  /* margin-bottom: -3px; */
+  /* width: fit-content;
+  border-bottom: 2px solid transparent;
+  transition: border 150ms ease; */
+}
+
+.sidebar-link:hover {
+  /* border-color: var(--highlight); */
+  text-decoration: underline;
+  text-decoration-color: var(--highlight);
+}
+
 /*
 .overlay {
   position: fixed;
@@ -57,17 +70,6 @@
   transition: 0.4s ease;
 }*/
 
-/* .container:hover .overlay {
-  left: 0px;
-} */
-
-/* h1 {
-  margin-bottom: 0ch;
-} */
-
-/* .sidebar::-webkit-scrollbar {
-  display: none;
-} */
 @media (max-width: 600px) {
   .sidebar {
     top: 5ch;
@@ -75,6 +77,7 @@
     width: 40%;
     /* padding: 1ch; */
     height: 100vh;
+    text-align: left;
   }
 
   /* .sidebarHidden {

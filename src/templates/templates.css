@@ -1,13 +1,8 @@
-.author-link {
+.green-under-link {
   text-decoration-color: var(--highlight);
-  transition-delay: 150ms;
 }
 
-.author-link:visited {
-  color: inherit;
-}
-
-.author-link:hover {
+.green-under-link:hover {
   text-decoration: underline;
   text-decoration-color: var(--highlight);
   opacity: 0.95;
