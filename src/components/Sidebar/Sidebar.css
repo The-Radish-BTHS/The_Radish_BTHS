@@ -5,7 +5,7 @@
   /* padding-top: 1ch; */
 
   height: 90vh;
-  width: 50%;
+  width: 30%;
 
   z-index: 2;
   overflow-y: scroll;
@@ -72,13 +72,12 @@
   .sidebar {
     top: 5ch;
     grid-gap: 1ch;
-    width: 80%;
-    padding: 1ch;
+    width: 40%;
+    /* padding: 1ch; */
     height: 100vh;
   }
 
-  .sidebarHidden {
+  /* .sidebarHidden {
     left: -80%;
-    transition: 0.2s ease;
-  }
+  } */
 }

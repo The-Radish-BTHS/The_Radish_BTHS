@@ -15,15 +15,11 @@ export default function Article({
 
   return (
     <Layout>
-
       <h1>Authors</h1>
       <h2>We exist</h2>
       <div className="card-grid">
         {
           allMarkdownRemark.edges.map(({ node }) => {
-            // console.log("-----------------------------------------------")
-            // console.log(JSON.stringify(node.frontmatter.authors, null, 5))
-            // console.log("-----------------------------------------------")
             return (
               <AuthorCard
                 key={node.id}

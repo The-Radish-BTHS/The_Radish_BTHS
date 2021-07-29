@@ -5,8 +5,6 @@ import "./Navbar.css"
 // import Radimir from "./Radimir"
 
 function Hamburger({ showSidebar, setShowSidebar }) {
-  //checked is in the X position
-  // console.log(showSidebar)
   return (
     <div
       role="button"
@@ -25,6 +23,22 @@ function Hamburger({ showSidebar, setShowSidebar }) {
 // <Radimir /> // Use Radimir instead of name on small screens
 
 export default function Navbar({ setShowSidebar, showSidebar }) {
+  // Logic for making the navbar change on scroll (could make it shrink or smth)
+  // const handleResize = () => {
+  //     const offset = window.scrollY;
+  //     let navbar = document.getElementById("navbar");
+  //     if(offset > navbar.offsetHeight ){
+  //       setScrolled(true);
+  //     }
+  //     else{
+  //       setScrolled(false);
+  //     }
+  //   }
+  //
+  // useEffect(() => {
+  //   window.addEventListener('resize', handleResize)
+  // })
+
   return (
     <nav id="navbar">
       <Hamburger
