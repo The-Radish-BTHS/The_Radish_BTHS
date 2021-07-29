@@ -32,3 +32,10 @@ input:focus {
 
   transition-duration: 0.2s;
 }
+
+@media (max-width: 600px) {
+  input {
+    margin-left: 0%;
+    width: 100%;
+  }
+}

@@ -42,7 +42,7 @@ nav a {
 }
 
 #name {
-  font-size: clamp(1rem, 2.5vw, 2rem);
+  font-size: clamp(1ch, 3vw, 3ch);
   font-family: "Raleway", sans-serif;
   /* text-align: center; */
 }

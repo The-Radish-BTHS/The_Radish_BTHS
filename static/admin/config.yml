@@ -1,8 +1,11 @@
 backend:
   name: git-gateway
-  local_backend: true
   repo: AwareErmine/The_Radish
   branch: main
+
+# Run the command below to use
+# npx netlify-cms-proxy-server
+local_backend: true
 
 media_folder: static/assets
 public_folder: /assets
