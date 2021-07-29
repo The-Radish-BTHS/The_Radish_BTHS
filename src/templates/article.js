@@ -5,7 +5,7 @@ import Layout from "../components/Layout"
 import "./templates.css"
 import { graphql, Link } from "gatsby"
 
-export default function Template({
+export default function Article({
   data, // this prop will be injected by the GraphQL query below.
 }) {
   const { markdownRemark } = data // data.markdownRemark holds your post data
@@ -26,7 +26,7 @@ export default function Template({
                   : author.toLowerCase()
               }`}
               key={index}
-              className="AuthorLink"
+              className="author-link"
             >
               {`${author}${index < frontmatter.authors.length - 1 ? ", " : ""}`}
             </Link>

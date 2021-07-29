@@ -8,7 +8,8 @@
   --green_1: #53be79;
   --green_2: #00570d;
   --bg: #090909;
-  --highlight: #f3f2f2;
+  /* --highlight: #f3f2f2; */
+  --highlight: #07ad36;
 }
 * {
   font-family: "Roboto", sans-serif;
@@ -86,7 +87,8 @@ main {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  box-shadow: inset 0 0 10px 10px var(--red);
+  /* Is there a cleaner way to make it go slightly darker? */
+  box-shadow: inset 0 0 10px 10px /*var(--red)*/ #05992f;
 }
 
 /* Highlighting ------------------------------------------------------------- */

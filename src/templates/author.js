@@ -7,7 +7,7 @@ import { graphql } from "gatsby"
 import Articard from "../components/Cards/Articard.js"
 import "../components/Articles/Articles.css"
 
-export default function Template({
+export default function Author({
   data, // this prop will be injected by the GraphQL query below.
 }) {
   // const { markdownRemark } = data // data.markdownRemark holds your post data

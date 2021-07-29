@@ -1,5 +1,18 @@
-.AuthorLink:hover {
-  text-decoration: underline;
-  /* text-decoration-color: var(--green_1); */
+.author-link {
+  color: inherit;
+  text-decoration: none;
+
+  /* Fadey green underline */
+  width: fit-content;
+  border-bottom: 2px solid transparent;
+  transition: border 150ms ease;
+}
+
+.author-link:visited {
+  color: inherit;
+}
+
+.author-link:hover {
+  border-color: var(--highlight);
   opacity: 0.95;
 }

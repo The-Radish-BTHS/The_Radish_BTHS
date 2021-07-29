@@ -7,7 +7,7 @@ import Layout from "../components/Layout"
 import Articard from "../components/Cards/Articard.js"
 import "../components/Articles/Articles.css"
 
-export default function Template({
+export default function Issue({
   data, // this prop will be injected by the GraphQL query below.
 }) {
   return (

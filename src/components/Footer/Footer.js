@@ -1,7 +1,12 @@
 import React from "react"
 import "./Footer.css"
 
-import { Instagram, Twitter, Discord, Email } from "./socialsIcons/index"
+import {
+  Instagram,
+  Twitter,
+  // Discord, 
+  Email
+} from "./socialsIcons/index"
 
 function SocialLink({ children, to }) {
   return (
@@ -15,9 +20,11 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="footerSocialsLinks">
-        <SocialLink to="https://discord.gg/MBw8T37">
-          <Discord />
-        </SocialLink>
+        { // Actually wait maybe we don't want a raid
+          // <SocialLink to="https://discord.gg/MBw8T37">
+          //   <Discord />
+          // </SocialLink>
+        }
         <SocialLink to="https://www.instagram.com/theradishbths/">
           <Instagram />
         </SocialLink>

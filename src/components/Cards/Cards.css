@@ -21,9 +21,19 @@
   /* background-color:*/ /*transparent*/ /*var(--red); */
 }
 
+.card a h2 {
+  /* text-decoration: none;
+  text-decoration-color: var(--highlight); */
+  /* margin-bottom: -3px; */
+  width: fit-content;
+  border-bottom: 2px solid transparent;
+  transition: border 150ms ease;
+}
+
 .card a h2:hover {
-  text-decoration: underline;
-  /* text-decoration-color: var(--green_1); */
+  border-color: var(--highlight);
+  /* text-decoration: underline;
+  text-decoration-color: var(--highlight); */
 }
 
 .card:hover {

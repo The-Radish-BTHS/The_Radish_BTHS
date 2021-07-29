@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import "./Navbar.css"
 
-import Radimir from "./Radimir"
+// import Radimir from "./Radimir"
 
 function Hamburger({ showSidebar, setShowSidebar }) {
   //checked is in the X position
@@ -22,6 +22,8 @@ function Hamburger({ showSidebar, setShowSidebar }) {
   )
 }
 
+// <Radimir /> // Use Radimir instead of name on small screens
+
 export default function Navbar({ setShowSidebar, showSidebar }) {
   return (
     <nav id="navbar">
@@ -30,7 +32,7 @@ export default function Navbar({ setShowSidebar, showSidebar }) {
         showSidebar={showSidebar}
       />
       <Link to="/authors">Authors</Link>
-      <Link to="/" id="name" className="NavbarHomeLink"><Radimir />The Radish</Link>
+      <Link to="/" id="name" className="NavbarHomeLink">The Radish</Link>
       <Link to="/search">Search</Link>
     </nav>
   )

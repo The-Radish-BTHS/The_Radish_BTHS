@@ -1,11 +1,84 @@
 import React from "react"
 import Layout from "../components/Layout"
-import Articles from "../components/Articles/Articles"
+import "./pages.css"
+import { graphql } from "gatsby"
 
-export default function Home() {
+// Same layout as homepage
+import Articard from "../components/Cards/Articard.js"
+import "../components/Articles/Articles.css"
+
+export default function Author({
+  data, // this prop will be injected by the GraphQL query below.
+}) {
+  // const { markdownRemark } = data // data.markdownRemark holds your post data
+  // const { frontmatter, html } = markdownRemark
+  const { issues, articles } = data
   return (
     <Layout>
-      <Articles />
+      <div className="frontpage">
+        {articles.edges.map(({ node }) => {
+          return (
+            <Articard
+              key={node.id}
+              slug={node.fields.slug}
+              title={node.frontmatter.title}
+              excerpt={node.excerpt}
+              authors={node.frontmatter.authors}
+            />
+          )
+        })}
+      </div>
     </Layout>
   )
 }
+
+export const pageQuery = graphql`
+  query index {
+    issues: allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___date] }
+      limit: 20
+      filter: { fields: { slug: { regex: "^/issues/" } } }
+    ) {
+      edges {
+        node {
+          id
+          frontmatter {
+            date(formatString: "MMMM DD, YYYY")
+            title
+            url
+            #cover {
+            #  childImageSharp {
+            #    gatsbyImageData(placeholder: BLURRED)
+            #  }
+            #}
+          }
+          fields {
+            slug
+          }
+        }
+      }
+    }
+    articles: allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___date] }
+      limit: 50
+      filter: { fields: { slug: { regex: "^/articles/" } } }
+    ) {
+      edges {
+        node {
+          id
+          excerpt(pruneLength: 100)
+          frontmatter {
+            title
+            date(formatString: "MMMM DD, YYYY")
+            authors {
+              author
+            }
+          }
+          fields {
+            slug
+          }
+        }
+      }
+    }
+  }
+`
