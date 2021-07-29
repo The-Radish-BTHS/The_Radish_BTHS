@@ -22,18 +22,20 @@
 }
 
 .card a h2 {
+  text-decoration-color: var(--highlight);
+  transition-delay: 150ms;
   /* text-decoration: none;
   text-decoration-color: var(--highlight); */
   /* margin-bottom: -3px; */
-  width: fit-content;
+  /* width: fit-content;
   border-bottom: 2px solid transparent;
-  transition: border 150ms ease;
+  transition: border 150ms ease; */
 }
 
 .card a h2:hover {
-  border-color: var(--highlight);
-  /* text-decoration: underline;
-  text-decoration-color: var(--highlight); */
+  /* border-color: var(--highlight); */
+  text-decoration: underline;
+  text-decoration-color: var(--highlight);
 }
 
 .card:hover {

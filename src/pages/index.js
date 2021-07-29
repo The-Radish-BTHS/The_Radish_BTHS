@@ -12,10 +12,13 @@ export default function Author({
 }) {
   // const { markdownRemark } = data // data.markdownRemark holds your post data
   // const { frontmatter, html } = markdownRemark
-  const { issues, articles } = data
+  const {
+    // issues, // Add in later; map every third element in articles to an issue instead
+    articles
+  } = data
   return (
     <Layout>
-      <div className="frontpage">
+      <div className="card-grid">
         {articles.edges.map(({ node }) => {
           return (
             <Articard

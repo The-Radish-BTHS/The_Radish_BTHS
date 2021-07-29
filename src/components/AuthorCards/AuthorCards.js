@@ -2,7 +2,6 @@ import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
 import AuthorCard from "../Cards/AuthorCard.js"
-import "./AuthorCards.css"
 
 export default function AuthorCards() {
   const data = useStaticQuery(graphql`

@@ -1,11 +1,6 @@
 .author-link {
-  color: inherit;
-  text-decoration: none;
-
-  /* Fadey green underline */
-  width: fit-content;
-  border-bottom: 2px solid transparent;
-  transition: border 150ms ease;
+  text-decoration-color: var(--highlight);
+  transition-delay: 150ms;
 }
 
 .author-link:visited {
@@ -13,6 +8,7 @@
 }
 
 .author-link:hover {
-  border-color: var(--highlight);
+  text-decoration: underline;
+  text-decoration-color: var(--highlight);
   opacity: 0.95;
 }
