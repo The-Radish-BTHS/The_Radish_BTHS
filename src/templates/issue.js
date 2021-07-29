@@ -5,7 +5,7 @@ import Layout from "../components/Layout"
 
 // Same layout as homepage
 import Articard from "../components/Cards/Articard.js"
-import "../components/Articles/Articles.css"
+import "../pages/pages.css"
 
 export default function Issue({
   data, // this prop will be injected by the GraphQL query below.
@@ -16,7 +16,7 @@ export default function Issue({
       <h3>{data.issue.frontmatter.date}</h3>
       <a href={data.issue.frontmatter.url}>PDF</a>
       <p />
-      <div className="frontpage">
+      <div className="card-grid">
         {
           data.articles.edges.map(({node}) => {
             return (

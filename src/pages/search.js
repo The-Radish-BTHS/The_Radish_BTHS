@@ -5,7 +5,7 @@ import { useFlexSearch } from 'react-use-flexsearch';
 import SearchBar from "../components/SearchBar/SearchBar.js"
 import Layout from "../components/Layout"
 import Articard from "../components/Cards/Articard.js"
-import "../components/Articles/Articles.css"
+import "./pages.css"
 
 // Helpful: https://www.emgoto.com/gatsby-search/
 export default function Search({
@@ -30,7 +30,7 @@ export default function Search({
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
       />
-      <div className="frontpage">
+      <div className="card-grid">
         {results.map(result =>
           <Articard
             key={result.id}

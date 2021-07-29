@@ -1,11 +1,11 @@
 import React from "react"
 import Layout from "../components/Layout"
-import "../components/Articles/Articles.css"
+import "../pages/pages.css"
 import { graphql } from "gatsby"
 
 // Same layout as homepage
 import Articard from "../components/Cards/Articard.js"
-import "../components/Articles/Articles.css"
+import "../pages/pages.css"
 
 export default function Author({
   data, // this prop will be injected by the GraphQL query below.
@@ -23,7 +23,7 @@ export default function Author({
         <i>{(grad ? "former " : "") + author.frontmatter.position}</i>
       </h3>
       <h3>{grad ? "Graduated" : "Graduating " + author.frontmatter.date}</h3>
-      <div className="frontpage">
+      <div className="card-grid">
         {articles.edges.map(({ node }) => {
           return (
             <Articard
