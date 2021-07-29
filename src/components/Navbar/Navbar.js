@@ -31,7 +31,7 @@ export default function Navbar({ setShowSidebar, showSidebar }) {
       />
       <Link to="/authors">Authors</Link>
       <Link to="/" id="name" className="NavbarHomeLink"><Radimir />The Radish</Link>
-      <Link to="/search">search</Link>
+      <Link to="/search">Search</Link>
     </nav>
   )
 }

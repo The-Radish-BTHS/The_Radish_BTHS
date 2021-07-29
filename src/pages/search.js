@@ -14,8 +14,10 @@ export default function Search({
     allMarkdownRemark: { nodes },
   },
 }) {
-  const { search } = window.location;
-  const query = new URLSearchParams(search).get('s');
+  const isBrowser = typeof window !== "undefined"; // SSR error
+  const { search } = isBrowser ? window.location : '';
+  const query = search ? new URLSearchParams(search).get('s') : '';
+
   const [searchQuery, setSearchQuery] = useState(query || '');
 
   // could try using posts instead of results but...
