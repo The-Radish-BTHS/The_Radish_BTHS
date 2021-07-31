@@ -29,6 +29,14 @@ export default function Article({
         })}
       </h4>
       <h4>
+        <Link
+          to={ValidSlug("issues", frontmatter.issue)}
+          className="green-under-link"
+        >
+          {`${frontmatter.issue}`}
+        </Link>
+      </h4>
+      <h4>
         {`Written by: `}
         {frontmatter.authors.map(({ author }, index) => {
           return (
@@ -53,6 +61,7 @@ export const pageQuery = graphql`
       html
       frontmatter {
         title
+        issue
         authors {
           author
         }
