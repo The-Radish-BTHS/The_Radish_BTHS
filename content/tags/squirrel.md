@@ -1,0 +1,4 @@
+---
+title: Squirrel
+color: orange
+---

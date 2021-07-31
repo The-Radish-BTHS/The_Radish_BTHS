@@ -18,7 +18,7 @@ export default function Author({
       <h3>
         <i>{(grad ? "former " : "") + author.frontmatter.position}</i>
       </h3>
-      <h3>{grad ? "Graduated" : "Graduating " + author.frontmatter.date}</h3>
+      <h3>{grad ? "Graduated "+ author.frontmatter.date : "Graduating " + author.frontmatter.date}</h3>
       <div className="card-grid">
         {articles.edges.map(({ node }) => {
           return (
@@ -37,9 +37,8 @@ export default function Author({
 }
 
 export const pageQuery = graphql`
-  query author_content($slug: String!, $name: String!) {
+  query author ($slug: String!, $title: String!) {
     author: markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
       frontmatter {
         date
         title
@@ -48,7 +47,7 @@ export const pageQuery = graphql`
     }
     articles: allMarkdownRemark(
       filter: {
-        frontmatter: { authors: { elemMatch: { author: { eq: $name } } } }
+        frontmatter: { authors: { elemMatch: { author: { eq: $title } } } }
       }
     ) {
       edges {

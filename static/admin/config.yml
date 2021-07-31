@@ -25,7 +25,7 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
       # Change name to "pdf"
-      - { label: "PDF url", name: "url", widget: "string" }
+      - { label: "PDF url", name: "pdf", widget: "string" }
 
   - name: "article"
     label: "Article"
@@ -39,7 +39,6 @@ collections:
     #   preview: false
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Body", name: "body", widget: "markdown" }
       - label: "Authors"
         name: "authors"
@@ -51,7 +50,23 @@ collections:
             collection: "author"
             search_fields: ["title", "position"]
             value_field: "title"
-            display_fields: ["title"]
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        fields:
+          - label: "Tag"
+            name: "tag"
+            widget: "relation"
+            collection: "tag"
+            search_fields: ["title"]
+            value_field: "title"
+      - label: "Issue"
+        name: "issue"
+        widget: "relation"
+        collection: "issue"
+        search_fields: ["title"]
+        value_field: "title"
+        display_fields: ["title"]
 
   - name: "author"
     label: "Author"
@@ -66,3 +81,14 @@ collections:
           default: "writer",
         }
       - { label: "Grad year", name: "date", widget: "string" }
+
+  - name: "tag"
+    label: "Tag"
+    folder: "content/tags"
+    create: true
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - label: "Color"
+        name: "color"
+        widget: "select"
+        options: ["red", "orange", "yellow", "green", "blue", "purple", "white", "black"]

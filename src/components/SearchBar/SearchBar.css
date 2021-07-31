@@ -2,13 +2,13 @@
 
 }
 
-label {
+.search-form label {
   display: block;
   text-align: center;
   margin-bottom: 2ch;
 }
 
-input {
+.search-form input {
   margin-left: 25%;
   width: 50%;
   padding: 1ch;
@@ -24,7 +24,7 @@ input {
   transition-duration: 0.2s;
 }
 
-input:focus {
+.search-form input:focus {
   box-shadow: 0 0 2px 1px var(--red);
 
   outline: none;
@@ -34,7 +34,7 @@ input:focus {
 }
 
 @media (max-width: 600px) {
-  input {
+  .search-form input {
     margin-left: 0%;
     width: 100%;
   }

@@ -16,6 +16,7 @@ export default function Articard(props) {
     <div className="card">
       <Link to={props.slug}>
         {/* <GatsbyImage image={image} alt={props.title} placeholder="blurred" /> */}
+        <h4>{props.date}</h4>
         <h2>{props.title}</h2>
         <p>{props.excerpt}</p>
       </Link>

@@ -17,7 +17,7 @@ export default function SearchBar({ searchQuery, setSearchQuery }) {
             onInput={(e) => setSearchQuery(e.target.value)}
             type="text"
             id="search"
-            placeholder="I want eggs mmm eggs crunch...cruch...crunch..."
+            placeholder="Satirical words..."
             name="s"
         />
     </form>

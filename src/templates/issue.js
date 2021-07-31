@@ -37,7 +37,7 @@ export default function Issue({
 }
 
 export const pageQuery = graphql`
-  query ($slug: String!, $mindate: Date!, $maxdate: Date!) {
+  query issue ($slug: String!, $title: String!) {
     issue: markdownRemark(fields: {slug: {eq: $slug}}) {
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
@@ -46,7 +46,7 @@ export const pageQuery = graphql`
       }
     }
     articles: allMarkdownRemark(
-      filter: {frontmatter: {date: { gte: $mindate, lt: $maxdate}}, fields: {slug: {regex: "^/articles/"}}}
+      filter: {frontmatter: { issue: {eq: $title} }, fields: {slug: {regex: "^/articles/"}}}
     ) {
       edges {
         node {

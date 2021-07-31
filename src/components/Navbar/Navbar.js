@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import "./Navbar.css"
 
-import Radimir from "./Radimir"
+// import Radimir from "./Radimir"
 
 function Hamburger({ showSidebar, setShowSidebar }) {
   return (

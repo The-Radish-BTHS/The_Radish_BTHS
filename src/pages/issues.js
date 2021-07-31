@@ -21,6 +21,7 @@ export default function Issues({
             <IssueCard
               key={node.id}
               slug={node.fields.slug}
+              date={node.frontmatter.date}
               title={node.frontmatter.title}
               excerpt={node.excerpt}
               authors={node.frontmatter.authors}

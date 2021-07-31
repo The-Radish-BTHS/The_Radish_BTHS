@@ -1,9 +1,9 @@
-// src\pages\{MarkdownRemark.fields__slug}.js
-
 import React from "react"
 import Layout from "../components/Layout"
 import "./templates.css"
 import { graphql, Link } from "gatsby"
+
+const ValidSlug = (collection, name) => `/${collection}/${name.toLowerCase().replace(/[/|\\:*?"<>()]/g, '').replace(/ /g, "-")}`;
 
 export default function Article({
   data, // this prop will be injected by the GraphQL query below.
@@ -16,15 +16,24 @@ export default function Article({
       <h1>{frontmatter.title}</h1>
       <h4>{frontmatter.date}</h4>
       <h4>
+        {frontmatter.tags.map(({ tag }, index) => {
+          return (
+            <Link
+              to={ValidSlug('tags', tag)}
+              key={index}
+              className="green-under-link"
+            >
+              {`${tag}${index < frontmatter.tags.length - 1 ? ", " : ""}`}
+            </Link>
+          )
+        })}
+      </h4>
+      <h4>
         {`Written by: `}
         {frontmatter.authors.map(({ author }, index) => {
           return (
             <Link
-              to={`/authors/${
-                typeof author.toLowerCase() == "string"
-                  ? author.toLowerCase().replace(/ /g, "-")
-                  : author.toLowerCase()
-              }`}
+              to={ValidSlug("authors", author)}
               key={index}
               className="green-under-link"
             >
@@ -39,14 +48,16 @@ export default function Article({
 }
 
 export const pageQuery = graphql`
-  query($slug: String!) {
+  query article ($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {
-        date(formatString: "MMMM DD, YYYY")
         title
         authors {
           author
+        }
+        tags {
+          tag
         }
       }
     }

@@ -24,7 +24,6 @@ export default function Author({
               slug={node.fields.slug}
               excerpt={node.excerpt}
               title={node.frontmatter.title}
-              date={node.frontmatter.date}
               authors={node.frontmatter.authors}
             />
           )
@@ -71,7 +70,6 @@ export const pageQuery = graphql`
           excerpt(pruneLength: 100)
           frontmatter {
             title
-            date(formatString: "MMMM DD, YYYY")
             authors {
               author
             }
