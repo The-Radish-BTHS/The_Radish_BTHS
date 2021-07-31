@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import "./Navbar.css"
 
-// import Radimir from "./Radimir"
+import Radimir from "./Radimir"
 
 function Hamburger({ showSidebar, setShowSidebar }) {
   return (
@@ -20,8 +20,7 @@ function Hamburger({ showSidebar, setShowSidebar }) {
   )
 }
 
-// <Radimir /> // Use Radimir instead of name on small screens
-
+// Use Radimir instead of name on small screens
 export default function Navbar({ setShowSidebar, showSidebar }) {
   // Logic for making the navbar change on scroll (could make it shrink or smth)
   // const handleResize = () => {
@@ -45,9 +44,10 @@ export default function Navbar({ setShowSidebar, showSidebar }) {
         setShowSidebar={setShowSidebar}
         showSidebar={showSidebar}
       />
-      <Link to="/authors">Authors</Link>
-      <Link to="/" id="name" className="NavbarHomeLink">The Radish</Link>
-      <Link to="/search">Search</Link>
+      <Link to="/" id="name">The Radish</Link>
+      {
+        // <Link to="/search" id="nav-search">Search</Link>
+      }
     </nav>
   )
 }

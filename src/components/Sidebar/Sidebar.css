@@ -11,7 +11,7 @@
 
   overflow-x: hidden; /* Avoid horizontal scrollbars */
 
-  grid-gap: 1ch;
+  grid-gap: 2ch;
 
   position: fixed;
   /* top: 74px;*/ /*Sketchy navbar height shhhhh*/
@@ -73,11 +73,9 @@
 @media (max-width: 600px) {
   .sidebar {
     top: 5ch;
-    grid-gap: 1ch;
     width: 40%;
-    /* padding: 1ch; */
     height: 100vh;
-    text-align: left;
+    text-align: center;
   }
 
   /* .sidebarHidden {

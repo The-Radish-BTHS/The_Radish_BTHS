@@ -1,11 +1,9 @@
 import React from "react"
-import Layout from "../components/Layout"
-import "./pages.css"
 import { graphql } from "gatsby"
-
-// Same layout as homepage
-import Articard from "../components/Cards/Articard.js"
 import "./pages.css"
+
+import Layout from "../components/Layout"
+import Articard from "../components/Cards/Articard.js"
 
 export default function Author({
   data, // this prop will be injected by the GraphQL query below.
@@ -24,8 +22,9 @@ export default function Author({
             <Articard
               key={node.id}
               slug={node.fields.slug}
-              title={node.frontmatter.title}
               excerpt={node.excerpt}
+              title={node.frontmatter.title}
+              date={node.frontmatter.date}
               authors={node.frontmatter.authors}
             />
           )

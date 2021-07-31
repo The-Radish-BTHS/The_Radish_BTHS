@@ -4,10 +4,10 @@ import "./Cards.css"
 
 export default function Articard(props) {
   return (
-    <div className="card articleCard">
+    <div className="card">
       <Link to={props.slug}>
+        <h4>{props.date}</h4>
         <h2>{props.title}</h2>
-        <h5>{props.date}</h5>
         <p>{props.excerpt}</p>
       </Link>
     </div>

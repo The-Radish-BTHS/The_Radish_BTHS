@@ -4,35 +4,15 @@
   background-color: var(--red);
 }
 
-.issueCard {
-  /*border: 3px solid var(--green_1);*/
-  /*background-color:*/ /*transparent*/ /*var(--green_2)*/ /*var(--red);*/
-}
-.articleCard {
-  /*border: 3px solid var(--light_red);*/
-  /* background-color: var(--red); */ /*transparent*/
-}
-
-.articleCard h2 {
-  /* margin-bottom: 0.5ch; */
-}
-
-.authorCard {
-  /* background-color:*/ /*transparent*/ /*var(--red); */
+.card h4 {
+  margin-bottom: 1ch;
 }
 
 .card a h2 {
   text-decoration-color: var(--highlight);
-  /* text-decoration: none;
-  text-decoration-color: var(--highlight); */
-  /* margin-bottom: -3px; */
-  /* width: fit-content;
-  border-bottom: 2px solid transparent;
-  transition: border 150ms ease; */
 }
 
 .card a h2:hover {
-  /* border-color: var(--highlight); */
   text-decoration: underline;
   text-decoration-color: var(--highlight);
 }

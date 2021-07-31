@@ -24,45 +24,22 @@ nav {
 
   overflow-x: hidden;
   overflow-y: hidden;
-
-  /* padding: 2ch;
-  padding-top: 1ch; */
-  /* height: 7ch; */
-  /* HANDLE THE ISSUE VIEW */
-  /* margin-left: calc(20%); */
 }
 
 nav a {
   padding: 2ch;
-  /* font-size: clamp(14px, 1rem + 2vw, 40px); very big */
-  /* padding-right: 2ch; */
-  /* justify-content: center; */
-  /* display: flex; */
-  /* align-items: center;
-  justify-content: center; */
-  /* background-color: red; */
-  /* padding-top: 2ch; */
 }
 
 #name {
-  font-size: clamp(1ch, 3vw, 3ch);
+  font-size: clamp(2rem, 5vw, 4rem);
   font-family: "Raleway", sans-serif;
-  /* text-align: center; */
-}
-
-.NavbarHomeLink {
   display: flex;
   align-items: center;
 }
 
-/* .Radamir {
-  margin-right: 15px;
-} */
-
 .radimir path {
   fill: var(--highlight);
 }
-
 
 /* Closeburger button */
 /* https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_menu_icon_js */
@@ -83,10 +60,6 @@ nav a {
   transition: 0.4s;
 }
 
-/* .burger div:nth-child(1) {
-  margin-top: 0px;
-} */
-
 .closed:nth-child(1) {
   -webkit-transform: rotate(-45deg) translate(-9px, 5px);
   transform: rotate(-45deg) translate(-8px, 6px);
@@ -105,7 +78,7 @@ nav a {
     /* margin-left: calc(20%); */
     height: 5ch;
     padding: 1ch;
-    padding-left: calc(35px + 2ch); /*Squished burgers are sad */
+    /* padding-left: calc(35px + 2ch);*/ /*Squished burgers are sad & could show up if we add more to the navbar */
     /* padding-top: 1ch;
     padding-bottom: 1ch;
     padding-left: 0ch; */
@@ -116,76 +89,3 @@ nav a {
     left: 1ch;
   }
 }
-
-/* :root {
-  --animation-curve: cubic-bezier(1, 0, 0, 1);
-  --closeburger-width: 2em;
-  --closeburger-height: 0.25em;
-}
-
-.closeBurgerLabel {
-  width: var(--closeburger-width);
-  height: var(--closeburger-height);
-  background-color: white;
-
-  position: absolute;
-  margin-top: auto;
-  margin-bottom: auto;
-
-  cursor: pointer;
-  transition: all 0.5s var(--animation-curve);
-}
-
-.closeBurgerLabel::before,
-.closeBurgerLabel::after {
-  content: "";
-  width: var(--closeburger-width);
-  height: var(--closeburger-height);
-  background-color: white;
-  position: absolute;
-  display: block;
-  transition: all 0.6s var(--animation-curve);
-}
-.closeBurgerLabel::before {
-  top: -250%;
-  left: 0%;
-  transform: rotateZ(0deg);
-  transform-origin: left top;
-}
-
-.closeBurgerLabel::after {
-  bottom: -250%;
-  left: 0%;
-  transform: rotateZ(0deg);
-  transform-origin: left bottom;
-}
-
-.toggleChecked::before {
-  content: "";
-  transform: rotateZ(41deg);
-  left: 10%;
-}
-
-.toggleChecked::after {
-  content: "";
-  transform: rotateZ(-41deg);
-  left: 10%;
-}
-.toggleChecked {
-  background-color: transparent;
-}
-#toggle {
-  opacity: 0;
-  width: var(--closeburger-width);
-  height: calc(var(--closeburger-height) * 8);
-  position: relative;
-  top: 0;
-  cursor: pointer;
-}
-
-.closeBurger {
-  position: absolute;
-  top: 4ch;
-  left: 3ch;
-  cursor: pointer;
-} */

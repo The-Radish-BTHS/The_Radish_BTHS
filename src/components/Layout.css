@@ -7,8 +7,9 @@
   --darker_red: #9e535b;
   --green_1: #53be79;
   --green_2: #00570d;
-  --bg: #090909;
-  /* --highlight: #f3f2f2; light white color*/
+  /* --bg: #090909; */
+  --bg: #1e1e1e;
+  /* --highlight: #f3f2f2;  */
   --highlight: #07ad36;
 }
 * {
@@ -119,6 +120,13 @@ main {
     margin-right: calc(15% + 2ch);
   }
 }
+
+/* Font sizing -------------------------------------------------------------- */
+p {
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
+}
+
+/* Uhh for other ones too shh later */
 
 /* Styling links -------------------------------------------------------------*/
 

@@ -1,12 +1,9 @@
-// src\pages\{MarkdownRemark.fields__slug}.js
-
 import React from "react"
 import { graphql } from "gatsby"
+import "./pages.css"
 
 import Layout from "../components/Layout"
 import AuthorCard from "../components/Cards/AuthorCard.js"
-
-import "./pages.css"
 
 export default function Article({
   data, // this prop will be injected by the GraphQL query below.

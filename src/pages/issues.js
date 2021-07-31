@@ -1,11 +1,9 @@
 import React from "react"
-import Layout from "../components/Layout"
-import "./pages.css"
 import { graphql } from "gatsby"
-
-// Same layout as homepage
-import IssueCard from "../components/Cards/IssueCard.js"
 import "./pages.css"
+
+import Layout from "../components/Layout"
+import IssueCard from "../components/Cards/IssueCard.js"
 
 export default function Issues({
   data, // this prop will be injected by the GraphQL query below.

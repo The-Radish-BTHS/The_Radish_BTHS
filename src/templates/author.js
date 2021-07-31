@@ -1,9 +1,7 @@
 import React from "react"
-import Layout from "../components/Layout"
-import "../pages/pages.css"
 import { graphql } from "gatsby"
 
-// Same layout as homepage
+import Layout from "../components/Layout"
 import Articard from "../components/Cards/Articard.js"
 import "../pages/pages.css"
 
