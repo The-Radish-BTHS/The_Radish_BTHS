@@ -46,7 +46,6 @@ export const pageQuery = graphql`
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
             title
-            url
             #cover {
             #  childImageSharp {
             #    gatsbyImageData(placeholder: BLURRED)

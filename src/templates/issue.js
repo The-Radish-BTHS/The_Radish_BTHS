@@ -6,6 +6,7 @@ import Layout from "../components/Layout"
 // Same layout as homepage
 import Articard from "../components/Cards/Articard.js"
 import "../pages/pages.css"
+import "./templates.css"
 
 export default function Issue({
   data, // this prop will be injected by the GraphQL query below.
@@ -14,7 +15,7 @@ export default function Issue({
     <Layout>
       <h1>{data.issue.frontmatter.title}</h1>
       <h3>{data.issue.frontmatter.date}</h3>
-      <a href={data.issue.frontmatter.url}>PDF</a>
+      <a href={data.issue.frontmatter.pdf} target="_blank" rel="noreferrer" className="green-under-link">PDF</a>
       <p />
       <div className="card-grid">
         {
@@ -42,7 +43,7 @@ export const pageQuery = graphql`
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         title
-        url
+        pdf
       }
     }
     articles: allMarkdownRemark(
