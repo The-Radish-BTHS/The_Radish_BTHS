@@ -14,11 +14,13 @@ export default function Author({
     today.getMonth() > 5 && today.getFullYear() >= author.frontmatter.date
   return (
     <Layout>
-      <h1>{author.frontmatter.title}</h1>
-      <h3>
-        <i>{(grad ? "former " : "") + author.frontmatter.position}</i>
-      </h3>
-      <h3>{grad ? "Graduated "+ author.frontmatter.date : "Graduating " + author.frontmatter.date}</h3>
+      <div className="page-title">
+        <h1>{author.frontmatter.title}</h1>
+        <h3>
+          <i>{(grad ? "former " : "") + author.frontmatter.position}</i>
+        </h3>
+        <h3>{grad ? "Graduated "+ author.frontmatter.date : "Graduating " + author.frontmatter.date}</h3>
+      </div>
       <div className="card-grid">
         {articles.edges.map(({ node }) => {
           return (

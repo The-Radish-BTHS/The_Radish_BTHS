@@ -2,7 +2,7 @@
   text-align: right;
 
   height: 90vh;
-  width: 30%;
+  width: 50%;
 
   z-index: 2;
   overflow-y: scroll;
@@ -25,12 +25,20 @@
   padding: 2ch;
   overflow-x: hidden;
 
-  transition: 0.4s ease;
+  transition: 0.3s ease;
   left: 0px;
 
   /* Hiding scrollbars */
   /* -ms-overflow-style: none;
   scrollbar-width: none; */
+}
+
+.sidebar input {
+  margin-bottom: -3ch;
+
+  /* Cancelling out SearchBar.css */
+  width: 100%;
+  margin-left: 0%;
 }
 
 /* Would slide in the thing */
@@ -56,29 +64,21 @@
   text-decoration-color: var(--highlight);
 }
 
-/*
-.overlay {
-  position: fixed;
-  top: 0px;
-  padding: 2ch;
-  left: -100px;
-  width: 100px;
-  height: 100%;
-
-  background-color: #008cba;
-  overflow: hidden;
-  transition: 0.4s ease;
-}*/
+.side-cards {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 1ch;
+}
 
 @media (max-width: 600px) {
   .sidebar {
     top: 5ch;
-    width: 40%;
+    width: 80%;
     height: 100vh;
     text-align: center;
   }
 
-  /* .sidebarHidden {
+  .sidebarHidden {
     left: -80%;
-  } */
+  }
 }

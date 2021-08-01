@@ -12,8 +12,10 @@ export default function Article({
 
   return (
     <Layout>
-      <h1>Authors</h1>
-      <h2>We exist</h2>
+      <div className="page-title">
+        <h1>Authors</h1>
+        <h2>We exist</h2>
+      </div>
       <div className="card-grid">
         {
           allMarkdownRemark.edges.map(({ node }) => {

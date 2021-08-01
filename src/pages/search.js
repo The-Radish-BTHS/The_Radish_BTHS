@@ -26,6 +26,11 @@ export default function Search({
 
   return (
     <Layout>
+      <div className="page-title">
+        <h4>Tell Radish writers with confidence:</h4>
+        <h1>You can run</h1>
+        <h2>But you can't hide</h2>
+      </div>
       <SearchBar
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}

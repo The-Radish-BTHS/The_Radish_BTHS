@@ -3,9 +3,7 @@
 }
 
 .search-form label {
-  display: block;
-  text-align: center;
-  margin-bottom: 2ch;
+  display: none;
 }
 
 .search-form input {
@@ -25,8 +23,6 @@
 }
 
 .search-form input:focus {
-  box-shadow: 0 0 2px 1px var(--red);
-
   outline: none;
   border-color: var(--red);
 

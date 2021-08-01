@@ -1,14 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@800&display=swap");
 
 :root {
-  --light_red: #ff0000ad;
   --red: #ad1507;
-  --dark_red: #b51607;
-  --darker_red: #9e535b;
-  --green_1: #53be79;
+  --darker-red: #ab1305;
   --green_2: #00570d;
   /* --bg: #090909; */
-  --bg: #1e1e1e;
+  --bg: #2e2e2e;
   /* --highlight: #f3f2f2;  */
   --highlight: #07ad36;
 }
@@ -105,7 +102,6 @@ main {
 
 @media (max-width: 600px) {
   main {
-    padding: 0ch;
     margin: 1ch;
   }
   ::-webkit-scrollbar {
@@ -140,7 +136,7 @@ a:visited {
 }
 
 a:hover {
-  opacity: 0.95;
+  opacity: 0.92;
 }
 
 a * {

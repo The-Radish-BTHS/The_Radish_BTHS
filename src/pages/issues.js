@@ -13,8 +13,10 @@ export default function Issues({
   const { issues } = data
   return (
     <Layout>
-      <h1>We've got issues</h1>
-      <h2>Now you've got 'em too</h2>
+      <div className="page-title">
+        <h1>We've got issues</h1>
+        <h2>Now you've got 'em too</h2>
+      </div>
       <div className="card-grid">
         {issues.edges.map(({ node }) => {
           return (

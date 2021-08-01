@@ -39,7 +39,7 @@ export default function Navbar({ setShowSidebar, showSidebar }) {
   // })
 
   return (
-    <nav id="navbar">
+    <nav className="navbar">
       <Hamburger
         setShowSidebar={setShowSidebar}
         showSidebar={showSidebar}

@@ -9,15 +9,13 @@ export default function SearchBar({ searchQuery, setSearchQuery }) {
         autoComplete="off"
         className="search-form"
     >
-        <label htmlFor="search">
-        Search for your heart's desire. Or Radish articles.
-        </label>
+        <label htmlFor="search">Find the Radish article of your dreams</label>
         <input
             value={searchQuery}
             onInput={(e) => setSearchQuery(e.target.value)}
             type="text"
             id="search"
-            placeholder="Satirical words..."
+            placeholder="Find authors, articles, issues, or your pet bird..."
             name="s"
         />
     </form>

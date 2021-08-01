@@ -13,9 +13,11 @@ export default function Issue({
 }) {
   return (
     <Layout>
-      <h1>{data.issue.frontmatter.title}</h1>
-      <h3>{data.issue.frontmatter.date}</h3>
-      <a href={data.issue.frontmatter.pdf} target="_blank" rel="noreferrer" className="green-under-link">PDF</a>
+      <div className="page-title">
+        <h1>{data.issue.frontmatter.title}</h1>
+        <h3>{data.issue.frontmatter.date}</h3>
+        <a href={data.issue.frontmatter.pdf} target="_blank" rel="noreferrer" className="green-under-link">PDF</a>
+      </div>
       <p />
       <div className="card-grid">
         {

@@ -26,6 +26,10 @@ nav {
   overflow-y: hidden;
 }
 
+nav *:hover {
+  opacity: 0.95;
+}
+
 nav a {
   padding: 2ch;
 }

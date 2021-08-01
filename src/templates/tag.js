@@ -11,13 +11,15 @@ export default function Author({
   const { tag, articles } = data
   return (
     <Layout>
-      <h1>{tag.frontmatter.title}</h1>
+      <div className="page-title">
+        <h1>{tag.frontmatter.title}</h1>
+      </div>
       <div className="card-grid">
         {articles.edges.map(({ node }) => {
           return (
             <Articard
               key={node.id}
-              slug={node.fields.slug} 
+              slug={node.fields.slug}
               title={node.frontmatter.title}
               excerpt={node.excerpt}
               authors={node.frontmatter.authors}

@@ -11,8 +11,10 @@ export default function Author({
   const { articles } = data
   return (
     <Layout>
-      <h1>Allticles</h1>
-      <h2>(All the articles)</h2>
+      <div className="page-title">
+        <h1>Allticles</h1>
+        <h2>(All the articles)</h2>
+      </div>
       <div className="card-grid">
         {articles.edges.map(({ node }) => {
           return (
