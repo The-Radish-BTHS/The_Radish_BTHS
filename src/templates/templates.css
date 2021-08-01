@@ -11,3 +11,10 @@
   text-decoration-color: var(--highlight);
   opacity: 0.95;
 }
+
+
+@media (max-width: 600px) {
+  .page-title {
+    text-align: left;
+  }
+}

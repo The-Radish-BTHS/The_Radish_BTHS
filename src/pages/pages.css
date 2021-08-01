@@ -14,6 +14,10 @@
     flex-direction: column;
     grid-gap: 1ch;
   }
+
+  .page-title {
+    text-align: left;
+  }
 }
 
 @media (max-width: 1000px) {

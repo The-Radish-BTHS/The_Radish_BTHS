@@ -8,7 +8,7 @@ nav {
 
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
 
   margin-left: 0px;
   padding-right: 2ch;
@@ -31,7 +31,7 @@ nav *:hover {
 }
 
 nav a {
-  padding: 2ch;
+  padding: 1rem;
 }
 
 #name {

@@ -8,6 +8,7 @@ export default function SearchBar({ searchQuery, setSearchQuery }) {
         method="get"
         autoComplete="off"
         className="search-form"
+        id="search-form"
     >
         <label htmlFor="search">Find the Radish article of your dreams</label>
         <input

@@ -41,7 +41,7 @@ export default function Sidebar({ showSidebar }) {
             date={result.date}
           />
         )}
-        {results.length ? <Link to="/search" className="sidebar-link">Search more 🠖</Link> : ""}
+        {results.length ? <button type="submit" form="search-form">More 🠖</button> : ""}
       </div>
       <Link to="/issues" className="sidebar-link">Issues</Link>
       <Link to="/articles" className="sidebar-link">Articles</Link>

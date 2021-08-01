@@ -14,10 +14,7 @@
   grid-gap: 2ch;
 
   position: fixed;
-  /* top: 74px;*/ /*Sketchy navbar height shhhhh*/
-
-  /* padding-top: 3ch;
-  padding-bottom: 6ch; */
+  left: 0px;
 
   border-right: 2px solid var(--highlight);
   background-color: var(--bg);
@@ -26,11 +23,6 @@
   overflow-x: hidden;
 
   transition: 0.3s ease;
-  left: 0px;
-
-  /* Hiding scrollbars */
-  /* -ms-overflow-style: none;
-  scrollbar-width: none; */
 }
 
 .sidebar input {
@@ -39,6 +31,23 @@
   /* Cancelling out SearchBar.css */
   width: 100%;
   margin-left: 0%;
+}
+
+.sidebar button {
+  background-color: var(--text-color);
+  color: var(--bg);
+
+  border-color: transparent;
+  border-style: solid;
+  border-radius: 3px;
+  border-width: 2px;
+}
+
+.sidebar button:hover {
+  opacity: 0.9;
+
+  border-color: var(--highlight);
+  border-style: solid;
 }
 
 /* Would slide in the thing */
@@ -50,16 +59,17 @@
 
 .sidebar-link {
   text-decoration-color: var(--highlight);
-  /* text-decoration: none;
-  text-decoration-color: var(--highlight); */
-  /* margin-bottom: -3px; */
-  /* width: fit-content;
-  border-bottom: 2px solid transparent;
-  transition: border 150ms ease; */
 }
 
+/* Hush */
+/* .sidebar .card a *:not(h2):hover {
+  text-decoration: none;
+  text-decoration-color: transparent;
+
+  background-color: red;
+} */
+
 .sidebar-link:hover {
-  /* border-color: var(--highlight); */
   text-decoration: underline;
   text-decoration-color: var(--highlight);
 }
@@ -75,7 +85,7 @@
     top: 5ch;
     width: 80%;
     height: 100vh;
-    text-align: center;
+    text-align: left;
   }
 
   .sidebarHidden {

@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import "./Navbar.css"
 
-// import Radimir from "./Radimir"
+import Radimir from "./Radimir"
 
 function Hamburger({ showSidebar, setShowSidebar }) {
   return (
@@ -44,7 +44,7 @@ export default function Navbar({ setShowSidebar, showSidebar }) {
         setShowSidebar={setShowSidebar}
         showSidebar={showSidebar}
       />
-      <Link to="/" id="name">The Radish</Link>
+      <Link to="/" id="name"><Radimir />The Radish</Link>
       {
         // <Link to="/search" id="nav-search">Search</Link>
       }
