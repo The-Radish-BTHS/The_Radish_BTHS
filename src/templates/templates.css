@@ -12,7 +12,7 @@
   opacity: 0.95;
 }
 
-.article-tag {
+.tag {
   display: inline-block;
   background-color: var(--highlight);
   color: var(--bg); /* Doesn't apply? */
@@ -21,8 +21,12 @@
   margin-right: 0.5rem;
 }
 
-.article-tag:visited {
-  color: var(--bg); 
+.tag:visited {
+  color: var(--bg);
+}
+
+.tag:hover {
+  text-decoration: none;
 }
 
 @media (max-width: 600px) {

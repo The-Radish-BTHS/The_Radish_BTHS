@@ -49,9 +49,9 @@ export default function Article({
             <Link
               to={ValidSlug('tags', tag)}
               key={index}
-              className="article-tag"
+              className="tag"
             >
-              {`${tag}`}
+              {`#${tag}`}
             </Link>
           )
         })}

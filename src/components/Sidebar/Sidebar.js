@@ -3,7 +3,7 @@ import { useStaticQuery, graphql, Link } from "gatsby"
 import { useFlexSearch } from 'react-use-flexsearch';
 
 import SearchBar from "../SearchBar/SearchBar.js"
-import Articard from "../Cards/Articard.js"
+import SearchCard from "../Cards/SearchCard.js"
 import "./Sidebar.css"
 
 export default function Sidebar({ showSidebar }) {
@@ -33,7 +33,7 @@ export default function Sidebar({ showSidebar }) {
       />
       <div className="side-cards">
         {results.slice(0, 3).map(result =>
-          <Articard
+          <SearchCard
             key={result.id}
             slug={result.slug}
             title={result.title}

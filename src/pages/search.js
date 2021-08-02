@@ -5,7 +5,7 @@ import { useFlexSearch } from 'react-use-flexsearch';
 
 import SearchBar from "../components/SearchBar/SearchBar.js"
 import Layout from "../components/Layout"
-import Articard from "../components/Cards/Articard.js"
+import SearchCard from "../components/Cards/SearchCard.js"
 
 // Helpful: https://www.emgoto.com/gatsby-search/
 export default function Search({
@@ -35,15 +35,15 @@ export default function Search({
           <Link
             to={node.fields.slug}
             key={node.id}
-            className="article-tag"
+            className="tag"
           >
-            {`${node.frontmatter.title}`}
+            {`#${node.frontmatter.title}`}
           </Link>
         )}
       </div>
       <div className="card-grid">
         {results.map(result =>
-          <Articard
+          <SearchCard
             key={result.id}
             slug={result.slug}
             title={result.title}
