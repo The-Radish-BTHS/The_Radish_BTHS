@@ -11,13 +11,24 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       value: slug,
     })
   }
+
+  // https://github.com/netlify/netlify-cms/issues/325#issuecomment-354514547
+  // https://github.com/gatsbyjs/gatsby/issues/2995#issuecomment-408072399
+  const { frontmatter } = node
+  if (frontmatter) {
+   const { cover } = frontmatter
+   if (cover && !cover.startsWith("../..")) {
+     const rel_cover = "../.." + cover
+     createNodeField({
+       node,
+       name: 'rel_cover',
+       value: rel_cover
+     })
+   }
+  }
 }
 
-// path.resolve(`./src/templates/issue.js`)
-// https://www.gatsbyjs.com/docs/tutorial/part-seven/
-// node.fields.label == "Article" ?  path.resolve(`./src/templates/article.js`) : path.resolve(`./src/templates/issue.js`)
 exports.createPages = async ({ graphql, actions }) => {
-  // Articles and issue routing ------------------------------------------------
   const { createPage } = actions
   const content = await graphql(`
     query content {

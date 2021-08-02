@@ -127,6 +127,17 @@ a:visited * {
   text-align: center;
 }
 
+.page-title .cover {
+  width: 20%;
+}
+
+.page-title .cover-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .green-under-link {
   text-decoration-color: var(--highlight);
 }
@@ -204,6 +215,10 @@ p {
   }
 
   .tags {
+    justify-content: left;
+  }
+
+  .page-title .cover-container {
     justify-content: left;
   }
 }

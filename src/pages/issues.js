@@ -7,8 +7,6 @@ import IssueCard from "../components/Cards/IssueCard.js"
 export default function Issues({
   data, // this prop will be injected by the GraphQL query below.
 }) {
-  // const { markdownRemark } = data // data.markdownRemark holds your post data
-  // const { frontmatter, html } = markdownRemark
   const { issues } = data
   return (
     <Layout>
@@ -24,8 +22,7 @@ export default function Issues({
               slug={node.fields.slug}
               date={node.frontmatter.date}
               title={node.frontmatter.title}
-              excerpt={node.excerpt}
-              authors={node.frontmatter.authors}
+              cover={node.fields.rel_cover}
             />
           )
         })}
@@ -47,14 +44,14 @@ export const pageQuery = graphql`
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
             title
-            #cover {
-            #  childImageSharp {
-            #    gatsbyImageData(placeholder: BLURRED)
-            #  }
-            #}
           }
           fields {
             slug
+            rel_cover {
+              childImageSharp {
+                gatsbyImageData(placeholder: BLURRED)
+              }
+            }
           }
         }
       }

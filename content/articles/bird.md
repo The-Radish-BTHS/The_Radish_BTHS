@@ -6,7 +6,7 @@ tags:
   - tag: Purple
 issue: My pet bird
 ---
-My pet bird
+## My pet bird
 
 bedirty
 
@@ -52,4 +52,4 @@ bedirty
 
 timbery
 
-(Anagrams of \*my pet bird\*)
+(Anagrams of *my pet bird*)

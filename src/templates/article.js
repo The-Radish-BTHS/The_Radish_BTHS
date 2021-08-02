@@ -7,8 +7,8 @@ const ValidSlug = (collection, name) => `/${collection}/${name.toLowerCase().rep
 export default function Article({
   data, // this prop will be injected by the GraphQL query below.
 }) {
-  const { markdownRemark } = data // data.markdownRemark holds your post data
-  const { frontmatter, html } = markdownRemark
+  const { markdownRemark } = data 
+  const { frontmatter, html} = markdownRemark
 
   return (
     <Layout>

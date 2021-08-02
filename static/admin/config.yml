@@ -7,7 +7,7 @@ backend:
 # npx netlify-cms-proxy-server
 local_backend: true
 
-media_folder: static/assets
+media_folder: /static/assets
 public_folder: /assets
 
 collections:
@@ -16,27 +16,18 @@ collections:
     folder: "content/issues"
     create: true
     fields:
-      - {
-          label: "Cover image",
-          name: "cover",
-          widget: "image",
-          default: "/static/assets/radimir-rootin.png",
-        }
+      - name: "cover"
+        label: "Cover image"
+        widget: "image"
+        default: "/static/assets/radimir-rootin.png"
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
-      # Change name to "pdf"
       - { label: "PDF url", name: "pdf", widget: "string" }
 
   - name: "article"
     label: "Article"
     folder: "content/articles"
     create: true
-    # slug: 'index'
-    # media_folder: ''
-    # public_folder: ''
-    # path: '{{title}}/index'
-    # editor:
-    #   preview: false
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown" }

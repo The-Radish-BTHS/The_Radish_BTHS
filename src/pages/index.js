@@ -4,7 +4,7 @@ import Layout from "../components/Layout"
 
 import Articard from "../components/Cards/Articard.js"
 
-export default function Author({
+export default function Index({
   data, // this prop will be injected by the GraphQL query below.
 }) {
   // const { markdownRemark } = data // data.markdownRemark holds your post data
@@ -45,14 +45,14 @@ export const pageQuery = graphql`
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
             title
-            #cover {
-            #  childImageSharp {
-            #    gatsbyImageData(placeholder: BLURRED)
-            #  }
-            #}
           }
           fields {
             slug
+            rel_cover {
+              childImageSharp {
+                gatsbyImageData(placeholder: BLURRED)
+              }
+            }
           }
         }
       }
