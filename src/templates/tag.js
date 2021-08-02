@@ -1,9 +1,8 @@
 import React from "react"
 import { graphql } from "gatsby"
-
 import Layout from "../components/Layout"
+
 import Articard from "../components/Cards/Articard.js"
-import "../pages/pages.css"
 
 export default function Author({
   data, // this prop will be injected by the GraphQL query below.

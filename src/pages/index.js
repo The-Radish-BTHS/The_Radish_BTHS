@@ -1,8 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
-import "./pages.css"
-
 import Layout from "../components/Layout"
+
 import Articard from "../components/Cards/Articard.js"
 
 export default function Author({

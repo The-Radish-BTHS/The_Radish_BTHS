@@ -4,7 +4,10 @@ authors:
   - author: Aramie Ewen
 tags:
   - tag: Besticle (best article)
-  - tag: Purple
+  - tag: Besticle (best article)
+  - tag: Besticle (best article)
+  - tag: Besticle (best article)
+  - tag: Besticle (best article)
 issue: Peppetoni Feedback (Different Month)
 ---
 <!--StartFragment-->

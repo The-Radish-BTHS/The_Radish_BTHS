@@ -7,7 +7,6 @@ export default function SearchCard(props) {
     : props.slug.includes('/issues/') ? "issue"
     : props.slug.includes('/articles/') ? "article"
     : "tag";
-
   return (
     <div className="card">
       <Link to={props.slug}>

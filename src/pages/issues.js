@@ -1,8 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
-import "./pages.css"
-
 import Layout from "../components/Layout"
+
 import IssueCard from "../components/Cards/IssueCard.js"
 
 export default function Issues({

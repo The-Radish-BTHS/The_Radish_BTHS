@@ -1,10 +1,9 @@
 import React, { useState } from "react"
 import { graphql, Link } from 'gatsby';
-import "./pages.css"
-import { useFlexSearch } from 'react-use-flexsearch';
-
-import SearchBar from "../components/SearchBar/SearchBar.js"
 import Layout from "../components/Layout"
+
+import { useFlexSearch } from 'react-use-flexsearch';
+import SearchBar from "../components/SearchBar/SearchBar.js"
 import SearchCard from "../components/Cards/SearchCard.js"
 
 // Helpful: https://www.emgoto.com/gatsby-search/

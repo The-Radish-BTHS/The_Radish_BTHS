@@ -65,10 +65,6 @@ main {
   overflow-y: hidden;
 }
 
-/* body:hover {
-  overflow-y: scroll;
-} */
-
 /* Scrollbars --------------------------------------------------------------- */
 
 ::-webkit-scrollbar {
@@ -100,32 +96,6 @@ main {
   background: var(--o-white); /* Gecko Browsers */
 }
 
-/* Resizing ------------------------------------------------------------ */
-
-@media (max-width: 600px) {
-  main {
-    margin: 1ch;
-  }
-  ::-webkit-scrollbar {
-    width: 5px;
-    /* background-color: white; */
-  }
-}
-
-@media (min-width: 1100px) {
-  main {
-    margin-left: calc(15% + 2ch);
-    margin-right: calc(15% + 2ch);
-  }
-}
-
-/* Font sizing -------------------------------------------------------------- */
-p {
-  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
-}
-
-/* Uhh for other ones too shh later */
-
 /* Styling links -------------------------------------------------------------*/
 
 a {
@@ -148,4 +118,105 @@ a * {
 
 a:visited * {
   color: inherit;
+}
+
+/* USED IN PAGES AND TEMPLATES ---------------------------------------------- */
+
+/* Tags --------------------------------------------------------------------- */
+.page-title {
+  text-align: center;
+}
+
+.green-under-link {
+  text-decoration-color: var(--highlight);
+}
+
+.green-under-link:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--highlight);
+  opacity: 0.95;
+}
+
+.tag {
+  display: inline-block;
+  background-color: var(--highlight);
+  color: var(--bg);
+  border-radius: 3px;
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.tag:visited {
+  color: var(--bg);
+}
+
+.tag:hover {
+  text-decoration: none;
+}
+
+/* Card grids and page titles ----------------------------------------------- */
+
+.page-title {
+  text-align: center;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 2ch;
+}
+
+.tags {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 2ch;
+}
+
+/* Font sizing ---------------------------------------------------------------*/
+p {
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
+}
+
+/* Other ones pretend they're here */
+
+/* Resizing ------------------------------------------------------------------*/
+
+@media (max-width: 600px) {
+  main {
+    margin: 1ch;
+  }
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  .card-grid {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 1ch;
+  }
+
+  .page-title {
+    text-align: left;
+  }
+
+  .tags {
+    justify-content: left;
+  }
+}
+
+@media (min-width: 1100px) {
+  main {
+    margin-left: calc(15% + 2ch);
+    margin-right: calc(15% + 2ch);
+  }
+}
+
+@media (max-width: 1000px) {
+  .card-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }

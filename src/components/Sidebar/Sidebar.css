@@ -84,9 +84,11 @@
 @media (max-width: 600px) {
   .sidebar {
     top: 5ch;
-    width: 80%;
+    width: 70%;
     height: 100vh;
     text-align: left;
+    grid-gap: 1ch;
+    padding: 1ch;
   }
 
   .sidebarHidden {

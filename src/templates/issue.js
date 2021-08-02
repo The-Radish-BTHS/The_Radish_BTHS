@@ -1,12 +1,8 @@
 import React from "react"
 import { graphql } from "gatsby"
-
 import Layout from "../components/Layout"
 
-// Same layout as homepage
 import Articard from "../components/Cards/Articard.js"
-import "../pages/pages.css"
-import "./templates.css"
 
 export default function Issue({
   data, // this prop will be injected by the GraphQL query below.
