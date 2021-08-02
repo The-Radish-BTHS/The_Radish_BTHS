@@ -11,7 +11,7 @@ export default function SearchCard(props) {
   return (
     <div className="card">
       <Link to={props.slug}>
-        <h4>{props.date}</h4>
+        <h4>{collection === "author" ? `Graduating ${props.date.slice(-4)}` : props.date}</h4>
         <h2 className={collection}>{`${collection === "tag" ? "#" : ""}${props.title}`}</h2>
         <p>{props.excerpt ? props.excerpt : <i>{`the ${collection}`}</i>}</p>
       </Link>
