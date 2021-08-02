@@ -12,7 +12,7 @@ export default function Author({
   return (
     <Layout>
       <div className="page-title">
-        <h1>{tag.frontmatter.title}</h1>
+        <h1>{`Tag: `}<span className="article-tag">{tag.frontmatter.title}</span></h1>
       </div>
       <div className="card-grid">
         {articles.edges.map(({ node }) => {

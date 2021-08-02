@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import "./pages.css"
 import { useFlexSearch } from 'react-use-flexsearch';
 
@@ -11,17 +11,13 @@ import Articard from "../components/Cards/Articard.js"
 export default function Search({
   data : {
     localSearchPages: { index, store },
-    allMarkdownRemark: { nodes },
+    allMarkdownRemark: { edges },
   },
 }) {
   const isBrowser = typeof window !== "undefined"; // SSR error
   const { search } = isBrowser ? window.location : '';
   const query = search ? new URLSearchParams(search).get('s') : '';
-
   const [searchQuery, setSearchQuery] = useState(query || '');
-
-  // could try using posts instead of results but...
-  // const posts = searchQuery ? results : nodes // Might have weird behavior I don't wanna deal with rn
   const results = useFlexSearch(searchQuery, index, store);
 
   return (
@@ -34,6 +30,17 @@ export default function Search({
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
       />
+      <div className="tags">
+        {edges.map(({ node }) =>
+          <Link
+            to={node.fields.slug}
+            key={node.id}
+            className="article-tag"
+          >
+            {`${node.frontmatter.title}`}
+          </Link>
+        )}
+      </div>
       <div className="card-grid">
         {results.map(result =>
           <Articard
@@ -55,20 +62,16 @@ export const pageQuery = graphql`
       index
       store
     }
-    allMarkdownRemark( # We can default to just returning articles
+    allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
       limit: 1000
-      filter: { fields: { slug: { regex: "^/articles/" } } }
+      filter: { fields: { slug: { regex: "^/tags/" } } }
     ) {
       edges {
         node {
           id
-          excerpt(pruneLength: 100)
           frontmatter {
             title
-            authors {
-              author
-            }
           }
           fields {
             slug

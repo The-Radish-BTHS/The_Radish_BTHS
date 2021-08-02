@@ -12,6 +12,18 @@
   opacity: 0.95;
 }
 
+.article-tag {
+  display: inline-block;
+  background-color: var(--highlight);
+  color: var(--bg); /* Doesn't apply? */
+  border-radius: 3px;
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.article-tag:visited {
+  color: var(--bg); 
+}
 
 @media (max-width: 600px) {
   .page-title {

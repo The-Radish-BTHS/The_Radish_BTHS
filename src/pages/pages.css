@@ -8,6 +8,14 @@
   grid-gap: 2ch;
 }
 
+.tags {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2ch;
+  width: 100%;
+}
+
 @media (max-width: 600px) {
   .card-grid {
     display: flex;
@@ -17,6 +25,10 @@
 
   .page-title {
     text-align: left;
+  }
+
+  .tags {
+    justify-content: left;
   }
 }
 
