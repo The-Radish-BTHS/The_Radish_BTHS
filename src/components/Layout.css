@@ -205,7 +205,7 @@ a:visited * {
 
 /* Font sizing ---------------------------------------------------------------*/
 p {
-  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
+  font-size: clamp(1rem, 0.9rem + 0.25vw, 1.25rem);
 }
 
 /* Other ones pretend they're here */

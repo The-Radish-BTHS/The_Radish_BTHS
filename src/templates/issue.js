@@ -15,12 +15,14 @@ const breakpointColumnsObj = {
 export default function Issue({
   data, // this prop will be injected by the GraphQL query below.
 }) {
+  const { issue, articles } = data
+
   const image = getImage(data.issue.fields.rel_cover)
 
   return (
-    <Layout>
+    <Layout pageName={issue.frontmatter.title}>
       <div className="page-title">
-        <h1>{data.issue.frontmatter.title}</h1>
+        <h1>{issue.frontmatter.title}</h1>
         <div className="cover-container">
           <div className="cover">
             <GatsbyImage
@@ -30,8 +32,8 @@ export default function Issue({
             />
           </div>
         </div>
-        <h3>{data.issue.frontmatter.date}</h3>
-        <a href={data.issue.frontmatter.pdf} target="_blank" rel="noreferrer" className="color-under-link">PDF</a>
+        <h3>{issue.frontmatter.date}</h3>
+        <a href={issue.frontmatter.pdf} target="_blank" rel="noreferrer" className="color-under-link">PDF</a>
       </div>
       <p />
       <Masonry
@@ -40,7 +42,7 @@ export default function Issue({
         columnClassName="my-masonry-grid_column"
       >
         {
-          data.articles.edges.map(({node}) => {
+          articles.edges.map(({node}) => {
             return (
               <Articard
                 key={node.id}

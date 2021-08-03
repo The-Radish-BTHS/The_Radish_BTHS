@@ -27,7 +27,7 @@ export default function Search({
   const results = useFlexSearch(searchQuery, index, store);
 
   return (
-    <Layout>
+    <Layout pageName="Search">
       <div className="page-title">
         <h1>Search for your heart's desire.</h1>
         <h2>Or Radish articles.</h2>

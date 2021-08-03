@@ -16,7 +16,7 @@ export default function Author({
 }) {
   const { tag, articles } = data
   return (
-    <Layout>
+    <Layout pageName={`#${tag.frontmatter.title}`}>
       <div className="page-title">
         <h1 className="tag">{`#${tag.frontmatter.title}`}</h1>
       </div>

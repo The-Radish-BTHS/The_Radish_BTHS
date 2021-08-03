@@ -7,11 +7,13 @@ export default function Articard(props) {
   const image = getImage(props.cover)
 
   return (
-    <div className="card issue-card">
+    <div className="card issue">
       <Link to={props.slug}>
         <GatsbyImage image={image} alt={props.title} placeholder="blurred" href={props.slug} />
-        <h4>{props.date}</h4>
-        <h2>{props.title}</h2>
+        <div className="content">
+          <h4>{props.date}</h4>
+          <h2>{props.title}</h2>
+        </div>
       </Link>
     </div>
   )

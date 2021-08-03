@@ -11,7 +11,7 @@ export default function Article({
   const { frontmatter, html} = markdownRemark
 
   return (
-    <Layout>
+    <Layout pageName={frontmatter.title}>
       <div className="page-title">
         <h1>{frontmatter.title}</h1>
         <h4>{frontmatter.date}</h4>

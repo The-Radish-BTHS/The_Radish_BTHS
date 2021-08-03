@@ -12,7 +12,7 @@
   border-bottom-left-radius: 0px; */
   /* background-color: var(--red); */
 
-  transition-duration: 0.2s;
+  transition-duration: 150ms;
 }
 
 .card h4 {
@@ -21,7 +21,7 @@
 
 .card a h2:hover {
   text-decoration: underline;
-  text-decoration-color: var(--red);
+  text-decoration-color: var(--highlight);
 }
 
 .card a h1, h2, h3, h4, p:hover {
@@ -30,14 +30,38 @@
 
 .card:hover {
   background-color: #0000000f;
-  -webkit-box-shadow: 0 0 5px var(--red), 0 0 5px var(--red), 0 0 5px var(--red);
-  box-shadow: 0 0 5px var(--red), 0 0 5px var(--red), 0 0 5px var(--red);
-  /* background-color: var(--darker-red); */
-
-  transition-duration: 0.2s;
+  transform: translate(0, -2px);
+  -webkit-box-shadow: 0 0 5px var(--highlight), 0 0 5px var(--highlight), 0 0 5px var(--highlight);
+  box-shadow: 0 0 5px var(--highlight), 0 0 5px var(--highlight), 0 0 5px var(--highlight);
+  transition-duration: 150ms;
 }
 
 .card a img {
   border-radius: 3px;
-  width: 100%;
+}
+
+.issue {
+  padding: 0ch;
+}
+
+.issue .content {
+  padding: 2ch;
+  padding-bottom: 0.5ch;
+}
+
+.card a.author {
+  font-size: 12px;
+  background-color: #444444aa;
+  margin-right: 1ch;
+  padding: 2px;
+  border-radius: 2px;
+}
+
+.card a.author:hover {
+  background-color: #44444488;
+}
+
+.card .authors {
+  display: inline-flex;
+  margin-bottom: 1ch;
 }

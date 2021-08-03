@@ -4,6 +4,7 @@ import Layout from "../components/Layout"
 import Masonry from "react-masonry-css"
 
 import Articard from "../components/Cards/Articard.js"
+import IssueCard from "../components/Cards/IssueCard.js"
 
 const breakpointColumnsObj = {
   default: 3,
@@ -14,12 +15,7 @@ const breakpointColumnsObj = {
 export default function Index({
   data, // this prop will be injected by the GraphQL query below.
 }) {
-  // const { markdownRemark } = data // data.markdownRemark holds your post data
-  // const { frontmatter, html } = markdownRemark
-  const {
-    // issues, // Add in later; map every third element in articles to an issue instead
-    articles
-  } = data
+  const { issue, articles } = data
   return (
     <Layout>
       <Masonry
@@ -27,6 +23,17 @@ export default function Index({
         className="my-masonry-grid"
         columnClassName="my-masonry-grid_column"
       >
+        {issue.edges.map(({ node }) => {
+          return (
+            <IssueCard
+              key={node.id}
+              slug={node.fields.slug}
+              date={node.frontmatter.date}
+              title={node.frontmatter.title}
+              cover={node.fields.rel_cover}
+            />
+          )
+        })}
         {articles.edges.map(({ node }) => {
           return (
             <Articard
@@ -44,10 +51,10 @@ export default function Index({
 }
 
 export const pageQuery = graphql`
-  query index {
-    issues: allMarkdownRemark(
+  query index { # Is there a better way to get the most recent one?
+    issue: allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
-      limit: 20
+      limit: 1
       filter: { fields: { slug: { regex: "^/issues/" } } }
     ) {
       edges {

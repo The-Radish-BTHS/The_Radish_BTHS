@@ -19,7 +19,7 @@ export default function Author({
   const grad =
     today.getMonth() > 5 && today.getFullYear() >= author.frontmatter.date
   return (
-    <Layout>
+    <Layout pageName={author.frontmatter.title}>
       <div className="page-title">
         <h1>{author.frontmatter.title}</h1>
         <h3>
@@ -39,7 +39,7 @@ export default function Author({
               slug={node.fields.slug}
               title={node.frontmatter.title}
               excerpt={node.excerpt}
-              authors={node.frontmatter.authors}
+              // authors={node.frontmatter.authors} // redundant 
             />
           )
         })}

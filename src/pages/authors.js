@@ -17,7 +17,7 @@ export default function Article({
   const { allMarkdownRemark } = data
 
   return (
-    <Layout>
+    <Layout pageName="Authors">
       <div className="page-title">
         <h1>Authors</h1>
         <h2>We exist</h2>

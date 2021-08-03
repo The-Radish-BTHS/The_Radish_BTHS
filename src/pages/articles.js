@@ -16,7 +16,7 @@ export default function Author({
 }) {
   const { articles } = data
   return (
-    <Layout>
+    <Layout pageName="Allticles">
       <div className="page-title">
         <h1>Allticles</h1>
         <h2>(All the articles)</h2>
