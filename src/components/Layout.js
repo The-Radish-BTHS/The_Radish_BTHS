@@ -14,18 +14,13 @@ export default function Layout({ children }) {
   return (
     <>
       <title>The Radish</title>
+      <a class="screen-reader-shortcut" href="#main-content">
+        Skip to main content
+      </a>
       <Navbar setShowSidebar={setShowSidebar} showSidebar={showSidebar} />
-      <div
-        role="button"
-        tabIndex={0}
-        className={`${showSidebar ? "blur" : ""}`}
-        onClick={() => setShowSidebar(!showSidebar)}
-        onKeyDown={(ev) => ev.keyCode===13 ? setShowSidebar(!showSidebar) : ""}
-      >
-      </div>
-      <Sidebar showSidebar={showSidebar} />
+      <Sidebar setShowSidebar={setShowSidebar} showSidebar={showSidebar} />
       <div className="rest-of-page">
-        <main>{children}</main>
+        <main id="main-content" tabindex="-1">{children}</main>
         <Footer showSidebar={showSidebar} />
       </div>
     </>

@@ -1,34 +1,43 @@
 .card {
   padding: 2ch;
-  border-radius: 3px;
-  background-color: var(--red);
+  padding-bottom: 0.5ch;
   height: fit-content;
+  border-radius: 3px;
+
+  /* stfu it works */
+  -webkit-box-shadow: 0 0 3px var(--highlight), 0 0 3px var(--highlight), 0 0 3px var(--highlight);
+  box-shadow: 0 0 3px var(--highlight), 0 0 3px var(--highlight), 0 0 3px var(--highlight);
+  /* border-bottom: 2px solid var(--highlight);
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px; */
+  /* background-color: var(--red); */
+
+  transition-duration: 0.2s;
 }
 
 .card h4 {
   margin-bottom: 1ch;
 }
 
-.card a h2 {
-  text-decoration-color: var(--highlight);
-}
-
 .card a h2:hover {
   text-decoration: underline;
-  text-decoration-color: var(--highlight);
+  text-decoration-color: var(--red);
+}
+
+.card a h1, h2, h3, h4, p:hover {
+  opacity: 0.92;
 }
 
 .card:hover {
-  background-color: var(--darker-red);
+  background-color: #0000000f;
+  -webkit-box-shadow: 0 0 5px var(--red), 0 0 5px var(--red), 0 0 5px var(--red);
+  box-shadow: 0 0 5px var(--red), 0 0 5px var(--red), 0 0 5px var(--red);
+  /* background-color: var(--darker-red); */
+
+  transition-duration: 0.2s;
 }
 
 .card a img {
-  opacity: 1;
   border-radius: 3px;
-}
-
-.card a img:hover {
-  opacity: 1 !important;
-  /* -webkit-filter: drop-shadow(2px 2px 2px rgb(29, 29, 29));
-  filter: drop-shadow(2px 2px 2px rgb(29, 29, 29)); */
+  width: 100%;
 }

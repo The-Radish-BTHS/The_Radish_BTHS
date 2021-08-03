@@ -1,9 +1,16 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/Layout"
+import Masonry from "react-masonry-css"
 
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Articard from "../components/Cards/Articard.js"
+
+const breakpointColumnsObj = {
+  default: 3,
+  1000: 2,
+  600: 1,
+}
 
 export default function Issue({
   data, // this prop will be injected by the GraphQL query below.
@@ -24,10 +31,14 @@ export default function Issue({
           </div>
         </div>
         <h3>{data.issue.frontmatter.date}</h3>
-        <a href={data.issue.frontmatter.pdf} target="_blank" rel="noreferrer" className="green-under-link">PDF</a>
+        <a href={data.issue.frontmatter.pdf} target="_blank" rel="noreferrer" className="color-under-link">PDF</a>
       </div>
       <p />
-      <div className="card-grid">
+      <Masonry
+        breakpointCols={breakpointColumnsObj}
+        className="my-masonry-grid"
+        columnClassName="my-masonry-grid_column"
+      >
         {
           data.articles.edges.map(({node}) => {
             return (
@@ -42,7 +53,7 @@ export default function Issue({
             )
           })
         }
-      </div>
+      </Masonry>
     </Layout>
   )
 }

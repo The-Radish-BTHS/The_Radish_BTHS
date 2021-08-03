@@ -23,3 +23,7 @@ footer {
   height: 40px;
   width: 40px;
 }
+
+footer a:hover {
+  opacity: 0.92;
+}

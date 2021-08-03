@@ -1,8 +1,15 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/Layout"
+import Masonry from "react-masonry-css"
 
 import Articard from "../components/Cards/Articard.js"
+
+const breakpointColumnsObj = {
+  default: 3,
+  1000: 2,
+  600: 1,
+}
 
 export default function Author({
   data, // this prop will be injected by the GraphQL query below.
@@ -20,7 +27,11 @@ export default function Author({
         </h3>
         <h3>{grad ? "Graduated "+ author.frontmatter.date : "Graduating " + author.frontmatter.date}</h3>
       </div>
-      <div className="card-grid">
+      <Masonry
+        breakpointCols={breakpointColumnsObj}
+        className="my-masonry-grid"
+        columnClassName="my-masonry-grid_column"
+      >
         {articles.edges.map(({ node }) => {
           return (
             <Articard
@@ -32,7 +43,7 @@ export default function Author({
             />
           )
         })}
-      </div>
+      </Masonry>
     </Layout>
   )
 }

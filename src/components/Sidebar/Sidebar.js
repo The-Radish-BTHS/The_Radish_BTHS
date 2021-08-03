@@ -6,7 +6,7 @@ import SearchBar from "../SearchBar/SearchBar.js"
 import SearchCard from "../Cards/SearchCard.js"
 import "./Sidebar.css"
 
-export default function Sidebar({ showSidebar }) {
+export default function Sidebar({ showSidebar, setShowSidebar }) {
   const data = useStaticQuery(graphql`
     query SearchIndexes {
       localSearchPages {
@@ -26,26 +26,36 @@ export default function Sidebar({ showSidebar }) {
 
   const sidebarClassName = `sidebar ${!showSidebar ? "sidebarHidden" : ""}`
   return (
-    <div className={sidebarClassName}>
-      <SearchBar
-        searchQuery={sidebarSearchQuery}
-        setSearchQuery={setSidebarSearchQuery}
-      />
-      <div className="side-cards">
-        {results.slice(0, 3).map(result =>
-          <SearchCard
-            key={result.id}
-            slug={result.slug}
-            title={result.title}
-            excerpt={result.excerpt}
-            date={result.date}
-          />
-        )}
-        {results.length ? <button type="submit" form="search-form">More 🠖</button> : ""}
+    <>
+      <div className={sidebarClassName}>
+        <SearchBar
+          searchQuery={sidebarSearchQuery}
+          setSearchQuery={setSidebarSearchQuery}
+        />
+        <div className="side-cards">
+          {results.slice(0, 3).map(result =>
+            <SearchCard
+              key={result.id}
+              slug={result.slug}
+              title={result.title}
+              excerpt={result.excerpt}
+              date={result.date}
+            />
+          )}
+          {results.length ? <button type="submit" form="search-form">More 🠖</button> : ""}
+        </div>
+        <Link to="/issues" className="sidebar-link">Issues</Link>
+        <Link to="/articles" className="sidebar-link">Articles</Link>
+        <Link to="/authors" className="sidebar-link">Authors</Link>
       </div>
-      <Link to="/issues" className="sidebar-link">Issues</Link>
-      <Link to="/articles" className="sidebar-link">Articles</Link>
-      <Link to="/authors" className="sidebar-link">Authors</Link>
-    </div>
+      <div
+        role="button"
+        tabIndex={0}
+        className={`${showSidebar ? "blur" : ""}`}
+        onClick={() => setShowSidebar(!showSidebar)}
+        onKeyDown={(ev) => ev.keyCode===13 ? setShowSidebar(!showSidebar) : ""}
+      >
+      </div>
+    </>
   )
 }

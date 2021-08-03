@@ -7,7 +7,7 @@ const ValidSlug = (collection, name) => `/${collection}/${name.toLowerCase().rep
 export default function Article({
   data, // this prop will be injected by the GraphQL query below.
 }) {
-  const { markdownRemark } = data 
+  const { markdownRemark } = data
   const { frontmatter, html} = markdownRemark
 
   return (
@@ -24,7 +24,7 @@ export default function Article({
                 <Link
                   to={ValidSlug("authors", author)}
                   key={index}
-                  className="green-under-link"
+                  className="color-under-link"
                 >
                   {`${author}`}
                 </Link>
@@ -35,7 +35,7 @@ export default function Article({
           {` for `}
           <Link
             to={ValidSlug("issues", frontmatter.issue)}
-            className="green-under-link"
+            className="color-under-link"
           >
             {`${frontmatter.issue}`}
           </Link>

@@ -108,7 +108,7 @@ a:visited {
 }
 
 a:hover {
-  opacity: 0.92;
+  /* opacity: 0.92; */
 }
 
 a * {
@@ -138,11 +138,7 @@ a:visited * {
   justify-content: center;
 }
 
-.green-under-link {
-  text-decoration-color: var(--highlight);
-}
-
-.green-under-link:hover {
+.color-under-link:hover {
   text-decoration: underline;
   text-decoration-color: var(--highlight);
   opacity: 0.95;
@@ -163,6 +159,7 @@ a:visited * {
 }
 
 .tag:hover {
+  opacity: 0.92;
   text-decoration: none;
 }
 
@@ -253,4 +250,21 @@ p {
     margin-left: calc(15% + 2ch);
     margin-right: calc(15% + 2ch);
   }
+}
+
+/* Skip to main content ----------------------------------------------------- */
+.screen-reader-shortcut {
+  position: absolute;
+  top: -1000em;
+}
+
+.screen-reader-shortcut:focus {
+  position: fixed;
+  top: 2ch;
+  left: 2ch;
+  z-index: 9;
+
+  padding: 1ch;
+  border-radius: 3px;
+  background-color: var(--red);
 }
