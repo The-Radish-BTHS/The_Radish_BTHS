@@ -42,6 +42,7 @@ export default function Index({
               excerpt={node.excerpt}
               title={node.frontmatter.title}
               authors={node.frontmatter.authors}
+              tags={node.frontmatter.tags}
             />
           )
         })}
@@ -88,6 +89,9 @@ export const pageQuery = graphql`
             title
             authors {
               author
+            }
+            tags {
+              tag
             }
           }
           fields {

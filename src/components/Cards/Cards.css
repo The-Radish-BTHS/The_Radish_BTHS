@@ -61,7 +61,21 @@
   background-color: #44444488;
 }
 
-.card .authors {
+.card a.tag {
+  color: var(--text-color);
+  background-color: var(--green-1);
+
+  font-size: 12px;
+  padding: 2px;
+  border-radius: 2px;
+
+  margin: 0px;
+  margin-right: 1ch;
+}
+
+.card .authors, .card .tags {
   display: inline-flex;
   margin-bottom: 1ch;
+  align-items: flex-start;
+  width: fit-content;
 }

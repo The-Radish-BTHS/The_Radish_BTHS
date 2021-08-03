@@ -1,4 +1,4 @@
 ---
 title: Purple
-color: purple
+color: green
 ---
