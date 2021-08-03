@@ -172,10 +172,29 @@ a:visited * {
   text-align: center;
 }
 
-.card-grid {
+/* Simple cards without masonry from before */
+/* .card-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(200px, 1fr));
   grid-gap: 2ch;
+} */
+
+.my-masonry-grid {
+  display: -webkit-box; /* Not needed if autoprefixing */
+  display: -ms-flexbox; /* Not needed if autoprefixing */
+  display: flex;
+  margin-left: -2ch;
+  width: auto;
+}
+
+.my-masonry-grid_column {
+  padding-left: 2ch;
+  background-clip: padding-box;
+}
+
+.my-masonry-grid_column .card {
+  margin-bottom: 2ch;
 }
 
 .tags {
@@ -204,10 +223,16 @@ p {
     width: 5px;
   }
 
-  .card-grid {
-    display: flex;
-    flex-direction: column;
-    grid-gap: 1ch;
+  .my-masonry-grid {
+    margin-left: -1ch;
+  }
+
+  .my-masonry-grid_column {
+    padding-left: 1ch;
+  }
+
+  .my-masonry-grid_column .card {
+    margin-bottom: 1ch;
   }
 
   .page-title {
@@ -227,11 +252,5 @@ p {
   main {
     margin-left: calc(15% + 2ch);
     margin-right: calc(15% + 2ch);
-  }
-}
-
-@media (max-width: 1000px) {
-  .card-grid {
-    grid-template-columns: 1fr 1fr;
   }
 }

@@ -2,6 +2,7 @@
   padding: 2ch;
   border-radius: 3px;
   background-color: var(--red);
+  height: fit-content;
 }
 
 .card h4 {
@@ -21,15 +22,13 @@
   background-color: var(--darker-red);
 }
 
-/* .card a img {
+.card a img {
   opacity: 1;
-  border-radius: 5px;
-  transition-duration: 400ms;
-} */
+  border-radius: 3px;
+}
 
-/* .card a img:hover {
+.card a img:hover {
   opacity: 1 !important;
-  transform: scale(1.02, 1.02);
-  -webkit-filter: drop-shadow(2px 2px 2px rgb(29, 29, 29));
-  filter: drop-shadow(2px 2px 2px rgb(29, 29, 29));
-} */
+  /* -webkit-filter: drop-shadow(2px 2px 2px rgb(29, 29, 29));
+  filter: drop-shadow(2px 2px 2px rgb(29, 29, 29)); */
+}

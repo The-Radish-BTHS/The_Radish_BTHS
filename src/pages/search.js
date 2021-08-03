@@ -1,10 +1,17 @@
 import React, { useState } from "react"
 import { graphql, Link } from 'gatsby';
 import Layout from "../components/Layout"
+import Masonry from "react-masonry-css"
 
 import { useFlexSearch } from 'react-use-flexsearch';
 import SearchBar from "../components/SearchBar/SearchBar.js"
 import SearchCard from "../components/Cards/SearchCard.js"
+
+const breakpointColumnsObj = {
+  default: 3,
+  1000: 2,
+  600: 1,
+}
 
 // Helpful: https://www.emgoto.com/gatsby-search/
 export default function Search({
@@ -40,7 +47,11 @@ export default function Search({
           </Link>
         )}
       </div>
-      <div className="card-grid">
+      <Masonry
+        breakpointCols={breakpointColumnsObj}
+        className="my-masonry-grid"
+        columnClassName="my-masonry-grid_column"
+      >
         {results.map(result =>
           <SearchCard
             key={result.id}
@@ -50,7 +61,7 @@ export default function Search({
             date={result.date}
           />
         )}
-      </div>
+      </Masonry>
     </Layout>
   )
 }
