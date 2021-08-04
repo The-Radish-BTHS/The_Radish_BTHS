@@ -146,8 +146,8 @@ a:visited * {
 
 .tag {
   display: inline-block;
-  background-color: var(--highlight);
-  color: var(--bg);
+  background-color: var(--red);
+  /* color: var(--bg); */
   border-radius: 3px;
   padding: 0.5rem;
   margin-right: 0.5rem;
@@ -155,10 +155,10 @@ a:visited * {
 }
 
 .tag:visited {
-  color: var(--bg);
+  /* color: var(--bg); */
 }
 
-.tag:hover {
+a.tag:hover {
   opacity: 0.92;
   text-decoration: none;
 }

@@ -50,6 +50,7 @@ export default function Issue({
                 title={node.frontmatter.title}
                 excerpt={node.excerpt}
                 authors={node.frontmatter.authors}
+                tags={node.frontmatter.tags}
                 date={node.frontmatter.date}
               />
             )
@@ -88,6 +89,9 @@ export const pageQuery = graphql`
             title
             authors {
               author
+            }
+            tags {
+              tag
             }
           }
           fields {

@@ -4,10 +4,9 @@ authors:
   - author: Aramie Ewen
 tags:
   - tag: Besticle (best article)
-  - tag: Besticle (best article)
-  - tag: Besticle (best article)
-  - tag: Besticle (best article)
-  - tag: Besticle (best article)
+  - tag: Purple
+  - tag: Bird
+  - tag: Squirrel
 issue: Peppetoni Feedback (Different Month)
 ---
 <!--StartFragment-->

@@ -39,7 +39,8 @@ export default function Author({
               slug={node.fields.slug}
               title={node.frontmatter.title}
               excerpt={node.excerpt}
-              // authors={node.frontmatter.authors} // redundant 
+              tags={node.frontmatter.tags}
+              // authors={node.frontmatter.authors} // redundant
             />
           )
         })}
@@ -70,6 +71,9 @@ export const pageQuery = graphql`
             title
             authors {
               author
+            }
+            tags {
+              tag
             }
           }
           fields {
