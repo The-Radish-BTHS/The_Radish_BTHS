@@ -69,7 +69,7 @@
 
 .sidebar-link:hover {
   text-decoration: underline;
-  text-decoration-color: var(--highlight);
+  text-decoration-color: var(--red);
 }
 
 .side-cards {

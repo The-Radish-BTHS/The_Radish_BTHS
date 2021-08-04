@@ -140,7 +140,7 @@ a:visited * {
 
 .color-under-link:hover {
   text-decoration: underline;
-  text-decoration-color: var(--highlight);
+  text-decoration-color: var(--red);
   opacity: 0.95;
 }
 
