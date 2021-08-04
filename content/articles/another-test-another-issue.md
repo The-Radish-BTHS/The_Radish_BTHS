@@ -6,6 +6,7 @@ authors:
   - author: Asiago
 tags:
   - tag: Besticle (best article)
+  - tag: Purple
 issue: Testing
 ---
 <!--StartFragment-->
