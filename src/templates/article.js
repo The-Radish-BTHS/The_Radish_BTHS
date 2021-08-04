@@ -19,17 +19,16 @@ export default function Article({
           {`Written by: `}
           {frontmatter.authors.map(({ author }, index) => {
             return (
-              <>
+              <div key={index}>
                 {`${index === frontmatter.authors.length - 1 && frontmatter.authors.length !== 1 ? " and " : ""}`}
                 <Link
                   to={ValidSlug("authors", author)}
-                  key={index}
                   className="color-under-link"
                 >
                   {`${author}`}
                 </Link>
                 {`${index < frontmatter.authors.length - 1 ? ", " : ""}`}
-              </>
+              </div>
             )
           })}
           {` for `}

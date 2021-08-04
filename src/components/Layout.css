@@ -127,6 +127,11 @@ a:visited * {
   text-align: center;
 }
 
+.page-title h4 div {
+  /* author links in articles */
+  display: inline-block;
+}
+
 .page-title .cover {
   width: 20%;
 }

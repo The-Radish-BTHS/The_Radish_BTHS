@@ -15,7 +15,34 @@ const breakpointColumnsObj = {
 export default function Index({
   data, // this prop will be injected by the GraphQL query below.
 }) {
-  const { issue, articles } = data
+  const { issues, articles } = data
+
+  const issueCards = issues.edges.map(({ node }) => {
+    return (
+      <IssueCard
+        key={node.id}
+        slug={node.fields.slug}
+        date={node.frontmatter.date}
+        title={node.frontmatter.title}
+        cover={node.fields.rel_cover}
+      />
+    )
+  })
+  const articleCards = articles.edges.map(({ node }) => {
+    return (
+      <Articard
+        key={node.id}
+        slug={node.fields.slug}
+        excerpt={node.excerpt}
+        title={node.frontmatter.title}
+        authors={node.frontmatter.authors}
+        tags={node.frontmatter.tags}
+      />
+    )
+  })
+
+  const mixed_cards = issueCards.concat(articleCards)
+
   return (
     <Layout>
       <Masonry
@@ -23,29 +50,7 @@ export default function Index({
         className="my-masonry-grid"
         columnClassName="my-masonry-grid_column"
       >
-        {issue.edges.map(({ node }) => {
-          return (
-            <IssueCard
-              key={node.id}
-              slug={node.fields.slug}
-              date={node.frontmatter.date}
-              title={node.frontmatter.title}
-              cover={node.fields.rel_cover}
-            />
-          )
-        })}
-        {articles.edges.map(({ node }) => {
-          return (
-            <Articard
-              key={node.id}
-              slug={node.fields.slug}
-              excerpt={node.excerpt}
-              title={node.frontmatter.title}
-              authors={node.frontmatter.authors}
-              tags={node.frontmatter.tags}
-            />
-          )
-        })}
+        {mixed_cards}
       </Masonry>
     </Layout>
   )
@@ -53,7 +58,7 @@ export default function Index({
 
 export const pageQuery = graphql`
   query index { # Is there a better way to get the most recent one?
-    issue: allMarkdownRemark(
+    issues: allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
       limit: 1
       filter: { fields: { slug: { regex: "^/issues/" } } }
@@ -78,7 +83,7 @@ export const pageQuery = graphql`
     }
     articles: allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
-      limit: 50
+      limit: 100
       filter: { fields: { slug: { regex: "^/articles/" } } }
     ) {
       edges {

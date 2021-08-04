@@ -13,10 +13,9 @@ export default function Articard(props) {
       </Link>
       {props.authors ? props.authors.map(({ author }, index) => {
         return (
-          <div className="authors">
+          <div className="authors" key={`${author}#${index}`}>
             <Link
               to={ValidSlug("authors", author)}
-              key={author}
               className="author"
             >
               {author}
@@ -26,10 +25,9 @@ export default function Articard(props) {
       }) : ""}
       {props.tags ? props.tags.map(({ tag }, index) => {
         return (
-          <div className="tags">
+          <div className="tags" key={`${tag}#${index}`}>
             <Link
               to={ValidSlug("tags", tag)}
-              key={tag}
               className="tag"
             >
               {`#${tag}`}
