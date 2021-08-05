@@ -53,8 +53,10 @@ export default function Article({
         })}
       </h4>
     </div>
-    <div dangerouslySetInnerHTML={{ __html: html }} />
-    </Layout>
+    <div className="article">
+      <div dangerouslySetInnerHTML={{ __html: html }} />
+    </div>
+  </Layout>
   )
 }
 
