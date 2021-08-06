@@ -4,7 +4,11 @@ import "./Navbar.css"
 
 import Radimir from "./Radimir"
 
-function Hamburger({ showSidebar, setShowSidebar }) {
+export function Hamburger({ showSidebar, setShowSidebar, isSidebar }) {
+  console.log(isSidebar)
+  const lineClass = !showSidebar ? ""
+    : isSidebar ? "closed"
+    : "conceal-dont-feel"
   return (
     <div
       role="button"
@@ -13,9 +17,9 @@ function Hamburger({ showSidebar, setShowSidebar }) {
       onClick={() => setShowSidebar(!showSidebar)}
       onKeyDown={(ev) => ev.keyCode===13 ? setShowSidebar(!showSidebar) : ""}
     >
-      <div className={`${showSidebar ? "closed" : ""}`} />
-      <div className={`${showSidebar ? "closed" : ""}`} />
-      <div className={`${showSidebar ? "closed" : ""}`} />
+      <div className={lineClass} />
+      <div className={lineClass} />
+      <div className={lineClass} />
     </div>
   )
 }

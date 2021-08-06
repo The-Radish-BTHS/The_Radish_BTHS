@@ -24,15 +24,15 @@
   text-decoration-color: var(--red);
 }
 
-.card a h1, h2, h3, h4, p:hover {
+.card a h1, .card a h2, .card a h3, .card a h4, .card a p:hover {
   opacity: 0.92;
 }
 
 .card:hover {
   background-color: #0000000f;
   transform: translate(0, -2px);
-  -webkit-box-shadow: 0 0 5px var(--red), 0 0 5px var(--red);
-  box-shadow: 0 0 5px var(--red), 0 0 5px var(--red);
+  -webkit-box-shadow: 0 0 5px var(--red), 0 0 5px var(--red), 0 0 5px var(--red);
+  box-shadow: 0 0 5px var(--red), 0 0 5px var(--red), 0 0 5px var(--red);
   transition-duration: 150ms;
 }
 

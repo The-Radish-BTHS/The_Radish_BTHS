@@ -140,6 +140,8 @@ module.exports = {
       },
     },
 
+    `gatsby-plugin-portal`,
+
     // {
     //   resolve: `gatsby-transformer-remark`,
     //   options: {

@@ -1,12 +1,17 @@
-import React, { useState } from "react"
+import React, { useState, useEffect, useImperativeHandle, forwardRef, useCallback } from "react"
+import { createPortal } from 'react-dom'
 import { useStaticQuery, graphql, Link } from "gatsby"
 import { useFlexSearch } from 'react-use-flexsearch';
 
+import { Hamburger } from "../Navbar/Navbar.js"
 import SearchBar from "../SearchBar/SearchBar.js"
 import SearchCard from "../Cards/SearchCard.js"
 import "./Sidebar.css"
 
-export default function Sidebar({ showSidebar, setShowSidebar }) {
+const portalRoot = typeof document !== `undefined` ? document.getElementById('portal') : null
+
+export function Sidebar({ showSidebar, setShowSidebar }, ref) {
+  // Search --------------------------------------------------------------------
   const data = useStaticQuery(graphql`
     query SearchIndexes {
       localSearchPages {
@@ -17,17 +22,45 @@ export default function Sidebar({ showSidebar, setShowSidebar }) {
   `)
   const { localSearchPages } = data;
   const { index, store } = localSearchPages;
-
   const isBrowser = typeof window !== "undefined"; // SSR error
   const { search } = isBrowser ? window.location : '';
   const query = search ? new URLSearchParams(search).get('s') : '';
   const [sidebarSearchQuery, setSidebarSearchQuery] = useState(query || '');
   const results = useFlexSearch(sidebarSearchQuery, index, store);
 
-  const sidebarClassName = `sidebar ${!showSidebar ? "sidebarHidden" : ""}`
-  return (
+  // Handle modal things -------------------------------------------------------
+  const close = useCallback(() => setShowSidebar(false), [])
+  useImperativeHandle(ref, () => ({
+    open: () => setShowSidebar(true),
+    close
+  }), [close])
+
+  const handleEscape = useCallback(event => {
+    if (event.keyCode === 27) close()
+  }, [close])
+
+  useEffect(() => {
+    if (showSidebar) document.addEventListener('keydown', handleEscape, false)
+    return () => {
+      document.removeEventListener('keydown', handleEscape, false)
+    }
+  }, [handleEscape, showSidebar])
+
+  /* Would slide in the thing */
+  /* https://stackoverflow.com/questions/40463173/swipe-effect-in-react-js */
+
+  // const sidebarClassName = `sidebar ${!showSidebar ? "sidebarHidden" : ""}`
+
+  console.log(portalRoot);
+  return portalRoot ? createPortal(
+    showSidebar ? (
     <>
-      <div className={sidebarClassName}>
+      <Hamburger
+        setShowSidebar={setShowSidebar}
+        showSidebar={showSidebar}
+        isSidebar={true}
+      />
+      <div className="sidebar">
         <SearchBar
           searchQuery={sidebarSearchQuery}
           setSearchQuery={setSidebarSearchQuery}
@@ -57,5 +90,9 @@ export default function Sidebar({ showSidebar, setShowSidebar }) {
       >
       </div>
     </>
-  )
+    ) : null,
+    portalRoot
+  ) : null
 }
+
+export default forwardRef(Sidebar)

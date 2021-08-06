@@ -50,7 +50,7 @@ nav a {
 .burger {
   display: inline-block;
   cursor: pointer;
-
+  z-index: 2;
   position: absolute;
   top: 3ch;
   left: 2ch;
@@ -61,6 +61,14 @@ nav a {
   height: 5px;
   background-color: var(--highlight);
   margin: 6px 0;
+  transition: 0.4s;
+}
+
+.conceal-dont-feel {
+  display: none;
+}
+
+.closed {
   transition: 0.4s;
 }
 

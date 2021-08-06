@@ -4,7 +4,7 @@ import "./Footer.css"
 import {
   Instagram,
   Twitter,
-  // Discord, 
+  // Discord,
   Email
 } from "./socialsIcons/index"
 
@@ -16,6 +16,8 @@ function SocialLink({ children, to }) {
   )
 }
 
+// Maybe we could make these staticimages instead 
+// https://www.gatsbyjs.com/docs/how-to/images-and-media/using-gatsby-plugin-image/#static-images
 export default function Footer() {
   return (
     <footer className="footer">

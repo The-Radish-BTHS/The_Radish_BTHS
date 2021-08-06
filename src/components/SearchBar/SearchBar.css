@@ -6,7 +6,7 @@
   display: none;
 }
 
-.search-form input {  
+.search-form input {
   margin-left: 25%;
   width: 50%;
   padding: 1ch;
@@ -25,7 +25,12 @@
 .search-form input:focus, .search-form input:hover {
   outline: none;
   border-color: var(--red);
+  transition-duration: 0.2s;
+}
 
+.search-form input:focus {
+  -webkit-box-shadow: 0 0 5px var(--red);
+  box-shadow: 0 0 5px var(--red);
   transition-duration: 0.2s;
 }
 
