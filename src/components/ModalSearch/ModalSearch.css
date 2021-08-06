@@ -4,6 +4,8 @@
 
   z-index: 1;
   position: fixed;
+  top: 0%;
+  left: 0%;
 
   transition: 0.3s ease;
 
@@ -16,11 +18,18 @@
   overflow-y: hidden;
 }
 
-.sidebar {
-  text-align: right;
+.modal {
+  text-align: center;
+  height: 80%;
+  max-height: 80%;
+  width: 60%;
+  max-width: 100%;
+  overflow-y: auto;
 
-  height: 100vh;
-  width: 50%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
   z-index: 2;
   overflow-y: scroll;
@@ -31,20 +40,17 @@
 
   grid-gap: 2ch;
 
-  position: fixed;
-  left: 0px;
-  top: 10ch;
-
-  border-right: 2px solid var(--highlight);
+  border-radius: 3px;
+  border: 2px solid var(--highlight);
   background-color: var(--bg);
+  -webkit-box-shadow: 0 0 10px var(--highlight);
+  box-shadow: 0 0 10px var(--highlight);
 
   padding: 2ch;
   overflow-x: hidden;
-
-  transition: 0.3s ease;
 }
 
-.sidebar input {
+.modal input {
   margin-bottom: -3ch;
 
   /* Cancelling out SearchBar.css */
@@ -52,7 +58,7 @@
   margin-left: 0%;
 }
 
-.sidebar button {
+.modal button {
   background-color: var(--bg);
   /* color: var(--bg); */
   color: var(--text-color);
@@ -67,25 +73,22 @@
   transition-duration: 0.2s;
 }
 
-.sidebar button:hover {
+.modal button:hover {
   border-color: var(--red);
   opacity: 0.92;
 
   transition-duration: 0.2s;
 }
 
-.sidebar .card {
+.modal .card {
   text-align: left;
 }
 
-/* Hush */
-/* .sidebar .card a *:not(h2):hover {
-  text-decoration: none;
-  text-decoration-color: transparent;
-  background-color: red;
-} */
+.modal-link {
+  font-size: 1.2rem;
+}
 
-.sidebar-link:hover {
+.modal-link:hover {
   text-decoration: underline;
   text-decoration-color: var(--red);
 }
@@ -96,19 +99,16 @@
   grid-gap: 1ch;
 }
 
-/* Would slide in the thing */
-/* https://stackoverflow.com/questions/40463173/swipe-effect-in-react-js */
-.sidebarHidden {
-  transform: translateX(-100%);
-  transition-duration: 0.2s;
-}
-
 @media (max-width: 600px) {
-  .sidebar {
-    top: 5ch;
-    width: 40%;
-    text-align: center;
-    grid-gap: 2ch;
-    padding: 2ch;
+  .modal {
+    height: 90%;
+    max-height: 100%;
+    width: 80%;
+    text-align: left;
+    grid-gap: 1ch;
+  }
+
+  .modal-link {
+    padding-top: 2ch;
   }
 }

@@ -6,7 +6,7 @@ export default function Radamir() {
       id="svg"
       xmlns="http://www.w3.org/2000/svg"
       xlink="http://www.w3.org/1999/xlink"
-      width="40"
+      width="2ch"
       viewBox="0, 0, 400,400"
       className="radimir"
     >

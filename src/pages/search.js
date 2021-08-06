@@ -26,6 +26,8 @@ export default function Search({
   const [searchQuery, setSearchQuery] = useState(query || '');
   const results = useFlexSearch(searchQuery, index, store);
 
+  console.log(results)
+
   return (
     <Layout pageName="Search">
       <div className="page-title">
@@ -37,7 +39,7 @@ export default function Search({
         setSearchQuery={setSearchQuery}
       />
       <div className="tags">
-        {edges.map(({ node }) =>
+        {results.length ? null : edges.map(({ node }) =>
           <Link
             to={node.fields.slug}
             key={node.id}

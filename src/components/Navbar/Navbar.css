@@ -41,8 +41,15 @@ nav a {
   align-items: center;
 }
 
-.radimir path {
+.radimir path, .search path {
+  width: 2ch;
   fill: var(--highlight);
+}
+
+.search {
+  position: absolute;
+  right: 2ch;
+  top: 2ch;
 }
 
 /* Closeburger button */
@@ -94,6 +101,12 @@ nav a {
     /* padding-top: 1ch;
     padding-bottom: 1ch;
     padding-left: 0ch; */
+  }
+
+  .search {
+    position: absolute;
+    right: 1ch;
+    top: .5ch;
   }
 
   .burger {

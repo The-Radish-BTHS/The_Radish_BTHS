@@ -2,13 +2,13 @@ import React from "react"
 import { Link } from "gatsby"
 import "./Navbar.css"
 
-import Radimir from "./Radimir"
+import {
+  Search,
+  Radimir
+} from "./NavIcons/index"
 
-export function Hamburger({ showSidebar, setShowSidebar, isSidebar }) {
-  console.log(isSidebar)
-  const lineClass = !showSidebar ? ""
-    : isSidebar ? "closed"
-    : "conceal-dont-feel"
+export function Hamburger({ showSidebar, setShowSidebar }) {
+  const lineClass = !showSidebar ? "" : "closed";
   return (
     <div
       role="button"
@@ -25,8 +25,8 @@ export function Hamburger({ showSidebar, setShowSidebar, isSidebar }) {
 }
 
 // Use Radimir instead of name on small screens
-export default function Navbar({ setShowSidebar, showSidebar }) {
-  // Logic for making the navbar change on scroll (could make it shrink or smth)
+export default function Navbar({ setShowSidebar, showSidebar, setShowModal, showModal }) {
+  // Logic for making the navbar change on scroll
   // const handleResize = () => {
   //     const offset = window.scrollY;
   //     let navbar = document.getElementById("navbar");
@@ -49,6 +49,18 @@ export default function Navbar({ setShowSidebar, showSidebar }) {
         showSidebar={showSidebar}
       />
       <Link to="/" id="name"><Radimir />The Radish</Link>
+      <div
+        role="button"
+        tabIndex={0}
+        className=""
+        onClick={() => {
+          setShowModal(!showModal)
+          setShowSidebar(!showSidebar)
+        }}
+        onKeyDown={(ev) => ev.keyCode===13 ? setShowModal(!showModal) : ""}
+      >
+        <Search />
+      </div>
       {
         // <Link to="/search" id="nav-search">Search</Link>
       }

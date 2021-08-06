@@ -6,9 +6,9 @@ import Masonry from "react-masonry-css"
 import IssueCard from "../components/Cards/IssueCard.js"
 
 const breakpointColumnsObj = {
-  default: 3,
-  1000: 2,
-  600: 1,
+  default: 4,
+  1000: 3,
+  600: 2,
 }
 
 export default function Issues({
