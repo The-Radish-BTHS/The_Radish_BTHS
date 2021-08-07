@@ -153,6 +153,12 @@ a.tag:hover {
   text-decoration: none;
 }
 
+h1 .query, h3 .query {
+  background-color: #0000002f;
+  padding: 4px;
+  border-radius: 3px;
+}
+
 /* Card grids and page titles ----------------------------------------------- */
 
 .page-title {

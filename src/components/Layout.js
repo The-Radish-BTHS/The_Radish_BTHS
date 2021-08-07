@@ -33,7 +33,7 @@ export default function Layout({ children, pageName }) {
         ref={modal}
       />
       <div className="rest-of-page">
-        <main id="main-content" tabIndex="-1">{children}</main>
+        <main id="main-content">{children}</main>
         <Footer showSidebar={showSidebar} />
       </div>
     </>

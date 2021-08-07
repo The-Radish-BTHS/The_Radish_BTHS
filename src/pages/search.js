@@ -38,16 +38,25 @@ export default function Search({
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
       />
+      <div className="page-title">
+        {searchQuery && !results.length ? <h3>No results for <span className="query">{searchQuery}</span></h3>
+          : null
+        }
+        {searchQuery && results.length ? <h1>Results for <span className="query">{searchQuery}</span>:</h1>
+          : <h1>All tags:</h1>
+        }
+      </div>
       <div className="tags">
-        {results.length ? null : edges.map(({ node }) =>
-          <Link
-            to={node.fields.slug}
-            key={node.id}
-            className="tag"
-          >
-            {`#${node.frontmatter.title}`}
-          </Link>
-        )}
+        {results.length ? null :
+          edges.map(({ node }) =>
+            <Link
+              to={node.fields.slug}
+              key={node.id}
+              className="tag"
+            >
+              {`#${node.frontmatter.title}`}
+            </Link>
+          )}
       </div>
       <Masonry
         breakpointCols={breakpointColumnsObj}
