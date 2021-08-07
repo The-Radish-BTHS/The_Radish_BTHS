@@ -50,8 +50,8 @@ export default function Author({
 }
 
 export const pageQuery = graphql`
-  query author ($title: String!) {
-    author: markdownRemark(frontmatter: { title: { eq: $title } }) {
+  query author ($slug: String!, $title: String!) {
+    author: markdownRemark(fields: { slug: { eq: $slug } }) {
       frontmatter {
         date
         title

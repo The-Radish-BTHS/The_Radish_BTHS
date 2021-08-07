@@ -61,8 +61,8 @@ export default function Issue({
 }
 
 export const pageQuery = graphql`
-  query issue ($title: String!) {
-    issue: markdownRemark(frontmatter: {title: {eq: $title}}) {
+  query issue ($slug: String!, $title: String!) {
+    issue: markdownRemark(fields: { slug: { eq: $slug } }) {
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         title
