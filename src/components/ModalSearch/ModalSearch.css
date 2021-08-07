@@ -46,6 +46,35 @@
 
   padding: 2ch;
   overflow-x: hidden;
+
+  animation: fade-in 300ms 1 linear;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+@keyframes fade {
+  0% {
+    /* animation-timing-function: cubic-bezier(0.2242, 0.7499, 0.3142, 0.8148); */
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.modal.fade {
+  animation: fade 300ms 1 linear;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+.modal.fade-out {
+  animation-name: fade;
+  animation-duration: 800ms;
+  animation-direction: reverse;
+  animation-fill-mode: forwards;
+  transition-timing-function: linear;
+  opacity: 1;
 }
 
 .modal input {

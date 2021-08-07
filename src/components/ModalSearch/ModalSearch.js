@@ -27,8 +27,14 @@ export function Modal({ showModal, setShowModal }, ref) {
   const [ModalSearchQuery, setModalSearchQuery] = useState(query || '');
   const results = useFlexSearch(ModalSearchQuery, index, store);
 
-  // Handle modal things -------------------------------------------------------
-  const close = useCallback(() => setShowModal(false), [])
+  // Modal things -------------------------------------------------------
+  const close = useCallback(() => {
+    const _modal = document.getElementById("modal")
+    const _blur = document.getElementById("modalSearch-blurry-bg")
+    _blur.classList.remove("blur")
+    _modal.classList.add("fade-out")
+    setTimeout(() => setShowModal(false), 200);
+  }, [])
   useImperativeHandle(ref, () => ({
     open: () => setShowModal(true),
     close
@@ -48,7 +54,7 @@ export function Modal({ showModal, setShowModal }, ref) {
   return portalRoot ? createPortal(
     showModal ? (
     <>
-      <div className="modal">
+      <div className="modal fade" id="modal">
         <SearchBar
           searchQuery={ModalSearchQuery}
           setSearchQuery={setModalSearchQuery}
@@ -73,7 +79,8 @@ export function Modal({ showModal, setShowModal }, ref) {
         role="button"
         tabIndex={0}
         className={`${showModal ? "blur" : ""}`}
-        onClick={() => setShowModal(!showModal)}
+        id="modalSearch-blurry-bg"
+        onClick={close}
         onKeyDown={(ev) => ev.keyCode===13 ? setShowModal(!showModal) : ""}
       >
       </div>
