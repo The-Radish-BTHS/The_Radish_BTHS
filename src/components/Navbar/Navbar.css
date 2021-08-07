@@ -24,6 +24,8 @@ nav {
 
   overflow-x: hidden;
   overflow-y: hidden;
+
+  transition: 0.3s linear;
 }
 
 nav *:hover {
@@ -32,6 +34,11 @@ nav *:hover {
 
 nav a {
   padding: 1rem;
+}
+
+.nobar {
+  top: -12ch;
+  transition: 0.3s linear;
 }
 
 #name {
