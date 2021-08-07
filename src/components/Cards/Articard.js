@@ -38,17 +38,3 @@ export default function Articard(props) {
     </div>
   )
 }
-
-// <h4>
-//   {frontmatter.tags.map(({ tag }, index) => {
-//     return (
-//       <Link
-//         to={ValidSlug('tags', tag)}
-//         key={index}
-//         className="tag"
-//       >
-//         {`#${tag}`}
-//       </Link>
-//     )
-//   })}
-// </h4>

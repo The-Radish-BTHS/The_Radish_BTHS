@@ -1,44 +1,23 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/Layout"
+import Masonry from "react-masonry-css"
+
+import Articard from "../components/Cards/Articard.js"
 
 const ValidSlug = (collection, name) => `/${collection}/${name.toLowerCase().replace(/[/|\\:*?"<>()]/g, '').replace(/ /g, "-")}`;
+
+const breakpointColumnsObj = {
+  default: 3,
+  1000: 2,
+  600: 1,
+}
 
 export default function Article({
   data, // this prop will be injected by the GraphQL query below.
 }) {
-  const { markdownRemark } = data
-  const { frontmatter, html} = markdownRemark
-
-  // const readMore = useStaticQuery(graphql`
-  //   query readMore {
-  //     articles: allMarkdownRemark(
-  //       filter: {
-  //         frontmatter: {issue: {eq: ${frontmatter.issue}}},
-  //         fields: {slug: {regex: "^/articles/"}}
-  //       }
-  //     ) {
-  //       edges {
-  //         node {
-  //           id
-  //           excerpt(pruneLength: 200)
-  //           frontmatter {
-  //             title
-  //             authors {
-  //               author
-  //             }
-  //             tags {
-  //               tag
-  //             }
-  //           }
-  //           fields {
-  //             slug
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  // `)
+  const { article, more } = data
+  const { frontmatter, html} = article
 
   return (
     <Layout pageName={frontmatter.title}>
@@ -50,14 +29,14 @@ export default function Article({
           {frontmatter.authors.map(({ author }, index) => {
             return (
               <div key={index}>
-                {`${index === frontmatter.authors.length - 1 && frontmatter.authors.length !== 1 ? " and " : ""}`}
+                {`${index === frontmatter.authors.length - 1 && frontmatter.authors.length !== 1 ? ` and ` : ``}`}
                 <Link
                   to={ValidSlug("authors", author)}
                   className="color-under-link"
                 >
                   {`${author}`}
                 </Link>
-                {`${index < frontmatter.authors.length - 1 ? ", " : ""}`}
+                {`${index < frontmatter.authors.length - 1 ? `, ` : ``}`}
               </div>
             )
           })}
@@ -69,30 +48,68 @@ export default function Article({
             {`${frontmatter.issue}`}
           </Link>
       </h4>
-      <h4>
-        {frontmatter.tags.map(({ tag }, index) => {
-          return (
-            <Link
-              to={ValidSlug('tags', tag)}
-              key={index}
-              className="tag"
-            >
-              {`#${tag}`}
-            </Link>
-          )
-        })}
-      </h4>
     </div>
     <div className="article">
       <div dangerouslySetInnerHTML={{ __html: html }} />
     </div>
+    <h4>
+      {frontmatter.tags ?
+        <>
+          {`Tags: `}
+          {frontmatter.tags.map(({ tag }, index) => {
+            return (
+              <Link
+                to={ValidSlug('tags', tag)}
+                key={index}
+                className="tag"
+              >
+                {`#${tag}`}
+              </Link>
+            )
+          })}
+        </>
+        : null
+      }
+    </h4>
+    <h2 className="more">
+      {more.edges.length ?
+        <>
+          {`More from `}
+          <Link
+            to={ValidSlug("issues", frontmatter.issue)}
+            className="color-under-link"
+          >
+            {`${frontmatter.issue}`}
+          </Link>
+        </>
+        : null
+      }
+    </h2>
+    <Masonry
+      breakpointCols={breakpointColumnsObj}
+      className="my-masonry-grid"
+      columnClassName="my-masonry-grid_column"
+    >
+      {more.edges.map(({ node }) => {
+        return (
+          <Articard
+            key={node.id}
+            slug={node.fields.slug}
+            title={node.frontmatter.title}
+            excerpt={node.excerpt}
+            tags={node.frontmatter.tags}
+            // authors={node.frontmatter.authors} // Might be redundant
+          />
+        )
+      })}
+    </Masonry>
   </Layout>
   )
 }
 
 export const pageQuery = graphql`
-  query article ($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+  query article ($title: String!, $issue: String!) {
+    article: markdownRemark(frontmatter: { title: { eq: $title } }) {
       html
       frontmatter {
         title
@@ -102,6 +119,28 @@ export const pageQuery = graphql`
         }
         tags {
           tag
+        }
+      }
+    }
+    more: allMarkdownRemark(
+      filter: {frontmatter: { issue: {eq: $issue}, title: {ne: $title}}, fields: {slug: {regex: "^/articles/"}}}
+    ) {
+      edges {
+        node {
+          id
+          excerpt(pruneLength: 200)
+          frontmatter {
+            title
+            authors {
+              author
+            }
+            tags {
+              tag
+            }
+          }
+          fields {
+            slug
+          }
         }
       }
     }
