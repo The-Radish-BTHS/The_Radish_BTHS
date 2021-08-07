@@ -11,8 +11,8 @@
 
   /* background-color: var(--o-white); */
   background-color: #0000003e;
-  /* -webkit-backdrop-filter: blur(1px);
-  backdrop-filter: blur(1px); */
+  -webkit-backdrop-filter: blur(1px);
+  backdrop-filter: blur(1px);
 
   overflow-x: hidden;
   overflow-y: hidden;
