@@ -40,7 +40,7 @@ export default function Author({
               title={node.frontmatter.title}
               excerpt={node.excerpt}
               tags={node.frontmatter.tags}
-              // authors={node.frontmatter.authors} // redundant
+              // authors={node.frontmatter.authors} // Might be redundant
             />
           )
         })}
@@ -50,8 +50,8 @@ export default function Author({
 }
 
 export const pageQuery = graphql`
-  query author ($slug: String!, $title: String!) {
-    author: markdownRemark(fields: { slug: { eq: $slug } }) {
+  query author ($title: String!) {
+    author: markdownRemark(frontmatter: { title: { eq: $title } }) {
       frontmatter {
         date
         title

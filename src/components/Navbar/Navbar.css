@@ -78,10 +78,6 @@ nav a {
   transition: 0.4s;
 }
 
-.conceal-dont-feel {
-  display: none;
-}
-
 .closed {
   transition: 0.4s;
 }

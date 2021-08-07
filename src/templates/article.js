@@ -10,6 +10,36 @@ export default function Article({
   const { markdownRemark } = data
   const { frontmatter, html} = markdownRemark
 
+  // const readMore = useStaticQuery(graphql`
+  //   query readMore {
+  //     articles: allMarkdownRemark(
+  //       filter: {
+  //         frontmatter: {issue: {eq: ${frontmatter.issue}}},
+  //         fields: {slug: {regex: "^/articles/"}}
+  //       }
+  //     ) {
+  //       edges {
+  //         node {
+  //           id
+  //           excerpt(pruneLength: 200)
+  //           frontmatter {
+  //             title
+  //             authors {
+  //               author
+  //             }
+  //             tags {
+  //               tag
+  //             }
+  //           }
+  //           fields {
+  //             slug
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // `)
+
   return (
     <Layout pageName={frontmatter.title}>
       <div className="page-title">

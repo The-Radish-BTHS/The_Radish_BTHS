@@ -51,7 +51,6 @@ export default function Issue({
                 excerpt={node.excerpt}
                 authors={node.frontmatter.authors}
                 tags={node.frontmatter.tags}
-                date={node.frontmatter.date}
               />
             )
           })
@@ -62,8 +61,8 @@ export default function Issue({
 }
 
 export const pageQuery = graphql`
-  query issue ($slug: String!, $title: String!) {
-    issue: markdownRemark(fields: {slug: {eq: $slug}}) {
+  query issue ($title: String!) {
+    issue: markdownRemark(frontmatter: {title: {eq: $title}}) {
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         title
@@ -85,7 +84,6 @@ export const pageQuery = graphql`
           id
           excerpt(pruneLength: 200)
           frontmatter {
-            date(formatString: "MMMM DD, YYYY")
             title
             authors {
               author
