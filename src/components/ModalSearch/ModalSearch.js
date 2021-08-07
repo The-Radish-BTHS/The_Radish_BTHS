@@ -69,11 +69,8 @@ export function Modal({ showModal, setShowModal }, ref) {
               date={result.date}
             />
           )}
-          {results.length ? <button type="submit" form="search-form">More</button> : ""}
+          {results.length ? <button type="submit" form="search-form">More</button> : null}
         </div>
-        <Link to="/issues" className="modal-link">Issues</Link>
-        <Link to="/articles" className="modal-link">Articles</Link>
-        <Link to="/authors" className="modal-link">Authors</Link>
       </div>
       <div
         role="button"
