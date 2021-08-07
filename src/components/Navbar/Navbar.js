@@ -9,13 +9,22 @@ import {
 
 export function Hamburger({ showSidebar, setShowSidebar }) {
   const lineClass = !showSidebar ? "" : "closed";
+
+  const toggle = () => {
+    const sidebar = document.getElementById("sidebar")
+    if (sidebar) {
+      sidebar.classList.add("slide-out")
+    }
+    setTimeout(() => setShowSidebar(!showSidebar), 300)
+  }
+
   return (
     <div
       role="button"
       tabIndex={0}
       className="burger"
-      onClick={() => setShowSidebar(!showSidebar)}
-      onKeyDown={(ev) => ev.keyCode===13 ? setShowSidebar(!showSidebar) : ""}
+      onClick={toggle}
+      onKeyDown={(ev) => ev.keyCode===13 ? toggle : ""}
     >
       <div className={lineClass} />
       <div className={lineClass} />

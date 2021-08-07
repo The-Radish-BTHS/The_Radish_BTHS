@@ -32,8 +32,11 @@
   grid-gap: 2ch;
 
   position: fixed;
-  left: 0px;
   top: 10ch;
+  /* left: 0px; */
+
+  transform: translateX(-100%);
+  -webkit-transform: translateX(-100%);
 
   border-right: 2px solid var(--highlight);
   background-color: var(--bg);
@@ -41,7 +44,7 @@
   padding: 2ch;
   overflow-x: hidden;
 
-  transition: 0.3s ease;
+  /* transition: 0.3s ease; */
 }
 
 .sidebar input {
@@ -93,12 +96,10 @@
   grid-gap: 1ch;
 }
 
-/* Would slide in the thing */
-/* https://stackoverflow.com/questions/40463173/swipe-effect-in-react-js */
-.sidebarHidden {
+/* .sidebarHidden {
   transform: translateX(-100%);
   transition-duration: 0.2s;
-}
+} */
 
 @media (max-width: 600px) {
   .sidebar {
@@ -108,4 +109,32 @@
     grid-gap: 2ch;
     padding: 2ch;
   }
+}
+
+.slide-in {
+  animation: slide-in 200ms forwards linear;
+  -webkit-animation: slide-in 200ms forwards linear;
+}
+
+.slide-out {
+  animation: slide-out 300ms forwards linear;
+  -webkit-animation: slide-out 300ms forwards linear;
+}
+
+@keyframes slide-in {
+  100% { transform: translateX(0%); }
+}
+
+@-webkit-keyframes slide-in {
+  100% { -webkit-transform: translateX(0%); }
+}
+
+@keyframes slide-out {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+
+@-webkit-keyframes slide-out {
+  0% { -webkit-transform: translateX(0%); }
+  100% { -webkit-transform: translateX(-100%); }
 }

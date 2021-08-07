@@ -75,11 +75,8 @@ nav a {
   height: 5px;
   background-color: var(--highlight);
   margin: 6px 0;
-  transition: 0.4s;
-}
 
-.closed {
-  transition: 0.4s;
+  transition-duration: 100ms;
 }
 
 .closed:nth-child(1) {

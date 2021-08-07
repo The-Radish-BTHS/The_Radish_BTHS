@@ -4,9 +4,16 @@ import { Link } from "gatsby"
 import "./Sidebar.css"
 
 export default function Sidebar({ showSidebar, setShowSidebar }) {
+  const close = () => {
+    const sidebar = document.getElementById("sidebar")
+    sidebar.classList.add("slide-out")
+    setTimeout(() => setShowSidebar(false), 300);
+  }
+
   return (
-    <>
-      <div className={`sidebar ${showSidebar ? "" : "sidebarHidden"}`}>
+    showSidebar ?
+    <div id="sidebar">
+      <div className={`sidebar slide-in ${showSidebar ? "" : "sidebarHidden"}`}>
         <Link to="/issues" className="sidebar-link">Issues</Link>
         <Link to="/articles" className="sidebar-link">Articles</Link>
         <Link to="/authors" className="sidebar-link">Authors</Link>
@@ -15,10 +22,11 @@ export default function Sidebar({ showSidebar, setShowSidebar }) {
         role="button"
         tabIndex={0}
         className={`${showSidebar ? "blur" : ""}`}
-        onClick={() => setShowSidebar(!showSidebar)}
-        onKeyDown={(ev) => ev.keyCode===13 ? setShowSidebar(!showSidebar) : ""}
+        onClick={close}
+        onKeyDown={(ev) => ev.keyCode===13 ? close : ""}
       >
       </div>
-    </>
+    </div>
+    : null
   )
 }
