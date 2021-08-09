@@ -105,7 +105,7 @@
   .sidebar {
     top: 5ch;
     width: 50%;
-    grid-gap: 2ch;
+    grid-gap: 3ch;
     padding: 2ch;
   }
 }

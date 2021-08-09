@@ -16,7 +16,7 @@ export default function SearchBar({ searchQuery, setSearchQuery }) {
             onInput={(e) => setSearchQuery(e.target.value)}
             type="text"
             id="search"
-            placeholder="Search The Radish..."
+            placeholder="Find a radish..."
             name="s"
             autoFocus
         />
