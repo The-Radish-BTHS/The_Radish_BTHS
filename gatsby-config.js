@@ -109,16 +109,6 @@ module.exports = {
           }
         }
         `,
-
-        // Field used as the reference value for each document.
-        // Default: 'id'.
-        ref: 'id',
-
-        // List of keys to index. The values of the keys are taken from the
-        // normalizer function below.
-        // Default: all fields
-        index: ['title', 'body', 'date'],
-
         // List of keys to store and make available in your UI. The values of
         // the keys are taken from the normalizer function below.
         // Default: all fields

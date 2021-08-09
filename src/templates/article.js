@@ -98,7 +98,7 @@ export default function Article({
             title={node.frontmatter.title}
             excerpt={node.excerpt}
             tags={node.frontmatter.tags}
-            // authors={node.frontmatter.authors} // Might be redundant
+            authors={node.frontmatter.authors} 
           />
         )
       })}
