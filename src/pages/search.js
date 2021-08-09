@@ -26,8 +26,6 @@ export default function Search({
   const [searchQuery, setSearchQuery] = useState(query || '');
   const results = useFlexSearch(searchQuery, index, store);
 
-  console.log(results)
-
   return (
     <Layout pageName="Search">
       <div className="page-title">

@@ -1,5 +1,5 @@
 ---
 title: Aramie Ewen
-position: writer
+position: CEO (Chief Editing Officer)
 date: "2023"
 ---

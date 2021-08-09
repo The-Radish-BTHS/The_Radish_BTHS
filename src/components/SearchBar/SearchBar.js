@@ -18,7 +18,7 @@ export default function SearchBar({ searchQuery, setSearchQuery }) {
             id="search"
             placeholder="Search The Radish..."
             name="s"
-            autofocus
+            autoFocus
         />
     </form>
   )
