@@ -26,7 +26,7 @@
   overflow-y: auto;
 
   position: fixed;
-  top: 10ch;
+  top: calc(10ch - 1px); /* I want it to fit snugly */
   left: 50%;
   transform: translate(-50%, 0);
 
@@ -130,10 +130,11 @@
 
 @media (max-width: 600px) {
   .modal {
-    width: 90%;
+    width: 100%;
+    padding: 1ch;
     text-align: left;
     grid-gap: 1ch;
-    top: 5ch;
+    top: calc(5ch - 1px);
   }
 
   .modal-link {

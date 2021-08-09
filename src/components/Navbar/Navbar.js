@@ -63,10 +63,10 @@ export default function Navbar({ setShowSidebar, showSidebar, setShowModal, show
         // }
 
         // For some reason it only seems to work when we check for showSidebar in both statements??
-        if (offset > scrollPos && !showSidebar) {
+        if (offset > scrollPos && !showSidebar && !showModal) {
           setScrollingDown(true)
         }
-        else if (offset < scrollPos || showSidebar) {
+        else if (offset < scrollPos || showSidebar || showModal) {
           setScrollingDown(false)
         }
         setScrollPos(offset <= 0 ? 0 : offset)
