@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useImperativeHandle, forwardRef, useCallback } from "react"
 import { createPortal } from 'react-dom'
-import { useStaticQuery, graphql, Link } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 import { useFlexSearch } from 'react-use-flexsearch';
 
 import SearchBar from "../SearchBar/SearchBar.js"

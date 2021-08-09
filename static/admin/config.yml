@@ -26,6 +26,13 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "PDF url", name: "pdf", widget: "string" }
+      - {
+          label: "Description",
+          name: "description",
+          widget: "markdown",
+          required: false,
+          minimal: true
+        }
 
   - name: "article"
     label: "Article"
@@ -33,7 +40,6 @@ collections:
     create: true
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Body", name: "body", widget: "markdown" }
       - label: "Authors"
         name: "authors"
         widget: "list"
@@ -61,6 +67,8 @@ collections:
         search_fields: ["title"]
         value_field: "title"
         display_fields: ["title"]
+      - {label: "Description", name: "description", widget: "markdown", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
 
   - name: "author"
     label: "Author"
@@ -68,13 +76,23 @@ collections:
     create: true
     fields:
       - { label: "Name", name: "title", widget: "string" }
-      - {
-          label: "Position",
-          name: "position",
-          widget: "string",
-          default: "writer",
-        }
+      # - {
+      #     label: "Position",
+      #     name: "position",
+      #     widget: "string",
+      #     default: "writer",
+      #   }
+      - label: "Position"
+        name: "position"
+        widget: "select"
+        options: [
+          "President", "Vice President", "CEO (Chief Editing Officer)",
+          "Secretary", "Treasurer", "Social Media Manager", "Graphics Organizer",
+          "writer", "artist", "editor", "cheese"
+          ]
+        default: "writer"
       - { label: "Grad year", name: "date", widget: "string" }
+      - { label: "Description", name: "description", widget: "markdown", required: false }
 
   - name: "tag"
     label: "Tag"
@@ -84,5 +102,7 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - label: "Color"
         name: "color"
-        widget: "select"
-        options: ["red", "orange", "yellow", "green", "blue", "purple", "white", "black"]
+        widget: "color"
+        # widget: "select"
+        # options: ["red", "orange", "yellow", "green", "blue", "purple", "white", "black"]
+      - {label: "Description", name: "description", widget: "markdown", required: false }
