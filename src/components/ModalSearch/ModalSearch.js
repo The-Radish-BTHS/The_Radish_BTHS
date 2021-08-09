@@ -22,9 +22,9 @@ export function Modal({ showModal, setShowModal }, ref) {
   const { localSearchPages } = data;
   const { index, store } = localSearchPages;
   const isBrowser = typeof window !== "undefined"; // SSR error
-  const { search } = isBrowser ? window.location : null;
-  const query = search ? new URLSearchParams(search).get('s') : null;
-  const [ModalSearchQuery, setModalSearchQuery] = useState(query || null);
+  const { search } = isBrowser ? window.location : "";
+  const query = search ? new URLSearchParams(search).get('s') : "";
+  const [ModalSearchQuery, setModalSearchQuery] = useState(query || "");
   const results = useFlexSearch(ModalSearchQuery, index, store);
 
   // Modal things --------------------------------------------------------------
