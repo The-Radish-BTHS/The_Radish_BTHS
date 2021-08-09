@@ -141,7 +141,7 @@
   }
 }
 
-@media (min-width: 1100px) {
+@media (min-width: 1000px) {
   .modal {
     width: calc(100% - 2*(15% + 2ch));
   }

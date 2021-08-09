@@ -37,7 +37,7 @@ main {
   padding-bottom: 10ch;
 }
 
-.layoutWrapper {
+/* .layoutWrapper {
   position: relative;
   min-height: calc(100vh - 10ch);
   overflow-x: hidden;
@@ -45,10 +45,9 @@ main {
 }
 
 .layoutWrapperAccountForSidebar {
-  /* HANDLE THE ISSUE VIEW */
   transition: 0.4s ease;
   margin-left: calc(20%);
-}
+} */
 
 /* Scrollbars --------------------------------------------------------------- */
 
@@ -251,7 +250,7 @@ p {
   }
 }
 
-@media (min-width: 1100px) {
+@media (min-width: 1000px) {
   main {
     margin-left: calc(15% + 2ch);
     margin-right: calc(15% + 2ch);
