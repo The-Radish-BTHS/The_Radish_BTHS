@@ -84,3 +84,12 @@
   align-items: flex-start;
   width: fit-content;
 }
+
+@media (max-width: 600px) {
+  .card:not(.issue) {
+    padding: 1ch;
+  }
+  .issue .content {
+    padding: 1ch;
+  }
+}

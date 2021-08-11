@@ -29,7 +29,7 @@ export default function Article({
           {frontmatter.authors.map(({ author }, index) => {
             return (
               <div key={index} className="author">
-                {`${index === frontmatter.authors.length - 1 && frontmatter.authors.length !== 1 ? ` and ` : ``}`}
+                {`${index === frontmatter.authors.length - 1 && frontmatter.authors.length !== 1 ? `and ` : ``}`}
                 <Link
                   to={ValidSlug("authors", author)}
                   className="color-under-link"
@@ -51,40 +51,40 @@ export default function Article({
     </div>
     <div className="article">
       <div dangerouslySetInnerHTML={{ __html: html }} />
+      <h4>
+        {frontmatter.tags ?
+          <>
+            {`Tags: `}
+            {frontmatter.tags.map(({ tag }, index) => {
+              return (
+                <Link
+                  to={ValidSlug('tags', tag)}
+                  key={index}
+                  className="tag"
+                >
+                  {`#${tag}`}
+                </Link>
+              )
+            })}
+          </>
+          : null
+        }
+      </h4>
+      <h2>
+        {more.edges.length ?
+          <>
+            {`More from `}
+            <Link
+              to={ValidSlug("issues", frontmatter.issue)}
+              className="color-under-link"
+            >
+              {`${frontmatter.issue}`}
+            </Link>
+          </>
+          : null
+        }
+      </h2>
     </div>
-    <h4>
-      {frontmatter.tags ?
-        <>
-          {`Tags: `}
-          {frontmatter.tags.map(({ tag }, index) => {
-            return (
-              <Link
-                to={ValidSlug('tags', tag)}
-                key={index}
-                className="tag"
-              >
-                {`#${tag}`}
-              </Link>
-            )
-          })}
-        </>
-        : null
-      }
-    </h4>
-    <h2 className="more">
-      {more.edges.length ?
-        <>
-          {`More from `}
-          <Link
-            to={ValidSlug("issues", frontmatter.issue)}
-            className="color-under-link"
-          >
-            {`${frontmatter.issue}`}
-          </Link>
-        </>
-        : null
-      }
-    </h2>
     <Masonry
       breakpointCols={breakpointColumnsObj}
       className="my-masonry-grid"
@@ -98,7 +98,7 @@ export default function Article({
             title={node.frontmatter.title}
             excerpt={node.excerpt}
             tags={node.frontmatter.tags}
-            authors={node.frontmatter.authors} 
+            authors={node.frontmatter.authors}
           />
         )
       })}

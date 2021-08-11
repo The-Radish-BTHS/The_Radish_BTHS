@@ -41,8 +41,6 @@ export default function Index({
     )
   })
 
-  const mixed_cards = issueCards.concat(articleCards)
-
   return (
     <Layout>
       <Masonry
@@ -50,7 +48,8 @@ export default function Index({
         className="my-masonry-grid"
         columnClassName="my-masonry-grid_column"
       >
-        {mixed_cards}
+        {issueCards}
+        {articleCards}
       </Masonry>
     </Layout>
   )

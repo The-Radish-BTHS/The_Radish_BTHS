@@ -1,5 +1,5 @@
 ---
 title: The anonymous doufigiseed
-position: editor
+position: doofus
 date: "0000"
 ---
