@@ -33,6 +33,8 @@
   transform: translate(0, -2px);
   -webkit-box-shadow: 0 0 5px var(--red), 0 0 5px var(--red), 0 0 5px var(--red);
   box-shadow: 0 0 5px var(--red), 0 0 5px var(--red), 0 0 5px var(--red);
+  /* -webkit-box-shadow: 0 0 4px var(--o-white), 0 0 7px var(--red),  0 0 5px var(--red);
+  box-shadow: 0 0 4px var(--o-white), 0 0 7px var(--red),  0 0 5px var(--red); */
   transition-duration: 150ms;
 }
 

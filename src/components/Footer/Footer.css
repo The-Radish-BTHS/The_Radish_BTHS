@@ -1,4 +1,4 @@
-footer {
+.footer {
   color: var(--highlight);
   background-color: var(--bg);
   border-top: 2px solid var(--highlight);
@@ -12,18 +12,28 @@ footer {
   bottom: 0;
 }
 
-.footerSocialsLinks {
+.footer a:hover {
+  opacity: 0.92;
+}
+
+.footerLinks {
   display: flex;
   align-items: center;
   justify-content: space-around;
   flex: 1;
 }
 
-.footerSocialsLinks svg {
-  height: 40px;
-  width: 40px;
+.footerLinks svg {
+  height: 4ch;
+  width: 4ch;
 }
 
-footer a:hover {
-  opacity: 0.92;
+/* .footerPageLinks {
+  color: white;
+  display: flex;
+  flex-flow: column wrap;
 }
+.footerPageLinks a {
+  display: block;
+  width: 100%;
+} */

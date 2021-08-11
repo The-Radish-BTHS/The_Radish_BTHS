@@ -34,7 +34,7 @@ export default function Layout({ children, pageName }) {
       />
       <div className="rest-of-page">
         <main id="main-content">{children}</main>
-        <Footer showSidebar={showSidebar} />
+        <Footer />
       </div>
     </>
   )

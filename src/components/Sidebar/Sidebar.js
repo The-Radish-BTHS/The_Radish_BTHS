@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 
+import Footer from "../Footer/Footer"
 import "./Sidebar.css"
 
 export default function Sidebar({ showSidebar, setShowSidebar }) {
@@ -17,6 +18,7 @@ export default function Sidebar({ showSidebar, setShowSidebar }) {
         <Link to="/issues" className="sidebar-link">Issues</Link>
         <Link to="/articles" className="sidebar-link">Articles</Link>
         <Link to="/authors" className="sidebar-link">Authors</Link>
+        <Footer />
       </div>
       <div
         role="button"

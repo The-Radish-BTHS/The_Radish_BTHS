@@ -96,6 +96,20 @@
   grid-gap: 1ch;
 }
 
+#sidebar .footer {
+  position: fixed;
+  bottom: 10ch;
+  height: 10ch;
+  padding: 0;
+  border-style: none;
+  margin: -2ch; /*Undo the padding of 2ch in sidebar*/
+}
+
+#sidebar .footerSocialsLinks svg {
+  height: 3ch;
+  width: 3ch;
+}
+
 /* .sidebarHidden {
   transform: translateX(-100%);
   transition-duration: 0.2s;

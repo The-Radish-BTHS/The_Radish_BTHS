@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "gatsby"
 import "./Footer.css"
 
 import {
@@ -16,12 +17,13 @@ function SocialLink({ children, to }) {
   )
 }
 
-// Maybe we could make these staticimages instead 
+// Maybe we could make these staticimages instead
 // https://www.gatsbyjs.com/docs/how-to/images-and-media/using-gatsby-plugin-image/#static-images
 export default function Footer() {
   return (
     <footer className="footer">
-      <div className="footerSocialsLinks">
+
+      <div className="footerLinks">
         { // Actually wait maybe we don't want a raid
           // <SocialLink to="https://discord.gg/MBw8T37">
           //   <Discord />
