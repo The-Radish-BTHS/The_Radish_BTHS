@@ -5,6 +5,7 @@ import "./Footer.css"
 import {
   Instagram,
   Twitter,
+  Github,
   // Discord,
   Email
 } from "./socialsIcons/index"
@@ -34,6 +35,9 @@ export default function Footer() {
         </SocialLink>
         <SocialLink to="https://twitter.com/theradishbths">
           <Twitter />
+        </SocialLink>
+        <SocialLink to="https://github.com/AwareErmine/The_Radish">
+          <Github id="github" />
         </SocialLink>
         <SocialLink to="mailto:theradishbths@gmail.com">
           <Email />

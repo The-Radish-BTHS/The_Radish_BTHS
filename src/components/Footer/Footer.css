@@ -28,6 +28,12 @@
   width: 4ch;
 }
 
+#github {
+  height: 7ch;
+  width: 7ch;
+  background-color: red;
+}
+
 /* .footerPageLinks {
   color: white;
   display: flex;
