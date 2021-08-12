@@ -35,6 +35,7 @@ export default function Author({
               excerpt={node.excerpt}
               authors={node.frontmatter.authors}
               tags={node.frontmatter.tags}
+              description={node.frontmatter.description}
             />
           )
         })}
@@ -56,6 +57,7 @@ export const pageQuery = graphql`
           excerpt(pruneLength: 100)
           frontmatter {
             title
+            description
             authors {
               author
             }

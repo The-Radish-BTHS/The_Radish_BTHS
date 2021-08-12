@@ -9,7 +9,7 @@ export default function Articard(props) {
     <div className="card article">
       <Link to={props.slug}>
         <h2>{props.title}</h2>
-        <p>{props.excerpt}</p>
+        <p>{props.description ? props.description : props.excerpt}</p>
       </Link>
       {props.authors ? props.authors.map(({ author }, index) => {
         return (

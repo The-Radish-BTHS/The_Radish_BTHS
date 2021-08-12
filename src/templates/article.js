@@ -24,6 +24,7 @@ export default function Article({
       <div className="page-title">
         <h1>{frontmatter.title}</h1>
         <h4>{frontmatter.date}</h4>
+        <p>{frontmatter.description}</p>
         <h4>
           {`Written by: `}
           {frontmatter.authors.map(({ author }, index) => {
@@ -99,6 +100,7 @@ export default function Article({
             excerpt={node.excerpt}
             tags={node.frontmatter.tags}
             authors={node.frontmatter.authors}
+            description={node.frontmatter.description}
           />
         )
       })}
@@ -114,6 +116,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         issue
+        description
         authors {
           author
         }
@@ -131,6 +134,7 @@ export const pageQuery = graphql`
           excerpt(pruneLength: 200)
           frontmatter {
             title
+            description
             authors {
               author
             }

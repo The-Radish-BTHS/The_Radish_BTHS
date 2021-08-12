@@ -26,6 +26,7 @@ export default function Index({
         title={node.frontmatter.title}
         authors={node.frontmatter.authors}
         tags={node.frontmatter.tags}
+        description={node.frontmatter.description}
       />
     )
   })
@@ -42,6 +43,7 @@ export default function Index({
         title={node.frontmatter.title}
         cover={node.fields.rel_cover}
         articles={articleCards.slice(0, 3)}
+        description={node.frontmatter.description}
       />
     )
   })
@@ -71,7 +73,8 @@ export const pageQuery = graphql`
         node {
           id
           frontmatter {
-            date(formatString: "MMMM DD, YYYY")
+            description
+            date(formatString: "MMMM YYYY")
             title
           }
           fields {
@@ -96,6 +99,7 @@ export const pageQuery = graphql`
           excerpt(pruneLength: 100)
           frontmatter {
             title
+            description
             authors {
               author
             }

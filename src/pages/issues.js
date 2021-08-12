@@ -30,6 +30,7 @@ export default function Issues({
               date={node.frontmatter.date}
               title={node.frontmatter.title}
               cover={node.fields.rel_cover}
+              description={node.frontmatter.description}
             />
           )
         })}
@@ -49,6 +50,7 @@ export const pageQuery = graphql`
         node {
           id
           frontmatter {
+            description
             date(formatString: "MMMM YYYY")
             title
           }

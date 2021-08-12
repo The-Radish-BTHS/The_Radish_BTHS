@@ -36,6 +36,7 @@ export default function Article({
                 title={node.frontmatter.title}
                 position={node.frontmatter.position}
                 date={node.frontmatter.date}
+                description={node.frontmatter.description}
               />
             )
           })
@@ -59,6 +60,7 @@ export const pageQuery = graphql`
             title
             position
             date
+            description
           }
           fields {
             slug

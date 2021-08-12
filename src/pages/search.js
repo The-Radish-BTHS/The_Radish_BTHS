@@ -54,6 +54,7 @@ export default function Search({
             title={result.title}
             excerpt={result.excerpt}
             date={result.date}
+            description={result.description}
           />
         )}
       </Masonry>

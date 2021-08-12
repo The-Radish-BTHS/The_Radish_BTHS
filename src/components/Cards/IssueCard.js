@@ -5,7 +5,6 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 export default function IssueCard(props) {
   const image = getImage(props.cover)
-
   return (
     <div className="card issue">
       <Link to={props.slug}>
@@ -19,6 +18,7 @@ export default function IssueCard(props) {
         <div className="content">
           <h4>{props.date}</h4>
           <h2>{props.title}</h2>
+          <p>{props.description}</p>
         </div>
       </Link>
     </div>

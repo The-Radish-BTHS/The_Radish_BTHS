@@ -26,6 +26,7 @@ export default function Author({
           <i>{(grad ? "former " : "") + author.frontmatter.position}</i>
         </h3>
         <h3>{grad ? "Graduated "+ author.frontmatter.date : "Graduating " + author.frontmatter.date}</h3>
+        <p>{author.frontmatter.description}</p>
       </div>
       <Masonry
         breakpointCols={breakpointColumnsObj}
@@ -40,6 +41,7 @@ export default function Author({
               title={node.frontmatter.title}
               excerpt={node.excerpt}
               tags={node.frontmatter.tags}
+              description={node.frontmatter.description}
               // authors={node.frontmatter.authors} // Might be redundant
             />
           )
@@ -56,6 +58,7 @@ export const pageQuery = graphql`
         date
         title
         position
+        description
       }
     }
     articles: allMarkdownRemark(
@@ -69,6 +72,7 @@ export const pageQuery = graphql`
           excerpt(pruneLength: 200)
           frontmatter {
             title
+            description
             authors {
               author
             }

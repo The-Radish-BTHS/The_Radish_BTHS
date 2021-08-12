@@ -96,6 +96,7 @@ export function Modal({ showModal, setShowModal }, ref) {
                 title={result.title}
                 excerpt={result.excerpt}
                 date={result.date}
+                description={result.description}
               />
             )}
             {results.length ? <button type="submit" form="search-form">More</button> : null}

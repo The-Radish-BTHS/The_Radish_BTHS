@@ -13,6 +13,7 @@ export default function AuthorCard(props) {
           <i>{(grad ? "former " : "") + props.position}</i>
         </h4>
         <h2>{props.title}</h2>
+        <p>{props.description}</p>
       </Link>
     </div>
   )

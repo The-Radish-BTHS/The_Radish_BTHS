@@ -19,6 +19,7 @@ export default function Author({
     <Layout pageName={`#${tag.frontmatter.title}`}>
       <div className="page-title">
         <h1 className="tag">{`#${tag.frontmatter.title}`}</h1>
+        <p>{tag.frontmatter.description}</p>
       </div>
       <Masonry
         breakpointCols={breakpointColumnsObj}
@@ -34,6 +35,7 @@ export default function Author({
               excerpt={node.excerpt}
               authors={node.frontmatter.authors}
               tags={node.frontmatter.tags}
+              description={node.frontmatter.description}
             />
           )
         })}
@@ -47,6 +49,7 @@ export const pageQuery = graphql`
     tag: markdownRemark(fields: { slug: { eq: $slug } }) {
       frontmatter {
         title
+        description
       }
     }
     articles: allMarkdownRemark(
@@ -60,6 +63,7 @@ export const pageQuery = graphql`
           excerpt(pruneLength: 200)
           frontmatter {
             title
+            description
             authors {
               author
             }

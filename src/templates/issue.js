@@ -34,6 +34,7 @@ export default function Issue({
         </div>
         <h3>{issue.frontmatter.date}</h3>
         <a href={issue.frontmatter.pdf} target="_blank" rel="noreferrer" className="color-under-link">PDF</a>
+        <p>{issue.frontmatter.description}</p>
       </div>
       <p />
       <Masonry
@@ -51,6 +52,7 @@ export default function Issue({
                 excerpt={node.excerpt}
                 authors={node.frontmatter.authors}
                 tags={node.frontmatter.tags}
+                description={node.frontmatter.description}
               />
             )
           })
@@ -64,6 +66,7 @@ export const pageQuery = graphql`
   query issue ($slug: String!, $title: String!) {
     issue: markdownRemark(fields: { slug: { eq: $slug } }) {
       frontmatter {
+        description
         date(formatString: "MMMM YYYY")
         title
         pdf
@@ -85,6 +88,7 @@ export const pageQuery = graphql`
           excerpt(pruneLength: 200)
           frontmatter {
             title
+            description
             authors {
               author
             }
