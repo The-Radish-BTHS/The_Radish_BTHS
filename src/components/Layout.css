@@ -169,12 +169,12 @@ h1 .query, h3 .query {
 }
 
 /* Simple cards without masonry from before */
-/* .card-grid {
+.card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-template-rows: repeat(auto-fill, minmax(200px, 1fr));
   grid-gap: 2ch;
-} */
+}
 
 .my-masonry-grid {
   display: -webkit-box; /* Not needed if autoprefixing */

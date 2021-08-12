@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 import "./Cards.css"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-export default function Articard(props) {
+export default function IssueCard(props) {
   const image = getImage(props.cover)
 
   return (

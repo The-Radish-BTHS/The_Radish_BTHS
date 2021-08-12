@@ -4,7 +4,7 @@ import Layout from "../components/Layout"
 import Masonry from "react-masonry-css"
 
 import Articard from "../components/Cards/Articard.js"
-import IssueCard from "../components/Cards/IssueCard.js"
+import HighlightIssueCard from "../components/Cards/HighlightIssueCard.js"
 
 const breakpointColumnsObj = {
   default: 3,
@@ -17,17 +17,6 @@ export default function Index({
 }) {
   const { issues, articles } = data
 
-  const issueCards = issues.edges.map(({ node }) => {
-    return (
-      <IssueCard
-        key={node.id}
-        slug={node.fields.slug}
-        date={node.frontmatter.date}
-        title={node.frontmatter.title}
-        cover={node.fields.rel_cover}
-      />
-    )
-  })
   const articleCards = articles.edges.map(({ node }) => {
     return (
       <Articard
@@ -41,6 +30,22 @@ export default function Index({
     )
   })
 
+  /*
+  The articles being fed in rn aren't actually the first three in the issue
+  */
+  const issueCards = issues.edges.map(({ node }) => {
+    return (
+      <HighlightIssueCard
+        key={node.id}
+        slug={node.fields.slug}
+        date={node.frontmatter.date}
+        title={node.frontmatter.title}
+        cover={node.fields.rel_cover}
+        articles={articleCards.slice(0, 3)}
+      />
+    )
+  })
+
   return (
     <Layout>
       {issueCards}
@@ -49,7 +54,7 @@ export default function Index({
         className="my-masonry-grid"
         columnClassName="my-masonry-grid_column"
       >
-        {articleCards}
+        {articleCards.slice(3, articleCards.length)}
       </Masonry>
     </Layout>
   )

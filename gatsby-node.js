@@ -46,17 +46,14 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 // `
 // exports.onCreatePage = ({ page, actions }) => {
 //   const { createPage, deletePage } = actions
-//   console.log(JSON.stringify(newest_issue, undefined, 5))
-//   console.log(JSON.stringify(page, undefined, 5))
-//   // deletePage(page)
-//   // // You can access the variable "house" in your page queries now
-//   // createPage({
-//   //   ...page,
-//   //   context: {
-//   //     ...page.context,
-//   //     house: `Gryffindor`,
-//   //   },
-//   // })
+//   deletePage(page)
+//   createPage({
+//     ...page,
+//     context: {
+//       ...page.context,
+//       house: `Gryffindor`,
+//     },
+//   })
 // }
 
 exports.createPages = async ({ graphql, actions }) => {
