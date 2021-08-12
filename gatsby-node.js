@@ -28,6 +28,37 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   }
 }
 
+// const { graphql } = require(`gatsby`)
+// const newest_issue = graqhql`
+//   query newest_issue {
+//     allMarkdownRemark(
+//       sort: {order: DESC, fields: [frontmatter___date]}
+//       limit: 1
+//       filter: {fields: {slug: {regex: "^/issues/"}}}
+//     ) {
+//       edges {
+//         node {
+//           id
+//         }
+//       }
+//     }
+//   }
+// `
+// exports.onCreatePage = ({ page, actions }) => {
+//   const { createPage, deletePage } = actions
+//   console.log(JSON.stringify(newest_issue, undefined, 5))
+//   console.log(JSON.stringify(page, undefined, 5))
+//   // deletePage(page)
+//   // // You can access the variable "house" in your page queries now
+//   // createPage({
+//   //   ...page,
+//   //   context: {
+//   //     ...page.context,
+//   //     house: `Gryffindor`,
+//   //   },
+//   // })
+// }
+
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const content = await graphql(`

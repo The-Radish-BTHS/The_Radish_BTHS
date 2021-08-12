@@ -64,7 +64,7 @@ export const pageQuery = graphql`
   query issue ($slug: String!, $title: String!) {
     issue: markdownRemark(fields: { slug: { eq: $slug } }) {
       frontmatter {
-        date(formatString: "MMMM DD, YYYY")
+        date(formatString: "MMMM YYYY")
         title
         pdf
       }

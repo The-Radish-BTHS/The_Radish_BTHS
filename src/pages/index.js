@@ -43,12 +43,12 @@ export default function Index({
 
   return (
     <Layout>
+      {issueCards}
       <Masonry
         breakpointCols={breakpointColumnsObj}
         className="my-masonry-grid"
         columnClassName="my-masonry-grid_column"
       >
-        {issueCards}
         {articleCards}
       </Masonry>
     </Layout>

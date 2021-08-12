@@ -98,7 +98,7 @@ module.exports = {
               id
               frontmatter {
                 title
-                date(formatString: "MMMM DD, YYYY")
+                date(formatString: "MMMM YYYY")
               }
               fields {
                 slug

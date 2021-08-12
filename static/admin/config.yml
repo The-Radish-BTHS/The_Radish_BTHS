@@ -21,7 +21,8 @@ collections:
           name: "cover",
           widget: "image",
           media_folder: "/static/assets",
-          default: "/static/assets/radimir-rootin.png",
+          required: false,
+          # default: "/static/assets/radimir-rootin.png",
         }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }

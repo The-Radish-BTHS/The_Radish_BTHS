@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "gatsby"
+// import { Link } from "gatsby"
 import "./Footer.css"
 
 import {
@@ -23,7 +23,6 @@ function SocialLink({ children, to }) {
 export default function Footer() {
   return (
     <footer className="footer">
-
       <div className="footerLinks">
         { // Actually wait maybe we don't want a raid
           // <SocialLink to="https://discord.gg/MBw8T37">

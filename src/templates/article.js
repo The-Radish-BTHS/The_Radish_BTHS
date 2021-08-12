@@ -108,7 +108,7 @@ export default function Article({
 }
 
 export const pageQuery = graphql`
-  query article ($slug: String!, $title: String!, $issue: String!) {
+  query article ($slug: String!, $issue: String!) {
     article: markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {
@@ -123,7 +123,7 @@ export const pageQuery = graphql`
       }
     }
     more: allMarkdownRemark(
-      filter: {frontmatter: { issue: {eq: $issue}, title: {ne: $title}}, fields: {slug: {regex: "^/articles/"}}}
+      filter: {frontmatter: { issue: {eq: $issue}}, fields: {slug: {regex: "^/articles/", ne: $slug}}}
     ) {
       edges {
         node {

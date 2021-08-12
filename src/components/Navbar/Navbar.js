@@ -12,6 +12,12 @@ export function Hamburger({ showSidebar, setShowSidebar }) {
 
   const toggle = () => {
     const sidebar = document.getElementById("sidebar")
+    // const burger = document.getElementById("burger").children
+    // if (burger) {
+    //   for (let i = 0; i <= burger.length - 1; i++) {
+    //     burger[i].classList.add("closed")
+    //   }
+    // }
     if (sidebar) {
       sidebar.classList.add("slide-out")
     }
@@ -23,6 +29,7 @@ export function Hamburger({ showSidebar, setShowSidebar }) {
       role="button"
       tabIndex={0}
       className="burger"
+      // id="burger"
       onClick={toggle}
       onKeyDown={(ev) => ev.keyCode===13 ? toggle : ""}
     >
@@ -51,30 +58,35 @@ export default function Navbar({ setShowSidebar, showSidebar, setShowModal, show
       }
     }
 
-    const handleScroll = () => {
-        const offset = window.pageYOffset || document.documentElement.scrollTop;
-        // If we were changing when the header detaches from the top
-        // let navbar = document.getElementById("navbar");
-        // if (offset > navbar.offsetHeight ){
-        //   setScrolled(true);
-        // }
-        // else{
-        //   setScrolled(false);
-        // }
+  const handleScroll = () => {
+      const offset = window.pageYOffset || document.documentElement.scrollTop;
+      // If we were changing when the header detaches from the top
+      // let navbar = document.getElementById("navbar");
+      // if (offset > navbar.offsetHeight ){
+      //   setScrolled(true);
+      // }
+      // else{
+      //   setScrolled(false);
+      // }
 
-        // For some reason it only seems to work when we check for showSidebar in both statements??
-        if (offset > scrollPos && !showSidebar && !showModal) {
-          setScrollingDown(true)
-        }
-        else if (offset < scrollPos || showSidebar || showModal) {
-          setScrollingDown(false)
-        }
-        setScrollPos(offset <= 0 ? 0 : offset)
+      // For some reason it only seems to work when we check for showSidebar in both statements??
+      if (offset > scrollPos && !showSidebar && !showModal) {
+        setScrollingDown(true)
       }
+      else if (offset < scrollPos || showSidebar || showModal) {
+        setScrollingDown(false)
+      }
+      setScrollPos(offset <= 0 ? 0 : offset)
+    }
 
   useEffect(() => {
     window.addEventListener('resize', handleResize)
     window.addEventListener('scroll', handleScroll)
+
+    return () => {
+      document.removeEventListener('resize', handleResize)
+      document.removeEventListener('scroll', handleScroll)
+    }
   })
 
   return (
