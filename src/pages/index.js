@@ -42,7 +42,7 @@ export default function Index({
         date={node.frontmatter.date}
         title={node.frontmatter.title}
         cover={node.fields.rel_cover}
-        articles={articleCards.slice(0, 3)}
+        articles={articleCards.slice(0, 4)}
         description={node.frontmatter.description}
       />
     )
@@ -56,7 +56,7 @@ export default function Index({
         className="my-masonry-grid"
         columnClassName="my-masonry-grid_column"
       >
-        {articleCards.slice(3, articleCards.length)}
+        {articleCards.slice(4, articleCards.length)}
       </Masonry>
     </Layout>
   )
