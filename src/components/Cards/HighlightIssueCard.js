@@ -9,8 +9,14 @@ export default function HighlightIssueCard(props) {
   const image = getImage(props.cover)
 
   const handleWheel = (evt) => {
-    evt.preventDefault();
-    scrollContainer.scrollLeft += evt.deltaY;
+    if ((scrollContainer.scrollLeft !== (scrollContainer.scrollWidth - scrollContainer.offsetWidth)) || (evt.deltaY < 0)){
+      evt.preventDefault();
+      scrollContainer.scrollLeft += evt.deltaY;
+    }
+    else {
+      console.log(evt.deltaY)
+      // console.log(scrollContainer.scrollLeft, scrollContainer.offsetWidth, scrollContainer.scrollWidth)
+    }
   }
 
   useEffect(() => {
