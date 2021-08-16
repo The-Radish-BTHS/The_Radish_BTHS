@@ -8,26 +8,26 @@ const scrollContainer = typeof document !== `undefined` ? document.getElementByI
 export default function HighlightIssueCard(props) {
   const image = getImage(props.cover)
 
-  const handleWheel = (evt) => {
-    if ((scrollContainer.scrollLeft !== (scrollContainer.scrollWidth - scrollContainer.offsetWidth)) || (evt.deltaY < 0)){
-      evt.preventDefault();
-      scrollContainer.scrollLeft += evt.deltaY;
-    }
-    else {
-      console.log(evt.deltaY)
-      // console.log(scrollContainer.scrollLeft, scrollContainer.offsetWidth, scrollContainer.scrollWidth)
-    }
-  }
-
-  useEffect(() => {
-    if (scrollContainer) {
-      scrollContainer.addEventListener('wheel', handleWheel)
-    }
-
-    return () => {
-      scrollContainer.removeEventListener('wheel', handleWheel)
-    }
-  })
+  // const handleWheel = (evt) => {
+  //   const endOfContainer = (scrollContainer.scrollLeft !== (scrollContainer.scrollWidth - scrollContainer.offsetWidth))
+  //   // if ((scrollContainer.scrollLeft === 0) && (evt.deltaY > 0)){
+  //   //   console.log(evt.deltaY)
+  //   // }
+  //   if (endOfContainer || (evt.deltaY < 0)){
+  //     evt.preventDefault();
+  //     scrollContainer.scrollLeft += evt.deltaY;
+  //   }
+  // }
+  //
+  // useEffect(() => {
+  //   if (scrollContainer) {
+  //     scrollContainer.addEventListener('wheel', handleWheel)
+  //   }
+  //
+  //   return () => {
+  //     scrollContainer.removeEventListener('wheel', handleWheel)
+  //   }
+  // })
 
   return (
     <div className="issue-preview">
