@@ -50,9 +50,9 @@ export default function Index({
 
   return (
     <Layout>
-      <h1>Latest issue</h1>
+      <h1 className="page-title">Latest issue</h1>
       {issueCards}
-      <h1>Latest articles</h1>
+      <h1 className="page-title">Latest articles</h1>
       <Masonry
         breakpointCols={breakpointColumnsObj}
         className="my-masonry-grid"

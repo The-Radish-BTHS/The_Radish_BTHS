@@ -94,9 +94,9 @@
   overflow-x: hidden;
   overflow-y: auto;
 
-  -moz-box-shadow: inset 0 -15ch 15ch -15ch #ffffff55;
-  -webkit-box-shadow: inset 0 -15ch 15ch -15ch #ffffff55;
-  box-shadow: inset 0 -15ch 15ch -15ch #ffffff55;
+  -moz-box-shadow: inset 0 -15ch 15ch -15ch #00000078;
+  -webkit-box-shadow: inset 0 -15ch 15ch -15ch #00000078;
+  box-shadow: inset 0 -15ch 15ch -15ch #00000078;
 }
 
 .preview-articles .card {
@@ -158,12 +158,16 @@
   /* Just what I had before for the Horizontal scrolling uhh */
   /* Some of it probably isn't needed */
   .issue-preview {
-    padding-bottom: 3ch;
+    /* padding-bottom: 3ch; */
     display: grid;
     /* grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-template-rows: repeat(auto-fill, minmax(200px, 1fr)); */
     grid-template-columns: 1fr 2fr;
     column-gap: 0;
+
+    /* Make it snug against the sides */
+    /* margin-left: -2ch; */
+    margin-right: -2ch;
   }
 
   .special {
@@ -172,6 +176,7 @@
 
   .preview-articles {
     padding: 1ch;
+    padding-bottom: 2ch; /*The scrollbar is large*/
     grid-gap: 1ch;
     display: grid;
 

@@ -213,7 +213,7 @@ p {
 
 @media (max-width: 600px) {
   main {
-    margin: 1ch;
+    margin: 2ch;
   }
 
   ::-webkit-scrollbar {
@@ -234,11 +234,11 @@ p {
 
   .page-title {
     text-align: left;
-    padding: 1ch;
+    /* padding: 1ch; */
   }
 
   .article {
-    padding: 1ch;
+    /* padding: 1ch; */
   }
 
   .tags {
