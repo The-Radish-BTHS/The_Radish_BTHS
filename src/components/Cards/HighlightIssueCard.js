@@ -1,9 +1,10 @@
 import React, {
-  // useEffect 
+  // useEffect
 } from "react"
 import { Link } from "gatsby"
 import "./Cards.css"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import Arrow from "./Arrow.js"
 
 // const scrollContainer = typeof document !== `undefined` ? document.getElementById("preview-articles") : null
 
@@ -47,7 +48,6 @@ export default function HighlightIssueCard(props) {
             <h4>{props.date}</h4>
             <h2>{props.title}</h2>
             <p>{props.description}</p>
-            <p>{`>> Whole issue`}</p>
           </div>
         </Link>
       </div>

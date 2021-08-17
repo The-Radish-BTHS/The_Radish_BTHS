@@ -17,7 +17,7 @@ export default function Author({
   const { author, articles } = data
   const today = new Date()
   const grad =
-    today.getMonth() > 5 && today.getFullYear() >= author.frontmatter.date
+    today.getMonth() > 6 && today.getFullYear() >= author.frontmatter.date
   return (
     <Layout pageName={author.frontmatter.title}>
       <div className="page-title">
@@ -55,7 +55,7 @@ export const pageQuery = graphql`
   query author ($slug: String!, $title: String!) {
     author: markdownRemark(fields: { slug: { eq: $slug } }) {
       frontmatter {
-        date
+        date(formatString: "YYYY")
         title
         position
         description

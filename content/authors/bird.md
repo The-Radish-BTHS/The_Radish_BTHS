@@ -1,5 +1,5 @@
 ---
 title: Bird
 position: pet bird
-date: "0000"
+date: 2021-08-17T15:53:56.121Z
 ---

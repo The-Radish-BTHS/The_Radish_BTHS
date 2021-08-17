@@ -5,7 +5,7 @@ import "./Cards.css"
 export default function AuthorCard(props) {
   const today = new Date()
   const grad =
-    today.getMonth() > 5 && today.getFullYear() >= props.date
+    today.getMonth() > 6 && today.getFullYear() >= props.date
   return (
     <div className="card">
       <Link to={props.slug}>

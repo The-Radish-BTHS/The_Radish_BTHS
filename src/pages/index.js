@@ -47,9 +47,10 @@ export default function Index({
 
   return (
     <Layout>
-      <h1 className="page-title">Latest issue</h1>
+      <h1 className="page-title"><Link to={issues.edges[0].node.fields.slug}>Latest issue</Link></h1>
       {issueCards}
-      <h1 className="page-title">Latest articles</h1>
+      <h2 className="page-title home-action"><Link to='/issues'>{`All issues`}</Link></h2>
+      <h1 className="page-title"><Link to='/articles'>{`Latest articles`}</Link></h1>
       <Masonry
         breakpointCols={breakpointColumnsObj}
         className="my-masonry-grid"

@@ -73,6 +73,17 @@
   overflow: hidden;
 }
 
+/* From using the arrow in the highlighted card to say "more from this issue -->" */
+/* .special svg {
+  height: 2ch;
+  width: 4ch;
+}
+
+.special .center-vert {
+  display: flex;
+  align-items: center;
+} */
+
 .preview-articles {
   grid-area: preview-articles;
 
@@ -124,9 +135,20 @@
   padding: 2px;
   border-radius: 2px;
 }
-
 .card a.author:hover {
   background-color: #44444488;
+}
+
+.card .collection-tag {
+  width: fit-content;
+  font-size: 14px;
+  background-color: #444444aa;
+  margin-right: 1ch;
+  padding: 4px;
+  border-radius: 2px;
+}
+.card .collection-tag:hover {
+  opacity: 1;
 }
 
 .card a.tag {

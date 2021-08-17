@@ -29,17 +29,17 @@ export default function Footer() {
           //   <Discord />
           // </SocialLink>
         }
-        <SocialLink to="https://www.instagram.com/theradishbths/">
-          <Instagram />
-        </SocialLink>
         <SocialLink to="https://twitter.com/theradishbths">
           <Twitter />
         </SocialLink>
-        <SocialLink to="https://github.com/AwareErmine/The_Radish">
-          <Github id="github" />
+        <SocialLink to="https://www.instagram.com/theradishbths/">
+          <Instagram />
         </SocialLink>
         <SocialLink to="mailto:theradishbths@gmail.com">
           <Email />
+        </SocialLink>
+        <SocialLink to="https://github.com/AwareErmine/The_Radish">
+          <Github id="github" />
         </SocialLink>
       </div>
     </footer>

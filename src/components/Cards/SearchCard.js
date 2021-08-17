@@ -13,7 +13,7 @@ export default function SearchCard(props) {
         <h4>{collection === "author" ? `Graduating ${props.date.slice(-4)}` : props.date}</h4>
         <h2 className={collection}>{`${collection === "tag" ? "#" : ""}${props.title}`}</h2>
         <p>{props.description ? props.description : props.excerpt}</p>
-        <p><i>{`${collection}`}</i></p>
+        <p className="collection-tag">{`${collection}`}</p>
       </Link>
     </div>
   )

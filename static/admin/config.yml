@@ -94,7 +94,7 @@ collections:
           "writer", "artist", "editor", "cheese"
           ]
         default: "writer"
-      - { label: "Grad year", name: "date", widget: "string" }
+      - { label: "Grad year", name: "date", widget: "datetime" }
       - { label: "Description", name: "description", widget: "markdown", required: false, minimal: true }
 
   - name: "tag"

@@ -60,7 +60,7 @@ export default function Issue({
           })
         }
       </Masonry>
-      <h1 className="page-title color-under-link"><Link to='/issues/'>{`More issues`}</Link></h1>
+      <h1 className="page-title"><Link to='/issues/'>{`More issues`}</Link></h1>
       <div className="card-grid">
         {more.edges.map(({ node }) => {
           return (

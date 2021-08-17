@@ -1,5 +1,5 @@
 ---
 title: Dumbass Who Graduated
 position: dumbass
-date: "2021"
+date: 2015-01-01T05:00:00.000Z
 ---

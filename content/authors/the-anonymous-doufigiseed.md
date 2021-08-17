@@ -1,6 +1,6 @@
 ---
 title: The anonymous doufigiseed
 position: doofus
-date: "0000"
+date: 0000-01-02T04:56:02.000Z
 description: Doofus
 ---
