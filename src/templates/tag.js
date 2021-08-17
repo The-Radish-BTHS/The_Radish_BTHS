@@ -1,9 +1,10 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import Masonry from "react-masonry-css"
 
 import Articard from "../components/Cards/Articard.js"
+import AllTags from "../components/AllTags/AllTags.js"
 
 const breakpointColumnsObj = {
   default: 3,
@@ -14,7 +15,7 @@ const breakpointColumnsObj = {
 export default function Author({
   data, // this prop will be injected by the GraphQL query below.
 }) {
-  const { tag, articles, tags } = data
+  const { tag, articles } = data
   return (
     <Layout pageName={`#${tag.frontmatter.title}`}>
       <div className="page-title">
@@ -40,17 +41,7 @@ export default function Author({
           )
         })}
       </Masonry>
-      <div className="tags">
-        {tags.edges.map(({ node }) =>
-            <Link
-              to={node.fields.slug}
-              key={node.id}
-              className="tag"
-            >
-              {`#${node.frontmatter.title}`}
-            </Link>
-          )}
-      </div>
+      <AllTags />
     </Layout>
   )
 }
@@ -81,23 +72,6 @@ export const pageQuery = graphql`
             tags {
               tag
             }
-          }
-          fields {
-            slug
-          }
-        }
-      }
-    }
-    tags: allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] }
-      limit: 1000
-      filter: { fields: { slug: { ne: $slug, regex: "^/tags/" } } }
-    ) {
-      edges {
-        node {
-          id
-          frontmatter {
-            title
           }
           fields {
             slug

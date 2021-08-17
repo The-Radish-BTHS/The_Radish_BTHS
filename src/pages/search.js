@@ -1,11 +1,12 @@
 import React, { useState } from "react"
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import Layout from "../components/Layout"
 import Masonry from "react-masonry-css"
 
 import { useFlexSearch } from 'react-use-flexsearch';
 import SearchBar from "../components/SearchBar/SearchBar.js"
 import SearchCard from "../components/Cards/SearchCard.js"
+import AllTags from "../components/AllTags/AllTags.js"
 
 const breakpointColumnsObj = {
   default: 3,
@@ -17,7 +18,6 @@ const breakpointColumnsObj = {
 export default function Search({
   data : {
     localSearchPages: { index, store },
-    allMarkdownRemark: { edges },
   },
 }) {
   const isBrowser = typeof window !== "undefined"; // SSR error
@@ -60,17 +60,7 @@ export default function Search({
       </Masonry>
       <div className="page-title">
         <h1>Filter by tag:</h1>
-        <div className="tags">
-          {edges.map(({ node }) =>
-              <Link
-                to={node.fields.slug}
-                key={node.id}
-                className="tag"
-              >
-                {`#${node.frontmatter.title}`}
-              </Link>
-            )}
-        </div>
+        <AllTags />
       </div>
     </Layout>
   )
@@ -81,23 +71,6 @@ export const pageQuery = graphql`
     localSearchPages {
       index
       store
-    }
-    allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] }
-      limit: 1000
-      filter: { fields: { slug: { regex: "^/tags/" } } }
-    ) {
-      edges {
-        node {
-          id
-          frontmatter {
-            title
-          }
-          fields {
-            slug
-          }
-        }
-      }
     }
   }
 `

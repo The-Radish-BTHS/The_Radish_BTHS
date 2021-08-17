@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom'
 import { useStaticQuery, graphql } from "gatsby"
 import { useFlexSearch } from 'react-use-flexsearch';
 
+import AllTags from "../AllTags/AllTags.js"
 import SearchBar from "../SearchBar/SearchBar.js"
 import SearchCard from "../Cards/SearchCard.js"
 import "./ModalSearch.css"
@@ -12,7 +13,7 @@ const portalRoot = typeof document !== `undefined` ? document.getElementById('po
 export function Modal({ showModal, setShowModal }, ref) {
   // Search --------------------------------------------------------------------
   const data = useStaticQuery(graphql`
-    query SearchIndexes {
+    query ModalSearch {
       localSearchPages {
         index
         store
@@ -99,6 +100,7 @@ export function Modal({ showModal, setShowModal }, ref) {
                 description={result.description}
               />
             )}
+            {results.length ? null : <AllTags />}
             {results.length ? <button type="submit" form="search-form">More</button> : null}
           </div>
       </div>

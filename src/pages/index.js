@@ -5,6 +5,7 @@ import Masonry from "react-masonry-css"
 
 import Articard from "../components/Cards/Articard.js"
 import HighlightIssueCard from "../components/Cards/HighlightIssueCard.js"
+import AllTags from "../components/AllTags/AllTags.js"
 
 const breakpointColumnsObj = {
   default: 3,
@@ -15,7 +16,7 @@ const breakpointColumnsObj = {
 export default function Index({
   data, // this prop will be injected by the GraphQL query below.
 }) {
-  const { issues, articles, tags } = data
+  const { issues, articles } = data
 
   const articleCards = articles.edges.map(({ node }) => {
     return (
@@ -49,7 +50,7 @@ export default function Index({
     <Layout>
       <h1 className="page-title"><Link to={issues.edges[0].node.fields.slug}>Latest issue</Link></h1>
       {issueCards}
-      <h2 className="page-title home-action"><Link to='/issues'>{`All issues`}</Link></h2>
+      <h3 className="page-title home-action"><Link to='/issues'>{`All issues`}</Link></h3>
       <h1 className="page-title"><Link to='/articles'>{`Latest articles`}</Link></h1>
       <Masonry
         breakpointCols={breakpointColumnsObj}
@@ -58,19 +59,9 @@ export default function Index({
       >
         {articleCards.slice(3, articleCards.length)}
       </Masonry>
-      <h2 className="page-title home-action"><Link to='/articles'>{`All articles`}</Link></h2>
+      <h3 className="page-title home-action"><Link to='/articles'>{`All articles`}</Link></h3>
       <h1 className="page-title"><Link to="/search">Filter</Link></h1>
-      <div className="tags">
-        {tags.edges.map(({ node }) =>
-            <Link
-              to={node.fields.slug}
-              key={node.id}
-              className="tag"
-            >
-              {`#${node.frontmatter.title}`}
-            </Link>
-          )}
-      </div>
+      <AllTags />
     </Layout>
   )
 }
@@ -119,23 +110,6 @@ export const pageQuery = graphql`
             tags {
               tag
             }
-          }
-          fields {
-            slug
-          }
-        }
-      }
-    }
-    tags: allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] }
-      limit: 1000
-      filter: { fields: { slug: { regex: "^/tags/" } } }
-    ) {
-      edges {
-        node {
-          id
-          frontmatter {
-            title
           }
           fields {
             slug

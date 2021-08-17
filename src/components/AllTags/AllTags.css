@@ -1,0 +1,33 @@
+.tags {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 2ch;
+}
+
+.tag {
+  display: inline-block;
+  background-color: var(--red);
+  /* color: var(--bg); */
+  border-radius: 3px;
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.tag:visited {
+  /* color: var(--bg); */
+}
+
+a.tag:hover {
+  opacity: 0.92;
+  text-decoration: none;
+}
+
+@media (max-width: 600px) {
+  .tags {
+    justify-content: left;
+  }
+}
