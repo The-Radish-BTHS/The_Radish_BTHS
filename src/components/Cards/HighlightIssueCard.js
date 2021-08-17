@@ -4,7 +4,7 @@ import React, {
 import { Link } from "gatsby"
 import "./Cards.css"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import Arrow from "./Arrow.js"
+// import Arrow from "./Arrow.js"
 
 // const scrollContainer = typeof document !== `undefined` ? document.getElementById("preview-articles") : null
 

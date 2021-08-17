@@ -15,7 +15,7 @@ const breakpointColumnsObj = {
 export default function Index({
   data, // this prop will be injected by the GraphQL query below.
 }) {
-  const { issues, articles } = data
+  const { issues, articles, tags } = data
 
   const articleCards = articles.edges.map(({ node }) => {
     return (
@@ -59,6 +59,18 @@ export default function Index({
         {articleCards.slice(3, articleCards.length)}
       </Masonry>
       <h2 className="page-title home-action"><Link to='/articles'>{`All articles`}</Link></h2>
+      <h1 className="page-title"><Link to="/search">Filter</Link></h1>
+      <div className="tags">
+        {tags.edges.map(({ node }) =>
+            <Link
+              to={node.fields.slug}
+              key={node.id}
+              className="tag"
+            >
+              {`#${node.frontmatter.title}`}
+            </Link>
+          )}
+      </div>
     </Layout>
   )
 }
@@ -107,6 +119,23 @@ export const pageQuery = graphql`
             tags {
               tag
             }
+          }
+          fields {
+            slug
+          }
+        }
+      }
+    }
+    tags: allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___date] }
+      limit: 1000
+      filter: { fields: { slug: { regex: "^/tags/" } } }
+    ) {
+      edges {
+        node {
+          id
+          frontmatter {
+            title
           }
           fields {
             slug
