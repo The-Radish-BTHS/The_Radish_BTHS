@@ -5,6 +5,9 @@
   border-radius: 3px;
   background-color: #0000002f;
 
+  -webkit-backdrop-filter: blur(1ch);
+  backdrop-filter: blur(1ch);
+
   /* -webkit-box-shadow: 0 0 3px var(--highlight), 0 0 3px var(--highlight), 0 0 3px var(--highlight);
   box-shadow: 0 0 3px var(--highlight), 0 0 3px var(--highlight), 0 0 3px var(--highlight); */
   /* border-bottom: 2px solid var(--highlight);
@@ -29,12 +32,11 @@
 }
 
 .card:hover {
-  background-color: #0000000f;
+  /* background-color: #0000000f; */
+  background-color: inherit;
   transform: translate(0, -2px);
   -webkit-box-shadow: 0 0 5px var(--red), 0 0 5px var(--red), 0 0 5px var(--red);
   box-shadow: 0 0 5px var(--red), 0 0 5px var(--red), 0 0 5px var(--red);
-  /* -webkit-box-shadow: 0 0 4px var(--o-white), 0 0 7px var(--red),  0 0 5px var(--red);
-  box-shadow: 0 0 4px var(--o-white), 0 0 7px var(--red),  0 0 5px var(--red); */
   transition-duration: 150ms;
 }
 
@@ -94,9 +96,9 @@
   overflow-x: hidden;
   overflow-y: auto;
 
-  -moz-box-shadow: inset 0 -15ch 15ch -15ch #00000078;
+  /* -moz-box-shadow: inset 0 -15ch 15ch -15ch #00000078;
   -webkit-box-shadow: inset 0 -15ch 15ch -15ch #00000078;
-  box-shadow: inset 0 -15ch 15ch -15ch #00000078;
+  box-shadow: inset 0 -15ch 15ch -15ch #00000078; */
 }
 
 .preview-articles .card {
@@ -155,8 +157,7 @@
     padding: 1ch;
   }
 
-  /* Just what I had before for the Horizontal scrolling uhh */
-  /* Some of it probably isn't needed */
+  /* Oh now we're horizontal :smirk: */
   .issue-preview {
     /* padding-bottom: 3ch; */
     display: grid;
@@ -178,22 +179,23 @@
     padding: 1ch;
     padding-bottom: 2ch; /*The scrollbar is large*/
     grid-gap: 1ch;
+
     display: grid;
+    grid-template-columns: repeat(2, 80%);
+    grid-template-rows: auto auto;
+    grid-auto-flow: column;
 
     -moz-box-shadow: none;
     -webkit-box-shadow: none;
     box-shadow: none;
 
     /* Horizontal scrolling */
-    grid-template-columns: repeat(4, 80%);
-    grid-template-rows: auto auto;
-    grid-auto-flow: column;
     overflow-x: scroll;
-    overflow-y: hidden;
+    /* overflow-y: hidden; */
   }
 
   .preview-articles .card {
-    height: 100%;
+    /* height: fit-content; */
     /* height: fit-content;
     width: fit-content; */
   }

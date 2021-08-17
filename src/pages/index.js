@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Layout from "../components/Layout"
 import Masonry from "react-masonry-css"
 
@@ -31,9 +31,6 @@ export default function Index({
     )
   })
 
-  /*
-  The articles being fed in rn aren't actually the first three in the issue
-  */
   const issueCards = issues.edges.map(({ node }) => {
     return (
       <HighlightIssueCard
@@ -60,6 +57,7 @@ export default function Index({
       >
         {articleCards.slice(3, articleCards.length)}
       </Masonry>
+      <h2 className="page-title home-action"><Link to='/articles'>{`All articles`}</Link></h2>
     </Layout>
   )
 }
@@ -92,7 +90,7 @@ export const pageQuery = graphql`
     }
     articles: allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
-      limit: 100
+      limit: 8
       filter: { fields: { slug: { regex: "^/articles/" } } }
     ) {
       edges {

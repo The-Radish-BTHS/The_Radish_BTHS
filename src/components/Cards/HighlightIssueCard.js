@@ -1,13 +1,16 @@
-import React, { useEffect } from "react"
+import React, {
+  // useEffect 
+} from "react"
 import { Link } from "gatsby"
 import "./Cards.css"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-const scrollContainer = typeof document !== `undefined` ? document.getElementById("preview-articles") : null
+// const scrollContainer = typeof document !== `undefined` ? document.getElementById("preview-articles") : null
 
 export default function HighlightIssueCard(props) {
   const image = getImage(props.cover)
 
+  // Wheel horizontal scrolling
   // const handleWheel = (evt) => {
   //   const endOfContainer = (scrollContainer.scrollLeft !== (scrollContainer.scrollWidth - scrollContainer.offsetWidth))
   //   // if ((scrollContainer.scrollLeft === 0) && (evt.deltaY > 0)){
