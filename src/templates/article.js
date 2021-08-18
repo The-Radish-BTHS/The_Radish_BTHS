@@ -1,17 +1,10 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/Layout"
-import Masonry from "react-masonry-css"
 
 import Articard from "../components/Cards/Articard.js"
 
 const ValidSlug = (collection, name) => `/${collection}/${name.toLowerCase().replace(/[/|\\:*?"<>()]/g, '').replace(/ /g, "-")}`;
-
-const breakpointColumnsObj = {
-  default: 3,
-  1000: 2,
-  600: 1,
-}
 
 export default function Article({
   data, // this prop will be injected by the GraphQL query below.
@@ -37,11 +30,11 @@ export default function Article({
                 >
                   {`${author}`}
                 </Link>
-                {`${index < frontmatter.authors.length - 1 ? `, ` : ``}`}
+                {`${(index < frontmatter.authors.length - 1) && (frontmatter.authors.length !== 2) ? `, ` : ` `}`}
               </div>
             )
           })}
-          {` for `}
+          {`for `}
           <Link
             to={ValidSlug("issues", frontmatter.issue)}
             className="color-under-link"
