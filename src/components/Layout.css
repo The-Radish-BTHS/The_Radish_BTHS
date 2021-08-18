@@ -109,27 +109,22 @@ a:visited * {
 .page-title {
   text-align: center;
 }
-
 .page-title h4 div {
   /* author links in articles */
   display: inline-block;
 }
-
 .page-title .cover {
   max-width: 50vw;
 }
-
 .page-title .cover-container {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
 .page-title .author {
   white-space: pre;
 }
-
 .page-title a:hover {
   text-decoration: underline;
   text-decoration-color: var(--red);
@@ -200,12 +195,10 @@ h1 .query, h3 .query {
 
   padding-bottom: 1ch;
 }
-
 .my-masonry-grid_column {
   padding-left: 2ch;
   background-clip: padding-box;
 }
-
 .my-masonry-grid_column .card {
   margin-bottom: 2ch;
 }
@@ -217,6 +210,10 @@ h1 .query, h3 .query {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+.container {
+  padding-bottom: 2ch;
 }
 
 /* Font sizing ---------------------------------------------------------------*/

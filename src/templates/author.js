@@ -43,6 +43,8 @@ export default function Author({
               excerpt={node.excerpt}
               tags={node.frontmatter.tags}
               description={node.frontmatter.description}
+              date={node.frontmatter.date}
+              issue={node.frontmatter.issue}
               // authors={node.frontmatter.authors} // Might be redundant
             />
           )
@@ -91,6 +93,8 @@ export const pageQuery = graphql`
           frontmatter {
             title
             description
+            issue
+            date(formatString: "MMMM YYYY")
             authors {
               author
             }

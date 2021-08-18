@@ -27,13 +27,14 @@ export default function Articles({
       <div className="page-title">
         <h1>Allticles</h1>
         <h2>(All the articles)</h2>
-        <label className="container">
-          <input type="checkbox"
+        <div className="container">
+          <input
+            type="checkbox"
             onChange={ (evt) => setOldestFirst(evt.target.checked) }
+            id="oldest-first"
           />
-          <span className="checkmark"></span>
-          {`Oldest first`}
-        </label>
+          <label for="oldest-first">Oldest first</label>
+        </div>
       </div>
       <Masonry
         breakpointCols={breakpointColumnsObj}
@@ -50,6 +51,8 @@ export default function Articles({
               authors={node.frontmatter.authors}
               tags={node.frontmatter.tags}
               description={node.frontmatter.description}
+              date={node.frontmatter.date}
+              issue={node.frontmatter.issue}
             />
           )
         })}
@@ -72,6 +75,8 @@ export const pageQuery = graphql`
           frontmatter {
             title
             description
+            issue
+            date(formatString: "MMMM YYYY")
             authors {
               author
             }

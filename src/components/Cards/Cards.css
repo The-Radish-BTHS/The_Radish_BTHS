@@ -130,13 +130,26 @@
 
 .card a.author {
   font-size: 12px;
-  background-color: #444444aa;
+  background-color: #444444;
   margin-right: 1ch;
+  margin-bottom: 1ch;
   padding: 2px;
   border-radius: 2px;
 }
 .card a.author:hover {
   background-color: #44444488;
+}
+
+.card a.issue-tag {
+  font-size: 12px;
+  background-color: #333333;
+  margin-right: 1ch;
+  margin-bottom: 1ch;
+  padding: 2px;
+  border-radius: 2px;
+}
+.card a.issue-tag:hover {
+  background-color: #0000002f;
 }
 
 .card .collection-tag {
@@ -162,13 +175,16 @@
 
   margin: 0px;
   margin-right: 1ch;
+  margin-bottom: 1ch;
 }
 
-.card .authors, .card .tags {
+.tags {
   display: inline-flex;
-  margin-bottom: 1ch;
+  flex-wrap: wrap;
   align-items: flex-start;
-  width: fit-content;
+  justify-content: flex-start;
+  width: 100%;
+  margin-bottom: 1ch;
 }
 
 @media (max-width: 600px) {

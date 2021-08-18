@@ -26,7 +26,7 @@ export default function AllTags() {
   `)
   const { tags } = data;
   return (
-    <div className="tags">
+    <div className="AllTags">
       {tags.edges.map(({ node }) =>
           <Link
             to={node.fields.slug}

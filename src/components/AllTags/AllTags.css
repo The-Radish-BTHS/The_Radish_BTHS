@@ -1,4 +1,4 @@
-.tags {
+.AllTags {
   display: inline-flex;
   flex-wrap: wrap;
   align-items: center;
@@ -27,7 +27,7 @@ a.tag:hover {
 }
 
 @media (max-width: 600px) {
-  .tags {
+  .AllTags {
     justify-content: left;
   }
 }

@@ -37,6 +37,8 @@ export default function Tag({
               authors={node.frontmatter.authors}
               tags={node.frontmatter.tags}
               description={node.frontmatter.description}
+              date={node.frontmatter.date}
+              issue={node.frontmatter.issue}
             />
           )
         })}
@@ -66,6 +68,8 @@ export const pageQuery = graphql`
           frontmatter {
             title
             description
+            issue
+            date(formatString: "MMMM YYYY")
             authors {
               author
             }

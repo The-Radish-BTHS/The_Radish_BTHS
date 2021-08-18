@@ -8,33 +8,35 @@ export default function Articard(props) {
   return (
     <div className="card article">
       <Link to={props.slug}>
+        {props.date ? <h4>{props.date}</h4> : null}
         <h2>{props.title}</h2>
         <p>{props.description ? props.description : props.excerpt}</p>
       </Link>
-      {props.authors ? props.authors.map(({ author }, index) => {
-        return (
-          <div className="authors" key={`${author}#${index}`}>
+      <div className="tags">
+        {props.issue ? <Link to={ValidSlug("issues", props.issue)} className="issue-tag">{props.issue}</Link> : null}
+        {props.authors ? props.authors.map(({ author }, index) => {
+          return (
             <Link
               to={ValidSlug("authors", author)}
               className="author"
+              key={`${author}#${index}`}
             >
               {author}
             </Link>
-          </div>
-        )
-      }) : ""}
-      {props.tags ? props.tags.map(({ tag }, index) => {
-        return (
-          <div className="tags" key={`${tag}#${index}`}>
+          )
+        }) : null}
+        {props.tags ? props.tags.map(({ tag }, index) => {
+          return (
             <Link
               to={ValidSlug("tags", tag)}
               className="tag"
+              key={`${tag}#${index}`}
             >
               {`#${tag}`}
             </Link>
-          </div>
-        )
-      }) : ""}
+          )
+        }) : null}
+      </div>
     </div>
   )
 }
