@@ -11,7 +11,7 @@ const breakpointColumnsObj = {
   600: 1,
 }
 
-export default function Article({
+export default function Authors({
   data, // this prop will be injected by the GraphQL query below.
 }) {
   const { allMarkdownRemark } = data

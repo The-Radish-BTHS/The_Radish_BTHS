@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import Masonry from "react-masonry-css"
@@ -11,22 +11,36 @@ const breakpointColumnsObj = {
   600: 1,
 }
 
-export default function Author({
+export default function Articles({
   data, // this prop will be injected by the GraphQL query below.
 }) {
-  const { articles } = data
+  const { newestFirstArticles } = data
+  const [articles, setArticles] = useState(newestFirstArticles.edges)
+  const [oldestFirst, setOldestFirst] = useState(false)
+
+  useEffect(() => {
+    setArticles(articles.reverse())
+  }, [articles, setArticles, oldestFirst])
+
   return (
     <Layout pageName="Allticles">
       <div className="page-title">
         <h1>Allticles</h1>
         <h2>(All the articles)</h2>
+        <label className="container">
+          <input type="checkbox"
+            onChange={ (evt) => setOldestFirst(evt.target.checked) }
+          />
+          <span className="checkmark"></span>
+          {`Oldest first`}
+        </label>
       </div>
       <Masonry
         breakpointCols={breakpointColumnsObj}
         className="my-masonry-grid"
         columnClassName="my-masonry-grid_column"
       >
-        {articles.edges.map(({ node }) => {
+        {articles.map(({ node }) => {
           return (
             <Articard
               key={node.id}
@@ -46,7 +60,7 @@ export default function Author({
 
 export const pageQuery = graphql`
   query articles {
-    articles: allMarkdownRemark(
+    newestFirstArticles: allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
       limit: 1000
       filter: { fields: { slug: { regex: "^/articles/" } } }
