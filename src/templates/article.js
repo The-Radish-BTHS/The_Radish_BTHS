@@ -53,7 +53,7 @@ export default function Article({
     <div className="article">
       <div dangerouslySetInnerHTML={{ __html: html }} />
       <h4>
-        {frontmatter.tags ?
+        {frontmatter.tags && frontmatter.tags.length ?
           <>
             {`Tags: `}
             {frontmatter.tags.map(({ tag }, index) => {
@@ -86,11 +86,7 @@ export default function Article({
         }
       </h2>
     </div>
-    <Masonry
-      breakpointCols={breakpointColumnsObj}
-      className="my-masonry-grid"
-      columnClassName="my-masonry-grid_column"
-    >
+    <div className="card-grid">
       {more.edges.map(({ node }) => {
         return (
           <Articard
@@ -104,7 +100,7 @@ export default function Article({
           />
         )
       })}
-    </Masonry>
+    </div>
   </Layout>
   )
 }
@@ -126,6 +122,8 @@ export const pageQuery = graphql`
       }
     }
     more: allMarkdownRemark(
+      sort: {order: DESC, fields: [frontmatter___date]}
+      limit: 3
       filter: {frontmatter: { issue: {eq: $issue}}, fields: {slug: {regex: "^/articles/", ne: $slug}}}
     ) {
       edges {

@@ -180,6 +180,9 @@ h1 .query, h3 .query {
   grid-template-rows: repeat(auto-fill, minmax(250px, 1fr));
   grid-gap: 2ch;
 }
+.card-grid .card {
+  height: 100%;
+}
 
 .fade-content {
   border-radius: 3px;
