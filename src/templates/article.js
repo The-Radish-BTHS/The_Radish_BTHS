@@ -136,7 +136,7 @@ export const pageQuery = graphql`
     }
     issue_more: allMarkdownRemark(
       sort: {order: DESC, fields: [frontmatter___date]}
-      limit: 4
+      limit: 3
       filter: {frontmatter: { issue: {eq: $issue}}, fields: {slug: {regex: "^/articles/", ne: $slug}}}
     ) {
       edges {
@@ -163,7 +163,7 @@ export const pageQuery = graphql`
     }
     all_more: allMarkdownRemark(
       sort: {order: DESC, fields: [frontmatter___date]}
-      limit: 4
+      limit: 3
       filter: {frontmatter: { issue: {ne: $issue}}, fields: {slug: {regex: "^/articles/", ne: $slug}}}
     ) {
       edges {
