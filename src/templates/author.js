@@ -24,7 +24,7 @@ export default function Author({
       <div className="page-title">
         <h1>{author.frontmatter.title}</h1>
         <h3>
-          <i>{(grad ? "former " : "") + author.frontmatter.position}</i>
+          <i>{((grad || author.frontmatter.former) ? "former " : "") + author.frontmatter.position}</i>
         </h3>
         <h3>{grad ? "Graduated "+ author.frontmatter.date : "Graduating " + author.frontmatter.date}</h3>
         <p>{author.frontmatter.description}</p>
@@ -45,6 +45,7 @@ export default function Author({
               description={node.frontmatter.description}
               date={node.frontmatter.date}
               issue={node.frontmatter.issue}
+              former={node.frontmatter.former}
               // authors={node.frontmatter.authors} // Might be redundant
             />
           )
@@ -62,6 +63,7 @@ export default function Author({
                 position={node.frontmatter.position}
                 date={node.frontmatter.date}
                 description={node.frontmatter.description}
+                former={node.frontmatter.former}
               />
             )
           })
@@ -79,6 +81,7 @@ export const pageQuery = graphql`
         title
         position
         description
+        former
       }
     }
     articles: allMarkdownRemark(
@@ -111,7 +114,7 @@ export const pageQuery = graphql`
     authors: allMarkdownRemark(
       sort: {order: DESC, fields: [frontmatter___date]}
       limit: 3
-      filter: {fields: {slug: {regex: "^/authors/"}}}
+      filter: {fields: {slug: {regex: "^/authors/", ne: $slug}}}
     ) {
       edges {
         node {
@@ -121,6 +124,7 @@ export const pageQuery = graphql`
             position
             date(formatString: "YYYY")
             description
+            former
           }
           fields {
             slug

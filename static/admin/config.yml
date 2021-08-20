@@ -79,12 +79,6 @@ collections:
     create: true
     fields:
       - { label: "Name", name: "title", widget: "string" }
-      # - {
-      #     label: "Position",
-      #     name: "position",
-      #     widget: "string",
-      #     default: "writer",
-      #   }
       - label: "Position"
         name: "position"
         widget: "select"
@@ -94,6 +88,7 @@ collections:
           "writer", "artist", "editor", "cheese"
           ]
         default: "writer"
+      - { label: "Is former", name: "former", widget: "boolean", default: false }
       - { label: "Grad year", name: "date", widget: "datetime" }
       - { label: "Description", name: "description", widget: "markdown", required: false, minimal: true }
 

@@ -9,7 +9,7 @@ const ValidSlug = (collection, name) => `/${collection}/${name.toLowerCase().rep
 export default function Article({
   data, // this prop will be injected by the GraphQL query below.
 }) {
-  const { article, more } = data
+  const { article, issue_more, all_more } = data
   const { frontmatter, html} = article
 
   return (
@@ -65,7 +65,7 @@ export default function Article({
         }
       </h4>
       <h2>
-        {more.edges.length ?
+        {issue_more.edges.length ?
           <>
             {`More from `}
             <Link
@@ -80,7 +80,25 @@ export default function Article({
       </h2>
     </div>
     <div className="card-grid">
-      {more.edges.map(({ node }) => {
+      {issue_more.edges.map(({ node }) => {
+        return (
+          <Articard
+            key={node.id}
+            slug={node.fields.slug}
+            title={node.frontmatter.title}
+            excerpt={node.excerpt}
+            tags={node.frontmatter.tags}
+            authors={node.frontmatter.authors}
+            description={node.frontmatter.description}
+            date={node.frontmatter.date}
+            issue={node.frontmatter.issue}
+          />
+        )
+      })}
+    </div>
+    <h2><Link to="/articles" className="color-under-link">More not this</Link></h2>
+    <div className="card-grid">
+      {all_more.edges.map(({ node }) => {
         return (
           <Articard
             key={node.id}
@@ -116,10 +134,37 @@ export const pageQuery = graphql`
         }
       }
     }
-    more: allMarkdownRemark(
+    issue_more: allMarkdownRemark(
       sort: {order: DESC, fields: [frontmatter___date]}
-      limit: 3
+      limit: 4
       filter: {frontmatter: { issue: {eq: $issue}}, fields: {slug: {regex: "^/articles/", ne: $slug}}}
+    ) {
+      edges {
+        node {
+          id
+          excerpt(pruneLength: 200)
+          frontmatter {
+            title
+            description
+            issue
+            date(formatString: "MMMM YYYY")
+            authors {
+              author
+            }
+            tags {
+              tag
+            }
+          }
+          fields {
+            slug
+          }
+        }
+      }
+    }
+    all_more: allMarkdownRemark(
+      sort: {order: DESC, fields: [frontmatter___date]}
+      limit: 4
+      filter: {frontmatter: { issue: {ne: $issue}}, fields: {slug: {regex: "^/articles/", ne: $slug}}}
     ) {
       edges {
         node {

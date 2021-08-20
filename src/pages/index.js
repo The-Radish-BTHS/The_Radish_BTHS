@@ -96,7 +96,7 @@ export const pageQuery = graphql`
     }
     articles: allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
-      limit: 8
+      limit: 9
       filter: { fields: { slug: { regex: "^/articles/" } } }
     ) {
       edges {

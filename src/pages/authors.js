@@ -37,6 +37,7 @@ export default function Authors({
                 position={node.frontmatter.position}
                 date={node.frontmatter.date}
                 description={node.frontmatter.description}
+                former={node.frontmatter.former}
               />
             )
           })
@@ -59,6 +60,7 @@ export const pageQuery = graphql`
           frontmatter {
             title
             position
+            former
             date(formatString: "YYYY")
             description
           }

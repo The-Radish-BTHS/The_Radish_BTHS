@@ -114,7 +114,7 @@ a:visited * {
   display: inline-block;
 }
 .page-title .cover {
-  max-width: 50vw;
+  max-width: 50%;
 }
 .page-title .cover-container {
   width: 100%;
@@ -204,6 +204,7 @@ button.shuffle-btn:hover {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-template-rows: repeat(auto-fill, minmax(250px, 1fr));
   grid-gap: 2ch;
+  margin-bottom: 2ch;
 }
 .card-grid .card {
   height: 100%;
