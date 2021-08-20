@@ -150,6 +150,7 @@ h1 .query, h3 .query {
 }
 .home-action a {
   padding: 1ch;
+  background-color: #0000002f;
   /* background-color: var(--red); */
   text-decoration-color: var(--red);
   border-radius: 3ch;
@@ -163,9 +164,38 @@ h1 .query, h3 .query {
   border-bottom: solid 1px; */
 }
 .home-action a:hover {
-  -moz-box-shadow: 0 0 2ch #000000af;
-  -webkit-box-shadow: 0 0 2ch #000000af;
+  background-color: var(--bg);
+  -moz-box-shadow: 0 0 1ch var(--red), 0 0 1.5ch var(--red);
+  -webkit-box-shadow: 0 0 1ch var(--red), 0 0 1.5ch var(--red);
   box-shadow: 0 0 1ch var(--red), 0 0 1.5ch var(--red);
+}
+
+button.shuffle-btn {
+  display: block;
+  margin-top: 2ch;
+  margin-bottom: 2ch;
+  margin-left: auto;
+  margin-right: auto;
+
+  color: inherit;
+  background-color: #0000002f;
+  /* border: solid 2px var(--highlight); */
+  border: none;
+  -moz-box-shadow: 0 0 1ch var(--red);
+  -webkit-box-shadow: 0 0 1ch var(--red);
+  box-shadow: 0 0 1ch var(--red);
+  border-radius: 1ch;
+  padding: 0.5rem;
+
+  transition-duration: 150ms;
+}
+button.shuffle-btn:hover {
+  background-color: var(--bg);
+  -moz-box-shadow: 0 0 1ch var(--red), 0 0 1.5ch var(--red);
+  -webkit-box-shadow: 0 0 1ch var(--red), 0 0 1.5ch var(--red);
+  box-shadow: 0 0 1ch var(--red), 0 0 1.5ch var(--red);
+
+  transition-duration: 150ms;
 }
 
 /* Simple cards without masonry */
@@ -212,10 +242,6 @@ h1 .query, h3 .query {
   margin-right: auto;
 }
 
-.container {
-  padding-bottom: 2ch;
-}
-
 /* Font sizing ---------------------------------------------------------------*/
 p {
   font-size: clamp(1rem, 0.9rem + 0.25vw, 1.25rem);
@@ -250,6 +276,10 @@ p {
   .page-title {
     text-align: left;
     /* padding: 1ch; */
+  }
+
+  button.shuffle-btn {
+    margin-left: 0;
   }
 
   .page-title .cover {

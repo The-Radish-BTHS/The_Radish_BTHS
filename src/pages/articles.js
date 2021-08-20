@@ -11,30 +11,51 @@ const breakpointColumnsObj = {
   600: 1,
 }
 
+const Shuffle = (arr) => {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * i)
+    const temp = arr[i]
+    arr[i] = arr[j]
+    arr[j] = temp
+  }
+  return (arr)
+}
+
 export default function Articles({
   data, // this prop will be injected by the GraphQL query below.
 }) {
   const { newestFirstArticles } = data
-  const [articles, setArticles] = useState(newestFirstArticles.edges)
+  const [articles, setArticles] = useState(newestFirstArticles.edges.slice(0, newestFirstArticles.edges.length))
   const [oldestFirst, setOldestFirst] = useState(false)
+  const [randomOrder, setRandomOrder] = useState(false)
 
   useEffect(() => {
-    setArticles(articles.reverse())
-  }, [articles, setArticles, oldestFirst])
+    if (oldestFirst) {
+      setArticles(newestFirstArticles.edges.slice(0, newestFirstArticles.edges.length).reverse())
+    }
+    else {
+      setArticles(newestFirstArticles.edges.slice(0, newestFirstArticles.edges.length))
+    }
+  }, [newestFirstArticles, setArticles, oldestFirst])
+  useEffect(() => {
+    if (randomOrder) {
+      setArticles(Shuffle(newestFirstArticles.edges.slice(0, newestFirstArticles.edges.length)))
+      setRandomOrder(false)
+    }
+  }, [setArticles, randomOrder])
 
   return (
     <Layout pageName="Allticles">
       <div className="page-title">
         <h1>Allticles</h1>
         <h2>(All the articles)</h2>
-        <div className="container">
-          <input
-            type="checkbox"
-            onChange={ (evt) => setOldestFirst(evt.target.checked) }
-            id="oldest-first"
-          />
-          <label for="oldest-first">Oldest first</label>
-        </div>
+        <input
+          type="checkbox"
+          onChange={ (evt) => setOldestFirst(evt.target.checked) }
+          id="oldest-first"
+        />
+        <label htmlFor="oldest-first">Oldest first</label>
+        <button className="shuffle-btn" onClick={ (evt) => setRandomOrder(true)}>Shuffle</button>
       </div>
       <Masonry
         breakpointCols={breakpointColumnsObj}
