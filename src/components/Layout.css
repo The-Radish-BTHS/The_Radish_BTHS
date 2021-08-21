@@ -221,17 +221,17 @@ button.shuffle-btn:hover {
   display: -webkit-box; /* Not needed if autoprefixing */
   display: -ms-flexbox; /* Not needed if autoprefixing */
   display: flex;
-  margin-left: -2ch;
+  margin-left: -1ch;
   width: auto;
 
   padding-bottom: 1ch;
 }
 .my-masonry-grid_column {
-  padding-left: 2ch;
+  padding-left: 1ch;
   background-clip: padding-box;
 }
 .my-masonry-grid_column .card {
-  margin-bottom: 2ch;
+  margin-bottom: 1ch;
 }
 
 .article img {

@@ -189,7 +189,7 @@
 
 @media (max-width: 600px) {
   .card:not(.issue) {
-    padding: 1ch;
+    /* padding: 2ch; */
   }
   .issue .content {
     padding: 1ch;
@@ -201,8 +201,9 @@
     display: grid;
     /* grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-template-rows: repeat(auto-fill, minmax(200px, 1fr)); */
-    grid-template-columns: 1fr 2fr;
+    /* grid-template-columns: 1fr 1fr; */
     column-gap: 0;
+
 
     /* Make it snug against the sides */
     /* margin-left: -2ch; */
@@ -214,25 +215,27 @@
   }
 
   .preview-articles {
-    padding: 1ch;
+    /* padding: 1ch; */
     padding-bottom: 2ch; /*The scrollbar is large*/
-    grid-gap: 1ch;
 
-    display: grid;
-    grid-template-columns: repeat(2, 80%);
-    grid-template-rows: auto auto;
+    /* display: grid; */
+    grid-template-columns: repeat(3, 90%);
+    grid-template-rows: auto;
     grid-auto-flow: column;
 
-    -moz-box-shadow: none;
+    /* -moz-box-shadow: none;
     -webkit-box-shadow: none;
-    box-shadow: none;
+    box-shadow: none; */
 
     /* Horizontal scrolling */
     overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 2ch;
     /* overflow-y: hidden; */
   }
 
   .preview-articles .card {
+    scroll-snap-align: start;
     /* height: fit-content; */
     /* height: fit-content;
     width: fit-content; */

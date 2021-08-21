@@ -1,37 +1,41 @@
 import React, {
-  // useEffect
+  useEffect
 } from "react"
 import { Link } from "gatsby"
 import "./Cards.css"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 // import Arrow from "./Arrow.js"
 
-// const scrollContainer = typeof document !== `undefined` ? document.getElementById("preview-articles") : null
+const scrollContainer = typeof document !== `undefined` ? document.getElementById("preview-articles") : null
 
 export default function HighlightIssueCard(props) {
   const image = getImage(props.cover)
 
   // Wheel horizontal scrolling
-  // const handleWheel = (evt) => {
-  //   const endOfContainer = (scrollContainer.scrollLeft !== (scrollContainer.scrollWidth - scrollContainer.offsetWidth))
-  //   // if ((scrollContainer.scrollLeft === 0) && (evt.deltaY > 0)){
-  //   //   console.log(evt.deltaY)
-  //   // }
-  //   if (endOfContainer || (evt.deltaY < 0)){
-  //     evt.preventDefault();
-  //     scrollContainer.scrollLeft += evt.deltaY;
-  //   }
-  // }
-  //
-  // useEffect(() => {
-  //   if (scrollContainer) {
-  //     scrollContainer.addEventListener('wheel', handleWheel)
-  //   }
-  //
-  //   return () => {
-  //     scrollContainer.removeEventListener('wheel', handleWheel)
-  //   }
-  // })
+  const handleWheel = (evt) => {
+    const innerWidth =  window.innerWidth;
+    // When there's horizontal scrolling
+    if (innerWidth <= 600) {
+      const endOfContainer = (scrollContainer.scrollLeft !== (scrollContainer.scrollWidth - scrollContainer.offsetWidth))
+      // if ((scrollContainer.scrollLeft === 0) && (evt.deltaY > 0)){
+      //   console.log(evt.deltaY)
+      // }
+      if (endOfContainer || (evt.deltaY < 0)){
+        evt.preventDefault();
+        scrollContainer.scrollLeft += evt.deltaY;
+      }
+    }
+  }
+
+  useEffect(() => {
+    if (scrollContainer) {
+      scrollContainer.addEventListener('wheel', handleWheel)
+    }
+
+    return () => {
+      scrollContainer.removeEventListener('wheel', handleWheel)
+    }
+  })
 
   return (
     <div className="issue-preview">
