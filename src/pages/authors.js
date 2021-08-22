@@ -20,7 +20,7 @@ export default function Authors({
   return (
     <Layout pageName="Authors">
       <Banner
-        bg="/auditorium.jpg"
+        bg="/banner.jpg"
         header="Authors"
         txt="We exist"
       />

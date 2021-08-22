@@ -48,7 +48,7 @@ export default function Articles({
   return (
     <Layout pageName="Allticles">
       <Banner
-        bg="/auditorium.jpg"
+        bg="/banner.jpg"
         header="Allticles"
         txt="All the articles"
       />

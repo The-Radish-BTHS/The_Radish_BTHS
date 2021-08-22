@@ -52,7 +52,7 @@ export default function Index({
   return (
     <Layout>
       <Banner
-        bg="/auditorium.jpg"
+        bg="/banner.jpg"
         header="The Radish"
         txt="Brooklyn Tech's first, worst, and only"
       />

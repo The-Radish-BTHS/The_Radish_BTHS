@@ -19,7 +19,7 @@ export default function Issues({
   return (
     <Layout pageName="Issues">
       <Banner
-        bg="/auditorium.jpg"
+        bg="/banner.jpg"
         header="We've got issues"
         txt="Now you've got 'em too"
       />
