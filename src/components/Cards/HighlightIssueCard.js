@@ -33,7 +33,9 @@ export default function HighlightIssueCard(props) {
     }
 
     return () => {
-      scrollContainer.removeEventListener('wheel', handleWheel)
+      if (scrollContainer) {
+        scrollContainer.removeEventListener('wheel', handleWheel)
+      }
     }
   })
 

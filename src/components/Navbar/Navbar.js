@@ -47,16 +47,16 @@ export default function Navbar({ setShowSidebar, showSidebar, setShowModal, show
   const [showName, setShowName] = useState(true);
 
   const handleResize = () => {
-      const innerWidth =  window.innerWidth;
+    const innerWidth =  window.innerWidth;
 
-      // Make name disappear if someone has a super tiny screen
-      if (innerWidth <= 300) {
-        setShowName(false)
-      }
-      else {
-        setShowName(true)
-      }
+    // Make name disappear if someone has a super tiny screen
+    if (innerWidth <= 300) {
+      setShowName(false)
     }
+    else {
+      setShowName(true)
+    }
+  }
 
   const handleScroll = () => {
       const offset = window.pageYOffset || document.documentElement.scrollTop;

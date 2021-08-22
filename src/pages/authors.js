@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import Masonry from "react-masonry-css"
 
+import Banner from "../components/Banner/Banner.js"
 import AuthorCard from "../components/Cards/AuthorCard.js"
 
 const breakpointColumnsObj = {
@@ -18,10 +19,11 @@ export default function Authors({
 
   return (
     <Layout pageName="Authors">
-      <div className="page-title">
-        <h1>Authors</h1>
-        <h2>We exist</h2>
-      </div>
+      <Banner
+        bg="/auditorium.jpg"
+        header="Authors"
+        txt="We exist"
+      />
       <Masonry
         breakpointCols={breakpointColumnsObj}
         className="my-masonry-grid"

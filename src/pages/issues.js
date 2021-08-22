@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 // import Masonry from "react-masonry-css"
 
+import Banner from "../components/Banner/Banner.js"
 import IssueCard from "../components/Cards/IssueCard.js"
 
 // const breakpointColumnsObj = {
@@ -17,10 +18,11 @@ export default function Issues({
   const { issues } = data
   return (
     <Layout pageName="Issues">
-      <div className="page-title">
-        <h1>We've got issues</h1>
-        <h2>Now you've got 'em too</h2>
-      </div>
+      <Banner
+        bg="/auditorium.jpg"
+        header="We've got issues"
+        txt="Now you've got 'em too"
+      />
       <div className="card-grid">
         {issues.edges.map(({ node }) => {
           return (

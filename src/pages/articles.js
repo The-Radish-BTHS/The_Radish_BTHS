@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import Masonry from "react-masonry-css"
 
+import Banner from "../components/Banner/Banner.js"
 import Articard from "../components/Cards/Articard.js"
 
 const breakpointColumnsObj = {
@@ -42,13 +43,16 @@ export default function Articles({
       setArticles(Shuffle(newestFirstArticles.edges.slice(0, newestFirstArticles.edges.length)))
       setRandomOrder(false)
     }
-  }, [setArticles, randomOrder])
+  }, [setArticles, newestFirstArticles, randomOrder])
 
   return (
     <Layout pageName="Allticles">
+      <Banner
+        bg="/auditorium.jpg"
+        header="Allticles"
+        txt="All the articles"
+      />
       <div className="page-title">
-        <h1>Allticles</h1>
-        <h2>(All the articles)</h2>
         <input
           type="checkbox"
           onChange={ (evt) => setOldestFirst(evt.target.checked) }

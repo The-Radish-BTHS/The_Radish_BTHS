@@ -4,7 +4,7 @@ authors:
   - author: The anonymous doufigiseed
 tags:
   - tag: Late night things
-issue: Peppetoni Feedback
+issue: My pet bird
 date: 2021-08-18T16:42:33.982Z
 description: "Oh you have a spleen? Well, I have something I'd like to
   axe-spleen to you\r\n"

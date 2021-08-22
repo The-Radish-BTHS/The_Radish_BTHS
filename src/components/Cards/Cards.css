@@ -229,6 +229,7 @@
 
     /* Horizontal scrolling */
     overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
     scroll-snap-type: x mandatory;
     scroll-padding: 2ch;
     /* overflow-y: hidden; */
