@@ -26,7 +26,14 @@ export default function Issue({
         <h1>{issue.frontmatter.title}</h1>
         <h3>{issue.frontmatter.date}</h3>
         <p>{issue.frontmatter.description}</p>
-        <a href={issue.frontmatter.pdf} target="_blank" rel="noreferrer" className="color-under-link">PDF</a>
+        <a
+          href={issue.frontmatter.pdf}
+          target="_blank"
+          rel="noreferrer"
+          className="color-under-link"
+        >
+          <b>Read the PDF</b>
+        </a>
         <p />
         <div className="cover-container">
           <div className="cover">
@@ -44,23 +51,23 @@ export default function Issue({
         className="my-masonry-grid"
         columnClassName="my-masonry-grid_column"
       >
-        {
-          articles.edges.map(({node}) => {
-            return (
-              <Articard
-                key={node.id}
-                slug={node.fields.slug}
-                title={node.frontmatter.title}
-                excerpt={node.excerpt}
-                authors={node.frontmatter.authors}
-                tags={node.frontmatter.tags}
-                description={node.frontmatter.description}
-              />
-            )
-          })
-        }
+        {articles.edges.map(({ node }) => {
+          return (
+            <Articard
+              key={node.id}
+              slug={node.fields.slug}
+              title={node.frontmatter.title}
+              excerpt={node.excerpt}
+              authors={node.frontmatter.authors}
+              tags={node.frontmatter.tags}
+              description={node.frontmatter.description}
+            />
+          )
+        })}
       </Masonry>
-      <h1 className="page-title"><Link to='/issues/'>{`More issues`}</Link></h1>
+      <h1 className="page-title">
+        <Link to="/issues/">{`More issues`}</Link>
+      </h1>
       <div className="card-grid">
         {more.edges.map(({ node }) => {
           return (
@@ -81,7 +88,7 @@ export default function Issue({
 
 export const pageQuery = graphql`
   query issue($slug: String!, $title: String!) {
-    issue: markdownRemark(fields: {slug: {eq: $slug}}) {
+    issue: markdownRemark(fields: { slug: { eq: $slug } }) {
       frontmatter {
         description
         date(formatString: "MMMM YYYY")
@@ -97,7 +104,10 @@ export const pageQuery = graphql`
       }
     }
     articles: allMarkdownRemark(
-      filter: {frontmatter: {issue: {eq: $title}}, fields: {slug: {regex: "^/articles/"}}}
+      filter: {
+        frontmatter: { issue: { eq: $title } }
+        fields: { slug: { regex: "^/articles/" } }
+      }
     ) {
       edges {
         node {
@@ -120,9 +130,9 @@ export const pageQuery = graphql`
       }
     }
     more: allMarkdownRemark(
-      sort: {order: DESC, fields: [frontmatter___date]}
+      sort: { order: DESC, fields: [frontmatter___date] }
       limit: 3
-      filter: {fields: {slug: {regex: "^/issues/"}}}
+      filter: { fields: { slug: { regex: "^/issues/" } } }
     ) {
       edges {
         node {

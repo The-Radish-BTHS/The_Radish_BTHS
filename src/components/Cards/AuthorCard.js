@@ -6,9 +6,13 @@ import EmployeeStamp from "./EmployeeStamp"
 export default function AuthorCard(props) {
   const today = new Date()
   const grad = today.getMonth() > 6 && today.getFullYear() >= props.date
+  const execs = ["Ur mom", "CEO (Chief Editing Officer)"]
   return (
     <div className="card">
-      {true && <EmployeeStamp />}
+      {execs.includes(props.position) && (
+        <EmployeeStamp popUp={true} setPopUp={props.setPopUp} />
+      )}
+
       <Link to={props.slug}>
         <h4>
           <i>{(grad || props.former ? "former " : "") + props.position}</i>

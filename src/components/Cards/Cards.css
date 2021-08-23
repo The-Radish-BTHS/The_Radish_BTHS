@@ -27,7 +27,11 @@
   text-decoration-color: var(--red);
 }
 
-.card a h1, .card a h2, .card a h3, .card a h4, .card a p:hover {
+.card a h1,
+.card a h2,
+.card a h3,
+.card a h4,
+.card a p:hover {
   opacity: 0.92;
 }
 
@@ -188,6 +192,33 @@
   margin-bottom: 1ch;
 }
 
+.EmployeeStampPopUp {
+  width: 97.5vw;
+  height: 97.5vh;
+  border-radius: 20px;
+  background-color: black;
+
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 1;
+
+  text-align: center;
+}
+
+.PopUpCloseButton {
+  position: absolute;
+  right: 4vh;
+  top: 4vh;
+}
+
+.hoverPointer:hover {
+  cursor: pointer;
+}
+
 @media (max-width: 600px) {
   .card:not(.issue) {
     /* padding: 2ch; */
@@ -204,7 +235,6 @@
     grid-template-rows: repeat(auto-fill, minmax(200px, 1fr)); */
     /* grid-template-columns: 1fr 1fr; */
     column-gap: 0;
-
 
     /* Make it snug against the sides */
     /* margin-left: -2ch; */

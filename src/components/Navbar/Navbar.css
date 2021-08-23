@@ -28,9 +28,9 @@ nav {
   transition: 0.3s linear;
 }
 
-nav *:hover {
+/* nav *:hover {
   opacity: 0.95;
-}
+} */
 
 nav a {
   padding: 1rem;
@@ -48,7 +48,8 @@ nav a {
   align-items: center;
 }
 
-.radimir path, .search path {
+.radimir path,
+.search path {
   width: 2ch;
   fill: var(--highlight);
 }
@@ -84,13 +85,14 @@ nav a {
   transform: rotate(-45deg) translate(-8px, 6px);
 }
 
-.closed:nth-child(2) { opacity: 0; }
+.closed:nth-child(2) {
+  opacity: 0;
+}
 
 .closed:nth-child(3) {
   -webkit-transform: rotate(45deg) translate(-8px, -8px);
   transform: rotate(45deg) translate(-9px, -8px);
 }
-
 
 @media (max-width: 600px) {
   nav {
@@ -106,7 +108,7 @@ nav a {
   .search {
     position: absolute;
     right: 1ch;
-    top: .5ch;
+    top: 0.5ch;
   }
 
   .burger {
