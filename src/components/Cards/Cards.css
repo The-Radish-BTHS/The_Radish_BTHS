@@ -55,7 +55,7 @@
 }
 
 .issue-preview {
-  padding-bottom: 3ch;
+  padding-bottom: 5ch;
   display: grid;
   /* grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-template-rows: repeat(auto-fill, minmax(200px, 1fr)); */
@@ -68,7 +68,8 @@
 }
 
 .special {
-  margin-bottom: 2ch;
+  /* margin-bottom: 2ch; */
+  margin-right: 3px;
   grid-area: issue-link;
   overflow: hidden;
 }
@@ -86,18 +87,14 @@
 
 .preview-articles {
   grid-area: preview-articles;
+  margin-left: 3px;
 
-  border-radius: 3px;
+  border-radius: 5px;
   padding: 1ch;
   grid-gap: 1ch;
   display: grid;
 
-  /* Horizontal scrolling */
-  /* grid-template-columns: repeat(4, 80%);
-  grid-template-rows: auto auto;
-  grid-auto-flow: column;
-  overflow-x: scroll;
-  overflow-y: hidden; */
+  background-color: #0000002f;
 
   /* Vertical */
   /* Ideally this would be the same height as the issue to the left and it would scroll otherwise */
@@ -116,6 +113,10 @@
   height: 100%;
   /* height: fit-content;
   width: fit-content; */
+}
+
+.preview-articles .card:hover {
+  background-color: var(--bg);
 }
 
 /* .preview-articles .card:hover {

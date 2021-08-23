@@ -7,8 +7,6 @@
   align-content: center;
   justify-content: center;
   margin-bottom: 1rem;
-
-  /* overflow-x: hidden; */
 }
 
 .top-banner-section div {
@@ -17,16 +15,17 @@
 
 .banner-image {
   display: grid;
-  min-width: 350px;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 5px;
 }
 
 .banner-overlay-div {
   display: grid;
   background: black;
   background: linear-gradient(0deg, #000000bc 30%, #fff0 100%);
+  border-radius: 5px;
 }
 
 .banner-text-div {
