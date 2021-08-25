@@ -1,4 +1,5 @@
 .card {
+  position: relative; /* for the stamps to work better */
   padding: 2ch;
   padding-bottom: 1ch;
   height: fit-content;
@@ -22,9 +23,12 @@
   margin-bottom: 1ch;
 }
 
-.card a h2:hover {
+.card a h2 {
   text-decoration: underline;
   text-decoration-color: var(--red);
+}
+.card a h2:hover {
+  text-decoration: none;
 }
 
 .card a h1,

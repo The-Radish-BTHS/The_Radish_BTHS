@@ -31,7 +31,7 @@ export function Hamburger({ showSidebar, setShowSidebar }) {
       className="burger"
       // id="burger"
       onClick={toggle}
-      onKeyDown={(ev) => ev.keyCode===13 ? toggle : ""}
+      onKeyDown={(ev) => ev.keyCode===13 ? toggle() : ""}
     >
       <div className={lineClass} />
       <div className={lineClass} />

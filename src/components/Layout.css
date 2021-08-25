@@ -125,15 +125,22 @@ a:visited * {
 .page-title .author {
   white-space: pre;
 }
-.page-title a:hover {
+
+.page-title:not(.home-action) a {
   text-decoration: underline;
   text-decoration-color: var(--red);
+}
+.page-title a:hover {
+  text-decoration: none;
   opacity: 0.95;
 }
 
-.color-under-link:hover {
+.color-under-link {
   text-decoration: underline;
   text-decoration-color: var(--red);
+}
+.color-under-link:hover {
+  text-decoration: none;
   opacity: 0.95;
 }
 

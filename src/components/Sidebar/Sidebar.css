@@ -47,47 +47,18 @@
   /* transition: 0.3s ease; */
 }
 
-.sidebar input {
-  margin-bottom: -3ch;
-
-  /* Cancelling out SearchBar.css */
-  width: 100%;
-  margin-left: 0%;
-}
-
-.sidebar button {
-  background-color: var(--bg);
-  /* color: var(--bg); */
-  color: var(--text-color);
-
-  padding: 1ch;
-
-  border-width: 2px;
-  border-color: var(--highlight);
-  border-style: solid;
-  border-radius: 3px;
-
-  transition-duration: 0.2s;
-}
-
-.sidebar button:hover {
-  border-color: var(--red);
-  opacity: 0.92;
-
-  transition-duration: 0.2s;
-}
-
 .sidebar .card {
   text-align: left;
 }
 
 .sidebar-link {
   font-size: 1.2rem;
-}
-
-.sidebar-link:hover {
   text-decoration: underline;
   text-decoration-color: var(--red);
+}
+.sidebar-link:hover {
+  text-decoration: none;
+  opacity: 0.9;
 }
 
 .side-cards {
@@ -117,7 +88,7 @@
 
 @media (max-width: 600px) {
   .sidebar {
-    top: 5ch;
+    top: 6ch;
     width: 50%;
     grid-gap: 3ch;
     padding: 2ch;
