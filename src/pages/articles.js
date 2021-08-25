@@ -53,23 +53,16 @@ export default function Articles({
         txt="All the articles"
       />
       <div className="page-title">
-        <p className="switch-label-sorta">Oldest first</p>
-        <label class="switch">
-          <input
-            type="checkbox"
-            onChange={ (evt) => setOldestFirst(evt.target.checked) }
-          />
-          <span class="slider round"></span>
-        </label>
-        {
-        // <input
-        //   type="checkbox"
-        //   onChange={ (evt) => setOldestFirst(evt.target.checked) }
-        //   id="oldest-first"
-        // />
-        // <label htmlFor="oldest-first"></label>
-        }
-        <button className="shuffle-btn" onClick={ (evt) => setRandomOrder(true)}>Shuffle</button>
+        <button
+          className={`articles-btn ${oldestFirst ? "pressed" : ""}`}
+          onClick={
+            (evt) => {
+              setOldestFirst(!oldestFirst)
+              // evt.target.classList.toggle("pressed")
+              console.log(evt.target.classList)
+          }}
+        >Oldest first</button>
+        <button className="articles-btn" onClick={ (evt) => setRandomOrder(true)}>Shuffle</button>
       </div>
       <Masonry
         breakpointCols={breakpointColumnsObj}
