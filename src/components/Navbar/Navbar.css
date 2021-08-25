@@ -28,9 +28,10 @@ nav {
   transition: 0.3s linear;
 }
 
-/* nav *:hover {
-  opacity: 0.95;
-} */
+nav *:hover {
+  cursor: pointer;
+  /* color: var(--green-1); */
+}
 
 nav a {
   padding: 1rem;

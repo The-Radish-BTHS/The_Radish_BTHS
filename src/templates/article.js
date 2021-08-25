@@ -66,15 +66,12 @@ export default function Article({
       </h4>
       <h2>
         {issue_more.edges.length ?
-          <>
-            {`More from `}
-            <Link
-              to={ValidSlug("issues", frontmatter.issue)}
-              className="color-under-link"
-            >
-              {`${frontmatter.issue}`}
-            </Link>
-          </>
+          <Link
+            to={ValidSlug("issues", frontmatter.issue)}
+            className="color-under-link"
+          >
+            {`More from ${frontmatter.issue}`}
+          </Link>
           : null
         }
       </h2>

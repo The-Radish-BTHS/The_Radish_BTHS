@@ -14,49 +14,61 @@ const breakpointColumnsObj = {
   600: 1,
 }
 
-function ExecStampPopUp({ setPopUp, author, grad }) {
-  return (
-    <div className="EmployeeStampPopUp">
-      <EmployeeStamp size={250} />
-      <svg
-        fill="none"
-        height="24"
-        stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        viewBox="0 0 24 24"
-        width="24"
-        xmlns="http://www.w3.org/2000/svg"
-        onClick={() => setPopUp(false)}
-        className="hoverPointer PopUpCloseButton"
-      >
-        <line x1="18" x2="6" y1="6" y2="18" />
-        <line x1="6" x2="18" y1="6" y2="18" />
-      </svg>
-      <h3>
-        This stamp indicates this author is (or was) an executive at The Radish.
-        [more stuff here?]
-      </h3>
-    </div>
-  )
-}
+// function ExecStampPopUp({ setPopUp, author, grad }) {
+//   return (
+//     <div className="EmployeeStampPopUp">
+//       <EmployeeStamp size={250} />
+//       <svg
+//         fill="none"
+//         height="24"
+//         stroke="currentColor"
+//         stroke-linecap="round"
+//         stroke-linejoin="round"
+//         stroke-width="2"
+//         viewBox="0 0 24 24"
+//         width="24"
+//         xmlns="http://www.w3.org/2000/svg"
+//         onClick={() => setPopUp(false)}
+//         className="hoverPointer PopUpCloseButton"
+//       >
+//         <line x1="18" x2="6" y1="6" y2="18" />
+//         <line x1="6" x2="18" y1="6" y2="18" />
+//       </svg>
+//       <h3>
+//         This stamp indicates this author is (or was) an executive at The Radish.
+//         [more stuff here?]
+//       </h3>
+//     </div>
+//   )
+// }
 
 export default function Author({
   data, // this prop will be injected by the GraphQL query below.
 }) {
   const { author, articles, authors } = data
+
   const today = new Date()
   const grad =
     today.getMonth() > 6 && today.getFullYear() >= author.frontmatter.date
 
   const [popUp, setPopUp] = useState(true)
+
+  const execs = [
+    "President", "Vice President", "CEO (Chief Editing Officer)",
+    "Secretary", "Treasurer", "Social Media Manager", "Graphics Organizer",
+    "ur mom", "the cheese"
+    ]
+
   return (
     <Layout pageName={author.frontmatter.title}>
-      {popUp && (
+      {/*popUp && (
         <ExecStampPopUp setPopUp={setPopUp} author={author} grad={grad} />
-      )}
+      )*/}
+
       <div className="page-title">
+        {execs.includes(author.frontmatter.position) && (
+          <EmployeeStamp />
+        )}
         <h1>{author.frontmatter.title}</h1>
         <h3>
           <i>

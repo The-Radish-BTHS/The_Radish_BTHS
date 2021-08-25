@@ -58,6 +58,30 @@
   padding-bottom: 0.5ch;
 }
 
+.authorCard a {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-areas:
+    "text stamp";
+}
+
+.card .stamp {
+  grid-area: stamp;
+  width: 80px;
+
+  position: relative;
+  left: 0;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.author-card-text {
+  /* background-color: blue; */
+  grid-area: text;
+  width: auto;
+}
+
 .issue-preview {
   padding-bottom: 5ch;
   display: grid;
@@ -215,9 +239,46 @@
   top: 4vh;
 }
 
-.hoverPointer:hover {
+/* .hoverPointer:hover {
   cursor: pointer;
+} */
+
+/* .tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+} */
+
+.tooltip {
+  /* background-color: red; */
 }
+
+.tooltip .tooltiptext {
+  /* visibility: hidden;
+  display: none; */
+
+  width: 100px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 1ch;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* top: -50%;
+  left: 95%; */
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  /* display: block; */
+}
+
 
 @media (max-width: 600px) {
   .card:not(.issue) {

@@ -3,12 +3,12 @@
 :root {
   --red: #ad1507;
   --darker-red: #ab1305;
+  --highlight: #07ad36;
   --green-1: #05992f;
   --green-2: #00570d;
   /* --bg: #090909; */
   --bg: #2e2e2e;
   /* --highlight: #f3f2f2;  */
-  --highlight: #07ad36;
   --text-color: #ffffff;
   --o-white: #ffffff9c;
 }
@@ -224,7 +224,8 @@ button.shuffle-btn:hover {
   margin-left: -1ch;
   width: auto;
 
-  padding-bottom: 1ch;
+  /* Almost the same as the issue's gap??? */
+  padding-bottom: 4ch;
 }
 .my-masonry-grid_column {
   padding-left: 1ch;
