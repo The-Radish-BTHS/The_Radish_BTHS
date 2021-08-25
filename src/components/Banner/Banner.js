@@ -3,7 +3,7 @@ import React from "react"
 import "./Banner.css"
 
 // https://dev.to/billraymond/creating-a-pure-responsive-css-grid-hero-image-or-banner-image-2pej
-export default function Banner({ bg, header, txt }) {
+export default function Banner({ children, bg, header, txt }) {
   return (
     <section className="top-banner-section">
       <div>
@@ -14,6 +14,7 @@ export default function Banner({ bg, header, txt }) {
         <span className="banner-text">
           <h1 className="banner-h1-text">{header}</h1>
           <h2 className="banner-body-text">{txt}</h2>
+          <h2>{children}</h2>
         </span>
       </div>
     </section>

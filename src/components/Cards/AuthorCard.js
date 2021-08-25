@@ -17,9 +17,11 @@ export default function AuthorCard(props) {
   return (
     <div className={`card authorCard`}>
       <Link to={props.slug}>
-        {isExec && (
+        {
+          isExec && (
           <EmployeeStamp former={props.former} />
-        )}
+        )
+        }
         <div className="author-card-text">
           <h4>
             <i>{(grad || props.former ? "former " : "") + props.position}</i>
