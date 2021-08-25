@@ -14,7 +14,7 @@ export default function Banner({ children, bg, header, txt }) {
         <span className="banner-text">
           <h1 className="banner-h1-text">{header}</h1>
           <h2 className="banner-body-text">{txt}</h2>
-          <h2>{children}</h2>
+          <div>{children}</div>
         </span>
       </div>
     </section>

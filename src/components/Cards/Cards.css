@@ -60,9 +60,13 @@
 
 .authorCard a {
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: auto 50px;
   grid-template-areas:
     "text stamp";
+}
+
+.authorCard a > .stamp {
+  background-color: red;
 }
 
 .card .stamp {

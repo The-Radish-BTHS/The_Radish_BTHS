@@ -98,7 +98,7 @@ nav a {
 @media (max-width: 600px) {
   nav {
     /* margin-left: calc(20%); */
-    height: 5ch;
+    height: 6ch;
     padding: 1ch;
     /* padding-left: calc(35px + 2ch);*/ /*Squished burgers are sad & could show up if we add more to the navbar */
     /* padding-top: 1ch;
@@ -113,7 +113,7 @@ nav a {
   }
 
   .burger {
-    top: 0.5ch;
+    top: 1ch;
     left: 1ch;
   }
 }

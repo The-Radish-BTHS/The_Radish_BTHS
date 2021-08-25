@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Layout from "../components/Layout"
 import Masonry from "react-masonry-css"
 
@@ -8,7 +8,7 @@ import AuthorCard from "../components/Cards/AuthorCard.js"
 
 const breakpointColumnsObj = {
   default: 3,
-  1000: 2,
+  1200: 2,
   600: 1,
 }
 
@@ -23,7 +23,9 @@ export default function Authors({
         bg="/banner.jpg"
         header="Authors"
         txt="We exist"
-      />
+      >
+        <h4>Also check out <Link to="/execs">the special ones</Link></h4>
+      </Banner>
       <Masonry
         breakpointCols={breakpointColumnsObj}
         className="my-masonry-grid"
