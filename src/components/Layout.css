@@ -178,11 +178,9 @@ h1 .query, h3 .query {
 }
 
 button.articles-btn {
-  display: block;
-  margin-top: 2ch;
+  display: inline-block;
   margin-bottom: 2ch;
-  margin-left: auto;
-  margin-right: auto;
+  margin-right: 2ch;
 
   color: inherit;
   background-color: #0000002f;
@@ -204,7 +202,23 @@ button.articles-btn:hover {
 
   transition-duration: 150ms;
 }
+button.articles-btn:active {
+  background-color: var(--bg);
+  -moz-box-shadow: 0 0 1ch var(--red), 0 0 1.5ch var(--red);
+  -webkit-box-shadow: 0 0 1ch var(--red), 0 0 1.5ch var(--red);
+  box-shadow: 0 0 1ch var(--red), 0 0 1.5ch var(--red);
 
+  transition-duration: 0s;
+}
+@media (hover: none) {
+  button.articles-btn:hover {
+    /* So it stops being weird on mobile */
+    background-color: #0000002f;
+    -moz-box-shadow: 0 0 1ch var(--red);
+    -webkit-box-shadow: 0 0 1ch var(--red);
+    box-shadow: 0 0 1ch var(--red);
+  }
+}
 button.articles-btn.pressed {
   background-color: var(--bg);
   -moz-box-shadow: 0 0 1ch var(--red), 0 0 1.5ch var(--red);
@@ -295,8 +309,8 @@ p {
     /* padding: 1ch; */
   }
 
-  button.shuffle-btn {
-    margin-left: 0;
+  button.articles-btn {
+    display: block;
   }
 
   .page-title .cover {

@@ -3,7 +3,7 @@ import { graphql, Link } from "gatsby"
 import Layout from "../components/Layout"
 import Masonry from "react-masonry-css"
 
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+// import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Articard from "../components/Cards/Articard.js"
 import IssueCard from "../components/Cards/IssueCard.js"
 import Banner from "../components/Banner/Banner.js"
@@ -19,7 +19,7 @@ export default function Issue({
 }) {
   const { issue, articles, more } = data
 
-  const image = getImage(data.issue.fields.rel_cover)
+  // const image = getImage(issue.fields.rel_cover)
 
   return (
     <Layout pageName={issue.frontmatter.title}>
@@ -50,8 +50,8 @@ export default function Issue({
       }
       <Banner
         bg={issue.frontmatter.cover}
-        header={issue.frontmatter.title}
       >
+        <h1>{issue.frontmatter.title}</h1>
         <h3>{issue.frontmatter.date}</h3>
         <p>{issue.frontmatter.description}</p>
         <a
@@ -114,13 +114,13 @@ export const pageQuery = graphql`
         pdf
         cover
       }
-      fields {
-        rel_cover {
-          childImageSharp {
-            gatsbyImageData(placeholder: BLURRED)
-          }
-        }
-      }
+      #fields {
+      #  rel_cover {
+      #    childImageSharp {
+      #      gatsbyImageData(placeholder: BLURRED)
+      #    }
+      #  }
+      #}
     }
     articles: allMarkdownRemark(
       filter: {

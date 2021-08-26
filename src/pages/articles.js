@@ -59,7 +59,7 @@ export default function Articles({
             (evt) => {
               setOldestFirst(!oldestFirst)
               // evt.target.classList.toggle("pressed")
-              console.log(evt.target.classList)
+              // console.log(evt.target.classList)
           }}
         >Oldest first</button>
         <button className="articles-btn" onClick={ (evt) => setRandomOrder(true)}>Shuffle</button>
