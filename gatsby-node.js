@@ -18,7 +18,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   if (frontmatter) {
    const { cover } = frontmatter
    if (cover && !cover.startsWith("../..")) {
-     const rel_cover = "../.." + cover
+     const rel_cover = "../../static/" + cover
      createNodeField({
        node,
        name: 'rel_cover',

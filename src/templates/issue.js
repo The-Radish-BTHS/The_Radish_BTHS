@@ -6,6 +6,7 @@ import Masonry from "react-masonry-css"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Articard from "../components/Cards/Articard.js"
 import IssueCard from "../components/Cards/IssueCard.js"
+import Banner from "../components/Banner/Banner.js"
 
 const breakpointColumnsObj = {
   default: 3,
@@ -22,29 +23,46 @@ export default function Issue({
 
   return (
     <Layout pageName={issue.frontmatter.title}>
-      <div className="page-title">
-        <h1>{issue.frontmatter.title}</h1>
+      {
+      // <div className="page-title">
+      //   <h1>{issue.frontmatter.title}</h1>
+      //   <h3>{issue.frontmatter.date}</h3>
+      //   <p>{issue.frontmatter.description}</p>
+      //   <a
+      //     href={issue.frontmatter.pdf}
+      //     target="_blank"
+      //     rel="noreferrer"
+      //     className="color-under-link"
+      //   >
+      //     <b>Read the PDF</b>
+      //   </a>
+      //   <p />
+      //   <div className="cover-container">
+      //     <div className="cover">
+      //       <GatsbyImage
+      //         image={image}
+      //         alt={issue.frontmatter.title}
+      //         placeholder="blurred"
+      //       />
+      //     </div>
+      //   </div>
+      // </div>
+      }
+      <Banner
+        bg={issue.frontmatter.cover}
+        header={issue.frontmatter.title}
+      >
         <h3>{issue.frontmatter.date}</h3>
         <p>{issue.frontmatter.description}</p>
         <a
           href={issue.frontmatter.pdf}
           target="_blank"
           rel="noreferrer"
-          className="color-under-link"
         >
           <b>Read the PDF</b>
         </a>
-        <p />
-        <div className="cover-container">
-          <div className="cover">
-            <GatsbyImage
-              image={image}
-              alt={data.issue.frontmatter.title}
-              placeholder="blurred"
-            />
-          </div>
-        </div>
-      </div>
+      </Banner>
+
       <p />
       <Masonry
         breakpointCols={breakpointColumnsObj}
@@ -94,6 +112,7 @@ export const pageQuery = graphql`
         date(formatString: "MMMM YYYY")
         title
         pdf
+        cover
       }
       fields {
         rel_cover {
