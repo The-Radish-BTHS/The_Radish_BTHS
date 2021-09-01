@@ -132,7 +132,7 @@ module.exports = {
       },
     },
 
-    `gatsby-plugin-portal`,
+    // `gatsby-plugin-portal`,
 
     // {
     //   resolve: `gatsby-transformer-remark`,

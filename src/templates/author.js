@@ -6,7 +6,7 @@ import Masonry from "react-masonry-css"
 import Articard from "../components/Cards/Articard.js"
 import AuthorCard from "../components/Cards/AuthorCard.js"
 import EmployeeStamp from "../components/Cards/EmployeeStamp"
-import { useState } from "react"
+// import { useState } from "react"
 
 const breakpointColumnsObj = {
   default: 3,
@@ -51,7 +51,7 @@ export default function Author({
   const grad =
     today.getMonth() > 6 && today.getFullYear() >= author.frontmatter.date
 
-  const [popUp, setPopUp] = useState(true)
+  // const [popUp, setPopUp] = useState(true)
 
   const execs = [
     "President", "Vice President", "CEO (Chief Editing Officer)",
@@ -119,7 +119,7 @@ export default function Author({
               date={node.frontmatter.date}
               description={node.frontmatter.description}
               former={node.frontmatter.former}
-              setPopUp={setPopUp}
+              // setPopUp={setPopUp}
             />
           )
         })}

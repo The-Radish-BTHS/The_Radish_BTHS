@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useImperativeHandle, forwardRef, useCallback } from "react"
-import { createPortal } from 'react-dom'
+import React, { useState, useEffect, useCallback } from "react"
+// import { createPortal } from 'react-dom'
 import { useStaticQuery, graphql } from "gatsby"
 import { useFlexSearch } from 'react-use-flexsearch';
 
@@ -8,9 +8,7 @@ import SearchBar from "../SearchBar/SearchBar.js"
 import SearchCard from "../Cards/SearchCard.js"
 import "./ModalSearch.css"
 
-const portalRoot = typeof document !== `undefined` ? document.getElementById('portal') : null
-
-export function Modal({ showModal, setShowModal }, ref) {
+export default function Modal({ showModal, setShowModal }, ref) {
   // Search --------------------------------------------------------------------
   const data = useStaticQuery(graphql`
     query ModalSearch {
@@ -36,10 +34,11 @@ export function Modal({ showModal, setShowModal }, ref) {
     _modal.classList.add("fade-out")
     setTimeout(() => setShowModal(false), 200);
   }, [setShowModal])
-  useImperativeHandle(ref, () => ({
-    open: () => setShowModal(true),
-    close
-  }), [close, setShowModal])
+
+  // useImperativeHandle(ref, () => ({
+  //   open: () => setShowModal(true),
+  //   close
+  // }), [close, setShowModal])
 
   const handleKeydown = useCallback(event => {
     if (event.keyCode === 27) close()
@@ -81,8 +80,7 @@ export function Modal({ showModal, setShowModal }, ref) {
     }
   }, [handleKeydown, showModal])
 
-  return portalRoot ? createPortal(
-    showModal ? (
+  return showModal ? (
     <>
       <div className="modal fade" id="modal">
         <SearchBar
@@ -114,9 +112,5 @@ export function Modal({ showModal, setShowModal }, ref) {
       >
       </div>
     </>
-    ) : null,
-    portalRoot
   ) : null
 }
-
-export default forwardRef(Modal)

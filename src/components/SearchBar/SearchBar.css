@@ -11,8 +11,8 @@
   width: 50%;
   padding: 1ch;
 
-  color: inherit;
-  background-color: inherit;
+  color: var(--text-color);
+  background-color: var(--bg);
 
   border-width: 2px;
   border-color: var(--highlight);

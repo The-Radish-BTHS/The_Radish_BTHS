@@ -23,7 +23,7 @@
   width: 40%;
 
   z-index: 2;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   display: flex;
   flex-direction: column;
 
@@ -40,6 +40,7 @@
 
   border-right: 2px solid var(--highlight);
   background-color: var(--bg);
+  color: var(--text-color);
 
   padding: 2ch;
   overflow-x: hidden;

@@ -19,7 +19,7 @@ export default function Authors({
   const { allMarkdownRemark } = data
 
   return (
-    <Layout pageName="Authors">
+    <Layout pageName="Execs">
       {
       // <Banner
       //   bg="/banner.jpg"

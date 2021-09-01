@@ -31,7 +31,6 @@
   transform: translate(-50%, 0);
 
   z-index: 2;
-  overflow-y: scroll;
   display: flex;
   flex-direction: column;
 
@@ -40,6 +39,7 @@
   grid-gap: 2ch;
 
   border-radius: 3px;
+  color: var(--text-color);
   background-color: var(--bg);
 
   /* border: 2px solid var(--highlight); */

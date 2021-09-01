@@ -6,15 +6,18 @@
   --highlight: #07ad36;
   --green-1: #05992f;
   --green-2: #00570d;
-  /* --bg: #090909; */
   --bg: #2e2e2e;
-  /* --highlight: #f3f2f2;  */
   --text-color: #ffffff;
   --o-white: #ffffff9c;
 }
 * {
   font-family: "Roboto", sans-serif;
 }
+
+/* .light-theme {
+  --bg: white;
+
+} */
 
 body {
   background-color: var(--bg);
@@ -25,6 +28,8 @@ body {
 main {
   margin: 2ch;
   margin-bottom: 2ch;
+  background-color: var(--bg);
+  color: var(--text-color);
 
   /* wrapping */
   overflow-wrap: anywhere;
@@ -32,6 +37,7 @@ main {
 }
 
 .rest-of-page {
+  background-color: var(--bg);
   position: relative;
   min-height: calc(100vh - 12ch);
   padding-bottom: 10ch;
@@ -52,7 +58,6 @@ main {
 /* Scrollbars --------------------------------------------------------------- */
 
 ::-webkit-scrollbar {
-  width: 10px;
   background: rgba(255, 255, 255, 0.039);
   border-radius: 3px;
 }
