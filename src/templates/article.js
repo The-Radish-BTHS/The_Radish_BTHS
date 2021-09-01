@@ -16,7 +16,6 @@ export default function Article({
     <Layout pageName={frontmatter.title}>
       <div className="page-title">
         <h1>{frontmatter.title}</h1>
-        <h4>{frontmatter.date}</h4>
         <p>{frontmatter.description}</p>
         <h4>
           {`Written by: `}
@@ -42,6 +41,25 @@ export default function Article({
             {`${frontmatter.issue}`}
           </Link>
       </h4>
+      <h4>{`Published ${frontmatter.date}`}</h4>
+      <p className="small-tags">
+        {frontmatter.tags && frontmatter.tags.length ?
+          <>
+            {frontmatter.tags.map(({ tag }, index) => {
+              return (
+                <Link
+                  to={ValidSlug('tags', tag)}
+                  key={index}
+                  className="tag"
+                >
+                  {`#${tag}`}
+                </Link>
+              )
+            })}
+          </>
+          : null
+        }
+      </p>
     </div>
     <div className="article">
       <div dangerouslySetInnerHTML={{ __html: html }} />
@@ -123,6 +141,7 @@ export const pageQuery = graphql`
         title
         issue
         description
+        date(formatString: "MMMM YYYY")
         authors {
           author
         }

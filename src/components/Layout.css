@@ -125,7 +125,6 @@ a:visited * {
 .page-title .author {
   white-space: pre;
 }
-
 .page-title:not(.home-action) a {
   text-decoration: underline;
   text-decoration-color: var(--red);
@@ -161,10 +160,12 @@ h1 .query, h3 .query {
   /* background-color: var(--red); */
   text-decoration-color: var(--red);
   border-radius: 3ch;
+  border: solid 2px var(--red);
 
-  -moz-box-shadow: 0 0 1ch var(--red);
+  /* -moz-box-shadow: 0 0 1ch var(--red);
   -webkit-box-shadow: 0 0 1ch var(--red);
-  box-shadow: 0 0 1ch var(--red);
+  box-shadow: 0 0 1ch var(--red); */
+
   transition-duration: 300ms;
 
   /* border-top: solid 1px;
@@ -177,20 +178,27 @@ h1 .query, h3 .query {
   box-shadow: 0 0 1ch var(--red), 0 0 1.5ch var(--red);
 }
 
+.articles-btn-container {
+  text-align: center;
+}
 button.articles-btn {
   display: inline-block;
   margin-bottom: 2ch;
   margin-right: 2ch;
 
+  width: 40%;
+
   color: inherit;
   background-color: #0000002f;
-  /* border: solid 2px var(--highlight); */
-  border: none;
-  -moz-box-shadow: 0 0 1ch var(--red);
-  -webkit-box-shadow: 0 0 1ch var(--red);
-  box-shadow: 0 0 1ch var(--red);
+  border: solid 2px var(--red);
+
   border-radius: 1ch;
   padding: 0.5rem;
+
+  /* border: none;
+  -moz-box-shadow: 0 0 1ch var(--red);
+  -webkit-box-shadow: 0 0 1ch var(--red);
+  box-shadow: 0 0 1ch var(--red); */
 
   transition-duration: 150ms;
 }
@@ -225,6 +233,29 @@ button.articles-btn.pressed {
   -webkit-box-shadow: 0 0 1ch var(--red), 0 0 1.5ch var(--red);
   box-shadow: 0 0 1ch var(--red), 0 0 1.5ch var(--red);
   transition-duration: 150ms;
+}
+
+.small-tags .tag {
+  font-size: 12px;
+  padding: 2px;
+  border-radius: 2px;
+
+  /* margin: 0px;
+  margin-right: 1ch;
+  margin-bottom: 1ch; */
+}
+
+.issue-description {
+  background-color: #0000002f;
+  border-radius: 5px;
+  padding: 3ch;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.issue-description p {
+  margin: 0;
 }
 
 /* Simple cards without masonry */
@@ -307,10 +338,6 @@ p {
   .page-title {
     text-align: left;
     /* padding: 1ch; */
-  }
-
-  button.articles-btn {
-    display: block;
   }
 
   .page-title .cover {

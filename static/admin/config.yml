@@ -30,7 +30,7 @@ collections:
       - {
           label: "Description",
           name: "description",
-          widget: "markdown",
+          widget: "text",
           required: false,
           minimal: true
         }
@@ -70,7 +70,7 @@ collections:
         value_field: "title"
         display_fields: ["title"]
       - { label: "Publish Date", name: "date", widget: "datetime" }
-      - {label: "Description", name: "description", widget: "markdown", required: false, minimal: true }
+      - {label: "Description", name: "description", widget: "text", required: false, minimal: true }
       - { label: "Body", name: "body", widget: "markdown" }
 
   - name: "author"
@@ -90,7 +90,7 @@ collections:
         default: "writer"
       - { label: "Is former", name: "former", widget: "boolean", default: false }
       - { label: "Grad year", name: "date", widget: "datetime" }
-      - { label: "Description", name: "description", widget: "markdown", required: false, minimal: true }
+      - { label: "Description", name: "description", widget: "text", required: false, minimal: true }
 
   - name: "tag"
     label: "Tag"
@@ -103,4 +103,4 @@ collections:
         widget: "color"
         # widget: "select"
         # options: ["red", "orange", "yellow", "green", "blue", "purple", "white", "black"]
-      - {label: "Description", name: "description", widget: "markdown", required: false, minimal: true }
+      - {label: "Description", name: "description", widget: "text", required: false, minimal: true }

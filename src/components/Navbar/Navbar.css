@@ -58,7 +58,7 @@ nav a {
 .search {
   position: absolute;
   right: 2ch;
-  top: 2ch;
+  top: 3ch;
 }
 
 /* Closeburger button */
@@ -107,9 +107,8 @@ nav a {
   }
 
   .search {
-    position: absolute;
     right: 1ch;
-    top: 0.5ch;
+    top: 1ch;
   }
 
   .burger {

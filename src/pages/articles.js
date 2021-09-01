@@ -52,7 +52,8 @@ export default function Articles({
         header="Allticles"
         txt="All the articles"
       />
-      <div className="page-title">
+
+      <div className="articles-btn-container">
         <button
           className={`articles-btn ${oldestFirst ? "pressed" : ""}`}
           onClick={
@@ -62,8 +63,13 @@ export default function Articles({
               // console.log(evt.target.classList)
           }}
         >Oldest first</button>
-        <button className="articles-btn" onClick={ (evt) => setRandomOrder(true)}>Shuffle</button>
+        <button className="articles-btn" onClick={
+          (evt) => {
+            setOldestFirst(false)
+            setRandomOrder(true)
+        }}>Shuffle</button>
       </div>
+
       <Masonry
         breakpointCols={breakpointColumnsObj}
         className="my-masonry-grid"

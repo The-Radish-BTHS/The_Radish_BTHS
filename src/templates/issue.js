@@ -53,7 +53,6 @@ export default function Issue({
       >
         <h1>{issue.frontmatter.title}</h1>
         <h3>{issue.frontmatter.date}</h3>
-        <p>{issue.frontmatter.description}</p>
         <a
           href={issue.frontmatter.pdf}
           target="_blank"
@@ -62,7 +61,9 @@ export default function Issue({
           <b>Read the PDF</b>
         </a>
       </Banner>
-
+      <div className="page-title issue-description">
+        <p>{issue.frontmatter.description}</p>
+      </div>
       <p />
       <Masonry
         breakpointCols={breakpointColumnsObj}

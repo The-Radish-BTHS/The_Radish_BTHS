@@ -54,7 +54,8 @@
 
 .issue {
   padding: 0ch;
-  height: 100%;
+  height: fit-content;
+  /* height: 100%; */
 }
 
 .issue .content {
@@ -105,6 +106,10 @@
     "issue-link preview-articles"
     "issue-link preview-articles";
   column-gap: 0;
+}
+
+.issue-preview .issue {
+  height: 100%;
 }
 
 .special {
@@ -206,7 +211,7 @@
 }
 
 .card a.tag {
-  color: var(--text-color);
+  /* color: var(--text-color); */
   /* background-color: var(--green-1);  */
   background-color: var(--red);
 
