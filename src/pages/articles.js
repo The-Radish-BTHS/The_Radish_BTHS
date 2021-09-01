@@ -3,7 +3,8 @@ import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import Masonry from "react-masonry-css"
 
-import Banner from "../components/Banner/Banner.js"
+import { ParallaxBanner } from 'react-scroll-parallax';
+// import Banner from "../components/Banner/Banner.js"
 import Articard from "../components/Cards/Articard.js"
 
 const breakpointColumnsObj = {
@@ -47,10 +48,34 @@ export default function Articles({
 
   return (
     <Layout pageName="Allticles">
-      <Banner
-        bg="/banner.jpg"
-        header="Allticles"
-        txt="All the articles"
+      {
+      // <Banner
+      //   bg="/banner.jpg"
+      //   header="Allticles"
+      //   txt="All the articles"
+      // />
+      }
+
+      <ParallaxBanner
+        className="parallax-banner"
+        layers={[
+            {
+                image: "/banner.jpg",
+                amount: 0.2,
+            },
+            {
+                children:
+                  <div id='banner-children'>
+                    <h1>Allticles</h1>
+                    <h2>All the articles</h2>
+                  </div>
+                ,
+                amount: 0,
+            }
+        ]}
+        style={{
+            height: '500px',
+        }}
       />
 
       <div className="articles-btn-container">

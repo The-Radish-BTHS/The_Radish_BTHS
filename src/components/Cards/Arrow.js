@@ -1,6 +1,7 @@
 import React from "react"
 
 export default function Arrow() {
+  // Arrow from https://www.flaticon.com/authors/roundicons
   return (
     <svg
       version="1.1"
@@ -9,7 +10,7 @@ export default function Arrow() {
       y="0px"
       viewBox="0 0 492.004 492.004"
       fill="#fff"
-      // style="enable-background:new 0 0 492.004 492.004;"
+      className="arrow"
     >
       <path d="M484.14,226.886L306.46,49.202c-5.072-5.072-11.832-7.856-19.04-7.856c-7.216,0-13.972,2.788-19.044,7.856l-16.132,16.136
   			c-5.068,5.064-7.86,11.828-7.86,19.04c0,7.208,2.792,14.2,7.86,19.264L355.9,207.526H26.58C11.732,207.526,0,219.15,0,234.002

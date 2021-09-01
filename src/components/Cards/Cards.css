@@ -6,8 +6,8 @@
   border-radius: 3px;
   background-color: #0000002f;
 
-  -webkit-backdrop-filter: blur(1ch);
-  backdrop-filter: blur(1ch);
+  /* -webkit-backdrop-filter: blur(1ch);
+  backdrop-filter: blur(1ch); */
 
   /* -webkit-box-shadow: 0 0 3px var(--highlight), 0 0 3px var(--highlight), 0 0 3px var(--highlight);
   box-shadow: 0 0 3px var(--highlight), 0 0 3px var(--highlight), 0 0 3px var(--highlight); */
@@ -296,6 +296,10 @@
   /* display: block; */
 }
 
+.arrow {
+  height: 2ch;
+  margin-left: 1ch;
+}
 
 @media (max-width: 600px) {
   .card:not(.issue) {

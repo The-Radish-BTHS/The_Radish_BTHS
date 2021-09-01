@@ -3,7 +3,8 @@ import { graphql, Link } from "gatsby"
 import Layout from "../components/Layout"
 import Masonry from "react-masonry-css"
 
-import Banner from "../components/Banner/Banner.js"
+import { ParallaxBanner } from 'react-scroll-parallax';
+// import Banner from "../components/Banner/Banner.js"
 import AuthorCard from "../components/Cards/AuthorCard.js"
 
 const breakpointColumnsObj = {
@@ -19,13 +20,39 @@ export default function Authors({
 
   return (
     <Layout pageName="Authors">
-      <Banner
-        bg="/banner.jpg"
-        header="Authors"
-        txt="We exist"
-      >
-        <h4>Also check out <Link to="/execs">the special ones</Link></h4>
-      </Banner>
+      {
+      //   <Banner
+      //   bg="/banner.jpg"
+      //   header="Authors"
+      //   txt="We exist"
+      // >
+      //   <h4>Also check out <Link to="/execs">the special ones</Link></h4>
+      // </Banner>
+      }
+
+      <ParallaxBanner
+        className="parallax-banner"
+        layers={[
+            {
+                image: "/banner.jpg",
+                amount: 0.2,
+            },
+            {
+                children:
+                  <div id='banner-children'>
+                    <h1>Authors</h1>
+                    <h2>We exist</h2>
+                    <h4>Also check out <Link to="/execs">the special ones</Link></h4>
+                  </div>
+                ,
+                amount: 0,
+            }
+        ]}
+        style={{
+            height: '500px',
+        }}
+      />
+
       <Masonry
         breakpointCols={breakpointColumnsObj}
         className="my-masonry-grid"

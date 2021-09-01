@@ -2,11 +2,12 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/Layout"
 import Masonry from "react-masonry-css"
+import { ParallaxBanner } from 'react-scroll-parallax';
 
 // import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Articard from "../components/Cards/Articard.js"
 import IssueCard from "../components/Cards/IssueCard.js"
-import Banner from "../components/Banner/Banner.js"
+// import Banner from "../components/Banner/Banner.js"
 
 const breakpointColumnsObj = {
   default: 3,
@@ -48,20 +49,63 @@ export default function Issue({
       //   </div>
       // </div>
       }
-      <Banner
-        bg={issue.frontmatter.cover}
-      >
-        <h1>{issue.frontmatter.title}</h1>
-        <h3>{issue.frontmatter.date}</h3>
-        <a
-          href={issue.frontmatter.pdf}
-          target="_blank"
-          rel="noreferrer"
-        >
-          <b>Read the PDF</b>
-        </a>
-      </Banner>
+      <ParallaxBanner
+        className="parallax-banner"
+        layers={[
+            {
+                image: issue.frontmatter.cover,
+                amount: 0.2,
+            },
+            {
+                children:
+                  <div id='banner-children'>
+                    <h1>{issue.frontmatter.title}</h1>
+                    <h3>{issue.frontmatter.date}</h3>
+                    <a
+                      href={issue.frontmatter.pdf}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <b>Read the PDF</b>
+                    </a>
+                  </div>
+                ,
+                amount: 0,
+            }
+        ]}
+        style={{
+            height: '500px',
+        }}
+      />
+
+      {
+      // <Banner
+      //   bg={issue.frontmatter.cover}
+      // >
+        // <h1>{issue.frontmatter.title}</h1>
+        // <h3>{issue.frontmatter.date}</h3>
+        // <a
+        //   href={issue.frontmatter.pdf}
+        //   target="_blank"
+        //   rel="noreferrer"
+        // >
+        //   <b>Read the PDF</b>
+        // </a>
+      // </Banner>
+      }
+
       <div className="page-title issue-description">
+        {
+        // <h1>{issue.frontmatter.title}</h1>
+        // <h3>{issue.frontmatter.date}</h3>
+        // <a
+        //   href={issue.frontmatter.pdf}
+        //   target="_blank"
+        //   rel="noreferrer"
+        // >
+        //   <b>Read the PDF</b>
+        // </a>
+        }
         <p>{issue.frontmatter.description}</p>
       </div>
       <p />

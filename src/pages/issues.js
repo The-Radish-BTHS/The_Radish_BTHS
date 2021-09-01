@@ -3,7 +3,8 @@ import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import Masonry from "react-masonry-css"
 
-import Banner from "../components/Banner/Banner.js"
+import { ParallaxBanner } from 'react-scroll-parallax';
+// import Banner from "../components/Banner/Banner.js"
 import IssueCard from "../components/Cards/IssueCard.js"
 
 const breakpointColumnsObj = {
@@ -19,11 +20,36 @@ export default function Issues({
   const { issues } = data
   return (
     <Layout pageName="Issues">
-      <Banner
-        bg="/banner.jpg"
-        header="We've got issues"
-        txt="Now you've got 'em too"
+      {
+      // <Banner
+      //   bg="/banner.jpg"
+      //   header="We've got issues"
+      //   txt="Now you've got 'em too"
+      // />
+      }
+
+      <ParallaxBanner
+        className="parallax-banner"
+        layers={[
+            {
+                image: "/banner.jpg",
+                amount: 0.2,
+            },
+            {
+                children:
+                  <div id='banner-children'>
+                    <h1>We've got issues</h1>
+                    <h2>Now you've got 'em too</h2>
+                  </div>
+                ,
+                amount: 0,
+            }
+        ]}
+        style={{
+            height: '500px',
+        }}
       />
+
       <Masonry
         breakpointCols={breakpointColumnsObj}
         className="my-masonry-grid"

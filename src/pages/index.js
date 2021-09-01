@@ -2,10 +2,11 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/Layout"
 import Masonry from "react-masonry-css"
-
-import Banner from "../components/Banner/Banner.js"
+import { ParallaxBanner } from 'react-scroll-parallax';
+// import Banner from "../components/Banner/Banner.js"
 import Articard from "../components/Cards/Articard.js"
 import HighlightIssueCard from "../components/Cards/HighlightIssueCard.js"
+import Arrow from "../components/Cards/Arrow.js"
 import AllTags from "../components/AllTags/AllTags.js"
 
 const breakpointColumnsObj = {
@@ -51,14 +52,39 @@ export default function Index({
 
   return (
     <Layout>
-      <Banner
-        bg="/banner.jpg"
-        header="The Radish"
-        txt="Brooklyn Tech's first, worst, and only"
+      {
+      // <Banner
+      //   bg="/banner.jpg"
+      //   header="The Radish"
+      //   txt="Brooklyn Tech's first, worst, and only"
+      // />
+      }
+
+      <ParallaxBanner
+        className="parallax-banner"
+        layers={[
+            {
+                image: "/banner.jpg",
+                amount: 0.2,
+            },
+            {
+                children:
+                  <div id='banner-children'>
+                    <h1>The Radish</h1>
+                    <h2>Brooklyn Tech's first, worst, and only</h2>
+                  </div>
+                ,
+                amount: 0,
+            }
+        ]}
+        style={{
+            height: '500px',
+        }}
       />
+
       <h1 className="page-title"><Link to={issues.edges[0].node.fields.slug}>Latest issue</Link></h1>
       {issueCards}
-      <h3 className="page-title home-action"><Link to='/issues'>{`All issues`}</Link></h3>
+      <h3 className="page-title home-action"><Link to='/issues'>{`All issues`}<Arrow /></Link></h3>
       <h1 className="page-title"><Link to='/articles'>{`Latest articles`}</Link></h1>
       <Masonry
         breakpointCols={breakpointColumnsObj}
@@ -67,7 +93,7 @@ export default function Index({
       >
         {articleCards.slice(3, articleCards.length)}
       </Masonry>
-      <h3 className="page-title home-action"><Link to='/articles'>{`All articles`}</Link></h3>
+      <h3 className="page-title home-action"><Link to='/articles'>{`All articles`}<Arrow /></Link></h3>
       <h1 className="page-title"><Link to="/search">Filter</Link></h1>
       <AllTags />
     </Layout>

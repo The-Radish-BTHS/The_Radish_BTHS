@@ -1,7 +1,7 @@
 .top-banner-section {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 300px;
+  grid-template-rows: 500px;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   align-content: center;
