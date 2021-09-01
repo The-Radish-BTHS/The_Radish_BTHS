@@ -84,6 +84,7 @@ exports.createPages = async ({ graphql, actions }) => {
         node.fileAbsolutePath.includes('/articles/') ? path.resolve(`./src/templates/article.js`)
         : node.fileAbsolutePath.includes('/authors/') ? path.resolve(`./src/templates/author.js`)
         : node.fileAbsolutePath.includes('/tags/') ? path.resolve(`./src/templates/tag.js`)
+        : node.fileAbsolutePath.includes('/about/') ? path.resolve(`./src/templates/about.js`)
         : path.resolve(`./src/templates/issue.js`),
       context: {
         // Data passed to context is available

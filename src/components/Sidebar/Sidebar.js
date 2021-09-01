@@ -19,6 +19,7 @@ export default function Sidebar({ showSidebar, setShowSidebar }) {
         <Link to="/issues" className="sidebar-link">Issues</Link>
         <Link to="/authors" className="sidebar-link">Authors</Link>
         <Link to="/execs" className="sidebar-link">Executives</Link>
+        <Link to="/about" className="sidebar-link">About</Link>
         <Footer />
       </div>
       <div

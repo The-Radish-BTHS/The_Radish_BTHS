@@ -47,7 +47,7 @@ export default function Authors({
             }
         ]}
         style={{
-            height: '500px',
+            height: 'max(400px, 40vh)',
         }}
       />
 

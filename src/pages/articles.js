@@ -74,7 +74,7 @@ export default function Articles({
             }
         ]}
         style={{
-            height: '500px',
+            height: 'max(400px, 40vh)',
         }}
       />
 

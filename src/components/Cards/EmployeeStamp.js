@@ -3,7 +3,7 @@ import "./Cards.css"
 
 export default function EmployeeStamp({ size=80, popUp=false, former=false, setPopUp }) {
   return (
-    <div className="tooltip">
+    <div className="stamp-container">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width={size ? size.toString() : "80"}

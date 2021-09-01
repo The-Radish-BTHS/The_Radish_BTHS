@@ -73,6 +73,14 @@ collections:
       - {label: "Description", name: "description", widget: "text", required: false, minimal: true }
       - { label: "Body", name: "body", widget: "markdown" }
 
+  - name: "about"
+    label: "About"
+    folder: "content/about"
+    create: true
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
   - name: "author"
     label: "Author"
     folder: "content/authors"

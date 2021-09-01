@@ -46,7 +46,7 @@ export default function Issues({
             }
         ]}
         style={{
-            height: '500px',
+            height: 'max(400px, 40vh)',
         }}
       />
 
