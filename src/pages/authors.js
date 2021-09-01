@@ -35,7 +35,7 @@ export default function Authors({
         layers={[
             {
                 image: "/banner.jpg",
-                amount: 0.2,
+                amount: 0.3,
             },
             {
                 children:

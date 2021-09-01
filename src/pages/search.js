@@ -32,7 +32,7 @@ export default function Search({
         <h1>Search for your heart's desire.</h1>
         <h2>Or Radish articles.</h2>
         <SearchBar
-          searchQuery={searchQuery}
+          // searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
         />
         {searchQuery && !results.length ? <h3>No results for <span className="query">{searchQuery}</span></h3>

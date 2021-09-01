@@ -61,7 +61,7 @@ export default function Articles({
         layers={[
             {
                 image: "/banner.jpg",
-                amount: 0.2,
+                amount: 0.3,
             },
             {
                 children:
@@ -80,17 +80,16 @@ export default function Articles({
 
       <div className="articles-btn-container">
         <button
-          className={`articles-btn ${oldestFirst ? "pressed" : ""}`}
+          className={`articles-btn`}
           onClick={
             (evt) => {
               setOldestFirst(!oldestFirst)
               // evt.target.classList.toggle("pressed")
               // console.log(evt.target.classList)
           }}
-        >Oldest first</button>
+        >{oldestFirst ? "Newest first" : "Oldest first"}</button>
         <button className="articles-btn" onClick={
           (evt) => {
-            setOldestFirst(false)
             setRandomOrder(true)
         }}>Shuffle</button>
       </div>

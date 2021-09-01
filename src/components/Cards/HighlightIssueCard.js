@@ -51,7 +51,9 @@ export default function HighlightIssueCard(props) {
             href={props.slug}
           />
           <div className="content">
-            <h4>{props.date}</h4>
+            {
+            // <h4>{props.date}</h4>
+            }
             <h2>{props.title}</h2>
             <p>{props.description}</p>
           </div>

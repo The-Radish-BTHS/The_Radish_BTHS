@@ -141,7 +141,7 @@ export const pageQuery = graphql`
         title
         issue
         description
-        date(formatString: "MMMM YYYY")
+        date(formatString: "MMMM DD, YYYY")
         authors {
           author
         }
@@ -158,7 +158,7 @@ export const pageQuery = graphql`
       edges {
         node {
           id
-          excerpt(pruneLength: 200)
+          excerpt(pruneLength: 100)
           frontmatter {
             title
             description
@@ -185,7 +185,7 @@ export const pageQuery = graphql`
       edges {
         node {
           id
-          excerpt(pruneLength: 200)
+          excerpt(pruneLength: 100)
           frontmatter {
             title
             description

@@ -28,13 +28,13 @@ export default function Authors({
       //   Holier than <Link to="/authors">thou</Link>
       // </Banner>
       }
-      
+
       <ParallaxBanner
         className="parallax-banner"
         layers={[
             {
                 image: "/banner.jpg",
-                amount: 0.2,
+                amount: 0.3,
             },
             {
                 children:

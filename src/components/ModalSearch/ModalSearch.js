@@ -86,7 +86,7 @@ export function Modal({ showModal, setShowModal }, ref) {
     <>
       <div className="modal fade" id="modal">
         <SearchBar
-          searchQuery={ModalSearchQuery}
+          // searchQuery={ModalSearchQuery}
           setSearchQuery={setModalSearchQuery}
         />
           <div className="side-cards">

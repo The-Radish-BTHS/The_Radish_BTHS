@@ -54,7 +54,7 @@ export default function Issue({
         layers={[
             {
                 image: issue.frontmatter.cover,
-                amount: 0.2,
+                amount: 0.3,
             },
             {
                 children:
@@ -94,20 +94,25 @@ export default function Issue({
       // </Banner>
       }
 
-      <div className="page-title issue-description">
-        {
-        // <h1>{issue.frontmatter.title}</h1>
-        // <h3>{issue.frontmatter.date}</h3>
-        // <a
-        //   href={issue.frontmatter.pdf}
-        //   target="_blank"
-        //   rel="noreferrer"
-        // >
-        //   <b>Read the PDF</b>
-        // </a>
-        }
-        <p>{issue.frontmatter.description}</p>
-      </div>
+      {issue.frontmatter.description ?
+        <div className="page-title issue-description">
+          {
+          // <h1>{issue.frontmatter.title}</h1>
+          // <h3>{issue.frontmatter.date}</h3>
+          // <a
+          //   href={issue.frontmatter.pdf}
+          //   target="_blank"
+          //   rel="noreferrer"
+          // >
+          //   <b>Read the PDF</b>
+          // </a>
+          }
+          <p>{issue.frontmatter.description}</p>
+        </div>
+        : null
+      }
+
+
       <p />
       <Masonry
         breakpointCols={breakpointColumnsObj}
@@ -154,7 +159,7 @@ export const pageQuery = graphql`
     issue: markdownRemark(fields: { slug: { eq: $slug } }) {
       frontmatter {
         description
-        date(formatString: "MMMM YYYY")
+        date(formatString: "MMMM DD, YYYY")
         title
         pdf
         cover

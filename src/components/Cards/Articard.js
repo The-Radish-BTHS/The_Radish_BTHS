@@ -8,7 +8,9 @@ export default function Articard(props) {
   return (
     <div className="card article">
       <Link to={props.slug}>
-        {props.date ? <h4>{props.date}</h4> : null}
+        {
+          // props.date ? <h4>{props.date}</h4> : null
+        }
         <h2>{props.title}</h2>
         <p>{props.description ? props.description : props.excerpt}</p>
       </Link>
