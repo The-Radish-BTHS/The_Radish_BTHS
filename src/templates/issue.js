@@ -66,7 +66,7 @@ export default function Issue({
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <b>Read the PDF</b>
+                      <b>Read PDF</b>
                     </a>
                   </div>
                 ,

@@ -225,6 +225,8 @@
 }
 
 .tags {
+  font-family: "Roboto", sans-serif;
+
   display: inline-flex;
   flex-wrap: wrap;
   align-items: flex-start;
@@ -298,7 +300,7 @@
 
 .arrow {
   height: 2ch;
-  margin-left: 1ch;
+  margin-left: 0.5ch;
 }
 
 @media (max-width: 600px) {

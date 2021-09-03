@@ -21,8 +21,9 @@ export default function About({
             {
                 children:
                   <div id='banner-children'>
-                    <h1>Who are we</h1>
-                    <h3>Good question</h3>
+                    <h1>Heyy</h1>
+                    <h3>We're The Radish</h3>
+                    <h5>Jacob is presingden</h5>
                   </div>
                 ,
                 amount: 0,

@@ -18,7 +18,7 @@ export default function Article({
         <h1>{frontmatter.title}</h1>
         <p>{frontmatter.description}</p>
         <h4>
-          {`Written by: `}
+          {`by `}
           {frontmatter.authors.map(({ author }, index) => {
             return (
               <div key={index} className="author">
@@ -40,8 +40,8 @@ export default function Article({
           >
             {`${frontmatter.issue}`}
           </Link>
+          {` • ${frontmatter.date}`}
       </h4>
-      <h4>{`Published ${frontmatter.date}`}</h4>
       <p className="small-tags">
         {frontmatter.tags && frontmatter.tags.length ?
           <>

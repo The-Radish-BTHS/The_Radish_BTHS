@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap');
 
 :root {
   --red: #ad1507;
@@ -10,8 +12,12 @@
   --text-color: #ffffff;
   --o-white: #ffffff9c;
 }
-* {
+
+h1, h2 {
   font-family: "Roboto", sans-serif;
+}
+p {
+  font-family: 'Lato', sans-serif;
 }
 
 /* .light-theme {
@@ -179,14 +185,20 @@ h1 .query, h3 .query {
 }
 
 .home-action {
-  margin-bottom: 3ch;
+  font-size: 16px;
+  margin-bottom: 2rem;
+  margin-top: -1rem;
   display: flex;
   justify-content: center;
   /* margin-bottom: 1ch;
   padding: 1ch; */
 }
 .home-action a {
-  padding: 1ch;
+  font-family: 'Noto Sans JP', sans-serif;
+  text-transform: uppercase;
+  font-weight: 500;
+
+  padding: 0.5rem;
   background-color: #0000002f;
   /* background-color: var(--red); */
   text-decoration-color: var(--red);
@@ -208,26 +220,31 @@ h1 .query, h3 .query {
 }
 .home-action a:hover {
   background-color: var(--bg);
-  -moz-box-shadow: 0 0 1ch var(--red), 0 0 1.5ch var(--red);
-  -webkit-box-shadow: 0 0 1ch var(--red), 0 0 1.5ch var(--red);
-  box-shadow: 0 0 1ch var(--red), 0 0 1.5ch var(--red);
+  -moz-box-shadow: 0 0 10px var(--red), 0 0 12px var(--red);
+  -webkit-box-shadow: 0 0 10px var(--red), 0 0 12px var(--red);
+  box-shadow: 0 0 10px var(--red), 0 0 12px var(--red);
 }
 
 .articles-btn-container {
+  font-family: 'Noto Sans JP', sans-serif;
   text-align: center;
 }
 button.articles-btn {
-  display: inline-block;
-  margin-bottom: 2ch;
-  margin-right: 2ch;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 17px;
 
-  width: 40%;
+  display: inline-block;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+
+  width: calc(50% - 1rem);
 
   color: inherit;
   background-color: #0000002f;
   border: solid 2px var(--red);
 
-  border-radius: 1ch;
+  border-radius: 1rem;
   padding: 0.5rem;
 
   /* border: none;
@@ -237,22 +254,25 @@ button.articles-btn {
 
   transition-duration: 150ms;
 }
+button.articles-btn:last-of-type {
+  margin-right: 0;
+}
 button.articles-btn:hover {
   background-color: var(--bg);
-  -moz-box-shadow: 0 0 1ch var(--red), 0 0 1.5ch var(--red);
-  -webkit-box-shadow: 0 0 1ch var(--red), 0 0 1.5ch var(--red);
-  box-shadow: 0 0 1ch var(--red), 0 0 1.5ch var(--red);
+  -moz-box-shadow: 0 0 10px var(--red), 0 0 12px var(--red);
+  -webkit-box-shadow: 0 0 10px var(--red), 0 0 12px var(--red);
+  box-shadow: 0 0 10px var(--red), 0 0 12px var(--red);
 
   transition-duration: 150ms;
 }
-button.articles-btn:active {
+/* button.articles-btn:active {
   background-color: var(--bg);
   -moz-box-shadow: 0 0 1ch var(--red), 0 0 1.5ch var(--red);
   -webkit-box-shadow: 0 0 1ch var(--red), 0 0 1.5ch var(--red);
   box-shadow: 0 0 1ch var(--red), 0 0 1.5ch var(--red);
 
   transition-duration: 0s;
-}
+} */
 @media (hover: none) {
   button.articles-btn:hover {
     /* So it stops being weird on mobile */
@@ -301,6 +321,8 @@ button.articles-btn:active {
 }
 
 .parallax-banner #banner-children {
+  font-family: 'Noto Sans JP', sans-serif;
+
   background: linear-gradient(0deg, #000000bc 25%, #fff0 100%);
   height: 100%;
   width: 100%;
@@ -368,7 +390,7 @@ button.articles-btn:active {
 
 /* Font sizing ---------------------------------------------------------------*/
 p {
-  font-size: clamp(1rem, 0.9rem + 0.25vw, 1.25rem);
+  font-size: clamp(16px, 12px + 0.5vw, 1.25rem);
 }
 
 /* Other ones pretend they're here */

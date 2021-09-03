@@ -16,7 +16,7 @@ nav {
   position: sticky;
   top: 0;
 
-  height: 10ch;
+  height: 6rem;
 
   display: flex;
   align-items: center;
@@ -98,7 +98,7 @@ nav a {
 @media (max-width: 600px) {
   nav {
     /* margin-left: calc(20%); */
-    height: 6ch;
+    height: 4rem;
     padding: 1ch;
     /* padding-left: calc(35px + 2ch);*/ /*Squished burgers are sad & could show up if we add more to the navbar */
     /* padding-top: 1ch;

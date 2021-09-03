@@ -17,6 +17,10 @@
 }
 
 .sidebar {
+  font-size: clamp(12px, 12px + 0.5vw, 1.25rem);
+  font-family: 'Noto Sans JP', sans-serif;
+  text-transform: uppercase;
+
   text-align: center;
 
   height: 100vh;
@@ -32,7 +36,7 @@
   grid-gap: 2ch;
 
   position: fixed;
-  top: 10ch;
+  top: 6rem;
   /* left: 0px; */
 
   transform: translateX(-100%);
@@ -53,7 +57,7 @@
 }
 
 .sidebar-link {
-  font-size: 1.2rem;
+  font-size: clamp(12px, 12px + 2vw, 1.5rem);
   text-decoration: underline;
   text-decoration-color: var(--red);
 }
@@ -70,16 +74,12 @@
 
 #sidebar .footer {
   position: fixed;
-  bottom: 10ch;
-  height: 10ch;
+  /* bottom: 5rem; */
+  bottom: calc(5ch + calc(16px, 12px+10%, 1.5rem));
+  height: 5ch;
   padding: 0;
   border-style: none;
   margin: -2ch; /*Undo the padding of 2ch in sidebar*/
-}
-
-#sidebar .footerSocialsLinks svg {
-  height: 3ch;
-  width: 3ch;
 }
 
 /* .sidebarHidden {
@@ -89,7 +89,7 @@
 
 @media (max-width: 600px) {
   .sidebar {
-    top: 6ch;
+    top: 4rem;
     width: 50%;
     grid-gap: 3ch;
     padding: 2ch;
