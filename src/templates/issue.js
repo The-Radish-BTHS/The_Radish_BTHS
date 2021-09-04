@@ -5,8 +5,7 @@ import Masonry from "react-masonry-css"
 import { ParallaxBanner } from 'react-scroll-parallax';
 
 // import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import Articard from "../components/Cards/Articard.js"
-import IssueCard from "../components/Cards/IssueCard.js"
+import { Articard, IssueCard } from "../components/Cards/index"
 // import Banner from "../components/Banner/Banner.js"
 
 const breakpointColumnsObj = {

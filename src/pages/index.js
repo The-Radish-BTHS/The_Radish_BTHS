@@ -4,9 +4,10 @@ import Layout from "../components/Layout"
 import Masonry from "react-masonry-css"
 import { ParallaxBanner } from 'react-scroll-parallax';
 // import Banner from "../components/Banner/Banner.js"
-import Articard from "../components/Cards/Articard.js"
-import HighlightIssueCard from "../components/Cards/HighlightIssueCard.js"
-import Arrow from "../components/Cards/Arrow.js"
+
+import { Articard, HighlightIssueCard } from "../components/Cards/index"
+import { Arrow } from "../components/Cards/Icons/index"
+
 import AllTags from "../components/AllTags/AllTags.js"
 
 const breakpointColumnsObj = {

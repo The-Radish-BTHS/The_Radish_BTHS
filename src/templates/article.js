@@ -2,7 +2,8 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/Layout"
 
-import Articard from "../components/Cards/Articard.js"
+import { Articard } from "../components/Cards/index"
+import { Copy } from "../components/Cards/Icons/index"
 
 const ValidSlug = (collection, name) => `/${collection}/${name.toLowerCase().replace(/[/|\\:*?"<>()]/g, '').replace(/ /g, "-")}`;
 
@@ -11,6 +12,28 @@ export default function Article({
 }) {
   const { article, issue_more, all_more } = data
   const { frontmatter, html} = article
+
+  // const isBrowser = typeof window !== "undefined"
+  //
+  // if (isBrowser) {
+  //   // https://developer.twitter.com/en/docs/twitter-for-websites/javascript-api/guides/set-up-twitter-for-websites
+  //   window.twttr = (function(d, s, id) {
+  //     var js, fjs = d.getElementsByTagName(s)[0],
+  //       t = window.twttr || {};
+  //     if (d.getElementById(id)) return t;
+  //     js = d.createElement(s);
+  //     js.id = id;
+  //     js.src = "https://platform.twitter.com/widgets.js";
+  //     fjs.parentNode.insertBefore(js, fjs);
+  //
+  //     t._e = [];
+  //     t.ready = function(f) {
+  //       t._e.push(f);
+  //     };
+  //
+  //     return t;
+  //   }(document, "script", "twitter-wjs"))
+  // }
 
   return (
     <Layout pageName={frontmatter.title}>
@@ -60,6 +83,18 @@ export default function Article({
           : null
         }
       </p>
+      <div className="share-btns">
+        <a
+          className="twitter-share-button"
+          href={`https://twitter.com/intent/tweet?text=${
+            frontmatter.description ? frontmatter.description.replace(/ /g, "%20")
+              : "Hey guys check out this wacky new radish article! I think it's quite swell.".replace(/ /g, "%20")
+          }`}
+        >
+          Tweet
+        </a>
+        <button className="copy-link-btn" onClick={() => navigator.clipboard.writeText(window.location.href)}><Copy />Copy</button>
+      </div>
     </div>
     <div className="article">
       <div dangerouslySetInnerHTML={{ __html: html }} />

@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import Masonry from "react-masonry-css"
 
-import Articard from "../components/Cards/Articard.js"
+import { Articard } from "../components/Cards/index"
 import AllTags from "../components/AllTags/AllTags.js"
 
 const breakpointColumnsObj = {

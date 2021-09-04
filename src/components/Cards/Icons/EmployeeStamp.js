@@ -1,8 +1,9 @@
 import React from "react"
-import "./Cards.css"
+// import "./Cards.css"
 
 export default function EmployeeStamp({ size=80, popUp=false, former=false, setPopUp }) {
   return (
+    // the stamp classes are used to identify the stamps elsewhere -- doesn't look like stamp-container is used 
     <div className="stamp-container">
       <svg
         xmlns="http://www.w3.org/2000/svg"

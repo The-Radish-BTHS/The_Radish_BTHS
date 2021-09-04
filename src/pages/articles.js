@@ -5,7 +5,7 @@ import Masonry from "react-masonry-css"
 
 import { ParallaxBanner } from 'react-scroll-parallax';
 // import Banner from "../components/Banner/Banner.js"
-import Articard from "../components/Cards/Articard.js"
+import { Articard } from "../components/Cards/index"
 
 const breakpointColumnsObj = {
   default: 3,

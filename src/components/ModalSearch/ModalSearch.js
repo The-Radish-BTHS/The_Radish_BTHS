@@ -5,7 +5,10 @@ import { useFlexSearch } from 'react-use-flexsearch';
 
 import AllTags from "../AllTags/AllTags.js"
 import SearchBar from "../SearchBar/SearchBar.js"
-import SearchCard from "../Cards/SearchCard.js"
+
+import { SearchCard } from "../Cards/index"
+import { Arrow } from "../Cards/Icons/index"
+
 import "./ModalSearch.css"
 
 export default function Modal({ showModal, setShowModal }, ref) {
@@ -99,7 +102,7 @@ export default function Modal({ showModal, setShowModal }, ref) {
               />
             )}
             {results.length ? null : <AllTags />}
-            {results.length ? <button type="submit" form="search-form">More</button> : null}
+            {results.length ? <button type="submit" form="search-form">More<Arrow /></button> : null}
           </div>
       </div>
       <div

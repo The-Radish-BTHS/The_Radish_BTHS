@@ -5,7 +5,7 @@ import Masonry from "react-masonry-css"
 
 import Articard from "../components/Cards/Articard.js"
 import AuthorCard from "../components/Cards/AuthorCard.js"
-import EmployeeStamp from "../components/Cards/EmployeeStamp"
+import { EmployeeStamp } from "../components/Cards/Icons/index"
 // import { useState } from "react"
 
 const breakpointColumnsObj = {

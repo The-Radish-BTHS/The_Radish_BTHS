@@ -127,6 +127,15 @@
   flex-direction: column;
   grid-gap: 1ch;
 }
+.side-cards button {
+  /* Rest of the styling comes from SearchBar.css */
+  font-family: 'Lato', sans-serif;
+  text-transform: uppercase;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 @media (max-width: 600px) {
   .modal {

@@ -70,9 +70,9 @@
     "text stamp";
 }
 
-.authorCard a > .stamp {
+/* .authorCard a > .stamp {
   background-color: red;
-}
+} */
 
 .card .stamp {
   grid-area: stamp;
@@ -167,30 +167,30 @@
 /* .preview-articles .card:hover {
   transform: none;
   -webkit-box-shadow: 0 0 5px var(--red), 0 0 5px var(--red), 0 0 5px var(--red) inset;
-  box-shadow: 0 0 10px var(--red) inset;
+  box-shadow: 0 0 7px var(--red) inset;
 } */
 
 /* .card .article .content {
   border-bottom: 1px solid var(--highlight);
 } */
 
-.card a.author {
+.tags .author {
   font-size: 12px;
   background-color: #444444;
-  margin-right: 1ch;
-  margin-bottom: 1ch;
+  margin-right: 7px;
+  margin-bottom: 7px;
   padding: 2px;
   border-radius: 2px;
 }
-.card a.author:hover {
+.tags .author:hover {
   background-color: #44444488;
 }
 
-.card a.issue-tag {
+.tags .issue-tag {
   font-size: 12px;
   background-color: #333333;
-  margin-right: 1ch;
-  margin-bottom: 1ch;
+  margin-right: 7px;
+  margin-bottom: 7px;
   padding: 2px;
   border-radius: 2px;
 }
@@ -198,19 +198,23 @@
   background-color: #0000002f;
 }
 
-.card .collection-tag {
+.card p.collection-tag {
+  font-family: "Roboto", sans-serif;
+  /* text-transform: uppercase; */
+
   width: fit-content;
   font-size: 14px;
   background-color: #444444aa;
-  margin-right: 1ch;
+  margin-right: 7px;
   padding: 4px;
   border-radius: 2px;
 }
-.card .collection-tag:hover {
+.card p.collection-tag:hover {
   opacity: 1;
+  background-color: #444444aa;
 }
 
-.card a.tag {
+.tags .tag {
   /* color: var(--text-color); */
   /* background-color: var(--green-1);  */
   background-color: var(--red);
@@ -220,42 +224,20 @@
   border-radius: 2px;
 
   margin: 0px;
-  margin-right: 1ch;
-  margin-bottom: 1ch;
+  margin-right: 7px;
+  margin-bottom: 7px;
 }
 
 .tags {
   font-family: "Roboto", sans-serif;
+  text-transform: capitalize;
 
   display: inline-flex;
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: flex-start;
   width: 100%;
-  margin-bottom: 1ch;
-}
-
-.EmployeeStampPopUp {
-  width: 97.5vw;
-  height: 97.5vh;
-  border-radius: 20px;
-  background-color: black;
-
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  z-index: 1;
-
-  text-align: center;
-}
-
-.PopUpCloseButton {
-  position: absolute;
-  right: 4vh;
-  top: 4vh;
+  margin-bottom: 7px;
 }
 
 /* .hoverPointer:hover {
@@ -268,40 +250,35 @@
   border-bottom: 1px dotted black;
 } */
 
-.tooltip {
+/* .tooltip { */
   /* background-color: red; */
-}
+/* } */
 
-.tooltip .tooltiptext {
+/* .tooltip .tooltiptext { */
   /* visibility: hidden;
   display: none; */
 
-  width: 100px;
+  /* width: 100px;
   background-color: #555;
   color: #fff;
   text-align: center;
   border-radius: 6px;
-  padding: 1ch;
+  padding: 1ch; */
 
   /* Position the tooltip */
-  position: absolute;
+  /* position: absolute;
   z-index: 1;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
   /* top: -50%;
   left: 95%; */
-}
+/* } */
 
-.tooltip:hover .tooltiptext {
-  visibility: visible;
+/* .tooltip:hover .tooltiptext {
+  visibility: visible; */
   /* display: block; */
-}
-
-.arrow {
-  height: 2ch;
-  margin-left: 0.5ch;
-}
+/* } */
 
 @media (max-width: 600px) {
   .card:not(.issue) {

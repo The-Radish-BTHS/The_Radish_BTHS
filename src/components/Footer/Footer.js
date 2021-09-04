@@ -8,7 +8,7 @@ import {
   Github,
   // Discord,
   Email
-} from "./socialsIcons/index"
+} from "../Cards/Icons/index"
 
 function SocialLink({ children, to }) {
   return (

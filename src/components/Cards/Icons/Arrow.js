@@ -1,4 +1,5 @@
 import React from "react"
+import "./Icons.css"
 
 export default function Arrow() {
   // Arrow from https://www.flaticon.com/authors/roundicons

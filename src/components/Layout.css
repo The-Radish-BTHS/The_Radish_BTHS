@@ -300,6 +300,36 @@ button.articles-btn:hover {
   margin-bottom: 1ch; */
 }
 
+.copy-link-btn {
+  font-family: "Roboto", sans-serif;
+
+  background-color: #0000002f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.copy-link-btn:hover {
+  background-color: inherit;
+  -webkit-box-shadow: 0 0 5px var(--red), 0 0 5px var(--red), 0 0 5px var(--red);
+  box-shadow: 0 0 5px var(--red), 0 0 5px var(--red), 0 0 5px var(--red);
+  transition-duration: 150ms;
+}
+
+.share-btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.share-btns #twitter-widget-2 {
+  background-color: red;
+}
+
 .issue-description {
   background-color: #0000002f;
   border-radius: 5px;
@@ -331,6 +361,8 @@ button.articles-btn:hover {
   display: flex;
   justify-content: center;
   flex-direction: column;
+
+  padding: 1rem;
 }
 
 .parallax-banner #banner-children a {

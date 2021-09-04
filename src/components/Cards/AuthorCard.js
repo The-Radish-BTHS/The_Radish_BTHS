@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import "./Cards.css"
-import EmployeeStamp from "./EmployeeStamp"
+import { EmployeeStamp } from "./Icons/index"
 
 export default function AuthorCard(props) {
   const today = new Date()

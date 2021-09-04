@@ -5,7 +5,7 @@ import "./Navbar.css"
 import {
   Search,
   Radimir
-} from "./NavIcons/index"
+} from "../Cards/Icons/index"
 
 export function Hamburger({ showSidebar, setShowSidebar }) {
   const lineClass = !showSidebar ? "" : "closed";
@@ -40,22 +40,19 @@ export function Hamburger({ showSidebar, setShowSidebar }) {
   )
 }
 
+const calcShowName = () => {
+  const isBrowser = typeof window !== "undefined"
+  return (isBrowser ? !(window.innerWidth <= 300) : true)
+}
+
 export default function Navbar({ setShowSidebar, showSidebar, setShowModal, showModal }) {
   const [scrollPos, setScrollPos] = useState(0);
   const [scrollingDown, setScrollingDown] = useState(false);
 
-  const [showName, setShowName] = useState(true);
+  const [showName, setShowName] = useState(calcShowName());
 
   const handleResize = () => {
-    const innerWidth =  window.innerWidth;
-
-    // Make name disappear if someone has a super tiny screen
-    if (innerWidth <= 300) {
-      setShowName(false)
-    }
-    else {
-      setShowName(true)
-    }
+    setShowName(calcShowName())
   }
 
   const handleScroll = () => {

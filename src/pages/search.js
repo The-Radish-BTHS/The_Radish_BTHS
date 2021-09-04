@@ -5,7 +5,7 @@ import Masonry from "react-masonry-css"
 
 import { useFlexSearch } from 'react-use-flexsearch';
 import SearchBar from "../components/SearchBar/SearchBar.js"
-import SearchCard from "../components/Cards/SearchCard.js"
+import { SearchCard } from "../components/Cards/index"
 import AllTags from "../components/AllTags/AllTags.js"
 
 const breakpointColumnsObj = {
