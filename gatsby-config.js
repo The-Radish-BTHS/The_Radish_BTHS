@@ -5,10 +5,10 @@
  */
 
 module.exports = {
-  /* Your site config here */
   siteMetadata: {
     title: `The Radish`,
     description: `Brooklyn Technical's first, worst, and only satirical newspaper.`,
+    mainUrlNameChangedBcFckGatsby: `https://theradishbths.netlify.app`,
   },
   plugins: [
     `gatsby-plugin-image`,
@@ -131,9 +131,6 @@ module.exports = {
           })),
       },
     },
-
-    `gatsby-plugin-twitter`,
-    // `gatsby-plugin-portal`,
 
     // {
     //   resolve: `gatsby-transformer-remark`,

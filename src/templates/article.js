@@ -3,37 +3,16 @@ import { graphql, Link } from "gatsby"
 import Layout from "../components/Layout"
 
 import { Articard } from "../components/Cards/index"
-import { Copy } from "../components/Cards/Icons/index"
+import { Copy, Twitter } from "../components/Cards/Icons/index"
 
 const ValidSlug = (collection, name) => `/${collection}/${name.toLowerCase().replace(/[/|\\:*?"<>()]/g, '').replace(/ /g, "-")}`;
 
 export default function Article({
+  location,
   data, // this prop will be injected by the GraphQL query below.
 }) {
-  const { article, issue_more, all_more } = data
+  const { site, article, issue_more, all_more } = data
   const { frontmatter, html} = article
-
-  // const isBrowser = typeof window !== "undefined"
-  //
-  // if (isBrowser) {
-  //   // https://developer.twitter.com/en/docs/twitter-for-websites/javascript-api/guides/set-up-twitter-for-websites
-  //   window.twttr = (function(d, s, id) {
-  //     var js, fjs = d.getElementsByTagName(s)[0],
-  //       t = window.twttr || {};
-  //     if (d.getElementById(id)) return t;
-  //     js = d.createElement(s);
-  //     js.id = id;
-  //     js.src = "https://platform.twitter.com/widgets.js";
-  //     fjs.parentNode.insertBefore(js, fjs);
-  //
-  //     t._e = [];
-  //     t.ready = function(f) {
-  //       t._e.push(f);
-  //     };
-  //
-  //     return t;
-  //   }(document, "script", "twitter-wjs"))
-  // }
 
   return (
     <Layout pageName={frontmatter.title}>
@@ -85,15 +64,18 @@ export default function Article({
       </p>
       <div className="share-btns">
         <a
-          className="twitter-share-button"
+          className="share-link-btn"
+          target="_blank"
+          rel="noreferrer"
           href={`https://twitter.com/intent/tweet?text=${
             frontmatter.description ? frontmatter.description.replace(/ /g, "%20")
-              : "Hey guys check out this wacky new radish article! I think it's quite swell.".replace(/ /g, "%20")
-          }`}
+              : "Hey guys check out this wacky new radish! I think it's rather swell.".replace(/ /g, "%20")
+          }%0A${site.siteMetadata.mainUrlNameChangedBcFckGatsby + location.pathname}`}
         >
+          <Twitter />
           Tweet
         </a>
-        <button className="copy-link-btn" onClick={() => navigator.clipboard.writeText(window.location.href)}><Copy />Copy</button>
+        <button className="share-link-btn" onClick={() => navigator.clipboard.writeText(window.location.href)}><Copy />Copy link</button>
       </div>
     </div>
     <div className="article">
@@ -170,6 +152,11 @@ export default function Article({
 
 export const pageQuery = graphql`
   query article ($slug: String!, $issue: String!) {
+    site {
+      siteMetadata {
+        mainUrlNameChangedBcFckGatsby
+      }
+    }
     article: markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {

@@ -137,11 +137,11 @@ a:visited * {
 .page-title .author {
   white-space: pre;
 }
-.page-title:not(.home-action) a {
+.page-title:not(.home-action):not(.share-link-btn) a {
   text-decoration: underline;
   text-decoration-color: var(--red);
 }
-.page-title a:hover {
+.page-title a:hover:not(.share-link-btn) {
   text-decoration: none;
   opacity: 0.95;
 }
@@ -300,8 +300,9 @@ button.articles-btn:hover {
   margin-bottom: 1ch; */
 }
 
-.copy-link-btn {
+.share-link-btn {
   font-family: "Roboto", sans-serif;
+  text-decoration: none !important;
 
   background-color: #0000002f;
   color: white;
@@ -313,8 +314,9 @@ button.articles-btn:hover {
   align-items: center;
   justify-content: center;
 }
-.copy-link-btn:hover {
-  background-color: inherit;
+.share-link-btn:hover {
+  cursor: pointer;
+  background-color: var(--bg);
   -webkit-box-shadow: 0 0 5px var(--red), 0 0 5px var(--red), 0 0 5px var(--red);
   box-shadow: 0 0 5px var(--red), 0 0 5px var(--red), 0 0 5px var(--red);
   transition-duration: 150ms;
@@ -324,10 +326,9 @@ button.articles-btn:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-}
+  grid-gap: 5px;
 
-.share-btns #twitter-widget-2 {
-  background-color: red;
+  padding-bottom: 2ch;
 }
 
 .issue-description {
