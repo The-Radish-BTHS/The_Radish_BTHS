@@ -12,7 +12,7 @@ export default function Articard(props) {
           // props.date ? <h4>{props.date}</h4> : null
         }
         <h2>{props.title}</h2>
-        <p>{props.description ? props.description : props.excerpt}</p>
+        <p className="description">{props.description ? props.description : props.excerpt}</p>
       </Link>
       <div className="tags">
         {props.issue ? <Link to={ValidSlug("issues", props.issue)} className="issue-tag">{props.issue}</Link> : null}

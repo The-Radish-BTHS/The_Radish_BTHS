@@ -178,6 +178,10 @@ a:visited * {
   /* fill: var(--red); */
 }
 
+.page-title .description {
+  white-space: pre-wrap;
+}
+
 h1 .query, h3 .query {
   background-color: #0000002f;
   padding: 4px;
@@ -306,7 +310,7 @@ button.articles-btn:hover {
   background-color: #0000002f;
   border-radius: 5px;
   padding: 3ch;
-
+  white-space: pre-wrap;
   /* display: flex;
   justify-content: center;
   align-items: center; */
@@ -386,6 +390,15 @@ button.articles-btn:hover {
 
 .article {
   white-space: pre-line;
+  line-height: 1.6;
+}
+
+.article p {
+  margin-top: -2ch;
+}
+
+.article p:first-of-type {
+  margin-top: 0;
 }
 
 .article img {

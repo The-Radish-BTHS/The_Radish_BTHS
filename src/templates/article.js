@@ -18,7 +18,7 @@ export default function Article({
     <Layout pageName={frontmatter.title}>
       <div className="page-title">
         <h1>{frontmatter.title}</h1>
-        <p>{frontmatter.description}</p>
+        <p className="description">{frontmatter.description}</p>
         <h4>
           {`by `}
           {frontmatter.authors.map(({ author }, index) => {

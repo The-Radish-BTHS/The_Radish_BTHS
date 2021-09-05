@@ -31,6 +31,10 @@
   text-decoration: none;
 }
 
+.card .description {
+  white-space: pre-wrap;
+}
+
 .card a h1,
 .card a h2,
 .card a h3,

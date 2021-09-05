@@ -55,7 +55,7 @@ export default function HighlightIssueCard(props) {
             // <h4>{props.date}</h4>
             }
             <h2>{props.title}</h2>
-            <p>{props.description}<Arrow /></p>
+            <p className="description">{props.description}<Arrow /></p>
           </div>
         </Link>
       </div>

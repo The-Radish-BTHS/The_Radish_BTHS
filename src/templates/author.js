@@ -81,7 +81,7 @@ export default function Author({
             ? "Graduated " + author.frontmatter.date
             : "Graduating " + author.frontmatter.date}
         </h3>
-        <p>{author.frontmatter.description}</p>
+        <p className="description">{author.frontmatter.description}</p>
       </div>
       <Masonry
         breakpointCols={breakpointColumnsObj}

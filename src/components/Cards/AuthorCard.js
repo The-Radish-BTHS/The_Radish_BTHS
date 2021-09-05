@@ -27,7 +27,7 @@ export default function AuthorCard(props) {
             <i>{(grad || props.former ? "former " : "") + props.position}</i>
           </h4>
           <h2>{props.title}</h2>
-          <p>{props.description}</p>
+          <p className="description">{props.description}</p>
         </div>
       </Link>
     </div>

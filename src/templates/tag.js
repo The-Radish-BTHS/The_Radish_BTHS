@@ -20,7 +20,7 @@ export default function Tag({
     <Layout pageName={`#${tag.frontmatter.title}`}>
       <div className="page-title">
         <h1 className="tag">{`#${tag.frontmatter.title}`}</h1>
-        {tag.frontmatter.description ? <p>{tag.frontmatter.description}</p> : null}
+        {tag.frontmatter.description ? <p className="description">{tag.frontmatter.description}</p> : null}
       </div>
       <Masonry
         breakpointCols={breakpointColumnsObj}
