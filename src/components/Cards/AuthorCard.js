@@ -19,7 +19,7 @@ export default function AuthorCard(props) {
       <Link to={props.slug}>
         {
           isExec && (
-          <EmployeeStamp former={props.former} />
+          <EmployeeStamp former={props.former} id={props.id} />
         )
         }
         <div className="author-card-text">

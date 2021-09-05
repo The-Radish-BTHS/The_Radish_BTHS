@@ -17,10 +17,7 @@ export default function Share({ description, url }) {
         className="share-link-btn"
         target="_blank"
         rel="noreferrer"
-        href={`https://twitter.com/intent/tweet?text=${
-          description ? description.replace(/ /g, "%20")
-            : "Hey guys check out this wacky new radish! I think it's rather swell.".replace(/ /g, "%20")
-        }%0A${ url }`}
+        href={`https://twitter.com/intent/tweet?text=${ description ? description.replace(/ /g, "%20")+"%0A" : "" }${ url }%0A@theradishbths`}
       >
         <Twitter />
         Tweet

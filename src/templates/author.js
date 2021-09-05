@@ -113,6 +113,7 @@ export default function Author({
           return (
             <AuthorCard
               key={node.id}
+              id={node.id}
               slug={node.fields.slug}
               title={node.frontmatter.title}
               position={node.frontmatter.position}

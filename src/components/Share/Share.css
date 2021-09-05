@@ -4,7 +4,7 @@
 
   background-color: #0000002f;
   color: white;
-  border: none;
+  border: 1px solid var(--bg);
   border-radius: 5px;
   padding: 5px;
 
@@ -15,8 +15,9 @@
 .share-link-btn:hover {
   cursor: pointer;
   background-color: var(--bg);
-  -webkit-box-shadow: 0 0 5px var(--red), 0 0 5px var(--red), 0 0 5px var(--red);
-  box-shadow: 0 0 5px var(--red), 0 0 5px var(--red), 0 0 5px var(--red);
+  border: 1px solid #0000004f;
+  /* -webkit-box-shadow: 0 0 5px var(--red), 0 0 5px var(--red), 0 0 5px var(--red);
+  box-shadow: 0 0 5px var(--red), 0 0 5px var(--red), 0 0 5px var(--red); */
   transition-duration: 150ms;
 }
 
