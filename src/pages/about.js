@@ -8,7 +8,7 @@ export default function About({
   data, // this prop will be injected by the GraphQL query below.
 }) {
   const { abouts, main } = data
-  const { frontmatter, html} = main
+  const { html} = main
 
   return (
     <Layout pageName="About">
@@ -63,9 +63,6 @@ export const pageQuery = graphql`
     }
     main: markdownRemark(fields: { slug: { eq: "/about/main/" } }) {
       html
-      frontmatter {
-        title
-      }
     }
   }
 `

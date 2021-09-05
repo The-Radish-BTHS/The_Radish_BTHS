@@ -24,8 +24,8 @@
 }
 
 .footerLinks svg {
-  height: calc(16px, 12px+10%, 1.5rem);
-  width: calc(16px, 12px+10%, 1.5rem);
+  height: clamp(16px, 12px+10%, 1.5rem);
+  width: clamp(16px, 12px+10%, 1.5rem);
 }
 
 #github {
