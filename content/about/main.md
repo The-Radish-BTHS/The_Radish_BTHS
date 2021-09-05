@@ -23,3 +23,24 @@ Wanna help us throw the articles? We have teams for preparing them.
 - Editing
      - If you want to write but don't want to write and also think you could write better
      - <div class="submission-form-link"><a target="_blank" rel="noreferrer" href="https://forms.gle/do2BrZXH7nMuZioB9">Apply</a></div>
+
+<hr>
+
+## Contribution requirements
+
+We like nonsense communicated well. If you want to improve your writing, I (Aramie Ewen) like [this article](https://alistapart.com/article/so-you-want-to-write-an-article/). It's aimed at web developers, but the writing-focused tips are great advice in general. 
+
+However, for us, just keep in mind the following: 
+
+Required:
+- Article is 0.5 page to 2 pages, flexible if the article is good
+- You're a BTHS student, flexible if the article is good
+- You're willing to work with an editor, **even if** the article is good
+
+
+
+Consider before submitting: 
+- Do you get to the point?
+- Is the article's premise funny on its own?
+- Did you have fun writing the article?
+

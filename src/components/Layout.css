@@ -413,6 +413,10 @@ button.articles-btn:hover {
   transition-duration: 300ms;
 }
 
+.article .submission-form-link a {
+  text-decoration: none !important;
+}
+
 .article .submission-form-link:hover {
   background-color: var(--bg);
   -moz-box-shadow: 0 0 10px var(--red), 0 0 12px var(--red);
@@ -422,6 +426,18 @@ button.articles-btn:hover {
 
 .article ul {
   font-family: 'Lato', sans-serif;
+}
+
+.article hr {
+  background-color: var(--o-white);
+}
+
+.article a:not(.submission-form-link) {
+  text-decoration: underline;
+  text-decoration-color: var(--red);
+}
+.article a:hover {
+  text-decoration: none;
 }
 
 /* -------------------------------------------------------------------------- */
