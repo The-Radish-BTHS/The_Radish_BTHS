@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from "react"
-// import { createPortal } from 'react-dom'
 import { useStaticQuery, graphql } from "gatsby"
 import { useFlexSearch } from 'react-use-flexsearch';
 

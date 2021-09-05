@@ -2,8 +2,8 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/Layout"
 
+import Share from "../components/Share/Share.js"
 import { Articard } from "../components/Cards/index"
-import { Copy, Twitter } from "../components/Cards/Icons/index"
 
 const ValidSlug = (collection, name) => `/${collection}/${name.toLowerCase().replace(/[/|\\:*?"<>()]/g, '').replace(/ /g, "-")}`;
 
@@ -62,24 +62,17 @@ export default function Article({
           : null
         }
       </p>
-      <div className="share-btns">
-        <a
-          className="share-link-btn"
-          target="_blank"
-          rel="noreferrer"
-          href={`https://twitter.com/intent/tweet?text=${
-            frontmatter.description ? frontmatter.description.replace(/ /g, "%20")
-              : "Hey guys check out this wacky new radish! I think it's rather swell.".replace(/ /g, "%20")
-          }%0A${site.siteMetadata.mainUrlNameChangedBcFckGatsby + location.pathname}`}
-        >
-          <Twitter />
-          Tweet
-        </a>
-        <button className="share-link-btn" onClick={() => navigator.clipboard.writeText(window.location.href)}><Copy />Copy link</button>
-      </div>
+      <Share
+        description={frontmatter.description}
+        url={site.siteMetadata.mainUrlNameChangedBcFckGatsby + location.pathname}
+      />
     </div>
     <div className="article">
       <div dangerouslySetInnerHTML={{ __html: html }} />
+      <Share
+        description={frontmatter.description}
+        url={site.siteMetadata.mainUrlNameChangedBcFckGatsby + location.pathname}
+      />
       <h4>
         {frontmatter.tags && frontmatter.tags.length ?
           <>

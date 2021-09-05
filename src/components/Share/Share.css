@@ -1,0 +1,42 @@
+.share-link-btn {
+  font-family: "Roboto", sans-serif;
+  text-decoration: none !important;
+
+  background-color: #0000002f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.share-link-btn:hover {
+  cursor: pointer;
+  background-color: var(--bg);
+  -webkit-box-shadow: 0 0 5px var(--red), 0 0 5px var(--red), 0 0 5px var(--red);
+  box-shadow: 0 0 5px var(--red), 0 0 5px var(--red), 0 0 5px var(--red);
+  transition-duration: 150ms;
+}
+
+.share-btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-gap: 5px;
+
+  padding-bottom: 2ch;
+}
+
+.article .share-btns {
+  justify-content: left;
+}
+
+.copied {
+  color: var(--highlight);
+}
+
+.copied .check path {
+  fill: var(--highlight);
+}

@@ -258,6 +258,8 @@ button.articles-btn:last-of-type {
   margin-right: 0;
 }
 button.articles-btn:hover {
+  cursor: pointer;
+
   background-color: var(--bg);
   -moz-box-shadow: 0 0 10px var(--red), 0 0 12px var(--red);
   -webkit-box-shadow: 0 0 10px var(--red), 0 0 12px var(--red);
@@ -298,37 +300,6 @@ button.articles-btn:hover {
   /* margin: 0px;
   margin-right: 1ch;
   margin-bottom: 1ch; */
-}
-
-.share-link-btn {
-  font-family: "Roboto", sans-serif;
-  text-decoration: none !important;
-
-  background-color: #0000002f;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 5px;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-.share-link-btn:hover {
-  cursor: pointer;
-  background-color: var(--bg);
-  -webkit-box-shadow: 0 0 5px var(--red), 0 0 5px var(--red), 0 0 5px var(--red);
-  box-shadow: 0 0 5px var(--red), 0 0 5px var(--red), 0 0 5px var(--red);
-  transition-duration: 150ms;
-}
-
-.share-btns {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  grid-gap: 5px;
-
-  padding-bottom: 2ch;
 }
 
 .issue-description {

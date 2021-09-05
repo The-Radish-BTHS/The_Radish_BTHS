@@ -4,6 +4,7 @@ import Layout from "../components/Layout"
 import Masonry from "react-masonry-css"
 import { ParallaxBanner } from 'react-scroll-parallax';
 
+import Share from "../components/Share/Share.js"
 // import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { Articard, IssueCard } from "../components/Cards/index"
 // import Banner from "../components/Banner/Banner.js"
@@ -15,9 +16,10 @@ const breakpointColumnsObj = {
 }
 
 export default function Issue({
+  location,
   data, // this prop will be injected by the GraphQL query below.
 }) {
-  const { issue, articles, more } = data
+  const { site, issue, articles, more } = data
 
   // const image = getImage(issue.fields.rel_cover)
 
@@ -48,6 +50,7 @@ export default function Issue({
       //   </div>
       // </div>
       }
+
       <ParallaxBanner
         className="parallax-banner"
         layers={[
@@ -67,6 +70,11 @@ export default function Issue({
                     >
                       <b>Read PDF</b>
                     </a>
+                    <br />
+                    <Share
+                      description={issue.frontmatter.description}
+                      url={site.siteMetadata.mainUrlNameChangedBcFckGatsby + location.pathname}
+                    />
                   </div>
                 ,
                 amount: 0,
@@ -155,6 +163,11 @@ export default function Issue({
 
 export const pageQuery = graphql`
   query issue($slug: String!, $title: String!) {
+    site {
+      siteMetadata {
+        mainUrlNameChangedBcFckGatsby
+      }
+    }
     issue: markdownRemark(fields: { slug: { eq: $slug } }) {
       frontmatter {
         description
