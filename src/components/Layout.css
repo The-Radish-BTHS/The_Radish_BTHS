@@ -384,6 +384,10 @@ button.articles-btn:hover {
 
 /* Article styles ----------------------------------------------------------- */
 
+.article {
+  white-space: pre-line;
+}
+
 .article img {
   /* Superbly arbitrary */
   max-width: 700px;
@@ -424,8 +428,9 @@ button.articles-btn:hover {
   box-shadow: 0 0 10px var(--red), 0 0 12px var(--red);
 }
 
-.article ul {
+.article ul, .article ol {
   font-family: 'Lato', sans-serif;
+  margin-top: -5ch;
 }
 
 .article hr {
@@ -438,6 +443,25 @@ button.articles-btn:hover {
 }
 .article a:hover {
   text-decoration: none;
+}
+
+.article .blacked-out {
+  font-size: clamp(16px, 12px + 0.5vw, 1.25rem);
+  font-family: 'Lato', sans-serif;
+  background-color: black;
+  color: black;
+
+  webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+
+.article .blacked-out li {
+  /* font-size: clamp(16px, 12px + 0.5vw, 1.25rem); */
+  /* font-family: 'Lato', sans-serif; */
+  background-color: black;
+  color: black;
 }
 
 /* -------------------------------------------------------------------------- */

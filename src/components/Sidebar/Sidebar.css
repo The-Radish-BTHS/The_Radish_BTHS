@@ -75,7 +75,7 @@
 #sidebar .footer {
   position: fixed;
   /* bottom: 5rem; */
-  bottom: calc(5ch + clamp(16px, 12px+10%, 1.5rem));
+  bottom: 7ch;
   height: 5ch;
   padding: 0;
   border-style: none;
