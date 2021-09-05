@@ -10,9 +10,6 @@ export default function AboutPage({
 
   return (
     <Layout pageName={frontmatter.title}>
-      <div className="page-title">
-        <h1>{frontmatter.title}</h1>
-      </div>
       <div className="article">
         <div dangerouslySetInnerHTML={{ __html: html }} />
       </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react"
+import React, { useEffect, useCallback } from "react"
 import { Link } from "gatsby"
 
 import Footer from "../Footer/Footer"
@@ -7,11 +7,11 @@ import "./Sidebar.css"
 export default function Sidebar({ showSidebar, setShowSidebar }) {
   const isBrowser = typeof window !== "undefined"; // SSR error
 
-  const close = () => {
+  const close = useCallback(() => {
     const sidebar = document.getElementById("sidebar")
     sidebar.classList.add("slide-out")
     setTimeout(() => setShowSidebar(false), 300);
-  }
+  }, [setShowSidebar])
 
   const handleKeydown = useCallback(event => {
     if (event.keyCode === 27) close()

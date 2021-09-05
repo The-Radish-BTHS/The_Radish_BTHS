@@ -7,7 +7,8 @@ import { ParallaxBanner } from 'react-scroll-parallax';
 export default function About({
   data, // this prop will be injected by the GraphQL query below.
 }) {
-  const { allMarkdownRemark } = data
+  const { abouts, main } = data
+  const { frontmatter, html} = main
 
   return (
     <Layout pageName="About">
@@ -33,13 +34,16 @@ export default function About({
             height: 'max(400px, 40vh)',
         }}
       />
+      <div className="article">
+        <div dangerouslySetInnerHTML={{ __html: html }} />
+      </div>
     </Layout>
   )
 }
 
 export const pageQuery = graphql`
   query about {
-    allMarkdownRemark(
+    abouts: allMarkdownRemark(
       sort: {order: DESC, fields: [frontmatter___date]}
       limit: 1000
       filter: { fields: { slug: { regex: "^/about/" } } }
@@ -55,6 +59,12 @@ export const pageQuery = graphql`
             slug
           }
         }
+      }
+    }
+    main: markdownRemark(fields: { slug: { eq: "/about/main/" } }) {
+      html
+      frontmatter {
+        title
       }
     }
   }
