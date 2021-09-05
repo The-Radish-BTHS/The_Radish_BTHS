@@ -46,6 +46,9 @@ export default function Modal({ showModal, setShowModal }, ref) {
     if (event.keyCode === 27) close()
 
     let isTabPressed = event.key === 'Tab' || event.keyCode === 9;
+    if (!isTabPressed) {
+      return;
+    }
 
     // Lock focus to the modal -------------------------------------------------
     // https://uxdesign.cc/how-to-trap-focus-inside-modal-to-make-it-ada-compliant-6a50f9a70700
@@ -55,10 +58,6 @@ export default function Modal({ showModal, setShowModal }, ref) {
     const firstFocusableElement = modal ? modal.querySelectorAll(focusableElements)[0] : null;
     const focusableContent = modal ? modal.querySelectorAll(focusableElements) : [];
     const lastFocusableElement = focusableContent[focusableContent.length - 1];
-
-    if (!isTabPressed) {
-      return;
-    }
 
     if (event.shiftKey) { // if shift key pressed for shift + tab combination
       if (document.activeElement === firstFocusableElement) {

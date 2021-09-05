@@ -112,6 +112,11 @@
   height: 100%;
 }
 
+.issue-preview .content p .arrow {
+  margin-bottom: -0.5ch; /* bc The height is set to 2ch */
+  padding: 0;
+}
+
 .special {
   /* margin-bottom: 2ch; */
   margin-right: 3px;
