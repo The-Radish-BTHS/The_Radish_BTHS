@@ -78,43 +78,45 @@ export default function Articles({
         }}
       />
 
-      <div className="articles-btn-container">
-        <button
-          className={`articles-btn`}
-          onClick={
+      <div className="page-content">
+        <div className="articles-btn-container">
+          <button
+            className={`articles-btn`}
+            onClick={
+              (evt) => {
+                setOldestFirst(!oldestFirst)
+                // evt.target.classList.toggle("pressed")
+                // console.log(evt.target.classList)
+            }}
+          >{oldestFirst ? "Newest first" : "Oldest first"}</button>
+          <button className="articles-btn" onClick={
             (evt) => {
-              setOldestFirst(!oldestFirst)
-              // evt.target.classList.toggle("pressed")
-              // console.log(evt.target.classList)
-          }}
-        >{oldestFirst ? "Newest first" : "Oldest first"}</button>
-        <button className="articles-btn" onClick={
-          (evt) => {
-            setRandomOrder(true)
-        }}>Shuffle</button>
-      </div>
+              setRandomOrder(true)
+          }}>Shuffle</button>
+        </div>
 
-      <Masonry
-        breakpointCols={breakpointColumnsObj}
-        className="my-masonry-grid"
-        columnClassName="my-masonry-grid_column"
-      >
-        {articles.map(({ node }) => {
-          return (
-            <Articard
-              key={node.id}
-              slug={node.fields.slug}
-              title={node.frontmatter.title}
-              excerpt={node.excerpt}
-              authors={node.frontmatter.authors}
-              tags={node.frontmatter.tags}
-              description={node.frontmatter.description}
-              date={node.frontmatter.date}
-              issue={node.frontmatter.issue}
-            />
-          )
-        })}
-      </Masonry>
+        <Masonry
+          breakpointCols={breakpointColumnsObj}
+          className="my-masonry-grid"
+          columnClassName="my-masonry-grid_column"
+        >
+          {articles.map(({ node }) => {
+            return (
+              <Articard
+                key={node.id}
+                slug={node.fields.slug}
+                title={node.frontmatter.title}
+                excerpt={node.excerpt}
+                authors={node.frontmatter.authors}
+                tags={node.frontmatter.tags}
+                description={node.frontmatter.description}
+                date={node.frontmatter.date}
+                issue={node.frontmatter.issue}
+              />
+            )
+          })}
+        </Masonry>
+      </div>
     </Layout>
   )
 }

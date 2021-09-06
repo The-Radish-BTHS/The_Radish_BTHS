@@ -83,20 +83,22 @@ export default function Index({
         }}
       />
 
-      <h1 className="page-title"><Link to={issues.edges[0].node.fields.slug}>Latest issue</Link></h1>
-      {issueCards}
-      <h3 className="page-title home-action"><Link to='/issues'>{`All issues`}<Arrow /></Link></h3>
-      <h1 className="page-title"><Link to='/articles'>{`Latest articles`}</Link></h1>
-      <Masonry
-        breakpointCols={breakpointColumnsObj}
-        className="my-masonry-grid"
-        columnClassName="my-masonry-grid_column"
-      >
-        {articleCards.slice(3, articleCards.length)}
-      </Masonry>
-      <h3 className="page-title home-action"><Link to='/articles'>{`All articles`}<Arrow /></Link></h3>
-      <h1 className="page-title"><Link to="/search">Filter</Link></h1>
-      <AllTags />
+      <div className="page-content">
+        <h1 className="page-title"><Link to={issues.edges[0].node.fields.slug}>Latest issue</Link></h1>
+        {issueCards}
+        <h3 className="page-title home-action"><Link to='/issues'>{`All issues`}<Arrow /></Link></h3>
+        <h1 className="page-title"><Link to='/articles'>{`Latest articles`}</Link></h1>
+        <Masonry
+          breakpointCols={breakpointColumnsObj}
+          className="my-masonry-grid"
+          columnClassName="my-masonry-grid_column"
+        >
+          {articleCards.slice(3, articleCards.length)}
+        </Masonry>
+        <h3 className="page-title home-action"><Link to='/articles'>{`All articles`}<Arrow /></Link></h3>
+        <h1 className="page-title"><Link to="/search">Filter</Link></h1>
+        <AllTags />
+      </div>
     </Layout>
   )
 }

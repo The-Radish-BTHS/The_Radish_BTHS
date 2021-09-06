@@ -18,32 +18,34 @@ export default function Tag({
   const { tag, articles } = data
   return (
     <Layout pageName={`#${tag.frontmatter.title}`}>
-      <div className="page-title">
-        <h1 className="tag">{`#${tag.frontmatter.title}`}</h1>
-        {tag.frontmatter.description ? <p className="description">{tag.frontmatter.description}</p> : null}
+      <div className="page-content">
+        <div className="page-title">
+          <h1 className="tag">{`#${tag.frontmatter.title}`}</h1>
+          {tag.frontmatter.description ? <p className="description">{tag.frontmatter.description}</p> : null}
+        </div>
+        <Masonry
+          breakpointCols={breakpointColumnsObj}
+          className="my-masonry-grid"
+          columnClassName="my-masonry-grid_column"
+        >
+          {articles.edges.map(({ node }) => {
+            return (
+              <Articard
+                key={node.id}
+                slug={node.fields.slug}
+                title={node.frontmatter.title}
+                excerpt={node.excerpt}
+                authors={node.frontmatter.authors}
+                tags={node.frontmatter.tags}
+                description={node.frontmatter.description}
+                date={node.frontmatter.date}
+                issue={node.frontmatter.issue}
+              />
+            )
+          })}
+        </Masonry>
+        <AllTags />
       </div>
-      <Masonry
-        breakpointCols={breakpointColumnsObj}
-        className="my-masonry-grid"
-        columnClassName="my-masonry-grid_column"
-      >
-        {articles.edges.map(({ node }) => {
-          return (
-            <Articard
-              key={node.id}
-              slug={node.fields.slug}
-              title={node.frontmatter.title}
-              excerpt={node.excerpt}
-              authors={node.frontmatter.authors}
-              tags={node.frontmatter.tags}
-              description={node.frontmatter.description}
-              date={node.frontmatter.date}
-              issue={node.frontmatter.issue}
-            />
-          )
-        })}
-      </Masonry>
-      <AllTags />
     </Layout>
   )
 }

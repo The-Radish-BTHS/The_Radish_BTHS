@@ -51,28 +51,30 @@ export default function Authors({
         }}
       />
 
-      <Masonry
-        breakpointCols={breakpointColumnsObj}
-        className="my-masonry-grid"
-        columnClassName="my-masonry-grid_column"
-      >
-        {
-          allMarkdownRemark.edges.map(({ node }) => {
-            return (
-              <AuthorCard
-                key={node.id}
-                id={node.id}
-                slug={node.fields.slug}
-                title={node.frontmatter.title}
-                position={node.frontmatter.position}
-                date={node.frontmatter.date}
-                description={node.frontmatter.description}
-                former={node.frontmatter.former}
-              />
-            )
-          })
-        }
-      </Masonry>
+      <div className="page-content">
+        <Masonry
+          breakpointCols={breakpointColumnsObj}
+          className="my-masonry-grid"
+          columnClassName="my-masonry-grid_column"
+        >
+          {
+            allMarkdownRemark.edges.map(({ node }) => {
+              return (
+                <AuthorCard
+                  key={node.id}
+                  id={node.id}
+                  slug={node.fields.slug}
+                  title={node.frontmatter.title}
+                  position={node.frontmatter.position}
+                  date={node.frontmatter.date}
+                  description={node.frontmatter.description}
+                  former={node.frontmatter.former}
+                />
+              )
+            })
+          }
+        </Masonry>
+      </div>
     </Layout>
   )
 }

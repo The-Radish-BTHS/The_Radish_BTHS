@@ -25,8 +25,8 @@ export default function Modal({ showModal, setShowModal }, ref) {
   const isBrowser = typeof window !== "undefined"; // SSR error
   const { search } = isBrowser ? window.location : "";
   const query = search ? new URLSearchParams(search).get('s') : "";
-  const [ModalSearchQuery, setModalSearchQuery] = useState(query || "");
-  const results = useFlexSearch(ModalSearchQuery, index, store);
+  const [modalSearchQuery, setModalSearchQuery] = useState(query || "");
+  const results = useFlexSearch(modalSearchQuery, index, store);
 
   // Modal things --------------------------------------------------------------
   const close = useCallback(() => {
@@ -89,6 +89,7 @@ export default function Modal({ showModal, setShowModal }, ref) {
           setSearchQuery={setModalSearchQuery}
         />
           <div className="side-cards">
+            <AllTags />
             {results.slice(0, 3).map(result =>
               <SearchCard
                 key={result.id}
@@ -99,7 +100,9 @@ export default function Modal({ showModal, setShowModal }, ref) {
                 description={result.description}
               />
             )}
-            {results.length ? null : <AllTags />}
+            {modalSearchQuery && !results.length ? <h3>No results for <span className="query">{modalSearchQuery}</span></h3>
+              : null
+            }
             {results.length ? <button type="submit" form="search-form">More<Arrow /></button> : null}
           </div>
       </div>

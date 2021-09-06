@@ -96,7 +96,6 @@ export default function Navbar({ setShowSidebar, showSidebar, setShowModal, show
       <div
         role="button"
         tabIndex={0}
-        className=""
         onClick={() => {
           setShowModal(!showModal)
           setShowSidebar(false)

@@ -50,24 +50,26 @@ export default function Issues({
         }}
       />
 
-      <Masonry
-        breakpointCols={breakpointColumnsObj}
-        className="my-masonry-grid"
-        columnClassName="my-masonry-grid_column"
-      >
-        {issues.edges.map(({ node }) => {
-          return (
-            <IssueCard
-              key={node.id}
-              slug={node.fields.slug}
-              date={node.frontmatter.date}
-              title={node.frontmatter.title}
-              cover={node.fields.rel_cover}
-              description={node.frontmatter.description}
-            />
-          )
-        })}
-      </Masonry>
+      <div className="page-content">
+        <Masonry
+          breakpointCols={breakpointColumnsObj}
+          className="my-masonry-grid"
+          columnClassName="my-masonry-grid_column"
+        >
+          {issues.edges.map(({ node }) => {
+            return (
+              <IssueCard
+                key={node.id}
+                slug={node.fields.slug}
+                date={node.frontmatter.date}
+                title={node.frontmatter.title}
+                cover={node.fields.rel_cover}
+                description={node.frontmatter.description}
+              />
+            )
+          })}
+        </Masonry>
+      </div>
     </Layout>
   )
 }

@@ -8,10 +8,12 @@
   margin-bottom: 2ch;
 }
 
+.AllTags .tag {
+  font-size: clamp(12px, 12px + 0.2vw, 1.25rem);
+}
+
 .tag {
   font-family: "Roboto", sans-serif;
-  font-size: clamp(12px, 12px + 0.2vw, 1.25rem);
-
   display: inline-block;
   background-color: var(--red);
   /* color: var(--bg); */

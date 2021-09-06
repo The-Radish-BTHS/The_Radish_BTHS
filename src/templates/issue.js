@@ -85,77 +85,51 @@ export default function Issue({
         }}
       />
 
-      {
-      // <Banner
-      //   bg={issue.frontmatter.cover}
-      // >
-        // <h1>{issue.frontmatter.title}</h1>
-        // <h3>{issue.frontmatter.date}</h3>
-        // <a
-        //   href={issue.frontmatter.pdf}
-        //   target="_blank"
-        //   rel="noreferrer"
-        // >
-        //   <b>Read the PDF</b>
-        // </a>
-      // </Banner>
-      }
+      <div className="page-content">
+        {issue.frontmatter.description ?
+          <div className="page-title issue-description">
+            <p>{issue.frontmatter.description}</p>
+          </div>
+          : null
+        }
 
-      {issue.frontmatter.description ?
-        <div className="page-title issue-description">
-          {
-          // <h1>{issue.frontmatter.title}</h1>
-          // <h3>{issue.frontmatter.date}</h3>
-          // <a
-          //   href={issue.frontmatter.pdf}
-          //   target="_blank"
-          //   rel="noreferrer"
-          // >
-          //   <b>Read the PDF</b>
-          // </a>
-          }
-          <p>{issue.frontmatter.description}</p>
+        <p />
+        <Masonry
+          breakpointCols={breakpointColumnsObj}
+          className="my-masonry-grid"
+          columnClassName="my-masonry-grid_column"
+        >
+          {articles.edges.map(({ node }) => {
+            return (
+              <Articard
+                key={node.id}
+                slug={node.fields.slug}
+                title={node.frontmatter.title}
+                excerpt={node.excerpt}
+                authors={node.frontmatter.authors}
+                tags={node.frontmatter.tags}
+                description={node.frontmatter.description}
+              />
+            )
+          })}
+        </Masonry>
+        <h1 className="page-title">
+          <Link to="/issues/">{`More issues`}</Link>
+        </h1>
+        <div className="card-grid">
+          {more.edges.map(({ node }) => {
+            return (
+              <IssueCard
+                key={node.id}
+                slug={node.fields.slug}
+                date={node.frontmatter.date}
+                title={node.frontmatter.title}
+                cover={node.fields.rel_cover}
+                description={node.frontmatter.description}
+              />
+            )
+          })}
         </div>
-        : null
-      }
-
-
-      <p />
-      <Masonry
-        breakpointCols={breakpointColumnsObj}
-        className="my-masonry-grid"
-        columnClassName="my-masonry-grid_column"
-      >
-        {articles.edges.map(({ node }) => {
-          return (
-            <Articard
-              key={node.id}
-              slug={node.fields.slug}
-              title={node.frontmatter.title}
-              excerpt={node.excerpt}
-              authors={node.frontmatter.authors}
-              tags={node.frontmatter.tags}
-              description={node.frontmatter.description}
-            />
-          )
-        })}
-      </Masonry>
-      <h1 className="page-title">
-        <Link to="/issues/">{`More issues`}</Link>
-      </h1>
-      <div className="card-grid">
-        {more.edges.map(({ node }) => {
-          return (
-            <IssueCard
-              key={node.id}
-              slug={node.fields.slug}
-              date={node.frontmatter.date}
-              title={node.frontmatter.title}
-              cover={node.fields.rel_cover}
-              description={node.frontmatter.description}
-            />
-          )
-        })}
       </div>
     </Layout>
   )

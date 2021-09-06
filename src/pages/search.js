@@ -28,39 +28,41 @@ export default function Search({
 
   return (
     <Layout pageName="Search">
-      <div className="page-title">
-        <h1>Search for your heart's desire.</h1>
-        <h2>Or Radish articles.</h2>
-        <SearchBar
-          // searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-        />
-        {searchQuery && !results.length ? <h3>No results for <span className="query">{searchQuery}</span></h3>
-          : null
-        }
-        {searchQuery && results.length ? <h1>Results for <span className="query">{searchQuery}</span>:</h1>
-          : null
-        }
-      </div>
-      <Masonry
-        breakpointCols={breakpointColumnsObj}
-        className="my-masonry-grid"
-        columnClassName="my-masonry-grid_column"
-      >
-        {results.map(result =>
-          <SearchCard
-            key={result.id}
-            slug={result.slug}
-            title={result.title}
-            excerpt={result.excerpt}
-            date={result.date}
-            description={result.description}
+      <div className="page-content">
+        <div className="page-title">
+          <h1>Search for your heart's desire.</h1>
+          <h2>Or Radish articles.</h2>
+          <SearchBar
+            // searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
           />
-        )}
-      </Masonry>
-      <div className="page-title">
-        <h1>Filter by tag:</h1>
-        <AllTags />
+          {searchQuery && !results.length ? <h3>No results for <span className="query">{searchQuery}</span></h3>
+            : null
+          }
+          {searchQuery && results.length ? <h1>Results for <span className="query">{searchQuery}</span>:</h1>
+            : null
+          }
+        </div>
+        <Masonry
+          breakpointCols={breakpointColumnsObj}
+          className="my-masonry-grid"
+          columnClassName="my-masonry-grid_column"
+        >
+          {results.map(result =>
+            <SearchCard
+              key={result.id}
+              slug={result.slug}
+              title={result.title}
+              excerpt={result.excerpt}
+              date={result.date}
+              description={result.description}
+            />
+          )}
+        </Masonry>
+        <div className="page-title">
+          <h1>Filter by tag:</h1>
+          <AllTags />
+        </div>
       </div>
     </Layout>
   )

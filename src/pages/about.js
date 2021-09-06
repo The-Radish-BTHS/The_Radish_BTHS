@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 
 import { ParallaxBanner } from 'react-scroll-parallax';
@@ -7,7 +7,10 @@ import { ParallaxBanner } from 'react-scroll-parallax';
 export default function About({
   data, // this prop will be injected by the GraphQL query below.
 }) {
-  const { abouts, main } = data
+  const {
+    // abouts,
+    main
+  } = data
   const { html} = main
 
   return (
@@ -34,8 +37,10 @@ export default function About({
             height: 'max(400px, 40vh)',
         }}
       />
-      <div className="article">
-        <div dangerouslySetInnerHTML={{ __html: html }} />
+      <div className="page-content">
+        <div className="article">
+          <div dangerouslySetInnerHTML={{ __html: html }} />
+        </div>
       </div>
     </Layout>
   )

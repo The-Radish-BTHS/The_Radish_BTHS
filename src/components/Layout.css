@@ -32,7 +32,7 @@ body {
 }
 
 main {
-  margin: 2ch;
+  /* margin: 2ch; */
   margin-bottom: 2ch;
   background-color: var(--bg);
   color: var(--text-color);
@@ -40,6 +40,10 @@ main {
   /* wrapping */
   overflow-wrap: anywhere;
   hyphens: auto;
+}
+
+.page-content {
+  margin: 2ch;
 }
 
 .rest-of-page {
@@ -186,6 +190,8 @@ h1 .query, h3 .query {
   background-color: #0000002f;
   padding: 4px;
   border-radius: 3px;
+  line-height: 1.8;
+  white-space: normal;
 }
 
 .home-action {
@@ -322,7 +328,7 @@ button.articles-btn:hover {
 
 .parallax-banner {
   background-color: #0000005f;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   margin-bottom: 2ch;
 }
 
@@ -389,22 +395,13 @@ button.articles-btn:hover {
 /* Article styles ----------------------------------------------------------- */
 
 .article {
-  white-space: pre-line;
   line-height: 1.6;
-}
-
-.article p {
-  margin-top: -2ch;
-}
-
-.article p:first-of-type {
-  margin-top: 0;
 }
 
 .article img {
   /* Superbly arbitrary */
-  max-width: 700px;
-  max-height: 400px;
+  /* max-width: 100%; */
+  max-height: 40vh;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -443,7 +440,7 @@ button.articles-btn:hover {
 
 .article ul, .article ol {
   font-family: 'Lato', sans-serif;
-  margin-top: -5ch;
+  /* margin-top: -5ch; */
 }
 
 .article hr {
@@ -532,7 +529,7 @@ p {
 }
 
 @media (min-width: 1000px) {
-  main {
+  .page-content {
     margin-left: calc(15% + 2ch);
     margin-right: calc(15% + 2ch);
   }
@@ -540,17 +537,22 @@ p {
 
 /* Skip to main content ----------------------------------------------------- */
 .screen-reader-shortcut {
+  font-family: 'Noto Sans JP', sans-serif;
+  text-transform: uppercase;
+  font-weight: 500;
+
+
   position: absolute;
   top: -1000em;
 }
 
 .screen-reader-shortcut:focus {
   position: fixed;
-  top: 2ch;
-  left: 2ch;
+  top: 1.5rem;
+  left: 1rem;
   z-index: 9;
 
-  padding: 1ch;
+  padding: 0.5rem;
   border-radius: 3px;
   background-color: var(--red);
 }

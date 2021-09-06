@@ -64,66 +64,67 @@ export default function Author({
       {/*popUp && (
         <ExecStampPopUp setPopUp={setPopUp} author={author} grad={grad} />
       )*/}
-
-      <div className="page-title">
-        {execs.includes(author.frontmatter.position) && (
-          <EmployeeStamp />
-        )}
-        <h1>{author.frontmatter.title}</h1>
-        <h3>
-          <i>
-            {(grad || author.frontmatter.former ? "former " : "") +
-              author.frontmatter.position}
-          </i>
-        </h3>
-        <h3>
-          {grad
-            ? "Graduated " + author.frontmatter.date
-            : "Graduating " + author.frontmatter.date}
-        </h3>
-        <p className="description">{author.frontmatter.description}</p>
-      </div>
-      <Masonry
-        breakpointCols={breakpointColumnsObj}
-        className="my-masonry-grid"
-        columnClassName="my-masonry-grid_column"
-      >
-        {articles.edges.map(({ node }) => {
-          return (
-            <Articard
-              key={node.id}
-              slug={node.fields.slug}
-              title={node.frontmatter.title}
-              excerpt={node.excerpt}
-              tags={node.frontmatter.tags}
-              description={node.frontmatter.description}
-              date={node.frontmatter.date}
-              issue={node.frontmatter.issue}
-              former={node.frontmatter.former}
-              // authors={node.frontmatter.authors} // Might be redundant
-            />
-          )
-        })}
-      </Masonry>
-      <h1 className="page-title">
-        <Link to="/authors/">{`There are other people`}</Link>
-      </h1>
-      <div className="card-grid">
-        {authors.edges.map(({ node }) => {
-          return (
-            <AuthorCard
-              key={node.id}
-              id={node.id}
-              slug={node.fields.slug}
-              title={node.frontmatter.title}
-              position={node.frontmatter.position}
-              date={node.frontmatter.date}
-              description={node.frontmatter.description}
-              former={node.frontmatter.former}
-              // setPopUp={setPopUp}
-            />
-          )
-        })}
+      <div className="page-content">
+        <div className="page-title">
+          {execs.includes(author.frontmatter.position) && (
+            <EmployeeStamp />
+          )}
+          <h1>{author.frontmatter.title}</h1>
+          <h3>
+            <i>
+              {(grad || author.frontmatter.former ? "former " : "") +
+                author.frontmatter.position}
+            </i>
+          </h3>
+          <h3>
+            {grad
+              ? "Graduated " + author.frontmatter.date
+              : "Graduating " + author.frontmatter.date}
+          </h3>
+          <p className="description">{author.frontmatter.description}</p>
+        </div>
+        <Masonry
+          breakpointCols={breakpointColumnsObj}
+          className="my-masonry-grid"
+          columnClassName="my-masonry-grid_column"
+        >
+          {articles.edges.map(({ node }) => {
+            return (
+              <Articard
+                key={node.id}
+                slug={node.fields.slug}
+                title={node.frontmatter.title}
+                excerpt={node.excerpt}
+                tags={node.frontmatter.tags}
+                description={node.frontmatter.description}
+                date={node.frontmatter.date}
+                issue={node.frontmatter.issue}
+                former={node.frontmatter.former}
+                // authors={node.frontmatter.authors} // Might be redundant
+              />
+            )
+          })}
+        </Masonry>
+        <h1 className="page-title">
+          <Link to="/authors/">{`There are other people`}</Link>
+        </h1>
+        <div className="card-grid">
+          {authors.edges.map(({ node }) => {
+            return (
+              <AuthorCard
+                key={node.id}
+                id={node.id}
+                slug={node.fields.slug}
+                title={node.frontmatter.title}
+                position={node.frontmatter.position}
+                date={node.frontmatter.date}
+                description={node.frontmatter.description}
+                former={node.frontmatter.former}
+                // setPopUp={setPopUp}
+              />
+            )
+          })}
+        </div>
       </div>
     </Layout>
   )
