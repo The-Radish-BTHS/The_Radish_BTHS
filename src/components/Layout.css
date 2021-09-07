@@ -363,15 +363,21 @@ button.articles-btn:hover {
   padding-bottom: 75%; */
 }
 
+.error-page .error-code {
+  
+}
+
 .iframe-container {
-  max-width: 420px;
+  max-width: 560px;
   margin: 0px auto;
 }
 
 .iframe-container > div {
   position: relative;
-  padding-bottom: 75%;
-  height: 0px;
+  /* aspect ratio */
+  padding-bottom: 56.25%;
+  /* height: 0px;
+  width: 0px; */
 }
 
 .iframe-container iframe {
@@ -380,9 +386,7 @@ button.articles-btn:hover {
   left: 0px;
   width: 100%;
   height: 100%;
-}
 
-.iframe-container iframe {
   border-radius: 5px;
 }
 
