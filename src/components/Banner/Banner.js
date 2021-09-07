@@ -5,7 +5,7 @@ import "./Banner.css"
 // https://dev.to/billraymond/creating-a-pure-responsive-css-grid-hero-image-or-banner-image-2pej
 export default function Banner({ children, bg, header, txt }) {
   return (
-    <section className="top-banner-section">
+    <section className={`top-banner-section`}>
       <div>
         <img className="banner-image" src={bg} alt="Banner" />
       </div>

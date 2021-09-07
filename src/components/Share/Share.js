@@ -8,7 +8,10 @@ export default function Share({ description, url }) {
   const [isCopied, setIsCopied] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => setIsCopied(false), 5000)
+    let showCopiedTime = setTimeout(() => setIsCopied(false), 5000);
+    return () => {
+      clearTimeout(showCopiedTime);
+    }
   }, [isCopied, setIsCopied])
 
   return (

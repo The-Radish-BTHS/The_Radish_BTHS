@@ -117,7 +117,7 @@
 }
 
 .issue-preview .content p .arrow {
-  margin-bottom: -0.5ch; /* bc The height is set to 2ch */
+  margin-bottom: -0.3ch; /* 1/4 the arrow height */
   padding: 0;
 }
 
@@ -127,17 +127,6 @@
   grid-area: issue-link;
   overflow: hidden;
 }
-
-/* From using the arrow in the highlighted card to say "more from this issue -->" */
-/* .special svg {
-  height: 2ch;
-  width: 4ch;
-}
-
-.special .center-vert {
-  display: flex;
-  align-items: center;
-} */
 
 .preview-articles {
   grid-area: preview-articles;

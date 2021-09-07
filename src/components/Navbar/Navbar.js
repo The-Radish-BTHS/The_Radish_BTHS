@@ -56,25 +56,25 @@ export default function Navbar({ setShowSidebar, showSidebar, setShowModal, show
   }
 
   const handleScroll = () => {
-      const offset = window.pageYOffset || document.documentElement.scrollTop;
-      // If we were changing when the header detaches from the top
-      // let navbar = document.getElementById("navbar");
-      // if (offset > navbar.offsetHeight ){
-      //   setScrolled(true);
-      // }
-      // else{
-      //   setScrolled(false);
-      // }
+    const offset = window.pageYOffset || document.documentElement.scrollTop;
+    // If we were changing when the header detaches from the top
+    // let navbar = document.getElementById("navbar");
+    // if (offset > navbar.offsetHeight ){
+    //   setScrolled(true);
+    // }
+    // else{
+    //   setScrolled(false);
+    // }
 
-      // For some reason it only seems to work when we check for showSidebar in both statements??
-      if (offset > scrollPos && !showSidebar && !showModal) {
-        setScrollingDown(true)
-      }
-      else if (offset < scrollPos || showSidebar || showModal) {
-        setScrollingDown(false)
-      }
-      setScrollPos(offset <= 0 ? 0 : offset)
+    // For some reason it only seems to work when we check for showSidebar in both statements??
+    if (offset > scrollPos && !showSidebar && !showModal) {
+      setScrollingDown(true)
     }
+    else if (offset < scrollPos || showSidebar || showModal) {
+      setScrollingDown(false)
+    }
+    setScrollPos(offset <= 0 ? 0 : offset)
+  }
 
   useEffect(() => {
     window.addEventListener('resize', handleResize)

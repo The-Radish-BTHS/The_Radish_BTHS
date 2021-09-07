@@ -72,14 +72,15 @@
   grid-gap: 1ch;
 }
 
-#sidebar .footer {
+.sidebar .footer {
   position: fixed;
-  /* bottom: 5rem; */
-  bottom: 7ch;
-  height: 5ch;
-  padding: 0;
+  bottom: 10rem;
+  height: 3rem;
   border-style: none;
-  margin: -2ch; /*Undo the padding of 2ch in sidebar*/
+
+  /*Undo the padding of 2ch in sidebar*/
+  margin-left: -2ch;
+  margin-right: -2ch;
 }
 
 /* .sidebarHidden {
