@@ -9,7 +9,7 @@ import { Articard } from "../components/Cards/index"
 
 const breakpointColumnsObj = {
   default: 3,
-  1000: 2,
+  1300: 2,
   600: 1,
 }
 
@@ -74,7 +74,7 @@ export default function Articles({
             }
         ]}
         style={{
-            height: 'max(400px, 40vh)',
+            height: 'max(400px, 50vh)',
         }}
       />
 

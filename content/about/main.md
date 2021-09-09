@@ -3,7 +3,7 @@ title: Main
 ---
 # We are The Radish
 
-We are Brooklyn Technical High School's first, worst, and only satirical newspaper. No clue when we started. Your guess is as good as ours. But we've ended up here, so stay awhile :)
+We are Brooklyn Technical High School's first, worst, and only satirical newspaper. No clue when we started. Your guess is as good as ours. Still, we've ended up here, so stay a while :)
 
 # Feed us
 

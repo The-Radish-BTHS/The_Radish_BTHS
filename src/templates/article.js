@@ -69,7 +69,7 @@ export default function Article({
         />
       </div>
       <div className="article">
-        <div dangerouslySetInnerHTML={{ __html: html }} />
+        <article dangerouslySetInnerHTML={{ __html: html }} />
         <Share
           description={frontmatter.description}
           url={site.siteMetadata.mainUrlNameChangedBcFckGatsby + location.pathname}

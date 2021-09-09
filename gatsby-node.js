@@ -28,6 +28,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   }
 }
 
+// The highlighted issue's cards might not be from that issue
 // const { graphql } = require(`gatsby`)
 // const newest_issue = graqhql`
 //   query newest_issue {
@@ -44,6 +45,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 //     }
 //   }
 // `
+// https://www.gatsbyjs.com/docs/creating-and-modifying-pages/#pass-context-to-pages
 // exports.onCreatePage = ({ page, actions }) => {
 //   const { createPage, deletePage } = actions
 //   deletePage(page)
@@ -77,15 +79,21 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
+  const articleTemplate = path.resolve(`./src/templates/article.js`);
+  const authorTemplate = path.resolve(`./src/templates/author.js`);
+  const tagTemplate = path.resolve(`./src/templates/tag.js`);
+  const aboutTemplate = path.resolve(`./src/templates/about.js`);
+  const issueTemplate = path.resolve(`./src/templates/issue.js`);
+
   content.data.allMarkdownRemark.edges.forEach(({ node }) => {
     createPage({
       path: node.fields.slug,
       component:
-        node.fileAbsolutePath.includes('/articles/') ? path.resolve(`./src/templates/article.js`)
-        : node.fileAbsolutePath.includes('/authors/') ? path.resolve(`./src/templates/author.js`)
-        : node.fileAbsolutePath.includes('/tags/') ? path.resolve(`./src/templates/tag.js`)
-        : node.fileAbsolutePath.includes('/about/') ? path.resolve(`./src/templates/about.js`)
-        : path.resolve(`./src/templates/issue.js`),
+        node.fileAbsolutePath.includes('/articles/') ? articleTemplate
+        : node.fileAbsolutePath.includes('/authors/') ? authorTemplate
+        : node.fileAbsolutePath.includes('/tags/') ? tagTemplate
+        : node.fileAbsolutePath.includes('/about/') ? aboutTemplate
+        : issueTemplate,
       context: {
         // Data passed to context is available
         // in page queries as GraphQL variables.

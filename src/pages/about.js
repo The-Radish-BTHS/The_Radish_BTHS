@@ -25,16 +25,15 @@ export default function About({
             {
                 children:
                   <div id='banner-children'>
-                    <h1>Heyy</h1>
-                    <h3>We're The Radish</h3>
-                    <h5>Jacob is presingden</h5>
+                    <h1>We're The Radish</h1>
+                    <h3>Jacob is presingden</h3>
                   </div>
                 ,
                 amount: 0,
             }
         ]}
         style={{
-            height: 'max(400px, 40vh)',
+            height: 'max(400px, 50vh)',
         }}
       />
       <div className="page-content">

@@ -30,8 +30,6 @@ export default function ErrorPage() {
                 allowFullScreen
               />
             </div>
-
-
           </div>
         </Banner>
       </div>

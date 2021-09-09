@@ -79,7 +79,7 @@ export default function Index({
             }
         ]}
         style={{
-            height: 'max(400px, 40vh)',
+            height: 'max(400px, 50vh)',
         }}
       />
 

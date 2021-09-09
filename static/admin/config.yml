@@ -80,7 +80,6 @@ collections:
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown" }
-      - {label: "Form", name: "form", widget: "text", required: false, minimal: true }
 
   - name: "author"
     label: "Author"
