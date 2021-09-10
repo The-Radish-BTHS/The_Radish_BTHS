@@ -10,7 +10,7 @@ import { IssueCard } from "../components/Cards/index"
 const breakpointColumnsObj = {
   default: 4,
   1500: 3,
-  1000: 2,
+  1300: 2,
   600: 1,
 }
 

@@ -12,7 +12,7 @@ import AllTags from "../components/AllTags/AllTags.js"
 
 const breakpointColumnsObj = {
   default: 3,
-  1000: 2,
+  1300: 2,
   600: 1,
 }
 

@@ -9,7 +9,7 @@ import { AuthorCard } from "../components/Cards/index"
 
 const breakpointColumnsObj = {
   default: 3,
-  1200: 2,
+  1300: 2,
   600: 1,
 }
 

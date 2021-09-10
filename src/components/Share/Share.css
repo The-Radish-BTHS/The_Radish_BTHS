@@ -35,6 +35,7 @@
 }
 
 .copied {
+  font-weight: bold;
   color: var(--highlight);
 }
 

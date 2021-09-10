@@ -1,5 +1,7 @@
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
+const fs = require('fs')
+
 exports.onCreateNode = ({ node, getNode, actions }) => {
   // console.log(`node data:${JSON.stringify(node, null, 2)}`);
   const { createNodeField } = actions
@@ -58,20 +60,46 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 //   })
 // }
 
+function createPaginationJSON(pathSuffix, pagePosts) {
+  const dir = "public/paginationJson/"
+  if (!fs.existsSync(dir)){
+    fs.mkdirSync(dir);
+  }
+  const filePath = dir+"index"+pathSuffix+".json";
+  const dataToSave = JSON.stringify(pagePosts);
+  fs.writeFile(filePath, dataToSave, function(err) {
+    if(err) {
+      return console.log(err);
+    }
+  });
+}
+
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const content = await graphql(`
     query content {
-      allMarkdownRemark {
+      allMarkdownRemark(
+        sort: { order: DESC, fields: [frontmatter___date] }
+      ) {
         edges {
           node {
+            id
             fileAbsolutePath
+            excerpt(pruneLength: 100)
+            frontmatter {
+              title
+              description
+              issue
+              date(formatString: "MMMM YYYY")
+              authors {
+                author
+              }
+              tags {
+                tag
+              }
+            }
             fields {
               slug
-            }
-            frontmatter {
-              issue
-              title
             }
           }
         }
@@ -79,13 +107,29 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
+  const posts = content.data.allMarkdownRemark.edges.filter(({node}) => node.fileAbsolutePath.includes('/articles/'));
+
+  const postsPerPage = 5;
+  const numPages = Math.ceil(posts.length / postsPerPage);
+
+  for (var i = 0; i <= numPages; i++) {
+    const pathSuffix = i+1;
+
+    // Get posts for this page
+    const startInclusive = i * postsPerPage;
+    const endExclusive = startInclusive + postsPerPage;
+    const pagePosts = posts.slice(startInclusive, endExclusive)
+
+    createPaginationJSON(pathSuffix, pagePosts);
+  }
+
   const articleTemplate = path.resolve(`./src/templates/article.js`);
   const authorTemplate = path.resolve(`./src/templates/author.js`);
   const tagTemplate = path.resolve(`./src/templates/tag.js`);
   const aboutTemplate = path.resolve(`./src/templates/about.js`);
   const issueTemplate = path.resolve(`./src/templates/issue.js`);
 
-  content.data.allMarkdownRemark.edges.forEach(({ node }) => {
+  posts.forEach(({ node }) => {
     createPage({
       path: node.fields.slug,
       component:

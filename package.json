@@ -30,6 +30,8 @@
     "gatsby-source-filesystem": "^3.3.0",
     "gatsby-transformer-remark": "^4.0.0",
     "gatsby-transformer-sharp": "^3.4.0",
+    "lodash": "^4.17.21",
+    "lodash.throttle": "^4.1.1",
     "netlify": "^6.1.20",
     "netlify-cms-app": "^2.14.46",
     "react": "^17.0.1",
