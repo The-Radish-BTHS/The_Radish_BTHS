@@ -187,7 +187,7 @@ export const pageQuery = graphql`
     more: allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
       limit: 3
-      filter: { fields: { slug: { regex: "^/issues/" } } }
+      filter: { fields: { slug: { regex: "^/issues/", ne: $slug } } }
     ) {
       edges {
         node {

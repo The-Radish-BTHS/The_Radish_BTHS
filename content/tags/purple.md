@@ -1,4 +1,0 @@
----
-title: Purple
-color: green
----

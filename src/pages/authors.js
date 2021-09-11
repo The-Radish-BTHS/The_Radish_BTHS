@@ -63,7 +63,7 @@ export const pageQuery = graphql`
   query authors {
     allMarkdownRemark(
       sort: {order: DESC, fields: [frontmatter___date]}
-      limit: 5
+      limit: 1000
       filter: {fields: {slug: {regex: "^/authors/"}}}
     ) {
       edges {

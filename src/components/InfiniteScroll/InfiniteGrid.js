@@ -12,7 +12,7 @@ export default function InfiniteGrid({ Card, globalState, items, collection }) {
   const numPages = Math.ceil(items.edges.length / 5)
   const hasMore = globalState.hasMore(numPages)
 
-  if (globalState.collection != collection) {
+  if (globalState.collection !== collection) {
     globalState.updateState({
       collection: collection,
       items: items.edges.slice(0, 5),

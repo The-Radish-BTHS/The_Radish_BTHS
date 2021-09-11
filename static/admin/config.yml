@@ -61,6 +61,7 @@ collections:
             collection: "tag"
             search_fields: ["title"]
             value_field: "title"
+            # default: ""
             required: false
       - label: "Issue"
         name: "issue"
@@ -106,9 +107,9 @@ collections:
     create: true
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - label: "Color"
-        name: "color"
-        widget: "color"
+      # - label: "Color"
+      #   name: "color"
+      #   widget: "color"
         # widget: "select"
         # options: ["red", "orange", "yellow", "green", "blue", "purple", "white", "black"]
       - {label: "Description", name: "description", widget: "text", required: false, minimal: true }

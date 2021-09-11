@@ -41,6 +41,6 @@ Required:
 
 Consider before submitting: 
 - Do you get to the point?
-- Is the article's premise funny on its own?
+- Is the article's premise funny on its own and an original take?
 - Did you have fun writing the article?
 

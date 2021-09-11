@@ -1,7 +1,10 @@
 ---
 title: Aramie Ewen
 position: CEO (Chief Editing Officer)
-pfp: /static/assets/secx.png
 former: false
-date: 2023-01-03T05:00:00.000Z
+date: 2023-06-29T04:26:54.630Z
+description: |-
+  I live, breathe, think, and occasionally eat, radishes. Not club members.
+
+  I should get a life outside this club.
 ---
