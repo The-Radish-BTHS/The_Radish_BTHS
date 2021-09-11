@@ -86,7 +86,7 @@ export class InfiniteScroll extends React.Component<InfiniteScrollProps, {}> {
       this.sentinel.getBoundingClientRect().top - window.innerHeight <
       this.props.threshold!
     ) {
-      this.props.onLoadMore(this.props.collection);
+      this.props.onLoadMore();
     }
   }
 

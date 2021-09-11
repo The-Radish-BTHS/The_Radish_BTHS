@@ -17,7 +17,8 @@ export const GlobalStateContext = React.createContext({
     loadMore: () => {},
     hasMore: () => {},
     isInitializing: () => { return true },
-    updateState: () => {}
+    updateState: () => {},
+    collection: ""
 });
 
 export class GlobalState extends React.Component {
@@ -54,7 +55,8 @@ export class GlobalState extends React.Component {
             isInitializing: this.isInitializing,
             updateState: this.updateState,
             hasMore: this.hasMore,
-            loadMore: this.loadMore
+            loadMore: this.loadMore,
+            collection: this.collection
         }
     }
 
@@ -72,9 +74,9 @@ export class GlobalState extends React.Component {
         }))
     }
 
-    loadMore = (collection) => {
+    loadMore = () => {
         this.setState({ isLoading: true, error: undefined })
-        fetch(`${__PATH_PREFIX__}/paginationJson/${collection}${this.state.cursor}.json`)
+        fetch(`${__PATH_PREFIX__}/paginationJson/${this.state.collection}${this.state.cursor}.json`)
             .then(res => res.json())
             .then(
               res => {

@@ -10,37 +10,9 @@ import { EmployeeStamp } from "../components/Cards/Icons/index"
 
 const breakpointColumnsObj = {
   default: 3,
-  1000: 2,
+  1300: 2,
   600: 1,
 }
-
-// function ExecStampPopUp({ setPopUp, author, grad }) {
-//   return (
-//     <div className="EmployeeStampPopUp">
-//       <EmployeeStamp size={250} />
-//       <svg
-//         fill="none"
-//         height="24"
-//         stroke="currentColor"
-//         stroke-linecap="round"
-//         stroke-linejoin="round"
-//         stroke-width="2"
-//         viewBox="0 0 24 24"
-//         width="24"
-//         xmlns="http://www.w3.org/2000/svg"
-//         onClick={() => setPopUp(false)}
-//         className="hoverPointer PopUpCloseButton"
-//       >
-//         <line x1="18" x2="6" y1="6" y2="18" />
-//         <line x1="6" x2="18" y1="6" y2="18" />
-//       </svg>
-//       <h3>
-//         This stamp indicates this author is (or was) an executive at The Radish.
-//         [more stuff here?]
-//       </h3>
-//     </div>
-//   )
-// }
 
 export default function Author({
   data, // this prop will be injected by the GraphQL query below.
@@ -120,7 +92,6 @@ export default function Author({
                 date={node.frontmatter.date}
                 description={node.frontmatter.description}
                 former={node.frontmatter.former}
-                // setPopUp={setPopUp}
               />
             )
           })}
