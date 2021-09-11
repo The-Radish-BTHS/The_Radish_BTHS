@@ -1,18 +1,13 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/Layout"
-import Masonry from "react-masonry-css"
 
 import { ParallaxBanner } from 'react-scroll-parallax';
-// import Banner from "../components/Banner/Banner.js"
 import { IssueCard } from "../components/Cards/index"
 
-const breakpointColumnsObj = {
-  default: 4,
-  1500: 3,
-  1300: 2,
-  600: 1,
-}
+// Infinite scrolling
+import { GlobalStateContext } from "../components/InfiniteScroll/GlobalState.js"
+import InfiniteGrid from "../components/InfiniteScroll/InfiniteGrid.js"
 
 export default function Issues({
   data, // this prop will be injected by the GraphQL query below.
@@ -20,14 +15,6 @@ export default function Issues({
   const { issues } = data
   return (
     <Layout pageName="Issues">
-      {
-      // <Banner
-      //   bg="/banner.jpg"
-      //   header="We've got issues"
-      //   txt="Now you've got 'em too"
-      // />
-      }
-
       <ParallaxBanner
         className="parallax-banner"
         layers={[
@@ -51,24 +38,9 @@ export default function Issues({
       />
 
       <div className="page-content">
-        <Masonry
-          breakpointCols={breakpointColumnsObj}
-          className="my-masonry-grid"
-          columnClassName="my-masonry-grid_column"
-        >
-          {issues.edges.map(({ node }) => {
-            return (
-              <IssueCard
-                key={node.id}
-                slug={node.fields.slug}
-                date={node.frontmatter.date}
-                title={node.frontmatter.title}
-                cover={node.fields.rel_cover}
-                description={node.frontmatter.description}
-              />
-            )
-          })}
-        </Masonry>
+        <GlobalStateContext.Consumer>
+          {g => <InfiniteGrid Card={IssueCard} globalState={g} items={issues} collection={"issues"} />}
+        </GlobalStateContext.Consumer>
       </div>
     </Layout>
   )
@@ -78,7 +50,7 @@ export const pageQuery = graphql`
   query issues {
     issues: allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
-      limit: 20
+      limit: 5
       filter: { fields: { slug: { regex: "^/issues/" } } }
     ) {
       edges {

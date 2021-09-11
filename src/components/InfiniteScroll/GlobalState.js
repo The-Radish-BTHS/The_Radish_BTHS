@@ -72,9 +72,9 @@ export class GlobalState extends React.Component {
         }))
     }
 
-    loadMore = () => {
+    loadMore = (collection) => {
         this.setState({ isLoading: true, error: undefined })
-        fetch(`${__PATH_PREFIX__}/paginationJson/index${this.state.cursor}.json`)
+        fetch(`${__PATH_PREFIX__}/paginationJson/${collection}${this.state.cursor}.json`)
             .then(res => res.json())
             .then(
               res => {

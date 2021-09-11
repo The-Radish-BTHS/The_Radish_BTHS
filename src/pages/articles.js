@@ -5,11 +5,10 @@ import Layout from "../components/Layout"
 
 import { ParallaxBanner } from 'react-scroll-parallax';
 // import Banner from "../components/Banner/Banner.js"
-// import { Articard } from "../components/Cards/index"
+import { Articard } from "../components/Cards/index"
 
 // Infinite scrolling
 import { GlobalStateContext } from "../components/InfiniteScroll/GlobalState.js"
-// import { InfiniteScroll } from "../components/InfiniteScroll/InfiniteScroll.tsx"
 import InfiniteGrid from "../components/InfiniteScroll/InfiniteGrid.js"
 
 // const breakpointColumnsObj = {
@@ -57,7 +56,7 @@ export default function Articles({
       />
       <div className="page-content">
         <GlobalStateContext.Consumer>
-          {g => <InfiniteGrid globalState={g} items={articles} />}
+          {g => <InfiniteGrid Card={Articard} globalState={g} items={articles} collection={"articles"} />}
         </GlobalStateContext.Consumer>
       </div>
     </Layout>

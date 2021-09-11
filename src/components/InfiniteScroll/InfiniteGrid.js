@@ -1,7 +1,6 @@
 import React from "react"
 import Masonry from "react-masonry-css"
 import { InfiniteScroll } from "./InfiniteScroll";
-import { Articard } from "../Cards/index"
 
 const breakpointColumnsObj = {
   default: 3,
@@ -9,7 +8,7 @@ const breakpointColumnsObj = {
   600: 1,
 }
 
-export default function InfiniteGrid({globalState, items, Card}) {
+export default function InfiniteGrid({ Card, globalState, items, collection }) {
   const numPages = Math.ceil(items.edges.length / 5)
   const hasMore = globalState.hasMore(numPages)
 
@@ -29,6 +28,7 @@ export default function InfiniteGrid({globalState, items, Card}) {
       isLoading={globalState.isLoading}
       hasMore={hasMore}
       onLoadMore={globalState.loadMore}
+      collection={collection}
     >
       <Masonry
         breakpointCols={breakpointColumnsObj}
@@ -37,7 +37,7 @@ export default function InfiniteGrid({globalState, items, Card}) {
       >
         {globalState.items.map(({ node }) => {
           return (
-            <Articard
+            <Card
               key={node.id}
               slug={node.fields.slug}
               title={node.frontmatter.title}
@@ -47,6 +47,9 @@ export default function InfiniteGrid({globalState, items, Card}) {
               description={node.frontmatter.description}
               date={node.frontmatter.date}
               issue={node.frontmatter.issue}
+              position={node.frontmatter.position}
+              former={node.frontmatter.former}
+              cover={node.fields.rel_cover}
             />
           )
         })}

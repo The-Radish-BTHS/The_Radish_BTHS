@@ -1,17 +1,14 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/Layout"
-import Masonry from "react-masonry-css"
 
 import { ParallaxBanner } from 'react-scroll-parallax';
 // import Banner from "../components/Banner/Banner.js"
 import { AuthorCard } from "../components/Cards/index"
 
-const breakpointColumnsObj = {
-  default: 3,
-  1300: 2,
-  600: 1,
-}
+// Infinite scrolling
+import { GlobalStateContext } from "../components/InfiniteScroll/GlobalState.js"
+import InfiniteGrid from "../components/InfiniteScroll/InfiniteGrid.js"
 
 export default function Authors({
   data, // this prop will be injected by the GraphQL query below.
@@ -54,28 +51,9 @@ export default function Authors({
       />
 
       <div className="page-content">
-        <Masonry
-          breakpointCols={breakpointColumnsObj}
-          className="my-masonry-grid"
-          columnClassName="my-masonry-grid_column"
-        >
-          {
-            allMarkdownRemark.edges.map(({ node }) => {
-              return (
-                <AuthorCard
-                  key={node.id}
-                  id={node.id}
-                  slug={node.fields.slug}
-                  title={node.frontmatter.title}
-                  position={node.frontmatter.position}
-                  date={node.frontmatter.date}
-                  description={node.frontmatter.description}
-                  former={node.frontmatter.former}
-                />
-              )
-            })
-          }
-        </Masonry>
+        <GlobalStateContext.Consumer>
+          {g => <InfiniteGrid Card={AuthorCard} globalState={g} items={allMarkdownRemark} collection={"authors"} />}
+        </GlobalStateContext.Consumer>
       </div>
     </Layout>
   )
@@ -85,7 +63,7 @@ export const pageQuery = graphql`
   query authors {
     allMarkdownRemark(
       sort: {order: DESC, fields: [frontmatter___date]}
-      limit: 1000
+      limit: 5
       filter: {fields: {slug: {regex: "^/authors/"}}}
     ) {
       edges {

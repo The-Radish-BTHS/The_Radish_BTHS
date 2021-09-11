@@ -45,6 +45,8 @@ export interface InfiniteScrollProps {
    * A React component to act as wrapper
    */
   component?: any;
+
+  collection?: string;
 }
 
 export class InfiniteScroll extends React.Component<InfiniteScrollProps, {}> {
@@ -84,7 +86,7 @@ export class InfiniteScroll extends React.Component<InfiniteScrollProps, {}> {
       this.sentinel.getBoundingClientRect().top - window.innerHeight <
       this.props.threshold!
     ) {
-      this.props.onLoadMore();
+      this.props.onLoadMore(this.props.collection);
     }
   }
 

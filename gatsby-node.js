@@ -60,18 +60,34 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 //   })
 // }
 
-function createPaginationJSON(pathSuffix, pagePosts) {
+function createPaginationJSON(pathSuffix, pagePosts, collection) {
   const dir = "public/paginationJson/"
   if (!fs.existsSync(dir)){
     fs.mkdirSync(dir);
   }
-  const filePath = dir+"index"+pathSuffix+".json";
+  const filePath = dir+collection+pathSuffix+".json";
   const dataToSave = JSON.stringify(pagePosts);
   fs.writeFile(filePath, dataToSave, function(err) {
     if(err) {
       return console.log(err);
     }
   });
+}
+
+function paginateCollection(collection, allPosts, postsPerPage) {
+  const posts = allPosts.filter(({node}) => node.fileAbsolutePath.includes(`/${collection}/`));
+
+  const numPages = Math.ceil(posts.length / postsPerPage);
+  for (var i = 0; i <= numPages; i++) {
+    const pathSuffix = i+1;
+
+    // Get posts for this page
+    const startInclusive = i * postsPerPage;
+    const endExclusive = startInclusive + postsPerPage;
+    const pagePosts = posts.slice(startInclusive, endExclusive)
+
+    createPaginationJSON(pathSuffix, pagePosts, collection);
+  }
 }
 
 exports.createPages = async ({ graphql, actions }) => {
@@ -91,6 +107,9 @@ exports.createPages = async ({ graphql, actions }) => {
               description
               issue
               date(formatString: "MMMM YYYY")
+              position
+              former
+              description
               authors {
                 author
               }
@@ -100,6 +119,11 @@ exports.createPages = async ({ graphql, actions }) => {
             }
             fields {
               slug
+              rel_cover {
+                childImageSharp {
+                  gatsbyImageData(placeholder: BLURRED)
+                }
+              }
             }
           }
         }
@@ -107,21 +131,11 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  const posts = content.data.allMarkdownRemark.edges.filter(({node}) => node.fileAbsolutePath.includes('/articles/'));
-
-  const postsPerPage = 5;
-  const numPages = Math.ceil(posts.length / postsPerPage);
-
-  for (var i = 0; i <= numPages; i++) {
-    const pathSuffix = i+1;
-
-    // Get posts for this page
-    const startInclusive = i * postsPerPage;
-    const endExclusive = startInclusive + postsPerPage;
-    const pagePosts = posts.slice(startInclusive, endExclusive)
-
-    createPaginationJSON(pathSuffix, pagePosts);
-  }
+  const allPosts = content.data.allMarkdownRemark.edges
+  const postsPerPage = 5
+  paginateCollection("articles", allPosts, postsPerPage)
+  paginateCollection("authors", allPosts, postsPerPage)
+  paginateCollection("issues", allPosts, postsPerPage)
 
   const articleTemplate = path.resolve(`./src/templates/article.js`);
   const authorTemplate = path.resolve(`./src/templates/author.js`);
@@ -129,7 +143,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const aboutTemplate = path.resolve(`./src/templates/about.js`);
   const issueTemplate = path.resolve(`./src/templates/issue.js`);
 
-  posts.forEach(({ node }) => {
+  allPosts.forEach(({ node }) => {
     createPage({
       path: node.fields.slug,
       component:
@@ -147,4 +161,6 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
+
+
 }
