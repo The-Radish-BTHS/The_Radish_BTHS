@@ -3,7 +3,7 @@ title: New Dimension Found on Ninth Floor
 authors:
   - author: Caylie Pacho
 tags:
-  - tag: Lore
+  - tag: Timeless news
 issue: February 2020
 date: 2020-02-01T05:53:47.179Z
 ---

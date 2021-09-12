@@ -1,7 +1,7 @@
 ---
 title: "Charlotte Rotlander "
-position: writer
+position: Vice President
 former: false
-date: 2021-09-11T04:42:33.804Z
+date: 2023-06-29T04:42:33.804Z
 description: Sometimes a little bit goofy
 ---

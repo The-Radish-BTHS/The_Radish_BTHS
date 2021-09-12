@@ -65,14 +65,14 @@ export default function Index({
         className="parallax-banner"
         layers={[
             {
-                image: "/banner.jpg",
+                image: "/home_banner.png",
                 amount: 0.3,
             },
             {
                 children:
                   <div id='banner-children'>
                     <h1>The Radish</h1>
-                    <h2>Brooklyn Tech's first, worst, and only</h2>
+                    <h2>Brooklyn Tech's first, worst, and only club</h2>
                   </div>
                 ,
                 amount: 0,

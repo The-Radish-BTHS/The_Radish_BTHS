@@ -3,7 +3,7 @@ title: "SGO Stickers Sold as Gym  Memberships "
 authors:
   - author: Zachary Thompson
 tags:
-  - tag: Lore
+  - tag: Timeless news
 issue: February 2020
 date: 2020-02-01T05:47:19.908Z
 ---

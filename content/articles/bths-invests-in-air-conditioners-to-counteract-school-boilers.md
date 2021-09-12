@@ -2,7 +2,8 @@
 title: "BTHS Invests in Air Conditioners  to Counteract School Boilers "
 authors:
   - author: Renee Ricevuto
-tags: []
+tags:
+  - tag: Timeless news
 issue: February 2020
 date: 2020-02-01T05:58:00.000Z
 ---
