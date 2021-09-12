@@ -56,22 +56,26 @@
   border-radius: 3px;
 }
 
-.issue {
+.issue, .authorCard {
   padding: 0ch;
   height: fit-content;
   /* height: 100%; */
 }
 
-.issue .content {
+.issue .content, .author-card-text {
   padding: 2ch;
   padding-bottom: 0.5ch;
 }
 
-.authorCard a {
+.author-card-grid {
   display: grid;
   grid-template-columns: auto 50px;
   grid-template-areas:
     "text stamp";
+
+  /* Puts the stamp with the text */
+  /* height: fit-content;
+  position: relative; */
 }
 
 /* .authorCard a > .stamp {
@@ -85,6 +89,10 @@
   position: absolute;
   top: 0;
   right: 1ch;
+
+  -webkit-filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));
+  filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));
+
   /* top: 1ch;
   right: 1ch; */
   /* left: 0;

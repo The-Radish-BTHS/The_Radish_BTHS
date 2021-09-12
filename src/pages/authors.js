@@ -78,6 +78,11 @@ export const pageQuery = graphql`
           }
           fields {
             slug
+            rel_cover {
+              childImageSharp {
+                gatsbyImageData(placeholder: BLURRED)
+              }
+            }
           }
         }
       }

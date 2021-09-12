@@ -88,6 +88,12 @@ collections:
     create: true
     fields:
       - { label: "Name", name: "title", widget: "string" }
+      - {
+          label: "Cover image",
+          name: "cover",
+          widget: "image",
+          required: false,
+        }
       - label: "Position"
         name: "position"
         widget: "select"
