@@ -14,8 +14,9 @@
   --o-white: #ffffff9c;
 }
 
-h1, h2 {
+h1, h2, h3 {
   font-family: 'Martel', serif;
+  font-weight: 800;
 }
 p {
   font-family: 'Lato', sans-serif;
@@ -403,7 +404,6 @@ button.articles-btn:hover {
 
 .article img {
   /* Superbly arbitrary */
-  /* max-width: 100%; */
   max-height: 40vh;
   display: block;
   margin-left: auto;
@@ -509,6 +509,10 @@ p {
   .page-title {
     text-align: left;
     /* padding: 1ch; */
+  }
+
+  .page-title .share-btns {
+    justify-content: left;
   }
 
   .page-title .cover {

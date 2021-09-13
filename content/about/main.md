@@ -3,7 +3,7 @@ title: Main
 ---
 # We are The Radish
 
-We are Brooklyn Technical High School's first, worst, and only satirical newspaper. No clue when we started. Your guess is as good as ours. Still, we've ended up here, so stay a while :)
+We are Brooklyn Technical High School's first, worst, and only satirical newspaper. No clue when we started. Your guess is as good as ours. Still, we've ended up here, so stay awhile :)
 
 # Feed us
 
@@ -28,9 +28,9 @@ Wanna help us throw the articles? We have teams for preparing them.
 
 ## Contribution requirements
 
-We like nonsense communicated well. If you want to improve your writing, I (Aramie Ewen) like [this article](https://alistapart.com/article/so-you-want-to-write-an-article/). It's aimed at web developers, but the writing-focused tips are great advice in general. 
+We like nonsense communicated well. If you want to improve your writing, I (Aramie Ewen) like [this article](https://alistapart.com/article/so-you-want-to-write-an-article/). It's aimed at web developers, but the writing-focused tips are great advice in general.
 
-However, for us, just keep in mind the following: 
+However, for us, just keep in mind the following:
 
 Required:
 - Article is 0.5 page to 2 pages, flexible if the article is good
@@ -39,8 +39,8 @@ Required:
 
 
 
-Consider before submitting: 
+Consider before submitting:
 - Do you get to the point?
 - Is the article's premise funny on its own and an original take?
 - Did you have fun writing the article?
-
+
