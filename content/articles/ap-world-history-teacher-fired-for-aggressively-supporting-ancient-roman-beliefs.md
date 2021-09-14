@@ -6,7 +6,7 @@ authors:
 tags:
   - tag: News
 issue: Volume 2
-date: 2021-09-13T03:06:54.815Z
+date: 2019-05-31T03:06:54.815Z
 ---
 Parents of students taking AP World History with Mr. Amelio were surprised to hear that their children had to switch classes because of what appeared to be an unfortunate incident involving the teacher and a surprisingly heavy set of Roman centurion armor he had recently acquired. However, further investigation into Mr. Amelio’s class revealed that he’d been sharing his excitement for Roman history with his students and fellow teachers for some time, though in a very unconventional way.
 

@@ -27,7 +27,7 @@
   width: 40%;
 
   z-index: 2;
-  /* overflow-y: scroll; */
+
   display: flex;
   flex-direction: column;
 
@@ -37,7 +37,6 @@
 
   position: fixed;
   top: 6rem;
-  /* left: 0px; */
 
   transform: translateX(-100%);
   -webkit-transform: translateX(-100%);
@@ -47,9 +46,6 @@
   color: var(--text-color);
 
   padding: 2ch;
-  overflow-x: hidden;
-
-  /* transition: 0.3s ease; */
 }
 
 .sidebar .card {
@@ -73,8 +69,15 @@
 }
 
 .sidebar .footer {
-  position: fixed;
-  bottom: 10rem;
+  /* position: fixed; */
+
+  display: block;
+  /* position: relative; */
+
+  text-transform: none;
+
+  bottom: 20rem; /* The height of the footer plus the distance of the sidebar from the top */
+
   height: 3rem;
   border-style: none;
 
@@ -94,6 +97,25 @@
     width: 50%;
     grid-gap: 3ch;
     padding: 2ch;
+  }
+}
+
+@media (max-width: 300px) {
+  .sidebar .footer {
+    bottom: 5rem;
+  }
+
+  .sidebar .copyright-note {
+    display: none;
+  }
+}
+@media (max-height: 700px) {
+  .sidebar .footer {
+    bottom: 5rem;
+  }
+
+  .sidebar .copyright-note {
+    display: none;
   }
 }
 

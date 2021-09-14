@@ -4,9 +4,14 @@
   border-top: 2px solid var(--highlight);
 
   width: 100%;
-  height: 4rem;
-  display: flex;
-  align-items: center;
+  height: 10rem;
+
+  padding: 1rem;
+  padding-top: 2ch;
+  padding-bottom: 2ch;
+
+  /* display: flex;
+  align-items: center; */
 
   position: absolute;
   bottom: 0;
@@ -32,6 +37,21 @@
   height: 7ch;
   width: 7ch;
   background-color: red;
+}
+
+.copyright-note {
+  margin-top: 2ch;
+  color: var(--text-color);
+
+  text-align: center;
+}
+
+.copyright-note a {
+  text-decoration: underline;
+}
+
+.copyright-note a:hover {
+  text-decoration: none;
 }
 
 /* .footerPageLinks {

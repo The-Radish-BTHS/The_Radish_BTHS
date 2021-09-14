@@ -6,7 +6,7 @@ tags:
   - tag: Timeless news
   - tag: Opinion
 issue: Quarantine Issue Two
-date: 2021-07-01T02:25:41.726Z
+date: 2020-07-01T02:25:00.000Z
 description: A recent study at a well-known college (whose name will be censored
   for their safety) has revealed a new kind of deadly avocado breed. One of the
   lead doctors is quoted as saying “it’s … bad.” Read more to find out how to
