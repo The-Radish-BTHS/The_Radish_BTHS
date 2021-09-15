@@ -6,7 +6,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 export default function IssueCard(props) {
   const image = getImage(props.cover)
   return (
-    <div className="card issue">
+    <div className={`card issue ${props.cover ? "" : "make-up-for-no-image"}`}>
       <Link to={props.slug}>
         <GatsbyImage
           image={image}

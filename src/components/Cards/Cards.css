@@ -19,6 +19,11 @@
   transition-duration: 150ms;
 }
 
+.card h2 {
+  /* word-wrap: normal; */
+  font-size: clamp(16px, 12px + 2vw, 1.5rem);
+}
+
 .card h4 {
   margin-bottom: 1ch;
 }
@@ -62,6 +67,26 @@
   /* height: 100%; */
 }
 
+.make-up-for-no-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 400px;
+  max-height: fit-content;
+  /* text-align: center; */
+}
+
+.make-up-for-no-image .author-card-text {
+  margin-right: -50px;
+  text-align: center;
+}
+
+.make-up-for-no-image .content {
+  /* issues */
+  text-align: center;
+}
+
 .issue .content, .author-card-text {
   padding: 2ch;
   padding-bottom: 0.5ch;
@@ -78,10 +103,6 @@
   position: relative; */
 }
 
-/* .authorCard a > .stamp {
-  background-color: red;
-} */
-
 .card .stamp {
   grid-area: stamp;
   width: 50px;
@@ -89,9 +110,6 @@
   position: absolute;
   top: 0;
   right: 1ch;
-
-  -webkit-filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));
-  filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));
 
   /* top: 1ch;
   right: 1ch; */
@@ -246,46 +264,6 @@
   margin-bottom: 7px;
 }
 
-/* .hoverPointer:hover {
-  cursor: pointer;
-} */
-
-/* .tooltip {
-  position: relative;
-  display: inline-block;
-  border-bottom: 1px dotted black;
-} */
-
-/* .tooltip { */
-  /* background-color: red; */
-/* } */
-
-/* .tooltip .tooltiptext { */
-  /* visibility: hidden;
-  display: none; */
-
-  /* width: 100px;
-  background-color: #555;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 1ch; */
-
-  /* Position the tooltip */
-  /* position: absolute;
-  z-index: 1;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); */
-  /* top: -50%;
-  left: 95%; */
-/* } */
-
-/* .tooltip:hover .tooltiptext {
-  visibility: visible; */
-  /* display: block; */
-/* } */
-
 @media (max-width: 600px) {
   .card:not(.issue) {
     /* padding: 2ch; */
@@ -304,7 +282,6 @@
     column-gap: 0;
 
     /* Make it snug against the sides */
-    /* margin-left: -2ch; */
     margin-right: -2ch;
   }
 
@@ -335,6 +312,8 @@
 
   .preview-articles .card {
     scroll-snap-align: start;
+    padding: 10px;
+    padding-top: 1rem;
     /* height: fit-content; */
     /* height: fit-content;
     width: fit-content; */

@@ -33,7 +33,7 @@ export default function Authors({
         className="parallax-banner"
         layers={[
             {
-                image: "/banner.jpg",
+                image: "/meet-the-execs.png",
                 amount: 0.3,
             },
             {

@@ -2,6 +2,7 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/Layout"
 import Masonry from "react-masonry-css"
+import { ParallaxBanner } from 'react-scroll-parallax';
 
 import Articard from "../components/Cards/Articard.js"
 import AuthorCard from "../components/Cards/AuthorCard.js"
@@ -36,8 +37,43 @@ export default function Author({
       {/*popUp && (
         <ExecStampPopUp setPopUp={setPopUp} author={author} grad={grad} />
       )*/}
-      <div className="page-content">
-        <div className="page-title">
+      {author.frontmatter.cover
+        ? <ParallaxBanner
+          className="parallax-banner"
+          layers={[
+              {
+                  image: author.frontmatter.cover,
+                  amount: 0.3,
+              },
+              {
+                  children:
+                    <div id="banner-children">
+                      {execs.includes(author.frontmatter.position) && (
+                        <EmployeeStamp />
+                      )}
+                      <h1>{author.frontmatter.title}</h1>
+                      <h3>
+                        <i>
+                          {(grad || author.frontmatter.former ? "former " : "") +
+                            author.frontmatter.position}
+                        </i>
+                      </h3>
+                      <h3>
+                        {grad
+                          ? "Graduated " + author.frontmatter.date
+                          : "Graduating " + author.frontmatter.date}
+                      </h3>
+                      <p className="description">{author.frontmatter.description}</p>
+                    </div>
+                  ,
+                  amount: 0,
+              }
+          ]}
+          style={{
+              height: 'max(500px, 40vh)',
+          }}
+        />
+        : <div className="page-content page-title">
           {execs.includes(author.frontmatter.position) && (
             <EmployeeStamp />
           )}
@@ -55,6 +91,8 @@ export default function Author({
           </h3>
           <p className="description">{author.frontmatter.description}</p>
         </div>
+      }
+      <div className="page-content">
         <Masonry
           breakpointCols={breakpointColumnsObj}
           className="my-masonry-grid"
@@ -110,6 +148,7 @@ export const pageQuery = graphql`
         position
         description
         former
+        cover
       }
     }
     articles: allMarkdownRemark(

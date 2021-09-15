@@ -21,7 +21,7 @@ collections:
           name: "cover",
           widget: "image",
           # media_folder: "/assets",
-          required: false,
+          # required: false,
           # default: "/static/assets/radimir-rootin.png",
         }
       - { label: "Title", name: "title", widget: "string" }

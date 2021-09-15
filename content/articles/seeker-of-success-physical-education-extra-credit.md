@@ -1,7 +1,7 @@
 ---
 title: "Seeker of Success: Physical Education Extra Credit"
 authors:
-  - author: Adonais Chowdhury
+  - author: Amara Chowdhury
 tags:
   - tag: From the field
 issue: Quarantine Issue Two

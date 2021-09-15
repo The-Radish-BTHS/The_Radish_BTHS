@@ -18,7 +18,7 @@ export default function AuthorCard(props) {
   const image = props.cover ? getImage(props.cover) : null
 
   return (
-    <div className={`card authorCard`}>
+    <div className={`card authorCard ${props.cover ? "" : "make-up-for-no-image"}`}>
       <Link to={props.slug}>
         {image ?
           <GatsbyImage

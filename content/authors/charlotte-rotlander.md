@@ -1,6 +1,6 @@
 ---
 title: "Charlotte Rotlander "
-cover: /assets/charlotte_with_stick.png
+cover: /assets/lottie.png
 position: Vice President
 former: false
 date: 2023-06-29T04:42:33.804Z
