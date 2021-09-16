@@ -4,7 +4,8 @@
   padding-bottom: 1ch;
   height: fit-content;
   border-radius: 3px;
-  background-color: #0000002f;
+  /* background-color: #0000002f; */
+  background-color: var(--card-color);
 
   /* -webkit-backdrop-filter: blur(1ch);
   backdrop-filter: blur(1ch); */
@@ -28,11 +29,12 @@
   margin-bottom: 1ch;
 }
 
-.card a h2 {
+.card a h2,
+a .authorCard h2 {
   text-decoration: underline;
   text-decoration-color: var(--red);
 }
-.card a h2:hover {
+.card a h2:hover, .author-card-text h2:hover {
   text-decoration: none;
 }
 
@@ -52,12 +54,12 @@
   /* background-color: #0000000f; */
   background-color: inherit;
   transform: translate(0, -2px);
-  -webkit-box-shadow: 0 0 5px var(--red), 0 0 5px var(--red), 0 0 5px var(--red);
-  box-shadow: 0 0 5px var(--red), 0 0 5px var(--red), 0 0 5px var(--red);
+  -webkit-box-shadow: 0px 10px 13px -7px #000000, inset 3px -13px 0px 8px rgba(0,0,0,0);
+  box-shadow: 0px 10px 13px -7px #000000, inset 3px -13px 0px 8px rgba(0,0,0,0);
   transition-duration: 150ms;
 }
 
-.card a img {
+.card img {
   border-radius: 3px;
 }
 
@@ -163,7 +165,8 @@
   grid-gap: 1ch;
   display: grid;
 
-  background-color: #0000002f;
+  /* background-color: #0000002f; */
+  background-color: var(--card-color);
 
   /* Vertical */
   /* Ideally this would be the same height as the issue to the left and it would scroll otherwise */
@@ -200,7 +203,7 @@
 
 .tags .author {
   font-size: 12px;
-  background-color: #444444;
+  background-color: var(--author-tag-color);
   margin-right: 7px;
   margin-bottom: 7px;
   padding: 2px;
@@ -212,7 +215,7 @@
 
 .tags .issue-tag {
   font-size: 12px;
-  background-color: #333333;
+  background-color: var(--issue-tag-color);
   margin-right: 7px;
   margin-bottom: 7px;
   padding: 2px;

@@ -19,7 +19,7 @@ export default function About({
         className="parallax-banner"
         layers={[
             {
-                image: "/banner.jpg",
+                image: "https://picsum.photos/id/292/3852/2556",
                 amount: 0.3,
             },
             {

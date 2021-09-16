@@ -10,8 +10,12 @@
   --green-1: #05992f;
   --green-2: #00570d;
   --bg: #2e2e2e;
-  --text-color: #ffffff;
-  --o-white: #ffffff9c;
+  --text-color: #fee;
+  --o-white: #fff4;
+  --card-color: #0000002f;
+  --banner-tint: #000000ac;
+  --issue-tag-color: #333;
+  --author-tag-color: #444;
 }
 
 h1, h2, h3 {
@@ -22,10 +26,16 @@ p {
   font-family: 'Lato', sans-serif;
 }
 
-/* .light-theme {
-  --bg: white;
-
-} */
+.theme-light {
+  --bg: #ddd;
+  --text-color: #100;
+  --banner-tint: #9999;
+  --highlight: #085202;
+  --card-color: #fff4;
+  --red: #c71212;
+  --issue-tag-color: #aaa;
+  --author-tag-color: #888;
+}
 
 body {
   background-color: var(--bg);
@@ -54,18 +64,18 @@ main {
   background-color: var(--bg);
   position: relative;
   min-height: calc(100vh - 4rem - 6rem);
-  padding-bottom: 10rem;
+  padding-bottom: 20rem;
 }
 
 /* Scrollbars --------------------------------------------------------------- */
 
 ::-webkit-scrollbar {
-  background: rgba(255, 255, 255, 0.039);
+  background: var(--bg);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-track {
-  background: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background: inset 0 0 6px  var(--bg);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -113,7 +123,6 @@ a:visited * {
   text-align: center;
   position: relative;
 }
-
 .page-title h4 div {
   /* author links in articles */
   display: inline-block;
@@ -141,6 +150,8 @@ a:visited * {
 .page-title .description {
   white-space: pre-wrap;
 }
+
+/* -------------------------------------------------------------------------- */
 
 .color-under-link {
   text-decoration: underline;
@@ -174,7 +185,7 @@ h1 .query, h3 .query {
   font-weight: 500;
 
   padding: 0.5rem;
-  background-color: #0000002f;
+  background-color: var(--card-color);
   /* background-color: var(--red); */
   text-decoration-color: var(--red);
   border-radius: 3ch;
@@ -300,8 +311,12 @@ button.articles-btn:hover {
 .parallax-banner #banner-children {
   font-family: 'Noto Sans JP', sans-serif;
 
-  background-color: #000000aa;
-  background: linear-gradient(0deg, #000000bc 20%, #000000ba 30%, #fff0 100%);
+  background-color: var(--banner-tint);
+  background:
+    linear-gradient(0deg, var(--banner-tint), transparent),
+    linear-gradient(var(--banner-tint), transparent)
+  ;
+
   height: 100%;
   width: 100%;
 
@@ -404,13 +419,6 @@ button.articles-btn:hover {
 }
 
 /* Article styles ----------------------------------------------------------- */
-
-.i-need-space {
-  height: 3rem;
-  padding: 0;
-  margin: 0;
-}
-
 .article {
   line-height: 1.6;
 }

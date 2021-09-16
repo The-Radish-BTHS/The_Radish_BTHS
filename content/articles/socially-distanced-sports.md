@@ -1,5 +1,5 @@
 ---
-title: Updated Rules For Socially Distanced Sports
+title: "Socially Distanced Sports: New Rules"
 authors:
   - author: Nicholas Di Girolamo
 tags:

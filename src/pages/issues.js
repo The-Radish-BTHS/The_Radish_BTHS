@@ -19,7 +19,7 @@ export default function Issues({
         className="parallax-banner"
         layers={[
             {
-                image: "/banner.jpg",
+                image: "/pug_banner.png",
                 amount: 0.3,
             },
             {

@@ -130,6 +130,7 @@ export default function Author({
                 date={node.frontmatter.date}
                 description={node.frontmatter.description}
                 former={node.frontmatter.former}
+                cover={node.fields.rel_cover}
               />
             )
           })}
@@ -195,6 +196,11 @@ export const pageQuery = graphql`
           }
           fields {
             slug
+            rel_cover {
+              childImageSharp {
+                gatsbyImageData(placeholder: BLURRED)
+              }
+            }
           }
         }
       }

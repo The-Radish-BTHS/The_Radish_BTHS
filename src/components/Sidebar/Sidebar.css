@@ -76,7 +76,7 @@
 
   text-transform: none;
 
-  bottom: 20rem; /* The height of the footer plus the distance of the sidebar from the top */
+  bottom: 24rem; /* The height of the footer plus the distance of the sidebar from the top */
 
   height: 3rem;
   border-style: none;
@@ -102,16 +102,16 @@
 
 @media (max-width: 300px) {
   .sidebar .footer {
-    bottom: 5rem;
+    bottom: 10rem;
   }
 
   .sidebar .copyright-note {
     display: none;
   }
 }
-@media (max-height: 700px) {
+@media (max-height: 900px) {
   .sidebar .footer {
-    bottom: 5rem;
+    bottom: 10rem;
   }
 
   .sidebar .copyright-note {

@@ -1,20 +1,25 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import Navbar from "./Navbar/Navbar"
 import ModalSearch from "./ModalSearch/ModalSearch"
 import Sidebar from "./Sidebar/Sidebar"
 import Footer from "./Footer/Footer"
+import { keepTheme } from "./ToggleTheme/themes"
 
 import { ParallaxProvider } from 'react-scroll-parallax';
-
 import "./Layout.css"
 
 export default function Layout({ children, pageName }) {
   const [showSidebar, setShowSidebar] = useState(false, "showSidebar")
   const [showModal, setShowModal] = useState(false, "showModal")
+  const [togClass, setTogClass] = useState('dark');
+
+  useEffect(() => {
+      keepTheme();
+  })
 
   return (
     <ParallaxProvider>
-      <div className="light-theme">
+      <div className={togClass} id="theme-switching-element">
         <title>{pageName ? `${pageName} | ` : ``}The Radish</title>
         <a className="screen-reader-shortcut" href="#main-content">
           Skip to main content
@@ -22,6 +27,8 @@ export default function Layout({ children, pageName }) {
         <Sidebar
           setShowSidebar={setShowSidebar}
           showSidebar={showSidebar}
+          togClass={togClass}
+          setTogClass={setTogClass}
         />
         <Navbar
           setShowSidebar={setShowSidebar}
@@ -36,7 +43,10 @@ export default function Layout({ children, pageName }) {
         />
         <div className="rest-of-page">
           <main id="main-content">{children}</main>
-          <Footer />
+          <Footer
+            togClass={togClass}
+            setTogClass={setTogClass}
+          />
         </div>
       </div>
     </ParallaxProvider>

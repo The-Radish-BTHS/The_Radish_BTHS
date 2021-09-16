@@ -31,15 +31,14 @@ export default function Authors({
         className="parallax-banner"
         layers={[
             {
-                image: "/banner.jpg",
+                image: "https://picsum.photos/id/22/4434/3729",
                 amount: 0.3,
             },
             {
                 children:
                   <div id='banner-children'>
                     <h1>Authors</h1>
-                    <h2>We exist</h2>
-                    <h4>Also check out <Link to="/execs">the special ones</Link></h4>
+                    <h2>Also check out <Link to="/execs">the special ones</Link></h2>
                   </div>
                 ,
                 amount: 0,

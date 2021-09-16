@@ -2,8 +2,8 @@
   font-family: "Roboto", sans-serif;
   text-decoration: none !important;
 
-  background-color: #0000002f;
-  color: white;
+  background-color: var(--card-color);
+  color: var(--text-color);
   border: 1px solid var(--bg);
   border-radius: 5px;
   padding: 5px;
@@ -15,7 +15,7 @@
 .share-link-btn:hover {
   cursor: pointer;
   background-color: var(--bg);
-  border: 1px solid #0000004f;
+  border: 1px solid var(--card-color);
   /* -webkit-box-shadow: 0 0 5px var(--red), 0 0 5px var(--red), 0 0 5px var(--red);
   box-shadow: 0 0 5px var(--red), 0 0 5px var(--red), 0 0 5px var(--red); */
   transition-duration: 150ms;

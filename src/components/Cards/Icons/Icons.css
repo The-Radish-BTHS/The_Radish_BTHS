@@ -26,6 +26,10 @@
   margin-left: 0.5rem;
 }
 
+path {
+  fill: var(--text-color);
+}
+
 .copy {
   /* height: 16px;
   width: 16px; */
@@ -48,6 +52,6 @@
 }
 
 .stamp {
-  -webkit-filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));
-  filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));
+  -webkit-filter: drop-shadow( 3px 3px 2px var(--card-color));
+  filter: drop-shadow( 3px 3px 2px var(--card-color));
 }

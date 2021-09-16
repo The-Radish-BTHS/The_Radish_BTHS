@@ -6,7 +6,7 @@ const ValidSlug = (collection, name) => `/${collection}/${name.toLowerCase().rep
 
 export default function Articard(props) {
   return (
-    <div className="card">
+    <div className="card articard">
       <Link to={props.slug}>
         {
           // props.date ? <h4>{props.date}</h4> : null

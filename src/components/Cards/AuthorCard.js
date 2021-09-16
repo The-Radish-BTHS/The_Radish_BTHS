@@ -18,33 +18,33 @@ export default function AuthorCard(props) {
   const image = props.cover ? getImage(props.cover) : null
 
   return (
-    <div className={`card authorCard ${props.cover ? "" : "make-up-for-no-image"}`}>
-      <Link to={props.slug}>
-        {image ?
-          <GatsbyImage
-            image={image}
-            alt={props.title}
-            placeholder="blurred"
-            loading="lazy"
-            href={props.slug}
-          />
-          : null
-        }
-        <div className="author-card-grid">
-          {
-            isExec && (
-            <EmployeeStamp former={props.former} id={props.id} />
-          )
+    <Link to={props.slug}>
+      <div className={`card authorCard ${props.cover ? "" : "make-up-for-no-image"}`}>
+          {image ?
+            <GatsbyImage
+              image={image}
+              alt={props.title}
+              placeholder="blurred"
+              loading="lazy"
+              href={props.slug}
+            />
+            : null
           }
-          <div className="author-card-text">
-            <h4>
-              <i>{(grad || props.former ? "former " : "") + props.position}</i>
-            </h4>
-            <h2>{props.title}</h2>
-            <p className="description">{props.description}</p>
+          <div className="author-card-grid">
+            {
+              isExec && (
+              <EmployeeStamp former={props.former} id={props.id} />
+            )
+            }
+            <div className="author-card-text">
+              <h4>
+                <i>{(grad || props.former ? "former " : "") + props.position}</i>
+              </h4>
+              <h2>{props.title}</h2>
+              <p className="description">{props.description}</p>
+            </div>
           </div>
-        </div>
-      </Link>
-    </div>
+      </div>
+    </Link>
   )
 }
