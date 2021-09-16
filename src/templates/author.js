@@ -74,6 +74,7 @@ export default function Author({
           }}
         />
         : <div className="page-content page-title">
+          <br />
           {execs.includes(author.frontmatter.position) && (
             <EmployeeStamp />
           )}

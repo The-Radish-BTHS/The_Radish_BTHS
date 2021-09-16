@@ -11,7 +11,7 @@ We’ve all been there. It’s Christmas eve, the in-laws are coming at 9 a.m. t
 
 1. “Is climate change fun enough?”
 
-   Screw the age-old “is it real” argument; here we take a look at if it’s hot or not.
+   Screw the age-old “is it real” argument. Here we take a look at if it’s hot or not.
 
    Pro-fun arguments include: “Those wildfires got more people moving than your average EDM record” and “Oh, NYC will be underwater? Universal water polo.” 
 

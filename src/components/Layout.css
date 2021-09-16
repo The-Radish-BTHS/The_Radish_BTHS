@@ -467,6 +467,7 @@ button.articles-btn:hover {
 
 .article ul, .article ol {
   font-family: 'Lato', sans-serif;
+  font-size: clamp(16px, 12px + 0.5vw, 1.25rem);
   /* margin-top: -5ch; */
 }
 

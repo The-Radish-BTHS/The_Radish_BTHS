@@ -4,7 +4,7 @@ authors:
   - author: Maxime Ennis
 tags:
   - tag: Listicle
-issue: February 2020
+issue: February 2021
 date: 2021-02-25T19:52:36.551Z
 ---
 Everyone has a celebrity crush! Whether it’s a world-recognized actor or a small guitarist in an indie band, it’s common to be attracted to someone well-known. So, we’ve compiled a list of the HOTTEST celebrity crushes that we’ve heard of. Let’s get right into it! 
