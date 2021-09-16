@@ -29,6 +29,7 @@ Wanna help us throw the articles? We have teams for preparing them.
 <div class="submission-form-link"><a target="_blank" rel="noreferrer" href="https://forms.gle/do2BrZXH7nMuZioB9">Apply to the editing team</a></div>
 <br />
 
+
 <hr>
 
 # Contribution requirements

@@ -1,8 +1,8 @@
 ---
 title: News Replaced By Random Generator
 authors:
+  - author: Charlotte Rotlander
   - author: Aramie Ewen
-  - author: "Charlotte Rotlander "
 tags:
   - tag: Opinion
 issue: March 2020

@@ -1,7 +1,7 @@
 ---
 title: Tri-Weekly Beach Trips
 authors:
-  - author: "Charlotte Rotlander "
+  - author: Charlotte Rotlander
 tags:
   - tag: PSA
 issue: Quarantine Issue One

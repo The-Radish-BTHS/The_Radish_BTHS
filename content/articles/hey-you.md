@@ -1,7 +1,7 @@
 ---
 title: Hey, You!
 authors:
-  - author: "Charlotte Rotlander "
+  - author: Charlotte Rotlander
 tags:
   - tag: Letters
   - tag: PSA

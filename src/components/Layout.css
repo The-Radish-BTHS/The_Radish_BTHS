@@ -27,7 +27,7 @@ p {
 }
 
 .theme-light {
-  --bg: #ddd;
+  --bg: #eee;
   --text-color: #100;
   --banner-tint: #9999;
   --highlight: #085202;
@@ -187,7 +187,7 @@ h1 .query, h3 .query {
   padding: 0.5rem;
   background-color: var(--card-color);
   /* background-color: var(--red); */
-  text-decoration-color: var(--red);
+  /* text-decoration-color: var(--red); */
   border-radius: 3ch;
   border: solid 2px var(--red);
 
@@ -445,9 +445,8 @@ button.articles-btn:hover {
   font-weight: 500;
 
   padding: 0.5rem;
-  background-color: #0000002f;
+  background-color: var(--card-color);
   /* background-color: var(--red); */
-  text-decoration-color: var(--red);
   border-radius: 3ch;
   border: solid 2px var(--red);
   width: fit-content;

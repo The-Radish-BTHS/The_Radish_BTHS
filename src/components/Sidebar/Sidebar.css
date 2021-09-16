@@ -76,7 +76,7 @@
 
   text-transform: none;
 
-  bottom: 24rem; /* The height of the footer plus the distance of the sidebar from the top */
+  bottom: 20rem; /* Ideally the height of the footer plus the distance of the sidebar from the top */
 
   height: 3rem;
   border-style: none;
@@ -100,7 +100,7 @@
   }
 }
 
-@media (max-width: 300px) {
+@media (max-width: 400px) {
   .sidebar .footer {
     bottom: 10rem;
   }
@@ -109,7 +109,7 @@
     display: none;
   }
 }
-@media (max-height: 900px) {
+@media (max-height: 800px) {
   .sidebar .footer {
     bottom: 10rem;
   }

@@ -8,7 +8,7 @@ import {
   Twitter,
   Github,
   // Discord,
-  Email
+  Email,
 } from "../Cards/Icons/index"
 
 function SocialLink({ children, to }) {
@@ -53,7 +53,7 @@ export default function Footer() {
         </SocialLink>
       </div>
       <p className="copyright-note">Content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a></p>
-      <Toggle />
+      <center><Toggle /></center>
     </footer>
   )
 }

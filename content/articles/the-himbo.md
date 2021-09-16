@@ -1,8 +1,8 @@
 ---
 title: The Himbo
 authors:
+  - author: Charlotte Rotlander
   - author: Matthieu De Robles
-  - author: "Charlotte Rotlander "
 tags:
   - tag: Investigation
   - tag: Guest interview

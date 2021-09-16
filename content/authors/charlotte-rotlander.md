@@ -1,5 +1,5 @@
 ---
-title: "Charlotte Rotlander "
+title: Charlotte Rotlander
 cover: /assets/lottie.png
 position: Vice President
 former: false

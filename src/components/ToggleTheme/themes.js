@@ -2,7 +2,6 @@ function setTheme(themeName) {
     localStorage.setItem('theme', themeName);
 
     const themeSwitcher = document.getElementById("theme-switching-element");
-    console.log(themeSwitcher)
     themeSwitcher.className = themeName;
 }
 

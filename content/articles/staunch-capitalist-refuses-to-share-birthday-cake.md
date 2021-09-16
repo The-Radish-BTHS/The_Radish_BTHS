@@ -1,7 +1,7 @@
 ---
 title: Staunch Capitalist Refuses To Share Birthday Cake
 authors:
-  - author: "Charlotte Rotlander "
+  - author: Charlotte Rotlander
 tags:
   - tag: Guest interview
   - tag: Timeless news

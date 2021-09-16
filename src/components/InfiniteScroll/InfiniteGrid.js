@@ -58,6 +58,7 @@ export default function InfiniteGrid({ Card, globalState, items, collection }) {
               position={node.frontmatter.position}
               former={node.frontmatter.former}
               cover={node.fields.rel_cover}
+              fileAbsolutePath={node.fileAbsolutePath}
             />
           )
         })}

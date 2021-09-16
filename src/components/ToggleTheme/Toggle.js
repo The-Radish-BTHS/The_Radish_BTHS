@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { setTheme } from './themes';
+import { Sun, Moon } from "../Cards/Icons/index"
+import "./Toggle.css"
 
 const isBrowser = typeof window !== "undefined"
 
@@ -29,11 +31,11 @@ export default function Toggle() {
     }, [theme])
 
     return (
-      <button onClick={handleOnClick}>
+      <button onClick={handleOnClick} className="toggle">
         {
           togClass === "light"
-            ? "Darken"
-            : "Lighten"
+            ? <Sun />
+            : <Moon />
         }
       </button>
     )

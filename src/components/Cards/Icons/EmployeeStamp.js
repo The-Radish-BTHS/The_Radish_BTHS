@@ -14,7 +14,6 @@ export default function EmployeeStamp({ size=80, popUp=false, former=false, setP
         width={size ? size.toString() : "80"}
         height={size ? size.toString() : "80"}
         viewBox="0 0 400 400"
-        fill="#fff"
         onClick={() => {
           if (popUp) {
             // console.log("candice")

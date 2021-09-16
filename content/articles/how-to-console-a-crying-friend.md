@@ -1,8 +1,8 @@
 ---
 title: How To Console A Crying Friend
 authors:
-  - author: "Charlotte Rotlander "
   - author: Aramie Ewen
+  - author: Charlotte Rotlander
 tags:
   - tag: Listicle
 issue: Quarantine Issue Two

@@ -1,7 +1,7 @@
 ---
 title: Kool Aid Man Goes on Rampage
 authors:
-  - author: "Charlotte Rotlander "
+  - author: Charlotte Rotlander
 tags:
   - tag: News
 issue: November 2020

@@ -1,4 +1,9 @@
-nav {
+/* .navbar {
+  --highlight: #07ad36;
+  --bg: #2e2e2e;
+} */
+
+.navbar {
   color: var(--highlight);
   background-color: var(--bg);
   border-bottom: 2px solid var(--highlight);
@@ -28,12 +33,12 @@ nav {
   transition: 0.3s linear;
 }
 
-nav *:hover {
+.navbar *:hover {
   cursor: pointer;
   /* color: var(--green-1); */
 }
 
-nav a {
+.navbar a {
   padding: 1rem;
 }
 
@@ -97,7 +102,7 @@ nav a {
 }
 
 @media (max-width: 600px) {
-  nav {
+  .navbar {
     /* margin-left: calc(20%); */
     height: 4rem;
     padding: 1ch;
