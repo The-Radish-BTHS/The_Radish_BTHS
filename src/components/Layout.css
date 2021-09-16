@@ -470,6 +470,22 @@ button.articles-btn:hover {
   /* margin-top: -5ch; */
 }
 
+.article ol li::marker {
+  font-size: 2rem;
+  font-family: 'Martel', serif;
+  font-weight: 800;
+
+  font-size: clamp(20px, 20px + 1vw, 1.5rem);
+}
+
+.article ol li p:nth-child(1) {
+  font-family: 'Martel', serif;
+  font-weight: 800;
+  font-size: 2rem;
+
+  font-size: clamp(20px, 20px + 1vw, 1.5rem);
+}
+
 .article hr {
   background-color: var(--o-white);
 }
