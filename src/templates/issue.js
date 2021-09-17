@@ -88,7 +88,7 @@ export default function Issue({
       <div className="page-content">
         {issue.frontmatter.description ?
           <div className="page-title issue-description">
-            <p>{issue.frontmatter.description}</p>
+            <p dangerouslySetInnerHTML={{ __html: issue.frontmatter.description }} />
           </div>
           : null
         }
@@ -143,6 +143,7 @@ export const pageQuery = graphql`
       }
     }
     issue: markdownRemark(fields: { slug: { eq: $slug } }) {
+      html
       frontmatter {
         description
         date(formatString: "MMMM DD, YYYY")

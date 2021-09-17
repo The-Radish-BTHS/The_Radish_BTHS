@@ -12,7 +12,7 @@
   --bg: #2e2e2e;
   --text-color: #fee;
   --o-white: #fff4;
-  --card-color: #0000002f;
+  --card-color: #0000004f;
   --banner-tint: #000000ac;
   --issue-tag-color: #333;
   --author-tag-color: #444;
@@ -27,11 +27,11 @@ p {
 }
 
 .theme-light {
-  --bg: #eee;
+  --bg: #dedede;
   --text-color: #100;
   --banner-tint: #9999;
-  --highlight: #085202;
-  --card-color: #fff4;
+  --highlight: #185324;
+  --card-color: #fff5;
   --red: #c71212;
   --issue-tag-color: #aaa;
   --author-tag-color: #888;
@@ -436,6 +436,18 @@ button.articles-btn:hover {
   border-radius: 5px;
 }
 
+.article blockquote {
+  border-left: 4px solid var(--red);
+  border-radius: 5px;
+  background-color: var(--card-color);
+  padding: 0.75rem;
+
+  margin: 0;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
 .article .submission-form-link {
   font-size: clamp(12px, 12px + 0.2vw, 1.2rem);
 
@@ -488,7 +500,7 @@ button.articles-btn:hover {
 }
 
 .article hr {
-  background-color: var(--o-white);
+  background-color: var(--text-color);
 }
 
 .article a:not(.submission-form-link) {
@@ -504,6 +516,8 @@ button.articles-btn:hover {
   font-family: 'Lato', sans-serif;
   background-color: black;
   color: black;
+
+  margin-right: 3px;
 
   webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */

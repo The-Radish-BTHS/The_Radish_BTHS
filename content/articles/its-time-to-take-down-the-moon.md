@@ -4,6 +4,7 @@ authors:
   - author: Aramie Ewen
 tags:
   - tag: Opinion
+  - tag: Fashion
 issue: December 2020
 date: 2021-01-07T18:46:06.408Z
 ---

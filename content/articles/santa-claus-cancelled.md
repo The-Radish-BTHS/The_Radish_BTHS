@@ -16,29 +16,31 @@ But we have uncovered the truth. We now know who the real Santa underneath the C
 * The Reindeer Union threatened to strike, indicating that poor wages and ruthless work hours have gone on for too long. 
 * We traced investments in a venison meat company to Mr. Claus as reindeers mysteriously disappear—including fan favorite Blitzen.
 
-In an attempt to salvage his reputation after these damning facts were revealed this week, Santa posted the following twitter thread, which has since been deleted, hopefully out of shame.
+In an attempt to salvage his reputation after these damning facts were revealed this week, Santa posted the following tweets, which have, hopefully out of shame, since been deleted.
 
-“A ho ho ho to all the people of the world”
+> A ho ho ho to all the people of the world!
 
-“As you may have heard, over the past couple of months there have been investigations on how I treat everyone in the workforce and beyond. I realize now that many unspeakable things have happened here at the North Pole. I take those things very seriously and I want to apologize to the poor souls who were affected. Those things never should have happened. I know that I am in a position of privilege and power. With that comes responsibility. So, I take responsibility for all that happened at my workshops. 
+> As you may have heard, over the past couple of months there have been investigations on how I treat everyone in the workforce and beyond. I realize now that many unspeakable things have happened here at the North Pole. I take those things very seriously and I want to apologize to the poor souls who were affected. Those things never should have happened. I know that I am in a position of privilege and power. With that comes responsibility. So, I take responsibility for all that happened at my workshops. 
 
-“In a healing effort, I had conversations with the Reindeer Union about plans for the future. We are beginning to make the necessary changes. Starting with allowing them to go outside and graze on days other than Christmas. Today we are starting a new chapter.
+> In a healing effort, I had conversations with the Reindeer Union about plans for the future. We are beginning to make the necessary changes. Starting with allowing them to go outside and graze on days other than Christmas. Today we are starting a new chapter.
 
-“I recognize I haven’t always communicated myself the best in the past, too. When I said, “You should show more of those pointy ears, if you know what I mean,” my only intention was to communicate that my colleagues should be prouder of where they came from. Of course, there are some things that should just be left unsaid
+> I recognize I haven’t always communicated myself the best in the past, too. When I said, “You should show more of those pointy ears, if you know what I mean,” my only intention was to communicate that my colleagues should be prouder of where they came from. Of course, there are some things that should just be left unsaid
 
-“People have been saying that I’m not the “oh-so-jolly fellow” I showcase to the world every Christmas. But, the truth is, while I am very much that jolly fat man, I’m also a lot of other things. Sometimes I’m mad, sad, nervous, anxious, frustrated, and impatient. I am working on all of that. I am a work in progress. 
+> People have been saying that I’m not the “oh-so-jolly fellow” I showcase to the world every Christmas. But, the truth is, while I am very much that jolly fat man, I’m also a lot of other things. Sometimes I’m mad, sad, nervous, anxious, frustrated, and impatient. I am working on all of that. I am a work in progress. 
 
-“This is me. My intention is to always be the best possible version of myself. If I’ve ever let someone down, if I’ve ever hurt their feelings, I am so sorry for that. If that’s ever the case. I let myself down And, more importantly, I have let my fans down. But let's not forget, just like all of you, I am a work in progress.
+> This is me. My intention is to always be the best possible version of myself. If I’ve ever let someone down, if I’ve ever hurt their feelings, I am so sorry for that. If that’s ever the case. I let myself down And, more importantly, I have let my fans down. But let's not forget, just like all of you, I am a work in progress.
 
-“I got into this business to spread cheer and make people smile. Instead, it seems that I may or may not have spread other feelings with my \*alleged\* misuse of mistletoe. And so, allegedly, I would like to apologize. I just want you all to know I am still the same Santa Claus you know and love. 
+> I got into this business to spread cheer and make people smile. Instead, it seems that I may or may not have spread other feelings with my \*alleged\* misuse of mistletoe. And so, allegedly, I would like to apologize. I just want you all to know I am still the same Santa Claus you know and love. 
 
-“Later today, I will post the zoom link for Blitzen’s memorial service. His untimely death shocked us all. I assure you that I’ll do everything in my power to get him the justice he deserves.
+> Later today, I will post the zoom link for Blitzen’s memorial service. His untimely death shocked us all. I assure you that I’ll do everything in my power to get him the justice he deserves.
 
-“Finally, I’d just like to wish you all a happy Christmas and merry new year
-
-With much love,
-
-Saint Nick”
+> Finally, I’d just like to wish you all a happy Christmas and merry new year
+>
+> <br />
+>
+> With much love,
+> 
+> Saint Nick
 
 That poor excuse of an apology, if you could even call it that, barely touched the hearts of anyone around the world. In fact, this tweet was the spark that started the flame. A flame in which return rates on presents went up by 87% Santa Claus has officially gone bankrupt and lost ownership of his oh ho ho so precious holiday. 
 

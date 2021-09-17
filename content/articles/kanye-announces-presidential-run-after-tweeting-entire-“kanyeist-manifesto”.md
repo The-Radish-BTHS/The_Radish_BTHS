@@ -9,7 +9,7 @@ date: 2019-05-31T03:11:01.859Z
 ---
 A shocking new latecomer to the 2020 election, Kanye West, (a new rapper in the indie hip hop scene) makes an announcement about his run for POTUS. Detailed through tweeting (deemed 2018’s political platform of the year), Kanye has laid out his plan in a long and thorough manifesto—The Kanyeist Manifesto. The name and contents would imply that this is merely a “Kanye-ized” version of the Communist Manifesto. Kanye denied these claims and further claims that the idea was all his, stating: “a special shout out to my boy Karl Marx and Friedrich Engels but credit goes to me, let’s not kid ourselves.”
 
-Below you can find Kanye West's Kanyeist Manifesto, in full:
+## Below you can find Kanye West's Kanyeist Manifesto, in full:
 
 A spectre is haunting Europe - the spectre of Kanye West. All the powers of old Europe have entered into a holy alliance to exorcise this rapper: Pope and President, libs and dems.
 

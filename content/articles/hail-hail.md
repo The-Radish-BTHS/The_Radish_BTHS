@@ -5,7 +5,7 @@ authors:
 tags:
   - tag: Opinion
 issue: February 2021
-date: 2021-09-16T19:48:05.215Z
+date: 2021-02-25T20:48:05.215Z
 description: ""
 ---
 Hail: The most risque precipitation. Bouncier, shinier, and, dare I say, crunchier, hail is clearly superior to all other sky droppings. 

@@ -3,7 +3,7 @@ title: Turn into a tree
 authors:
   - author: Aramie Ewen
 tags:
-  - tag: Lore
+  - tag: Opinion
 issue: February 2020
 date: 2020-02-01T05:24:48.893Z
 ---

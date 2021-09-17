@@ -23,22 +23,27 @@ export default function Article({
           <h1>{frontmatter.title}</h1>
           <p className="description">{frontmatter.description}</p>
           <h4>
-            {`by `}
-            {frontmatter.authors.map(({ author }, index) => {
-              return (
-                <div key={index} className="author">
-                  {`${index === frontmatter.authors.length - 1 && frontmatter.authors.length !== 1 ? `and ` : ``}`}
-                  <Link
-                    to={ValidSlug("authors", author)}
-                    className="color-under-link"
-                  >
-                    {`${author}`}
-                  </Link>
-                  {`${(index < frontmatter.authors.length - 1) && (frontmatter.authors.length !== 2) ? `, ` : ` `}`}
-                </div>
-              )
-            })}
-            {`for `}
+            {frontmatter.authors && frontmatter.authors.length ?
+              <>
+                {`by `}
+                {frontmatter.authors.map(({ author }, index) => {
+                  return (
+                    <div key={index} className="author">
+                      {`${index === frontmatter.authors.length - 1 && frontmatter.authors.length !== 1 ? `and ` : ``}`}
+                      <Link
+                        to={ValidSlug("authors", author)}
+                        className="color-under-link"
+                      >
+                        {`${author}`}
+                      </Link>
+                      {`${(index < frontmatter.authors.length - 1) && (frontmatter.authors.length !== 2) ? `, ` : ` `}`}
+                    </div>
+                  )
+                })}
+                {`for `}
+              </>
+              : null
+            }
             <Link
               to={ValidSlug("issues", frontmatter.issue)}
               className="color-under-link"

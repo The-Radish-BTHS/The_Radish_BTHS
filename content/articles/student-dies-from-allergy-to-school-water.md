@@ -9,7 +9,8 @@ date: 2020-06-30T21:28:14.971Z
 ---
 This Wednesday, \[name redacted] of Brooklyn Technical High School (BTHS) has passed away due to a severe allergic reaction. According to classmates, they drank water from an 8th floor gym fountain that morning, a fatal mistake. 
 
-"Their reaction was so fast. By the time we knew what happened, \[name redacted] was already dead … This wasn’t supposed to happen today. I mean, \[name redacted] wasn’t allergic to water. And, we’re pretty sure the reaction wasn’t from an arsenic or lead deficiency; we make sure to keep those nutritional staples in our everyday diet. As far as we know, \[name redacted] was totally healthy, and we couldn’t be more heartbroken. We’re just left wondering why \[name redacted] had to die today. Tomorrow would have been so much more convenient," an email from the student’s parents read.
+In an email from the student's parents, they told us:
+> Their reaction was so fast. By the time we knew what happened, \[name redacted] was already dead … This wasn’t supposed to happen today. I mean, \[name redacted] wasn’t allergic to water. And, we’re pretty sure the reaction wasn’t from an arsenic or lead deficiency; we make sure to keep those nutritional staples in our everyday diet. As far as we know, \[name redacted] was totally healthy, and we couldn’t be more heartbroken. We’re just left wondering why \[name redacted] had to die today. Tomorrow would have been so much more convenient
 
 Of course, we all know their death was inevitable, as is with all mortals, but it is definitely unfortunate for it to have happened this way. It's just sweet to know that the BTHS community has been hurt knowing the water fountains have killed. As one student described, “the water fountains of our school form a community in ways school doesn’t. Over time, we all agreed to avoid them, but that wasn’t about \[anonymous student’s] allergy. Why would it be? That was about the community of avoiding water fountains.” 
 

@@ -15,8 +15,7 @@ Darkness. Silence. Nothingness. Then suddenly, a light. The light grows brighter
 As humanity grew and flourished, we forgot about Him. But Garfield was always there, influencing history from behind the scenes. Here's a short list of some of the major events Garfield is responsible for:
 - Killing the dinosaurs (because He was bored) 
 - Kickstarting the French Revolution by inventing the guillotine 
-- Killing Archduke Franz Ferdinand of Austria over a parking spot, triggering World 
-War 
+- Killing Archduke Franz Ferdinand of Austria over a parking spot, triggering World War I 
 - Stealing the Mona Lisa in 1911 
 - Stealing my heart 
 
