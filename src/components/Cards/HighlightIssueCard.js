@@ -50,14 +50,15 @@ export default function HighlightIssueCard(props) {
             loading="lazy"
             href={props.slug}
           />
-          <div className="content">
-            {
-            // <h4>{props.date}</h4>
-            }
-            <h2>{props.title}</h2>
-            <p className="description">{props.description}<Arrow /></p>
-          </div>
         </Link>
+        <div className="content">
+          {
+          // <h4>{props.date}</h4>
+          }
+          <Link to={props.slug}><h2>{props.title}</h2></Link>
+          <p className="description" dangerouslySetInnerHTML={{ __html: props.description }} />
+          <p className="read-it"><Link to={props.slug}>read it<Arrow /></Link></p>
+        </div>
       </div>
       <div className="preview-articles" id="preview-articles">
         {props.articles}

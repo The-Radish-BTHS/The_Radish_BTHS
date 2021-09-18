@@ -30,12 +30,15 @@
 }
 
 .card a h2,
-a .authorCard h2 {
+a .authorCard h2,
+.card .description a {
+  text-decoration: none;
+}
+.card a h2:hover,
+.author-card-text h2:hover,
+.card .description a:hover {
   text-decoration: underline;
   text-decoration-color: var(--red);
-}
-.card a h2:hover, .author-card-text h2:hover {
-  text-decoration: none;
 }
 
 .card .description {
@@ -144,11 +147,6 @@ a .authorCard h2 {
   height: 100%;
 }
 
-.issue-preview .content p .arrow {
-  margin-bottom: -0.3ch; /* 1/4 the arrow height */
-  padding: 0;
-}
-
 .special {
   /* margin-bottom: 2ch; */
   margin-right: 3px;
@@ -189,6 +187,22 @@ a .authorCard h2 {
 
 .preview-articles .card:hover {
   background-color: var(--bg);
+}
+
+.read-it a {
+  text-transform: uppercase;
+  width: fit-content;
+  padding: 0.5rem;
+  border-radius: 5px;
+  background-color: var(--card-color);
+}
+.read-it a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--red) !important;
+}
+.read-it .arrow {
+  margin-bottom: -0.3ch; /* 1/4 the arrow height */
+  padding: 0;
 }
 
 /* .preview-articles .card:hover {

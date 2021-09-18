@@ -54,12 +54,11 @@
 
 .sidebar-link {
   font-size: clamp(12px, 12px + 2vw, 1.5rem);
-  text-decoration: underline;
-  text-decoration-color: var(--red);
+  text-decoration: none;
 }
 .sidebar-link:hover {
-  text-decoration: none;
-  opacity: 0.9;
+  text-decoration: underline;
+  text-decoration-color: var(--red);
 }
 
 .side-cards {

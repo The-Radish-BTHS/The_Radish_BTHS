@@ -3,7 +3,8 @@ import { graphql, Link } from "gatsby"
 import Layout from "../components/Layout"
 
 import Share from "../components/Share/Share.js"
-import { Articard } from "../components/Cards/index"
+import { Articard } from "../components/Cards"
+import { Arrow } from "../components/Cards/Icons"
 
 const ValidSlug = (collection, name) => `/${collection}/${name.toLowerCase().replace(/[/|\\:*?"<>()]/g, '').replace(/ /g, "-")}`;
 
@@ -100,18 +101,18 @@ export default function Article({
             : null
           }
         </h4>
-        <h2>
-          {issue_more.edges.length ?
-            <Link
-              to={ValidSlug("issues", frontmatter.issue)}
-              className="color-under-link"
-            >
-              {`More from ${frontmatter.issue}`}
-            </Link>
-            : null
-          }
-        </h2>
       </div>
+      <h2>
+        {issue_more.edges.length ?
+          <Link
+            to={ValidSlug("issues", frontmatter.issue)}
+            className="color-under-link"
+          >
+            {`More from ${frontmatter.issue}`}
+          </Link>
+          : null
+        }
+      </h2>
       <div className="card-grid">
         {issue_more.edges.map(({ node }) => {
           return (
@@ -129,6 +130,9 @@ export default function Article({
           )
         })}
       </div>
+      <br />
+      <h3 className="home-action"><Link to={ValidSlug("issues", frontmatter.issue)}>{`March 2021`}<Arrow /></Link></h3>
+
       <h2><Link to="/articles" className="color-under-link">More not this</Link></h2>
       <div className="card-grid">
         {all_more.edges.map(({ node }) => {
@@ -147,6 +151,8 @@ export default function Article({
           )
         })}
       </div>
+      <br />
+      <h3 className="home-action"><Link to='/articles'>{`All articles`}<Arrow /></Link></h3>
     </div>
   </Layout>
   )
