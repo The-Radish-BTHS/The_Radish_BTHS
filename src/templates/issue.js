@@ -7,6 +7,8 @@ import { ParallaxBanner } from 'react-scroll-parallax';
 import Share from "../components/Share/Share.js"
 // import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { Articard, IssueCard } from "../components/Cards/index"
+import { Arrow } from "../components/Cards/Icons"
+
 // import Banner from "../components/Banner/Banner.js"
 
 const breakpointColumnsObj = {
@@ -130,6 +132,8 @@ export default function Issue({
             )
           })}
         </div>
+        <br />
+        <h3 className="home-action"><Link to='/issues'>{`All issues`}<Arrow /></Link></h3>
       </div>
     </Layout>
   )

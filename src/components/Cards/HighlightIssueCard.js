@@ -4,7 +4,6 @@ import React, {
 import { Link } from "gatsby"
 import "./Cards.css"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import { Arrow } from "./Icons/index"
 
 const scrollContainer = typeof document !== `undefined` ? document.getElementById("preview-articles") : null
 
@@ -55,9 +54,10 @@ export default function HighlightIssueCard(props) {
           {
           // <h4>{props.date}</h4>
           }
-          <Link to={props.slug}><h2>{props.title}</h2></Link>
-          <p className="description" dangerouslySetInnerHTML={{ __html: props.description }} />
-          <p className="read-it"><Link to={props.slug}>read it<Arrow /></Link></p>
+          <Link to={props.slug}>
+            <h2>{props.title}</h2>
+            <p className="description" dangerouslySetInnerHTML={{ __html: props.description }} />
+          </Link>
         </div>
       </div>
       <div className="preview-articles" id="preview-articles">

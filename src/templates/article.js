@@ -17,10 +17,10 @@ export default function Article({
 
   return (
     <Layout pageName={frontmatter.title}>
-      <br />
-      <br />
       <div className="page-content">
         <div className="page-title">
+          <br />
+          <br />
           <h1>{frontmatter.title}</h1>
           <p className="description">{frontmatter.description}</p>
           <h4>
@@ -75,6 +75,9 @@ export default function Article({
           description={frontmatter.description}
           url={site.siteMetadata.mainUrlNameChangedBcFckGatsby + location.pathname}
         />
+
+        <br />
+        <br />
       </div>
       <div className="article">
         <article dangerouslySetInnerHTML={{ __html: html }} />
@@ -102,7 +105,7 @@ export default function Article({
           }
         </h4>
       </div>
-      <h2>
+      <h2 className="page-title">
         {issue_more.edges.length ?
           <Link
             to={ValidSlug("issues", frontmatter.issue)}
@@ -131,9 +134,13 @@ export default function Article({
         })}
       </div>
       <br />
-      <h3 className="home-action"><Link to={ValidSlug("issues", frontmatter.issue)}>{`March 2021`}<Arrow /></Link></h3>
+      <h3 className="home-action">
+        <Link to={ValidSlug("issues", frontmatter.issue)}>{frontmatter.issue}<Arrow /></Link>
+      </h3>
 
-      <h2><Link to="/articles" className="color-under-link">More not this</Link></h2>
+      <h2 className="page-title">
+        <Link to="/articles" className="color-under-link">More not this</Link>
+      </h2>
       <div className="card-grid">
         {all_more.edges.map(({ node }) => {
           return (

@@ -75,15 +75,14 @@ export default function Author({
         />
         : <div className="page-content page-title">
           <br />
+          <br />
           {execs.includes(author.frontmatter.position) && (
             <EmployeeStamp />
           )}
           <h1>{author.frontmatter.title}</h1>
           <h3>
-            <i>
-              {(grad || author.frontmatter.former ? "former " : "") +
-                author.frontmatter.position}
-            </i>
+            {(grad || author.frontmatter.former ? "former " : "") +
+              author.frontmatter.position}
           </h3>
           <h3>
             {grad
@@ -91,6 +90,7 @@ export default function Author({
               : "Graduating " + author.frontmatter.date}
           </h3>
           <p className="description">{author.frontmatter.description}</p>
+          <br />
         </div>
       }
       <div className="page-content">

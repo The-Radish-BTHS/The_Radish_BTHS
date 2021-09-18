@@ -63,7 +63,9 @@ main {
 .rest-of-page {
   background-color: var(--bg);
   position: relative;
-  min-height: calc(100vh - 4rem - 6rem);
+  min-height: calc(100vh - 4rem - 20rem );
+
+  /* Account for the footer */
   padding-bottom: 20rem;
 }
 
@@ -300,6 +302,14 @@ button.articles-btn:hover {
 .issue-description p {
   margin: 0;
   /* margin-top: 2ch; */
+}
+
+.issue-description a {
+  text-decoration: underline;
+  text-decoration-color: var(--red);
+}
+.issue-description a:hover {
+  text-decoration: none;
 }
 
 .parallax-banner {
@@ -597,6 +607,17 @@ p {
 }
 
 @media (min-width: 1000px) {
+  .article {
+    margin-left: calc(15% + 2ch);
+    margin-right: calc(15% + 2ch);
+  }
+}
+
+@media (min-width: 1300px) {
+  .article {
+    margin: 0;
+  }
+
   .page-content {
     margin-left: calc(15% + 2ch);
     margin-right: calc(15% + 2ch);

@@ -52,6 +52,6 @@ path {
 }
 
 .stamp {
-  -webkit-filter: drop-shadow( 6px 6px 4px var(--card-color));
-  filter: drop-shadow( 6px 6px 4px var(--card-color));
+  -webkit-filter: drop-shadow( 4px 4px 7px var(--bg));
+  filter: drop-shadow( 4px 4px 7px var(--bg));
 }

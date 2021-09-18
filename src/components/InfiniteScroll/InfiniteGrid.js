@@ -4,7 +4,7 @@ import { InfiniteScroll } from "./InfiniteScroll";
 
 const breakpointColumnsObj = {
   default: 3,
-  1300: 2,
+  1200: 2,
   600: 1,
 }
 

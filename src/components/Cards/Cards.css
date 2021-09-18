@@ -30,13 +30,11 @@
 }
 
 .card a h2,
-a .authorCard h2,
-.card .description a {
+a .authorCard h2 {
   text-decoration: none;
 }
 .card a h2:hover,
-.author-card-text h2:hover,
-.card .description a:hover {
+.author-card-text h2:hover {
   text-decoration: underline;
   text-decoration-color: var(--red);
 }

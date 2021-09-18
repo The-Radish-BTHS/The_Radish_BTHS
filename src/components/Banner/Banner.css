@@ -11,7 +11,7 @@
 }
 
 .error-page .top-banner-section {
-  grid-template-rows: calc(100vh - 4rem - 6rem);
+  grid-template-rows: calc(100vh - 4rem - 20rem - 2rem);
 }
 
 .top-banner-section div {
