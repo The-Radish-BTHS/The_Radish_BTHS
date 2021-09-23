@@ -85,7 +85,7 @@ export default function Article({
           description={frontmatter.description}
           url={site.siteMetadata.mainUrlNameChangedBcFckGatsby + location.pathname}
         />
-        <h4>
+        <p className="small-tags">
           {frontmatter.tags && frontmatter.tags.length ?
             <>
               {`Tags: `}
@@ -103,7 +103,7 @@ export default function Article({
             </>
             : null
           }
-        </h4>
+        </p>
       </div>
       <h2 className="page-title">
         {issue_more.edges.length ?

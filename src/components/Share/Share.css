@@ -3,7 +3,7 @@
   text-decoration: none !important;
 
   background-color: var(--card-color);
-  color: var(--text-color);
+  color: var(--text-color) !important;
   border: 1px solid var(--bg);
   border-radius: 5px;
   padding: 5px;

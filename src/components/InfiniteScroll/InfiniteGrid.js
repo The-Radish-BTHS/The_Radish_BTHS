@@ -30,39 +30,43 @@ export default function InfiniteGrid({ Card, globalState, items, collection }) {
   // const map_items = (globalState.isInitializing() ? items : globalState.items)
 
   return(
-    <InfiniteScroll
-      throttle={300}
-      threshold={600}
-      isLoading={globalState.isLoading}
-      hasMore={hasMore}
-      onLoadMore={globalState.loadMore}
-      collection={collection}
-    >
-      <Masonry
-        breakpointCols={breakpointColumnsObj}
-        className="my-masonry-grid"
-        columnClassName="my-masonry-grid_column"
+    <>
+      <InfiniteScroll
+        throttle={300}
+        threshold={600}
+        isLoading={globalState.isLoading}
+        hasMore={hasMore}
+        onLoadMore={globalState.loadMore}
+        collection={collection}
       >
-        {globalState.items.map(({ node }) => {
-          return (
-            <Card
-              key={node.id}
-              slug={node.fields.slug}
-              title={node.frontmatter.title}
-              excerpt={node.excerpt}
-              authors={node.frontmatter.authors}
-              tags={node.frontmatter.tags}
-              description={node.frontmatter.description}
-              date={node.frontmatter.date}
-              issue={node.frontmatter.issue}
-              position={node.frontmatter.position}
-              former={node.frontmatter.former}
-              cover={node.fields.rel_cover}
-              fileAbsolutePath={node.fileAbsolutePath}
-            />
-          )
-        })}
-      </Masonry>
-    </InfiniteScroll>
+        <Masonry
+          breakpointCols={breakpointColumnsObj}
+          className="my-masonry-grid"
+          columnClassName="my-masonry-grid_column"
+        >
+          {globalState.items.map(({ node }) => {
+            return (
+              <Card
+                key={node.id}
+                slug={node.fields.slug}
+                title={node.frontmatter.title}
+                excerpt={node.excerpt}
+                authors={node.frontmatter.authors}
+                tags={node.frontmatter.tags}
+                description={node.frontmatter.description}
+                date={node.frontmatter.date}
+                issue={node.frontmatter.issue}
+                position={node.frontmatter.position}
+                former={node.frontmatter.former}
+                cover={node.fields.rel_cover}
+                fileAbsolutePath={node.fileAbsolutePath}
+              />
+            )
+          })}
+        </Masonry>
+      </InfiniteScroll>
+
+      {globalState.isLoading ? <p className="loading">Oh look it's your pet bird <br/> 🐦 <br/> ☁️ ...loading more articles... ☁️ </p> : null}
+    </>
   )
 }

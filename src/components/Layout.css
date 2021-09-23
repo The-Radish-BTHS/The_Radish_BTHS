@@ -11,6 +11,7 @@
   --green-2: #00570d;
   --bg: #2e2e2e;
   --text-color: #fee;
+  --lighter-text-color: #fee4;
   --o-white: #fff4;
   --card-color: #0000004f;
   --banner-tint: #000000ac;
@@ -29,6 +30,7 @@ p {
 .theme-light {
   --bg: #dedede;
   --text-color: #100;
+  --lighter-text-color: #1004;
   --banner-tint: #9999;
   --highlight: #185324;
   --card-color: #fff5;
@@ -142,10 +144,10 @@ a:visited * {
 .page-title .author {
   white-space: pre;
 }
-.page-title:not(.home-action):not(.share-link-btn) a {
+.page-title a {
   text-decoration: none;
 }
-.page-title a:hover:not(.share-link-btn):not(.home-action) {
+.page-title a:hover {
   text-decoration: underline;
   text-decoration-color: var(--red);
 }
@@ -281,9 +283,9 @@ button.articles-btn:hover {
 } */
 
 .small-tags .tag {
-  font-size: 12px;
-  padding: 4px;
-  border-radius: 2px;
+  font-size: 16px;
+  padding: 5px;
+  border-radius: 3px;
 
   /* margin: 0px;
   margin-right: 1ch;
@@ -306,7 +308,8 @@ button.articles-btn:hover {
 
 .issue-description a {
   text-decoration: underline;
-  text-decoration-color: var(--red);
+  color: var(--highlight);
+  text-decoration-color: var(--highlight);
 }
 .issue-description a:hover {
   text-decoration: none;
@@ -428,10 +431,35 @@ button.articles-btn:hover {
   border-radius: 5px;
 }
 
+.loading {
+  text-align: center;
+}
+
 /* Article styles ----------------------------------------------------------- */
 .article {
   line-height: 1.6;
 }
+
+
+/* .article::first-letter { */
+  /* font-size: 70px; */
+  /* background-color: red; */
+  /* float: inline-start;
+  line-height: 50px;
+
+  margin: 0;
+  margin-right: 6px;
+  padding: 0;
+
+  font-family: 'Martel', serif; */
+  /* background-color: red; */
+
+  /* font-size: 35px;
+  line-height: 70px;
+  float: left; */
+  /* float: left;
+  line-height: 1.6; */
+/* } */
 
 .article h1, .article h2, .article h3, .article h4 {
   font-weight: 900;
@@ -477,6 +505,9 @@ button.articles-btn:hover {
 }
 
 .article .submission-form-link a {
+  /* undoing the article styles */
+
+  color: var(--text-color) !important;
   text-decoration: none !important;
 }
 
@@ -513,11 +544,12 @@ button.articles-btn:hover {
   background-color: var(--text-color);
 }
 
-.article a:not(.submission-form-link) {
+.article a:not(.tag) {
   text-decoration: underline;
-  text-decoration-color: var(--red);
+  text-decoration-color: var(--highlight);
+  color: var(--highlight);
 }
-.article a:hover {
+.article a:not(.tag):hover {
   text-decoration: none;
 }
 

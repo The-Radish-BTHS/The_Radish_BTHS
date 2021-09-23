@@ -30,15 +30,19 @@
 .banner-overlay-div {
   display: grid;
   background: black;
-  background: linear-gradient(0deg, #000000bc 30%, #fff0 100%);
-  /* border-radius: 5px; */
+  background:
+    linear-gradient(0deg, var(--banner-tint), transparent),
+    linear-gradient(-180deg, var(--banner-tint), transparent)
+  ;
 }
 
 .error-page .banner-overlay-div {
-  background-color: #0000003e;
+  background-color: var(--banner-text);
 }
 
 .banner-text-div {
+  backdrop-filter: blur(2px);
+
   display: grid;
   align-items: center;
   justify-content: center;
@@ -48,7 +52,7 @@
 
 .banner-text-div a {
   text-decoration: underline;
-  text-decoration-color: white;
+  text-decoration-color: var(--text-color);
 }
 .banner-text-div a:hover {
   text-decoration: none;

@@ -42,7 +42,7 @@ export function Hamburger({ showSidebar, setShowSidebar }) {
 
 const calcShowName = () => {
   const isBrowser = typeof window !== "undefined"
-  return (isBrowser ? !(window.innerWidth <= 300) : true)
+  return (isBrowser ? !(window.innerWidth <= 330) : true)
 }
 
 export default function Navbar({ setShowSidebar, showSidebar, setShowModal, showModal }) {
