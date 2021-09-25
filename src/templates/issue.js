@@ -4,6 +4,9 @@ import Layout from "../components/Layout"
 import Masonry from "react-masonry-css"
 import { ParallaxBanner } from 'react-scroll-parallax';
 
+import Seo from "../components/Seo"
+import website from '../../config/website'
+
 import Share from "../components/Share/Share.js"
 // import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { Articard, IssueCard } from "../components/Cards/index"
@@ -19,14 +22,22 @@ const breakpointColumnsObj = {
 
 export default function Issue({
   location,
-  data, // this prop will be injected by the GraphQL query below.
+  data,
 }) {
-  const { site, issue, articles, more } = data
+  const { issue, articles, more } = data
 
   // const image = getImage(issue.fields.rel_cover)
 
   return (
-    <Layout pageName={issue.frontmatter.title}>
+    <Layout>
+      <Seo
+        title={`${issue.frontmatter.title} | ${website.titleAlt}`}
+        pathname={location.pathname}
+        desc={issue.frontmatter.description ? issue.frontmatter.description : issue.excerpt}
+        node={issue.frontmatter}
+        collection
+      />
+
       {
       // <div className="page-title">
       //   <h1>{issue.frontmatter.title}</h1>
@@ -76,7 +87,7 @@ export default function Issue({
                     <br />
                     <Share
                       description={issue.frontmatter.description}
-                      url={site.siteMetadata.mainUrlNameChangedBcFckGatsby + location.pathname}
+                      url={website.url + location.pathname}
                     />
                   </div>
                 ,
@@ -142,11 +153,6 @@ export default function Issue({
 
 export const pageQuery = graphql`
   query issue($slug: String!, $title: String!) {
-    site {
-      siteMetadata {
-        mainUrlNameChangedBcFckGatsby
-      }
-    }
     issue: markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {

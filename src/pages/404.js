@@ -1,14 +1,22 @@
 import React from "react"
 import { Link } from "gatsby"
 
+import Seo from "../components/Seo"
+import website from '../../config/website'
+
 import { Arrow } from "../components/Cards/Icons/index"
 import Layout from "../components/Layout"
 import Banner from '../components/Banner/Banner.js';
 
-export default function ErrorPage() {
+export default function ErrorPage({ location }) {
   return (
     <Layout pageName="404">
-      <title>The Radish | 404</title>
+      <Seo
+        title={`404 | Page not found :( | ${website.titleAlt}`}
+        pathname={location.pathname}
+        desc="We ate your favorite radish (and maybe your pet bird)—this page doesn't exist."
+      />
+
       <div className='error-page'>
         <Banner
           bg="../grass.jpg"

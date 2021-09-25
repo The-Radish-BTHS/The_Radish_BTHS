@@ -2,7 +2,10 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 
-import { ParallaxBanner } from 'react-scroll-parallax';
+import Seo from "../components/Seo"
+import website from '../../config/website'
+
+import { ParallaxBanner } from 'react-scroll-parallax'
 import { IssueCard } from "../components/Cards/index"
 
 // Infinite scrolling
@@ -10,11 +13,20 @@ import { GlobalStateContext } from "../components/InfiniteScroll/GlobalState.js"
 import InfiniteGrid from "../components/InfiniteScroll/InfiniteGrid.js"
 
 export default function Issues({
+  location,
   data, // this prop will be injected by the GraphQL query below.
 }) {
   const { issues } = data
   return (
-    <Layout pageName="Issues">
+    <Layout>
+      <Seo
+        title={`Issues | ${website.titleAlt}`}
+        pathname={location.pathname}
+        desc="The archive of all our issues"
+        node={null}
+        collection
+      />
+
       <ParallaxBanner
         className="parallax-banner"
         layers={[

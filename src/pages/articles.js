@@ -3,6 +3,9 @@ import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 // import Masonry from "react-masonry-css"
 
+import Seo from "../components/Seo"
+import website from '../../config/website'
+
 import { ParallaxBanner } from 'react-scroll-parallax';
 // import Banner from "../components/Banner/Banner.js"
 import { Articard } from "../components/Cards/index"
@@ -28,11 +31,18 @@ import InfiniteGrid from "../components/InfiniteScroll/InfiniteGrid.js"
 // }
 
 export default function Articles({
+  location,
   data, // this prop will be injected by the GraphQL query below.
 }) {
   const { articles } = data
   return (
-    <Layout pageName="Allticles">
+    <Layout>
+      <Seo
+        title={`Articles | ${website.titleAlt}`}
+        pathname={location.pathname}
+        desc="All articles made by BTHS's first and worst club"
+      />
+
       <ParallaxBanner
         className="parallax-banner"
         layers={[

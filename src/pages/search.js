@@ -3,6 +3,9 @@ import { graphql } from 'gatsby';
 import Layout from "../components/Layout"
 import Masonry from "react-masonry-css"
 
+import Seo from "../components/Seo"
+import website from '../../config/website'
+
 import { useFlexSearch } from 'react-use-flexsearch';
 import SearchBar from "../components/SearchBar/SearchBar.js"
 import { SearchCard } from "../components/Cards/index"
@@ -16,6 +19,7 @@ const breakpointColumnsObj = {
 
 // Helpful: https://www.emgoto.com/gatsby-search/
 export default function Search({
+  location,
   data : {
     localSearchPages: { index, store },
   },
@@ -28,6 +32,14 @@ export default function Search({
 
   return (
     <Layout pageName="Search">
+      <Seo
+        title={`Search | ${website.titleAlt}`}
+        pathname={location.pathname}
+        desc="Find your favorite radish"
+        node={null}
+        collection
+      />
+
       <div className="page-content">
         <div className="page-title">
           <br />

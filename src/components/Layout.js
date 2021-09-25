@@ -4,11 +4,12 @@ import ModalSearch from "./ModalSearch/ModalSearch"
 import Sidebar from "./Sidebar/Sidebar"
 import Footer from "./Footer/Footer"
 import { keepTheme } from "./ToggleTheme/themes"
+import Seo from "./Seo"
 
 import { ParallaxProvider } from 'react-scroll-parallax';
 import "./Layout.css"
 
-export default function Layout({ children, pageName }) {
+export default function Layout({ children }) {
   const [showSidebar, setShowSidebar] = useState(false, "showSidebar")
   const [showModal, setShowModal] = useState(false, "showModal")
   const [togClass, setTogClass] = useState('dark');
@@ -20,8 +21,11 @@ export default function Layout({ children, pageName }) {
   return (
     <ParallaxProvider>
       <div className={togClass} id="theme-switching-element">
-        <title>{pageName ? `${pageName} | ` : ``}The Radish</title>
-        <a className="screen-reader-shortcut" href="#main-content">
+        <Seo />
+        {
+          // <title>{pageName ? `${pageName} | ` : ``}The Radish</title>
+        }
+        <a className="screen-reader-shortcut" href="#main-content" id='reach-skip-nav'>
           Skip to main content
         </a>
         <Sidebar

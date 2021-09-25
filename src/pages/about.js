@@ -2,9 +2,13 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 
+import Seo from "../components/Seo"
+import website from '../../config/website'
+
 import { ParallaxBanner } from 'react-scroll-parallax';
 
 export default function About({
+  location,
   data, // this prop will be injected by the GraphQL query below.
 }) {
   const {
@@ -15,6 +19,14 @@ export default function About({
 
   return (
     <Layout pageName="About">
+      <Seo
+        title={`About us | ${website.titleAlt}`}
+        pathname={location.pathname}
+        desc={website.description}
+        node={null}
+        collection
+      />
+
       <ParallaxBanner
         className="parallax-banner"
         layers={[

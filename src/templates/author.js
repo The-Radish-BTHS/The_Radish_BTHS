@@ -4,6 +4,9 @@ import Layout from "../components/Layout"
 import Masonry from "react-masonry-css"
 import { ParallaxBanner } from 'react-scroll-parallax';
 
+import Seo from "../components/Seo"
+import website from '../../config/website'
+
 import Articard from "../components/Cards/Articard.js"
 import AuthorCard from "../components/Cards/AuthorCard.js"
 import { EmployeeStamp, Arrow } from "../components/Cards/Icons/index"
@@ -16,7 +19,8 @@ const breakpointColumnsObj = {
 }
 
 export default function Author({
-  data, // this prop will be injected by the GraphQL query below.
+  location,
+  data,
 }) {
   const { author, articles, authors } = data
 
@@ -33,10 +37,15 @@ export default function Author({
     ]
 
   return (
-    <Layout pageName={author.frontmatter.title}>
-      {/*popUp && (
-        <ExecStampPopUp setPopUp={setPopUp} author={author} grad={grad} />
-      )*/}
+    <Layout>
+      <Seo
+        title={`${author.frontmatter.title} | ${website.titleAlt}`}
+        pathname={location.pathname}
+        desc={author.frontmatter.description ? author.frontmatter.description : author.excerpt}
+        node={author.frontmatter}
+        collection
+      />
+
       {author.frontmatter.cover
         ? <ParallaxBanner
           className="parallax-banner"
@@ -147,6 +156,7 @@ export default function Author({
 export const pageQuery = graphql`
   query author($slug: String!, $title: String!) {
     author: markdownRemark(fields: { slug: { eq: $slug } }) {
+      excerpt(pruneLength: 100)
       frontmatter {
         date(formatString: "YYYY")
         title

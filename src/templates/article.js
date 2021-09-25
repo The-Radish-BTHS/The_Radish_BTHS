@@ -2,6 +2,9 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/Layout"
 
+import Seo from "../components/Seo"
+import website from '../../config/website'
+
 import Share from "../components/Share/Share.js"
 import { Articard } from "../components/Cards"
 import { Arrow } from "../components/Cards/Icons"
@@ -10,13 +13,21 @@ const ValidSlug = (collection, name) => `/${collection}/${name.toLowerCase().rep
 
 export default function Article({
   location,
-  data, // this prop will be injected by the GraphQL query below.
+  data, 
 }) {
-  const { site, article, issue_more, all_more } = data
-  const { frontmatter, html} = article
+  const { article, issue_more, all_more } = data
+  const { frontmatter, html, excerpt } = article
 
   return (
-    <Layout pageName={frontmatter.title}>
+    <Layout>
+      <Seo
+        title={`${frontmatter.title} | ${website.titleAlt}`}
+        pathname={location.pathname}
+        desc={frontmatter.description ? frontmatter.description : excerpt}
+        node={frontmatter}
+        collection
+      />
+
       <div className="page-content">
         <div className="page-title">
           <br />
@@ -73,7 +84,7 @@ export default function Article({
         </p>
         <Share
           description={frontmatter.description}
-          url={site.siteMetadata.mainUrlNameChangedBcFckGatsby + location.pathname}
+          url={website.url + location.pathname}
         />
 
         <br />
@@ -84,7 +95,7 @@ export default function Article({
         <article dangerouslySetInnerHTML={{ __html: html }} />
         <Share
           description={frontmatter.description}
-          url={site.siteMetadata.mainUrlNameChangedBcFckGatsby + location.pathname}
+          url={website.url + location.pathname}
         />
         <p className="small-tags">
           {frontmatter.tags && frontmatter.tags.length ?
@@ -166,13 +177,9 @@ export default function Article({
 
 export const pageQuery = graphql`
   query article ($slug: String!, $issue: String!) {
-    site {
-      siteMetadata {
-        mainUrlNameChangedBcFckGatsby
-      }
-    }
     article: markdownRemark(fields: { slug: { eq: $slug } }) {
       html
+      excerpt(pruneLength: 100)
       frontmatter {
         title
         issue

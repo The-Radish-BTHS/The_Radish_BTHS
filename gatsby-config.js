@@ -4,11 +4,17 @@
  * See: https://www.gatsbyjs.com/docs/gatsby-config/
  */
 
+const website = require('./config/website')
+
 module.exports = {
   siteMetadata: {
-    title: `The Radish`,
-    description: `Brooklyn Technical's first, worst, and only satirical newspaper.`,
-    mainUrlNameChangedBcFckGatsby: `https://theradishbths.netlify.app`,
+    title: website.title,
+    titleAlt: website.titleAlt,
+    description: website.description,
+    mainUrlNameChangedBcFckGatsby: website.url,
+    siteUrl: website.url,
+    banner: website.logo,
+    headline: website.headline,
   },
   plugins: [
     `gatsby-plugin-image`,

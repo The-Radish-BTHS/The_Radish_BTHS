@@ -3,6 +3,9 @@ import { graphql, Link } from "gatsby"
 import Layout from "../components/Layout"
 import Masonry from "react-masonry-css"
 
+import Seo from "../components/Seo"
+import website from '../../config/website'
+
 import { ParallaxBanner } from 'react-scroll-parallax';
 // import Banner from "../components/Banner/Banner.js"
 import { AuthorCard } from "../components/Cards/index"
@@ -14,6 +17,7 @@ const breakpointColumnsObj = {
 }
 
 export default function Authors({
+  location,
   data, // this prop will be injected by the GraphQL query below.
 }) {
   const { allMarkdownRemark } = data
@@ -28,6 +32,11 @@ export default function Authors({
       //   Holier than <Link to="/authors">thou</Link>
       // </Banner>
       }
+      <Seo
+        title={`Execs | ${website.titleAlt}`}
+        pathname={location.pathname}
+        desc="Our holy leaders (and those lost)"
+      />
 
       <ParallaxBanner
         className="parallax-banner"

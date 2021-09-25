@@ -133,7 +133,8 @@ a:visited * {
 .page-title {
   text-align: center;
   position: relative;
-  padding: 2rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   margin-bottom: 0;
 }
 .page-title .author {

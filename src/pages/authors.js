@@ -2,6 +2,9 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/Layout"
 
+import Seo from "../components/Seo"
+import website from '../../config/website'
+
 import { ParallaxBanner } from 'react-scroll-parallax';
 // import Banner from "../components/Banner/Banner.js"
 import { AuthorCard } from "../components/Cards/index"
@@ -11,12 +14,13 @@ import { GlobalStateContext } from "../components/InfiniteScroll/GlobalState.js"
 import InfiniteGrid from "../components/InfiniteScroll/InfiniteGrid.js"
 
 export default function Authors({
+  location,
   data, // this prop will be injected by the GraphQL query below.
 }) {
   const { allMarkdownRemark } = data
 
   return (
-    <Layout pageName="Authors">
+    <Layout>
       {
       //   <Banner
       //   bg="/banner.jpg"
@@ -26,6 +30,11 @@ export default function Authors({
       //   <h4>Also check out <Link to="/execs">the special ones</Link></h4>
       // </Banner>
       }
+      <Seo
+        title={`Authors | ${website.titleAlt}`}
+        pathname={location.pathname}
+        desc="Those owned by the great sky Radish"
+      />
 
       <ParallaxBanner
         className="parallax-banner"
