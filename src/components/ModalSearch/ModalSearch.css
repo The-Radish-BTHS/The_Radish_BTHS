@@ -110,10 +110,6 @@
   transition-duration: 0.2s;
 }
 
-.modal .card {
-  text-align: left;
-}
-
 .modal-link {
   font-size: 1.2rem;
 }
@@ -130,12 +126,19 @@
 }
 .side-cards button {
   /* Rest of the styling comes from SearchBar.css */
+
   font-family: 'Lato', sans-serif;
   text-transform: uppercase;
 
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.modal .card {
+  text-align: left;
+}
+.modal .card h2 {
+  width: 100%;
 }
 
 @media (max-width: 600px) {

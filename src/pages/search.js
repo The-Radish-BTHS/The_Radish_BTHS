@@ -30,6 +30,8 @@ export default function Search({
     <Layout pageName="Search">
       <div className="page-content">
         <div className="page-title">
+          <br />
+          <br />
           <h1>Search for your heart's desire.</h1>
           <h2>Or Radish articles.</h2>
           <SearchBar

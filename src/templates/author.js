@@ -6,7 +6,7 @@ import { ParallaxBanner } from 'react-scroll-parallax';
 
 import Articard from "../components/Cards/Articard.js"
 import AuthorCard from "../components/Cards/AuthorCard.js"
-import { EmployeeStamp } from "../components/Cards/Icons/index"
+import { EmployeeStamp, Arrow } from "../components/Cards/Icons/index"
 // import { useState } from "react"
 
 const breakpointColumnsObj = {
@@ -73,9 +73,8 @@ export default function Author({
               height: 'max(500px, 40vh)',
           }}
         />
-        : <div className="page-content page-title">
-          <br />
-          <br />
+        :
+        <div className="page-content page-title">
           {execs.includes(author.frontmatter.position) && (
             <EmployeeStamp />
           )}
@@ -89,8 +88,11 @@ export default function Author({
               ? "Graduated " + author.frontmatter.date
               : "Graduating " + author.frontmatter.date}
           </h3>
-          <p className="description">{author.frontmatter.description}</p>
-          <br />
+          {
+            author.frontmatter.description
+              ? <p className="description">{author.frontmatter.description}</p>
+              : null
+          }
         </div>
       }
       <div className="page-content">
@@ -136,6 +138,7 @@ export default function Author({
             )
           })}
         </div>
+        <h3 className="page-title home-action"><Link to='/authors'>{`All people`}<Arrow /></Link></h3>
       </div>
     </Layout>
   )

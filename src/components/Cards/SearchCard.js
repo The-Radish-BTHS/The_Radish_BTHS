@@ -3,9 +3,9 @@ import { Link } from "gatsby"
 import "./Cards.css"
 
 export default function SearchCard(props) {
-  const collection = props.slug.includes('/authors/') ? "author"
-    : props.slug.includes('/issues/') ? "issue"
-    : props.slug.includes('/articles/') ? "article"
+  const collection = props.slug.includes('/authors/') ? "Author"
+    : props.slug.includes('/issues/') ? "Issue"
+    : props.slug.includes('/articles/') ? "Article"
     : "tag";
   return (
     <div className="card">

@@ -12,7 +12,7 @@ import AllTags from "../components/AllTags/AllTags.js"
 
 const breakpointColumnsObj = {
   default: 3,
-  1300: 2,
+  1600: 2,
   600: 1,
 }
 
@@ -95,6 +95,7 @@ export default function Index({
         >
           {articleCards.slice(3, articleCards.length)}
         </Masonry>
+        <br />
         <h3 className="page-title home-action"><Link to='/articles'>{`All articles`}<Arrow /></Link></h3>
         <h1 className="page-title"><Link to="/search">Filter</Link></h1>
         <AllTags />

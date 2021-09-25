@@ -40,7 +40,7 @@ path {
 .stamp-tooltip {
   /* Ugh also watch out for the inline styles in EmployeeStamp.js */
 
-  z-index: 10;
+  /* z-index: 20; */
 
   width: fit-content;
   font-family: 'Noto Sans JP', sans-serif;

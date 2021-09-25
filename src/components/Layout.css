@@ -60,6 +60,13 @@ main {
 
 .page-content {
   margin: 2ch;
+
+  display: grid;
+  grid-template-columns: 1fr min(60rem, 100%) 1fr;
+}
+
+.page-content > * {
+  grid-column: 2;
 }
 
 .rest-of-page {
@@ -126,6 +133,8 @@ a:visited * {
 .page-title {
   text-align: center;
   position: relative;
+  padding: 2rem;
+  margin-bottom: 0;
 }
 .page-title .author {
   /* author links in articles */
@@ -175,8 +184,13 @@ h1 .query, h3 .query {
 
 .home-action {
   font-size: 16px;
+
+  /* margin-top: 1rem; */
+  padding-top: 1rem;
   margin-bottom: 2rem;
-  margin-top: -1rem;
+  padding-bottom: 1rem;
+
+  /* margin-top: -1rem; */
   display: flex;
   justify-content: center;
   /* margin-bottom: 1ch;
@@ -363,8 +377,8 @@ button.articles-btn:hover {
 /* Simple cards without masonry */
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-template-rows: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  /* grid-template-rows: repeat(auto-fill, minmax(300px, 1fr)); */
   grid-gap: 0.5rem;
   margin-bottom: 1.5rem;
 }
@@ -438,8 +452,14 @@ button.articles-btn:hover {
 /* Article styles ----------------------------------------------------------- */
 .article {
   line-height: 1.6;
+
+  display: grid;
+  grid-template-columns: 1fr min(60rem, 100%) 1fr;
 }
 
+.article > * {
+  grid-column: 2;
+}
 
 /* .article::first-letter { */
   /* font-size: 70px; */
@@ -635,24 +655,6 @@ p {
     margin: 1rem;
     shape-outside: circle();
     clip-path: circle();
-  }
-}
-
-@media (min-width: 1000px) {
-  .article {
-    margin-left: calc(15% + 2ch);
-    margin-right: calc(15% + 2ch);
-  }
-}
-
-@media (min-width: 1300px) {
-  .article {
-    margin: 0;
-  }
-
-  .page-content {
-    margin-left: calc(15% + 2ch);
-    margin-right: calc(15% + 2ch);
   }
 }
 

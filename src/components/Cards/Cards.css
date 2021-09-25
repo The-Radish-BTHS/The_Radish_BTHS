@@ -23,7 +23,9 @@
 }
 
 .card h2 {
-  /* word-wrap: normal; */
+  /* word-wrap: normal;
+  background-color: red; */
+
   font-size: clamp(16px, 12px + 2vw, 1.5rem);
 }
 
@@ -209,10 +211,6 @@ a .authorCard h2 {
   transform: none;
   -webkit-box-shadow: 0 0 5px var(--red), 0 0 5px var(--red), 0 0 5px var(--red) inset;
   box-shadow: 0 0 7px var(--red) inset;
-} */
-
-/* .card .article .content {
-  border-bottom: 1px solid var(--highlight);
 } */
 
 .tags .author {

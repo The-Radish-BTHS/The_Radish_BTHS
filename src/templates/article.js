@@ -79,6 +79,7 @@ export default function Article({
         <br />
         <br />
       </div>
+
       <div className="article">
         <article dangerouslySetInnerHTML={{ __html: html }} />
         <Share
@@ -133,7 +134,6 @@ export default function Article({
           )
         })}
       </div>
-      <br />
       <h3 className="home-action">
         <Link to={ValidSlug("issues", frontmatter.issue)}>{frontmatter.issue}<Arrow /></Link>
       </h3>
@@ -158,7 +158,6 @@ export default function Article({
           )
         })}
       </div>
-      <br />
       <h3 className="home-action"><Link to='/articles'>{`All articles`}<Arrow /></Link></h3>
     </div>
   </Layout>
