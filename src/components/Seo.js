@@ -105,9 +105,9 @@ const Seo = ({ title, desc, banner, pathname, collection, node }) => {
   }
 
   return (
-    <Helmet title={seo.title}>
+    <Helmet title={seo.title} property="og:title">
       <html lang="en" />
-      <meta name="description" content={seo.description} />
+      <meta name="description" content={seo.description} property="og:description" />
       <meta name="image" content={seo.image} />
       <meta name="the-radish" content="The Radish BTHS" />
       {/* Insert schema.org data conditionally (webpage/collection) + everytime (breadcrumbs) */}
