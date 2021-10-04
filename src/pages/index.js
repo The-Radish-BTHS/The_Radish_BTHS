@@ -82,7 +82,6 @@ export default function Index({
             height: 'max(400px, 50vh)',
         }}
       />
-      <br/>
       <div className="page-content">
         <h1 className="page-title"><Link to={issues.edges[0].node.fields.slug}>Latest issue</Link></h1>
         {issueCards}

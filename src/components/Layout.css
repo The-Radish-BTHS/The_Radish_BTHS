@@ -137,6 +137,12 @@ a:visited * {
   padding-bottom: 2rem;
   margin-bottom: 0;
 }
+.page-title .stamp {
+  display: inline-block;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 1rem;
+}
 .page-title .author {
   /* author links in articles */
   font-family: inherit;
@@ -652,10 +658,7 @@ p {
   }
 
   .page-title .stamp {
-    float: right;
-    margin: 1rem;
-    shape-outside: circle();
-    clip-path: circle();
+    margin: 2rem;
   }
 }
 
