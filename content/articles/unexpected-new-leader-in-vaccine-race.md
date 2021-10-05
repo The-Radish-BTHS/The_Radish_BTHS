@@ -4,7 +4,7 @@ authors:
   - author: Jacob Schles
 tags:
   - tag: Timeless news
-  - tag: "Science "
+  - tag: Science
 issue: April 2021
 date: 2021-04-23T22:58:51.490Z
 ---
