@@ -9,11 +9,12 @@ import Share from "../components/Share/Share.js"
 import { Articard } from "../components/Cards"
 import { Arrow } from "../components/Cards/Icons"
 
-const ValidSlug = (collection, name) => `/${collection}/${name.toLowerCase().replace(/[/|\\:*?"<>()]/g, '').replace(/ /g, "-")}`;
-
+const ValidSlug = (collection, name) =>
+  `/${collection}/${name.toLowerCase().replace(/[|\\:*?"<>()\.\,]/g, '').replace(/[ /]/g, "-").replace(/-$/g, "")}`;
+  
 export default function Article({
   location,
-  data, 
+  data,
 }) {
   const { article, issue_more, all_more } = data
   const { frontmatter, html, excerpt } = article

@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 import "./Cards.css"
 
 const ValidSlug = (collection, name) =>
-  `/${collection}/${name.toLowerCase().replace(/[/|\\:*?"<>()]/g, '').replace(/ /g, "-").replace(/-$/g, "")}`;
+  `/${collection}/${name.toLowerCase().replace(/[|\\:*?"<>()\.\,]/g, '').replace(/[ /]/g, "-").replace(/-$/g, "")}`;
 
 export default function Articard(props) {
   return (
