@@ -72,7 +72,9 @@ main {
 .rest-of-page {
   background-color: var(--bg);
   position: relative;
-  min-height: calc(100vh - 4rem - 20rem );
+
+  /* height minus the height of navbar and the sidebar respectively */
+  min-height: calc(100vh - 4rem - 20rem);
 
   /* Account for the footer */
   padding-bottom: 20rem;

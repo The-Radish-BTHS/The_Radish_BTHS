@@ -8,7 +8,7 @@ tags:
 issue: February 2020
 date: 2020-02-01T06:01:02.616Z
 ---
-When you think of Garfield, what comes to mind? The beloved orange tabby? Just a lasagna loving cat, right? You fool. You utter buffoon. You have no knowledge of the universe and its truths. He is not a character but an entity-one who is horrifyingly real. To fully comprehend the tale you're about to be told, we have to go back to the beginning. Or more accurately, before the beginning.
+When you think of Garfield, what comes to mind? The beloved orange tabby? Just a lasagna-loving cat, right? You fool. You utter buffoon. You have no knowledge of the universe and its truths. He is not a character but an entity—one who is horrifyingly real. To fully comprehend the tale you're about to be told, we have to go back to the beginning. Or more accurately, before the beginning.
 
 Darkness. Silence. Nothingness. Then suddenly, a light. The light grows brighter and bigger until that's all there is. For millions of years, it stays like this. Until the light starts to dim and shrink. It takes the form of a cat. He has arrived. He created the beginning, and will bring the end. He was present at every major battle or disaster in human history. In ancient times, we honored and worshipped Him. Some say He is the inspiration for both God and the Devil.
 

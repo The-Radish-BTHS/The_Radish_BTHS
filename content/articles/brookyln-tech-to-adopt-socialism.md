@@ -1,5 +1,5 @@
 ---
-title: Brookyln Tech To Adopt Socialism
+title: Brooklyn Tech To Adopt Socialism
 authors:
   - author: Joshua Weisman
 tags:
