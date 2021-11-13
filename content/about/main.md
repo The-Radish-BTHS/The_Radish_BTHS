@@ -26,12 +26,12 @@ Wanna help us throw the articles? We have teams for preparing them.
 
 * Design covers, issue templates, article graphics, and the occasional propaganda
 
-   <div class="submission-form-link"><a target="_blank" rel="noreferrer" href="https://forms.gle/NvD5E9xFRigdYuhGA">Apply to the graphics team</a></div>
+   <div class="submission-form-link"><a target="_blank" rel="noreferrer" href="https://forms.gle/QnBRDnaS1j3jB7sC6">Apply to the graphics team</a></div>
 
 ### Editing
  * If you want to write but don't want to write and also think you could write better
 
-   <div class="submission-form-link"><a target="_blank" rel="noreferrer" href="https://forms.gle/do2BrZXH7nMuZioB9">Apply to the editing team</a></div>
+   <div class="submission-form-link"><a target="_blank" rel="noreferrer" href="https://forms.gle/1tAJ3c5MfHyUhjHX6">Apply to the editing team</a></div>
 <br />
 
 
