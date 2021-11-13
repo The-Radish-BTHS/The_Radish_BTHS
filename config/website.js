@@ -2,9 +2,9 @@ module.exports = {
   title: `The Radish`, // Navigation and Site Title
   titleAlt: `The Radish`, // Title for JSONLD
   description: `Brooklyn Technical's first, worst, and only club.`,
-  url: `https://theradishbths.netlify.app`,
+  url: `https://theradishbths.com`,
 
-  headline: 'Releasing articles to the interwebs for The Radish', // Headline for schema.org JSONLD
+  headline: "The Radish, Brooklyn Tech's first, worst, and only satirical website", // Headline for schema.org JSONLD
   logo: '/static/radimir.png', // Used for SEO
 
   // JSONLD / Manifest
