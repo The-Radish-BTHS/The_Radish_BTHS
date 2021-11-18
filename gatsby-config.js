@@ -101,7 +101,7 @@ module.exports = {
         // required.
         query: `
         {
-          allMarkdownRemark {
+          allMarkdownRemark(filter: {fields: {slug: {ne: "/about/main/"}}}) {
             nodes {
               id
               frontmatter {

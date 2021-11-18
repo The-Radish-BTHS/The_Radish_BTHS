@@ -7,23 +7,25 @@ import website from '../../config/website'
 
 export default function AboutPage({
   location,
-  data, 
+  data,
 }) {
   const { article } = data
   const { frontmatter, html, excerpt } = article
 
   return (
     <Layout pageName={frontmatter.title}>
-      <Seo
-        title={`${frontmatter.title} | ${website.titleAlt}`}
-        pathname={location.pathname}
-        desc={frontmatter.description ? frontmatter.description : excerpt}
-        node={frontmatter}
-        collection
-      />
+      <div className="page-content">
+        <Seo
+          title={`${frontmatter.title} | ${website.titleAlt}`}
+          pathname={location.pathname}
+          desc={frontmatter.description ? frontmatter.description : excerpt}
+          node={frontmatter}
+          collection
+        />
 
-      <div className="article">
-        <div dangerouslySetInnerHTML={{ __html: html }} />
+        <div className="article">
+          <article dangerouslySetInnerHTML={{ __html: html }} />
+        </div>
       </div>
     </Layout>
   )

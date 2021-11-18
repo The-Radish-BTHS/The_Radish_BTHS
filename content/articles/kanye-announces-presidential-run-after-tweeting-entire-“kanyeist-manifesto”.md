@@ -2,6 +2,7 @@
 title: Kanye Announces Presidential Run After Tweeting “Kanyeist Manifesto”
 authors:
   - author: Averie Michaelson
+  - author: Jacob Schles
 tags:
   - tag: News
 issue: Volume 2

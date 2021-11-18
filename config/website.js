@@ -1,10 +1,10 @@
 module.exports = {
   title: `The Radish`, // Navigation and Site Title
   titleAlt: `The Radish`, // Title for JSONLD
-  description: `Brooklyn Technical's first, worst, and only club.`,
+  description: `The Radish BTHS is Brooklyn Tech's first, worst, and only monthly satirical newspaper.`,
   url: `https://theradishbths.com`,
 
-  headline: "The Radish, Brooklyn Tech's first, worst, and only satirical website", // Headline for schema.org JSONLD
+  headline: "The Radish BTHS is Brooklyn Tech's first, worst, and only monthly satirical newspaper.", // Headline for schema.org JSONLD
   logo: '/static/radimir.png', // Used for SEO
 
   // JSONLD / Manifest
