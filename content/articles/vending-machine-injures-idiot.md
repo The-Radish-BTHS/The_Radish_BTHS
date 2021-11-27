@@ -5,6 +5,7 @@ authors:
 tags:
   - tag: From the field
   - tag: Guest interview
+  - tag: Vending Machines
 issue: November 2021
 date: 2021-11-27T21:07:53.742Z
 ---
