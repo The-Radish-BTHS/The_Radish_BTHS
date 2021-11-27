@@ -51,9 +51,6 @@ export default function HighlightIssueCard(props) {
           />
         </Link>
         <div className="content">
-          {
-          // <h4>{props.date}</h4>
-          }
           <Link to={props.slug}>
             <h2>{props.title}</h2>
             <p className="description" dangerouslySetInnerHTML={{ __html: props.description }} />

@@ -4,28 +4,12 @@
   padding-bottom: 1ch;
   height: fit-content;
   border-radius: 3px;
-  /* background-color: #0000002f; */
   background-color: var(--card-color);
-
   border: 1px solid var(--lighter-text-color);
-
-  /* -webkit-backdrop-filter: blur(1ch);
-  backdrop-filter: blur(1ch); */
-
-  /* -webkit-box-shadow: 0 0 3px var(--highlight), 0 0 3px var(--highlight), 0 0 3px var(--highlight);
-  box-shadow: 0 0 3px var(--highlight), 0 0 3px var(--highlight), 0 0 3px var(--highlight); */
-  /* border-bottom: 2px solid var(--highlight);
-  border-bottom-right-radius: 0px;
-  border-bottom-left-radius: 0px; */
-  /* background-color: var(--red); */
-
   transition-duration: 150ms;
 }
 
 .card h2 {
-  /* word-wrap: normal;
-  background-color: red; */
-
   font-size: clamp(16px, 12px + 2vw, 1.5rem);
 }
 
@@ -56,7 +40,6 @@ a .authorCard h2 {
 }
 
 .card:hover {
-  /* background-color: #0000000f; */
   background-color: inherit;
   transform: translate(0, -2px);
   -webkit-box-shadow: 0px 10px 13px -7px #000000, inset 3px -13px 0px 8px rgba(0,0,0,0);
@@ -71,7 +54,6 @@ a .authorCard h2 {
 .issue, .authorCard {
   padding: 0ch;
   height: fit-content;
-  /* height: 100%; */
 }
 
 .make-up-for-no-image {
@@ -81,7 +63,6 @@ a .authorCard h2 {
 
   min-height: 400px;
   max-height: fit-content;
-  /* text-align: center; */
 }
 
 .make-up-for-no-image .author-card-text {
@@ -117,17 +98,9 @@ a .authorCard h2 {
   position: absolute;
   top: 0;
   right: 1ch;
-
-  /* top: 1ch;
-  right: 1ch; */
-  /* left: 0;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%); */
 }
 
 .author-card-text {
-  /* background-color: blue; */
   grid-area: text;
   width: auto;
 }
@@ -135,8 +108,6 @@ a .authorCard h2 {
 .issue-preview {
   padding-bottom: 5ch;
   display: grid;
-  /* grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-template-rows: repeat(auto-fill, minmax(200px, 1fr)); */
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto;
   grid-template-areas:
@@ -154,6 +125,11 @@ a .authorCard h2 {
   margin-right: 3px;
   grid-area: issue-link;
   overflow: hidden;
+}
+
+.special img, .issue img {
+  /* Small gap to the right of the image on some screen sizes? */
+  z-index: 0;
 }
 
 .preview-articles {
@@ -207,12 +183,6 @@ a .authorCard h2 {
   padding: 0;
 }
 
-/* .preview-articles .card:hover {
-  transform: none;
-  -webkit-box-shadow: 0 0 5px var(--red), 0 0 5px var(--red), 0 0 5px var(--red) inset;
-  box-shadow: 0 0 7px var(--red) inset;
-} */
-
 .tags .author {
   font-size: 12px;
   background-color: var(--author-tag-color);
@@ -239,8 +209,6 @@ a .authorCard h2 {
 
 .card p.collection-tag {
   font-family: "Roboto", sans-serif;
-  /* text-transform: uppercase; */
-
   width: fit-content;
   font-size: 14px;
   background-color: #444444aa;
@@ -254,8 +222,6 @@ a .authorCard h2 {
 }
 
 .tags .tag {
-  /* color: var(--text-color); */
-  /* background-color: var(--green-1);  */
   background-color: var(--red);
 
   font-size: 12px;
@@ -280,9 +246,6 @@ a .authorCard h2 {
 }
 
 @media (max-width: 600px) {
-  .card:not(.issue) {
-    /* padding: 2ch; */
-  }
   .issue .content {
     padding: 1ch;
   }

@@ -37,11 +37,6 @@ export default function Modal({ showModal, setShowModal }, ref) {
     setTimeout(() => setShowModal(false), 200);
   }, [setShowModal])
 
-  // useImperativeHandle(ref, () => ({
-  //   open: () => setShowModal(true),
-  //   close
-  // }), [close, setShowModal])
-
   const handleKeydown = useCallback(event => {
     if (event.keyCode === 27) close()
 

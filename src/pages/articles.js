@@ -1,34 +1,15 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/Layout"
-// import Masonry from "react-masonry-css"
 
 import Seo from "../components/Seo"
 import website from '../../config/website'
 
 import { ParallaxBanner } from 'react-scroll-parallax';
-// import Banner from "../components/Banner/Banner.js"
 import { Articard } from "../components/Cards/index"
 
-// Infinite scrolling
 import { GlobalStateContext } from "../components/InfiniteScroll/GlobalState.js"
 import InfiniteGrid from "../components/InfiniteScroll/InfiniteGrid.js"
-
-// const breakpointColumnsObj = {
-//   default: 3,
-//   1300: 2,
-//   600: 1,
-// }
-
-// const Shuffle = (arr) => {
-//   for (let i = arr.length - 1; i > 0; i--) {
-//     const j = Math.floor(Math.random() * i)
-//     const temp = arr[i]
-//     arr[i] = arr[j]
-//     arr[j] = temp
-//   }
-//   return (arr)
-// }
 
 export default function Articles({
   location,

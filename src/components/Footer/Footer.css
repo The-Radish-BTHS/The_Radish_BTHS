@@ -10,8 +10,6 @@
   padding-top: 2ch;
   padding-bottom: 2ch;
 
-  /* background-color: red; */
-
   position: absolute;
   bottom: 0;
 }
@@ -52,13 +50,3 @@
 .copyright-note a:hover {
   text-decoration: none;
 }
-
-/* .footerPageLinks {
-  color: white;
-  display: flex;
-  flex-flow: column wrap;
-}
-.footerPageLinks a {
-  display: block;
-  width: 100%;
-} */

@@ -1,26 +1,3 @@
-/* .EmployeeStampPopUp {
-  width: 97.5vw;
-  height: 97.5vh;
-  border-radius: 20px;
-  background-color: black;
-
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  z-index: 1;
-
-  text-align: center;
-}
-
-.PopUpCloseButton {
-  position: absolute;
-  right: 4vh;
-  top: 4vh;
-} */
-
 .arrow {
   height: 1.2rem;
   margin-left: 0.5rem;
@@ -31,16 +8,10 @@ path {
 }
 
 .copy {
-  /* height: 16px;
-  width: 16px; */
-  height: 2ch;
-  /* display: inline-block; */
-}
+  height: 2ch;}
 
 .stamp-tooltip {
   /* Ugh also watch out for the inline styles in EmployeeStamp.js */
-
-  /* z-index: 20; */
 
   width: fit-content;
   font-family: 'Noto Sans JP', sans-serif;

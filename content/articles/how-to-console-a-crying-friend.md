@@ -5,6 +5,7 @@ authors:
   - author: Charlotte Rotlander
 tags:
   - tag: Listicle
+  - tag: How-to
 issue: Quarantine Issue Two
 date: 2020-07-01T02:07:36.892Z
 description: So, your friend is crying?

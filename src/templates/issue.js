@@ -37,33 +37,6 @@ export default function Issue({
         node={issue.frontmatter}
         collection
       />
-
-      {
-      // <div className="page-title">
-      //   <h1>{issue.frontmatter.title}</h1>
-      //   <h3>{issue.frontmatter.date}</h3>
-      //   <p>{issue.frontmatter.description}</p>
-      //   <a
-      //     href={issue.frontmatter.pdf}
-      //     target="_blank"
-      //     rel="noreferrer"
-      //     className="color-under-link"
-      //   >
-      //     <b>Read the PDF</b>
-      //   </a>
-      //   <p />
-      //   <div className="cover-container">
-      //     <div className="cover">
-      //       <GatsbyImage
-      //         image={image}
-      //         alt={issue.frontmatter.title}
-      //         placeholder="blurred"
-      //       />
-      //     </div>
-      //   </div>
-      // </div>
-      }
-
       <ParallaxBanner
         className="parallax-banner"
         layers={[

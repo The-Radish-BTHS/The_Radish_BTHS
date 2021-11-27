@@ -1,6 +1,5 @@
 function setTheme(themeName) {
     localStorage.setItem('theme', themeName);
-
     const themeSwitcher = document.getElementById("theme-switching-element");
     themeSwitcher.className = themeName;
 }

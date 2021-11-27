@@ -16,15 +16,10 @@
   font-family: "Roboto", sans-serif;
   display: inline-block;
   background-color: var(--red);
-  /* color: var(--bg); */
   border-radius: 3px;
   padding: 0.5rem;
   margin-right: 0.5rem;
   margin-top: 0.5rem;
-}
-
-.tag:visited {
-  /* color: var(--bg); */
 }
 
 a.tag:hover {

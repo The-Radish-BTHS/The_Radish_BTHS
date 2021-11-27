@@ -111,7 +111,6 @@ const Seo = ({ title, desc, banner, pathname, collection, node }) => {
       <meta name="description" content={seo.description} property="og:description" />
       <meta name="image" content={seo.image} />
       <meta name="the-radish" content="The Radish BTHS" />
-      <meta name="google-site-verification" content="KOoMYeOxrcQDDg4U8XJ3Q97ofGdkD0iWk2HvTCXY1Pw" />
       {/* Insert schema.org data conditionally (webpage/collection) + everytime (breadcrumbs) */}
       {!collection && <script type="application/ld+json">{JSON.stringify(schemaOrgWebPage)}</script>}
       {collection && <script type="application/ld+json">{JSON.stringify(schemaCollection)}</script>}

@@ -12,7 +12,6 @@ export default function About({
   data, // this prop will be injected by the GraphQL query below.
 }) {
   const {
-    // abouts,
     main
   } = data
   const { html} = main

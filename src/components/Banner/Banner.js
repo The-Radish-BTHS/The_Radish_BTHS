@@ -1,5 +1,4 @@
 import React from "react"
-// import { StaticImage } from "gatsby-plugin-image"
 import "./Banner.css"
 
 // https://dev.to/billraymond/creating-a-pure-responsive-css-grid-hero-image-or-banner-image-2pej

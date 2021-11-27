@@ -1,8 +1,3 @@
-/* .navbar {
-  --highlight: #07ad36;
-  --bg: #2e2e2e;
-} */
-
 .navbar {
   color: var(--highlight);
   background-color: var(--bg);
@@ -106,13 +101,8 @@
 
 @media (max-width: 600px) {
   .navbar {
-    /* margin-left: calc(20%); */
     height: 4rem;
     padding: 1ch;
-    /* padding-left: calc(35px + 2ch);*/ /*Squished burgers are sad & could show up if we add more to the navbar */
-    /* padding-top: 1ch;
-    padding-bottom: 1ch;
-    padding-left: 0ch; */
   }
 
   .search {

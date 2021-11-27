@@ -42,10 +42,6 @@
   color: var(--text-color);
   background-color: var(--bg);
 
-  /* border: 2px solid var(--highlight); */
-  /* -webkit-box-shadow: 0 0 10px var(--highlight);
-  box-shadow: 0 0 10px var(--highlight); */
-
   padding: 2ch;
   overflow-x: hidden;
 

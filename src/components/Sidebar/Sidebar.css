@@ -85,11 +85,6 @@
   margin-right: -2ch;
 }
 
-/* .sidebarHidden {
-  transform: translateX(-100%);
-  transition-duration: 0.2s;
-} */
-
 @media (max-width: 600px) {
   .sidebar {
     top: 4rem;

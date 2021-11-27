@@ -22,9 +22,6 @@ export default function Layout({ children }) {
     <ParallaxProvider>
       <div className={togClass} id="theme-switching-element">
         <Seo />
-        {
-          // <title>{pageName ? `${pageName} | ` : ``}The Radish</title>
-        }
         <a className="screen-reader-shortcut" href="#main-content" id='reach-skip-nav'>
           Skip to main content
         </a>
