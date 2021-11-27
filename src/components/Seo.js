@@ -40,7 +40,7 @@ const Seo = ({ title, desc, banner, pathname, collection, node }) => {
     mainEntityOfPage: siteUrl,
     description: defaultDescription,
     name: defaultTitle,
-    dateModified: buildTime,
+    dateModified: (node !== null ? node.date : buildTime),
     image: {
       '@type': 'ImageObject',
       url: `${siteUrl}${defaultBanner}`,

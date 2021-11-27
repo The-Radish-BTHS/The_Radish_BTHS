@@ -9,7 +9,7 @@ tags:
 issue: November 2021
 date: 2021-11-27T20:55:23.153Z
 ---
-![penis drill](/assets/drill.png "penis drill")
+![[upside down space ship]](/assets/drill.png "penis drill")
 
 This morning, American entrepreneur and founder of Amazon, Jeff Bezos, has announced his plans to drill towards Earth’s core. 
 

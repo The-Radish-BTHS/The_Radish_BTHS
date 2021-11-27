@@ -18,7 +18,7 @@ Feel free to submit a pull request and add on!
 - [ ] More descriptive banner images (don't need to pull, just email us)
 
 ## Running The Site Locally
-1. Install all dependencies using npm && start using `npm start`
+1. Install all dependencies using `npm i` and start using `npm start`
 2. To run the local admin page, run `npx netlify-cms-proxy-server`
       - You might need to set up your own Netlify Identity system if you aren't working with [@AwareErmine](https://github.com/AwareErmine)
 
@@ -27,4 +27,6 @@ Email: [theradishbths@gmail.com](mailto:theradishbths@gmail.com)
 
 <hr>
 
-All code under the GNU General Public License v3.0.
+All code rights reserved under the [GNU General Public License v3.0](COPYING.txt)
+
+All content rights reserved under a [Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode) license
