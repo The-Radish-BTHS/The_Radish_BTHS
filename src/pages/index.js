@@ -41,8 +41,8 @@ export default function Index({
     return (
       <HighlightIssueCard
         key={node.id}
-        // slug={node.fields.slug}
-        slug={node.frontmatter.pdf} // I was out-voted and this should be the slug
+        slug={node.fields.slug} // TODO: SWITCH BACK
+        // slug={node.frontmatter.pdf} // I was out-voted and this should be the slug
         date={node.frontmatter.date}
         title={node.frontmatter.title}
         cover={node.fields.rel_cover}

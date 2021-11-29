@@ -328,9 +328,9 @@ button.articles-btn:hover {
   margin-top: 10px;
 }
 .parallax-banner #banner-children .read-pdf b {
-  font-size: 18px;
+  font-size: 20px;
   background-color: var(--red);
-  padding: 10px;
+  padding: 12px;
   border-radius: 10px;
   transition-duration: 200ms;
 }
