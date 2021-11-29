@@ -5,36 +5,43 @@ title: Main
 
 # We are The Radish
 
-We are Brooklyn Technical High School's first, worst, and only satirical newspaper. No clue when we started. Your guess is as good as ours. Still, we've ended up here, so stay awhile :)
+We are Brooklyn Technical High School's first, worst, and only satirical newspaper. We probably started around the 1980s—definitely before The Onion, our fierce rival. 
+
+Interested in joining us? Now that school is is session, we are finally meeting in-person! Find us **Wednesdays in room 2N3** after 10th period. Also join our email list for updates.
+
+<div class="submission-form-link"><a target="_blank" rel="noreferrer" href="https://forms.gle/A9TJPy9a5ZXz4AzFA">Join here</a></div>
+
+<br/>
 
 <hr>
 
 # Feed us
 
 Every month we throw articles into the world like a mama bird trying to kill her children. This makes the big radish in the sky very happy. It eats them. Please give us articles to throw. We are begging.
+
+
 If you're as hungry as the sky radish, there are also plans for a huge wheel of cheese to feed writers. Write an article, get a nibble, that's our motto.  
 
 <div class="submission-form-link"><a target="_blank" rel="noreferrer" href="https://forms.gle/34NWUt4XUdzP2mjAA">Submit here</a></div>
 
 <br/>
 
+<hr>
+
 # Feed us—without writing
 
-Wanna help us throw the articles? We have teams for preparing them.
+Wanna help us throw the articles? We have teams for preparing them. 
 
-### Graphics
+**Team applications have closed for this semester**, but keep an eye out—we may reopen applications for next semester if we see high enough interest 👀
+
+### Graphics Team
 
 * Design covers, issue templates, article graphics, and the occasional propaganda
 
-   <div class="submission-form-link"><a target="_blank" rel="noreferrer" href="https://forms.gle/QnBRDnaS1j3jB7sC6">Apply to the graphics team</a></div>
+### Editing Team
 
-### Editing
- * If you want to write but don't want to write and also think you could write better
-
-   <div class="submission-form-link"><a target="_blank" rel="noreferrer" href="https://forms.gle/1tAJ3c5MfHyUhjHX6">Apply to the editing team</a></div>
-<br />
-
-
+* Reviews content for grammar, radish-logical content flow, and general hilarity 
+* Makes an attempt to force the reader to have a good time 
 
 <hr>
 

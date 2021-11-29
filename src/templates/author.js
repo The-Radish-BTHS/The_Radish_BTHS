@@ -72,7 +72,7 @@ export default function Author({
                           ? "Graduated " + author.frontmatter.date
                           : "Graduating " + author.frontmatter.date}
                       </h3>
-                      <p className="description">{author.frontmatter.description}</p>
+                      <p className="page-content"><p className="description">{author.frontmatter.description}</p></p>
                     </div>
                   ,
                   amount: 0,

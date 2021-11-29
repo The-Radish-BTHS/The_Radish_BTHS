@@ -49,14 +49,14 @@ export default function Issue({
                   <div id='banner-children'>
                     <h1>{issue.frontmatter.title}</h1>
                     <h3>{issue.frontmatter.date}</h3>
-                    <a
-                      href={issue.frontmatter.pdf}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="read-pdf"
-                    >
-                      <b>Read PDF</b>
-                    </a>
+                      <a
+                        href={issue.frontmatter.pdf}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="read-pdf"
+                      >
+                        <b>Read PDF</b>
+                      </a>
                     <br />
                     <br />
                     <Share

@@ -5,7 +5,7 @@
 
 :root {
   --red: #ad1507;
-  --darker-red: #ab1305;
+  --darker-red: #960808;
   --highlight: #07ad36;
   --green-1: #05992f;
   --green-2: #00570d;
@@ -35,6 +35,7 @@ p {
   --highlight: #18b300;
   --card-color: #fff5;
   --red: #fa3e3e;
+  --darker-red: #e03f3f;
   --issue-tag-color: #bbb;
   --author-tag-color: #a9a9a9;
 }
@@ -60,7 +61,6 @@ main {
 
 .page-content {
   margin: 2ch;
-
   display: grid;
   grid-template-columns: 1fr min(60rem, 100%) 1fr;
 }
@@ -330,16 +330,18 @@ button.articles-btn:hover {
 .parallax-banner #banner-children .read-pdf b {
   font-size: 20px;
   background-color: var(--red);
+  border-width: 2px;
+  border-color: var(--text-color);
+  border-style: solid;
   padding: 12px;
   border-radius: 10px;
   transition-duration: 200ms;
 }
 .parallax-banner #banner-children .read-pdf b:hover {
   transition-duration: 200ms;
-  -webkit-box-shadow: 0px 0px 10px 0px var(--red);
-  box-shadow: 0px 0px 10px 0px var(--red);
+  border-color: var(--darker-red);
+  background-color: var(--darker-red);
 }
-
 
 .parallax-banner #banner-children {
   font-family: 'Noto Sans JP', sans-serif;
@@ -369,7 +371,10 @@ button.articles-btn:hover {
 
 .parallax-banner #banner-children h1 {
   font-weight: 900;
-  font-size: clamp(2rem, 5vw, 4rem);;
+  font-size: clamp(2rem, 5vw, 4rem);
+  text-shadow: -4px 4px var(--red);
+  /* -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: var(--bg); */
 }
 
 /* .parallax-banner #banner-children a {

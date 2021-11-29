@@ -36,8 +36,8 @@ export default function About({
             {
                 children:
                   <div id='banner-children'>
-                    <h1>We're The Radish</h1>
-                    <h3>Jacob is presingden</h3>
+                    <h1>We are The Radish</h1>
+                    <h3>As you may have guessed</h3>
                   </div>
                 ,
                 amount: 0,
