@@ -57,8 +57,6 @@ export default function Issue({
                       >
                         <b>Read PDF</b>
                       </a>
-                    <br />
-                    <br />
                     <Share
                       description={issue.frontmatter.description}
                       url={website.url + location.pathname}

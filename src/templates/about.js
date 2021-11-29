@@ -22,7 +22,6 @@ export default function AboutPage({
           node={frontmatter}
           collection
         />
-
         <div className="article">
           <article dangerouslySetInnerHTML={{ __html: html }} />
         </div>

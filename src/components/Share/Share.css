@@ -26,8 +26,10 @@
   align-items: center;
   justify-content: center;
   grid-gap: 5px;
-
   padding-bottom: 2ch;
+  
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .article .share-btns {

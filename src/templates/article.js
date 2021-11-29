@@ -11,7 +11,7 @@ import { Arrow } from "../components/Cards/Icons"
 
 const ValidSlug = (collection, name) =>
   `/${collection}/${name.toLowerCase().replace(/[|\\:*?"<>()\.\,]/g, '').replace(/[ /]/g, "-").replace(/-$/g, "")}`;
-  
+
 export default function Article({
   location,
   data,
@@ -87,9 +87,6 @@ export default function Article({
           description={frontmatter.description}
           url={website.url + location.pathname}
         />
-
-        <br />
-        <br />
       </div>
 
       <div className="article">
