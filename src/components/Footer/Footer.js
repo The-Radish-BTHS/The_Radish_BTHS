@@ -1,5 +1,4 @@
 import React from "react"
-// import { Link } from "gatsby"
 import "./Footer.css"
 import Toggle from "../ToggleTheme/Toggle"
 
@@ -31,7 +30,7 @@ export default function Footer() {
         <SocialLink to="mailto:theradishbths@gmail.com">
           <Email />
         </SocialLink>
-        <SocialLink to="https://github.com/AwareErmine/The_Radish">
+        <SocialLink to="https://github.com/The-Radish-BTHS/The_Radish_BTHS">
           <Github id="github" />
         </SocialLink>
       </div>

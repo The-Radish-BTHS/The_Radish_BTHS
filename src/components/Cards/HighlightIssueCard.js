@@ -41,7 +41,23 @@ export default function HighlightIssueCard(props) {
   return (
     <div className="issue-preview">
       <div className="card issue special">
-        <Link to={props.slug}>
+      {
+        // <Link to={props.slug}>
+        //   <GatsbyImage
+        //     image={image}
+        //     alt={props.title}
+        //     placeholder="blurred"
+        //     loading="lazy"
+        //     href={props.slug}
+        //   />
+        // </Link>
+      }
+
+        <a
+          href={props.slug}
+          target="_blank"
+          rel="noreferrer"
+        >
           <GatsbyImage
             image={image}
             alt={props.title}
@@ -49,7 +65,8 @@ export default function HighlightIssueCard(props) {
             loading="lazy"
             href={props.slug}
           />
-        </Link>
+        </a>
+
         <div className="content">
           <Link to={props.slug}>
             <h2>{props.title}</h2>

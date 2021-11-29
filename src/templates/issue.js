@@ -53,6 +53,7 @@ export default function Issue({
                       href={issue.frontmatter.pdf}
                       target="_blank"
                       rel="noreferrer"
+                      className="read-pdf"
                     >
                       <b>Read PDF</b>
                     </a>
