@@ -377,10 +377,10 @@ button.articles-btn:hover {
   -webkit-text-stroke-color: var(--bg); */
 }
 
-/* .parallax-banner #banner-children a {
+.parallax-banner #banner-children a {
   text-decoration: underline;
   text-decoration-color: var(--text-color);
-} */
+}
 .parallax-banner #banner-children a:hover {
   text-decoration: none;
 }
