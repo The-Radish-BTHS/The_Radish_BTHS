@@ -26,7 +26,7 @@ collections:
         }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "PDF url", name: "pdf", widget: "string" }
+      - { label: "PDF url", name: "pdf", widget: "string", required: false}
       - {
           label: "Description",
           name: "description",
