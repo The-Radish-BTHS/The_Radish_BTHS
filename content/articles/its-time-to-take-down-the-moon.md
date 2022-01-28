@@ -14,7 +14,7 @@ Seriously, only some insane capitalist venture could stay relevant this long. Th
 
 Of course, on its own, the moon’s prevalence is fine. Advertisements become pop sensations all the time. I have no problem with capitalism. How could I?    
 
-![Moon face](https://lh4.googleusercontent.com/tYGFtWw8yGLGVc_bxh7rEa93UVQ372EiQbnZHBG1Aln6pYOU1RqokDHKo1SI7BdNED8YtlQsrFL8ocb6BF-p78jQmcFs6PaJb-wx6uOC7FZJlh2MjA1nl7ojWMgutFL3y7EGjzBy=s0 "Moon face")
+![Moon face](/assets/moon-man.jfif "Moon face")
 
 That face though. Just look at that face: the prime image of a human. Looking at the moon’s face and saying you aren’t being sold something is impossible. The moon sits there, looking down at us. Looking at the moon for long enough, you’ll see the marketing genius: the moon is trying to sell us that lovely face. Looking at the moon, beauty standards suddenly make sense.
 
