@@ -1,5 +1,5 @@
 /* @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap"); */
-@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&:wght@100;300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Martel:wght@600;700;800;900&display=swap');
 
@@ -20,8 +20,8 @@
 }
 
 h1, h2, h3 {
-  font-family: 'Martel', serif;
-  font-weight: 800;
+  /* font-family: 'Martel', serif; */
+  font-weight: 700;
 }
 p {
   font-family: 'Lato', sans-serif;
@@ -31,10 +31,10 @@ p {
   --bg: #efefef;
   --text-color: #100;
   --lighter-text-color: #1004;
-  --banner-tint: #9999;
-  --highlight: #18b300;
+  --banner-tint: #aaab;
+  --highlight: #449e29;
   --card-color: #fff5;
-  --red: #fa3e3e;
+  --red: #f02935;
   --darker-red: #e03f3f;
   --issue-tag-color: #bbb;
   --author-tag-color: #a9a9a9;
@@ -528,15 +528,15 @@ button.articles-btn:hover {
 
 .article ol li::marker {
   font-size: 2rem;
-  font-family: 'Martel', serif;
-  font-weight: 800;
+  /* font-family: 'Martel', serif; */
+  font-weight: 600;
 
   font-size: clamp(20px, 20px + 1vw, 1.5rem);
 }
 
 .article ol li p:nth-child(1) {
-  font-family: 'Martel', serif;
-  font-weight: 800;
+  /* font-family: 'Martel', serif; */
+  font-weight: 600;
   font-size: 2rem;
 
   font-size: clamp(20px, 20px + 1vw, 1.5rem);
