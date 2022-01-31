@@ -13,6 +13,4 @@ And sure, I am a big vax fan. I know about all of the vaccines. The popular ones
 
 So anyway, I’m out with my friends when all of a sudden they ask me for proof of vaccination for indoor seating. I don’t really know what to do. I kinda just tell the group to go on without me. Then I realize that maybe I can sneak through, so I tell them I’ll be just a moment. I walk in where I think there’s nobody, but they’re so insistent on the vaccination I end up not going through with the plan. 
 
-Overall, this "proof of vaccination" thing is ruining my life. Only losers carry their card around. Nowadays, people are always so obsessed with protecting their vaccinated safe spaces that they ruin the experience for everyone. Their attitude gives us normal people a bad rap. I completely understand where the anti-vaxxers are coming from, and on behalf of the vaccinated, I apologize. The division and hostility of this fandom has gone too far. 
-
-With all of this in mind, I hope you can see why I'm ashamed to carry my card.
+Overall, this proof of vaccination thing is ruining my life. People are so obsessed with protecting their vaccinated safe spaces that they ruin the experience for everyone. Their attitude gives us normal people a bad rap. I completely understand where the anti-vaxxers are coming from, and on behalf of the vaccinated, I apologize. The division and hostility of this fandom has gone too far. With all of this in mind, I hope you’re able to see why I'm ashamed to carry my card.
