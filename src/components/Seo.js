@@ -109,7 +109,7 @@ const Seo = ({ title, desc, banner, pathname, collection, node }) => {
       <html lang="en" />
       <title property="og:title">{seo.title}</title>
       <meta name="description" content={seo.description} property="og:description" />
-      <meta name="image" content={seo.image} />
+      <meta name="image" content={seo.image} property="og:image" />
       <meta name="the-radish" content="The Radish BTHS" />
       <meta name="theme-color" content="#ad1507" />
       {/* Insert schema.org data conditionally (webpage/collection) + everytime (breadcrumbs) */}
