@@ -35,6 +35,7 @@ export default function Issue({
         pathname={location.pathname}
         desc={issue.frontmatter.description ? issue.frontmatter.description : issue.excerpt}
         node={issue.frontmatter}
+        banner={issue.frontmatter.cover}
         collection
       />
       <ParallaxBanner

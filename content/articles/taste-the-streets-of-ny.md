@@ -1,5 +1,5 @@
 ---
-title: Sidewalk Tasting Guide
+title: Taste The Streets Of NY
 authors:
   - author: Aramie Ewen
 tags:
