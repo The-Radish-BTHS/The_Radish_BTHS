@@ -108,18 +108,18 @@ const Seo = ({ title, desc, banner, pathname, collection, node }) => {
     <Helmet title={seo.title}>
       <html lang="en" />
 
-      <meta property="og:type" content="website">
+      <meta property="og:type" content="website" />
       <title property="og:title">{seo.title}</title>
       <meta property="og:description" name="description" content={seo.description} />
       <meta property="og:image" name="image" content={seo.image} />
-      <meta property="og:site_name" content"The Radish">
+      <meta property="og:site_name" content="The Radish" />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={seo.title} />
       <meta name="twitter:description" content={seo.description} />
       <meta name="twitter:image" content={seo.image} />
 
-      <meta name="the-radish" content="The Radish BTHS" />
+      {/* <meta name="site-name" content="The Radish BTHS" /> */}
       <meta name="theme-color" content="#ad1507" />
 
       {/* Insert schema.org data conditionally (webpage/collection) + everytime (breadcrumbs) */}
