@@ -4,8 +4,8 @@ authors:
   - author: Charlotte Rotlander
 tags:
   - tag: Tests
-  - tag: Investigation
   - tag: Guest interview
+  - tag: News
 issue: March 2022
 date: 2022-04-01T02:51:25.681Z
 ---
