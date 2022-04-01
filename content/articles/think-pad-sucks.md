@@ -4,6 +4,7 @@ authors:
   - author: Victor Kotchev
 tags:
   - tag: Opinion
+  - tag: Thinkpads
 issue: March 2020
 date: 2020-04-03T05:10:08.088Z
 ---
