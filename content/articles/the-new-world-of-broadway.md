@@ -5,7 +5,7 @@ authors:
 tags:
   - tag: Listicle
   - tag: "Entertainment "
-issue: March 2022
+issue: April 2022
 date: 2022-04-01T02:12:31.315Z
 ---
 Broadway was put into a pause during the pandemic. NYC was dead for months. But, while the theaters collected dust, playwrights all around the country hunkered down in their little writing rooms, creating sensations well worth hundreds of dollars to see in person—or for free if you get your rich Park Slope friends to illegally record a show for you. Anyway, now that Broadway’s back, these new masterpieces are out, presented in theaters all across Broadway. 

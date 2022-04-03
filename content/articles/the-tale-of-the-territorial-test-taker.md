@@ -5,7 +5,7 @@ authors:
 tags:
   - tag: Tests
   - tag: Opinion
-issue: March 2022
+issue: April 2022
 date: 2022-04-01T02:06:45.787Z
 ---
 I’ve always had trouble with school. Every time I take a test, it’s like some fundamental part of me breaks. I can’t bear to turn the test in. Nothing about school in the past has seemed to make me feel less of myself, not even having to ask extra questions or doing mediocre classwork. It took me a while before I realized what was wrong. 

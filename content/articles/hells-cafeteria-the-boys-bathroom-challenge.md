@@ -5,7 +5,7 @@ authors:
 tags:
   - tag: Online Exclusive
   - tag: "Entertainment "
-issue: March 2022
+issue: April 2022
 date: 2022-04-01T02:49:46.752Z
 ---
 This time on Hell's Cafeteria: Four students in the Law and Society major, Lil Debil, Sammie-Wammie, Ovaltine, and Daniel, will be competing in the Boys’ Bathroom Challenge to decide who will enter the final round and become a head chef at Rordon Gamsay’s Hell’s Cafeteria in Brooklyn Tech, New York City.

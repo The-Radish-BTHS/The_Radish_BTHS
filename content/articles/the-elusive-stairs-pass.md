@@ -5,7 +5,7 @@ authors:
 tags:
   - tag: Stairs
   - tag: How-to
-issue: March 2022
+issue: April 2022
 date: 2022-04-01T02:28:12.677Z
 ---
 Hey! Kids! It’s me, the person lurking in the staircase and doing my entire class’ homework during 3rd period! I’ve been found by a hall monitor and marched into the auditorium. Strange how they have the resources to do that but not keep the mezzanine open. 

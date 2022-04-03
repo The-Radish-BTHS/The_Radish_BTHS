@@ -6,7 +6,7 @@ tags:
   - tag: From the field
   - tag: Opinion
   - tag: Stairs
-issue: March 2022
+issue: April 2022
 date: 2022-04-01T02:51:03.816Z
 ---
 *To most here at Tech, the prospect of walking up the stairwell that is clearly and well known to be for downwards travel only is ridiculous. “Who would commit such a heinous act!” says Shrunglo McBunkley, their face turning a deep red in anger at such an idea. However, James does this on a near daily basis. Is it the simple inability to understand basic rules? Some strange attraction or high? The hatred of any basic order AND THE LOVE OF PURE CHAOS?!? Well, we asked James to write to us a bit about his perspective so we can better understand why he would make such choices. Here’s what we got.*

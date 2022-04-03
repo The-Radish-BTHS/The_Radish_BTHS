@@ -6,7 +6,7 @@ tags:
   - tag: Tests
   - tag: Guest interview
   - tag: News
-issue: March 2022
+issue: April 2022
 date: 2022-04-01T02:51:25.681Z
 ---
 Mass student outrage occurred this morning as it was revealed through an anonymous Instagram post that Tech's beloved Fish Fishington was a complete and utter fraud. 
