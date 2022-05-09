@@ -12,7 +12,7 @@ With the help of researchers from the CIA’s Bureau of Wizardry, we have finall
 The 10th floor houses replicas of the most magical items on Earth, including but not limited to:
 
 * <span class="blacked-out">Adjklasjdoajodjqwopdqwodjqopjdopqwjdopqwjdpoqwjdopqwjdopqwjwdopqjdwopqjdpoqjdpoqjdpojqpodwpojdqwpodjqwpodjwpdqpojdqpojdwqpodjqpo</span>supermarket coupon<span class="blacked-out">slkajdlkajsdklajkl</span>
-* <span class="blacked-out">askldjlaksjdlkajskldjaklsjdlajsdjoasjdopasjdpoadpoasdpoja ..</span>eggs.
+* <span class="blacked-out">askldjlaksjdlkajskldjaklsjdlajsdjoasjdopasjdpoadpoasdpoja ..</span>███████eggs.
 
 Enticing list items, so how does one reach them? Well, to conduct the ritual needed to reach the floor, you will need a pair of Air Jordans, three leather-bound books, and a cozy spot in the school’s northeast stairwell. Stand on top of the books while wearing the Jordans. Then, according to Wizardy for dummies:
 
