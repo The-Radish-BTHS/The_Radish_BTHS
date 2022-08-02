@@ -162,12 +162,13 @@ a:visited * {
 .page-title .author {
   white-space: pre;
 }
-.page-title a {
-  text-decoration: none;
-}
-.page-title a:hover {
+.page-title a:not(.tag) {
   text-decoration: underline;
-  text-decoration-color: var(--red);
+}
+.page-title a:not(.tag):hover {
+  text-decoration: underline;
+  color: #dfdfdf;
+  /* text-decoration-color: var(--red); */
 }
 .page-title .description {
   white-space: pre-wrap;
@@ -200,6 +201,8 @@ h1 .query, h3 .query {
   justify-content: center;
 }
 .home-action a {
+  text-decoration: none !important;
+
   font-family: 'Noto Sans JP', sans-serif;
   text-transform: uppercase;
   font-weight: 500;
@@ -295,31 +298,6 @@ button.articles-btn:hover {
   text-decoration: none;
 }
 
-
-.page-title.read-pdf {
-  margin: 10px;
-  width: fit-content;
-}
-.page-title.read-pdf a {
-  background-color: var(--red);
-  padding: 10px;
-  border-radius: 4px;
-  -webkit-box-shadow: -4px 4px 2px 3px #000000;
-  box-shadow: -4px 4px 2px 3px #000000;
-  transition-duration: 200ms;
-  text-decoration: none;
-}
-.page-title.read-pdf:hover {
-  transform: translate(-2px, 2px);
-  transition-duration: 200ms;
-}
-.page-title.read-pdf a:hover {
-  text-decoration: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  transition-duration: 200ms;
-}
-
 .parallax-banner {
   margin-bottom: 1rem;
 }
@@ -329,18 +307,10 @@ button.articles-btn:hover {
 }
 .parallax-banner #banner-children .read-pdf b {
   font-size: 20px;
-  background-color: var(--red);
   border-width: 2px;
-  border-color: var(--text-color);
-  border-style: solid;
-  padding: 12px;
-  border-radius: 10px;
-  transition-duration: 200ms;
 }
 .parallax-banner #banner-children .read-pdf b:hover {
-  transition-duration: 200ms;
-  border-color: var(--darker-red);
-  background-color: var(--darker-red);
+  color: #dfdfdf;
 }
 
 .parallax-banner #banner-children {
