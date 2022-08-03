@@ -28,9 +28,6 @@
 
   z-index: 2;
 
-  display: flex;
-  flex-direction: column;
-
   overflow-x: hidden; /* Avoid horizontal scrollbars */
 
   grid-gap: 2ch;
@@ -48,8 +45,11 @@
   padding: 2ch;
 }
 
-.sidebar .card {
-  text-align: left;
+.sidebar-links {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: calc(100% - 20rem);
 }
 
 .sidebar-link {

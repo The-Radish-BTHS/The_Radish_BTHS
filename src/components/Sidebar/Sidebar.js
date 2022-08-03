@@ -55,11 +55,13 @@ export default function Sidebar({ showSidebar, setShowSidebar }) {
     showSidebar ?
       <div id="sidebar">
         <div className={`sidebar slide-in ${showSidebar ? "" : "sidebarHidden"}`}>
-          <Link to="/articles/" className="sidebar-link">Articles</Link>
-          <Link to="/issues/" className="sidebar-link">Issues</Link>
-          <Link to="/authors/" className="sidebar-link">Authors</Link>
-          <Link to="/execs/" className="sidebar-link">Execs</Link>
-          <Link to="/about/" className="sidebar-link">About</Link>
+          <div className="sidebar-links">
+            <Link to="/articles/" className="sidebar-link">Articles</Link>
+            <Link to="/issues/" className="sidebar-link">Issues</Link>
+            <Link to="/authors/" className="sidebar-link">Authors</Link>
+            <Link to="/execs/" className="sidebar-link">Execs</Link>
+            <Link to="/about/" className="sidebar-link">About</Link>
+          </div>
           <Footer />
         </div>
         <div
