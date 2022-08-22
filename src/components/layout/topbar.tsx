@@ -1,14 +1,17 @@
 import { Divider, Flex, Heading } from "@chakra-ui/react";
+import Link from "@components/shared/link";
 import Radamir from "@components/shared/radamir";
 
 const Topbar: React.FC = () => {
   return (
     <Flex flexDirection="column">
       <Flex alignItems="center" p="1rem 0.75rem">
-        <Flex h="100%" alignItems="center" gap="1rem">
-          <Radamir size="2.75rem" />
-          <Heading>The Radish</Heading>
-        </Flex>
+        <Link href="/">
+          <Flex h="100%" alignItems="center" gap="1rem">
+            <Radamir size="2.75rem" />
+            <Heading>The Radish</Heading>
+          </Flex>
+        </Link>
       </Flex>
       <Divider borderColor="grays.100" />
     </Flex>

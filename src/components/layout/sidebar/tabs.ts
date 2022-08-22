@@ -1,5 +1,5 @@
 import { IconType } from "react-icons";
-import { IoNewspaperOutline } from "react-icons/io5";
+import { RiNewspaperLine } from "react-icons/ri";
 import { BsPeople, BsInfoCircle } from "react-icons/bs";
 import { GoBook } from "react-icons/go";
 import { RiVipCrownLine } from "react-icons/ri";
@@ -14,7 +14,7 @@ export interface ITab {
 export const navigationTabs: ITab[] = [
   {
     name: "Articles",
-    icon: IoNewspaperOutline,
+    icon: RiNewspaperLine,
     route: "/articles",
   },
   {
