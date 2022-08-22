@@ -12,12 +12,10 @@ const Link: React.FC<React.PropsWithChildren<LinkProps>> = ({
   href,
   children,
   ...rest
-}) => {
-  return (
-    <NextLink href={href} passHref>
-      <ChakraLink {...rest}>{children}</ChakraLink>
-    </NextLink>
-  );
-};
+}) => (
+  <NextLink href={href} passHref>
+    <ChakraLink {...rest}>{children}</ChakraLink>
+  </NextLink>
+);
 
 export default Link;
