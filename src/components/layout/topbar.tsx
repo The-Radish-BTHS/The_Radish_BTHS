@@ -5,7 +5,7 @@ import Radamir from "@components/shared/radamir";
 const Topbar: React.FC = () => {
   return (
     <Flex flexDirection="column">
-      <Flex alignItems="center" p="1rem 0.75rem">
+      <Flex alignItems="center" p="0.8rem 0.75rem">
         <Link href="/">
           <Flex h="100%" alignItems="center" gap="1rem">
             <Radamir size="2.75rem" />
@@ -13,7 +13,7 @@ const Topbar: React.FC = () => {
           </Flex>
         </Link>
       </Flex>
-      <Divider borderColor="grays.100" />
+      <Divider borderColor="newGrays.100" />
     </Flex>
   );
 };

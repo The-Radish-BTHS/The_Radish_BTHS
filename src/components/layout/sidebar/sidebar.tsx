@@ -7,13 +7,13 @@ const Sidebar: React.FC<{ selectedTab: any }> = ({ selectedTab }) => (
     <Flex
       flexDirection="column"
       justifyContent="flex-start"
-      p="1rem"
-      gap="0.75rem">
+      p="0.9rem 0.7rem"
+      gap="1.2rem">
       {navigationTabs.map((tab, i) => (
         <Tab key={i} tab={tab} selected={selectedTab === tab} />
       ))}
     </Flex>
-    <Divider orientation="vertical" borderColor="grays.100" />
+    <Divider orientation="vertical" borderColor="newGrays.100" />
   </Flex>
 );
 export default Sidebar;

@@ -6,10 +6,12 @@ import { navigationTabs } from "./sidebar/tabs";
 
 interface LayoutProps extends FlexProps {
   pageIndex?: number;
+  header?: string;
 }
 
 const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({
   pageIndex,
+  header,
   children,
   ...rest
 }) => (
@@ -22,7 +24,7 @@ const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({
           pageIndex !== undefined ? navigationTabs[pageIndex] : undefined
         }
       />
-      <Flex flex={1} {...rest}>
+      <Flex flex={1} p="1.5rem 2rem" pb="4rem" flexDirection="column" {...rest}>
         {children}
       </Flex>
     </Flex>

@@ -13,10 +13,16 @@ export const colors = {
     900: "#222222",
     950: "#1A1B1E",
   },
-  grays: {
+  newGrays: {
     0: "#ffffff",
     100: "#979797",
     800: "#474747",
     900: "#333333",
+  },
+  radamir: {
+    lightRed: "#fc3a00",
+    red: "#e06565",
+    darkRed: "#90515b",
+    green: "#58926d",
   },
 };

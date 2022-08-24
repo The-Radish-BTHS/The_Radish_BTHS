@@ -8,6 +8,7 @@ import {
 import { BsPeople, BsPeopleFill } from "react-icons/bs";
 import { IoBookOutline, IoBook } from "react-icons/io5";
 import { AiOutlineInfoCircle, AiFillInfoCircle } from "react-icons/ai";
+import { MdOutlineArticle, MdArticle } from "react-icons/md";
 
 export interface ITab {
   name: string;
@@ -20,8 +21,8 @@ export interface ITab {
 export const navigationTabs: ITab[] = [
   {
     name: "Articles",
-    outlineIcon: RiNewspaperLine,
-    fillIcon: RiNewspaperFill,
+    outlineIcon: MdOutlineArticle,
+    fillIcon: MdArticle,
     route: "/articles",
   },
   {
