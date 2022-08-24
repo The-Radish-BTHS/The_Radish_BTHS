@@ -10,15 +10,13 @@ interface ITabProps {
 export const Tab: React.FC<ITabProps> = ({ tab, selected }) => (
   <Link href={tab.route ?? ""}>
     <Flex flexDirection="column" alignItems="center">
-      <tab.icon
-        size="2rem"
-        fill={selected ? "white" : "rgba(255,255,255, 0.2)"}
-      />
-      <Text
-        fontSize="0.8rem"
-        color={selected ? "white" : "rgba(255,255,255, 0.5)"}>
-        {tab.name}
-      </Text>
+      {selected ? (
+        <tab.fillIcon size="2rem" fill="white" />
+      ) : (
+        <tab.outlineIcon size="2rem" fill="white" />
+      )}
+
+      <Text fontSize="0.8rem">{tab.name}</Text>
     </Flex>
   </Link>
 );

@@ -1,12 +1,18 @@
 import { IconType } from "react-icons";
-import { RiNewspaperLine } from "react-icons/ri";
-import { BsPeople, BsInfoCircle } from "react-icons/bs";
-import { GoBook } from "react-icons/go";
-import { RiVipCrownLine } from "react-icons/ri";
+import {
+  RiNewspaperLine,
+  RiNewspaperFill,
+  RiVipCrownLine,
+  RiVipCrownFill,
+} from "react-icons/ri";
+import { BsPeople, BsPeopleFill } from "react-icons/bs";
+import { IoBookOutline, IoBook } from "react-icons/io5";
+import { AiOutlineInfoCircle, AiFillInfoCircle } from "react-icons/ai";
 
 export interface ITab {
   name: string;
-  icon: IconType;
+  outlineIcon: IconType;
+  fillIcon: IconType;
   route?: string;
   hash?: string;
 }
@@ -14,27 +20,32 @@ export interface ITab {
 export const navigationTabs: ITab[] = [
   {
     name: "Articles",
-    icon: RiNewspaperLine,
+    outlineIcon: RiNewspaperLine,
+    fillIcon: RiNewspaperFill,
     route: "/articles",
   },
   {
     name: "Issues",
-    icon: GoBook,
+    outlineIcon: IoBookOutline,
+    fillIcon: IoBook,
     route: "/issues",
   },
   {
     name: "Authors",
-    icon: BsPeople,
+    outlineIcon: BsPeople,
+    fillIcon: BsPeopleFill,
     route: "/authors",
   },
   {
     name: "Execs",
-    icon: RiVipCrownLine,
+    outlineIcon: RiVipCrownLine,
+    fillIcon: RiVipCrownFill,
     route: "/execs",
   },
   {
     name: "About",
-    icon: BsInfoCircle,
+    outlineIcon: AiOutlineInfoCircle,
+    fillIcon: AiFillInfoCircle,
     route: "/about",
   },
 ];
