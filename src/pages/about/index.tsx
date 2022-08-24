@@ -1,6 +1,7 @@
 import {
   Button,
   Divider,
+  Flex,
   Heading,
   Image,
   Link,
@@ -10,14 +11,49 @@ import {
 } from "@chakra-ui/react";
 import Layout from "@components/layout/layout";
 import { NextPage } from "next";
+import NextLink from "next/link";
+import { IconType } from "react-icons";
+import {
+  AiFillGithub,
+  AiOutlineTwitter,
+  AiFillInstagram,
+} from "react-icons/ai";
+import { BsDiscord } from "react-icons/bs";
+import { MdEmail } from "react-icons/md";
+
+const IconLink: React.FC<{ Icon: IconType; href: string }> = ({
+  Icon,
+  href,
+}) => (
+  <NextLink href={href} passHref>
+    <Link target="_blank">
+      <Icon size="2rem" />
+    </Link>
+  </NextLink>
+);
+
+const SectionHeader: React.FC<{
+  title: string;
+  subtitle: string;
+  noSep?: boolean;
+}> = ({ title, subtitle, noSep = false }) => (
+  <>
+    {noSep ? <></> : <Divider my="1.5rem" />}
+    <Heading fontWeight={800}>{title}</Heading>
+    <Text fontWeight={600} color="radamir.red">
+      {subtitle}
+    </Text>
+  </>
+);
 
 const Index: NextPage = () => {
   return (
     <Layout pageIndex={4} header={"/images/about_header.jpeg"}>
-      <Heading fontWeight={800}>We are The Radish.</Heading>
-      <Text fontWeight={600} color="radamir.red">
-        Bum-Ba-Dum Bum-Bum-Bum-Bum
-      </Text>
+      <SectionHeader
+        title="We are The Radish."
+        subtitle="Bum-Ba-Dum Bum-Bum-Bum-Bum"
+        noSep
+      />
       <Text my="1.5rem">
         We are Brooklyn Technical High School&apos;s first, worst, and only
         satirical newspaper. We probably started around the 1980s—definitely
@@ -35,11 +71,10 @@ const Index: NextPage = () => {
         p="0.6rem">
         Sign Up Now!
       </Button>
-      <Divider my="1.5rem" />
-      <Heading fontWeight={800}>Feed Us.</Heading>
-      <Text fontWeight={600} color="radamir.red">
-        You don&apos;t wanna see us when we&apos;re hungry.
-      </Text>
+      <SectionHeader
+        title="Feed Us."
+        subtitle="You don't wanna see us when we're hungry."
+      />
       <Text my="1.5rem">
         Every month we throw articles into the world like a mama bird trying to
         kill her children. This makes the big radish in the sky very happy. It
@@ -57,11 +92,10 @@ const Index: NextPage = () => {
         colorScheme="gray">
         Submit Here
       </Button>
-      <Divider my="1.5rem" />
-      <Heading fontWeight={800}>Feed us... without writing</Heading>
-      <Text fontWeight={600} color="radamir.red">
-        Now we&apos;re hungry. Look what you&apos;ve done. You proud?
-      </Text>
+      <SectionHeader
+        title="Feed us... without writing"
+        subtitle="Now we're hungry. Look what you've done. You proud?"
+      />
       <Text my="1.5rem">
         Wanna help us throw the articles? We have teams for preparing them! Be
         sure to keep an eye out for when applications for our teams open up. 👀
@@ -88,12 +122,11 @@ const Index: NextPage = () => {
         the time succeed. Did your fifth grade english teacher always tell you
         that you were their favorite? Then this is the team for you.
       </Text>
-      <Divider my="1.5rem" />
-      <Heading fontWeight={800}>Contribution Requirements</Heading>
-      <Text fontWeight={600} color="radamir.red">
-        Also known as Article Rules, Way Words Can Be, Acceptable Language
-        Chunks, etc.
-      </Text>
+      <SectionHeader
+        title="Contribution Requirements"
+        subtitle="Also known as Article Rules, Way Words Can Be, Acceptable Language
+        Chunks, etc."
+      />
       <Text my="1.5rem">
         We like well communicated piles of b*llshit here. Feel free to take a
         look at the many articles we have here on our website for reference.
@@ -125,11 +158,10 @@ const Index: NextPage = () => {
           Did you have fun writing the article?
         </ListItem>
       </UnorderedList>
-      <Divider my="1.5rem" />
-      <Heading fontWeight={800}>Website info</Heading>
-      <Text fontWeight={600} color="radamir.red">
-        Made by the real heroes here.
-      </Text>
+      <SectionHeader
+        title="Website info"
+        subtitle="Made by the real heroes here."
+      />
       <Text my="1.5rem">
         Radish Website designed by Santiago Vira with help from the rest of the
         Radish Team. Content on this site is licensed under a{" "}
@@ -142,6 +174,26 @@ const Index: NextPage = () => {
         </Link>
         .
       </Text>
+      <SectionHeader
+        title="Say Hi!"
+        subtitle="I think we'd make great friends!"
+      />
+      <Flex gap="1rem" my="1.5rem">
+        <IconLink
+          Icon={AiFillGithub}
+          href="https://github.com/The-Radish-BTHS/The_Radish_BTHS"
+        />
+        <IconLink
+          Icon={AiOutlineTwitter}
+          href="https://twitter.com/theradishbths"
+        />
+        <IconLink
+          Icon={AiFillInstagram}
+          href="https://www.instagram.com/theradishbths/"
+        />
+        <IconLink Icon={BsDiscord} href="https://discord.gg/qwad7x9V6c" />
+        <IconLink Icon={MdEmail} href="mailto:theradishbths@gmail.com" />
+      </Flex>
     </Layout>
   );
 };
