@@ -31,7 +31,8 @@ const Index: NextPage = () => {
         as={Link}
         href="https://forms.gle/A9TJPy9a5ZXz4AzFA"
         target="_blank"
-        colorScheme="gray">
+        colorScheme="gray"
+        p="0.6rem">
         Sign Up Now!
       </Button>
       <Divider my="1.5rem" />
@@ -52,6 +53,7 @@ const Index: NextPage = () => {
         as={Link}
         href="https://forms.gle/34NWUt4XUdzP2mjAA"
         target="_blank"
+        p="0.6rem"
         colorScheme="gray">
         Submit Here
       </Button>

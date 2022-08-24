@@ -15,16 +15,22 @@ const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({
   children,
   ...rest
 }) => (
-  <Flex flexDirection="column" maxW="100vw" w="100vw" minH="100vh">
+  <Flex flexDirection="column" maxW="100vw" w="100vw" maxH="100vh" h="100vh">
     <Title page={pageIndex ? navigationTabs[pageIndex].name : ""} />
     <Topbar />
-    <Flex w="100%" flex={1}>
+    <Flex w="100%" maxH="100%" flex={1}>
       <Sidebar
         selectedTab={
           pageIndex !== undefined ? navigationTabs[pageIndex] : undefined
         }
       />
-      <Flex flex={1} p="1.5rem 2rem" pb="4rem" flexDirection="column" {...rest}>
+      <Flex
+        flex={1}
+        p="1.5rem 2rem"
+        pb="4rem"
+        flexDirection="column"
+        overflowY="scroll"
+        {...rest}>
         {children}
       </Flex>
     </Flex>
