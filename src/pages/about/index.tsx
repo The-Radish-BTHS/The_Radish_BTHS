@@ -123,6 +123,23 @@ const Index: NextPage = () => {
           Did you have fun writing the article?
         </ListItem>
       </UnorderedList>
+      <Divider my="1.5rem" />
+      <Heading fontWeight={800}>Website info</Heading>
+      <Text fontWeight={600} color="radamir.red">
+        Made by the real heroes here.
+      </Text>
+      <Text my="1.5rem">
+        Radish Website designed by Santiago Vira with help from the rest of the
+        Radish Team. Content on this site is licensed under a{" "}
+        <Link
+          textDecor="underline"
+          target="_blank"
+          href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+          Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+          International License
+        </Link>
+        .
+      </Text>
     </Layout>
   );
 };
