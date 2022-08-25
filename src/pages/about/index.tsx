@@ -8,6 +8,7 @@ import {
   ListItem,
   Text,
   UnorderedList,
+  useTheme,
 } from "@chakra-ui/react";
 import Layout from "@components/layout/layout";
 import { NextPage } from "next";
@@ -47,6 +48,8 @@ const SectionHeader: React.FC<{
 );
 
 const Index: NextPage = () => {
+  const theme = useTheme();
+
   return (
     <Layout pageIndex={4} header={"/images/about_header.jpeg"}>
       <SectionHeader
@@ -67,9 +70,9 @@ const Index: NextPage = () => {
         as={Link}
         href="https://forms.gle/A9TJPy9a5ZXz4AzFA"
         target="_blank"
-        colorScheme="gray"
-        backgroundColor="whiteAlpha.200"
-        p="0.6rem">
+        p="0.6rem"
+        variant="outline"
+        colorScheme={theme.colors.theme.color}>
         Sign Up Now!
       </Button>
       <SectionHeader
@@ -90,8 +93,8 @@ const Index: NextPage = () => {
         href="https://forms.gle/34NWUt4XUdzP2mjAA"
         target="_blank"
         p="0.6rem"
-        backgroundColor="whiteAlpha.200"
-        colorScheme="gray">
+        variant="outline"
+        colorScheme={theme.colors.theme.color}>
         Submit Here
       </Button>
       <SectionHeader

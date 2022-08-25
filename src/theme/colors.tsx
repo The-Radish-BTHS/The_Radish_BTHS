@@ -19,6 +19,10 @@ export const colors = {
     800: "#474747",
     900: "#333333",
   },
+  theme: {
+    color: "black",
+    bg: "#ebeae5",
+  },
   radamir: {
     lightRed: "#fc3a00",
     red: "#e06565",

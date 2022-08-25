@@ -1,4 +1,4 @@
-import { Flex, Text } from "@chakra-ui/react";
+import { Flex, Text, useTheme } from "@chakra-ui/react";
 import Link from "@components/shared/link";
 import { ITab } from "./tabs";
 
@@ -7,16 +7,20 @@ interface ITabProps {
   selected: boolean;
 }
 
-export const Tab: React.FC<ITabProps> = ({ tab, selected }) => (
-  <Link href={tab.route ?? ""}>
-    <Flex flexDirection="column" alignItems="center">
-      {selected ? (
-        <tab.fillIcon size="1.5rem" fill="white" />
-      ) : (
-        <tab.outlineIcon size="1.5rem" fill="white" />
-      )}
+export const Tab: React.FC<ITabProps> = ({ tab, selected }) => {
+  const theme = useTheme();
 
-      <Text fontSize="0.8rem">{tab.name}</Text>
-    </Flex>
-  </Link>
-);
+  return (
+    <Link href={tab.route ?? ""}>
+      <Flex flexDirection="column" alignItems="center">
+        {selected ? (
+          <tab.fillIcon size="1.5rem" fill={theme.colors.theme.color} />
+        ) : (
+          <tab.outlineIcon size="1.5rem" fill={theme.colors.theme.color} />
+        )}
+
+        <Text fontSize="0.8rem">{tab.name}</Text>
+      </Flex>
+    </Link>
+  );
+};
