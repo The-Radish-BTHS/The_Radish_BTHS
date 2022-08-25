@@ -27,7 +27,7 @@ const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({
       <Flex
         flex={1}
         p="1.5rem 2rem"
-        mb="4rem"
+        pb="10rem"
         flexDirection="column"
         overflowY="scroll"
         {...rest}>
