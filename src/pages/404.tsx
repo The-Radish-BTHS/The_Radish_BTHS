@@ -48,7 +48,8 @@ const Error404: React.FC = () => {
       <Text
         fontSize={isMobile ? "1rem" : "1.4rem"}
         textAlign="center"
-        maxW="38rem">
+        maxW="38rem"
+        mb="2rem">
         Looks like an oopsie doopsie has occurred here! Either the page you were
         looking for doesn&apos;t exist or you wanted to see a crying radish. If
         so, please stop making radishes cry.
