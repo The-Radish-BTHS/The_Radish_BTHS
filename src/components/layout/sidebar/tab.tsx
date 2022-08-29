@@ -24,3 +24,12 @@ export const Tab: React.FC<ITabProps> = ({ tab, selected }) => {
     </Link>
   );
 };
+
+export const TextTab: React.FC<ITabProps> = ({ tab, selected }) => (
+  <Link href={tab.route ?? ""}>
+    <Text fontSize="1rem" fontWeight={selected ? 600 : 400}>
+      {" "}
+      {tab.name}
+    </Text>
+  </Link>
+);

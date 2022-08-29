@@ -17,13 +17,17 @@ const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({
 }) => (
   <Flex flexDirection="column" maxW="100vw" w="100vw" maxH="100vh" h="100vh">
     <Title page={pageIndex ? navigationTabs[pageIndex].name : ""} />
-    <Topbar />
+    <Topbar
+      selectedTab={
+        pageIndex !== undefined ? navigationTabs[pageIndex] : undefined
+      }
+    />
     <Flex w="100%" maxH="100%" flex={1}>
-      <Sidebar
+      {/* <Sidebar
         selectedTab={
           pageIndex !== undefined ? navigationTabs[pageIndex] : undefined
         }
-      />
+      /> */}
       <Flex
         flex={1}
         p="1.5rem 2rem"
