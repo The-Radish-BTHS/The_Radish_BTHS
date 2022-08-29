@@ -23,11 +23,6 @@ const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({
       }
     />
     <Flex w="100%" maxH="100%" flex={1}>
-      {/* <Sidebar
-        selectedTab={
-          pageIndex !== undefined ? navigationTabs[pageIndex] : undefined
-        }
-      /> */}
       <Flex
         flex={1}
         p="1.5rem 2rem"
