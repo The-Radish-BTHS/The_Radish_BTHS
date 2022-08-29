@@ -40,7 +40,7 @@ const SectionHeader: React.FC<{
 }> = ({ title, subtitle, noSep = false }) => (
   <>
     {noSep ? <></> : <Divider my="1.5rem" />}
-    <Heading fontWeight={800}>{title}</Heading>
+    <Heading fontWeight={700}>{title}</Heading>
     <Text fontWeight={600} color="radamir.red">
       {subtitle}
     </Text>
