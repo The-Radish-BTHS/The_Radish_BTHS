@@ -6,17 +6,23 @@ import { navigationTabs } from "./sidebar/tabs";
 
 interface LayoutProps extends FlexProps {
   pageIndex?: number;
+  title?: string;
   header?: string;
 }
 
 const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({
   pageIndex,
+  title,
   header,
   children,
   ...rest
 }) => (
   <Flex flexDirection="column" maxW="100vw" w="100vw" maxH="100vh" h="100vh">
-    <Title page={pageIndex ? navigationTabs[pageIndex].name : ""} />
+    <Title
+      page={
+        pageIndex !== undefined ? navigationTabs[pageIndex].name : title ?? ""
+      }
+    />
     <Topbar
       selectedTab={
         pageIndex !== undefined ? navigationTabs[pageIndex] : undefined

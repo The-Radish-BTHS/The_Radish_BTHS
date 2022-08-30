@@ -7,7 +7,7 @@ const Error404: React.FC = () => {
   const isMobile = useIsMobile();
   const textSize = isMobile ? "7rem" : "10rem";
   return (
-    <Layout alignItems="center" justifyContent="center">
+    <Layout title="Oops!" alignItems="center" justifyContent="center">
       <Flex h={isMobile ? "10rem" : "15rem"} alignItems="flex-end" mb="2.5rem">
         <Text fontWeight={900} fontSize={textSize} lineHeight={textSize}>
           4
