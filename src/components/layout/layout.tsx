@@ -1,8 +1,7 @@
 import { Flex, FlexProps } from "@chakra-ui/react";
-import Sidebar from "./sidebar/sidebar";
 import Title from "./title";
 import Topbar from "./topbar";
-import { navigationTabs } from "./sidebar/tabs";
+import { navigationTabs } from "./tabs/tabs";
 
 interface LayoutProps extends FlexProps {
   pageIndex?: number;

@@ -1,8 +1,11 @@
-import { Divider, Flex, FlexProps, Heading } from "@chakra-ui/react";
+import { Box, Divider, Flex, FlexProps, Heading } from "@chakra-ui/react";
 import Link from "@components/shared/link";
 import Radamir from "@components/shared/radamir";
-import { TextTab } from "./sidebar/tab";
-import { navigationTabs } from "./sidebar/tabs";
+import { useIsMobile } from "@hooks/useIsMobile";
+import { useRef } from "react";
+import MobileNav from "./tabs/mobile-nav";
+import { Tab } from "./tabs/tab";
+import { ITab, navigationTabs } from "./tabs/tabs";
 
 const Wrapper: React.FC<React.PropsWithChildren<FlexProps>> = ({
   children,
@@ -13,7 +16,11 @@ const Wrapper: React.FC<React.PropsWithChildren<FlexProps>> = ({
   </Flex>
 );
 
-const Topbar: React.FC<{ selectedTab: any }> = ({ selectedTab }) => {
+const Topbar: React.FC<{ selectedTab: ITab | undefined }> = ({
+  selectedTab,
+}) => {
+  const isMobile = useIsMobile();
+  const mobileDropdownRef = useRef() as React.MutableRefObject<HTMLDivElement>;
   return (
     <Flex flexDirection="column">
       <Flex alignItems="center" p="0.8rem 0.75rem" w="100%">
@@ -25,13 +32,23 @@ const Topbar: React.FC<{ selectedTab: any }> = ({ selectedTab }) => {
             </Flex>
           </Link>
         </Wrapper>
-        <Wrapper justifyContent="center" gap="1rem">
-          {navigationTabs.map((tab, i) => (
-            <TextTab key={i} tab={tab} selected={selectedTab === tab} />
-          ))}
-        </Wrapper>
-        <Wrapper />
+        {isMobile ? (
+          <MobileNav
+            selectedTab={selectedTab}
+            containerRef={mobileDropdownRef}
+          />
+        ) : (
+          <>
+            <Wrapper justifyContent="center" gap="1rem">
+              {navigationTabs.map((tab, i) => (
+                <Tab key={i} tab={tab} selected={selectedTab === tab} />
+              ))}
+            </Wrapper>
+            <Wrapper />
+          </>
+        )}
       </Flex>
+      <Box ref={mobileDropdownRef} />
       <Divider borderColor="newGrays.100" />
     </Flex>
   );
