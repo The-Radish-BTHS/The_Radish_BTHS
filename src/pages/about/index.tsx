@@ -197,7 +197,6 @@ const Index: NextPage = () => {
           Icon={AiFillInstagram}
           href="https://www.instagram.com/theradishbths/"
         />
-        <IconLink Icon={BsDiscord} href="https://discord.gg/qwad7x9V6c" />
         <IconLink Icon={MdEmail} href="mailto:theradishbths@gmail.com" />
       </Flex>
     </Layout>
