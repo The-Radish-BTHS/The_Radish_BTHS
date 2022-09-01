@@ -1,4 +1,11 @@
-import { Box, Divider, Flex, FlexProps, Heading } from "@chakra-ui/react";
+import {
+  Box,
+  Divider,
+  Flex,
+  FlexProps,
+  Heading,
+  useTheme,
+} from "@chakra-ui/react";
 import Link from "@components/shared/link";
 import Radamir from "@components/shared/radamir";
 import { useIsMobile } from "@hooks/useIsMobile";
@@ -21,8 +28,15 @@ const Topbar: React.FC<{ selectedTab: ITab | undefined }> = ({
 }) => {
   const isMobile = useIsMobile();
   const mobileDropdownRef = useRef() as React.MutableRefObject<HTMLDivElement>;
+  const theme = useTheme();
+  const bg = theme.styles.global.body.bg;
   return (
-    <Flex flexDirection="column">
+    <Flex
+      flexDirection="column"
+      position="absolute"
+      w="100%"
+      bgColor={bg}
+      zIndex={999}>
       <Flex alignItems="center" p="0.8rem 0.75rem" w="100%">
         <Wrapper>
           <Link href="/">
@@ -48,7 +62,7 @@ const Topbar: React.FC<{ selectedTab: ITab | undefined }> = ({
           </>
         )}
       </Flex>
-      <Box ref={mobileDropdownRef} />
+      <Box ref={mobileDropdownRef} zIndex={999} />
       <Divider borderColor="newGrays.100" />
     </Flex>
   );

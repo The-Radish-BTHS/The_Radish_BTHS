@@ -27,7 +27,7 @@ const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({
         pageIndex !== undefined ? navigationTabs[pageIndex] : undefined
       }
     />
-    <Flex w="100%" maxH="100%" flex={1}>
+    <Flex w="100%" maxH="100%" flex={1} pt="4.35rem">
       <Flex
         flex={1}
         p="1.5rem 2rem"
