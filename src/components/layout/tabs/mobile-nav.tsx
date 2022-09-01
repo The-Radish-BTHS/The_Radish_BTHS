@@ -20,14 +20,14 @@ const MobileNav: React.FC<{
       <Flex
         maxW="100rem"
         transition="background-color 0.25s ease-in-out"
-        bgColor={controls.isOpen ? "theme.bg" : undefined}
+        bgColor="transparent"
         justifyContent="space-between"
         alignItems="center">
         <Cross onToggle={controls.onToggle} />
       </Flex>
       <Portal containerRef={containerRef}>
         <Collapse in={controls.isOpen}>
-          <Box w="100vw" bgColor="theme.bg">
+          <Box w="100vw" bgColor="transparent">
             <Flex flexDir="column" gap="1rem" px="1rem" py="1rem">
               {navigationTabs.map((tab, index) => (
                 <Tab tab={tab} key={index} selected={tab === selectedTab} />

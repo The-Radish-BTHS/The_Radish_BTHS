@@ -2,6 +2,7 @@ import { useTheme } from "@chakra-ui/react";
 
 const Radamir: React.FC<{ size: string }> = ({ size }) => {
   const theme = useTheme();
+  const color = theme.styles.global.body.color;
 
   return (
     <svg
@@ -10,7 +11,7 @@ const Radamir: React.FC<{ size: string }> = ({ size }) => {
       xlinkActuate="http://www.w3.org/1999/xlink"
       height={size}
       viewBox="0, 0, 400,400"
-      fill={theme.colors.theme.color}
+      fill={color}
       className="radimir">
       <g id="svgg">
         <path

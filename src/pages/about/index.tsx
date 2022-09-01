@@ -49,6 +49,7 @@ const SectionHeader: React.FC<{
 
 const Index: NextPage = () => {
   const theme = useTheme();
+  const color = theme.styles.global.body.color;
 
   return (
     <Layout pageIndex={4} header={"/images/about_header.jpeg"}>
@@ -72,7 +73,7 @@ const Index: NextPage = () => {
         target="_blank"
         p="0.6rem"
         variant="outline"
-        colorScheme={theme.colors.theme.color}>
+        colorScheme={color}>
         Sign Up Now!
       </Button>
       <SectionHeader
@@ -94,7 +95,7 @@ const Index: NextPage = () => {
         target="_blank"
         p="0.6rem"
         variant="outline"
-        colorScheme={theme.colors.theme.color}>
+        colorScheme={color}>
         Submit Here
       </Button>
       <SectionHeader
