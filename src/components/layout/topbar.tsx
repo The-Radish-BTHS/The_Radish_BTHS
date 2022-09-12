@@ -4,6 +4,7 @@ import {
   Flex,
   FlexProps,
   Heading,
+  Image,
   useTheme,
 } from "@chakra-ui/react";
 import Link from "@components/shared/link";
@@ -23,8 +24,9 @@ const Wrapper: React.FC<React.PropsWithChildren<FlexProps>> = ({
   </Flex>
 );
 
-const Topbar: React.FC<{ selectedTab: ITab | undefined }> = ({
+const Topbar: React.FC<{ selectedTab: ITab | undefined; image: string }> = ({
   selectedTab,
+  image,
 }) => {
   const isMobile = useIsMobile();
   const mobileDropdownRef = useRef() as React.MutableRefObject<HTMLDivElement>;
@@ -41,7 +43,7 @@ const Topbar: React.FC<{ selectedTab: ITab | undefined }> = ({
         <Wrapper>
           <Link href="/">
             <Flex alignItems="center" gap="1rem">
-              <Radamir size="2.75rem" />
+              <Image src={image} alt="icon" maxW="2.75rem" maxH="2.75rem" />
               <Heading>The Radish</Heading>
             </Flex>
           </Link>
