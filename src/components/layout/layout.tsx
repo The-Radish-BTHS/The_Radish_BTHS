@@ -18,7 +18,7 @@ const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({
   children,
   ...rest
 }) => {
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState("/images/happyish.png");
 
   useEffect(() => {
     const getImage = async () => {
