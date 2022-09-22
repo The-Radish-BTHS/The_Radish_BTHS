@@ -15,11 +15,16 @@ import MobileNav from "./tabs/mobile-nav";
 import { Tab } from "./tabs/tab";
 import { ITab, navigationTabs } from "./tabs/tabs";
 
-const Wrapper: React.FC<React.PropsWithChildren<FlexProps>> = ({
+interface WrapperProps extends FlexProps {
+  smallFlex?: boolean;
+}
+
+const Wrapper: React.FC<React.PropsWithChildren<WrapperProps>> = ({
   children,
+  smallFlex = false,
   ...rest
 }) => (
-  <Flex h="100%" flex={1} alignItems="center" {...rest}>
+  <Flex h="100%" flex={smallFlex ? 1 : 2} alignItems="center" {...rest}>
     {children}
   </Flex>
 );
@@ -60,7 +65,7 @@ const Topbar: React.FC<{ selectedTab: ITab | undefined; image: string }> = ({
                 <Tab key={i} tab={tab} selected={selectedTab === tab} />
               ))}
             </Wrapper>
-            <Wrapper />
+            <Wrapper smallFlex />
           </>
         )}
       </Flex>
