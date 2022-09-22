@@ -15,16 +15,11 @@ import MobileNav from "./tabs/mobile-nav";
 import { Tab } from "./tabs/tab";
 import { ITab, navigationTabs } from "./tabs/tabs";
 
-interface WrapperProps extends FlexProps {
-  smallFlex?: boolean;
-}
-
-const Wrapper: React.FC<React.PropsWithChildren<WrapperProps>> = ({
+const Wrapper: React.FC<React.PropsWithChildren<FlexProps>> = ({
   children,
-  smallFlex = false,
   ...rest
 }) => (
-  <Flex h="100%" flex={smallFlex ? 1 : 2} alignItems="center" {...rest}>
+  <Flex h="100%" flex={1} alignItems="center" {...rest}>
     {children}
   </Flex>
 );
@@ -49,7 +44,15 @@ const Topbar: React.FC<{ selectedTab: ITab | undefined; image: string }> = ({
           <Link href="/">
             <Flex alignItems="center" gap="1rem">
               <Image src={image} alt="icon" maxW="2.75rem" maxH="2.75rem" />
-              <Heading>The Radish</Heading>
+              <Heading
+                fontSize={{
+                  base: "1.75rem",
+                  sm: "2.5rem",
+                  md: "1.75rem",
+                  lg: "2.5rem",
+                }}>
+                The Radish
+              </Heading>
             </Flex>
           </Link>
         </Wrapper>
@@ -65,7 +68,7 @@ const Topbar: React.FC<{ selectedTab: ITab | undefined; image: string }> = ({
                 <Tab key={i} tab={tab} selected={selectedTab === tab} />
               ))}
             </Wrapper>
-            <Wrapper smallFlex />
+            <Wrapper />
           </>
         )}
       </Flex>
