@@ -25,6 +25,7 @@ const LatestSection: React.FC<ILatestProps> = ({
         cover={cover}
         description={description}
         issueTime={issueTime}
+        id="abcd"
       />
     </>
   );
