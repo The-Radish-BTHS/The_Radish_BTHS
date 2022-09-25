@@ -9,7 +9,7 @@ const Home: NextPage = () => {
       <Flex flexDirection="column">
         <LatestSection
           issueTime="June 2022"
-          description="Hey gays! Read this!"
+          description="Hey gays! Read this! lorem ipsum dolor sit amet"
           cover="/images/june-2022.webp"
         />
       </Flex>
