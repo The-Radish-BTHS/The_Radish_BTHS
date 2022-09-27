@@ -23,13 +23,18 @@ const Index: NextPage<{ ticketData: ticketDataType }> = ({ ticketData }) => {
 };
 
 export async function getStaticProps() {
-  const actions = await client.fetch(`*[_type == 'ticketValue'] {
+  const actions =
+    await client.fetch(`*[_type == 'ticketValue'] | order(index asc) {
     action,
-    reward
+    description,
+    reward,
+    index
   }`);
-  const prizes = await client.fetch(`*[_type == 'ticketPrize'] {
+  const prizes =
+    await client.fetch(`*[_type == 'ticketPrize'] | order(index asc) {
     prize,
-    cost
+    cost,
+    index
   }`);
   const ticketData = { actions, prizes };
 
