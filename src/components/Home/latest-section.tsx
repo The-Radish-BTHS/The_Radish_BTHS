@@ -34,7 +34,7 @@ const LatestSection: React.FC<ILatestProps> = ({
           templateRows="repeat(3, auto)"
           autoFlow="row"
           gap="2rem"
-          px="1rem"
+          pl="1rem"
           h="100%">
           <ArticleCard
             title="Lead Poisoning"
