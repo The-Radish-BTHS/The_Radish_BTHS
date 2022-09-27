@@ -15,14 +15,18 @@ const LatestSection: React.FC<ILatestProps> = ({
 }) => {
   return (
     <Flex flexDirection="column" alignItems="center">
-      <Heading fontSize="2rem">
+      <Heading fontSize="2rem" textAlign={{ base: "center", md: "left" }}>
         Latest & Greatest:{" "}
         <span style={{ fontWeight: "normal" }}>
           Our newest issue is ready for consumption!
         </span>
       </Heading>
 
-      <Flex gap="1rem" mt="2rem">
+      <Flex
+        gap="1rem"
+        mt="2rem"
+        flexDir={{ base: "column", md: "row" }}
+        alignItems="center">
         <IssueCard
           cover={cover}
           description={description}
@@ -34,7 +38,7 @@ const LatestSection: React.FC<ILatestProps> = ({
           templateRows="repeat(3, auto)"
           autoFlow="row"
           gap="2rem"
-          pl="1rem"
+          pl={{ base: "0", md: "1rem" }}
           h="100%">
           <ArticleCard
             title="Lead Poisoning"

@@ -40,7 +40,7 @@ const ArticleCard: React.FC<CardProps> = ({
         <Center
           p="0.75rem"
           flexDir="column"
-          w={{ base: "94vw", sm: "50vw", md: "40vw", lg: "25vw" }}
+          w={{ base: "94vw", md: "40vw", lg: "25vw" }}
           overflow="hidden">
           <Heading w="100%" fontSize="1.5rem" mb="0.5rem">
             {title}

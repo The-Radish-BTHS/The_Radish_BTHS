@@ -11,7 +11,7 @@ const IssueCard: React.FC<{
     <Link href={`/issues/${id}`} w="fit-content">
       <Flex
         flexDir="column"
-        w={{ base: "94vw", sm: "50vw", md: "40vw", lg: "25vw" }}
+        w={{ base: "94vw", sm: "70vw", md: "40vw", lg: "25vw" }}
         border="1px solid black"
         borderRadius="0.5rem"
         overflow="hidden"

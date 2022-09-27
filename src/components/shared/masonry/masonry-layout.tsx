@@ -4,8 +4,8 @@ import Masonry from "react-masonry-css";
 const MasonryLayout: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
   const breakpointColumnsObj = {
     default: 3,
-    1100: 2,
-    700: 1,
+    990: 2,
+    767: 1,
   };
 
   return (
