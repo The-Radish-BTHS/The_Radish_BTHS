@@ -8,7 +8,10 @@ const TicketTable: React.FC<
       mb="3rem"
       border="1px solid"
       borderRadius="0.5rem"
-      width="60vw">
+      width="60vw"
+      minW="fit-content"
+      overflowY="visible"
+      overflowX="visible">
       <Table variant="simple" colorScheme="grey">
         <Thead>
           <Tr>

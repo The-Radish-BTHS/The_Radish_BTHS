@@ -9,8 +9,13 @@ const Index: NextPage<{ ticketData: ticketDataType }> = ({ ticketData }) => {
   return (
     <Layout alignItems="center">
       <TicketTable textHeader="Action" numericHeader="Reward">
-        {ticketData.actions.map(({ action, reward }, i) => (
-          <Row text={action} number={reward} key={i} />
+        {ticketData.actions.map(({ action, description, reward }, i) => (
+          <Row
+            text={action}
+            description={description}
+            number={reward}
+            key={i}
+          />
         ))}
       </TicketTable>
       <TicketTable textHeader="Prize" numericHeader="Cost">
