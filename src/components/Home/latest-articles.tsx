@@ -1,5 +1,6 @@
 import { Box, Flex, Image, SimpleGrid } from "@chakra-ui/react";
 import ArticleCard from "@components/cards/article-card";
+import MasonryLayout from "@components/shared/masonry/masonry-layout";
 
 const Item: React.FC<{ big?: boolean }> = ({ big }) => (
   <ArticleCard
@@ -20,11 +21,11 @@ const Item: React.FC<{ big?: boolean }> = ({ big }) => (
 
 const LatestArticles: React.FC = () => {
   return (
-    <Box padding={4} w="90%" sx={{ columnCount: [1, 2, 3], columnGap: "1rem" }}>
+    <MasonryLayout>
       {[0, 0, 0, 0, 0, 0].map((src, i) => (
-        <Item key={i} />
+        <Item big={i % 2 == 0} key={i} />
       ))}
-    </Box>
+    </MasonryLayout>
   );
 };
 
