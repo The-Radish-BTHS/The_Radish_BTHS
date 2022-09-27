@@ -23,7 +23,7 @@ export interface ticketDataType {
     reward: number;
     index: number;
   }[];
-  prizes: { prize: string; cost: number; index: number }[];
+  prizes: { prize: string; description: string; cost: number; index: number }[];
 }
 
 // export interface infoType {

@@ -19,8 +19,8 @@ const Index: NextPage<{ ticketData: ticketDataType }> = ({ ticketData }) => {
         ))}
       </TicketTable>
       <TicketTable textHeader="Prize" numericHeader="Cost">
-        {ticketData.prizes.map(({ prize, cost }, i) => (
-          <Row text={prize} number={cost} key={i} />
+        {ticketData.prizes.map(({ prize, description, cost }, i) => (
+          <Row text={prize} description={description} number={cost} key={i} />
         ))}
       </TicketTable>
     </Layout>
@@ -38,6 +38,7 @@ export async function getStaticProps() {
   const prizes =
     await client.fetch(`*[_type == 'ticketPrize'] | order(index asc) {
     prize,
+    description,
     cost,
     index
   }`);
