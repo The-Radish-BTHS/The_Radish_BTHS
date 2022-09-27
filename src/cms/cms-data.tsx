@@ -16,6 +16,11 @@ export interface aboutSectionDataType {
   body: any[];
 }
 
+export interface ticketDataType {
+  actions: { action: string; reward: number }[];
+  prizes: { prize: string; cost: number }[];
+}
+
 // export interface infoType {
 //   _createdAt: string;
 //   _id: string;
