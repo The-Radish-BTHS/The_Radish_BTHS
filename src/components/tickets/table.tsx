@@ -15,8 +15,12 @@ const TicketTable: React.FC<
       <Table variant="simple" colorScheme="grey">
         <Thead>
           <Tr>
-            <Th>{textHeader}</Th>
-            <Th isNumeric>{numericHeader}</Th>
+            <Th fontWeight="bold" color="black">
+              {textHeader}
+            </Th>
+            <Th fontWeight="bold" color="black" isNumeric>
+              {numericHeader}
+            </Th>
           </Tr>
         </Thead>
         <Tbody>{children}</Tbody>
