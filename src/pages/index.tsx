@@ -6,13 +6,11 @@ import type { NextPage } from "next";
 const Home: NextPage = () => {
   return (
     <Layout>
-      <Flex flexDirection="column">
-        <LatestSection
-          issueTime="June 2022"
-          description="Hey gays! Read this! lorem ipsum dolor sit amet"
-          cover="/images/june-2022.webp"
-        />
-      </Flex>
+      <LatestSection
+        issueTime="June 2022"
+        description="Hey gays! Read this! lorem ipsum dolor sit amet"
+        cover="/images/june-2022.webp"
+      />
     </Layout>
   );
 };

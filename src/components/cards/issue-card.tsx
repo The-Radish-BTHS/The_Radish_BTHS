@@ -8,9 +8,8 @@ const IssueCard: React.FC<{
   id: string;
 }> = ({ cover, description, issueTime, id }) => {
   return (
-    <Link href={`/issues/${id}`}>
+    <Link href={`/issues/${id}`} w="fit-content">
       <Flex
-        mt="2rem"
         flexDir="column"
         w={{ base: "94vw", sm: "50vw", md: "40vw", lg: "25vw" }}
         border="1px solid black"
