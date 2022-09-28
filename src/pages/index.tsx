@@ -11,7 +11,6 @@ const Home: NextPage = () => {
         description="Hey gays! Read this! lorem ipsum dolor sit amet"
         cover="/images/june-2022.webp"
       />
-
       <LatestArticles />
     </Layout>
   );

@@ -23,7 +23,7 @@ const ArticleCard: React.FC<CardProps> = ({
         wordBreak="break-word"
         w="100%"
         textAlign="left"
-        ml="1.5rem">
+        mx="1.5rem">
         {description}
       </Text>
       <Text fontSize="0.9rem" w="100%" mt="0.5rem">
