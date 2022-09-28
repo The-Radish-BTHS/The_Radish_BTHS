@@ -11,6 +11,7 @@ const Index: NextPage = () => {
         description='"The Cheese"'
         id="abcd"
         isExec
+        image="/images/aramie.webp"
       />
     </Layout>
   );

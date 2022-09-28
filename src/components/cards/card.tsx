@@ -4,7 +4,7 @@ import React from "react";
 
 interface CardProps extends FlexProps {
   link: string;
-  header: string;
+  header?: string;
   image?: string;
 }
 
@@ -21,6 +21,7 @@ const Card: React.FC<React.PropsWithChildren<CardProps>> = ({
       borderRadius="0.5rem"
       w="fit-content"
       flexDir="column"
+      overflow="hidden"
       _hover={{
         boxShadow: "0 12px 16px 0 rgba(0,0,0,0.24)",
         transitionDuration: "0.4s",
@@ -33,11 +34,12 @@ const Card: React.FC<React.PropsWithChildren<CardProps>> = ({
         <Center
           p="0.75rem"
           flexDir="column"
-          w={{ base: "94vw", md: "40vw", lg: "25vw" }}
-          overflow="hidden">
-          <Heading w="100%" fontSize="1.5rem" mb="0.5rem">
-            {header}
-          </Heading>
+          w={{ base: "94vw", md: "40vw", lg: "25vw" }}>
+          {header && (
+            <Heading w="100%" fontSize="1.5rem" mb="0.5rem">
+              {header}
+            </Heading>
+          )}
           {children}
         </Center>
       </Link>
