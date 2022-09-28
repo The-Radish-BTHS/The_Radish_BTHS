@@ -49,7 +49,7 @@ const LatestSection: React.FC<ILatestProps> = ({
             issueTime="June 2022"
             author="Dommy"
             id="abcd"
-            expand
+            flex={1}
           />
           <ArticleCard
             title="Lead Poisoning"
@@ -57,7 +57,7 @@ const LatestSection: React.FC<ILatestProps> = ({
             issueTime="June 2022"
             author="Dommy"
             id="abcd"
-            expand
+            flex={1}
           />
           <ArticleCard
             title="Lead Poisoning"
@@ -65,7 +65,7 @@ const LatestSection: React.FC<ILatestProps> = ({
             issueTime="June 2022"
             author="Dommy"
             id="abcd"
-            expand
+            flex={1}
           />
         </SimpleGrid>
       </Flex>

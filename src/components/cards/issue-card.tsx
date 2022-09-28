@@ -1,35 +1,39 @@
-import { Center, Flex, Heading, Image, Text } from "@chakra-ui/react";
+import {
+  Center,
+  Flex,
+  FlexProps,
+  Heading,
+  Image,
+  Text,
+} from "@chakra-ui/react";
 import Link from "@components/shared/link";
+import Card from "./card";
 
-const IssueCard: React.FC<{
+interface IssueCardProps extends FlexProps {
   cover: string;
   description: string;
   issueTime: string;
   id: string;
-}> = ({ cover, description, issueTime, id }) => {
+}
+
+const IssueCard: React.FC<IssueCardProps> = ({
+  cover,
+  description,
+  issueTime,
+  id,
+  ...rest
+}) => {
   return (
-    <Link href={`/issues/${id}`} w="fit-content">
-      <Flex
-        flexDir="column"
-        w={{ base: "94vw", sm: "70vw", md: "40vw", lg: "25vw" }}
-        border="1px solid black"
-        borderRadius="0.5rem"
-        overflow="hidden"
-        _hover={{
-          boxShadow: "0 12px 16px 0 rgba(0,0,0,0.24)",
-          transitionDuration: "0.4s",
-        }}>
-        <Image src={cover} alt="recent-cover" w="100%" />
-        <Center p="0.75rem" borderTop="1px solid black" flexDir="column">
-          <Heading w="100%" fontSize="1.5rem" mb="1rem">
-            {issueTime}
-          </Heading>
-          <Text fontSize="1.1rem" wordBreak="break-word" maxW="100%">
-            {description}
-          </Text>
-        </Center>
-      </Flex>
-    </Link>
+    <Card
+      link={`/issues/${id}`}
+      header={issueTime}
+      image={cover}
+      w={{ base: "94vw", sm: "70vw", md: "40vw", lg: "25vw" }}
+      {...rest}>
+      <Text fontSize="1.1rem" wordBreak="break-word" maxW="100%">
+        {description}
+      </Text>
+    </Card>
   );
 };
 
