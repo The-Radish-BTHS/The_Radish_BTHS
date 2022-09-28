@@ -1,6 +1,9 @@
-import { Box, Flex, Image, SimpleGrid } from "@chakra-ui/react";
+import { Box, Flex, Heading, Image, SimpleGrid, Text } from "@chakra-ui/react";
 import ArticleCard from "@components/cards/article-card";
+import Button from "@components/shared/button";
+import Link from "@components/shared/link";
 import MasonryLayout from "@components/shared/masonry/masonry-layout";
+import { AiOutlineArrowRight } from "react-icons/ai";
 
 const Item: React.FC<{ big?: boolean }> = ({ big }) => (
   <ArticleCard
@@ -21,11 +24,20 @@ const Item: React.FC<{ big?: boolean }> = ({ big }) => (
 
 const LatestArticles: React.FC = () => {
   return (
-    <MasonryLayout>
-      {[0, 0, 0, 0, 0, 0].map((src, i) => (
-        <Item big={i % 2 == 0} key={i} />
-      ))}
-    </MasonryLayout>
+    <Flex flexDirection="column" alignItems="center">
+      <Heading fontSize="2rem" textAlign="center" mb="1rem">
+        New Articles:{" "}
+        <span style={{ fontWeight: "normal" }}>Feast on these!</span>
+      </Heading>
+      <MasonryLayout>
+        {[0, 0, 0, 0, 0, 0].map((src, i) => (
+          <Item big={i % 2 == 0} key={i} />
+        ))}
+      </MasonryLayout>
+      <Link as={Button} href="/issues" mt="2.5rem">
+        <Text mr="0.5rem">All Articles!</Text> <AiOutlineArrowRight />
+      </Link>
+    </Flex>
   );
 };
 

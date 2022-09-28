@@ -1,6 +1,9 @@
 import { Flex, Heading, Image, SimpleGrid, Text } from "@chakra-ui/react";
 import ArticleCard from "@components/cards/article-card";
 import IssueCard from "@components/cards/issue-card";
+import Button from "@components/shared/button";
+import Link from "@components/shared/link";
+import { AiOutlineArrowRight } from "react-icons/ai";
 
 interface ILatestProps {
   issueTime: string;
@@ -15,7 +18,7 @@ const LatestSection: React.FC<ILatestProps> = ({
 }) => {
   return (
     <Flex flexDirection="column" alignItems="center">
-      <Heading fontSize="2rem" textAlign={{ base: "center", md: "left" }}>
+      <Heading fontSize="2rem" textAlign="center">
         Latest & Greatest:{" "}
         <span style={{ fontWeight: "normal" }}>
           Our newest issue is ready for consumption!
@@ -66,6 +69,9 @@ const LatestSection: React.FC<ILatestProps> = ({
           />
         </SimpleGrid>
       </Flex>
+      <Link as={Button} href="/issues" mt="2.5rem">
+        <Text mr="0.5rem">All Issues!</Text> <AiOutlineArrowRight />
+      </Link>
     </Flex>
   );
 };
