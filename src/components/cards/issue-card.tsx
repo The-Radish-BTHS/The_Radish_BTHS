@@ -28,7 +28,7 @@ const IssueCard: React.FC<IssueCardProps> = ({
       link={`/issues/${id}`}
       header={issueTime}
       image={cover}
-      w={{ base: "94vw", sm: "70vw", md: "40vw", lg: "25vw" }}
+      outerStyles={{ w: { base: "94vw", sm: "70vw", md: "40vw", lg: "25vw" } }}
       {...rest}>
       <Text fontSize="1.1rem" wordBreak="break-word" maxW="100%">
         {description}

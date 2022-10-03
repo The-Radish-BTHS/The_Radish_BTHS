@@ -27,8 +27,7 @@ const Item: React.FC<{ big?: boolean }> = ({ big }) => (
     author="Dommy"
     id="abcd"
     display="inline-block"
-    h="fit-content"
-    my="1rem"
+    outerStyles={{ h: "fit-content", my: "1rem" }}
   />
 );
 
@@ -44,7 +43,7 @@ const LatestArticles: React.FC = () => {
           <Item big={i % 2 == 0} key={i} />
         ))}
       </MasonryLayout>
-      <Link as={Button} href="/issues" mt="2.5rem">
+      <Link as={Button} href="/articles" mt="2.5rem">
         <Text mr="0.5rem">All Articles!</Text> <AiOutlineArrowRight />
       </Link>
     </Flex>

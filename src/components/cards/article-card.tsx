@@ -8,6 +8,7 @@ interface CardProps extends FlexProps {
   issueTime: string;
   author: string;
   id: string;
+  outerStyles?: FlexProps;
   tags?: { name: string; id: string }[];
 }
 
@@ -17,17 +18,23 @@ const ArticleCard: React.FC<CardProps> = ({
   issueTime,
   author,
   id,
+  outerStyles,
   tags = [],
   ...rest
 }) => {
   return (
-    <Card link={`/articles/${id}`} header={title} tags={tags} {...rest}>
+    <Card
+      link={`/articles/${id}`}
+      header={title}
+      tags={tags}
+      outerStyles={outerStyles}
+      {...rest}>
       <Text
         fontSize="1.1rem"
         wordBreak="break-word"
-        w="100%"
         textAlign="left"
-        mx="1.5rem">
+        w="95%"
+        ml="auto">
         {description}
       </Text>
       <Text fontSize="0.9rem" w="100%" mt="0.5rem">

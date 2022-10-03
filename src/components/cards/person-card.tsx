@@ -23,12 +23,12 @@ const PersonCard: React.FC<PersonCardProps> = ({
   return (
     <Card
       link={`/${isExec ? "execs" : "authors"}/${id}`}
-      pb="0.6rem"
       image={image}
-      w={{ base: "94vw", sm: "70vw", md: "40vw", lg: "25vw" }}
+      w={{ base: "85vw", sm: "70vw", md: "40vw", lg: "25vw" }}
+      outerStyles={{ w: { base: "85vw", sm: "70vw", md: "40vw", lg: "25vw" } }}
       {...rest}>
       <Flex justifyContent="space-between" w="100%" alignItems="center">
-        <Flex flexDir="column">
+        <Flex flexDir="column" w="100%">
           <Heading w="100%" fontSize="1.5rem" mb="0.5rem">
             {name}
           </Heading>
