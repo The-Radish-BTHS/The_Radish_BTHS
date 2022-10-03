@@ -1,17 +1,27 @@
-import { Center, Flex, FlexProps, Heading, Image } from "@chakra-ui/react";
+import {
+  Center,
+  Divider,
+  Flex,
+  FlexProps,
+  Heading,
+  Image,
+} from "@chakra-ui/react";
 import Link from "@components/shared/link";
 import React from "react";
+import CardTag from "./card-tag";
 
 interface CardProps extends FlexProps {
   link: string;
   header?: string;
   image?: string;
+  tags?: { name: string; id: string }[];
 }
 
 const Card: React.FC<React.PropsWithChildren<CardProps>> = ({
   link,
   header,
   image,
+  tags,
   children,
   ...rest
 }) => {
@@ -43,6 +53,26 @@ const Card: React.FC<React.PropsWithChildren<CardProps>> = ({
           {children}
         </Center>
       </Link>
+      {tags && tags.length > 0 && (
+        <Flex flexDir="column">
+          <Flex px="0.75rem">
+            <Divider borderColor="black" />
+          </Flex>
+          <Flex
+            p="0.75rem"
+            flexWrap="wrap"
+            maxW={{ base: "94vw", md: "40vw", lg: "25vw" }}>
+            {tags.map((tag, i) => (
+              <>
+                <CardTag {...tag} key={i} />
+                {i + 1 !== tags.length && (
+                  <span style={{ fontWeight: "bold" }}> ∙ </span>
+                )}
+              </>
+            ))}
+          </Flex>
+        </Flex>
+      )}
     </Flex>
   );
 };

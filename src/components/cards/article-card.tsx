@@ -1,5 +1,6 @@
-import { FlexProps, Text } from "@chakra-ui/react";
+import { Flex, FlexProps, Text } from "@chakra-ui/react";
 import Card from "./card";
+import CardTag from "./card-tag";
 
 interface CardProps extends FlexProps {
   title: string;
@@ -7,17 +8,20 @@ interface CardProps extends FlexProps {
   issueTime: string;
   author: string;
   id: string;
+  tags?: { name: string; id: string }[];
 }
+
 const ArticleCard: React.FC<CardProps> = ({
   title,
   description,
   issueTime,
   author,
   id,
+  tags = [],
   ...rest
 }) => {
   return (
-    <Card link={`/articles/${id}`} header={title} {...rest}>
+    <Card link={`/articles/${id}`} header={title} tags={tags} {...rest}>
       <Text
         fontSize="1.1rem"
         wordBreak="break-word"

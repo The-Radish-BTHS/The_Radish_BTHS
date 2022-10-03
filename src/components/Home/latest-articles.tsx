@@ -13,6 +13,16 @@ const Item: React.FC<{ big?: boolean }> = ({ big }) => (
         ? "I think you should do it I think you should do it I think you should do it I think you should do it I think you should do it"
         : "heyooooo"
     }
+    tags={[
+      { name: "Satire", id: "wee" },
+      { name: "Satire", id: "wee" },
+      { name: "Satire", id: "wee" },
+      { name: "Satire", id: "wee" },
+      { name: "Satire", id: "wee" },
+      { name: "Satire", id: "wee" },
+      { name: "Satire", id: "wee" },
+      { name: "Satire", id: "wee" },
+    ]}
     issueTime="June 2022"
     author="Dommy"
     id="abcd"
