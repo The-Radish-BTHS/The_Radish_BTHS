@@ -29,8 +29,13 @@ const IssueCard: React.FC<IssueCardProps> = ({
       header={issueTime}
       image={cover}
       outerStyles={{ w: { base: "94vw", sm: "70vw", md: "40vw", lg: "25vw" } }}
+      w={{ base: "94vw", sm: "70vw", md: "40vw", lg: "25vw" }}
       {...rest}>
-      <Text fontSize="1.1rem" wordBreak="break-word" maxW="100%">
+      <Text
+        fontSize="1.1rem"
+        wordBreak="break-word"
+        whiteSpace="pre-wrap"
+        w="100%">
         {description}
       </Text>
     </Card>
