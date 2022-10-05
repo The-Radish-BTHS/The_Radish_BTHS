@@ -1,12 +1,4 @@
-import {
-  Center,
-  Flex,
-  FlexProps,
-  Heading,
-  Image,
-  Text,
-} from "@chakra-ui/react";
-import Link from "@components/shared/link";
+import { FlexProps, Text } from "@chakra-ui/react";
 import Card from "./card";
 
 interface IssueCardProps extends FlexProps {
