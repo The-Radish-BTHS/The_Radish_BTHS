@@ -53,6 +53,7 @@
     "feathers-sequelize": "^6.3.4",
     "helmet": "^5.1.0",
     "pg": "^8.8.0",
+    "pg-hstore": "^2.3.4",
     "sequelize": "^6.20.1",
     "serve-favicon": "^2.5.0",
     "socket.io-parser": "^4.2.1",
