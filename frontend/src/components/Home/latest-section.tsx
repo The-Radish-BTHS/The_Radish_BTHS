@@ -46,24 +46,24 @@ const LatestSection: React.FC<ILatestProps> = ({
           <ArticleCard
             title="Lead Poisoning"
             description="I think you should do it"
-            issueTime="June 2022"
-            author="Dommy"
+            issue={{ time: "June 2022", id: "abcd" }}
+            author={{ name: "Dommy", id: "abcd", isExec: false }}
             id="abcd"
             flex={1}
           />
           <ArticleCard
             title="Lead Poisoning"
             description="I think you should do it"
-            issueTime="June 2022"
-            author="Dommy"
+            issue={{ time: "June 2022", id: "abcd" }}
+            author={{ name: "Dommy", id: "abcd", isExec: false }}
             id="abcd"
             flex={1}
           />
           <ArticleCard
             title="Lead Poisoning"
             description="I think you should do it"
-            issueTime="June 2022"
-            author="Dommy"
+            issue={{ time: "June 2022", id: "abcd" }}
+            author={{ name: "Dommy", id: "abcd", isExec: false }}
             id="abcd"
             flex={1}
           />

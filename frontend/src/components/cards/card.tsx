@@ -3,12 +3,33 @@ import {
   Divider,
   Flex,
   FlexProps,
+  LinkProps,
   Heading,
   Image,
 } from "@chakra-ui/react";
 import Link from "@components/shared/link";
 import React from "react";
 import CardTag from "./card-tag";
+
+interface SometimesLinkProps extends LinkProps {
+  exists: boolean;
+  href: string;
+}
+
+const SometimesLink: React.FC<React.PropsWithChildren<SometimesLinkProps>> = ({
+  href,
+  exists,
+  children,
+  ...rest
+}) => {
+  return exists ? (
+    <Link href={href} {...rest}>
+      {children}
+    </Link>
+  ) : (
+    <>{children}</>
+  );
+};
 
 interface CardProps extends FlexProps {
   link: string;
@@ -38,7 +59,7 @@ const Card: React.FC<React.PropsWithChildren<CardProps>> = ({
         transitionDuration: "0.4s",
       }}
       {...outerStyles}>
-      <Link href={link}>
+      <SometimesLink href={link} exists={link !== ""}>
         {image && (
           <Image
             src={image}
@@ -60,7 +81,7 @@ const Card: React.FC<React.PropsWithChildren<CardProps>> = ({
           )}
           {children}
         </Center>
-      </Link>
+      </SometimesLink>
       {tags && tags.length > 0 && (
         <Flex flexDir="column">
           <Flex px="0.75rem">

@@ -23,8 +23,8 @@ const Item: React.FC<{ big?: boolean }> = ({ big }) => (
       { name: "Satire", id: "wee" },
       { name: "Satire", id: "wee" },
     ]}
-    issueTime="June 2022"
-    author="Dommy"
+    issue={{ time: "June 2022", id: "abcd" }}
+    author={{ name: "Dommy", id: "abcd", isExec: false }}
     id="abcd"
     display="inline-block"
     outerStyles={{ h: "fit-content", my: "1rem" }}
