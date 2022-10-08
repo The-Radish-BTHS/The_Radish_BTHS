@@ -32,10 +32,10 @@ export const navigationTabs: ITab[] = [
     route: "/issues",
   },
   {
-    name: "Authors",
+    name: "People",
     outlineIcon: BsPeople,
     fillIcon: BsPeopleFill,
-    route: "/authors",
+    route: "/people",
   },
   {
     name: "Execs",
