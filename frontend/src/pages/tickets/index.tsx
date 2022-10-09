@@ -1,6 +1,6 @@
 import client, { ticketDataType } from "@/cms/cms-data";
 import Layout from "@components/layout/layout";
-import { NextPage } from "next";
+import { GetStaticProps, NextPage } from "next";
 
 import Row from "@components/tickets/row";
 import TicketTable from "@components/tickets/table";
@@ -27,7 +27,7 @@ const Index: NextPage<{ ticketData: ticketDataType }> = ({ ticketData }) => {
   );
 };
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   const actions =
     await client.fetch(`*[_type == 'ticketValue'] | order(index asc) {
     action,
@@ -49,6 +49,6 @@ export async function getStaticProps() {
       ticketData,
     },
   };
-}
+};
 
 export default Index;

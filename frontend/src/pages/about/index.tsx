@@ -4,7 +4,7 @@ import AboutSection from "@components/about/about-section";
 import { IconLink } from "@components/about/icon-link";
 import { SectionHeader } from "@components/about/section-header";
 import Layout from "@components/layout/layout";
-import { NextPage } from "next";
+import { GetStaticProps, NextPage } from "next";
 import {
   AiFillGithub,
   AiOutlineTwitter,
@@ -43,7 +43,7 @@ const Index: NextPage<{ sectionsData: aboutSectionDataType[] }> = ({
   );
 };
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   const sectionsData =
     await client.fetch(`*[_type == 'aboutSection'] | order(index asc) {
     title,
@@ -59,6 +59,6 @@ export async function getStaticProps() {
       sectionsData,
     },
   };
-}
+};
 
 export default Index;

@@ -1,3 +1,4 @@
+import { Flex } from "@chakra-ui/react";
 import Layout from "@components/layout/layout";
 import { NextPage } from "next";
 
