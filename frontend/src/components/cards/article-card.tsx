@@ -1,3 +1,6 @@
+import IssueType from "@/types/issue";
+import PersonType from "@/types/person";
+import TagType from "@/types/tag";
 import { Flex, FlexProps, Heading, Text } from "@chakra-ui/react";
 import Link from "@components/shared/link";
 import Card from "./card";
@@ -6,18 +9,18 @@ import CardTag from "./card-tag";
 interface CardProps extends FlexProps {
   title: string;
   description: string;
-  issue: { time: string; id: string };
-  author: { name: string; id: string; isExec: boolean };
+  issue: IssueType;
+  authors: PersonType[];
   id: string;
   outerStyles?: FlexProps;
-  tags?: { name: string; id: string }[];
+  tags?: TagType[];
 }
 
 const ArticleCard: React.FC<CardProps> = ({
   title,
   description,
   issue,
-  author,
+  authors,
   id,
   outerStyles,
   tags = [],
@@ -44,9 +47,15 @@ const ArticleCard: React.FC<CardProps> = ({
         </Text>
       </Link>
       <Flex fontSize="0.9rem" w="100%" mt="0.5rem">
-        <Link href={`/${author.isExec ? "execs" : "people"}/${author.id}`}>
-          {author.name}
-        </Link>
+        {authors.map((author, i) => (
+          <Link
+            key={i}
+            href={`/${author.isExec ? "execs" : "people"}/${author.id}`}
+            mr="0.2rem">
+            {author.name}
+          </Link>
+        ))}
+
         <Text fontWeight="bold" mx="0.2rem">
           {" "}
           ∙{" "}
