@@ -1,8 +1,9 @@
 import ArticleType from "./article";
 
-export default interface TagType {
+export default interface PersonType {
   name: string;
-  description: string;
+  title: string;
+  isExec: boolean;
 
   id: string;
   articles: ArticleType[];
