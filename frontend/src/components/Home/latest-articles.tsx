@@ -14,17 +14,31 @@ const Item: React.FC<{ big?: boolean }> = ({ big }) => (
         : "heyooooo"
     }
     tags={[
-      { name: "Satire", id: "wee" },
-      { name: "Satire", id: "wee" },
-      { name: "Satire", id: "wee" },
-      { name: "Satire", id: "wee" },
-      { name: "Satire", id: "wee" },
-      { name: "Satire", id: "wee" },
-      { name: "Satire", id: "wee" },
-      { name: "Satire", id: "wee" },
+      { name: "Satire", id: "wee", description: "wooo", articles: [] },
+      { name: "Satire", id: "wee", description: "wooo", articles: [] },
+      { name: "Satire", id: "wee", description: "wooo", articles: [] },
+      { name: "Satire", id: "wee", description: "wooo", articles: [] },
+      { name: "Satire", id: "wee", description: "wooo", articles: [] },
+      { name: "Satire", id: "wee", description: "wooo", articles: [] },
+      { name: "Satire", id: "wee", description: "wooo", articles: [] },
+      { name: "Satire", id: "wee", description: "wooo", articles: [] },
     ]}
-    issue={{ time: "June 2022", id: "abcd" }}
-    author={{ name: "Dommy", id: "abcd", isExec: false }}
+    issue={{
+      time: "June 2022",
+      id: "abcd",
+      cover: "/images/june-2022.webp",
+      description: "slay gay",
+      articles: [],
+    }}
+    authors={[
+      {
+        name: "Dommy",
+        title: "writer",
+        articles: [],
+        id: "abcd",
+        isExec: false,
+      },
+    ]}
     id="abcd"
     display="inline-block"
     outerStyles={{ h: "fit-content", my: "1rem" }}

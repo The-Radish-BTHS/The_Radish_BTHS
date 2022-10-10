@@ -15,13 +15,14 @@ const IssueCard: React.FC<IssueCardProps> = ({
   id,
   ...rest
 }) => {
+  const widths = { base: "94vw", sm: "70vw", md: "40vw", lg: "33vw" };
   return (
     <Card
       link={`/issues/${id}`}
       header={issueTime}
       image={cover}
-      outerStyles={{ w: { base: "94vw", sm: "70vw", md: "40vw", lg: "25vw" } }}
-      w={{ base: "94vw", sm: "70vw", md: "40vw", lg: "25vw" }}
+      outerStyles={{ w: widths }}
+      w={widths}
       {...rest}>
       <Text
         fontSize="1.1rem"

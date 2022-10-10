@@ -11,6 +11,35 @@ interface ILatestProps {
   cover: string;
 }
 
+const Item: React.FC = () => (
+  <ArticleCard
+    title="Lead Poisoning"
+    description="I think you should do it. I think that you should do the thing you have been watiting your whole life to do. Do it! Now! Or else! Grrrrrrrr. ANyway I think I'm just stretching this whole thing out weewoo"
+    tags={[
+      { name: "Satire", id: "wee", description: "wooo", articles: [] },
+      { name: "Satire", id: "wee", description: "wooo", articles: [] },
+    ]}
+    issue={{
+      time: "June 2022",
+      id: "abcd",
+      cover: "/images/june-2022.webp",
+      description: "slay gay",
+      articles: [],
+    }}
+    authors={[
+      {
+        name: "Dommy",
+        title: "writer",
+        articles: [],
+        id: "abcd",
+        isExec: false,
+      },
+    ]}
+    id="abcd"
+    flex={1}
+  />
+);
+
 const LatestSection: React.FC<ILatestProps> = ({
   issueTime,
   description,
@@ -43,30 +72,9 @@ const LatestSection: React.FC<ILatestProps> = ({
           gap="2rem"
           pl={{ base: "0", md: "1rem" }}
           h="100%">
-          <ArticleCard
-            title="Lead Poisoning"
-            description="I think you should do it"
-            issue={{ time: "June 2022", id: "abcd" }}
-            author={{ name: "Dommy", id: "abcd", isExec: false }}
-            id="abcd"
-            flex={1}
-          />
-          <ArticleCard
-            title="Lead Poisoning"
-            description="I think you should do it"
-            issue={{ time: "June 2022", id: "abcd" }}
-            author={{ name: "Dommy", id: "abcd", isExec: false }}
-            id="abcd"
-            flex={1}
-          />
-          <ArticleCard
-            title="Lead Poisoning"
-            description="I think you should do it"
-            issue={{ time: "June 2022", id: "abcd" }}
-            author={{ name: "Dommy", id: "abcd", isExec: false }}
-            id="abcd"
-            flex={1}
-          />
+          <Item />
+          <Item />
+          <Item />
         </SimpleGrid>
       </Flex>
       <Link as={Button} href="/issues" mt="2.5rem">

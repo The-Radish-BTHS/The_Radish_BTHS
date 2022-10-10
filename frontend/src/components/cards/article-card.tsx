@@ -16,6 +16,13 @@ interface CardProps extends FlexProps {
   tags?: TagType[];
 }
 
+const prune = (text: string, n: number = 90) =>
+  text.length < n
+    ? text
+    : text[n] == " "
+    ? text.slice(0, n)
+    : text.slice(0, n).slice(0, text.slice(0, n).lastIndexOf(" "));
+
 const ArticleCard: React.FC<CardProps> = ({
   title,
   description,
@@ -43,11 +50,11 @@ const ArticleCard: React.FC<CardProps> = ({
           textAlign="left"
           w="95%"
           ml="auto">
-          {description}
+          {prune(description)}
         </Text>
       </Link>
       <Flex fontSize="0.9rem" w="100%" mt="0.5rem">
-        {authors.map((author, i) => (
+        {authors?.map((author, i) => (
           <Link
             key={i}
             href={`/${author.isExec ? "execs" : "people"}/${author.id}`}
