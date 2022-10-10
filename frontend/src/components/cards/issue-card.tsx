@@ -6,6 +6,7 @@ interface IssueCardProps extends FlexProps {
   description: string;
   issueTime: string;
   id: string;
+  outerStyles?: FlexProps;
 }
 
 const IssueCard: React.FC<IssueCardProps> = ({
@@ -13,6 +14,7 @@ const IssueCard: React.FC<IssueCardProps> = ({
   description,
   issueTime,
   id,
+  outerStyles,
   ...rest
 }) => {
   const widths = { base: "94vw", sm: "70vw", md: "40vw", lg: "33vw" };
@@ -21,7 +23,7 @@ const IssueCard: React.FC<IssueCardProps> = ({
       link={`/issues/${id}`}
       header={issueTime}
       image={cover}
-      outerStyles={{ w: widths }}
+      outerStyles={{ ...outerStyles, w: widths }}
       w={widths}
       {...rest}>
       <Text

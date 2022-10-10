@@ -1,4 +1,11 @@
-import { Flex, Heading, Image, SimpleGrid, Text } from "@chakra-ui/react";
+import {
+  Flex,
+  Heading,
+  Image,
+  SimpleGrid,
+  Text,
+  useBreakpointValue,
+} from "@chakra-ui/react";
 import ArticleCard from "@components/cards/article-card";
 import IssueCard from "@components/cards/issue-card";
 import Button from "@components/shared/button";
@@ -45,6 +52,8 @@ const LatestSection: React.FC<ILatestProps> = ({
   description,
   cover,
 }) => {
+  const numArticles = useBreakpointValue({ base: 3, md: 2, xl: 3 });
+
   return (
     <Flex flexDirection="column" alignItems="center">
       <Heading fontSize="2rem" textAlign="center">
@@ -59,22 +68,29 @@ const LatestSection: React.FC<ILatestProps> = ({
         mt="2rem"
         flexDir={{ base: "column", md: "row" }}
         alignItems="center">
-        <IssueCard
-          cover={cover}
-          description={description}
-          issueTime={issueTime}
-          id="abcd"
-        />
+        <Flex flexDir="column" h="100%">
+          {" "}
+          <IssueCard
+            cover={cover}
+            description={description}
+            issueTime={issueTime}
+            id="abcd"
+            outerStyles={{ flex: 1 }}
+          />
+        </Flex>
+
         <SimpleGrid
           templateColumns="auto"
-          templateRows="repeat(3, auto)"
+          templateRows={`repeat(${numArticles}, auto)`}
           autoFlow="row"
           gap="2rem"
           pl={{ base: "0", md: "1rem" }}
           h="100%">
-          <Item />
-          <Item />
-          <Item />
+          {Array(numArticles)
+            .fill(0)
+            .map((_, i) => (
+              <Item key={i} />
+            ))}
         </SimpleGrid>
       </Flex>
       <Link as={Button} href="/issues" mt="2.5rem">
