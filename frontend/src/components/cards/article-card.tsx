@@ -17,9 +17,7 @@ interface CardProps extends FlexProps {
 }
 
 const prune = (text: string, n: number = 90) =>
-  text.length < n
-    ? text
-    : text[n] == " "
+  text[n] == " " || text.length < n
     ? text.slice(0, n)
     : text.slice(0, n).slice(0, text.slice(0, n).lastIndexOf(" "));
 
