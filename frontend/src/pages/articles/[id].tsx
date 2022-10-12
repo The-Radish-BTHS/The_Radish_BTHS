@@ -1,16 +1,24 @@
 import ArticleType from "@/types/article";
 import { Flex, Heading, Text } from "@chakra-ui/react";
+import ArticleCard from "@components/cards/article-card";
 import CardTag from "@components/cards/card-tag";
 import Layout from "@components/layout/layout";
 import Link from "@components/shared/link";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import { AiOutlineArrowRight } from "react-icons/ai";
+import Button from "@components/shared/button";
 
-const Article: NextPage<ArticleType> = ({
+interface ArticlePageProps extends ArticleType {
+  latest: ArticleType[];
+}
+
+const Article: NextPage<ArticlePageProps> = ({
   title,
   content,
   authors,
   issue,
   tags,
+  latest,
 }) => {
   return (
     <Layout alignItems="center">
@@ -55,6 +63,21 @@ const Article: NextPage<ArticleType> = ({
           </span>
         ))}
       </Text>
+      <Heading fontSize="2rem" textAlign="center" mt="4rem">
+        Read more great articles!
+      </Heading>
+      <Flex
+        gap="1.5rem"
+        mt="1rem"
+        flexDir={{ base: "column", lg: "row" }}
+        w="95%">
+        {latest.map((article, i) => (
+          <ArticleCard {...article} outerStyles={{ w: "100%" }} key={i} />
+        ))}
+      </Flex>
+      <Link as={Button} href="/articles" mt="2.5rem">
+        <Text mr="0.5rem">All Articles!</Text> <AiOutlineArrowRight />
+      </Link>
     </Layout>
   );
 };
@@ -111,6 +134,38 @@ export const getStaticProps: GetStaticProps = async (context) => {
     },
   ];
 
+  const latest = [
+    {
+      title: "Be Gay do Slay",
+      content:
+        "I think you should do it I think you should do it I think you should do it I think you should do it I think you should do it",
+
+      id: "slay",
+      authors,
+      issue,
+      tags,
+    },
+    {
+      title: "Be Gay do Slay",
+      content: "I think it",
+
+      id: "slay",
+      authors,
+      issue,
+      tags,
+    },
+    {
+      title: "Be Gay do Slay",
+      content:
+        "I think you should do it I think you should do it I think you should do it I think you should do it I think you should do it",
+
+      id: "slay",
+      authors,
+      issue,
+      tags,
+    },
+  ];
+
   return {
     props: {
       title,
@@ -119,6 +174,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       authors,
       issue,
       tags,
+      latest,
     },
   };
 };

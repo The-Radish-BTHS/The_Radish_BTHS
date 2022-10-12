@@ -1,3 +1,4 @@
+import ArticleType from "@/types/article";
 import IssueType from "@/types/issue";
 import PersonType from "@/types/person";
 import TagType from "@/types/tag";
@@ -6,14 +7,10 @@ import Link from "@components/shared/link";
 import Card from "./card";
 import CardTag from "./card-tag";
 
-interface CardProps extends FlexProps {
+interface CardProps extends FlexProps, ArticleType {
   title: string;
-  description: string;
-  issue: IssueType;
-  authors: PersonType[];
   id: string;
   outerStyles?: FlexProps;
-  tags?: TagType[];
 }
 
 const prune = (text: string, n: number = 90) =>
@@ -23,7 +20,7 @@ const prune = (text: string, n: number = 90) =>
 
 const ArticleCard: React.FC<CardProps> = ({
   title,
-  description,
+  content,
   issue,
   authors,
   id,
@@ -39,16 +36,16 @@ const ArticleCard: React.FC<CardProps> = ({
       justifyContent="flex-start"
       {...rest}>
       <Link href={`/articles/${id}`} w="100%">
-        <Heading w="100%" fontSize="1.5rem" mb="0.5rem">
+        <Heading maxW="100%" fontSize="1.5rem" mb="0.5rem">
           {title}
         </Heading>
         <Text
           fontSize="1.1rem"
           wordBreak="break-word"
           textAlign="left"
-          w="95%"
-          ml="auto">
-          {prune(description)}
+          w="75%"
+          ml="2.5%">
+          {prune(content)}...
         </Text>
       </Link>
       <Flex fontSize="0.9rem" w="100%" mt="0.5rem">

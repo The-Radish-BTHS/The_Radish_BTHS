@@ -8,7 +8,7 @@ import { AiOutlineArrowRight } from "react-icons/ai";
 const Item: React.FC<{ big?: boolean }> = ({ big }) => (
   <ArticleCard
     title="Lead Poisoning"
-    description={
+    content={
       big
         ? "I think you should do it I think you should do it I think you should do it I think you should do it I think you should do it"
         : "heyooooo"

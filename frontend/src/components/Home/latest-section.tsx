@@ -21,7 +21,7 @@ interface ILatestProps {
 const Item: React.FC = () => (
   <ArticleCard
     title="Lead Poisoning"
-    description="I think you should do it. I think that you should do the thing you have been watiting your whole life to do. Do it! Now! Or else! Grrrrrrrr. ANyway I think I'm just stretching this whole thing out weewoo"
+    content="I think you should do it. I think that you should do the thing you have been watiting your whole life to do. Do it! Now! Or else! Grrrrrrrr. ANyway I think I'm just stretching this whole thing out weewoo"
     tags={[
       { name: "Satire", id: "wee", description: "wooo", articles: [] },
       { name: "Satire", id: "wee", description: "wooo", articles: [] },

@@ -10,6 +10,8 @@ const Button: React.FC<React.PropsWithChildren<ButtonProps>> = ({
       padding="1rem"
       fontSize="1.25rem"
       borderRadius="0.5rem"
+      _hover={{ background: "rgba(222, 222, 222, 0.8)" }}
+      _active={{ background: "transparent" }}
       {...rest}>
       {children}
     </ChakraButton>
