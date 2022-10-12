@@ -68,7 +68,7 @@ const Article: NextPage<ArticlePageProps> = ({
       </Heading>
       <Flex
         gap="1.5rem"
-        mt="1rem"
+        mt="2rem"
         flexDir={{ base: "column", lg: "row" }}
         w="95%">
         {latest.map((article, i) => (
