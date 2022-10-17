@@ -27,10 +27,7 @@ const Article: NextPage<ArticlePageProps> = ({
       </Heading>
       <Flex fontSize="1.05rem" w="90vw" mt="0.5rem" justifyContent="center">
         {authors.map((author, i) => (
-          <Link
-            key={i}
-            href={`/${author.isExec ? "execs" : "people"}/${author.id}`}
-            mr="0.2rem">
+          <Link key={i} href={`/people/${author.id}`} mr="0.2rem">
             {author.name}
           </Link>
         ))}

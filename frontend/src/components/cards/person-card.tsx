@@ -22,7 +22,7 @@ const PersonCard: React.FC<PersonCardProps> = ({
 }) => {
   return (
     <Card
-      link={`/${isExec ? "execs" : "people"}/${id}`}
+      link={`/people/${id}`}
       image={image}
       w={{ base: "85vw", sm: "70vw", md: "40vw", lg: "25vw" }}
       outerStyles={{ w: { base: "85vw", sm: "70vw", md: "40vw", lg: "25vw" } }}
