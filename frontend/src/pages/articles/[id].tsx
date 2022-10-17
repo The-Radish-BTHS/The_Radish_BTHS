@@ -36,7 +36,7 @@ const Article: NextPage<ArticlePageProps> = ({
           {" "}
           ∙{" "}
         </Text>
-        <Link href={`/issues/${issue.id}`}>{issue.time}</Link>
+        <Link href={`/issues/${issue?.id}`}>{issue?.time}</Link>
       </Flex>
       <Flex
         mt="0.4rem"
@@ -53,7 +53,7 @@ const Article: NextPage<ArticlePageProps> = ({
         fontSize="clamp(16px,12px + .5vw,1.25rem)"
         maxW={{ base: "95vw", md: "70vw", lg: "65vw" }}
         mt="2rem">
-        {content.split("\n").map((text, i) => (
+        {content?.split("\n").map((text, i) => (
           <span key={i}>
             {text}
             <br />
@@ -168,9 +168,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props: {
       title,
       content,
-      id,
       authors,
       issue,
+      id,
+
       tags,
       latest,
     },
