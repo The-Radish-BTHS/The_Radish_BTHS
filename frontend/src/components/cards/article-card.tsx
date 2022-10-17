@@ -50,10 +50,7 @@ const ArticleCard: React.FC<CardProps> = ({
       </Link>
       <Flex fontSize="0.9rem" w="100%" mt="0.5rem">
         {authors?.map((author, i) => (
-          <Link
-            key={i}
-            href={`/${author.isExec ? "execs" : "people"}/${author.id}`}
-            mr="0.2rem">
+          <Link key={i} href={`/people/${author.id}`} mr="0.2rem">
             {author.name}
           </Link>
         ))}
