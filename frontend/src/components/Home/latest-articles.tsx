@@ -34,6 +34,7 @@ const Item: React.FC<{ big?: boolean }> = ({ big }) => (
       {
         name: "Dommy",
         title: "writer",
+        gradYear: 2024,
         articles: [],
         id: "abcd",
         isExec: false,

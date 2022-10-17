@@ -36,7 +36,7 @@ const Id: NextPage<PersonType> = ({
       <Text mb="3rem">{description}</Text>
 
       <MasonryLayout>
-        {articles.map((article, i) => (
+        {articles?.map((article, i) => (
           <ArticleCard {...article} key={i} />
         ))}
       </MasonryLayout>
@@ -58,6 +58,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       name: "Dommy",
       title: "author",
       isExec: false,
+      gradYear: 2024,
       id: "abcd",
       articles: [],
     },

@@ -91,7 +91,7 @@ const Card: React.FC<React.PropsWithChildren<CardProps>> = ({
             p="0.75rem"
             flexWrap="wrap"
             maxW={{ base: "94vw", md: "40vw", lg: "25vw" }}>
-            {tags.map((tag, i) => (
+            {tags?.map((tag, i) => (
               <CardTag {...tag} key={i} />
             ))}
           </Flex>

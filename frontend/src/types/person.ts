@@ -5,7 +5,7 @@ export default interface PersonType {
   title: string;
   isExec?: boolean;
   gradYear: number;
-  description: string;
+  description?: string;
   image?: string;
 
   id: string;

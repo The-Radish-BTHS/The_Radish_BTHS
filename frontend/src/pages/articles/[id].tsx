@@ -26,7 +26,7 @@ const Article: NextPage<ArticlePageProps> = ({
         {title}
       </Heading>
       <Flex fontSize="1.05rem" w="90vw" mt="0.5rem" justifyContent="center">
-        {authors.map((author, i) => (
+        {authors?.map((author, i) => (
           <Link key={i} href={`/people/${author.id}`} mr="0.2rem">
             {author.name}
           </Link>
@@ -44,8 +44,8 @@ const Article: NextPage<ArticlePageProps> = ({
         maxW="85vw"
         fontSize="1.2rem"
         fontWeight="medium">
-        {tags.map((tag, i) => (
-          <CardTag {...tag} key={i} />
+        {tags?.map((tag, i) => (
+          <CardTag name={tag.name} id={tag.id} key={i} />
         ))}
       </Flex>
       <Text
@@ -68,7 +68,7 @@ const Article: NextPage<ArticlePageProps> = ({
         mt="2rem"
         flexDir={{ base: "column", lg: "row" }}
         w="95%">
-        {latest.map((article, i) => (
+        {latest?.map((article, i) => (
           <ArticleCard {...article} outerStyles={{ w: "100%" }} key={i} />
         ))}
       </Flex>
@@ -99,6 +99,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       name: "Dommy",
       title: "author",
       isExec: false,
+      gradYear: 2024,
       id: "abcd",
       articles: [],
     },
@@ -181,7 +182,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   // const pathsWithParams = data.stars.map((star: starInterface) => ({ params: { id: "abcd"}}))
 
   return {
-    paths: [{ params: { id: "abcd" } }],
+    paths: [{ params: { id: "wee" } }, { params: { id: "slay" } }],
     fallback: true,
   };
 };
