@@ -1,7 +1,7 @@
 import ArticleType from "@/types/article";
 import IssueType from "@/types/issue";
 import PersonType from "@/types/person";
-import TagType from "@/types/tag";
+import TopicType from "@/types/topic";
 import { Flex, FlexProps, Heading, Text } from "@chakra-ui/react";
 import Link from "@components/shared/link";
 import Card from "./card";

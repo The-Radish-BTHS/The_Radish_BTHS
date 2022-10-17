@@ -1,6 +1,6 @@
 import ArticleType from "./article";
 
-export default interface TagType {
+export default interface TopicType {
   name: string;
   description: string;
 

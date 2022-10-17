@@ -1,6 +1,6 @@
 import IssueType from "./issue";
 import PersonType from "./person";
-import TagType from "./tag";
+import TopicType from "./topic";
 
 export default interface ArticleType {
   title: string;
@@ -9,5 +9,5 @@ export default interface ArticleType {
   id: string;
   authors: PersonType[];
   issue: IssueType;
-  tags: TagType[];
+  tags: TopicType[];
 }
