@@ -37,7 +37,11 @@ const Id: NextPage<PersonType> = ({
 
       <MasonryLayout>
         {articles?.map((article, i) => (
-          <ArticleCard {...article} key={i} />
+          <ArticleCard
+            {...article}
+            key={i}
+            outerStyles={{ h: "fit-content", my: "1rem" }}
+          />
         ))}
       </MasonryLayout>
     </Layout>
