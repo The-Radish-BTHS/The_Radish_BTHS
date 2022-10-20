@@ -9,6 +9,7 @@ interface PersonCardProps extends FlexProps {
   description: string;
   id: string;
   image?: string;
+  outerStyles?: FlexProps;
 }
 
 const PersonCard: React.FC<PersonCardProps> = ({
@@ -18,28 +19,32 @@ const PersonCard: React.FC<PersonCardProps> = ({
   description,
   id,
   image = "",
+  outerStyles,
   ...rest
 }) => {
   return (
     <Card
       link={`/people/${id}`}
       image={image}
-      w={{ base: "85vw", sm: "70vw", md: "40vw", lg: "25vw" }}
-      outerStyles={{ w: { base: "85vw", sm: "70vw", md: "40vw", lg: "25vw" } }}
+      maxW={{ base: "85vw", sm: "70vw", md: "40vw", lg: "22vw" }}
+      outerStyles={{
+        maxW: { base: "85vw", sm: "70vw", md: "40vw", lg: "25vw" },
+        ...outerStyles,
+      }}
       {...rest}>
       <Flex justifyContent="space-between" w="100%" alignItems="center">
-        <Flex flexDir="column" w="100%">
-          <Heading w="100%" fontSize="1.5rem" mb="0.5rem">
+        <Flex flexDir="column" w="100%" p="0.3rem" textAlign="center">
+          <Heading w="100%" fontSize="1.5rem" mb="0.3rem">
             {name}
           </Heading>
-          <Text fontWeight="bold" fontStyle="italic" w="100%" mt="-0.2rem">
+          <Text fontWeight="bold" fontStyle="italic" w="100%">
             {title}
           </Text>
         </Flex>
         {isExec && <ExecStamp id={id} size={60} />}
       </Flex>
 
-      <Text w="100%" textAlign="center" mt="1rem" fontWeight="medium">
+      <Text w="100%" textAlign="center" my="1rem" fontWeight="medium">
         {description}
       </Text>
     </Card>

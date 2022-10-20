@@ -1,6 +1,7 @@
 import PersonType from "@/types/person";
 import { Flex, Heading, Text } from "@chakra-ui/react";
 import ArticleCard from "@components/cards/article-card";
+import OtherPeople from "@components/Latest/other-people";
 import Layout from "@components/layout/layout";
 import MasonryLayout from "@components/shared/masonry/masonry-layout";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
@@ -44,6 +45,9 @@ const Id: NextPage<PersonType> = ({
           />
         ))}
       </MasonryLayout>
+      <Flex mt="4rem">
+        <OtherPeople />
+      </Flex>
     </Layout>
   );
 };
