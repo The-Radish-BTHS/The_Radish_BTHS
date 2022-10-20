@@ -23,8 +23,8 @@ const IssueCard: React.FC<IssueCardProps> = ({
       link={`/issues/${id}`}
       header={issueTime}
       image={cover}
-      outerStyles={{ ...outerStyles, w: widths }}
-      w={widths}
+      outerStyles={{ ...outerStyles, maxW: widths }}
+      maxW={widths}
       {...rest}>
       <Text
         fontSize="1.1rem"

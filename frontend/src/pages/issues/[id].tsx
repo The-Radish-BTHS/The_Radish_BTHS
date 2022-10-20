@@ -1,6 +1,7 @@
 import IssueType from "@/types/issue";
 import { Flex, Heading, Text } from "@chakra-ui/react";
 import ArticleCard from "@components/cards/article-card";
+import LatestIssues from "@components/Latest/latest-issues";
 import Layout from "@components/layout/layout";
 import Button from "@components/shared/button";
 import Link from "@components/shared/link";
@@ -24,13 +25,14 @@ const Id: NextPage<IssueType> = ({
         external
         href={pdf ?? ""}
         p="0.25rem 1.25rem"
+        mb="2rem"
         fontWeight="600"
         fontSize="1.25rem"
         border="1px solid black"
         borderRadius="0.5rem"
         _hover={{ background: "rgba(222, 222, 222, 0.8)" }}
         _active={{ background: "transparent" }}>
-        Read the PDF
+        Read the PDF!!
       </Link>
 
       <MasonryLayout>
@@ -42,6 +44,10 @@ const Id: NextPage<IssueType> = ({
           />
         ))}
       </MasonryLayout>
+
+      <Flex mt="4rem" w="60vw">
+        <LatestIssues />
+      </Flex>
     </Layout>
   );
 };

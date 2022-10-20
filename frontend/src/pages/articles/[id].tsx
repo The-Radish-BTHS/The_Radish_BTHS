@@ -7,6 +7,7 @@ import Link from "@components/shared/link";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import Button from "@components/shared/button";
+import LatestArticles from "@components/Latest/latest-articles";
 
 interface ArticlePageProps extends ArticleType {
   latest: ArticleType[];
@@ -60,21 +61,10 @@ const Article: NextPage<ArticlePageProps> = ({
           </span>
         ))}
       </Text>
-      <Heading fontSize="2rem" textAlign="center" mt="4rem">
-        Read more great articles!
-      </Heading>
-      <Flex
-        gap="1.5rem"
-        mt="2rem"
-        flexDir={{ base: "column", lg: "row" }}
-        w="95%">
-        {latest?.map((article, i) => (
-          <ArticleCard {...article} outerStyles={{ w: "100%" }} key={i} />
-        ))}
+
+      <Flex mt="4rem">
+        <LatestArticles />
       </Flex>
-      <Link as={Button} href="/articles" mt="2.5rem">
-        <Text mr="0.5rem">All Articles!</Text> <AiOutlineArrowRight />
-      </Link>
     </Layout>
   );
 };

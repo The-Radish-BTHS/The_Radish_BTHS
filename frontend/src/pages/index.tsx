@@ -1,5 +1,5 @@
-import LatestArticles from "@components/Home/latest-articles";
-import LatestSection from "@components/Home/latest-section";
+import LatestArticles from "@components/Latest/latest-articles";
+import LatestSection from "@components/Latest/latest-section";
 import Layout from "@components/layout/layout";
 import type { NextPage } from "next";
 
