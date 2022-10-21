@@ -31,7 +31,7 @@ const OtherPeople: React.FC = () => {
             <Item key={i} />
           ))}
       </MasonryLayout>
-      <Link as={Button} href="/issues" mt="2.5rem">
+      <Link as={Button} href="/people" mt="2.5rem">
         <Text mr="0.5rem">Everyone!</Text> <AiOutlineArrowRight />
       </Link>
     </Flex>
