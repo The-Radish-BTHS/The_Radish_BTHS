@@ -1,4 +1,4 @@
-import { ArticleCard } from "@/types/article";
+import { Articard } from "@/types/article";
 import { Flex, Heading, Text } from "@chakra-ui/react";
 import Link from "@components/shared/link";
 import Card from "./card";
@@ -8,7 +8,7 @@ const prune = (text: string, n: number = 90) =>
     ? text.slice(0, n)
     : text.slice(0, n).slice(0, text.slice(0, n).lastIndexOf(" "));
 
-const ArticleCard: React.FC<ArticleCard> = ({
+const Articard: React.FC<Articard> = ({
   title,
   content,
   issue,
@@ -55,4 +55,4 @@ const ArticleCard: React.FC<ArticleCard> = ({
   );
 };
 
-export default ArticleCard;
+export default Articard;

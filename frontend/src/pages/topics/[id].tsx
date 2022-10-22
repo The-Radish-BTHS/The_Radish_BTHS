@@ -1,6 +1,6 @@
 import { TopicPage } from "@/types/topic";
 import { Flex, Heading, Text } from "@chakra-ui/react";
-import ArticleCard from "@components/cards/article-card";
+import Articard from "@components/cards/articard";
 import TopicsSection from "@components/Latest/topics-section";
 import Layout from "@components/layout/layout";
 import MasonryLayout from "@components/shared/masonry/masonry-layout";
@@ -17,7 +17,7 @@ const Id: NextPage<TopicPage> = ({ name, description, articles }) => {
       </Text>
       <MasonryLayout>
         {articles?.map((article, i) => (
-          <ArticleCard
+          <Articard
             {...article}
             key={i}
             outerStyles={{ h: "fit-content", my: "1rem" }}

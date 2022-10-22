@@ -1,12 +1,12 @@
 import { Box, Flex, Heading, Image, SimpleGrid, Text } from "@chakra-ui/react";
-import ArticleCard from "@components/cards/article-card";
+import Articard from "@components/cards/articard";
 import Button from "@components/shared/button";
 import Link from "@components/shared/link";
 import MasonryLayout from "@components/shared/masonry/masonry-layout";
 import { AiOutlineArrowRight } from "react-icons/ai";
 
 const Item: React.FC<{ big?: boolean }> = ({ big }) => (
-  <ArticleCard
+  <Articard
     title="Lead Poisoning"
     content={
       big

@@ -1,6 +1,6 @@
 import { PersonPage } from "@/types/person";
 import { Flex, Heading, Text } from "@chakra-ui/react";
-import ArticleCard from "@components/cards/article-card";
+import Articard from "@components/cards/articard";
 import OtherPeople from "@components/Latest/other-people";
 import Layout from "@components/layout/layout";
 import MasonryLayout from "@components/shared/masonry/masonry-layout";
@@ -37,7 +37,7 @@ const Id: NextPage<PersonPage> = ({
 
       <MasonryLayout>
         {articles?.map((article, i) => (
-          <ArticleCard
+          <Articard
             {...article}
             key={i}
             outerStyles={{ h: "fit-content", my: "1rem" }}

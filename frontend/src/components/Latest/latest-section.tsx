@@ -6,7 +6,7 @@ import {
   Text,
   useBreakpointValue,
 } from "@chakra-ui/react";
-import ArticleCard from "@components/cards/article-card";
+import Articard from "@components/cards/articard";
 import IssueCard from "@components/cards/issue-card";
 import Button from "@components/shared/button";
 import Link from "@components/shared/link";
@@ -19,7 +19,7 @@ interface ILatestProps {
 }
 
 const Item: React.FC = () => (
-  <ArticleCard
+  <Articard
     title="Lead Poisoning"
     content="I think you should do it. I think that you should do the thing you have been watiting your whole life to do. Do it! Now! Or else! Grrrrrrrr. ANyway I think I'm just stretching this whole thing out weewoo"
     tags={[
