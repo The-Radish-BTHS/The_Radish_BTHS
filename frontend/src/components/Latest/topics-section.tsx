@@ -1,10 +1,7 @@
 import { Flex, Heading, Text } from "@chakra-ui/react";
 import TopicCard from "@components/cards/topic-card";
-import PersonCard from "@components/cards/person-card";
 import Button from "@components/shared/button";
 import Link from "@components/shared/link";
-import MasonryLayout from "@components/shared/masonry/masonry-layout";
-import { rest } from "@feathersjs/express";
 import { AiOutlineArrowRight } from "react-icons/ai";
 
 const Item: React.FC = () => <TopicCard name="Gay Slay" id="abcd" />;
