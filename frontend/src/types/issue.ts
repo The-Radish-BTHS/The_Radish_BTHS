@@ -11,7 +11,7 @@ export default interface IssueType {
   articles: ArticleType[];
 }
 
-export interface IssuePage extends Omit<IssueType, "cover" | "id"> {}
+export type IssuePage = Omit<IssueType, "cover" | "id">;
 
 export interface IssueCard extends Omit<IssueType, "pdf" | "articles"> {
   outerStyles?: FlexProps;
