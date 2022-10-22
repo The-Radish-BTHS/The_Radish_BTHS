@@ -1,18 +1,9 @@
+import { PersonCard } from "@/types/person";
 import { Flex, FlexProps, Heading, Text } from "@chakra-ui/react";
 import ExecStamp from "@components/shared/exec-stamp";
 import Card from "./card";
 
-interface PersonCardProps extends FlexProps {
-  isExec?: boolean;
-  name: string;
-  title: string;
-  description: string;
-  id: string;
-  image?: string;
-  outerStyles?: FlexProps;
-}
-
-const PersonCard: React.FC<PersonCardProps> = ({
+const PersonCard: React.FC<PersonCard> = ({
   isExec = false,
   name,
   title,
