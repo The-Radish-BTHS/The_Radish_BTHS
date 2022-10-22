@@ -1,6 +1,7 @@
 import TopicType from "@/types/topic";
-import { Heading, Text } from "@chakra-ui/react";
+import { Flex, Heading, Text } from "@chakra-ui/react";
 import ArticleCard from "@components/cards/article-card";
+import TopicsSection from "@components/Latest/topics-section";
 import Layout from "@components/layout/layout";
 import MasonryLayout from "@components/shared/masonry/masonry-layout";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
@@ -24,6 +25,9 @@ const Id: NextPage<TopicType> = ({ name, description, id, articles }) => {
           />
         ))}
       </MasonryLayout>
+      <Flex mt="4rem">
+        <TopicsSection title="More Topics" />
+      </Flex>
     </Layout>
   );
 };

@@ -46,12 +46,13 @@ const Item: React.FC<{ big?: boolean }> = ({ big }) => (
   />
 );
 
-const LatestArticles: React.FC = () => {
+const LatestArticles: React.FC<{ title?: string }> = ({
+  title = "New Articles",
+}) => {
   return (
     <Flex flexDirection="column" alignItems="center">
       <Heading fontSize="2rem" textAlign="center" mb="1rem">
-        New Articles:{" "}
-        <span style={{ fontWeight: "normal" }}>Feast on these!</span>
+        {title}: <span style={{ fontWeight: "normal" }}>Feast on these!</span>
       </Heading>
       <MasonryLayout>
         {[0, 0, 0, 0, 0, 0].map((src, i) => (

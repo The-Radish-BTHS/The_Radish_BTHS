@@ -1,5 +1,6 @@
 import LatestArticles from "@components/Latest/latest-articles";
 import LatestSection from "@components/Latest/latest-section";
+import TopicsSection from "@components/Latest/topics-section";
 import Layout from "@components/layout/layout";
 import type { NextPage } from "next";
 
@@ -12,6 +13,7 @@ const Home: NextPage = () => {
         cover="/images/june-2022.webp"
       />
       <LatestArticles />
+      <TopicsSection />
     </Layout>
   );
 };

@@ -63,7 +63,7 @@ const Article: NextPage<ArticlePageProps> = ({
       </Text>
 
       <Flex mt="4rem">
-        <LatestArticles />
+        <LatestArticles title="More Articles" />
       </Flex>
     </Layout>
   );
