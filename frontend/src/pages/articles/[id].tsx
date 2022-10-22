@@ -1,4 +1,4 @@
-import { ArticlePage } from "@/types/article";
+import { ArticlePageType } from "@/types/article";
 import { Flex, Heading, Text } from "@chakra-ui/react";
 import TopicCard from "@components/cards/topic-card";
 import Layout from "@components/layout/layout";
@@ -6,12 +6,12 @@ import Link from "@components/shared/link";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import LatestArticles from "@components/Latest/latest-articles";
 
-const Article: NextPage<ArticlePage> = ({
+const Article: NextPage<ArticlePageType> = ({
   title,
   content,
   authors,
   issue,
-  tags,
+  topics,
   latest,
 }) => {
   return (
@@ -38,8 +38,8 @@ const Article: NextPage<ArticlePage> = ({
         maxW="85vw"
         fontSize="1.2rem"
         fontWeight="medium">
-        {tags?.map((tag, i) => (
-          <TopicCard name={tag.name} id={tag.id} key={i} />
+        {topics?.map((topic, i) => (
+          <TopicCard name={topic.name} id={topic.id} key={i} />
         ))}
       </Flex>
       <Text
@@ -94,7 +94,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     id: "abcd",
     articles: [],
   };
-  const tags = [
+  const topics = [
     {
       name: "queer",
       description: "yass",
@@ -124,7 +124,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       id: "slay",
       authors,
       issue,
-      tags,
+      topics,
     },
     {
       title: "Be Gay do Slay",
@@ -133,7 +133,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       id: "slay",
       authors,
       issue,
-      tags,
+      topics,
     },
     {
       title: "Be Gay do Slay",
@@ -143,7 +143,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       id: "slay",
       authors,
       issue,
-      tags,
+      topics,
     },
   ];
 
@@ -155,7 +155,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       issue,
       id,
 
-      tags,
+      topics,
       latest,
     },
   };

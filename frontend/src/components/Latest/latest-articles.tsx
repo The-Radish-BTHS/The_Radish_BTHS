@@ -13,31 +13,24 @@ const Item: React.FC<{ big?: boolean }> = ({ big }) => (
         ? "I think you should do it I think you should do it I think you should do it I think you should do it I think you should do it"
         : "heyooooo"
     }
-    tags={[
-      { name: "Satire", id: "wee", description: "wooo", articles: [] },
-      { name: "Satire", id: "wee", description: "wooo", articles: [] },
-      { name: "Satire", id: "wee", description: "wooo", articles: [] },
-      { name: "Satire", id: "wee", description: "wooo", articles: [] },
-      { name: "Satire", id: "wee", description: "wooo", articles: [] },
-      { name: "Satire", id: "wee", description: "wooo", articles: [] },
-      { name: "Satire", id: "wee", description: "wooo", articles: [] },
-      { name: "Satire", id: "wee", description: "wooo", articles: [] },
+    topics={[
+      { name: "Satire", id: "wee" },
+      { name: "Satire", id: "wee" },
+      { name: "Satire", id: "wee" },
+      { name: "Satire", id: "wee" },
+      { name: "Satire", id: "wee" },
+      { name: "Satire", id: "wee" },
+      { name: "Satire", id: "wee" },
+      { name: "Satire", id: "wee" },
     ]}
     issue={{
       time: "June 2022",
       id: "abcd",
-      cover: "/images/june-2022.webp",
-      description: "slay gay",
-      articles: [],
     }}
     authors={[
       {
         name: "Dommy",
-        title: "writer",
-        gradYear: 2024,
-        articles: [],
         id: "abcd",
-        isExec: false,
       },
     ]}
     id="abcd"

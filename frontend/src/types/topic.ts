@@ -11,3 +11,5 @@ export default interface TopicType {
 export type TopicPage = Omit<TopicType, "id">;
 
 export type TopicCard = Omit<TopicType, "articles" | "description">;
+
+export type TopicReference = TopicCard;

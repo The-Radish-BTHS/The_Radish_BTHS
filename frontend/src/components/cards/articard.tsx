@@ -1,4 +1,4 @@
-import { Articard } from "@/types/article";
+import { ArticardType } from "@/types/article";
 import { Center, Divider, Flex, Heading, Image, Text } from "@chakra-ui/react";
 import Link from "@components/shared/link";
 import CardWrapper from "./card-wrapper";
@@ -9,14 +9,14 @@ const prune = (text: string, n: number = 90) =>
     ? text.slice(0, n)
     : text.slice(0, n).slice(0, text.slice(0, n).lastIndexOf(" "));
 
-const Articard: React.FC<Articard> = ({
+const Articard: React.FC<ArticardType> = ({
   title,
   content,
   issue,
   authors,
   id,
   styles,
-  tags = [],
+  topics = [],
 }) => {
   return (
     <CardWrapper w={{ base: "94vw", md: "40vw", lg: "25vw" }} {...styles}>
@@ -48,7 +48,7 @@ const Articard: React.FC<Articard> = ({
           <Link href={`/issues/${issue.id}`}>{issue.time}</Link>
         </Flex>
       </Center>
-      {tags && tags.length > 0 && (
+      {topics && topics.length > 0 && (
         <Flex flexDir="column">
           <Flex px="0.75rem">
             <Divider borderColor="black" />
@@ -57,8 +57,8 @@ const Articard: React.FC<Articard> = ({
             p="0.75rem"
             flexWrap="wrap"
             maxW={{ base: "94vw", md: "40vw", lg: "25vw" }}>
-            {tags?.map((tag, i) => (
-              <TopicCard {...tag} key={i} />
+            {topics?.map((topic, i) => (
+              <TopicCard {...topic} key={i} />
             ))}
           </Flex>
         </Flex>

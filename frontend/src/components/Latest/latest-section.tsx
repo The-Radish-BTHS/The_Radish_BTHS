@@ -22,25 +22,18 @@ const Item: React.FC = () => (
   <Articard
     title="Lead Poisoning"
     content="I think you should do it. I think that you should do the thing you have been watiting your whole life to do. Do it! Now! Or else! Grrrrrrrr. ANyway I think I'm just stretching this whole thing out weewoo"
-    tags={[
-      { name: "Satire", id: "wee", description: "wooo", articles: [] },
-      { name: "Satire", id: "wee", description: "wooo", articles: [] },
+    topics={[
+      { name: "Satire", id: "wee" },
+      { name: "Satire", id: "wee" },
     ]}
     issue={{
       time: "June 2022",
       id: "abcd",
-      cover: "/images/june-2022.webp",
-      description: "slay gay",
-      articles: [],
     }}
     authors={[
       {
         name: "Dommy",
-        title: "writer",
-        gradYear: 2024,
-        articles: [],
         id: "abcd",
-        isExec: false,
       },
     ]}
     id="abcd"

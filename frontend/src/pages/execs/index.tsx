@@ -1,6 +1,6 @@
 import PersonCard from "@components/cards/person-card";
 import Layout from "@components/layout/layout";
-import { NextPage } from "next";
+import { GetStaticProps, NextPage } from "next";
 
 const Index: NextPage = () => {
   return (
@@ -18,3 +18,9 @@ const Index: NextPage = () => {
 };
 
 export default Index;
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  return {
+    props: {},
+  };
+};

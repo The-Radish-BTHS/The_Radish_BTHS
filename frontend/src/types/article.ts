@@ -1,7 +1,7 @@
 import { FlexProps } from "@chakra-ui/react";
-import IssueType from "./issue";
-import PersonType from "./person";
-import TopicType from "./topic";
+import IssueType, { IssueReference } from "./issue";
+import PersonType, { PersonReference } from "./person";
+import TopicType, { TopicReference } from "./topic";
 
 export default interface ArticleType {
   title: string;
@@ -10,13 +10,18 @@ export default interface ArticleType {
   id: string;
   authors: PersonType[];
   issue: IssueType;
-  tags: TopicType[];
+  topics: TopicType[];
 }
 
-export interface ArticlePage extends Omit<ArticleType, "id"> {
-  latest: ArticleType[];
+export interface ArticlePageType extends Omit<ArticleType, "id"> {
+  latest: ArticardType[];
 }
 
-export interface Articard extends ArticleType {
+export interface ArticardType
+  extends Omit<ArticleType, "authors" | "issue" | "topics"> {
   styles?: FlexProps;
+
+  authors: PersonReference[];
+  issue: IssueReference;
+  topics: TopicReference[];
 }

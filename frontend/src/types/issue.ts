@@ -16,3 +16,8 @@ export type IssuePage = Omit<IssueType, "cover" | "id">;
 export interface IssueCard extends Omit<IssueType, "pdf" | "articles"> {
   styles?: FlexProps;
 }
+
+export interface IssueReference {
+  time: string;
+  id: string;
+}
