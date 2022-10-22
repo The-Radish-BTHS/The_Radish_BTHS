@@ -1,21 +1,13 @@
-import IssueType from "@/types/issue";
+import IssueType, { IssuePage } from "@/types/issue";
 import { Flex, Heading, Text } from "@chakra-ui/react";
 import ArticleCard from "@components/cards/article-card";
 import LatestIssues from "@components/Latest/latest-issues";
 import Layout from "@components/layout/layout";
-import Button from "@components/shared/button";
 import Link from "@components/shared/link";
 import MasonryLayout from "@components/shared/masonry/masonry-layout";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
-const Id: NextPage<IssueType> = ({
-  id,
-  time,
-  cover,
-  description,
-  pdf,
-  articles,
-}) => {
+const Id: NextPage<IssuePage> = ({ time, description, pdf, articles }) => {
   return (
     <Layout alignItems="center">
       <Heading>{time}</Heading>

@@ -1,18 +1,11 @@
-import { FlexProps, Text } from "@chakra-ui/react";
+import { IssueCard } from "@/types/issue";
+import { Text } from "@chakra-ui/react";
 import Card from "./card";
 
-interface IssueCardProps extends FlexProps {
-  cover: string;
-  description: string;
-  issueTime: string;
-  id: string;
-  outerStyles?: FlexProps;
-}
-
-const IssueCard: React.FC<IssueCardProps> = ({
+const IssueCard: React.FC<IssueCard> = ({
   cover,
   description,
-  issueTime,
+  time,
   id,
   outerStyles,
   ...rest
@@ -21,7 +14,7 @@ const IssueCard: React.FC<IssueCardProps> = ({
   return (
     <Card
       link={`/issues/${id}`}
-      header={issueTime}
+      header={time}
       image={cover}
       outerStyles={{ ...outerStyles, maxW: widths }}
       maxW={widths}
