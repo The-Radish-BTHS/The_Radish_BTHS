@@ -1,21 +1,14 @@
-import ArticleType from "@/types/article";
-import { Flex, FlexProps, Heading, Text } from "@chakra-ui/react";
+import { ArticleCard } from "@/types/article";
+import { Flex, Heading, Text } from "@chakra-ui/react";
 import Link from "@components/shared/link";
 import Card from "./card";
-import CardTag from "./card-tag";
-
-interface CardProps extends FlexProps, ArticleType {
-  title: string;
-  id: string;
-  outerStyles?: FlexProps;
-}
 
 const prune = (text: string, n: number = 90) =>
   text[n] == " " || text.length < n
     ? text.slice(0, n)
     : text.slice(0, n).slice(0, text.slice(0, n).lastIndexOf(" "));
 
-const ArticleCard: React.FC<CardProps> = ({
+const ArticleCard: React.FC<ArticleCard> = ({
   title,
   content,
   issue,

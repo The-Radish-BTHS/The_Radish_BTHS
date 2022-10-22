@@ -1,19 +1,12 @@
-import ArticleType from "@/types/article";
+import { ArticlePage } from "@/types/article";
 import { Flex, Heading, Text } from "@chakra-ui/react";
-import ArticleCard from "@components/cards/article-card";
 import CardTag from "@components/cards/card-tag";
 import Layout from "@components/layout/layout";
 import Link from "@components/shared/link";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import { AiOutlineArrowRight } from "react-icons/ai";
-import Button from "@components/shared/button";
 import LatestArticles from "@components/Latest/latest-articles";
 
-interface ArticlePageProps extends ArticleType {
-  latest: ArticleType[];
-}
-
-const Article: NextPage<ArticlePageProps> = ({
+const Article: NextPage<ArticlePage> = ({
   title,
   content,
   authors,
