@@ -1,4 +1,4 @@
-import { PersonPage } from "@/types/person";
+import { PersonPageType } from "@/types/person";
 import { Flex, Heading, Text } from "@chakra-ui/react";
 import Articard from "@components/cards/articard";
 import OtherPeople from "@components/Latest/other-people";
@@ -6,7 +6,7 @@ import Layout from "@components/layout/layout";
 import MasonryLayout from "@components/shared/masonry/masonry-layout";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
-const Id: NextPage<PersonPage> = ({
+const Id: NextPage<PersonPageType> = ({
   name,
   title,
   isExec,

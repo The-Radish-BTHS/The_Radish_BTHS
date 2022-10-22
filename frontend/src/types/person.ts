@@ -14,9 +14,10 @@ export default interface PersonType {
   articles: ArticleType[];
 }
 
-export type PersonPage = Omit<PersonType, "image" | "id">;
+export type PersonPageType = Omit<PersonType, "image" | "id">;
 
-export interface PersonCard extends Omit<PersonType, "articles" | "gradYear"> {
+export interface PersonCardType
+  extends Omit<PersonType, "articles" | "gradYear"> {
   styles?: FlexProps;
 }
 
