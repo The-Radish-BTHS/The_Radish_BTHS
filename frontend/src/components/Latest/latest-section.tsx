@@ -74,7 +74,7 @@ const LatestSection: React.FC<ILatestProps> = ({
           <IssueCard
             cover={cover}
             description={description}
-            issueTime={issueTime}
+            time={issueTime}
             id="abcd"
             outerStyles={{ flex: 1 }}
           />

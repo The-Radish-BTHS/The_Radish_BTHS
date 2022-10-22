@@ -17,7 +17,7 @@ const Item: React.FC = () => (
   <IssueCard
     cover="/images/june-2022.webp"
     description="Hey gays! Read this! lorem ipsum dolor sit amet"
-    issueTime="June 2022"
+    time="June 2022"
     id="abcd"
     outerStyles={{ flex: 1 }}
   />
