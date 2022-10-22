@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import Link from "@components/shared/link";
 import React from "react";
-import CardTag from "./card-tag";
+import TopicCard from "./topic-card";
 
 interface SometimesLinkProps extends LinkProps {
   exists: boolean;
@@ -92,7 +92,7 @@ const Card: React.FC<React.PropsWithChildren<CardProps>> = ({
             flexWrap="wrap"
             maxW={{ base: "94vw", md: "40vw", lg: "25vw" }}>
             {tags?.map((tag, i) => (
-              <CardTag {...tag} key={i} />
+              <TopicCard {...tag} key={i} />
             ))}
           </Flex>
         </Flex>

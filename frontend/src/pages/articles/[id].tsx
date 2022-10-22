@@ -1,6 +1,6 @@
 import { ArticlePage } from "@/types/article";
 import { Flex, Heading, Text } from "@chakra-ui/react";
-import CardTag from "@components/cards/card-tag";
+import TopicCard from "@components/cards/topic-card";
 import Layout from "@components/layout/layout";
 import Link from "@components/shared/link";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
@@ -39,7 +39,7 @@ const Article: NextPage<ArticlePage> = ({
         fontSize="1.2rem"
         fontWeight="medium">
         {tags?.map((tag, i) => (
-          <CardTag name={tag.name} id={tag.id} key={i} />
+          <TopicCard name={tag.name} id={tag.id} key={i} />
         ))}
       </Flex>
       <Text

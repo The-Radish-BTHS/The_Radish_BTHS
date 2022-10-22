@@ -1,5 +1,5 @@
 import { Flex, Heading, Text } from "@chakra-ui/react";
-import CardTag from "@components/cards/card-tag";
+import TopicCard from "@components/cards/topic-card";
 import PersonCard from "@components/cards/person-card";
 import Button from "@components/shared/button";
 import Link from "@components/shared/link";
@@ -7,7 +7,7 @@ import MasonryLayout from "@components/shared/masonry/masonry-layout";
 import { rest } from "@feathersjs/express";
 import { AiOutlineArrowRight } from "react-icons/ai";
 
-const Item: React.FC = () => <CardTag name="Gay Slay" id="abcd" />;
+const Item: React.FC = () => <TopicCard name="Gay Slay" id="abcd" />;
 
 const TopicsSection: React.FC<{ title?: string }> = ({
   title = "Topics",
