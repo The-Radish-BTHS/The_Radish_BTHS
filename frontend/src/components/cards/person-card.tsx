@@ -1,12 +1,5 @@
 import { PersonCard } from "@/types/person";
-import {
-  Center,
-  Flex,
-  FlexProps,
-  Heading,
-  Image,
-  Text,
-} from "@chakra-ui/react";
+import { Center, Flex, Heading, Image, Text } from "@chakra-ui/react";
 import ExecStamp from "@components/shared/exec-stamp";
 import Link from "@components/shared/link";
 import CardWrapper from "./card-wrapper";
@@ -19,7 +12,6 @@ const PersonCard: React.FC<PersonCard> = ({
   id,
   image = "",
   outerStyles,
-  ...rest
 }) => {
   const widths = { base: "85vw", sm: "70vw", md: "40vw", lg: "25vw" };
   return (

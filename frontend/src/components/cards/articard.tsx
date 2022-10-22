@@ -17,7 +17,6 @@ const Articard: React.FC<Articard> = ({
   id,
   outerStyles,
   tags = [],
-  ...rest
 }) => {
   return (
     <CardWrapper w={{ base: "94vw", md: "40vw", lg: "25vw" }} {...outerStyles}>
