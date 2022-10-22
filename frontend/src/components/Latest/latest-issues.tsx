@@ -19,7 +19,7 @@ const Item: React.FC = () => (
     description="Hey gays! Read this! lorem ipsum dolor sit amet"
     time="June 2022"
     id="abcd"
-    outerStyles={{ flex: 1 }}
+    styles={{ flex: 1 }}
   />
 );
 

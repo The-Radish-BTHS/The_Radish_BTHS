@@ -44,7 +44,7 @@ const Item: React.FC = () => (
       },
     ]}
     id="abcd"
-    outerStyles={{ flex: 1 }}
+    styles={{ flex: 1 }}
   />
 );
 
@@ -76,7 +76,7 @@ const LatestSection: React.FC<ILatestProps> = ({
             description={description}
             time={issueTime}
             id="abcd"
-            outerStyles={{ flex: 1 }}
+            styles={{ flex: 1 }}
           />
         </Flex>
 

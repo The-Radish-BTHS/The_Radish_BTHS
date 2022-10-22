@@ -18,5 +18,5 @@ export interface ArticlePage extends Omit<ArticleType, "id"> {
 }
 
 export interface Articard extends ArticleType {
-  outerStyles?: FlexProps;
+  styles?: FlexProps;
 }

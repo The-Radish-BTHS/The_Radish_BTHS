@@ -20,7 +20,7 @@ const Id: NextPage<TopicPage> = ({ name, description, articles }) => {
           <Articard
             {...article}
             key={i}
-            outerStyles={{ h: "fit-content", my: "1rem" }}
+            styles={{ h: "fit-content", my: "1rem" }}
           />
         ))}
       </MasonryLayout>

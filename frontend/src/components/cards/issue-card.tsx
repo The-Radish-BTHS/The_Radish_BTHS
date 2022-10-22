@@ -8,11 +8,11 @@ const IssueCard: React.FC<IssueCard> = ({
   description,
   time,
   id,
-  outerStyles,
+  styles,
 }) => {
   const widths = { base: "94vw", sm: "70vw", md: "40vw", lg: "33vw" };
   return (
-    <CardWrapper maxW={widths} {...outerStyles}>
+    <CardWrapper maxW={widths} {...styles}>
       <Link href={`/issues/${id}`}>
         <Image
           src={cover}

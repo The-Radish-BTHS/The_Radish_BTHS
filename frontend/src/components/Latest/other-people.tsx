@@ -11,7 +11,7 @@ const Item: React.FC = () => (
     title="Author"
     description="Just a guy being a dude"
     id="abcd"
-    outerStyles={{ mt: "1rem" }}
+    styles={{ mt: "1rem" }}
   />
 );
 

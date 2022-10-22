@@ -17,5 +17,5 @@ export default interface PersonType {
 export type PersonPage = Omit<PersonType, "image" | "id">;
 
 export interface PersonCard extends Omit<PersonType, "articles" | "gradYear"> {
-  outerStyles?: FlexProps;
+  styles?: FlexProps;
 }
