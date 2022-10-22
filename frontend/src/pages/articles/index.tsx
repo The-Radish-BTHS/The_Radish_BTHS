@@ -5,19 +5,19 @@ import Layout from "@components/layout/layout";
 import MasonryLayout from "@components/shared/masonry/masonry-layout";
 import { GetStaticProps, NextPage } from "next";
 
-const Index: NextPage<{ articles: ArticardType[] }> = ({ articles }) => {
+const Articles: NextPage<{ articles: ArticardType[] }> = ({ articles }) => {
   return (
     <Layout pageIndex={0} alignItems="center">
       <MasonryLayout>
         {articles.map((article, i) => (
-          <Articard {...article} key={i} styles={{ mb: "1rem" }} />
+          <Articard {...article} key={i} styles={{ mb: "2rem" }} />
         ))}
       </MasonryLayout>
     </Layout>
   );
 };
 
-export default Index;
+export default Articles;
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const sample = {
