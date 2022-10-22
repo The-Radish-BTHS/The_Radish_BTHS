@@ -13,23 +13,10 @@ export default interface ArticleType {
   tags: TopicType[];
 }
 
-export interface ArticlePage {
-  title: string;
-  content: string;
-
-  authors: PersonType[];
-  issue: IssueType;
-  tags: TopicType[];
+export interface ArticlePage extends Omit<ArticleType, "id"> {
   latest: ArticleType[];
 }
 
-export interface ArticleCard {
-  title: string;
-  content: string;
-
-  id: string;
-  authors: PersonType[];
-  issue: IssueType;
-  tags: TopicType[];
+export interface ArticleCard extends ArticleType {
   outerStyles?: FlexProps;
 }
