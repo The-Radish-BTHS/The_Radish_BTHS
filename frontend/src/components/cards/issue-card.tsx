@@ -21,7 +21,11 @@ const IssueCard: React.FC<IssueCard> = ({
           borderBottom="1px solid"
           borderTopRadius="0.5rem"
         />
-        <Center p="0.75rem" flexDir="column" maxW={widths}>
+        <Center
+          p="0.75rem"
+          flexDir="column"
+          maxW={widths}
+          w={{ base: "94vw", md: "40vw", lg: "25vw" }}>
           <Heading w="100%" fontSize="1.5rem" mb="0.5rem">
             {time}
           </Heading>
@@ -37,21 +41,5 @@ const IssueCard: React.FC<IssueCard> = ({
     </CardWrapper>
   );
 };
-
-/*<Card
-      link={`/issues/${id}`}
-      header={time}
-      image={cover}
-      outerStyles={{ ...outerStyles, maxW: widths }}
-      maxW={widths}
-      {...rest}>
-      <Text
-        fontSize="1.1rem"
-        wordBreak="break-word"
-        whiteSpace="pre-wrap"
-        w="100%">
-        {description}
-      </Text>
-    </Card>*/
 
 export default IssueCard;
