@@ -44,7 +44,7 @@ const Item: React.FC = () => (
       },
     ]}
     id="abcd"
-    flex={1}
+    outerStyles={{ flex: 1 }}
   />
 );
 

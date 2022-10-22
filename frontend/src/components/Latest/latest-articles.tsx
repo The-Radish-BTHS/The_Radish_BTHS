@@ -41,8 +41,7 @@ const Item: React.FC<{ big?: boolean }> = ({ big }) => (
       },
     ]}
     id="abcd"
-    display="inline-block"
-    outerStyles={{ h: "fit-content", my: "1rem" }}
+    outerStyles={{ h: "fit-content", my: "1rem", display: "inline-block" }}
   />
 );
 
