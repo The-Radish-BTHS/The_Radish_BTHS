@@ -1,6 +1,6 @@
 import { FlexProps } from "@chakra-ui/react";
 import { MdOutlineBorderStyle } from "react-icons/md";
-import ArticleType from "./article";
+import ArticleType, { ArticardType } from "./article";
 
 export default interface PersonType {
   name: string;
@@ -14,7 +14,10 @@ export default interface PersonType {
   articles: ArticleType[];
 }
 
-export type PersonPageType = Omit<PersonType, "image" | "id">;
+export interface PersonPageType
+  extends Omit<PersonType, "image" | "id" | "articles"> {
+  articles: ArticardType[];
+}
 
 export interface PersonCardType
   extends Omit<PersonType, "articles" | "gradYear"> {

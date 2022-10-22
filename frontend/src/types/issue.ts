@@ -1,5 +1,5 @@
 import { FlexProps } from "@chakra-ui/react";
-import ArticleType from "./article";
+import ArticleType, { ArticardType } from "./article";
 
 export default interface IssueType {
   time: string;
@@ -11,7 +11,10 @@ export default interface IssueType {
   articles: ArticleType[];
 }
 
-export type IssuePageType = Omit<IssueType, "cover" | "id">;
+export interface IssuePageType
+  extends Omit<IssueType, "cover" | "id" | "articles"> {
+  articles: ArticardType[];
+}
 
 export interface IssueCardType extends Omit<IssueType, "pdf" | "articles"> {
   styles?: FlexProps;

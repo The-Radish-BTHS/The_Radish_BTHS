@@ -1,4 +1,4 @@
-import ArticleType from "./article";
+import ArticleType, { ArticardType } from "./article";
 
 export default interface TopicType {
   name: string;
@@ -8,7 +8,9 @@ export default interface TopicType {
   articles: ArticleType[];
 }
 
-export type TopicPage = Omit<TopicType, "id">;
+export interface TopicPage extends Omit<TopicType, "id" | "articles"> {
+  articles: ArticardType[];
+}
 
 export type TopicCard = Omit<TopicType, "articles" | "description">;
 
