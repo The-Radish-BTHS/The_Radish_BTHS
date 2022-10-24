@@ -6,8 +6,14 @@ import Layout from "@components/layout/layout";
 import Link from "@components/shared/link";
 import MasonryLayout from "@components/shared/masonry/masonry-layout";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import prisma from "lib/prisma.server";
 
-const Id: NextPage<IssuePageType> = ({ time, description, pdf, articles }) => {
+const Issue: NextPage<IssuePageType> = ({
+  time,
+  description,
+  pdf,
+  articles,
+}) => {
   return (
     <Layout alignItems="center">
       <Heading>{time}</Heading>
@@ -44,94 +50,26 @@ const Id: NextPage<IssuePageType> = ({ time, description, pdf, articles }) => {
   );
 };
 
-export default Id;
+export default Issue;
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const slug = context.params?.slug;
-
-  const time = "June 2022";
-  const cover = "/images/june-2022.webp";
-  const description = "Gay gay gay";
-  const pdf =
-    "https://drive.google.com/file/d/1r4fDEbkSGUwHUBqgCv8q8UONo_vKio3A/view?usp=sharing";
-
-  const authors = [
-    {
-      name: "Dommy",
-      title: "author",
-      isExec: false,
-      gradYear: 2024,
-      slug: "abcd",
-      articles: [],
+  const issue = await prisma.issue.findUnique({
+    where: {
+      slug: String(context.params?.slug),
     },
-  ];
-  const issue = {
-    time: "June 2022",
-    cover: "/images/june-2022.webp",
-    description: "Gay gay gay",
-    slug: "abcd",
-    articles: [],
-  };
-  const tags = [
-    {
-      name: "queer",
-      description: "yass",
-      slug: "slay",
-      articles: [],
+    include: {
+      articles: {
+        include: {
+          authors: { select: { name: true, slug: true } },
+          issue: { select: { time: true, slug: true } },
+          topics: { select: { name: true, slug: true } },
+        },
+      },
     },
-    {
-      name: "slay",
-      description: "yass",
-      slug: "slay",
-      articles: [],
-    },
-    {
-      name: "yass",
-      description: "yass",
-      slug: "slay",
-      articles: [],
-    },
-  ];
-
-  const articles = [
-    {
-      title: "Be Gay do Slay",
-      content:
-        "I think you should do it I think you should do it I think you should do it I think you should do it I think you should do it",
-
-      slug: "slay",
-      authors,
-      issue,
-      tags,
-    },
-    {
-      title: "Be Gay do Slay",
-      content: "I think it",
-
-      slug: "slay",
-      authors,
-      issue,
-      tags,
-    },
-    {
-      title: "Be Gay do Slay",
-      content:
-        "I think you should do it I think you should do it I think you should do it I think you should do it I think you should do it",
-
-      slug: "slay",
-      authors,
-      issue,
-      tags,
-    },
-  ];
+  });
 
   return {
-    props: {
-      time,
-      description,
-      pdf,
-      articles,
-    },
+    props: { ...issue },
   };
 };
 
@@ -140,7 +78,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   // const pathsWithParams = data.stars.map((star: starInterface) => ({ params: { id: "abcd"}}))
 
   return {
-    paths: [{ params: { slug: "abcd" } }],
+    paths: [{ params: { slug: "june-2022" } }],
     fallback: true,
   };
 };

@@ -5,8 +5,9 @@ import OtherPeople from "@components/Latest/other-people";
 import Layout from "@components/layout/layout";
 import MasonryLayout from "@components/shared/masonry/masonry-layout";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import prisma from "lib/prisma.server";
 
-const Id: NextPage<PersonPageType> = ({
+const Person: NextPage<PersonPageType> = ({
   name,
   title,
   isExec,
@@ -51,93 +52,26 @@ const Id: NextPage<PersonPageType> = ({
   );
 };
 
-export default Id;
+export default Person;
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const slug = context.params?.slug;
-  const name = "Dommy";
-  const description = "Yass queen";
-  const title = "writer";
-  const gradYear = 2020;
-
-  const authors = [
-    {
-      name: "Dommy",
-      title: "author",
-      isExec: false,
-      gradYear: 2024,
-      slug: "abcd",
-      articles: [],
+  const person = await prisma.person.findUnique({
+    where: {
+      slug: String(context.params?.slug),
     },
-  ];
-  const issue = {
-    time: "June 2022",
-    cover: "/images/june-2022.webp",
-    description: "Gay gay gay",
-    slug: "abcd",
-    articles: [],
-  };
-  const tags = [
-    {
-      name: "queer",
-      description: "yass",
-      slug: "slay",
-      articles: [],
+    include: {
+      articles: {
+        include: {
+          authors: { select: { name: true, slug: true } },
+          issue: { select: { time: true, slug: true } },
+          topics: { select: { name: true, slug: true } },
+        },
+      },
     },
-    {
-      name: "slay",
-      description: "yass",
-      slug: "slay",
-      articles: [],
-    },
-    {
-      name: "yass",
-      description: "yass",
-      slug: "slay",
-      articles: [],
-    },
-  ];
-
-  const articles = [
-    {
-      title: "Be Gay do Slay",
-      content:
-        "I think you should do it I think you should do it I think you should do it I think you should do it I think you should do it",
-
-      slug: "slay",
-      authors,
-      issue,
-      tags,
-    },
-    {
-      title: "Be Gay do Slay",
-      content: "I think it",
-
-      slug: "slay",
-      authors,
-      issue,
-      tags,
-    },
-    {
-      title: "Be Gay do Slay",
-      content:
-        "I think you should do it I think you should do it I think you should do it I think you should do it I think you should do it",
-
-      slug: "slay",
-      authors,
-      issue,
-      tags,
-    },
-  ];
+  });
 
   return {
-    props: {
-      name,
-      title,
-      description,
-      gradYear,
-      articles,
-    },
+    props: { ...person },
   };
 };
 
