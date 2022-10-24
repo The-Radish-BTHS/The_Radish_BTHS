@@ -23,14 +23,7 @@ const Issues: NextPage<{ issues: IssueCardType[] }> = ({ issues }) => {
 export default Issues;
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const sample = {
-    time: "June 2022",
-    cover: "/images/june-2022.webp",
-    description: "We do gay shit!! It's cool!",
-    id: "slay",
-  };
-
-  const feed = await prisma.issue.findMany({
+  const issues = await prisma.issue.findMany({
     where: { published: true },
     include: {
       articles: {
@@ -38,10 +31,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
       },
     },
   });
-
-  console.log(feed);
-
-  const issues = new Array(20).fill(sample);
 
   return {
     props: { issues },

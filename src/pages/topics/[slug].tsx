@@ -1,40 +1,20 @@
-import { PersonPageType } from "@/types/person";
+import { TopicPage } from "@/types/topic";
 import { Flex, Heading, Text } from "@chakra-ui/react";
 import Articard from "@components/cards/articard";
-import OtherPeople from "@components/Latest/other-people";
+import TopicsSection from "@components/Latest/topics-section";
 import Layout from "@components/layout/layout";
 import MasonryLayout from "@components/shared/masonry/masonry-layout";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
-const Id: NextPage<PersonPageType> = ({
-  name,
-  title,
-  isExec,
-  gradYear,
-  description,
-  articles,
-}) => {
-  const today = new Date();
-  const grad = today.getMonth() > 6 && today.getFullYear() >= gradYear;
-
+const Id: NextPage<TopicPage> = ({ name, description, articles }) => {
   return (
-    <Layout alignItems="center">
-      <Heading>{name}</Heading>
-      <Flex mb="0.75rem" mt="0.25rem">
-        <Text>
-          {grad ? "Former " : ""} {title}
-        </Text>
-        <Text fontWeight="bold" mx="0.2rem">
-          {" "}
-          ∙{" "}
-        </Text>
-        <Text>
-          Graduat{grad ? "ed" : "ing"} {gradYear}
-        </Text>
-      </Flex>
-
-      <Text mb="3rem">{description}</Text>
-
+    <Layout alignItems="center" gap="0.5rem">
+      <Heading color="#bb3300" fontWeight="600">
+        #{name}
+      </Heading>
+      <Text fontSize="1.05rem" mb="2rem">
+        {description}
+      </Text>
       <MasonryLayout>
         {articles?.map((article, i) => (
           <Articard
@@ -45,7 +25,7 @@ const Id: NextPage<PersonPageType> = ({
         ))}
       </MasonryLayout>
       <Flex mt="4rem">
-        <OtherPeople />
+        <TopicsSection title="More Topics" />
       </Flex>
     </Layout>
   );
@@ -54,11 +34,9 @@ const Id: NextPage<PersonPageType> = ({
 export default Id;
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const id = context.params?.id;
-  const name = "Dommy";
+  const slug = context.params?.slug;
+  const name = "slay";
   const description = "Yass queen";
-  const title = "writer";
-  const gradYear = 2020;
 
   const authors = [
     {
@@ -132,11 +110,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   return {
     props: {
-      id,
       name,
       description,
-      title,
-      gradYear,
       articles,
     },
   };
@@ -147,7 +122,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   // const pathsWithParams = data.stars.map((star: starInterface) => ({ params: { id: "abcd"}}))
 
   return {
-    paths: [{ params: { id: "abcd" } }],
+    paths: [{ params: { slug: "abcd" } }],
     fallback: true,
   };
 };

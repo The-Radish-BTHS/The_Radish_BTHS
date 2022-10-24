@@ -65,7 +65,7 @@ const Article: NextPage<ArticlePageType> = ({
 export default Article;
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const id = context.params?.id;
+  const slug = context.params?.slug;
   const title = "10 instances of phenomenal reporting by the survey";
   const content = `You wake up, you eat your bagel with toast, and you pat your ferret three times before hopping onto a crowded subway car. You cram your body into it at the last minute because you’re just that eager to learn. 
 
@@ -153,7 +153,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
       content,
       authors,
       issue,
-      id,
 
       topics,
       latest,
@@ -166,7 +165,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   // const pathsWithParams = data.stars.map((star: starInterface) => ({ params: { id: "abcd"}}))
 
   return {
-    paths: [{ params: { id: "wee" } }, { params: { id: "slay" } }],
+    paths: [{ params: { slug: "wee" } }, { params: { slug: "slay" } }],
     fallback: true,
   };
 };

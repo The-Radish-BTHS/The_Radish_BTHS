@@ -21,6 +21,7 @@ model Post {
 
 model Issue {
   id          String @default(cuid()) @id
+  slug        String @unique @default("")
   time        String
   cover       String
   description String

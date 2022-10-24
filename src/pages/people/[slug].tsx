@@ -1,31 +1,39 @@
-import IssueType, { IssuePageType } from "@/types/issue";
+import { PersonPageType } from "@/types/person";
 import { Flex, Heading, Text } from "@chakra-ui/react";
 import Articard from "@components/cards/articard";
-import LatestIssues from "@components/Latest/latest-issues";
+import OtherPeople from "@components/Latest/other-people";
 import Layout from "@components/layout/layout";
-import Link from "@components/shared/link";
 import MasonryLayout from "@components/shared/masonry/masonry-layout";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
-const Id: NextPage<IssuePageType> = ({ time, description, pdf, articles }) => {
+const Id: NextPage<PersonPageType> = ({
+  name,
+  title,
+  isExec,
+  gradYear,
+  description,
+  articles,
+}) => {
+  const today = new Date();
+  const grad = today.getMonth() > 6 && today.getFullYear() >= gradYear;
+
   return (
     <Layout alignItems="center">
-      <Heading>{time}</Heading>
-      <Text mb="3rem">{description}</Text>
+      <Heading>{name}</Heading>
+      <Flex mb="0.75rem" mt="0.25rem">
+        <Text>
+          {grad ? "Former " : ""} {title}
+        </Text>
+        <Text fontWeight="bold" mx="0.2rem">
+          {" "}
+          ∙{" "}
+        </Text>
+        <Text>
+          Graduat{grad ? "ed" : "ing"} {gradYear}
+        </Text>
+      </Flex>
 
-      <Link
-        external
-        href={pdf ?? ""}
-        p="0.25rem 1.25rem"
-        mb="2rem"
-        fontWeight="600"
-        fontSize="1.25rem"
-        border="1px solid black"
-        borderRadius="0.5rem"
-        _hover={{ background: "rgba(222, 222, 222, 0.8)" }}
-        _active={{ background: "transparent" }}>
-        Read the PDF!!
-      </Link>
+      <Text mb="3rem">{description}</Text>
 
       <MasonryLayout>
         {articles?.map((article, i) => (
@@ -36,9 +44,8 @@ const Id: NextPage<IssuePageType> = ({ time, description, pdf, articles }) => {
           />
         ))}
       </MasonryLayout>
-
-      <Flex mt="4rem" w="60vw">
-        <LatestIssues />
+      <Flex mt="4rem">
+        <OtherPeople />
       </Flex>
     </Layout>
   );
@@ -47,13 +54,11 @@ const Id: NextPage<IssuePageType> = ({ time, description, pdf, articles }) => {
 export default Id;
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const id = context.params?.id;
-
-  const time = "June 2022";
-  const cover = "/images/june-2022.webp";
-  const description = "Gay gay gay";
-  const pdf =
-    "https://drive.google.com/file/d/1r4fDEbkSGUwHUBqgCv8q8UONo_vKio3A/view?usp=sharing";
+  const slug = context.params?.slug;
+  const name = "Dommy";
+  const description = "Yass queen";
+  const title = "writer";
+  const gradYear = 2020;
 
   const authors = [
     {
@@ -127,11 +132,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   return {
     props: {
-      id,
-      time,
-      cover,
+      name,
+      title,
       description,
-      pdf,
+      gradYear,
       articles,
     },
   };
@@ -142,7 +146,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   // const pathsWithParams = data.stars.map((star: starInterface) => ({ params: { id: "abcd"}}))
 
   return {
-    paths: [{ params: { id: "abcd" } }],
+    paths: [{ params: { slug: "abcd" } }],
     fallback: true,
   };
 };
