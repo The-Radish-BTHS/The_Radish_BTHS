@@ -1,4 +1,4 @@
-import { TopicPage } from "@/types/topic";
+import { TopicPageType } from "@/types/topic";
 import { Flex, Heading, Text } from "@chakra-ui/react";
 import Articard from "@components/cards/articard";
 import TopicsSection from "@components/Latest/topics-section";
@@ -7,7 +7,7 @@ import MasonryLayout from "@components/shared/masonry/masonry-layout";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import prisma from "lib/prisma.server";
 
-const Topic: NextPage<TopicPage> = ({ name, description, articles }) => {
+const Topic: NextPage<TopicPageType> = ({ name, description, articles }) => {
   return (
     <Layout alignItems="center" gap="0.5rem">
       <Heading color="#bb3300" fontWeight="600">

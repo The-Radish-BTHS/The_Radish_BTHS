@@ -43,14 +43,16 @@ const PersonCard: React.FC<PersonCardType> = ({
             {isExec && <ExecStamp id={slug} size={60} />}
           </Flex>
 
-          <Text
-            w="100%"
-            textAlign="center"
-            fontStyle="italic"
-            my="1rem"
-            fontWeight="medium">
-            &quot;{description}&quot;
-          </Text>
+          {description ?? (
+            <Text
+              w="100%"
+              textAlign="center"
+              fontStyle="italic"
+              my="1rem"
+              fontWeight="medium">
+              &quot;{description}&quot;
+            </Text>
+          )}
         </Center>
       </Link>
     </CardWrapper>

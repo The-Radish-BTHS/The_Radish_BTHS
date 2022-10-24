@@ -6,20 +6,25 @@ import TopicType, { TopicReference } from "./topic";
 export default interface ArticleType {
   title: string;
   content: string;
+  publishedOn: Date;
+  published: string;
 
-  id: string;
   slug: string;
   authors: PersonType[];
   issue: IssueType;
   topics: TopicType[];
 }
 
-export interface ArticlePageType extends Omit<ArticleType, "id"> {
+export interface ArticlePageType
+  extends Omit<ArticleType, "slug" | "published" | "publishedOn"> {
   latest: ArticardType[];
 }
 
 export interface ArticardType
-  extends Omit<ArticleType, "authors" | "issue" | "topics" | "id"> {
+  extends Omit<
+    ArticleType,
+    "authors" | "issue" | "topics" | "published" | "publishedOn"
+  > {
   styles?: FlexProps;
 
   authors: PersonReference[];

@@ -77,9 +77,14 @@ export const getStaticProps: GetStaticProps = async (context) => {
     },
   });
 
+  const noDateArticle = {
+    ...article,
+    publishedOn: article?.publishedOn.getTime(),
+  };
+
   return {
     props: {
-      ...article,
+      ...noDateArticle,
     },
   };
 };

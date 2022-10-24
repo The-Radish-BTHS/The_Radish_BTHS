@@ -10,18 +10,17 @@ export default interface PersonType {
   description?: string;
   image?: string;
 
-  id: string;
   slug: string;
   articles: ArticleType[];
 }
 
 export interface PersonPageType
-  extends Omit<PersonType, "image" | "id" | "articles"> {
+  extends Omit<PersonType, "image" | "slug" | "articles"> {
   articles: ArticardType[];
 }
 
 export interface PersonCardType
-  extends Omit<PersonType, "articles" | "gradYear" | "id"> {
+  extends Omit<PersonType, "articles" | "gradYear"> {
   styles?: FlexProps;
 }
 

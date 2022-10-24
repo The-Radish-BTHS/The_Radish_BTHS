@@ -4,15 +4,14 @@ export default interface TopicType {
   name: string;
   description: string;
 
-  id: string;
   slug: string;
   articles: ArticleType[];
 }
 
-export interface TopicPage extends Omit<TopicType, "id" | "articles"> {
+export interface TopicPageType extends Omit<TopicType, "slug" | "articles"> {
   articles: ArticardType[];
 }
 
-export type TopicCard = Omit<TopicType, "articles" | "description" | "id">;
+export type TopicCardType = Omit<TopicType, "articles" | "description">;
 
-export type TopicReference = TopicCard;
+export type TopicReference = TopicCardType;

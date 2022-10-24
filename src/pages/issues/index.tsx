@@ -25,14 +25,14 @@ export default Issues;
 export const getStaticProps: GetStaticProps = async (context) => {
   const issues = await prisma.issue.findMany({
     where: { published: true },
-    include: {
-      articles: {
-        select: { title: true, slug: true },
-      },
-    },
   });
 
+  const noDateIssues = issues.map((i) => ({
+    ...i,
+    publishedOn: i.publishedOn.getTime(),
+  }));
+
   return {
-    props: { issues },
+    props: { issues: noDateIssues },
   };
 };

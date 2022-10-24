@@ -38,9 +38,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
     },
   });
 
-  console.log(articles);
+  const noDateArticles = articles.map((i) => ({
+    ...i,
+    publishedOn: i.publishedOn.getTime(),
+  }));
 
   return {
-    props: { articles },
+    props: { articles: noDateArticles },
   };
 };

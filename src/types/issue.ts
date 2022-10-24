@@ -6,19 +6,23 @@ export default interface IssueType {
   cover: string;
   description: string;
   pdf?: string;
+  publishedOn: Date;
+  published: string;
 
-  id: string;
   slug: string;
   articles: ArticleType[];
 }
 
 export interface IssuePageType
-  extends Omit<IssueType, "cover" | "id" | "articles"> {
+  extends Omit<
+    IssueType,
+    "cover" | "slug" | "articles" | "published" | "publishedOn"
+  > {
   articles: ArticardType[];
 }
 
 export interface IssueCardType
-  extends Omit<IssueType, "pdf" | "articles" | "id"> {
+  extends Omit<IssueType, "pdf" | "articles" | "published" | "publishedOn"> {
   styles?: FlexProps;
 }
 
