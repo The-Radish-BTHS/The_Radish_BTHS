@@ -8,6 +8,7 @@ export default interface IssueType {
   pdf?: string;
 
   id: string;
+  slug: string;
   articles: ArticleType[];
 }
 
@@ -16,7 +17,8 @@ export interface IssuePageType
   articles: ArticardType[];
 }
 
-export interface IssueCardType extends Omit<IssueType, "pdf" | "articles"> {
+export interface IssueCardType
+  extends Omit<IssueType, "pdf" | "articles" | "id"> {
   styles?: FlexProps;
 }
 

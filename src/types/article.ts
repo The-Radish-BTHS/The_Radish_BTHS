@@ -8,6 +8,7 @@ export default interface ArticleType {
   content: string;
 
   id: string;
+  slug: string;
   authors: PersonType[];
   issue: IssueType;
   topics: TopicType[];
@@ -18,7 +19,7 @@ export interface ArticlePageType extends Omit<ArticleType, "id"> {
 }
 
 export interface ArticardType
-  extends Omit<ArticleType, "authors" | "issue" | "topics"> {
+  extends Omit<ArticleType, "authors" | "issue" | "topics" | "id"> {
   styles?: FlexProps;
 
   authors: PersonReference[];

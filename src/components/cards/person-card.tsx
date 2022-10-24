@@ -9,14 +9,14 @@ const PersonCard: React.FC<PersonCardType> = ({
   name,
   title,
   description,
-  id,
+  slug,
   image = "",
   styles,
 }) => {
   const widths = { base: "85vw", sm: "70vw", md: "40vw", lg: "25vw" };
   return (
     <CardWrapper maxW={widths} {...styles}>
-      <Link href={`/people/${id}`}>
+      <Link href={`/people/${slug}`}>
         {image && (
           <Image
             src={image}
@@ -40,7 +40,7 @@ const PersonCard: React.FC<PersonCardType> = ({
                 {title}
               </Text>
             </Flex>
-            {isExec && <ExecStamp id={id} size={60} />}
+            {isExec && <ExecStamp id={slug} size={60} />}
           </Flex>
 
           <Text

@@ -2,9 +2,9 @@ import { TopicCard } from "@/types/topic";
 import { Flex, Text } from "@chakra-ui/react";
 import Link from "@components/shared/link";
 
-const TopicCard: React.FC<TopicCard> = ({ name, id }) => {
+const TopicCard: React.FC<TopicCard> = ({ name, slug }) => {
   return (
-    <Link href={`/topics/${id}`} color="#bb3300">
+    <Link href={`/topics/${slug}`} color="#bb3300">
       <Flex p="0.23rem">
         <Text>#{name}</Text>
       </Flex>

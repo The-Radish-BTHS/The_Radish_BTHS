@@ -14,14 +14,14 @@ const Articard: React.FC<ArticardType> = ({
   content,
   issue,
   authors,
-  id,
+  slug,
   styles,
   topics = [],
 }) => {
   return (
     <CardWrapper w={{ base: "94vw", md: "40vw", lg: "25vw" }} {...styles}>
       <Center flexDir="column" w="100%" p="0.75rem">
-        <Link href={`/articles/${id}`} w="100%">
+        <Link href={`/articles/${slug}`} w="100%">
           <Heading maxW="100%" fontSize="1.5rem" mb="0.5rem">
             {title}
           </Heading>
