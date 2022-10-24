@@ -33,8 +33,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
     where: { isExec: true },
   });
 
-  console.log(execs);
-
   return {
     props: { execs },
   };

@@ -70,17 +70,30 @@ export const getStaticProps: GetStaticProps = async (context) => {
     },
   });
 
+  const noDatePerson = {
+    ...person,
+    articles: person?.articles.map((i) => ({
+      ...i,
+      publishedOn: i.publishedOn.getTime(),
+    })),
+  };
+
   return {
-    props: { ...person },
+    props: { ...noDatePerson },
   };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  // const data = await getData();
-  // const pathsWithParams = data.stars.map((star: starInterface) => ({ params: { id: "abcd"}}))
+  const people = await prisma.person.findMany({
+    select: { slug: true },
+  });
+
+  const paths = people.map((person) => {
+    return { params: person };
+  });
 
   return {
-    paths: [{ params: { slug: "abcd" } }],
+    paths,
     fallback: true,
   };
 };

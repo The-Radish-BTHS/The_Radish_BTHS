@@ -50,19 +50,30 @@ export const getStaticProps: GetStaticProps = async (context) => {
     },
   });
 
-  console.log(topic);
+  const noDateTopic = {
+    ...topic,
+    articles: topic?.articles.map((i) => ({
+      ...i,
+      publishedOn: i.publishedOn.getTime(),
+    })),
+  };
 
   return {
-    props: { ...topic },
+    props: { ...noDateTopic },
   };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  // const data = await getData();
-  // const pathsWithParams = data.stars.map((star: starInterface) => ({ params: { id: "abcd"}}))
+  const topics = await prisma.topic.findMany({
+    select: { slug: true },
+  });
+
+  const paths = topics.map((topic) => {
+    return { params: topic };
+  });
 
   return {
-    paths: [{ params: { slug: "abcd" } }],
+    paths,
     fallback: true,
   };
 };

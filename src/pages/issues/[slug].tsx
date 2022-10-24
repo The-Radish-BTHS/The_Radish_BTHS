@@ -83,11 +83,17 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  // const data = await getData();
-  // const pathsWithParams = data.stars.map((star: starInterface) => ({ params: { id: "abcd"}}))
+  const issues = await prisma.issue.findMany({
+    where: { published: true },
+    select: { slug: true },
+  });
+
+  const paths = issues.map((issue) => {
+    return { params: issue };
+  });
 
   return {
-    paths: [{ params: { slug: "june-2022" } }],
+    paths,
     fallback: true,
   };
 };
