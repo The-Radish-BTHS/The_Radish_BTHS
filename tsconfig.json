@@ -19,6 +19,7 @@
       "@hooks/*": ["./src/hooks/*"],
       "@components/*": ["./src/components/*"],
       "@theme/*": ["./src/theme/*"],
+      "@server/*": ["./src/server/*"],
       "@/*": ["./src/*"]
     }
   },

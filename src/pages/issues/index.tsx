@@ -4,6 +4,7 @@ import IssueCard from "@components/cards/issue-card";
 import Layout from "@components/layout/layout";
 import MasonryLayout from "@components/shared/masonry/masonry-layout";
 import { GetStaticProps, NextPage } from "next";
+import prisma from "lib/prisma.server";
 
 const Issues: NextPage<{ issues: IssueCardType[] }> = ({ issues }) => {
   return (
@@ -28,6 +29,17 @@ export const getStaticProps: GetStaticProps = async (context) => {
     description: "We do gay shit!! It's cool!",
     id: "slay",
   };
+
+  const feed = await prisma.issue.findMany({
+    where: { published: true },
+    include: {
+      articles: {
+        select: { title: true },
+      },
+    },
+  });
+
+  console.log(feed);
 
   const issues = new Array(20).fill(sample);
 
