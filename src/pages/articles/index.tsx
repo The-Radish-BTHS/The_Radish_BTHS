@@ -4,6 +4,7 @@ import Articard from "@components/cards/articard";
 import Layout from "@components/layout/layout";
 import MasonryLayout from "@components/shared/masonry/masonry-layout";
 import { GetStaticProps, NextPage } from "next";
+import prisma from "lib/prisma.server";
 
 const Articles: NextPage<{ articles: ArticardType[] }> = ({ articles }) => {
   return (
@@ -22,30 +23,22 @@ const Articles: NextPage<{ articles: ArticardType[] }> = ({ articles }) => {
 export default Articles;
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const sample = {
-    title: "Article",
-    content: "We are the radish we do writing we write things weewoo",
-
-    id: "slay",
-    authors: [
-      {
-        name: "Dommy",
-        id: "slay",
+  const articles = await prisma.article.findMany({
+    where: { published: true },
+    include: {
+      issue: {
+        select: { time: true },
       },
-    ],
-    issue: {
-      time: "June 2022",
-      id: "slay",
+      authors: {
+        select: { name: true },
+      },
+      topics: {
+        select: { name: true, slug: true },
+      },
     },
-    topics: [
-      {
-        name: "slay",
-        id: "slay",
-      },
-    ],
-  };
+  });
 
-  const articles = new Array(20).fill(sample);
+  console.log(articles);
 
   return {
     props: { articles },

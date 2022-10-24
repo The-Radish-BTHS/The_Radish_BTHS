@@ -34,7 +34,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     isExec: true,
     description: "just a cheesy guy in a corny world",
     image: "/images/aramie.webp",
-    id: "slay",
+    slug: "slay",
   };
 
   const execs = new Array(20).fill(sample);

@@ -21,7 +21,7 @@ const Article: NextPage<ArticlePageType> = ({
       </Heading>
       <Flex fontSize="1.05rem" w="90vw" mt="0.5rem" justifyContent="center">
         {authors?.map((author, i) => (
-          <Link key={i} href={`/people/${author.id}`} mr="0.2rem">
+          <Link key={i} href={`/people/${author.slug}`} mr="0.2rem">
             {author.name}
           </Link>
         ))}
@@ -30,7 +30,7 @@ const Article: NextPage<ArticlePageType> = ({
           {" "}
           ∙{" "}
         </Text>
-        <Link href={`/issues/${issue?.id}`}>{issue?.time}</Link>
+        <Link href={`/issues/${issue?.slug}`}>{issue?.time}</Link>
       </Flex>
       <Flex
         mt="0.4rem"
@@ -39,7 +39,7 @@ const Article: NextPage<ArticlePageType> = ({
         fontSize="1.2rem"
         fontWeight="medium">
         {topics?.map((topic, i) => (
-          <TopicCard name={topic.name} id={topic.id} key={i} />
+          <TopicCard name={topic.name} slug={topic.slug} key={i} />
         ))}
       </Flex>
       <Text
@@ -83,7 +83,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       title: "author",
       isExec: false,
       gradYear: 2024,
-      id: "abcd",
+      slug: "abcd",
       articles: [],
     },
   ];
@@ -91,26 +91,26 @@ export const getStaticProps: GetStaticProps = async (context) => {
     time: "June 2022",
     cover: "/images/june-2022.webp",
     description: "Gay gay gay",
-    id: "abcd",
+    slug: "abcd",
     articles: [],
   };
   const topics = [
     {
       name: "queer",
       description: "yass",
-      id: "slay",
+      slug: "slay",
       articles: [],
     },
     {
       name: "slay",
       description: "yass",
-      id: "slay",
+      slug: "slay",
       articles: [],
     },
     {
       name: "yass",
       description: "yass",
-      id: "slay",
+      slug: "slay",
       articles: [],
     },
   ];
@@ -121,7 +121,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       content:
         "I think you should do it I think you should do it I think you should do it I think you should do it I think you should do it",
 
-      id: "slay",
+      slug: "slay",
       authors,
       issue,
       topics,
@@ -130,7 +130,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       title: "Be Gay do Slay",
       content: "I think it",
 
-      id: "slay",
+      slug: "slay",
       authors,
       issue,
       topics,
@@ -140,7 +140,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       content:
         "I think you should do it I think you should do it I think you should do it I think you should do it I think you should do it",
 
-      id: "slay",
+      slug: "slay",
       authors,
       issue,
       topics,

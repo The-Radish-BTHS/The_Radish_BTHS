@@ -10,7 +10,7 @@ const Item: React.FC = () => (
     name="Dommy"
     title="Author"
     description="Just a guy being a dude"
-    id="abcd"
+    slug="abcd"
     styles={{ mt: "1rem" }}
   />
 );

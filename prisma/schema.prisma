@@ -8,28 +8,16 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model Post {
-  id        String     @default(cuid()) @id
-  title     String
-  content   String?
-  published Boolean @default(false)
-  author    User?   @relation(fields: [authorId], references: [id])
-  authorId  String?
-  issue     Issue @relation(fields: [issueId], references: [id])   
-  issueId   String
-}
-
-model Issue {
-  id          String @default(cuid()) @id
-  slug        String @unique @default("")
-  time        String
-  cover       String
-  description String
-  pdf         String?
-  published   Boolean @default(false)
-
-  articles    Post[]
-}
+// model Post {
+//   id        String     @default(cuid()) @id
+//   title     String
+//   content   String?
+//   published Boolean @default(false)
+//   author    User?   @relation(fields: [authorId], references: [id])
+//   authorId  String?
+//   issue     Issue @relation(fields: [issueId], references: [id])   
+//   issueId   String
+// }
 
 model User {
   id            String       @default(cuid()) @id
@@ -38,6 +26,56 @@ model User {
   email         String?   @unique
   createdAt     DateTime  @default(now()) @map(name: "created_at")
   updatedAt     DateTime  @updatedAt @map(name: "updated_at")
-  posts         Post[]
   @@map(name: "users")
+}
+
+model Issue {
+  id          String @default(cuid()) @id
+  slug        String @unique@default("")
+
+  time        String
+  cover       String
+  description String
+  pdf         String?
+  published   Boolean @default(false)
+
+  articles    Article[]
+}
+
+model Article {
+  id          String @default(cuid()) @id
+  slug        String @unique@default("")
+  
+  title       String
+  content     String
+  published   Boolean @default(false)
+
+  issue       Issue @relation(fields: [issueId], references: [id])   
+  issueId     String
+  authors     Person[]
+  topics      Topic[]
+}
+
+model Topic {
+  id          String @default(cuid()) @id
+  slug        String @unique@default("")
+
+  name        String
+  description String
+
+  articles    Article[]
+}
+
+model Person {
+  id          String @default(cuid()) @id
+  slug        String @unique@default("")
+
+  name        String
+  title       String
+  description String
+  gradYear    Int
+  isExec      Boolean @default(false)
+  image       String?
+
+  articles    Article[]
 }

@@ -24,5 +24,5 @@ export interface IssueCardType
 
 export interface IssueReference {
   time: string;
-  id: string;
+  slug: string;
 }

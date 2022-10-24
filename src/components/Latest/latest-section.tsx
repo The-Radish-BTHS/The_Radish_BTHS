@@ -23,20 +23,20 @@ const Item: React.FC = () => (
     title="Lead Poisoning"
     content="I think you should do it. I think that you should do the thing you have been watiting your whole life to do. Do it! Now! Or else! Grrrrrrrr. ANyway I think I'm just stretching this whole thing out weewoo"
     topics={[
-      { name: "Satire", id: "wee" },
-      { name: "Satire", id: "wee" },
+      { name: "Satire", slug: "wee" },
+      { name: "Satire", slug: "wee" },
     ]}
     issue={{
       time: "June 2022",
-      id: "abcd",
+      slug: "abcd",
     }}
     authors={[
       {
         name: "Dommy",
-        id: "abcd",
+        slug: "abcd",
       },
     ]}
-    id="abcd"
+    slug="abcd"
     styles={{ flex: 1 }}
   />
 );
@@ -68,7 +68,7 @@ const LatestSection: React.FC<ILatestProps> = ({
             cover={cover}
             description={description}
             time={issueTime}
-            id="abcd"
+            slug="abcd"
             styles={{ flex: 1 }}
           />
         </Flex>

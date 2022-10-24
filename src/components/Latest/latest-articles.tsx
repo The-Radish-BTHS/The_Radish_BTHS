@@ -14,26 +14,26 @@ const Item: React.FC<{ big?: boolean }> = ({ big }) => (
         : "heyooooo"
     }
     topics={[
-      { name: "Satire", id: "wee" },
-      { name: "Satire", id: "wee" },
-      { name: "Satire", id: "wee" },
-      { name: "Satire", id: "wee" },
-      { name: "Satire", id: "wee" },
-      { name: "Satire", id: "wee" },
-      { name: "Satire", id: "wee" },
-      { name: "Satire", id: "wee" },
+      { name: "Satire", slug: "wee" },
+      { name: "Satire", slug: "wee" },
+      { name: "Satire", slug: "wee" },
+      { name: "Satire", slug: "wee" },
+      { name: "Satire", slug: "wee" },
+      { name: "Satire", slug: "wee" },
+      { name: "Satire", slug: "wee" },
+      { name: "Satire", slug: "wee" },
     ]}
     issue={{
       time: "June 2022",
-      id: "abcd",
+      slug: "abcd",
     }}
     authors={[
       {
         name: "Dommy",
-        id: "abcd",
+        slug: "abcd",
       },
     ]}
-    id="abcd"
+    slug="abcd"
     styles={{ h: "fit-content", my: "1rem", display: "inline-block" }}
   />
 );

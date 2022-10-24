@@ -4,7 +4,7 @@ import Button from "@components/shared/button";
 import Link from "@components/shared/link";
 import { AiOutlineArrowRight } from "react-icons/ai";
 
-const Item: React.FC = () => <TopicCard name="Gay Slay" id="abcd" />;
+const Item: React.FC = () => <TopicCard name="Gay Slay" slug="abcd" />;
 
 const TopicsSection: React.FC<{ title?: string }> = ({
   title = "Topics",

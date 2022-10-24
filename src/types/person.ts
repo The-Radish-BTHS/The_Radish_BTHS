@@ -27,5 +27,5 @@ export interface PersonCardType
 
 export interface PersonReference {
   name: string;
-  id: string;
+  slug: string;
 }

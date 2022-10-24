@@ -18,7 +18,7 @@ const Item: React.FC = () => (
     cover="/images/june-2022.webp"
     description="Hey gays! Read this! lorem ipsum dolor sit amet"
     time="June 2022"
-    id="abcd"
+    slug="abcd"
     styles={{ flex: 1 }}
   />
 );
