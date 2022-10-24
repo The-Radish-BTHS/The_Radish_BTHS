@@ -27,7 +27,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     where: { published: true },
     include: {
       articles: {
-        select: { title: true },
+        select: { title: true, slug: true },
       },
     },
   });

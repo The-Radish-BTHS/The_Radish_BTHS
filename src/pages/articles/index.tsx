@@ -27,10 +27,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
     where: { published: true },
     include: {
       issue: {
-        select: { time: true },
+        select: { time: true, slug: true },
       },
       authors: {
-        select: { name: true },
+        select: { name: true, slug: true },
       },
       topics: {
         select: { name: true, slug: true },
