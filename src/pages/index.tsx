@@ -4,9 +4,14 @@ import TopicsSection from "@components/Latest/topics-section";
 import Layout from "@components/layout/layout";
 import type { GetStaticProps, NextPage } from "next";
 import prisma from "lib/prisma.server";
-import { TopicReference } from "@/types/topic";
+import { TopicCardType } from "@/types/topic";
+import { ArticardType } from "@/types/article";
+import { getArticles } from "lib/getters.server";
 
-const Home: NextPage<{ topics: TopicReference[] }> = ({ topics }) => {
+const Home: NextPage<{ topics: TopicCardType[]; articles: ArticardType[] }> = ({
+  topics,
+  articles,
+}) => {
   return (
     <Layout alignItems="center" gap="2.5rem">
       <LatestSection
@@ -14,7 +19,7 @@ const Home: NextPage<{ topics: TopicReference[] }> = ({ topics }) => {
         description="Hey gays! Read this! lorem ipsum dolor sit amet"
         cover="/images/june-2022.webp"
       />
-      <LatestArticles />
+      <LatestArticles articles={articles} />
       <TopicsSection topics={topics} />
     </Layout>
   );
@@ -26,8 +31,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const topics = await prisma.topic.findMany({
     select: { slug: true, name: true },
   });
+  const articles = await getArticles();
 
   return {
-    props: { topics },
+    props: { topics, articles },
   };
 };
