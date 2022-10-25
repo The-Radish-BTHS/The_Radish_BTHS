@@ -7,6 +7,7 @@ import Link from "@components/shared/link";
 import MasonryLayout from "@components/shared/masonry/masonry-layout";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import prisma from "lib/prisma.server";
+import { getIssue } from "lib/unique-getters.server";
 
 const Issue: NextPage<IssuePageType> = ({
   time,
@@ -53,32 +54,10 @@ const Issue: NextPage<IssuePageType> = ({
 export default Issue;
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const issue = await prisma.issue.findUnique({
-    where: {
-      slug: String(context.params?.slug),
-    },
-    include: {
-      articles: {
-        include: {
-          authors: { select: { name: true, slug: true } },
-          issue: { select: { time: true, slug: true } },
-          topics: { select: { name: true, slug: true } },
-        },
-      },
-    },
-  });
-
-  const noDateIssue = {
-    ...issue,
-    publishedOn: issue?.publishedOn.getTime(),
-    articles: issue?.articles.map((i) => ({
-      ...i,
-      publishedOn: i.publishedOn.getTime(),
-    })),
-  };
+  const issue = await getIssue(String(context.params?.slug));
 
   return {
-    props: { ...noDateIssue },
+    props: { ...issue },
   };
 };
 

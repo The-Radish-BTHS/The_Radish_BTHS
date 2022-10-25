@@ -9,7 +9,7 @@ import { AiOutlineArrowRight } from "react-icons/ai";
 const LatestArticles: React.FC<{
   title?: string;
   articles: ArticardType[];
-}> = ({ title = "New Articles", articles = [] }) => {
+}> = ({ title = "New Articles", articles }) => {
   return (
     <Flex flexDirection="column" alignItems="center">
       <Heading fontSize="2rem" textAlign="center" mb="1rem">

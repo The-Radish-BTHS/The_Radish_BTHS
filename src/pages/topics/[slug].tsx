@@ -6,6 +6,8 @@ import Layout from "@components/layout/layout";
 import MasonryLayout from "@components/shared/masonry/masonry-layout";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import prisma from "lib/prisma.server";
+import { getTopic } from "lib/unique-getters.server";
+import { getTopics } from "lib/many-getters.server";
 
 const Topic: NextPage<TopicPageType> = ({
   name,
@@ -40,35 +42,11 @@ const Topic: NextPage<TopicPageType> = ({
 export default Topic;
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const topic = await prisma.topic.findUnique({
-    where: {
-      slug: String(context.params?.slug),
-    },
-    include: {
-      articles: {
-        include: {
-          authors: { select: { name: true, slug: true } },
-          issue: { select: { time: true, slug: true } },
-          topics: { select: { name: true, slug: true } },
-        },
-      },
-    },
-  });
-
-  const noDateTopic = {
-    ...topic,
-    articles: topic?.articles.map((i) => ({
-      ...i,
-      publishedOn: i.publishedOn.getTime(),
-    })),
-  };
-
-  const topics = await prisma.topic.findMany({
-    select: { slug: true, name: true },
-  });
+  const topic = await getTopic(String(context.params?.slug));
+  const topics = await getTopics();
 
   return {
-    props: { ...noDateTopic, topics },
+    props: { ...topic, topics },
   };
 };
 

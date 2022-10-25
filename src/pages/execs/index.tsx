@@ -5,7 +5,7 @@ import Layout from "@components/layout/layout";
 import Link from "@components/shared/link";
 import MasonryLayout from "@components/shared/masonry/masonry-layout";
 import { GetStaticProps, NextPage } from "next";
-import prisma from "lib/prisma.server";
+import { getPeople } from "lib/many-getters.server";
 
 const Execs: NextPage<{ execs: PersonCardType[] }> = ({ execs }) => {
   return (
@@ -29,9 +29,7 @@ const Execs: NextPage<{ execs: PersonCardType[] }> = ({ execs }) => {
 export default Execs;
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const execs = await prisma.person.findMany({
-    where: { isExec: true },
-  });
+  const execs = await getPeople(true);
 
   return {
     props: { execs },

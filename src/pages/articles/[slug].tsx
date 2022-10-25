@@ -6,6 +6,7 @@ import Link from "@components/shared/link";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import LatestArticles from "@components/Latest/latest-articles";
 import prisma from "lib/prisma.server";
+import { getArticle } from "lib/unique-getters.server";
 
 const Article: NextPage<ArticlePageType> = ({
   title,
@@ -57,7 +58,7 @@ const Article: NextPage<ArticlePageType> = ({
       </Text>
 
       <Flex mt="4rem">
-        <LatestArticles title="More Articles" />
+        <LatestArticles title="More Articles" articles={[]} />
       </Flex>
     </Layout>
   );
@@ -66,25 +67,11 @@ const Article: NextPage<ArticlePageType> = ({
 export default Article;
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const article = await prisma.article.findUnique({
-    where: {
-      slug: String(context.params?.slug),
-    },
-    include: {
-      authors: { select: { name: true, slug: true } },
-      issue: { select: { time: true, slug: true } },
-      topics: { select: { name: true, slug: true } },
-    },
-  });
-
-  const noDateArticle = {
-    ...article,
-    publishedOn: article?.publishedOn.getTime(),
-  };
+  const article = await getArticle(String(context.params?.slug));
 
   return {
     props: {
-      ...noDateArticle,
+      ...article,
     },
   };
 };

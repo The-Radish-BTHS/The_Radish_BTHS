@@ -4,7 +4,7 @@ import IssueCard from "@components/cards/issue-card";
 import Layout from "@components/layout/layout";
 import MasonryLayout from "@components/shared/masonry/masonry-layout";
 import { GetStaticProps, NextPage } from "next";
-import prisma from "lib/prisma.server";
+import { getIssues } from "lib/many-getters.server";
 
 const Issues: NextPage<{ issues: IssueCardType[] }> = ({ issues }) => {
   return (
@@ -23,16 +23,9 @@ const Issues: NextPage<{ issues: IssueCardType[] }> = ({ issues }) => {
 export default Issues;
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const issues = await prisma.issue.findMany({
-    where: { published: true },
-  });
-
-  const noDateIssues = issues.map((i) => ({
-    ...i,
-    publishedOn: i.publishedOn.getTime(),
-  }));
+  const issues = await getIssues();
 
   return {
-    props: { issues: noDateIssues },
+    props: { issues },
   };
 };

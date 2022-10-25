@@ -6,6 +6,7 @@ import Layout from "@components/layout/layout";
 import MasonryLayout from "@components/shared/masonry/masonry-layout";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import prisma from "lib/prisma.server";
+import { getPerson } from "lib/unique-getters.server";
 
 const Person: NextPage<PersonPageType> = ({
   name,
@@ -55,31 +56,10 @@ const Person: NextPage<PersonPageType> = ({
 export default Person;
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const person = await prisma.person.findUnique({
-    where: {
-      slug: String(context.params?.slug),
-    },
-    include: {
-      articles: {
-        include: {
-          authors: { select: { name: true, slug: true } },
-          issue: { select: { time: true, slug: true } },
-          topics: { select: { name: true, slug: true } },
-        },
-      },
-    },
-  });
-
-  const noDatePerson = {
-    ...person,
-    articles: person?.articles.map((i) => ({
-      ...i,
-      publishedOn: i.publishedOn.getTime(),
-    })),
-  };
+  const person = await getPerson(String(context.params?.slug));
 
   return {
-    props: { ...noDatePerson },
+    props: { ...person },
   };
 };
 
