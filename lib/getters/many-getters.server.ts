@@ -34,7 +34,7 @@ export const getTopics = async () => {
 export const getPeople = async (execs?: boolean) => {
   let query = {};
   if (execs !== undefined) {
-    query = { where: { execs } };
+    query = { where: { isExec: execs } };
   }
 
   const people = await prisma.person.findMany(query);
