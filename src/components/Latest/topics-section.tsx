@@ -1,15 +1,14 @@
+import { TopicReference } from "@/types/topic";
 import { Flex, Heading, Text } from "@chakra-ui/react";
 import TopicCard from "@components/cards/topic-card";
 import Button from "@components/shared/button";
 import Link from "@components/shared/link";
 import { AiOutlineArrowRight } from "react-icons/ai";
 
-const Item: React.FC = () => <TopicCard name="Gay Slay" slug="abcd" />;
-
-const TopicsSection: React.FC<{ title?: string }> = ({
-  title = "Topics",
-  ...rest
-}) => {
+const TopicsSection: React.FC<{
+  title?: string;
+  topics: TopicReference[];
+}> = ({ title = "Topics", topics, ...rest }) => {
   return (
     <Flex flexDir="column" alignItems="center" {...rest}>
       <Heading fontSize="2rem" textAlign="center" mb="1rem">
@@ -21,15 +20,13 @@ const TopicsSection: React.FC<{ title?: string }> = ({
         gap="0.5rem"
         fontWeight="600"
         fontSize="1.2rem">
-        {Array(3)
-          .fill(0)
-          .map((_, i) => (
-            <Item key={i} />
-          ))}
+        {topics?.map((topic, i) => (
+          <TopicCard {...topic} key={i} />
+        ))}
       </Flex>
-      <Link as={Button} href="/topics" mt="1.5rem">
+      {/* <Link as={Button} href="/topics" mt="1.5rem">
         <Text mr="0.5rem">All Topics!</Text> <AiOutlineArrowRight />
-      </Link>
+      </Link> */}
     </Flex>
   );
 };

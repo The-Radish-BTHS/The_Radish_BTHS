@@ -7,7 +7,12 @@ import MasonryLayout from "@components/shared/masonry/masonry-layout";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import prisma from "lib/prisma.server";
 
-const Topic: NextPage<TopicPageType> = ({ name, description, articles }) => {
+const Topic: NextPage<TopicPageType> = ({
+  name,
+  description,
+  articles,
+  topics,
+}) => {
   return (
     <Layout alignItems="center" gap="0.5rem">
       <Heading color="#bb3300" fontWeight="600">
@@ -26,7 +31,7 @@ const Topic: NextPage<TopicPageType> = ({ name, description, articles }) => {
         ))}
       </MasonryLayout>
       <Flex mt="4rem">
-        <TopicsSection title="More Topics" />
+        <TopicsSection title="More Topics" topics={topics} />
       </Flex>
     </Layout>
   );
@@ -58,8 +63,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
     })),
   };
 
+  const topics = await prisma.topic.findMany({
+    select: { slug: true, name: true },
+  });
+
   return {
-    props: { ...noDateTopic },
+    props: { ...noDateTopic, topics },
   };
 };
 

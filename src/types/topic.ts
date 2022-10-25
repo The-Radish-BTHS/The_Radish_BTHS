@@ -10,6 +10,7 @@ export default interface TopicType {
 
 export interface TopicPageType extends Omit<TopicType, "slug" | "articles"> {
   articles: ArticardType[];
+  topics: TopicReference[];
 }
 
 export type TopicCardType = Omit<TopicType, "articles" | "description">;
