@@ -31,10 +31,13 @@ export const getTopics = async () => {
   return topics;
 };
 
-export const getPeople = async (execs: boolean) => {
-  const people = await prisma.person.findMany({
-    where: { isExec: execs },
-  });
+export const getPeople = async (execs?: boolean) => {
+  let query = {};
+  if (execs !== undefined) {
+    query = { where: { execs } };
+  }
+
+  const people = await prisma.person.findMany(query);
 
   return people;
 };

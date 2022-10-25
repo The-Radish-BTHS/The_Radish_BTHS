@@ -17,6 +17,7 @@ export default interface PersonType {
 export interface PersonPageType
   extends Omit<PersonType, "image" | "slug" | "articles"> {
   articles: ArticardType[];
+  people: PersonCardType[];
 }
 
 export interface PersonCardType

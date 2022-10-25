@@ -8,6 +8,7 @@ import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import prisma from "lib/prisma.server";
 import { getPerson } from "lib/getters/unique-getters.server";
 import { slugsToPaths } from "lib/helpers.server";
+import { getPeople } from "lib/getters/many-getters.server";
 
 const Person: NextPage<PersonPageType> = ({
   name,
@@ -16,6 +17,7 @@ const Person: NextPage<PersonPageType> = ({
   gradYear,
   description,
   articles,
+  people,
 }) => {
   const today = new Date();
   const grad = today.getMonth() > 6 && today.getFullYear() >= gradYear;
@@ -47,8 +49,8 @@ const Person: NextPage<PersonPageType> = ({
           />
         ))}
       </MasonryLayout>
-      <Flex mt="4rem">
-        <OtherPeople />
+      <Flex mt="4rem" w="100%">
+        <OtherPeople people={people} />
       </Flex>
     </Layout>
   );
@@ -58,9 +60,10 @@ export default Person;
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const person = await getPerson(String(context.params?.slug));
+  const people = await getPeople();
 
   return {
-    props: { ...person },
+    props: { ...person, people },
   };
 };
 

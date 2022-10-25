@@ -2,7 +2,6 @@
   display: -webkit-box; /* Not needed if autoprefixing */
   display: -ms-flexbox; /* Not needed if autoprefixing */
   display: flex;
-  width: fit-content;
 }
 .my-masonry-grid_column {
   background-clip: padding-box;
