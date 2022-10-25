@@ -9,13 +9,16 @@ import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import prisma from "lib/prisma.server";
 import { getIssue } from "lib/getters/unique-getters.server";
 import { slugsToPaths } from "lib/helpers.server";
+import { getIssues } from "lib/getters/many-getters.server";
 
 const Issue: NextPage<IssuePageType> = ({
   time,
   description,
   pdf,
   articles,
+  latest,
 }) => {
+  console.log(latest);
   return (
     <Layout alignItems="center">
       <Heading>{time}</Heading>
@@ -45,8 +48,8 @@ const Issue: NextPage<IssuePageType> = ({
         ))}
       </MasonryLayout>
 
-      <Flex mt="4rem" w="60vw">
-        <LatestIssues />
+      <Flex mt="4rem" w="60vw" justifyContent="center">
+        <LatestIssues issues={latest} />
       </Flex>
     </Layout>
   );
@@ -56,9 +59,10 @@ export default Issue;
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const issue = await getIssue(String(context.params?.slug));
+  const latest = await getIssues();
 
   return {
-    props: { ...issue },
+    props: { ...issue, latest },
   };
 };
 

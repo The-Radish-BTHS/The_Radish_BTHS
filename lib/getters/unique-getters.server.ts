@@ -1,5 +1,5 @@
-import prisma from "./prisma.server";
-import { noDate, noSubDate } from "./helpers.server";
+import prisma from "../prisma.server";
+import { noDate, noSubDate } from "../helpers.server";
 
 const articleInclue = {
   include: {

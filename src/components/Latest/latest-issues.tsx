@@ -1,3 +1,4 @@
+import { IssueCardType } from "@/types/issue";
 import {
   Box,
   Flex,
@@ -23,7 +24,7 @@ const Item: React.FC = () => (
   />
 );
 
-const LatestIssues: React.FC = () => {
+const LatestIssues: React.FC<{ issues: IssueCardType[] }> = ({ issues }) => {
   const numIssues = useBreakpointValue({ base: 1, md: 2, xl: 3 });
 
   return (
@@ -32,12 +33,10 @@ const LatestIssues: React.FC = () => {
         More Issues:{" "}
         <span style={{ fontWeight: "normal" }}>Ingest them fast!</span>
       </Heading>
-      <Flex w="100%" gap="2rem" justifyContent="center">
-        {Array(numIssues)
-          .fill(0)
-          .map((src, i) => (
-            <Item key={i} />
-          ))}
+      <Flex w="100%" gap="2rem" justifyContent="center" margin="auto">
+        {issues?.slice(0, numIssues).map((issue, i) => (
+          <IssueCard {...issue} styles={{ flex: 1 }} key={i} />
+        ))}
       </Flex>
       <Link as={Button} href="/issues" mt="2.5rem">
         <Text mr="0.5rem">All Issues!</Text> <AiOutlineArrowRight />

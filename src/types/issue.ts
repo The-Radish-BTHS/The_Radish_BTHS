@@ -19,6 +19,7 @@ export interface IssuePageType
     "cover" | "slug" | "articles" | "published" | "publishedOn"
   > {
   articles: ArticardType[];
+  latest: IssueCardType[];
 }
 
 export interface IssueCardType
