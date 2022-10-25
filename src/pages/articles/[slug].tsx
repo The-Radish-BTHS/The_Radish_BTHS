@@ -6,8 +6,8 @@ import Link from "@components/shared/link";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import LatestArticles from "@components/Latest/latest-articles";
 import prisma from "lib/prisma.server";
-import { getArticle } from "lib/unique-getters.server";
-import { getArticles } from "lib/many-getters.server";
+import { getArticle } from "lib/getters/unique-getters.server";
+import { getArticles } from "lib/getters/many-getters.server";
 import { slugsToPaths } from "lib/helpers.server";
 
 const Article: NextPage<ArticlePageType> = ({

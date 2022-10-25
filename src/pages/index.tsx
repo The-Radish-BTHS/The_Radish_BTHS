@@ -5,7 +5,11 @@ import Layout from "@components/layout/layout";
 import type { GetStaticProps, NextPage } from "next";
 import { TopicCardType } from "@/types/topic";
 import { ArticardType } from "@/types/article";
-import { getArticles, getIssues, getTopics } from "lib/many-getters.server";
+import {
+  getArticles,
+  getIssues,
+  getTopics,
+} from "lib/getters/many-getters.server";
 import { IssueCardType } from "@/types/issue";
 
 const Home: NextPage<{

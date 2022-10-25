@@ -1,5 +1,5 @@
-import { noDateArray } from "./helpers.server";
-import prisma from "./prisma.server";
+import { noDateArray } from "../helpers.server";
+import prisma from "../prisma.server";
 
 export const getArticles = async (oldest?: boolean, issueSlug?: string) => {
   const issue = issueSlug ? { issueSlug } : {};

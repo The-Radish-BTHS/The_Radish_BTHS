@@ -4,7 +4,7 @@ import Articard from "@components/cards/articard";
 import Layout from "@components/layout/layout";
 import MasonryLayout from "@components/shared/masonry/masonry-layout";
 import { GetStaticProps, NextPage } from "next";
-import { getArticles } from "lib/many-getters.server";
+import { getArticles } from "lib/getters/many-getters.server";
 
 const Articles: NextPage<{ articles: ArticardType[] }> = ({ articles }) => {
   return (

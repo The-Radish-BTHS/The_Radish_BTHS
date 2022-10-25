@@ -6,7 +6,7 @@ import Layout from "@components/layout/layout";
 import MasonryLayout from "@components/shared/masonry/masonry-layout";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import prisma from "lib/prisma.server";
-import { getPerson } from "lib/unique-getters.server";
+import { getPerson } from "lib/getters/unique-getters.server";
 import { slugsToPaths } from "lib/helpers.server";
 
 const Person: NextPage<PersonPageType> = ({

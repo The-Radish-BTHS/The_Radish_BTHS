@@ -5,7 +5,7 @@ import Layout from "@components/layout/layout";
 import Link from "@components/shared/link";
 import MasonryLayout from "@components/shared/masonry/masonry-layout";
 import { GetStaticProps, NextPage } from "next";
-import { getPeople } from "lib/many-getters.server";
+import { getPeople } from "lib/getters/many-getters.server";
 
 const Execs: NextPage<{ execs: PersonCardType[] }> = ({ execs }) => {
   return (

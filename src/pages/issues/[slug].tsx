@@ -7,7 +7,7 @@ import Link from "@components/shared/link";
 import MasonryLayout from "@components/shared/masonry/masonry-layout";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import prisma from "lib/prisma.server";
-import { getIssue } from "lib/unique-getters.server";
+import { getIssue } from "lib/getters/unique-getters.server";
 import { slugsToPaths } from "lib/helpers.server";
 
 const Issue: NextPage<IssuePageType> = ({
