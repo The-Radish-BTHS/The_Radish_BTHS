@@ -3,7 +3,6 @@ import { IssueCardType } from "@/types/issue";
 import {
   Flex,
   Heading,
-  Image,
   SimpleGrid,
   Text,
   useBreakpointValue,
@@ -18,29 +17,6 @@ interface ILatestProps {
   issue: IssueCardType;
   articles: ArticardType[];
 }
-
-const Item: React.FC = () => (
-  <Articard
-    title="Lead Poisoning"
-    content="I think you should do it. I think that you should do the thing you have been watiting your whole life to do. Do it! Now! Or else! Grrrrrrrr. ANyway I think I'm just stretching this whole thing out weewoo"
-    topics={[
-      { name: "Satire", slug: "wee" },
-      { name: "Satire", slug: "wee" },
-    ]}
-    issue={{
-      time: "June 2022",
-      slug: "abcd",
-    }}
-    authors={[
-      {
-        name: "Dommy",
-        slug: "abcd",
-      },
-    ]}
-    slug="abcd"
-    styles={{ flex: 1 }}
-  />
-);
 
 const LatestSection: React.FC<ILatestProps> = ({ issue, articles }) => {
   const numArticles = useBreakpointValue({ base: 3, md: 2, xl: 3 });
@@ -71,7 +47,7 @@ const LatestSection: React.FC<ILatestProps> = ({ issue, articles }) => {
           gap="2rem"
           pl={{ base: "0", md: "1rem" }}
           h="100%">
-          {articles.map((article, i) => (
+          {articles.slice(0, numArticles).map((article, i) => (
             <Articard {...article} styles={{ flex: 1 }} key={i} />
           ))}
         </SimpleGrid>

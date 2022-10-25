@@ -8,6 +8,7 @@ import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import prisma from "lib/prisma.server";
 import { getTopic } from "lib/unique-getters.server";
 import { getTopics } from "lib/many-getters.server";
+import { slugsToPaths } from "lib/helpers.server";
 
 const Topic: NextPage<TopicPageType> = ({
   name,
@@ -55,9 +56,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     select: { slug: true },
   });
 
-  const paths = topics.map((topic) => {
-    return { params: topic };
-  });
+  const paths = await slugsToPaths(topics);
 
   return {
     paths,

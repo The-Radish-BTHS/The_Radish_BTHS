@@ -7,6 +7,7 @@ import MasonryLayout from "@components/shared/masonry/masonry-layout";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import prisma from "lib/prisma.server";
 import { getPerson } from "lib/unique-getters.server";
+import { slugsToPaths } from "lib/helpers.server";
 
 const Person: NextPage<PersonPageType> = ({
   name,
@@ -68,9 +69,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     select: { slug: true },
   });
 
-  const paths = people.map((person) => {
-    return { params: person };
-  });
+  const paths = await slugsToPaths(people);
 
   return {
     paths,

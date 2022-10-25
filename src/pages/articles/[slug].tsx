@@ -8,6 +8,7 @@ import LatestArticles from "@components/Latest/latest-articles";
 import prisma from "lib/prisma.server";
 import { getArticle } from "lib/unique-getters.server";
 import { getArticles } from "lib/many-getters.server";
+import { slugsToPaths } from "lib/helpers.server";
 
 const Article: NextPage<ArticlePageType> = ({
   title,
@@ -85,9 +86,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     select: { slug: true },
   });
 
-  const paths = articles.map((article) => {
-    return { params: article };
-  });
+  const paths = await slugsToPaths(articles);
 
   return {
     paths,
