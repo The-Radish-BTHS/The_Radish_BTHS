@@ -24,7 +24,7 @@ const Topic: NextPage<TopicPageType> = ({
       <Text fontSize="1.05rem" mb="2rem">
         {description}
       </Text>
-      <MasonryLayout>
+      <MasonryLayout numItems={articles.length}>
         {articles?.map((article, i) => (
           <Articard
             {...article}

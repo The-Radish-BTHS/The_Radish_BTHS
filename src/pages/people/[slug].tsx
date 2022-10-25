@@ -40,7 +40,7 @@ const Person: NextPage<PersonPageType> = ({
 
       <Text mb="3rem">{description}</Text>
 
-      <MasonryLayout>
+      <MasonryLayout numItems={articles.length}>
         {articles?.map((article, i) => (
           <Articard
             {...article}

@@ -15,8 +15,8 @@ const LatestArticles: React.FC<{
       <Heading fontSize="2rem" textAlign="center" mb="1rem">
         {title}: <span style={{ fontWeight: "normal" }}>Feast on these!</span>
       </Heading>
-      <MasonryLayout>
-        {articles.map((article, i) => (
+      <MasonryLayout numItems={Math.min(articles.length, 6)}>
+        {articles.slice(0, 6).map((article, i) => (
           <Articard
             {...article}
             styles={{ h: "fit-content", my: "1rem", display: "inline-block" }}

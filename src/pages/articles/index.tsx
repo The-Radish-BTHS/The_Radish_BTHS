@@ -11,7 +11,7 @@ const Articles: NextPage<{ articles: ArticardType[] }> = ({ articles }) => {
     <Layout pageIndex={0} alignItems="center">
       <Heading>Allticles!</Heading>
       <Text mb="3rem">All the articles!!</Text>
-      <MasonryLayout>
+      <MasonryLayout numItems={articles.length}>
         {articles.map((article, i) => (
           <Articard {...article} key={i} styles={{ mb: "2rem" }} />
         ))}

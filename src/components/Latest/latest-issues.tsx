@@ -1,28 +1,9 @@
 import { IssueCardType } from "@/types/issue";
-import {
-  Box,
-  Flex,
-  Heading,
-  Image,
-  SimpleGrid,
-  Text,
-  useBreakpointValue,
-} from "@chakra-ui/react";
+import { Flex, Heading, Text, useBreakpointValue } from "@chakra-ui/react";
 import IssueCard from "@components/cards/issue-card";
 import Button from "@components/shared/button";
 import Link from "@components/shared/link";
-import MasonryLayout from "@components/shared/masonry/masonry-layout";
 import { AiOutlineArrowRight } from "react-icons/ai";
-
-const Item: React.FC = () => (
-  <IssueCard
-    cover="/images/june-2022.webp"
-    description="Hey gays! Read this! lorem ipsum dolor sit amet"
-    time="June 2022"
-    slug="abcd"
-    styles={{ flex: 1 }}
-  />
-);
 
 const LatestIssues: React.FC<{ issues: IssueCardType[] }> = ({ issues }) => {
   const numIssues = useBreakpointValue({ base: 1, md: 2, xl: 3 });
