@@ -1,9 +1,11 @@
 import { noDateArray } from "./helpers.server";
 import prisma from "./prisma.server";
 
-export const getArticles = async (oldest?: boolean) => {
+export const getArticles = async (oldest?: boolean, issueSlug?: string) => {
+  const issue = issueSlug ? { issueSlug } : {};
+
   const articles = await prisma.article.findMany({
-    where: { published: true },
+    where: { published: true, ...issue },
     include: {
       issue: {
         select: { time: true, slug: true },

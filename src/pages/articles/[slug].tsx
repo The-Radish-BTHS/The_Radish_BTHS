@@ -7,6 +7,7 @@ import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import LatestArticles from "@components/Latest/latest-articles";
 import prisma from "lib/prisma.server";
 import { getArticle } from "lib/unique-getters.server";
+import { getArticles } from "lib/many-getters.server";
 
 const Article: NextPage<ArticlePageType> = ({
   title,
@@ -58,7 +59,7 @@ const Article: NextPage<ArticlePageType> = ({
       </Text>
 
       <Flex mt="4rem">
-        <LatestArticles title="More Articles" articles={[]} />
+        <LatestArticles title="More Articles" articles={latest} />
       </Flex>
     </Layout>
   );
@@ -68,10 +69,12 @@ export default Article;
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const article = await getArticle(String(context.params?.slug));
+  const latest = await getArticles();
 
   return {
     props: {
       ...article,
+      latest,
     },
   };
 };

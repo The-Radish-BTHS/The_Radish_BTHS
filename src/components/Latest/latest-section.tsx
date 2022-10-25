@@ -1,3 +1,5 @@
+import { ArticardType } from "@/types/article";
+import { IssueCardType } from "@/types/issue";
 import {
   Flex,
   Heading,
@@ -13,9 +15,8 @@ import Link from "@components/shared/link";
 import { AiOutlineArrowRight } from "react-icons/ai";
 
 interface ILatestProps {
-  issueTime: string;
-  description: string;
-  cover: string;
+  issue: IssueCardType;
+  articles: ArticardType[];
 }
 
 const Item: React.FC = () => (
@@ -41,11 +42,7 @@ const Item: React.FC = () => (
   />
 );
 
-const LatestSection: React.FC<ILatestProps> = ({
-  issueTime,
-  description,
-  cover,
-}) => {
+const LatestSection: React.FC<ILatestProps> = ({ issue, articles }) => {
   const numArticles = useBreakpointValue({ base: 3, md: 2, xl: 3 });
 
   return (
@@ -64,13 +61,7 @@ const LatestSection: React.FC<ILatestProps> = ({
         alignItems="center">
         <Flex flexDir="column" h="100%">
           {" "}
-          <IssueCard
-            cover={cover}
-            description={description}
-            time={issueTime}
-            slug="abcd"
-            styles={{ flex: 1 }}
-          />
+          <IssueCard {...issue} styles={{ flex: 1 }} />
         </Flex>
 
         <SimpleGrid
@@ -80,11 +71,9 @@ const LatestSection: React.FC<ILatestProps> = ({
           gap="2rem"
           pl={{ base: "0", md: "1rem" }}
           h="100%">
-          {Array(numArticles)
-            .fill(0)
-            .map((_, i) => (
-              <Item key={i} />
-            ))}
+          {articles.map((article, i) => (
+            <Articard {...article} styles={{ flex: 1 }} key={i} />
+          ))}
         </SimpleGrid>
       </Flex>
       <Link as={Button} href="/issues" mt="2.5rem">
