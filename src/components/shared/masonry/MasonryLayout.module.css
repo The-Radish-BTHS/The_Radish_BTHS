@@ -2,11 +2,10 @@
   display: -webkit-box; /* Not needed if autoprefixing */
   display: -ms-flexbox; /* Not needed if autoprefixing */
   display: flex;
+  gap: 1.5rem;
 }
 .my-masonry-grid_column {
   background-clip: padding-box;
-  padding-left: 1rem;
-  padding-right: 1rem;
 }
 
 /* Style your items */

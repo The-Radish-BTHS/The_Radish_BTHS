@@ -1,15 +1,19 @@
 import styles from "./MasonryLayout.module.css";
 import Masonry from "react-masonry-css";
 
-const MasonryLayout: React.FC<
-  React.PropsWithChildren<{ numItems?: number }>
-> = ({ numItems, children }) => {
-  const breakpointColumnsObj = {
-    default: Math.min(3, numItems || 3),
-    990: Math.min(2, numItems || 2),
-    767: Math.min(1, numItems || 1),
-  };
+const catchMins = (obj: any, min: number | undefined) => {
+  for (const keyIdx in Object.keys(obj)) {
+    const key = Object.keys(obj)[keyIdx];
+    const val = obj[key];
+    obj[key] = Math.min(val, min || val);
+  }
+  return obj;
+};
 
+const MasonryLayout: React.FC<
+  React.PropsWithChildren<{ numItems?: number; breakpoints?: any }>
+> = ({ numItems, breakpoints = { default: 3, 990: 2, 767: 1 }, children }) => {
+  const breakpointColumnsObj = catchMins(breakpoints, numItems);
   return (
     <Masonry
       breakpointCols={breakpointColumnsObj}

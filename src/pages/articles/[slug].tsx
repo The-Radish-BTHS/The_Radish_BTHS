@@ -59,7 +59,7 @@ const Article: NextPage<ArticlePageType> = ({
         ))}
       </Text>
 
-      <Flex mt="4rem">
+      <Flex mt="4rem" maxW={{ base: "95vw", md: "70vw", lg: "65vw" }}>
         <LatestArticles title="More Articles" articles={latest} />
       </Flex>
     </Layout>

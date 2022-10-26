@@ -11,6 +11,7 @@ import {
   getTopics,
 } from "lib/getters/many-getters.server";
 import { IssueCardType } from "@/types/issue";
+import { Flex } from "@chakra-ui/react";
 
 const Home: NextPage<{
   topics: TopicCardType[];
@@ -21,7 +22,10 @@ const Home: NextPage<{
   return (
     <Layout alignItems="center" gap="2.5rem">
       <LatestSection issue={lastIssue} articles={lastIssueArticles} />
-      <LatestArticles articles={articles} />
+      <Flex maxW="80vw">
+        <LatestArticles articles={articles} />
+      </Flex>
+
       <TopicsSection topics={topics} />
     </Layout>
   );
