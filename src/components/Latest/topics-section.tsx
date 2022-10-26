@@ -1,8 +1,8 @@
 import { TopicReference } from "@/types/topic";
 import { Flex, Heading, Text } from "@chakra-ui/react";
 import TopicCard from "@components/cards/topic-card";
-import Button from "@components/shared/button";
-import Link from "@components/shared/link";
+
+import LinkButton from "@components/link-button";
 import { AiOutlineArrowRight } from "react-icons/ai";
 
 const TopicsSection: React.FC<{
@@ -24,9 +24,9 @@ const TopicsSection: React.FC<{
           <TopicCard {...topic} key={i} />
         ))}
       </Flex>
-      {/* <Link as={Button} href="/topics" mt="1.5rem">
+      {/* <LinkButton href="/topics" mt="1.5rem">
         <Text mr="0.5rem">All Topics!</Text> <AiOutlineArrowRight />
-      </Link> */}
+      </LinkButton> */}
     </Flex>
   );
 };

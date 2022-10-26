@@ -9,6 +9,7 @@ import prisma from "lib/prisma.server";
 import { getPerson } from "lib/getters/unique-getters.server";
 import { slugsToPaths } from "lib/helpers.server";
 import { getPeople } from "lib/getters/many-getters.server";
+import ExecStamp from "@components/shared/exec-stamp";
 
 const Person: NextPage<PersonPageType> = ({
   name,
@@ -24,7 +25,10 @@ const Person: NextPage<PersonPageType> = ({
 
   return (
     <Layout alignItems="center">
-      <Heading>{name}</Heading>
+      <Flex gap="0.5rem" alignItems="flex-start" ml="40px">
+        <Heading>{name}</Heading>
+        {isExec && <ExecStamp id={name} size={40} />}
+      </Flex>
       <Flex mb="0.75rem" mt="0.25rem">
         <Text>
           {grad ? "Former " : ""} {title}
@@ -38,7 +42,16 @@ const Person: NextPage<PersonPageType> = ({
         </Text>
       </Flex>
 
-      <Text mb="3rem">{description}</Text>
+      {description && (
+        <Text
+          w="40vw"
+          textAlign="center"
+          fontStyle="italic"
+          mb="3rem"
+          fontWeight="medium">
+          &quot;{description}&quot;
+        </Text>
+      )}
 
       <MasonryLayout numItems={articles.length}>
         {articles?.map((article, i) => (

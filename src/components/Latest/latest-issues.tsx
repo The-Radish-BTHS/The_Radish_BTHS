@@ -1,8 +1,7 @@
 import { IssueCardType } from "@/types/issue";
 import { Flex, Heading, Text, useBreakpointValue } from "@chakra-ui/react";
 import IssueCard from "@components/cards/issue-card";
-import Button from "@components/shared/button";
-import Link from "@components/shared/link";
+import LinkButton from "@components/link-button";
 import { AiOutlineArrowRight } from "react-icons/ai";
 
 const LatestIssues: React.FC<{ issues: IssueCardType[] }> = ({ issues }) => {
@@ -19,9 +18,9 @@ const LatestIssues: React.FC<{ issues: IssueCardType[] }> = ({ issues }) => {
           <IssueCard {...issue} styles={{ flex: 1 }} key={i} />
         ))}
       </Flex>
-      <Link as={Button} href="/issues" mt="2.5rem">
+      <LinkButton href="/issues" mt="2.5rem">
         <Text mr="0.5rem">All Issues!</Text> <AiOutlineArrowRight />
-      </Link>
+      </LinkButton>
     </Flex>
   );
 };

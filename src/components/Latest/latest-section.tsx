@@ -9,6 +9,7 @@ import {
 } from "@chakra-ui/react";
 import Articard from "@components/cards/articard";
 import IssueCard from "@components/cards/issue-card";
+import LinkButton from "@components/link-button";
 import Button from "@components/shared/button";
 import Link from "@components/shared/link";
 import { AiOutlineArrowRight } from "react-icons/ai";
@@ -52,9 +53,9 @@ const LatestSection: React.FC<ILatestProps> = ({ issue, articles }) => {
           ))}
         </SimpleGrid>
       </Flex>
-      <Link as={Button} href="/issues" mt="2.5rem">
+      <LinkButton href="/issues" mt="2.5rem">
         <Text mr="0.5rem">All Issues!</Text> <AiOutlineArrowRight />
-      </Link>
+      </LinkButton>
     </Flex>
   );
 };

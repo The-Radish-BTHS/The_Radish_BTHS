@@ -43,7 +43,7 @@ const PersonCard: React.FC<PersonCardType> = ({
             {isExec && <ExecStamp id={slug} size={60} />}
           </Flex>
 
-          {description ?? (
+          {description && (
             <Text
               w="100%"
               textAlign="center"

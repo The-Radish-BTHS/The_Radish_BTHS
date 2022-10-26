@@ -1,8 +1,7 @@
 import { ArticardType } from "@/types/article";
-import { Box, Flex, Heading, Image, SimpleGrid, Text } from "@chakra-ui/react";
+import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 import Articard from "@components/cards/articard";
-import Button from "@components/shared/button";
-import Link from "@components/shared/link";
+import LinkButton from "@components/link-button";
 import MasonryLayout from "@components/shared/masonry/masonry-layout";
 import { AiOutlineArrowRight } from "react-icons/ai";
 
@@ -24,9 +23,9 @@ const LatestArticles: React.FC<{
           />
         ))}
       </MasonryLayout>
-      <Link as={Button} href="/articles" mt="2.5rem">
+      <LinkButton href="/articles" mt="2.5rem">
         <Text mr="0.5rem">All Articles!</Text> <AiOutlineArrowRight />
-      </Link>
+      </LinkButton>
     </Flex>
   );
 };
