@@ -12,3 +12,12 @@ export const noSubDate = (obj: any) => ({
 
 export const slugsToPaths = (arr: { slug: string }[]) =>
   arr.map((item) => ({ params: item }));
+
+export const excludeSlugs = (arr?: string[]) => {
+  if (arr) {
+    return arr.map((slug) => ({
+      slug,
+    }));
+  }
+  return [];
+};

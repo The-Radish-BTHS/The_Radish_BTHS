@@ -1,12 +1,21 @@
-import { noDateArray } from "lib/helpers.server";
+import { excludeSlugs, noDateArray } from "lib/helpers.server";
 import SuperJSON from "superjson";
 import prisma from "../prisma.server";
 
-export const getArticles = async (oldest?: boolean, issueSlug?: string) => {
+export const getArticles = async (
+  oldest?: boolean,
+  issueSlug?: string,
+  excluded?: string[]
+) => {
   const issue = issueSlug ? { issueSlug } : {};
+  const NOT = excludeSlugs(excluded);
 
   const articles = await prisma.article.findMany({
-    where: { published: true, ...issue },
+    where: {
+      published: true,
+      ...issue,
+      NOT,
+    },
     include: {
       issue: {
         select: { time: true, slug: true },
@@ -24,28 +33,34 @@ export const getArticles = async (oldest?: boolean, issueSlug?: string) => {
   return noDateArray(articles);
 };
 
-export const getTopics = async () => {
+export const getTopics = async (excluded?: string[]) => {
+  const NOT = excludeSlugs(excluded);
+
   const topics = await prisma.topic.findMany({
+    where: { NOT },
     select: { slug: true, name: true },
   });
 
   return topics;
 };
 
-export const getPeople = async (execs?: boolean) => {
-  let query = {};
-  if (execs !== undefined) {
-    query = { where: { isExec: execs } };
-  }
+export const getPeople = async (execs?: boolean, excluded?: string[]) => {
+  const NOT = excludeSlugs(excluded);
 
-  const people = await prisma.person.findMany(query);
+  let where = execs !== undefined ? { isExec: execs } : {};
+
+  const people = await prisma.person.findMany({
+    where: { ...where, NOT },
+  });
 
   return people;
 };
 
-export const getIssues = async (oldest?: boolean) => {
+export const getIssues = async (oldest?: boolean, excluded?: string[]) => {
+  const NOT = excludeSlugs(excluded);
+
   const issues = await prisma.issue.findMany({
-    where: { published: true },
+    where: { published: true, NOT },
     orderBy: { publishedOn: oldest ? "asc" : "desc" },
   });
 
