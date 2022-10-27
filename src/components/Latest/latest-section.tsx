@@ -11,7 +11,8 @@ import Articard from "@components/cards/articard";
 import IssueCard from "@components/cards/issue-card";
 import LinkButton from "@components/link-button";
 import { AiOutlineArrowRight } from "react-icons/ai";
-import NothingHere from "./nothing-here";
+
+import NothingHereWrapper from "./nothing-here-wrapper";
 
 interface ILatestProps {
   issue: IssueCardType;
@@ -29,37 +30,33 @@ const LatestSection: React.FC<ILatestProps> = ({ issue, articles }) => {
           Our newest issue is ready for consumption!
         </span>
       </Heading>
-      {!issue || articles?.length === 0 ? (
-        <NothingHere />
-      ) : (
-        <>
-          <Flex
-            gap="1rem"
-            mt="2rem"
-            flexDir={{ base: "column", md: "row" }}
-            alignItems="center">
-            <Flex flexDir="column" h="100%">
-              {" "}
-              <IssueCard {...issue} styles={{ flex: 1 }} />
-            </Flex>
-
-            <SimpleGrid
-              templateColumns="auto"
-              templateRows={`repeat(${numArticles}, auto)`}
-              autoFlow="row"
-              gap="2rem"
-              pl={{ base: "0", md: "1rem" }}
-              h="100%">
-              {articles.slice(0, numArticles).map((article, i) => (
-                <Articard {...article} styles={{ flex: 1 }} key={i} />
-              ))}
-            </SimpleGrid>
+      <NothingHereWrapper valid={!issue}>
+        <Flex
+          gap="1rem"
+          mt="2rem"
+          flexDir={{ base: "column", md: "row" }}
+          alignItems="center">
+          <Flex flexDir="column" h="100%">
+            {" "}
+            <IssueCard {...issue} styles={{ flex: 1 }} />
           </Flex>
-          <LinkButton href="/issues" mt="2.5rem">
-            <Text mr="0.5rem">All Issues!</Text> <AiOutlineArrowRight />
-          </LinkButton>
-        </>
-      )}
+
+          <SimpleGrid
+            templateColumns="auto"
+            templateRows={`repeat(${numArticles}, auto)`}
+            autoFlow="row"
+            gap="2rem"
+            pl={{ base: "0", md: "1rem" }}
+            h="100%">
+            {articles.slice(0, numArticles).map((article, i) => (
+              <Articard {...article} styles={{ flex: 1 }} key={i} />
+            ))}
+          </SimpleGrid>
+        </Flex>
+        <LinkButton href="/issues" mt="2.5rem">
+          <Text mr="0.5rem">All Issues!</Text> <AiOutlineArrowRight />
+        </LinkButton>
+      </NothingHereWrapper>
     </Flex>
   );
 };
