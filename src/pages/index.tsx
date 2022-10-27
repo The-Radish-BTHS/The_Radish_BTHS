@@ -36,6 +36,10 @@ export default Home;
 export const getStaticProps: GetStaticProps = async (context) => {
   const topics = await getTopics();
   const articles = await (await getArticles()).slice(0, 6);
+
+  const issues = await getIssues();
+  console.log(issues);
+
   const lastIssue = await (await getIssues())[0];
   const lastIssueArticles = await (
     await getArticles(false, lastIssue?.slug)
