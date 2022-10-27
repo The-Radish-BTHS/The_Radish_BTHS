@@ -4,6 +4,7 @@ import TopicCard from "@components/cards/topic-card";
 
 import LinkButton from "@components/link-button";
 import { AiOutlineArrowRight } from "react-icons/ai";
+import NothingHere from "./nothing-here";
 
 const TopicsSection: React.FC<{
   title?: string;
@@ -14,16 +15,20 @@ const TopicsSection: React.FC<{
       <Heading fontSize="2rem" textAlign="center" mb="1rem">
         {title}: <span style={{ fontWeight: "normal" }}>What TO PIC(k)?</span>
       </Heading>
-      <Flex
-        flexWrap="wrap"
-        justifyContent="center"
-        gap="0.5rem"
-        fontWeight="600"
-        fontSize="1.2rem">
-        {topics?.map((topic, i) => (
-          <TopicCard {...topic} key={i} />
-        ))}
-      </Flex>
+      {topics.length === 0 ? (
+        <NothingHere h="45vh" />
+      ) : (
+        <Flex
+          flexWrap="wrap"
+          justifyContent="center"
+          gap="0.5rem"
+          fontWeight="600"
+          fontSize="1.2rem">
+          {topics?.map((topic, i) => (
+            <TopicCard {...topic} key={i} />
+          ))}
+        </Flex>
+      )}
       {/* <LinkButton href="/topics" mt="1.5rem">
         <Text mr="0.5rem">All Topics!</Text> <AiOutlineArrowRight />
       </LinkButton> */}

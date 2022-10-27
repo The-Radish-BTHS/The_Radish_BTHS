@@ -50,6 +50,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
   ).slice(0, 6);
 
   return {
-    props: { topics, articles, lastIssue, lastIssueArticles },
+    props: {
+      topics: topics ?? null,
+      articles: articles ?? null,
+      lastIssue: lastIssue ?? null,
+      lastIssueArticles: lastIssueArticles ?? null,
+    },
   };
 };
