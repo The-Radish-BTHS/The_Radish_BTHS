@@ -12,7 +12,7 @@ import { slugsToPaths } from "lib/helpers.server";
 import { getIssues } from "lib/getters/many-getters.server";
 
 const Issue: NextPage<IssuePageType> = ({
-  time,
+  title,
   description,
   pdf,
   articles,
@@ -20,7 +20,7 @@ const Issue: NextPage<IssuePageType> = ({
 }) => {
   return (
     <Layout alignItems="center">
-      <Heading>{time}</Heading>
+      <Heading>{title}</Heading>
       <Text mb="3rem">{description}</Text>
 
       <Link

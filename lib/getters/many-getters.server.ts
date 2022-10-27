@@ -18,7 +18,7 @@ export const getArticles = async (
     },
     include: {
       issue: {
-        select: { time: true, slug: true },
+        select: { title: true, slug: true },
       },
       authors: {
         select: { name: true, slug: true },

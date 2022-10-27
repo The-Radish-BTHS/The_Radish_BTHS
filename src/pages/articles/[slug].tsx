@@ -52,7 +52,7 @@ const Article: NextPage<ArticlePageType> = ({
               {" "}
               ∙{" "}
             </Text>
-            <Link href={`/issues/${issue?.slug}`}>{issue?.time}</Link>
+            <Link href={`/issues/${issue?.slug}`}>{issue?.title}</Link>
           </>
         )}
       </Flex>

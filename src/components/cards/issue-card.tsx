@@ -6,11 +6,12 @@ import CardWrapper from "./card-wrapper";
 const IssueCard: React.FC<IssueCardType> = ({
   cover,
   description,
-  time,
+  title,
   slug,
   styles,
 }) => {
   const widths = { base: "94vw", sm: "70vw", md: "40vw", lg: "33vw" };
+
   return (
     <CardWrapper maxW={widths} {...styles}>
       <Link href={`/issues/${slug}`}>
@@ -23,7 +24,7 @@ const IssueCard: React.FC<IssueCardType> = ({
         />
         <Center p="0.75rem" flexDir="column" alignItems="center" w="100%">
           <Heading w="100%" fontSize="1.5rem" mb="0.5rem">
-            {time}
+            {title}
           </Heading>
           <Text
             fontSize="1.1rem"

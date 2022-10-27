@@ -2,7 +2,7 @@ import { FlexProps } from "@chakra-ui/react";
 import ArticleType, { ArticardType } from "./article";
 
 export default interface IssueType {
-  time: string;
+  title: string;
   cover: string;
   description: string;
   pdf?: string;
@@ -28,6 +28,6 @@ export interface IssueCardType
 }
 
 export interface IssueReference {
-  time: string;
+  title: string;
   slug: string;
 }

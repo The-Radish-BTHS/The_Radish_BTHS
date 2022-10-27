@@ -32,7 +32,7 @@ model User {
 model Issue {
   slug        String @unique@default("") @id
 
-  time        String
+  title       String
   cover       String
   description String
   pdf         String?

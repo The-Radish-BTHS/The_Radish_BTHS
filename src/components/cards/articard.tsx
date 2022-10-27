@@ -45,7 +45,7 @@ const Articard: React.FC<ArticardType> = ({
             {" "}
             ∙{" "}
           </Text>
-          <Link href={`/issues/${issue?.slug}`}>{issue?.time}</Link>
+          <Link href={`/issues/${issue?.slug}`}>{issue?.title}</Link>
         </Flex>
       </Center>
       {topics && topics.length > 0 && (

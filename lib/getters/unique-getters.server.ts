@@ -5,7 +5,7 @@ import { noDate, noSubDate } from "lib/helpers.server";
 const articleInclue = {
   include: {
     authors: { select: { name: true, slug: true } },
-    issue: { select: { time: true, slug: true } },
+    issue: { select: { title: true, slug: true } },
     topics: { select: { name: true, slug: true } },
   },
 };
