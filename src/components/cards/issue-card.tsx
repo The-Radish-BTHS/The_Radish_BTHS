@@ -21,11 +21,7 @@ const IssueCard: React.FC<IssueCardType> = ({
           borderBottom="1px solid"
           borderTopRadius="0.5rem"
         />
-        <Center
-          p="0.75rem"
-          flexDir="column"
-          maxW={widths}
-          w={{ base: "94vw", md: "40vw", lg: "25vw" }}>
+        <Center p="0.75rem" flexDir="column" alignItems="center" w="100%">
           <Heading w="100%" fontSize="1.5rem" mb="0.5rem">
             {time}
           </Heading>

@@ -18,7 +18,6 @@ const Issue: NextPage<IssuePageType> = ({
   articles,
   latest,
 }) => {
-  console.log(latest);
   return (
     <Layout alignItems="center">
       <Heading>{time}</Heading>
