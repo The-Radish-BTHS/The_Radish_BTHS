@@ -57,8 +57,9 @@ const Issue: NextPage<IssuePageType> = ({
 export default Issue;
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const issue = await getIssue(String(context.params?.slug));
-  const latest = await getIssues();
+  const slug = String(context.params?.slug);
+  const issue = await getIssue(slug);
+  const latest = await getIssues(false, [slug]);
 
   return {
     props: { ...issue, latest },

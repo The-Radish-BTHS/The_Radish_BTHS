@@ -72,8 +72,9 @@ const Person: NextPage<PersonPageType> = ({
 export default Person;
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const person = await getPerson(String(context.params?.slug));
-  const people = await getPeople();
+  const slug = String(context.params?.slug);
+  const person = await getPerson(slug);
+  const people = await getPeople(undefined, [slug]);
 
   return {
     props: { ...person, people },

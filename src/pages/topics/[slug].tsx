@@ -43,8 +43,9 @@ const Topic: NextPage<TopicPageType> = ({
 export default Topic;
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const topic = await getTopic(String(context.params?.slug));
-  const topics = await getTopics();
+  const slug = String(context.params?.slug);
+  const topic = await getTopic(slug);
+  const topics = await getTopics([slug]);
 
   return {
     props: { ...topic, topics },

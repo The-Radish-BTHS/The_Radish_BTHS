@@ -89,8 +89,9 @@ const Article: NextPage<ArticlePageType> = ({
 export default Article;
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const article = await getArticle(String(context.params?.slug));
-  const latest = await getArticles();
+  const slug = String(context.params?.slug);
+  const article = await getArticle(slug);
+  const latest = await getArticles(false, undefined, [slug]);
 
   return {
     props: {
