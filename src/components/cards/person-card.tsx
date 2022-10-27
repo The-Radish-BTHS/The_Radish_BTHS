@@ -13,9 +13,9 @@ const PersonCard: React.FC<PersonCardType> = ({
   image = "",
   styles,
 }) => {
-  const widths = { base: "85vw", sm: "70vw", md: "40vw", lg: "25vw" };
+  const widths = { base: "85vw", sm: "70vw", md: "40vw", lg: "30vw" };
   return (
-    <CardWrapper maxW={widths} {...styles}>
+    <CardWrapper w={widths} {...styles}>
       <Link href={`/people/${slug}`}>
         {image && (
           <Image

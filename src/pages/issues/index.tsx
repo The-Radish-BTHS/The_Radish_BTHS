@@ -8,7 +8,7 @@ import { getIssues } from "lib/getters/many-getters.server";
 
 const Issues: NextPage<{ issues: IssueCardType[] }> = ({ issues }) => {
   return (
-    <Layout pageIndex={1} textAlign="center">
+    <Layout pageIndex={1} textAlign="center" alignItems="center">
       <Heading>We&apos;ve got issues</Heading>
       <Text mb="3rem">Now you&apos;ve got &apos;em too</Text>
       <MasonryLayout numItems={issues.length}>

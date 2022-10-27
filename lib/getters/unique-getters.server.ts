@@ -17,7 +17,7 @@ export const getArticle = async (slug: string) => {
     ...articleInclue,
   });
 
-  return { ...(SuperJSON.serialize(article).json as any) };
+  return SuperJSON.serialize(article).json;
 };
 
 export const getTopic = async (slug: string) => {
@@ -28,7 +28,7 @@ export const getTopic = async (slug: string) => {
     include: { articles: articleInclue },
   });
 
-  return { ...(SuperJSON.serialize(topic).json as any) };
+  return SuperJSON.serialize(topic).json;
 };
 
 export const getPerson = async (slug: string) => {
@@ -39,7 +39,7 @@ export const getPerson = async (slug: string) => {
     include: { articles: articleInclue },
   });
 
-  return { ...(SuperJSON.serialize(person).json as any) };
+  return SuperJSON.serialize(person).json;
 };
 
 export const getIssue = async (slug: string) => {
@@ -50,5 +50,5 @@ export const getIssue = async (slug: string) => {
     include: { articles: articleInclue },
   });
 
-  return { ...(SuperJSON.serialize(issue).json as any) };
+  return SuperJSON.serialize(issue).json;
 };

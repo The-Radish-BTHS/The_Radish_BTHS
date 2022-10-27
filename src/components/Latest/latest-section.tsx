@@ -21,6 +21,7 @@ interface ILatestProps {
 
 const LatestSection: React.FC<ILatestProps> = ({ issue, articles }) => {
   const numArticles = useBreakpointValue({ base: 3, md: 2, xl: 3 });
+  console.log(articles);
 
   return (
     <Flex flexDirection="column" alignItems="center">

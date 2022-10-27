@@ -6,6 +6,7 @@
 }
 .my-masonry-grid_column {
   background-clip: padding-box;
+  width: fit-content !important;
 }
 
 /* Style your items */

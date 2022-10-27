@@ -20,7 +20,7 @@ export const getArticles = async (oldest?: boolean, issueSlug?: string) => {
     orderBy: { publishedOn: oldest ? "asc" : "desc" },
   });
 
-  return SuperJSON.serialize(articles).json;
+  return SuperJSON.stringify(articles);
 };
 
 export const getTopics = async () => {
@@ -48,5 +48,5 @@ export const getIssues = async (oldest?: boolean) => {
     orderBy: { publishedOn: oldest ? "asc" : "desc" },
   });
 
-  return SuperJSON.serialize(issues).json;
+  return SuperJSON.stringify(issues);
 };
