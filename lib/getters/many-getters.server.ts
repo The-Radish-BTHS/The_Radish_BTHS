@@ -1,3 +1,4 @@
+import { noDateArray } from "lib/helpers.server";
 import SuperJSON from "superjson";
 import prisma from "../prisma.server";
 
@@ -20,7 +21,7 @@ export const getArticles = async (oldest?: boolean, issueSlug?: string) => {
     orderBy: { publishedOn: oldest ? "asc" : "desc" },
   });
 
-  return SuperJSON.stringify(articles);
+  return noDateArray(articles);
 };
 
 export const getTopics = async () => {
@@ -48,5 +49,5 @@ export const getIssues = async (oldest?: boolean) => {
     orderBy: { publishedOn: oldest ? "asc" : "desc" },
   });
 
-  return SuperJSON.stringify(issues);
+  return noDateArray(issues);
 };

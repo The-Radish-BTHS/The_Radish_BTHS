@@ -1,5 +1,6 @@
 import prisma from "../prisma.server";
 import SuperJSON from "superjson";
+import { noDate, noSubDate } from "lib/helpers.server";
 
 const articleInclue = {
   include: {
@@ -17,7 +18,7 @@ export const getArticle = async (slug: string) => {
     ...articleInclue,
   });
 
-  return SuperJSON.serialize(article).json;
+  return noDate(article);
 };
 
 export const getTopic = async (slug: string) => {
@@ -28,7 +29,7 @@ export const getTopic = async (slug: string) => {
     include: { articles: articleInclue },
   });
 
-  return SuperJSON.serialize(topic).json;
+  return noSubDate(topic);
 };
 
 export const getPerson = async (slug: string) => {
@@ -39,7 +40,7 @@ export const getPerson = async (slug: string) => {
     include: { articles: articleInclue },
   });
 
-  return SuperJSON.serialize(person).json;
+  return noSubDate(person);
 };
 
 export const getIssue = async (slug: string) => {
@@ -50,5 +51,5 @@ export const getIssue = async (slug: string) => {
     include: { articles: articleInclue },
   });
 
-  return SuperJSON.serialize(issue).json;
+  return noDate(noSubDate(issue));
 };
