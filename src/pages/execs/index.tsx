@@ -17,7 +17,7 @@ const Execs: NextPage<{ execs: PersonCardType[] }> = ({ execs }) => {
           thou
         </Link>
       </Text>
-      <MasonryLayout numItems={execs.length}>
+      <MasonryLayout numItems={execs?.length}>
         {execs.map((exec, i) => (
           <PersonCard {...exec} key={i} styles={{ mb: "2rem" }} />
         ))}

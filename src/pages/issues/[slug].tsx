@@ -37,7 +37,7 @@ const Issue: NextPage<IssuePageType> = ({
         Read the PDF!!
       </Link>
 
-      <MasonryLayout numItems={articles.length}>
+      <MasonryLayout numItems={articles?.length}>
         {articles?.map((article, i) => (
           <Articard
             {...article}

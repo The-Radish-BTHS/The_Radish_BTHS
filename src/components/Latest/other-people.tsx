@@ -14,8 +14,8 @@ const OtherPeople: React.FC<{ people: PersonCardType[] }> = ({ people }) => {
           Compliments to the not chefs!
         </span>
       </Heading>
-      <MasonryLayout numItems={Math.min(people.length, 3)}>
-        {people.slice(0, 3).map((person, i) => (
+      <MasonryLayout numItems={Math.min(people?.length, 3)}>
+        {people?.slice(0, 3).map((person, i) => (
           <PersonCard
             {...person}
             styles={{ mt: "1rem", display: "inline-block" }}

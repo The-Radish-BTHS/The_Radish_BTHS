@@ -15,9 +15,9 @@ const LatestArticles: React.FC<{
         {title}: <span style={{ fontWeight: "normal" }}>Feast on these!</span>
       </Heading>
       <MasonryLayout
-        numItems={Math.min(articles.length, 6)}
+        numItems={Math.min(articles?.length, 6)}
         breakpoints={{ default: 3, 1200: 2, 850: 1 }}>
-        {articles.slice(0, 6).map((article, i) => (
+        {articles?.slice(0, 6).map((article, i) => (
           <Articard
             {...article}
             styles={{

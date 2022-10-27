@@ -11,7 +11,7 @@ const Issues: NextPage<{ issues: IssueCardType[] }> = ({ issues }) => {
     <Layout pageIndex={1} textAlign="center" alignItems="center">
       <Heading>We&apos;ve got issues</Heading>
       <Text mb="3rem">Now you&apos;ve got &apos;em too</Text>
-      <MasonryLayout numItems={issues.length}>
+      <MasonryLayout numItems={issues?.length}>
         {issues.map((issue, i) => (
           <IssueCard {...issue} key={i} styles={{ mb: "2rem" }} />
         ))}

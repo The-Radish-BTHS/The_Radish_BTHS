@@ -53,7 +53,7 @@ const Person: NextPage<PersonPageType> = ({
         </Text>
       )}
 
-      <MasonryLayout numItems={articles.length}>
+      <MasonryLayout numItems={articles?.length}>
         {articles?.map((article, i) => (
           <Articard
             {...article}

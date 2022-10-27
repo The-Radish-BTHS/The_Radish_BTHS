@@ -17,7 +17,7 @@ const People: NextPage<{ people: PersonCardType[] }> = ({ people }) => {
           the special ones
         </Link>
       </Text>
-      <MasonryLayout numItems={people.length}>
+      <MasonryLayout numItems={people?.length}>
         {people.map((person, i) => (
           <PersonCard {...person} key={i} styles={{ mb: "2rem" }} />
         ))}
