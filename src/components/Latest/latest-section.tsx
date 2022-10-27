@@ -10,8 +10,6 @@ import {
 import Articard from "@components/cards/articard";
 import IssueCard from "@components/cards/issue-card";
 import LinkButton from "@components/link-button";
-import Button from "@components/shared/button";
-import Link from "@components/shared/link";
 import { AiOutlineArrowRight } from "react-icons/ai";
 
 interface ILatestProps {
@@ -21,7 +19,6 @@ interface ILatestProps {
 
 const LatestSection: React.FC<ILatestProps> = ({ issue, articles }) => {
   const numArticles = useBreakpointValue({ base: 3, md: 2, xl: 3 });
-  console.log(articles);
 
   return (
     <Flex flexDirection="column" alignItems="center">

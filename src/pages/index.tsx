@@ -38,7 +38,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const articles = await (await getArticles()).slice(0, 6);
   const lastIssue = await (await getIssues())[0];
   const lastIssueArticles = await (
-    await getArticles(false, lastIssue.slug)
+    await getArticles(false, lastIssue?.slug)
   ).slice(0, 3);
 
   return {
