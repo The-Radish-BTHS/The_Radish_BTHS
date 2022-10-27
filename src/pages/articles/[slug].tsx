@@ -17,7 +17,18 @@ const Article: NextPage<ArticlePageType> = ({
   issue,
   topics,
   latest,
+  publishedOn,
 }) => {
+  const pubDate = new Date(publishedOn);
+  const month = pubDate.getMonth(),
+    date = pubDate.getDate();
+  const pubString =
+    (month > 8 ? month + 1 : "0" + (month + 1)) +
+    "/" +
+    (date > 9 ? date : "0" + date) +
+    "/" +
+    pubDate.getFullYear();
+
   return (
     <Layout alignItems="center">
       <Heading textAlign="center" maxW="85vw">
@@ -29,12 +40,21 @@ const Article: NextPage<ArticlePageType> = ({
             {author.name}
           </Link>
         ))}
-
         <Text fontWeight="bold" mx="0.2rem">
           {" "}
           ∙{" "}
         </Text>
-        <Link href={`/issues/${issue?.slug}`}>{issue?.time}</Link>
+        <Text>{pubString}</Text>
+
+        {issue && (
+          <>
+            <Text fontWeight="bold" mx="0.2rem">
+              {" "}
+              ∙{" "}
+            </Text>
+            <Link href={`/issues/${issue?.slug}`}>{issue?.time}</Link>
+          </>
+        )}
       </Flex>
       <Flex
         mt="0.4rem"

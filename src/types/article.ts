@@ -11,13 +11,14 @@ export default interface ArticleType {
 
   slug: string;
   authors: PersonType[];
-  issue: IssueType;
+  issue?: IssueType;
   topics: TopicType[];
 }
 
 export interface ArticlePageType
   extends Omit<ArticleType, "slug" | "published" | "publishedOn"> {
   latest: ArticardType[];
+  publishedOn: number;
 }
 
 export interface ArticardType

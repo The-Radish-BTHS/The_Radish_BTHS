@@ -50,8 +50,8 @@ model Article {
   published   Boolean @default(false)
   publishedOn DateTime @default(now())
 
-  issue       Issue @relation(fields: [issueSlug], references: [slug])   
-  issueSlug   String
+  issue       Issue? @relation(fields: [issueSlug], references: [slug])   
+  issueSlug   String?
   authors     Person[]
   topics      Topic[]
 }
