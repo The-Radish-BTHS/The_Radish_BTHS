@@ -15,7 +15,7 @@ const TopicsSection: React.FC<{
       <Heading fontSize="2rem" textAlign="center" mb="1rem">
         {title}: <span style={{ fontWeight: "normal" }}>What TO PIC(k)?</span>
       </Heading>
-      {topics.length === 0 ? (
+      {topics?.length === 0 ? (
         <NothingHere h="45vh" />
       ) : (
         <Flex

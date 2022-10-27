@@ -15,7 +15,7 @@ const LatestArticles: React.FC<{
       <Heading fontSize="2rem" textAlign="center" mb="1rem">
         {title}: <span style={{ fontWeight: "normal" }}>Feast on these!</span>
       </Heading>
-      {articles.length === 0 ? (
+      {articles?.length === 0 ? (
         <NothingHere h="45vh" />
       ) : (
         <>

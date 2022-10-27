@@ -29,7 +29,7 @@ const LatestSection: React.FC<ILatestProps> = ({ issue, articles }) => {
           Our newest issue is ready for consumption!
         </span>
       </Heading>
-      {!issue || articles.length === 0 ? (
+      {!issue || articles?.length === 0 ? (
         <NothingHere />
       ) : (
         <>
