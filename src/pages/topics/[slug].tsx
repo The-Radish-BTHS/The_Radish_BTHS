@@ -9,6 +9,7 @@ import prisma from "lib/prisma.server";
 import { getTopic } from "lib/getters/unique-getters.server";
 import { getTopics } from "lib/getters/many-getters.server";
 import { slugsToPaths } from "lib/helpers.server";
+import NothingHereWrapper from "@components/Latest/nothing-here-wrapper";
 
 const Topic: NextPage<TopicPageType> = ({
   name,
@@ -24,15 +25,17 @@ const Topic: NextPage<TopicPageType> = ({
       <Text fontSize="1.05rem" mb="2rem">
         {description}
       </Text>
-      <MasonryLayout numItems={articles?.length}>
-        {articles?.map((article, i) => (
-          <Articard
-            {...article}
-            key={i}
-            styles={{ h: "fit-content", my: "1rem" }}
-          />
-        ))}
-      </MasonryLayout>
+      <NothingHereWrapper valid={articles?.length > 0} py="20vh">
+        <MasonryLayout numItems={articles?.length}>
+          {articles?.map((article, i) => (
+            <Articard
+              {...article}
+              key={i}
+              styles={{ h: "fit-content", my: "1rem" }}
+            />
+          ))}
+        </MasonryLayout>
+      </NothingHereWrapper>
       <Flex mt="4rem">
         <TopicsSection title="More Topics" topics={topics} />
       </Flex>

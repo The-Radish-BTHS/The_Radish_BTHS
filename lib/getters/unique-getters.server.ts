@@ -48,7 +48,7 @@ export const getIssue = async (slug: string) => {
     where: {
       slug,
     },
-    include: { articles: articleInclue },
+    include: { articles: { where: { published: true }, ...articleInclue } },
   });
 
   return noDate(noSubDate(issue));

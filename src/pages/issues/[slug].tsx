@@ -10,6 +10,7 @@ import prisma from "lib/prisma.server";
 import { getIssue } from "lib/getters/unique-getters.server";
 import { slugsToPaths } from "lib/helpers.server";
 import { getIssues } from "lib/getters/many-getters.server";
+import NothingHereWrapper from "@components/Latest/nothing-here-wrapper";
 
 const Issue: NextPage<IssuePageType> = ({
   title,
@@ -37,15 +38,17 @@ const Issue: NextPage<IssuePageType> = ({
         Read the PDF!!
       </Link>
 
-      <MasonryLayout numItems={articles?.length}>
-        {articles?.map((article, i) => (
-          <Articard
-            {...article}
-            key={i}
-            styles={{ h: "fit-content", my: "1rem" }}
-          />
-        ))}
-      </MasonryLayout>
+      <NothingHereWrapper valid={articles?.length > 0} py="20vh">
+        <MasonryLayout numItems={articles?.length}>
+          {articles?.map((article, i) => (
+            <Articard
+              {...article}
+              key={i}
+              styles={{ h: "fit-content", my: "1rem" }}
+            />
+          ))}
+        </MasonryLayout>
+      </NothingHereWrapper>
 
       <Flex mt="4rem" w="60vw" justifyContent="center">
         <LatestIssues issues={latest} />

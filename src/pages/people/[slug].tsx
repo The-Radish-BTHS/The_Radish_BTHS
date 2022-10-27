@@ -10,6 +10,7 @@ import { getPerson } from "lib/getters/unique-getters.server";
 import { slugsToPaths } from "lib/helpers.server";
 import { getPeople } from "lib/getters/many-getters.server";
 import ExecStamp from "@components/shared/exec-stamp";
+import NothingHereWrapper from "@components/Latest/nothing-here-wrapper";
 
 const Person: NextPage<PersonPageType> = ({
   name,
@@ -52,16 +53,17 @@ const Person: NextPage<PersonPageType> = ({
           &quot;{description}&quot;
         </Text>
       )}
-
-      <MasonryLayout numItems={articles?.length}>
-        {articles?.map((article, i) => (
-          <Articard
-            {...article}
-            key={i}
-            styles={{ h: "fit-content", my: "1rem" }}
-          />
-        ))}
-      </MasonryLayout>
+      <NothingHereWrapper valid={articles?.length > 0} py="20vh">
+        <MasonryLayout numItems={articles?.length}>
+          {articles?.map((article, i) => (
+            <Articard
+              {...article}
+              key={i}
+              styles={{ h: "fit-content", my: "1rem" }}
+            />
+          ))}
+        </MasonryLayout>
+      </NothingHereWrapper>
       <Flex mt="4rem" w="100%">
         <OtherPeople people={people} />
       </Flex>

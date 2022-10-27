@@ -6,6 +6,7 @@ import Link from "@components/shared/link";
 import MasonryLayout from "@components/shared/masonry/masonry-layout";
 import { GetStaticProps, NextPage } from "next";
 import { getPeople } from "lib/getters/many-getters.server";
+import NothingHereWrapper from "@components/Latest/nothing-here-wrapper";
 
 const Execs: NextPage<{ execs: PersonCardType[] }> = ({ execs }) => {
   return (
@@ -17,11 +18,13 @@ const Execs: NextPage<{ execs: PersonCardType[] }> = ({ execs }) => {
           thou
         </Link>
       </Text>
-      <MasonryLayout numItems={execs?.length}>
-        {execs.map((exec, i) => (
-          <PersonCard {...exec} key={i} styles={{ mb: "2rem" }} />
-        ))}
-      </MasonryLayout>
+      <NothingHereWrapper valid={execs?.length > 0}>
+        <MasonryLayout numItems={execs?.length}>
+          {execs.map((exec, i) => (
+            <PersonCard {...exec} key={i} styles={{ mb: "2rem" }} />
+          ))}
+        </MasonryLayout>
+      </NothingHereWrapper>
     </Layout>
   );
 };
