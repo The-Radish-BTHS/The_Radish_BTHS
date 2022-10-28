@@ -1,3 +1,6 @@
+import { Article, Person } from "@prisma/client";
+import { type } from "os";
+
 export const noDate = (obj: any) => ({
   ...obj,
   publishedOn: obj.publishedOn.getTime(),
@@ -10,6 +13,29 @@ export const noSubDate = (obj: any) => ({
   articles: noDateArray(obj.articles),
 });
 
+interface personWithArticle extends Person {
+  articles: (Article & {
+    issue: {
+      title: string;
+      slug: string;
+    } | null;
+    authors: {
+      slug: string;
+      name: string;
+    }[];
+    topics: {
+      slug: string;
+      name: string;
+    }[];
+  })[];
+}
+
+export const moreBad = (people: personWithArticle[]) =>
+  people.map((person) => ({
+    ...person,
+    articles: noDateArray(person.articles),
+  }));
+
 export const slugsToPaths = (arr: { slug: string }[]) =>
   arr.map((item) => ({ params: item }));
 
@@ -20,4 +46,12 @@ export const excludeSlugs = (arr?: string[]) => {
     }));
   }
   return [];
+};
+
+export const articleInclue = {
+  include: {
+    authors: { select: { name: true, slug: true } },
+    issue: { select: { title: true, slug: true } },
+    topics: { select: { name: true, slug: true } },
+  },
 };

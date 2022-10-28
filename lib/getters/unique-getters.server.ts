@@ -1,14 +1,6 @@
 import prisma from "../prisma.server";
 import SuperJSON from "superjson";
-import { noDate, noSubDate } from "lib/helpers.server";
-
-const articleInclue = {
-  include: {
-    authors: { select: { name: true, slug: true } },
-    issue: { select: { title: true, slug: true } },
-    topics: { select: { name: true, slug: true } },
-  },
-};
+import { articleInclue, noDate, noSubDate } from "lib/helpers.server";
 
 export const getArticle = async (slug: string) => {
   const article = await prisma.article.findUnique({

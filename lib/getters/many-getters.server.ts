@@ -1,4 +1,10 @@
-import { excludeSlugs, noDateArray } from "lib/helpers.server";
+import {
+  articleInclue,
+  excludeSlugs,
+  moreBad,
+  noDateArray,
+  noSubDate,
+} from "lib/helpers.server";
 import SuperJSON from "superjson";
 import prisma from "../prisma.server";
 
@@ -54,6 +60,22 @@ export const getPeople = async (execs?: boolean, excluded?: string[]) => {
   });
 
   return people;
+};
+
+export const getPeopleWithArticles = async (
+  execs?: boolean,
+  excluded?: string[]
+) => {
+  const NOT = excludeSlugs(excluded);
+
+  let where = execs !== undefined ? { isExec: execs } : {};
+
+  const people = await prisma.person.findMany({
+    where: { ...where, NOT },
+    include: { articles: articleInclue },
+  });
+
+  return moreBad(people);
 };
 
 export const getIssues = async (oldest?: boolean, excluded?: string[]) => {
