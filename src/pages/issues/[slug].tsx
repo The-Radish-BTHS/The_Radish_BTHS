@@ -24,19 +24,21 @@ const Issue: NextPage<IssuePageType> = ({
       <Heading>{title}</Heading>
       <Text mb="3rem">{description}</Text>
 
-      <Link
-        external
-        href={pdf ?? ""}
-        p="0.25rem 1.25rem"
-        mb="2rem"
-        fontWeight="600"
-        fontSize="1.25rem"
-        border="1px solid black"
-        borderRadius="0.5rem"
-        _hover={{ background: "rgba(222, 222, 222, 0.8)" }}
-        _active={{ background: "transparent" }}>
-        Read the PDF!!
-      </Link>
+      {pdf && (
+        <Link
+          external
+          href={pdf}
+          p="0.25rem 1.25rem"
+          mb="2rem"
+          fontWeight="600"
+          fontSize="1.25rem"
+          border="1px solid black"
+          borderRadius="0.5rem"
+          _hover={{ background: "rgba(222, 222, 222, 0.8)" }}
+          _active={{ background: "transparent" }}>
+          Read the PDF!!
+        </Link>
+      )}
 
       <NothingHereWrapper valid={articles?.length > 0} py="20vh">
         <MasonryLayout numItems={articles?.length}>
