@@ -14,7 +14,7 @@ import NothingHereWrapper from "@components/Latest/nothing-here-wrapper";
 
 const Person: NextPage<PersonPageType> = ({
   name,
-  title,
+  position,
   isExec,
   gradYear,
   description,
@@ -32,7 +32,7 @@ const Person: NextPage<PersonPageType> = ({
       </Flex>
       <Flex mb="0.75rem" mt="0.25rem">
         <Text>
-          {grad ? "Former " : ""} {title}
+          {grad ? "Former " : ""} {position}
         </Text>
         <Text fontWeight="bold" mx="0.2rem">
           {" "}

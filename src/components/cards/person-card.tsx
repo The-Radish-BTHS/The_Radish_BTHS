@@ -7,7 +7,7 @@ import CardWrapper from "./card-wrapper";
 const PersonCard: React.FC<PersonCardType> = ({
   isExec = false,
   name,
-  title,
+  position,
   description,
   slug,
   image = "",
@@ -37,7 +37,7 @@ const PersonCard: React.FC<PersonCardType> = ({
                 {name}
               </Heading>
               <Text fontWeight="bold" fontStyle="italic" w="100%">
-                {title}
+                {position}
               </Text>
             </Flex>
             {isExec && <ExecStamp id={slug} size={60} />}

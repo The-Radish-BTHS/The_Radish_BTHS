@@ -69,7 +69,7 @@ model Person {
   slug        String @unique@default("") @id
 
   name        String
-  title       String
+  position    String
   description String
   gradYear    Int
   isExec      Boolean @default(false)

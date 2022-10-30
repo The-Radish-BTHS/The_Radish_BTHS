@@ -4,7 +4,7 @@ import ArticleType, { ArticardType } from "./article";
 
 export default interface PersonType {
   name: string;
-  title: string;
+  position: string;
   isExec?: boolean;
   gradYear: number;
   description?: string;
