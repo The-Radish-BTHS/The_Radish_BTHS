@@ -30,7 +30,7 @@ const LatestSection: React.FC<ILatestProps> = ({ issue, articles }) => {
           Our newest issue is ready for consumption!
         </span>
       </Heading>
-      <NothingHereWrapper valid={!issue}>
+      <NothingHereWrapper valid={issue !== null}>
         <Flex
           gap="1rem"
           mt="2rem"
