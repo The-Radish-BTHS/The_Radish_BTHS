@@ -36,6 +36,13 @@ const Row: React.FC<{ stats: Stats }> = ({ stats }) => {
 };
 
 const Rankings: React.FC<{ authorStats: Stats[] }> = ({ authorStats }) => {
+  authorStats.sort((a, b) => {
+    // Compare the 2 dates
+    if (a.articles < b.articles) return 1;
+    if (a.articles > b.articles) return -1;
+    return 0;
+  });
+
   return (
     <Layout title="Rankings" alignItems="center">
       <Image src="/images/aramabel.png" alt="aramabel" w="60vw" mb="4rem" />
