@@ -35,11 +35,12 @@ const Articard: React.FC<ArticardType> = ({
           </Text>
         </Link>
         <Flex fontSize="0.9rem" w="100%" mt="0.5rem">
-          {authors?.map((author, i) => (
-            <Link key={i} href={`/people/${author.slug}`} mr="0.2rem">
-              {author.name}
-            </Link>
-          ))}
+          <Link
+            href={`/people/${authors[0] ? authors[0].slug : ""}`}
+            mr="0.2rem">
+            {authors[0] ? authors[0].name : ""}
+          </Link>
+          {authors?.length > 1 && `, ${authors.length - 1} more`}
 
           <Text fontWeight="bold" mx="0.2rem">
             {" "}
