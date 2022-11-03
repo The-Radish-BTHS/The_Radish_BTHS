@@ -57,6 +57,7 @@ export const getPeople = async (execs?: boolean, excluded?: string[]) => {
 
   const people = await prisma.person.findMany({
     where: { ...where, NOT },
+    orderBy: { gradYear: "desc" },
   });
 
   return people;

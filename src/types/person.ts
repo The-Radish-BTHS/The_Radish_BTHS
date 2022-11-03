@@ -20,8 +20,7 @@ export interface PersonPageType
   people: PersonCardType[];
 }
 
-export interface PersonCardType
-  extends Omit<PersonType, "articles" | "gradYear"> {
+export interface PersonCardType extends Omit<PersonType, "articles"> {
   styles?: FlexProps;
 }
 

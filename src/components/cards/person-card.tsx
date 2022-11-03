@@ -9,11 +9,15 @@ const PersonCard: React.FC<PersonCardType> = ({
   name,
   position,
   description,
+  gradYear,
   slug,
   image = "",
   styles,
 }) => {
+  const today = new Date();
+  const grad = today.getMonth() > 6 && today.getFullYear() >= gradYear;
   const widths = { base: "85vw", sm: "70vw", md: "40vw", lg: "30vw" };
+
   return (
     <CardWrapper w={widths} {...styles}>
       <Link href={`/people/${slug}`}>
@@ -37,6 +41,7 @@ const PersonCard: React.FC<PersonCardType> = ({
                 {name}
               </Heading>
               <Text fontWeight="bold" fontStyle="italic" w="100%">
+                {grad ? "Former " : ""}
                 {position}
               </Text>
             </Flex>
