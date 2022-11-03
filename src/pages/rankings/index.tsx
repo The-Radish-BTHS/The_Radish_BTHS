@@ -9,27 +9,27 @@ import {
   Tr,
 } from "@chakra-ui/react";
 import Layout from "@components/layout/layout";
-import {
-  getArticles,
-  getPeople,
-  getPeopleWithArticles,
-} from "lib/getters/many-getters.server";
+import Link from "@components/shared/link";
+import { getPeopleWithArticles } from "lib/getters/many-getters.server";
 import { GetStaticProps } from "next";
 
 interface Stats {
   name: string;
+  slug: string;
   isExec: boolean;
   articles: number;
-  issuesIn: number;
+  collabs: number;
   topicsUsed: number;
 }
 
 const Row: React.FC<{ stats: Stats }> = ({ stats }) => {
   return (
     <Tr fontWeight={stats.isExec ? "bold" : "normal"}>
-      <Td>{stats.name}</Td>
+      <Td>
+        <Link href={`/people/${stats.slug}`}>{stats.name}</Link>
+      </Td>
       <Td isNumeric>{stats.articles}</Td>
-      <Td isNumeric>{stats.issuesIn}</Td>
+      <Td isNumeric>{stats.collabs}</Td>
       <Td isNumeric>{stats.topicsUsed}</Td>
     </Tr>
   );
@@ -64,7 +64,7 @@ const Rankings: React.FC<{ authorStats: Stats[] }> = ({ authorStats }) => {
                 Articles
               </Th>
               <Th fontWeight="bold" color="black" isNumeric>
-                Issues In
+                Number of Collaborations
               </Th>
               <Th fontWeight="bold" color="black" isNumeric>
                 Topics Used
@@ -97,15 +97,19 @@ export const getStaticProps: GetStaticProps = async (context) => {
     const issuesIn = issues.filter(function (item: any, pos: number) {
       return issues.indexOf(item) == pos;
     }).length;
+    const collabs = person.articles.filter(
+      (article: any) => article.authors.length > 1
+    ).length;
     const topicsUsed = topics.filter(function (item: any, pos: number) {
       return topics.indexOf(item) == pos;
     }).length;
 
     return {
       name: person.name,
+      slug: person.slug,
       isExec: person.isExec,
       articles: person.articles.length,
-      issuesIn,
+      collabs,
       topicsUsed,
     };
   });

@@ -4,10 +4,18 @@ import { GetStaticProps, NextPage } from "next";
 
 import Row from "@components/tickets/row";
 import TicketTable from "@components/tickets/table";
+import Link from "@components/shared/link";
+import { Flex, Text } from "@chakra-ui/react";
 
 const Index: NextPage<{ ticketData: ticketDataType }> = ({ ticketData }) => {
   return (
     <Layout alignItems="center">
+      <Flex my="0.5rem">
+        <Text mr="0.25rem">If you wanna see your role models, look </Text>
+        <Link href="/rankings" textDecor="underline">
+          here.
+        </Link>
+      </Flex>
       <TicketTable textHeader="Action" numericHeader="Reward">
         {ticketData.actions.map(({ action, description, reward }, i) => (
           <Row
