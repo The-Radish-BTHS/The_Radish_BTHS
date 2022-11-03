@@ -1,10 +1,12 @@
-import { ArticlePageType } from "@/types/article";
 import { Flex, Heading, Text } from "@chakra-ui/react";
 import TopicCard from "@components/cards/topic-card";
 import Layout from "@components/layout/layout";
 import Link from "@components/shared/link";
-import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import LatestArticles from "@components/Latest/latest-articles";
+
+import { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import { ArticlePageType } from "@/types/article";
+
 import prisma from "lib/prisma.server";
 import { getArticle } from "lib/getters/unique-getters.server";
 import { getArticles } from "lib/getters/many-getters.server";
