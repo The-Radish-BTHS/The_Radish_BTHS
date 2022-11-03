@@ -11,7 +11,5 @@ export default async function handler(
     data,
   });
 
-  console.log(res.json(result));
-
   res.json(result);
 }

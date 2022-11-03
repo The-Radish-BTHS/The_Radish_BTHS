@@ -11,7 +11,8 @@ import prisma from "../prisma.server";
 export const getArticles = async (
   oldest?: boolean,
   issueSlug?: string,
-  excluded?: string[]
+  excluded?: string[],
+  take?: any
 ) => {
   const issue = issueSlug ? { issueSlug } : {};
   const NOT = excludeSlugs(excluded);
@@ -34,6 +35,7 @@ export const getArticles = async (
       },
     },
     orderBy: { publishedOn: oldest ? "asc" : "desc" },
+    ...take,
   });
 
   return noDateArray(articles);

@@ -93,10 +93,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
       .map((article: any) => article.topics.map((topic: any) => topic.slug))
       .flat();
 
-    console.log(topics);
-    const issuesIn = issues.filter(function (item: any, pos: number) {
-      return issues.indexOf(item) == pos;
-    }).length;
     const collabs = person.articles.filter(
       (article: any) => article.authors.length > 1
     ).length;
@@ -113,8 +109,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
       topicsUsed,
     };
   });
-
-  console.log(authorStats);
 
   return {
     props: {

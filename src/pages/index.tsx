@@ -37,9 +37,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const topics = await getTopics();
 
   const lastIssue = await (await getIssues())[0];
-  const lastIssueArticles = await (
-    await getArticles(false, lastIssue?.slug)
-  ).slice(0, 3);
+  const lastIssueArticles = await await getArticles(
+    false,
+    lastIssue?.slug,
+    undefined,
+    { take: 3 }
+  );
 
   const articles = await (
     await getArticles(
