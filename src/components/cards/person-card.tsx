@@ -28,11 +28,7 @@ const PersonCard: React.FC<PersonCardType> = ({
             borderTopRadius="0.5rem"
           />
         )}
-        <Center
-          p="0.75rem"
-          flexDir="column"
-          maxW={widths}
-          w={{ base: "94vw", md: "40vw", lg: "25vw" }}>
+        <Center p="0.75rem" flexDir="column" maxW={widths}>
           <Flex justifyContent="space-between" w="100%" alignItems="center">
             <Flex flexDir="column" w="100%" p="0.3rem" textAlign="left">
               <Heading w="100%" fontSize="1.5rem" mb="0.3rem">
