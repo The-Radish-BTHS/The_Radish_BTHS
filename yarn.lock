@@ -2123,7 +2123,7 @@ hey-listen@^1.0.8:
   resolved "https://registry.yarnpkg.com/hey-listen/-/hey-listen-1.0.8.tgz#8e59561ff724908de1aa924ed6ecc84a56a9aa68"
   integrity sha512-COpmrF2NOg4TBWUJ5UVyaCU2A88wEMkUPK4hNqyCkqHbxT92BbvfjoSozkAIIm6XhicGlJHhFdullInrdhwU8Q==
 
-hoist-non-react-statics@^3.3.1:
+hoist-non-react-statics@^3.3.1, hoist-non-react-statics@^3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz#ece0acaf71d62c2969c2ec59feff42a4b1a85b45"
   integrity sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==
@@ -2533,6 +2533,13 @@ next-sanity@^0.8.4:
     "@sanity/client" "^3.3.5"
     "@sanity/groq-store" "^0.4.1"
     groq "^2.29.3"
+
+next-superjson-plugin@^0.4.8:
+  version "0.4.8"
+  resolved "https://registry.yarnpkg.com/next-superjson-plugin/-/next-superjson-plugin-0.4.8.tgz#71d4217de6d4bcf415094b40010c6aa24696f140"
+  integrity sha512-NTwUv+d93JagzSmENKruB0jZgFBfqFS/q/R9X7KFK+10etWtf6BHydUqsHay61UM9GjAynnC/LRYTysGmXz+SA==
+  dependencies:
+    hoist-non-react-statics "^3.3.2"
 
 next@12.2.2:
   version "12.2.2"

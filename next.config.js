@@ -2,6 +2,14 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-}
+};
+module.exports = {
+  ...nextConfig,
+};
 
-module.exports = nextConfig
+/*
+
+  experimental: {
+    swcPlugins: [["next-superjson-plugin", {}]],
+  },
+  */
