@@ -83,6 +83,7 @@ export const getPeopleWithArticles = async (
   excluded?: string[]
 ) => {
   const NOT = excludeSlugs(excluded);
+  const today = new Date();
 
   let where = execs !== undefined ? { isExec: execs } : {};
 
@@ -91,7 +92,12 @@ export const getPeopleWithArticles = async (
     include: { articles: articleInclue },
   });
 
-  return moreBad(people);
+  return moreBad(
+    people.map((person) => ({
+      ...person,
+      former: today.getMonth() > 6 && today.getFullYear() >= person.gradYear,
+    }))
+  );
 };
 
 export const getIssues = async (

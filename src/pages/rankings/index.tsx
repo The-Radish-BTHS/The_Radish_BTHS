@@ -16,6 +16,7 @@ import { GetStaticProps } from "next";
 interface Stats {
   name: string;
   slug: string;
+  former: boolean;
   isExec: boolean;
   articles: number;
   collabs: number;
@@ -24,7 +25,9 @@ interface Stats {
 
 const Row: React.FC<{ stats: Stats }> = ({ stats }) => {
   return (
-    <Tr fontWeight={stats.isExec ? "bold" : "normal"}>
+    <Tr
+      fontWeight={stats.isExec ? (stats.former ? "medium" : "bold") : "light"}
+      color={stats.former ? "black" : "black"}>
       <Td>
         <Link href={`/people/${stats.slug}`}>{stats.name}</Link>
       </Td>
@@ -88,7 +91,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const people = await getPeopleWithArticles();
 
   const authorStats = people.map((person: any) => {
-    const issues = person.articles.map((article: any) => article.issueSlug);
     const topics = person.articles
       .map((article: any) => article.topics.map((topic: any) => topic.slug))
       .flat();
@@ -103,6 +105,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     return {
       name: person.name,
       slug: person.slug,
+      former: person.former,
       isExec: person.isExec,
       articles: person.articles.length,
       collabs,
