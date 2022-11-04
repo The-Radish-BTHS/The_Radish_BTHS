@@ -41,7 +41,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     false,
     lastIssue?.slug,
     undefined,
-    { take: 3 }
+    3
   );
 
   const articles = await (

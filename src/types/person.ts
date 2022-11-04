@@ -9,6 +9,7 @@ export default interface PersonType {
   gradYear: number;
   description?: string;
   image?: string;
+  former: boolean;
 
   slug: string;
   articles: ArticleType[];

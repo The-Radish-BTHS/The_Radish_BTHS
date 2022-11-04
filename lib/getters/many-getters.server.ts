@@ -12,10 +12,11 @@ export const getArticles = async (
   oldest?: boolean,
   issueSlug?: string,
   excluded?: string[],
-  take?: any
+  takeN?: number
 ) => {
   const issue = issueSlug ? { issueSlug } : {};
   const NOT = excludeSlugs(excluded);
+  const take = takeN ? { take: takeN } : null;
 
   const articles = await prisma.article.findMany({
     where: {
@@ -41,28 +42,40 @@ export const getArticles = async (
   return noDateArray(articles);
 };
 
-export const getTopics = async (excluded?: string[]) => {
+export const getTopics = async (excluded?: string[], takeN?: number) => {
   const NOT = excludeSlugs(excluded);
+  const take = takeN ? { take: takeN } : null;
 
   const topics = await prisma.topic.findMany({
     where: { NOT },
     select: { slug: true, name: true },
+    ...take,
   });
 
   return topics;
 };
 
-export const getPeople = async (execs?: boolean, excluded?: string[]) => {
+export const getPeople = async (
+  execs?: boolean,
+  excluded?: string[],
+  takeN?: number
+) => {
   const NOT = excludeSlugs(excluded);
+  const take = takeN ? { take: takeN } : null;
 
   let where = execs !== undefined ? { isExec: execs } : {};
+  const today = new Date();
 
   const people = await prisma.person.findMany({
     where: { ...where, NOT },
     orderBy: { gradYear: "desc" },
+    ...take,
   });
 
-  return people;
+  return people.map((person) => ({
+    ...person,
+    former: today.getMonth() > 6 && today.getFullYear() >= person.gradYear,
+  }));
 };
 
 export const getPeopleWithArticles = async (
@@ -81,12 +94,18 @@ export const getPeopleWithArticles = async (
   return moreBad(people);
 };
 
-export const getIssues = async (oldest?: boolean, excluded?: string[]) => {
+export const getIssues = async (
+  oldest?: boolean,
+  excluded?: string[],
+  takeN?: number
+) => {
   const NOT = excludeSlugs(excluded);
+  const take = takeN ? { take: takeN } : null;
 
   const issues = await prisma.issue.findMany({
     where: { published: true, NOT },
     orderBy: { publishedOn: oldest ? "asc" : "desc" },
+    ...take,
   });
 
   return noDateArray(issues);

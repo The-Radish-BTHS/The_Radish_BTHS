@@ -32,7 +32,11 @@ export const getPerson = async (slug: string) => {
     include: { articles: articleInclue },
   });
 
-  return noSubDate(person);
+  const today = new Date();
+  const former =
+    person && today.getMonth() > 6 && today.getFullYear() >= person.gradYear;
+
+  return noSubDate({ ...person, former });
 };
 
 export const getIssue = async (slug: string) => {

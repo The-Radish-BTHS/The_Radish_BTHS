@@ -93,7 +93,7 @@ export default Article;
 export const getStaticProps: GetStaticProps = async (context) => {
   const slug = String(context.params?.slug);
   const article = await getArticle(slug);
-  const latest = await getArticles(false, undefined, [slug], { take: 6 });
+  const latest = await getArticles(false, undefined, [slug], 6);
 
   return {
     props: {

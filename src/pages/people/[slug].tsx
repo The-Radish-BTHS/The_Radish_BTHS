@@ -18,12 +18,10 @@ const Person: NextPage<PersonPageType> = ({
   isExec,
   gradYear,
   description,
+  former,
   articles,
   people,
 }) => {
-  const today = new Date();
-  const grad = today.getMonth() > 6 && today.getFullYear() >= gradYear;
-
   return (
     <Layout alignItems="center">
       <Flex gap="0.5rem" alignItems="flex-start" ml="40px">
@@ -32,14 +30,14 @@ const Person: NextPage<PersonPageType> = ({
       </Flex>
       <Flex mb="0.75rem" mt="0.25rem">
         <Text>
-          {grad ? "Former " : ""} {position}
+          {former ? "Former " : ""} {position}
         </Text>
         <Text fontWeight="bold" mx="0.2rem">
           {" "}
           ∙{" "}
         </Text>
         <Text>
-          Graduat{grad ? "ed" : "ing"} {gradYear}
+          Graduat{former ? "ed" : "ing"} {gradYear}
         </Text>
       </Flex>
 
@@ -76,7 +74,7 @@ export default Person;
 export const getStaticProps: GetStaticProps = async (context) => {
   const slug = String(context.params?.slug);
   const person = await getPerson(slug);
-  const people = await getPeople(undefined, [slug]);
+  const people = await getPeople(undefined, [slug], 6);
 
   return {
     props: { ...person, people },
