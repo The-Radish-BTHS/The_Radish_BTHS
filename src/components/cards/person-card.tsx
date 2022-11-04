@@ -9,13 +9,11 @@ const PersonCard: React.FC<PersonCardType> = ({
   name,
   position,
   description,
-  gradYear,
+  former,
   slug,
   image = "",
   styles,
 }) => {
-  const today = new Date();
-  const grad = today.getMonth() > 6 && today.getFullYear() >= gradYear;
   const widths = { base: "85vw", sm: "70vw", md: "40vw", lg: "30vw" };
 
   return (
@@ -41,7 +39,7 @@ const PersonCard: React.FC<PersonCardType> = ({
                 {name}
               </Heading>
               <Text fontWeight="bold" fontStyle="italic" w="100%">
-                {grad ? "Former " : ""}
+                {former ? "Former " : ""}
                 {position}
               </Text>
             </Flex>
