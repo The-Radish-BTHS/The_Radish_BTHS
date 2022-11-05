@@ -1,13 +1,6 @@
 import { PortableText } from "@portabletext/react";
-import {
-  Code,
-  Heading,
-  Link,
-  ListItem,
-  Text,
-  UnorderedList,
-} from "@chakra-ui/react";
-import NextLink from "next/link";
+import { Code, Heading, ListItem, Text, UnorderedList } from "@chakra-ui/react";
+import Link from "@components/shared/link";
 
 export const PortableTextLayout: React.FC<{
   text: any[];
@@ -46,11 +39,12 @@ export const PortableTextLayout: React.FC<{
           },
           link: ({ text, value }) => {
             return (
-              <NextLink href={value.href} passHref>
-                <Link textDecoration="underline" fontSize="inherit">
-                  {text}
-                </Link>
-              </NextLink>
+              <Link
+                href={value.href}
+                textDecoration="underline"
+                fontSize="inherit">
+                {text}
+              </Link>
             );
           },
         },

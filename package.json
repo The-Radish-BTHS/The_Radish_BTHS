@@ -18,7 +18,7 @@
     "framer-motion": "^6.4.3",
     "hamburger-react": "^2.5.0",
     "jotai": "^1.7.4",
-    "next": "12.2.2",
+    "next": "^13.0.2",
     "next-sanity": "^0.8.4",
     "next-superjson-plugin": "^0.4.8",
     "nprogress": "^0.2.0",

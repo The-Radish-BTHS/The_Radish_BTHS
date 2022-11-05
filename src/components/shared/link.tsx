@@ -15,11 +15,13 @@ const Link: React.FC<React.PropsWithChildren<LinkProps>> = ({
   external,
   ...rest
 }) => (
-  <NextLink href={href} passHref target={external ? "_blank" : ""}>
-    <ChakraLink {...rest} target={external ? "_blank" : ""}>
-      {children}
-    </ChakraLink>
-  </NextLink>
+  <ChakraLink
+    as={NextLink}
+    {...rest}
+    href={href}
+    target={external ? "_blank" : ""}>
+    {children}
+  </ChakraLink>
 );
 
 export default Link;
