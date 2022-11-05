@@ -18,7 +18,10 @@ const Home: NextPage<{
   articles: ArticardType[];
   lastIssue: IssueCardType;
   lastIssueArticles: ArticardType[];
-}> = ({ topics, articles, lastIssue, lastIssueArticles }) => {
+  date: Date;
+}> = ({ topics, articles, lastIssue, lastIssueArticles, date }) => {
+  console.log(date);
+
   return (
     <Layout alignItems="center" gap="2.5rem">
       <LatestSection issue={lastIssue} articles={lastIssueArticles} />
@@ -58,6 +61,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       articles: articles ?? null,
       lastIssue: lastIssue ?? null,
       lastIssueArticles: lastIssueArticles ?? null,
+      date: new Date(),
     },
   };
 };

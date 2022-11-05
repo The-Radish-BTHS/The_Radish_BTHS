@@ -10,7 +10,7 @@ export const getArticle = async (slug: string) => {
     ...articleInclue,
   });
 
-  return noDate(article);
+  return article;
 };
 
 export const getTopic = async (slug: string) => {
