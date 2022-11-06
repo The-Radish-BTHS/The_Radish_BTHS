@@ -39,7 +39,7 @@ export const getArticles = async (
     ...take,
   });
 
-  return noDateArray(articles);
+  return articles;
 };
 
 export const getTopics = async (excluded?: string[], takeN?: number) => {
@@ -92,12 +92,10 @@ export const getPeopleWithArticles = async (
     include: { articles: articleInclue },
   });
 
-  return moreBad(
-    people.map((person) => ({
-      ...person,
-      former: today.getMonth() > 6 && today.getFullYear() >= person.gradYear,
-    }))
-  );
+  return people.map((person) => ({
+    ...person,
+    former: today.getMonth() > 6 && today.getFullYear() >= person.gradYear,
+  }));
 };
 
 export const getIssues = async (
@@ -114,5 +112,5 @@ export const getIssues = async (
     ...take,
   });
 
-  return noDateArray(issues);
+  return issues;
 };
