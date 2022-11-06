@@ -90,15 +90,15 @@ export default Rankings;
 export const getStaticProps: GetStaticProps = async (context) => {
   const people = await getPeopleWithArticles();
 
-  const authorStats = people.map((person: any) => {
+  const authorStats = people.map((person) => {
     const topics = person.articles
-      .map((article: any) => article.topics.map((topic: any) => topic.slug))
+      .map((article) => article.topics.map((topic) => topic.slug))
       .flat();
 
     const collabs = person.articles.filter(
-      (article: any) => article.authors.length > 1
+      (article) => article.authors.length > 1
     ).length;
-    const topicsUsed = topics.filter(function (item: any, pos: number) {
+    const topicsUsed = topics.filter(function (item, pos: number) {
       return topics.indexOf(item) == pos;
     }).length;
 
