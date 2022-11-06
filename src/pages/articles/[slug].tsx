@@ -21,14 +21,11 @@ const Article: NextPage<ArticlePageType> = ({
   latest,
   publishedOn,
 }) => {
-  const month = publishedOn.getMonth(),
-    date = publishedOn.getDate();
-  const pubString =
-    (month > 8 ? month + 1 : "0" + (month + 1)) +
-    "/" +
-    (date > 9 ? date : "0" + date) +
-    "/" +
-    publishedOn.getFullYear();
+  const pubString = Intl.DateTimeFormat("en-us", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  }).format(publishedOn);
 
   return (
     <Layout alignItems="center">
