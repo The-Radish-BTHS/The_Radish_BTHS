@@ -5,10 +5,10 @@ import OtherPeople from "@components/Latest/other-people";
 import Layout from "@components/layout/layout";
 import MasonryLayout from "@components/shared/masonry/masonry-layout";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import prisma from "lib/prisma.server";
-import { getPerson } from "lib/getters/unique-getters.server";
-import { slugsToPaths } from "lib/helpers.server";
-import { getPeople } from "lib/getters/many-getters.server";
+import prisma from "@lib/prisma.server";
+import { getPerson } from "@lib/getters/unique-getters.server";
+import { slugsToPaths } from "@lib/helpers.server";
+import { getPeople } from "@lib/getters/many-getters.server";
 import ExecStamp from "@components/shared/exec-stamp";
 import NothingHereWrapper from "@components/Latest/nothing-here-wrapper";
 
@@ -47,7 +47,8 @@ const Person: NextPage<PersonPageType> = ({
           textAlign="center"
           fontStyle="italic"
           mb="3rem"
-          fontWeight="medium">
+          fontWeight="medium"
+        >
           &quot;{description}&quot;
         </Text>
       )}

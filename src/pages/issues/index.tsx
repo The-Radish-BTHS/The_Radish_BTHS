@@ -4,7 +4,7 @@ import IssueCard from "@components/cards/issue-card";
 import Layout from "@components/layout/layout";
 import MasonryLayout from "@components/shared/masonry/masonry-layout";
 import { GetStaticProps, NextPage } from "next";
-import { getIssues } from "lib/getters/many-getters.server";
+import { getIssues } from "@lib/getters/many-getters.server";
 
 const Issues: NextPage<{ issues: IssueCardType[] }> = ({ issues }) => {
   return (

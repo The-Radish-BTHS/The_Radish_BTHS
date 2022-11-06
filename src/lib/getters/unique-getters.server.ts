@@ -1,5 +1,5 @@
 import prisma from "../prisma.server";
-import { articleInclue } from "lib/helpers.server";
+import { articleInclue } from "@lib/helpers.server";
 
 export const getArticle = async (slug: string) => {
   const article = await prisma.article.findUnique({

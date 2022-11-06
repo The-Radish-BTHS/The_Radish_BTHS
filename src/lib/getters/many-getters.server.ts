@@ -1,5 +1,4 @@
-import { articleInclue, excludeSlugs } from "lib/helpers.server";
-import SuperJSON from "superjson";
+import { articleInclue, excludeSlugs } from "@lib/helpers.server";
 import prisma from "../prisma.server";
 
 export const getArticles = async (

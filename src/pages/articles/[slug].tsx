@@ -7,10 +7,10 @@ import LatestArticles from "@components/Latest/latest-articles";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { ArticlePageType } from "@/types/article";
 
-import prisma from "lib/prisma.server";
-import { getArticle } from "lib/getters/unique-getters.server";
-import { getArticles } from "lib/getters/many-getters.server";
-import { slugsToPaths } from "lib/helpers.server";
+import prisma from "@lib/prisma.server";
+import { getArticle } from "@lib/getters/unique-getters.server";
+import { getArticles } from "@lib/getters/many-getters.server";
+import { slugsToPaths } from "@lib/helpers.server";
 
 const Article: NextPage<ArticlePageType> = ({
   title,
@@ -62,7 +62,8 @@ const Article: NextPage<ArticlePageType> = ({
         flexWrap="wrap"
         maxW="85vw"
         fontSize="1.2rem"
-        fontWeight="medium">
+        fontWeight="medium"
+      >
         {topics?.map((topic, i) => (
           <TopicCard name={topic.name} slug={topic.slug} key={i} />
         ))}
@@ -71,7 +72,8 @@ const Article: NextPage<ArticlePageType> = ({
         textAlign="justify"
         fontSize="clamp(16px,12px + .5vw,1.25rem)"
         maxW={{ base: "95vw", md: "70vw", lg: "65vw" }}
-        mt="2rem">
+        mt="2rem"
+      >
         {content?.split("\n").map((text, i) => (
           <span key={i}>
             {text}
