@@ -3,8 +3,8 @@ import TopicCard from "@components/cards/topic-card";
 import Layout from "@components/layout/layout";
 import Link from "@components/shared/link";
 import LatestArticles from "@components/Latest/latest-articles";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
+
+import Markdown from "@components/shared/markdown";
 
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { ArticlePageType } from "@/types/article";
@@ -58,31 +58,22 @@ const Article: NextPage<ArticlePageType> = ({
       </Flex>
       <Flex
         mt="0.4rem"
+        mb="1rem"
         flexWrap="wrap"
         maxW="85vw"
         fontSize="1.2rem"
-        fontWeight="medium"
-      >
+        fontWeight="medium">
         {topics?.map((topic, i) => (
           <TopicCard name={topic.name} slug={topic.slug} key={i} />
         ))}
       </Flex>
-      {/* <Text
-        textAlign="justify"
-        fontSize="clamp(16px,12px + .5vw,1.25rem)"
-        maxW={{ base: "95vw", md: "70vw", lg: "65vw" }}
-        mt="2rem"
-      >
-        {content?.split("\n").map((text, i) => (
-          <span key={i}>
-            {text}
-            <br />
-          </span>
-        ))}
-      </Text> */}
-      <ReactMarkdown remarkPlugins={[remarkGfm]}>
-        {"<!--StartFragment>" + content}
-      </ReactMarkdown>
+      {/* <Flex
+        flexDir="column"
+        w="90vw"
+        wordBreak="break-word"
+        dangerouslySetInnerHTML={{ __html: content }}
+      /> */}
+      <Markdown content={content} />
 
       <Flex mt="4rem" maxW={{ base: "95vw", md: "70vw", lg: "65vw" }}>
         <LatestArticles title="More Articles" articles={latest} />

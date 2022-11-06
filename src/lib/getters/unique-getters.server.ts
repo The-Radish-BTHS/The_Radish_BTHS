@@ -8,8 +8,7 @@ export const getArticle = async (slug: string) => {
     },
     ...articleInclude,
   });
-
-  return article;
+  return { ...article };
 };
 
 export const getTopic = async (slug: string) => {
