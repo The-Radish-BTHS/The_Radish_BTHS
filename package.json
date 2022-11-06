@@ -20,7 +20,7 @@
     "jotai": "^1.7.4",
     "next": "^13.0.2",
     "next-sanity": "^0.8.4",
-    "next-superjson-plugin": "^0.4.8",
+    "next-superjson-plugin": "^0.4.9",
     "nprogress": "^0.2.0",
     "prisma": "^4.5.0",
     "react": "18.2.0",

@@ -16,9 +16,8 @@ export default interface ArticleType {
 }
 
 export interface ArticlePageType
-  extends Omit<ArticleType, "slug" | "published" | "publishedOn"> {
+  extends Omit<ArticleType, "slug" | "published"> {
   latest: ArticardType[];
-  publishedOn: number;
 }
 
 export interface ArticardType

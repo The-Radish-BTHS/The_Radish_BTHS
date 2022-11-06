@@ -14,10 +14,7 @@ export default interface IssueType {
 }
 
 export interface IssuePageType
-  extends Omit<
-    IssueType,
-    "cover" | "slug" | "articles" | "published" | "publishedOn"
-  > {
+  extends Omit<IssueType, "cover" | "slug" | "articles" | "published"> {
   articles: ArticardType[];
   latest: IssueCardType[];
 }

@@ -10,7 +10,7 @@ export const getArticle = async (slug: string) => {
     ...articleInclue,
   });
 
-  return noDate(article);
+  return article;
 };
 
 export const getTopic = async (slug: string) => {
@@ -21,7 +21,7 @@ export const getTopic = async (slug: string) => {
     include: { articles: articleInclue },
   });
 
-  return noSubDate(topic);
+  return topic;
 };
 
 export const getPerson = async (slug: string) => {
@@ -36,7 +36,7 @@ export const getPerson = async (slug: string) => {
   const former =
     person && today.getMonth() > 6 && today.getFullYear() >= person.gradYear;
 
-  return noSubDate({ ...person, former });
+  return { ...person, former };
 };
 
 export const getIssue = async (slug: string) => {
@@ -47,5 +47,5 @@ export const getIssue = async (slug: string) => {
     include: { articles: { where: { published: true }, ...articleInclue } },
   });
 
-  return noDate(noSubDate(issue));
+  return issue;
 };

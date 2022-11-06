@@ -2539,10 +2539,10 @@ next-sanity@^0.8.4:
     "@sanity/groq-store" "^0.4.1"
     groq "^2.29.3"
 
-next-superjson-plugin@^0.4.8:
-  version "0.4.8"
-  resolved "https://registry.yarnpkg.com/next-superjson-plugin/-/next-superjson-plugin-0.4.8.tgz#71d4217de6d4bcf415094b40010c6aa24696f140"
-  integrity sha512-NTwUv+d93JagzSmENKruB0jZgFBfqFS/q/R9X7KFK+10etWtf6BHydUqsHay61UM9GjAynnC/LRYTysGmXz+SA==
+next-superjson-plugin@^0.4.9:
+  version "0.4.9"
+  resolved "https://registry.yarnpkg.com/next-superjson-plugin/-/next-superjson-plugin-0.4.9.tgz#2f5d7fc1da26b2e6032b28ae5d994dcf32f35f21"
+  integrity sha512-MSj40zj+ZRmFnZgZxOgQFD6efk3A5OQAPhU9e018JthWPjiE/Xx3HyxOsuOycoBDSxurBa6xH+m78SRr60JTXw==
   dependencies:
     hoist-non-react-statics "^3.3.2"
 

@@ -21,15 +21,14 @@ const Article: NextPage<ArticlePageType> = ({
   latest,
   publishedOn,
 }) => {
-  const pubDate = new Date(publishedOn);
-  const month = pubDate.getMonth(),
-    date = pubDate.getDate();
+  const month = publishedOn.getMonth(),
+    date = publishedOn.getDate();
   const pubString =
     (month > 8 ? month + 1 : "0" + (month + 1)) +
     "/" +
     (date > 9 ? date : "0" + date) +
     "/" +
-    pubDate.getFullYear();
+    publishedOn.getFullYear();
 
   return (
     <Layout alignItems="center">

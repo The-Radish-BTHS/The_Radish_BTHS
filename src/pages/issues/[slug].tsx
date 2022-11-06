@@ -18,6 +18,7 @@ const Issue: NextPage<IssuePageType> = ({
   pdf,
   articles,
   latest,
+  publishedOn,
 }) => {
   return (
     <Layout alignItems="center">
