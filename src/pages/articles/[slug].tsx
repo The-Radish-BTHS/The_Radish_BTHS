@@ -3,6 +3,8 @@ import TopicCard from "@components/cards/topic-card";
 import Layout from "@components/layout/layout";
 import Link from "@components/shared/link";
 import LatestArticles from "@components/Latest/latest-articles";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { ArticlePageType } from "@/types/article";
@@ -67,7 +69,7 @@ const Article: NextPage<ArticlePageType> = ({
           <TopicCard name={topic.name} slug={topic.slug} key={i} />
         ))}
       </Flex>
-      <Text
+      {/* <Text
         textAlign="justify"
         fontSize="clamp(16px,12px + .5vw,1.25rem)"
         maxW={{ base: "95vw", md: "70vw", lg: "65vw" }}
@@ -78,7 +80,10 @@ const Article: NextPage<ArticlePageType> = ({
             <br />
           </span>
         ))}
-      </Text>
+      </Text> */}
+      <ReactMarkdown remarkPlugins={[remarkGfm]}>
+        {"<!--StartFragment>" + content}
+      </ReactMarkdown>
 
       <Flex mt="4rem" maxW={{ base: "95vw", md: "70vw", lg: "65vw" }}>
         <LatestArticles title="More Articles" articles={latest} />
