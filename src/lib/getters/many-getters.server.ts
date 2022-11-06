@@ -1,4 +1,4 @@
-import { articleInclue, excludeSlugs } from "@lib/helpers.server";
+import { articleInclude, excludeSlugs } from "@lib/helpers.server";
 import prisma from "../prisma.server";
 
 export const getArticles = async (
@@ -82,7 +82,7 @@ export const getPeopleWithArticles = async (
 
   const people = await prisma.person.findMany({
     where: { ...where, NOT },
-    include: { articles: articleInclue },
+    include: { articles: articleInclude },
   });
 
   return people.map((person) => ({
