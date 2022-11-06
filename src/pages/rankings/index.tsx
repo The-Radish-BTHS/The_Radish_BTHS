@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import Layout from "@components/layout/layout";
 import Link from "@components/shared/link";
-import { getPeopleWithArticles } from "lib/getters/many-getters.server";
+import { getPeopleWithArticles } from "@lib/getters/many-getters.server";
 import { GetStaticProps } from "next";
 
 interface Stats {
@@ -27,7 +27,8 @@ const Row: React.FC<{ stats: Stats }> = ({ stats }) => {
   return (
     <Tr
       fontWeight={stats.isExec ? (stats.former ? "medium" : "bold") : "light"}
-      color={stats.former ? "black" : "black"}>
+      color={stats.former ? "black" : "black"}
+    >
       <Td>
         <Link href={`/people/${stats.slug}`}>{stats.name}</Link>
       </Td>
@@ -56,7 +57,8 @@ const Rankings: React.FC<{ authorStats: Stats[] }> = ({ authorStats }) => {
         width="90vw"
         minW="fit-content"
         overflowY="visible"
-        overflowX="visible">
+        overflowX="visible"
+      >
         <Table variant="simple" colorScheme="grey">
           <Thead>
             <Tr>

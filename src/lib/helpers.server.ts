@@ -1,6 +1,6 @@
 import { Article, Person } from "@prisma/client";
 
-interface personWithArticle extends Person {
+interface PersonWithArticle extends Person {
   articles: (Article & {
     issue: {
       title: string;
@@ -29,7 +29,7 @@ export const excludeSlugs = (arr?: string[]) => {
   return [];
 };
 
-export const articleInclue = {
+export const articleInclude = {
   include: {
     authors: { select: { name: true, slug: true } },
     issue: { select: { title: true, slug: true } },

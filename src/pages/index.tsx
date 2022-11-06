@@ -9,7 +9,7 @@ import {
   getArticles,
   getIssues,
   getTopics,
-} from "lib/getters/many-getters.server";
+} from "@lib/getters/many-getters.server";
 import { IssueCardType } from "@/types/issue";
 import { Flex } from "@chakra-ui/react";
 
