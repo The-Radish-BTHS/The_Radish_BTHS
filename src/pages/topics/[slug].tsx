@@ -5,10 +5,10 @@ import TopicsSection from "@components/Latest/topics-section";
 import Layout from "@components/layout/layout";
 import MasonryLayout from "@components/shared/masonry/masonry-layout";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import prisma from "lib/prisma.server";
-import { getTopic } from "lib/getters/unique-getters.server";
-import { getTopics } from "lib/getters/many-getters.server";
-import { slugsToPaths } from "lib/helpers.server";
+import prisma from "@lib/prisma.server";
+import { getTopic } from "@lib/getters/unique-getters.server";
+import { getTopics } from "@lib/getters/many-getters.server";
+import { slugsToPaths } from "@lib/helpers.server";
 import NothingHereWrapper from "@components/Latest/nothing-here-wrapper";
 
 const Topic: NextPage<TopicPageType> = ({

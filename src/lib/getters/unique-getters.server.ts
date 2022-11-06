@@ -1,12 +1,12 @@
 import prisma from "../prisma.server";
-import { articleInclue } from "lib/helpers.server";
+import { articleInclude } from "@lib/helpers.server";
 
 export const getArticle = async (slug: string) => {
   const article = await prisma.article.findUnique({
     where: {
       slug,
     },
-    ...articleInclue,
+    ...articleInclude,
   });
 
   return article;
@@ -17,7 +17,7 @@ export const getTopic = async (slug: string) => {
     where: {
       slug,
     },
-    include: { articles: articleInclue },
+    include: { articles: articleInclude },
   });
 
   return topic;
@@ -28,7 +28,7 @@ export const getPerson = async (slug: string) => {
     where: {
       slug,
     },
-    include: { articles: articleInclue },
+    include: { articles: articleInclude },
   });
 
   const today = new Date();
@@ -43,7 +43,7 @@ export const getIssue = async (slug: string) => {
     where: {
       slug,
     },
-    include: { articles: { where: { published: true }, ...articleInclue } },
+    include: { articles: { where: { published: true }, ...articleInclude } },
   });
 
   return issue;
