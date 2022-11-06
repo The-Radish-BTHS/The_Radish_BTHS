@@ -1,10 +1,4 @@
-import {
-  articleInclue,
-  excludeSlugs,
-  moreBad,
-  noDateArray,
-  noSubDate,
-} from "lib/helpers.server";
+import { articleInclue, excludeSlugs } from "lib/helpers.server";
 import SuperJSON from "superjson";
 import prisma from "../prisma.server";
 

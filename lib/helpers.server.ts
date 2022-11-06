@@ -1,17 +1,4 @@
 import { Article, Person } from "@prisma/client";
-import { type } from "os";
-
-export const noDate = (obj: any) => ({
-  ...obj,
-  publishedOn: obj.publishedOn.getTime(),
-});
-
-export const noDateArray = (objs: any[]) => objs.map((obj) => noDate(obj));
-
-export const noSubDate = (obj: any) => ({
-  ...obj,
-  articles: noDateArray(obj.articles),
-});
 
 interface personWithArticle extends Person {
   articles: (Article & {
@@ -29,12 +16,6 @@ interface personWithArticle extends Person {
     }[];
   })[];
 }
-
-export const moreBad = (people: personWithArticle[]) =>
-  people.map((person) => ({
-    ...person,
-    articles: noDateArray(person.articles),
-  }));
 
 export const slugsToPaths = (arr: { slug: string }[]) =>
   arr.map((item) => ({ params: item }));
