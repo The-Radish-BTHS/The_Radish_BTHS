@@ -16,7 +16,7 @@ const IssueCard: React.FC<IssueCardType> = ({
     <CardWrapper maxW={widths} {...styles}>
       <Link href={`/issues/${slug}`}>
         <Image
-          src={cover}
+          src={`data:image/png;base64,${cover}`}
           alt="cover"
           w="100%"
           borderBottom="1px solid"

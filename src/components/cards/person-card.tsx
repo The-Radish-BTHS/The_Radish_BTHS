@@ -21,8 +21,8 @@ const PersonCard: React.FC<PersonCardType> = ({
       <Link href={`/people/${slug}`}>
         {image && (
           <Image
-            src={image}
-            alt="cover"
+            src={`data:image/png;base64,${image}`}
+            alt="image"
             w="100%"
             borderBottom="1px solid"
             borderTopRadius="0.5rem"

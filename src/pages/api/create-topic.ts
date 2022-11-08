@@ -1,5 +1,4 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { Topic } from "@prisma/client";
 import prisma from "@lib/prisma.server";
 
 export default async function handler(
