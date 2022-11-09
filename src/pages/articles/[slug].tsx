@@ -73,7 +73,9 @@ const Article: NextPage<ArticlePageType> = ({
         wordBreak="break-word"
         dangerouslySetInnerHTML={{ __html: content }}
       /> */}
-      <Markdown content={content} />
+      <Flex px="12vw" flexDir="column">
+        <Markdown content={content} />
+      </Flex>
 
       <Flex mt="4rem" maxW={{ base: "95vw", md: "70vw", lg: "65vw" }}>
         <LatestArticles title="More Articles" articles={latest} />

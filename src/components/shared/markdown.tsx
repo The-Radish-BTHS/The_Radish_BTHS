@@ -31,6 +31,10 @@ const Markdown: React.FC<{ content: string }> = ({ content }) => (
       h6: (props) => (
         <h6 style={{ width: "100%", marginTop: "1rem" }} {...props} />
       ),
+      a: (props) => <a style={{ textDecoration: "underline" }} {...props} />,
+      img: (props) => (
+        <img style={{ marginLeft: "auto", marginRight: "auto" }} {...props} />
+      ),
     }}>
     {content}
   </ReactMarkdown>
