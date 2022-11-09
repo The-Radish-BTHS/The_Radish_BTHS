@@ -20,6 +20,7 @@
     "hamburger-react": "^2.5.0",
     "jotai": "^1.7.4",
     "next": "^13.0.2",
+    "next-auth": "^4.16.4",
     "next-sanity": "^0.8.4",
     "next-superjson-plugin": "^0.4.9",
     "nprogress": "^0.2.0",

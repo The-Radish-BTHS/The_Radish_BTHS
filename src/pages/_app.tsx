@@ -3,16 +3,19 @@ import type { AppProps } from "next/app";
 import { ChakraProvider } from "@chakra-ui/react";
 import { Provider as JotaiProvider } from "jotai";
 import { theme } from "@theme/index";
+import { SessionProvider } from "next-auth/react";
 
 function MyApp({ Component, pageProps }: AppProps) {
   useProgressBar();
 
   return (
-    <JotaiProvider>
-      <ChakraProvider theme={theme}>
-        <Component {...pageProps} />
-      </ChakraProvider>
-    </JotaiProvider>
+    <SessionProvider session={pageProps.session}>
+      <JotaiProvider>
+        <ChakraProvider theme={theme}>
+          <Component {...pageProps} />
+        </ChakraProvider>
+      </JotaiProvider>
+    </SessionProvider>
   );
 }
 

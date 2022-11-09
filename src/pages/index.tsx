@@ -11,7 +11,9 @@ import {
   getTopics,
 } from "@lib/getters/many-getters.server";
 import { IssueCardType } from "@/types/issue";
-import { Flex } from "@chakra-ui/react";
+import { Button, Flex } from "@chakra-ui/react";
+
+import { signIn, useSession } from "next-auth/react";
 
 const Home: NextPage<{
   topics: TopicCardType[];
@@ -19,8 +21,15 @@ const Home: NextPage<{
   lastIssue: IssueCardType;
   lastIssueArticles: ArticardType[];
 }> = ({ topics, articles, lastIssue, lastIssueArticles }) => {
+  const session = useSession();
+  console.log(session);
+
   return (
     <Layout alignItems="center" gap="2.5rem">
+      <Button onClick={() => signIn("google")}>
+        Sign in to the super duper cool app
+      </Button>
+
       <LatestSection issue={lastIssue} articles={lastIssueArticles} />
       <Flex maxW="80vw">
         <LatestArticles articles={articles} />
