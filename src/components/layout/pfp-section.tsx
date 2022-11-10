@@ -12,9 +12,7 @@ import {
   Divider,
 } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
-
-const options = ["one", "two", "three"];
-const defaultOption = options[0];
+import Link from "next/link";
 
 const PfpSection: React.FC = () => {
   const { data, status } = useSession();
@@ -27,16 +25,19 @@ const PfpSection: React.FC = () => {
       <MenuButton
         as={Button}
         rightIcon={<BsChevronDown />}
-        border="1px solid black"
         bg="transparent"
         color="black"
         _hover={{ background: "rgba(222, 222, 222, 0.8)" }}
         _active={{ background: "transparent" }}>
-        Actions
+        {data?.user?.name}
       </MenuButton>
       <MenuList bg={bg} border="1px solid black">
-        <MenuItem>Account</MenuItem>
-        <MenuItem>Submit an article</MenuItem>
+        <MenuItem as={Link} href="/account">
+          Account
+        </MenuItem>
+        <MenuItem as={Link} href="/articles/submit">
+          Submit an article
+        </MenuItem>
         <Divider />
         <MenuItem onClick={() => signOut()}>Sign Out</MenuItem>
       </MenuList>
