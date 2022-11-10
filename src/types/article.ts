@@ -23,8 +23,9 @@ export interface ArticlePageType
 export interface ArticardType
   extends Omit<
     ArticleType,
-    "authors" | "issue" | "topics" | "published" | "publishedOn"
+    "authors" | "issue" | "topics" | "published" | "publishedOn" | "content"
   > {
+  excerpt: string;
   styles?: FlexProps;
 
   authors: PersonReference[];

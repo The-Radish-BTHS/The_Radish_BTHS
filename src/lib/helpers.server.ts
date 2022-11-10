@@ -1,21 +1,7 @@
-import { Article, Person } from "@prisma/client";
-
-interface PersonWithArticle extends Person {
-  articles: (Article & {
-    issue: {
-      title: string;
-      slug: string;
-    } | null;
-    authors: {
-      slug: string;
-      name: string;
-    }[];
-    topics: {
-      slug: string;
-      name: string;
-    }[];
-  })[];
-}
+export const prune = (text: string, n: number = 90) =>
+  text[n] == " " || text.length < n
+    ? text.slice(0, n)
+    : text.slice(0, n).slice(0, text.slice(0, n).lastIndexOf(" "));
 
 export const slugsToPaths = (arr: { slug: string }[]) =>
   arr.map((item) => ({ params: item }));

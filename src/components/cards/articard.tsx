@@ -12,7 +12,7 @@ const prune = (text: string, n: number = 90) =>
 
 const Articard: React.FC<ArticardType> = ({
   title,
-  content,
+  excerpt,
   issue,
   authors,
   slug,
@@ -32,7 +32,7 @@ const Articard: React.FC<ArticardType> = ({
             textAlign="left"
             w="75%"
             ml="2.5%">
-            {prune(markdownToTxt(content))}...
+            {excerpt}...
           </Text>
         </Link>
         <Flex fontSize="0.9rem" w="100%" mt="0.5rem">
