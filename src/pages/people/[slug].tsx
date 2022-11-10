@@ -23,7 +23,7 @@ const Person: NextPage<PersonPageType> = ({
   people,
 }) => {
   return (
-    <Layout alignItems="center">
+    <Layout title={name} alignItems="center">
       <Flex gap="0.5rem" alignItems="flex-start" ml="40px">
         <Heading>{name}</Heading>
         {isExec && <ExecStamp id={name} size={40} />}
@@ -47,8 +47,7 @@ const Person: NextPage<PersonPageType> = ({
           textAlign="center"
           fontStyle="italic"
           mb="3rem"
-          fontWeight="medium"
-        >
+          fontWeight="medium">
           &quot;{description}&quot;
         </Text>
       )}

@@ -1,8 +1,8 @@
 import Layout from "@components/layout/layout";
 import { NextPage } from "next";
 
-const Index: NextPage = () => {
-  return <Layout></Layout>;
+const Account: NextPage = () => {
+  return <Layout title="My Account"></Layout>;
 };
 
-export default Index;
+export default Account;

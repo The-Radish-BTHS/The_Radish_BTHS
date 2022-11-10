@@ -7,9 +7,9 @@ import TicketTable from "@components/tickets/table";
 import Link from "@components/shared/link";
 import { Flex, Text } from "@chakra-ui/react";
 
-const Index: NextPage<{ ticketData: ticketDataType }> = ({ ticketData }) => {
+const Tickets: NextPage<{ ticketData: ticketDataType }> = ({ ticketData }) => {
   return (
-    <Layout alignItems="center">
+    <Layout title="Tickonomy" alignItems="center">
       <Flex my="0.5rem">
         <Text mr="0.25rem">If you wanna see your role models, look </Text>
         <Link href="/rankings" textDecor="underline">
@@ -59,4 +59,4 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-export default Index;
+export default Tickets;

@@ -18,10 +18,9 @@ const Issue: NextPage<IssuePageType> = ({
   pdf,
   articles,
   latest,
-  publishedOn,
 }) => {
   return (
-    <Layout alignItems="center">
+    <Layout title={title} alignItems="center">
       <Heading>{title}</Heading>
       <Text mb="3rem">{description}</Text>
 
@@ -36,8 +35,7 @@ const Issue: NextPage<IssuePageType> = ({
           border="1px solid black"
           borderRadius="0.5rem"
           _hover={{ background: "rgba(222, 222, 222, 0.8)" }}
-          _active={{ background: "transparent" }}
-        >
+          _active={{ background: "transparent" }}>
           Read the PDF!!
         </Link>
       )}

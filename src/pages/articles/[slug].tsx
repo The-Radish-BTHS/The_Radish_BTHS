@@ -30,7 +30,7 @@ const Article: NextPage<ArticlePageType> = ({
   }).format(publishedOn);
 
   return (
-    <Layout alignItems="center">
+    <Layout title={title} alignItems="center">
       <Heading textAlign="center" maxW="85vw">
         {title}
       </Heading>

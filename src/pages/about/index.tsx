@@ -12,7 +12,7 @@ import {
 } from "react-icons/ai";
 import { MdEmail } from "react-icons/md";
 
-const Index: NextPage<{ sectionsData: aboutSectionDataType[] }> = ({
+const About: NextPage<{ sectionsData: aboutSectionDataType[] }> = ({
   sectionsData,
 }) => {
   return (
@@ -61,4 +61,4 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-export default Index;
+export default About;
