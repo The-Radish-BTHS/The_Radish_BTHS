@@ -3,6 +3,7 @@ import ReactMarkdown from "react-markdown";
 import html from "remark-html";
 import remarkGfm from "remark-gfm";
 import remarkToc from "remark-toc";
+import { Image } from "@chakra-ui/react";
 
 const Markdown: React.FC<{ content: string }> = ({ content }) => (
   <ReactMarkdown
@@ -33,7 +34,11 @@ const Markdown: React.FC<{ content: string }> = ({ content }) => (
       ),
       a: (props) => <a style={{ textDecoration: "underline" }} {...props} />,
       img: (props) => (
-        <img style={{ marginLeft: "auto", marginRight: "auto" }} {...props} />
+        <Image
+          style={{ marginLeft: "auto", marginRight: "auto" }}
+          alt="graphic"
+          {...props}
+        />
       ),
     }}>
     {content}
