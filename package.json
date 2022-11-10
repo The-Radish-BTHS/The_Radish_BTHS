@@ -19,6 +19,7 @@
     "framer-motion": "^6.4.3",
     "hamburger-react": "^2.5.0",
     "jotai": "^1.7.4",
+    "lodash": "^4.17.21",
     "markdown-to-txt": "^2.0.1",
     "next": "^13.0.2",
     "next-auth": "^4.16.4",
