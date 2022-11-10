@@ -8,9 +8,9 @@ import {
   useTheme,
 } from "@chakra-ui/react";
 import Link from "@components/shared/link";
-import Radamir from "@components/shared/radamir";
 import { useIsMobile } from "@hooks/useIsMobile";
 import { useRef } from "react";
+import PfpSection from "./pfp-section";
 import MobileNav from "./tabs/mobile-nav";
 import { Tab } from "./tabs/tab";
 import { ITab, navigationTabs } from "./tabs/tabs";
@@ -32,6 +32,7 @@ const Topbar: React.FC<{ selectedTab: ITab | undefined; image: string }> = ({
   const mobileDropdownRef = useRef() as React.MutableRefObject<HTMLDivElement>;
   const theme = useTheme();
   const bg = theme.styles.global.body.bg;
+
   return (
     <Flex
       flexDirection="column"
@@ -68,7 +69,9 @@ const Topbar: React.FC<{ selectedTab: ITab | undefined; image: string }> = ({
                 <Tab key={i} tab={tab} selected={selectedTab === tab} />
               ))}
             </Wrapper>
-            <Wrapper />
+            <Wrapper justifyContent="flex-end" pr="1.5rem">
+              <PfpSection />
+            </Wrapper>
           </>
         )}
       </Flex>

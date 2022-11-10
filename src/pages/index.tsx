@@ -26,10 +26,6 @@ const Home: NextPage<{
 
   return (
     <Layout alignItems="center" gap="2.5rem">
-      <Button onClick={() => signIn("google")}>
-        Sign in to the super duper cool app
-      </Button>
-
       <LatestSection issue={lastIssue} articles={lastIssueArticles} />
       <Flex maxW="80vw">
         <LatestArticles articles={articles} />
@@ -45,7 +41,7 @@ export default Home;
 export const getStaticProps: GetStaticProps = async (context) => {
   const topics = await getTopics();
 
-  const lastIssue = await (await getIssues())[0];
+  const lastIssue = await (await getIssues(false, undefined, 1))[0];
   const lastIssueArticles = await await getArticles(
     false,
     lastIssue?.slug,
@@ -53,13 +49,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
     3
   );
 
-  const articles = await (
-    await getArticles(
-      false,
-      undefined,
-      lastIssueArticles.map((article) => article.slug)
-    )
-  ).slice(0, 6);
+  const articles = await getArticles(
+    false,
+    undefined,
+    lastIssueArticles.map((article) => article.slug),
+    6
+  );
 
   return {
     props: {

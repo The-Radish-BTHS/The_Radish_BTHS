@@ -6,6 +6,7 @@ const Button: React.FC<React.PropsWithChildren<ButtonProps>> = ({
 }) => {
   return (
     <ChakraButton
+      colorScheme="black"
       variant="outline"
       padding="1rem"
       fontSize="1.25rem"
