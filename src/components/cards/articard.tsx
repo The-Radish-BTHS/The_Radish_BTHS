@@ -3,6 +3,7 @@ import { Center, Divider, Flex, Heading, Image, Text } from "@chakra-ui/react";
 import Link from "@components/shared/link";
 import CardWrapper from "./card-wrapper";
 import TopicCard from "./topic-card";
+import markdownToTxt from "markdown-to-txt";
 
 const prune = (text: string, n: number = 90) =>
   text[n] == " " || text.length < n
@@ -31,7 +32,7 @@ const Articard: React.FC<ArticardType> = ({
             textAlign="left"
             w="75%"
             ml="2.5%">
-            {prune(content)}...
+            {prune(markdownToTxt(content))}...
           </Text>
         </Link>
         <Flex fontSize="0.9rem" w="100%" mt="0.5rem">
