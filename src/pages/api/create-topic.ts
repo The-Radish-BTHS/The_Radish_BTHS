@@ -7,9 +7,20 @@ export default async function handler(
 ) {
   const data = req.body;
 
+  await fetch(`/api/revalidate?secret=${process.env.SECRET}`);
+
   const result = await prisma.topic.create({
     data,
   });
+
+  try {
+    await res.revalidate(`/topics/${data.slug}`, data);
+    console.log("revalidated");
+  } catch (err) {
+    // If there was an error, Next.js will continue
+    // to show the last successfully generated page
+    return res.status(500).send("Error revalidating");
+  }
 
   res.json(result);
 }
