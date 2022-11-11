@@ -7,8 +7,6 @@ export default async function handler(
 ) {
   const data = req.body;
 
-  await fetch(`/api/revalidate?secret=${process.env.SECRET}`);
-
   const result = await prisma.topic.create({
     data,
   });
