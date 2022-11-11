@@ -6,17 +6,26 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const data = req.body;
+  console.log(req.query);
 
   const result = await prisma.topic.create({
     data,
   });
 
   try {
-    await res.revalidate(`/topics/${data.slug}`, data);
+    await res.revalidate(`/`, data);
+
+    (
+      await prisma.topic.findMany({
+        select: { slug: true },
+      })
+    ).map(async ({ slug }) => {
+      await res.revalidate(`/topics/${slug}`, data);
+      console.log(`Revalidated /topics/${slug}`);
+    });
+
     console.log("revalidated");
   } catch (err) {
-    // If there was an error, Next.js will continue
-    // to show the last successfully generated page
     return res.status(500).send("Error revalidating");
   }
 
