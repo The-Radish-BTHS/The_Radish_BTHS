@@ -1,5 +1,4 @@
-import { articleInclude, excludeSlugs, prune } from "@lib/helpers.server";
-import markdownToTxt from "markdown-to-txt";
+import { articleInclude, excludeSlugs } from "@lib/helpers.server";
 import prisma from "../prisma.server";
 
 export const getArticles = async (
@@ -33,10 +32,7 @@ export const getArticles = async (
     ...take,
   });
 
-  return articles.map((article) => ({
-    ...article,
-    excerpt: prune(markdownToTxt(article.content)),
-  }));
+  return articles;
 };
 
 export const getTopics = async (excluded?: string[], takeN?: number) => {

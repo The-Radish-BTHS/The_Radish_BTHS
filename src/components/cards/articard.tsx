@@ -26,14 +26,16 @@ const Articard: React.FC<ArticardType> = ({
           <Heading maxW="100%" fontSize="1.5rem" mb="0.5rem">
             {title}
           </Heading>
-          <Text
-            fontSize="1.1rem"
-            wordBreak="break-word"
-            textAlign="left"
-            w="75%"
-            ml="2.5%">
-            {excerpt}...
-          </Text>
+          {excerpt && (
+            <Text
+              fontSize="1.1rem"
+              wordBreak="break-word"
+              textAlign="left"
+              w="75%"
+              ml="2.5%">
+              {excerpt}...
+            </Text>
+          )}
         </Link>
         <Flex fontSize="0.9rem" w="100%" mt="0.5rem">
           <Link

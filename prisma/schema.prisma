@@ -25,6 +25,7 @@ model Article {
   slug        String @unique@default("") @id
   
   title       String
+  excerpt     String?
   content     String
   published   Boolean @default(false)
   publishedOn DateTime @default(now())
