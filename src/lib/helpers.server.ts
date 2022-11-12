@@ -22,3 +22,15 @@ export const articleInclude = {
     topics: { select: { name: true, slug: true } },
   },
 };
+
+export const slugsToConnect = (slugs: string[]) => {
+  return {
+    connect: slugs.map((slug) => ({ slug })),
+  };
+};
+
+export const slugToConnect = (slug: string) => {
+  return {
+    connect: { slug },
+  };
+};
