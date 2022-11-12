@@ -1,0 +1,23 @@
+.form-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.form-wrapper input {
+  border: 1px solid black;
+  border-radius: 0.75rem;
+  background-color: transparent;
+  color: black;
+  width: 60vw;
+  padding: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-wrapper p {
+  font-weight: bold;
+  width: 60.5vw;
+  font-size: 0.9rem;
+  margin-bottom: 0.2rem;
+}
