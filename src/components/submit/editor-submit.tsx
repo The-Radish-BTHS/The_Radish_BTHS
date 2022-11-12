@@ -1,16 +1,28 @@
+import ArticleType from "@/types/article";
 import { Heading, Input, Text } from "@chakra-ui/react";
 import Layout from "@components/layout/layout";
 import Button from "@components/shared/button";
-import { NextPage } from "next";
+import StyledMultiselect from "./styled-multiselect";
 
 import styles from "./styles.module.css";
 
-const EditorSubmit: NextPage = () => {
+const EditorSubmit: React.FC<{ article: ArticleType | null }> = ({
+  article,
+}) => {
+  const topics = [
+    { name: "Option 1", id: 1 },
+    { name: "Option 2", id: 2 },
+  ];
+  const authors = [
+    { name: "Option 1", id: 1 },
+    { name: "Option 2", id: 2 },
+  ];
+
   return (
     <Layout title="Submit an Article!">
-      <Heading textAlign="center">So you want to submit an Article?</Heading>
+      <Heading textAlign="center">So you&apos;re editing an article?</Heading>
       <Text textAlign="center" fontSize="1.25rem">
-        Do it! Edit it! Go!
+        Thanks!
       </Text>
       <form
         autoComplete="off"
@@ -20,17 +32,23 @@ const EditorSubmit: NextPage = () => {
         }}
         className={styles["form-wrapper"]}>
         <p>Google Docs link:</p>
-        <input name="link" placeholder="Google Docs Link" />
+        <input
+          name="link"
+          placeholder="Google Docs Link"
+          value={article?.title}
+        />
         <p>Article title:</p>
         <input name="title" placeholder="Title" />
+
         <p>Topics covered:</p>
-        <input name="topics" placeholder="Topics" />
-        <p>Partners:</p>
-        <select name="partners" placeholder="Partners">
-          <option value="" />
-          <option value="Aramie">Aramie</option>
-        </select>
-        <Button type="submit">Submit it!</Button>
+        <StyledMultiselect values={topics} />
+
+        <p>Authors:</p>
+        <StyledMultiselect values={authors} />
+
+        <Button type="submit" mt="1rem">
+          Submit it!
+        </Button>
       </form>
     </Layout>
   );

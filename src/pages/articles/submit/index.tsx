@@ -1,13 +1,24 @@
+import ArticleType from "@/types/article";
 import DefaultSubmit from "@components/submit/default-submit";
 import EditorSubmit from "@components/submit/editor-submit";
+import { getArticle } from "@lib/getters/unique-getters.server";
 import { GetServerSideProps, NextPage } from "next";
 import { useSession } from "next-auth/react";
 
-const Submit: NextPage<{ isEditing: boolean }> = ({ isEditing }) => {
+const Submit: NextPage<{ isEditing: boolean; article: ArticleType | null }> = ({
+  isEditing,
+  article,
+}) => {
   const { status } = useSession();
   const isEditor = status === "authenticated";
 
-  return isEditing && isEditor ? <EditorSubmit /> : <DefaultSubmit />;
+  console.log(isEditor);
+
+  return isEditing && isEditor ? (
+    <EditorSubmit article={article} />
+  ) : (
+    <DefaultSubmit />
+  );
 };
 
 export default Submit;
@@ -15,7 +26,10 @@ export default Submit;
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const mode = context.query.m === "1";
 
+  const slug = context.query.slug?.toString();
+  const article = await (slug ? getArticle(slug) : null);
+
   return {
-    props: { isEditing: mode },
+    props: { isEditing: mode, article },
   };
 };

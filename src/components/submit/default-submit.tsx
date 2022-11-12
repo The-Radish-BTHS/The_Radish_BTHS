@@ -1,21 +1,18 @@
 import { Heading, Input, Text } from "@chakra-ui/react";
 import Layout from "@components/layout/layout";
 import Button from "@components/shared/button";
-import { NextPage } from "next";
 
 import styles from "./styles.module.css";
-import Multiselect from "multiselect-react-dropdown";
-import { useState } from "react";
 import StyledMultiselect from "./styled-multiselect";
 
-const DefaultSubmit: NextPage = () => {
+const DefaultSubmit: React.FC = () => {
   const topics = [
-    { name: "Option 1️⃣", id: 1 },
-    { name: "Option 2️⃣", id: 2 },
+    { name: "Option 1", id: 1 },
+    { name: "Option 2", id: 2 },
   ];
   const partners = [
-    { name: "Option 1️⃣", id: 1 },
-    { name: "Option 2️⃣", id: 2 },
+    { name: "Option 1", id: 1 },
+    { name: "Option 2", id: 2 },
   ];
 
   return (
