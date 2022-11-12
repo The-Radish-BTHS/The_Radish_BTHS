@@ -4,8 +4,20 @@ import Button from "@components/shared/button";
 import { NextPage } from "next";
 
 import styles from "./styles.module.css";
+import Multiselect from "multiselect-react-dropdown";
+import { useState } from "react";
+import StyledMultiselect from "./styled-multiselect";
 
 const DefaultSubmit: NextPage = () => {
+  const topics = [
+    { name: "Option 1️⃣", id: 1 },
+    { name: "Option 2️⃣", id: 2 },
+  ];
+  const partners = [
+    { name: "Option 1️⃣", id: 1 },
+    { name: "Option 2️⃣", id: 2 },
+  ];
+
   return (
     <Layout title="Submit an Article!">
       <Heading textAlign="center">So you want to submit an Article?</Heading>
@@ -23,14 +35,16 @@ const DefaultSubmit: NextPage = () => {
         <input name="link" placeholder="Google Docs Link" />
         <p>Article title:</p>
         <input name="title" placeholder="Title" />
+
         <p>Topics covered:</p>
-        <input name="topics" placeholder="Topics" />
+        <StyledMultiselect values={topics} />
+
         <p>Partners:</p>
-        <select name="partners" placeholder="Partners">
-          <option value="" />
-          <option value="Aramie">Aramie</option>
-        </select>
-        <Button type="submit">Submit it!</Button>
+        <StyledMultiselect values={partners} />
+
+        <Button type="submit" mt="1rem">
+          Submit it!
+        </Button>
       </form>
     </Layout>
   );
