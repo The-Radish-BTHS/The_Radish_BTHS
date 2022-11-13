@@ -51,6 +51,7 @@ const StyledMultiselect: React.FC<{
       }}
       closeIcon="cancel"
       avoidHighlightFirstOption={true}
+      closeOnSelect={true}
       placeholder="Select..."
       options={values} // Options to display in the dropdown
       displayValue="name" // Property name to display in the dropdown options

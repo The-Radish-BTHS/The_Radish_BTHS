@@ -30,8 +30,6 @@
   filter: brightness(0);
 }
 
-.optionContainer li:hover,
-.optionContainer .highlight {
-  background: red !important;
-  color: #fff;
+.multiselect > div > ul > li:hover {
+  background-color: rgba(0, 0, 0, 0.1);
 }
