@@ -9,8 +9,8 @@ import StyledMultiselect from "./styled-multiselect";
 import styles from "./styles.module.css";
 
 type Inputs = {
-  link: string;
   title: string;
+  content: string;
 };
 
 const EditorSubmit: React.FC<{ article: ArticleType | null }> = ({
@@ -51,15 +51,6 @@ const EditorSubmit: React.FC<{ article: ArticleType | null }> = ({
         onSubmit={handleSubmit(onSubmit)}
         className={styles["form-wrapper"]}>
         <p>
-          Google Docs link:<span style={{ color: "red" }}> *</span>
-        </p>
-        <input
-          placeholder="Google Docs Link"
-          value={article?.title}
-          required
-          {...register("link")}
-        />
-        <p>
           Article title:<span style={{ color: "red" }}> *</span>
         </p>
         <input placeholder="Title" required {...register("title")} />
@@ -69,6 +60,16 @@ const EditorSubmit: React.FC<{ article: ArticleType | null }> = ({
 
         <p>Authors:</p>
         <StyledMultiselect values={authors} select={setAuthorSelections} />
+
+        <p>
+          Content:<span style={{ color: "red" }}> *</span>
+        </p>
+        <input
+          placeholder="Add the articul!"
+          value={article?.content}
+          required
+          {...register("content")}
+        />
 
         <Button type="submit" mt="1rem">
           Submit it!
