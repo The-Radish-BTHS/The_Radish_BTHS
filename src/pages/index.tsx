@@ -22,7 +22,6 @@ const Home: NextPage<{
   lastIssueArticles: ArticardType[];
 }> = ({ topics, articles, lastIssue, lastIssueArticles }) => {
   const session = useSession();
-  console.log(session);
 
   return (
     <Layout alignItems="center" gap="2.5rem">

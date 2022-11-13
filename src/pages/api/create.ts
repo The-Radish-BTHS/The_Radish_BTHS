@@ -91,7 +91,6 @@ export default async function handler(
       authors: slugsToConnect(data.authors),
     };
 
-    console.log(data);
     result = await prisma.article.create({
       data,
     });

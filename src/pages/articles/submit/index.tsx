@@ -12,8 +12,6 @@ const Submit: NextPage<{ isEditing: boolean; article: ArticleType | null }> = ({
   const { status } = useSession();
   const isEditor = status === "authenticated";
 
-  console.log(isEditor);
-
   return isEditing && isEditor ? (
     <EditorSubmit article={article} />
   ) : (

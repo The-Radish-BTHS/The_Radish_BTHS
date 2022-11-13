@@ -5,6 +5,15 @@ import Button from "@components/shared/button";
 import styles from "./styles.module.css";
 import StyledMultiselect from "./styled-multiselect";
 
+import { useForm, SubmitHandler } from "react-hook-form";
+
+type Inputs = {
+  link: string;
+  title: string;
+  topics: string;
+  partners: string;
+};
+
 const DefaultSubmit: React.FC = () => {
   const topics = [
     { name: "Option 1", id: 1 },
@@ -25,7 +34,7 @@ const DefaultSubmit: React.FC = () => {
         autoComplete="off"
         onSubmit={(e) => {
           e.preventDefault();
-          console.log(e);
+          console.log(e.target);
         }}
         className={styles["form-wrapper"]}>
         <p>Google Docs link:</p>
