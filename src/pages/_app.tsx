@@ -5,6 +5,8 @@ import { Provider as JotaiProvider } from "jotai";
 import { theme } from "@theme/index";
 import { SessionProvider } from "next-auth/react";
 
+import "./global.css";
+
 function MyApp({ Component, pageProps }: AppProps) {
   useProgressBar();
 

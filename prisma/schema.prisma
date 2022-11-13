@@ -93,6 +93,8 @@ model User {
     image         String?
     accounts      Account[]
     sessions      Session[]
+
+    permission    PersonPerms
 }
 
 model VerificationToken {
@@ -100,4 +102,10 @@ model VerificationToken {
     token      String   @unique
     expires    DateTime
     @@unique([identifier, token])
+}
+
+enum PersonPerms {
+  NORMIE
+  EDITOR
+  EXEC
 }

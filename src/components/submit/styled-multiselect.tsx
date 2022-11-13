@@ -1,25 +1,22 @@
 import { useTheme } from "@chakra-ui/react";
 import Multiselect from "multiselect-react-dropdown";
-import React, { createRef, useEffect } from "react";
 import styles from "./styles.module.css";
 
 const StyledMultiselect: React.FC<{
   values: { name: string; id: number }[];
-}> = ({ values }) => {
-  const ref = createRef<Multiselect>();
-
-  if (ref.current) {
-    console.log("ergehhgwe");
-    ref.current.onFocus = () => {
-      console.log("hey");
-    };
-  }
-
+  select: React.Dispatch<React.SetStateAction<{ name: string; id: number }[]>>;
+}> = ({ values, select }) => {
   return (
     <Multiselect
       className={styles.multiselect}
-      ref={ref}
       onSearch={() => console.log("Hi")}
+      onSelect={(_, item) => select((prev) => [...prev, item])}
+      onRemove={(_, item) =>
+        select((prev) => {
+          prev.splice(prev.indexOf(item), 1);
+          return prev;
+        })
+      }
       style={{
         searchBox: {
           display: "flex",

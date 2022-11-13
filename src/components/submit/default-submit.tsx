@@ -6,12 +6,11 @@ import styles from "./styles.module.css";
 import StyledMultiselect from "./styled-multiselect";
 
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useState } from "react";
 
 type Inputs = {
   link: string;
   title: string;
-  topics: string;
-  partners: string;
 };
 
 const DefaultSubmit: React.FC = () => {
@@ -24,6 +23,21 @@ const DefaultSubmit: React.FC = () => {
     { name: "Option 2", id: 2 },
   ];
 
+  const [topicSelections, setTopicSelections] = useState<
+    { name: string; id: number }[]
+  >([]);
+  const [partnerSelections, setPartnerSelections] = useState<
+    { name: string; id: number }[]
+  >([]);
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<Inputs>();
+  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+
   return (
     <Layout title="Submit an Article!">
       <Heading textAlign="center">So you want to submit an Article?</Heading>
@@ -32,21 +46,18 @@ const DefaultSubmit: React.FC = () => {
       </Text>
       <form
         autoComplete="off"
-        onSubmit={(e) => {
-          e.preventDefault();
-          console.log(e.target);
-        }}
+        onSubmit={handleSubmit(onSubmit)}
         className={styles["form-wrapper"]}>
         <p>Google Docs link:</p>
-        <input name="link" placeholder="Google Docs Link" />
+        <input placeholder="Google Docs Link" {...register("link")} />
         <p>Article title:</p>
-        <input name="title" placeholder="Title" />
+        <input placeholder="Title" {...register("title")} />
 
         <p>Topics covered:</p>
-        <StyledMultiselect values={topics} />
+        <StyledMultiselect values={topics} select={setTopicSelections} />
 
         <p>Partners:</p>
-        <StyledMultiselect values={partners} />
+        <StyledMultiselect values={partners} select={setPartnerSelections} />
 
         <Button type="submit" mt="1rem">
           Submit it!
