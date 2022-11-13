@@ -48,6 +48,7 @@ const StyledMultiselect: React.FC<{
       }}
       closeIcon="cancel"
       avoidHighlightFirstOption={true}
+      showArrow={true}
       closeOnSelect={true}
       placeholder="Select..."
       options={values} // Options to display in the dropdown

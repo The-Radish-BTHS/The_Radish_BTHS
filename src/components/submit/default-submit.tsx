@@ -48,10 +48,14 @@ const DefaultSubmit: React.FC = () => {
         autoComplete="off"
         onSubmit={handleSubmit(onSubmit)}
         className={styles["form-wrapper"]}>
-        <p>Google Docs link:</p>
-        <input placeholder="Google Docs Link" {...register("link")} />
-        <p>Article title:</p>
-        <input placeholder="Title" {...register("title")} />
+        <p>
+          Google Docs link:<span style={{ color: "red" }}> *</span>
+        </p>
+        <input required placeholder="Google Docs Link" {...register("link")} />
+        <p>
+          Article title:<span style={{ color: "red" }}> *</span>
+        </p>
+        <input required placeholder="Title" {...register("title")} />
 
         <p>Topics covered:</p>
         <StyledMultiselect values={topics} select={setTopicSelections} />

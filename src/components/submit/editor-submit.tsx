@@ -50,14 +50,19 @@ const EditorSubmit: React.FC<{ article: ArticleType | null }> = ({
         autoComplete="off"
         onSubmit={handleSubmit(onSubmit)}
         className={styles["form-wrapper"]}>
-        <p>Google Docs link:</p>
+        <p>
+          Google Docs link:<span style={{ color: "red" }}> *</span>
+        </p>
         <input
           placeholder="Google Docs Link"
           value={article?.title}
+          required
           {...register("link")}
         />
-        <p>Article title:</p>
-        <input placeholder="Title" {...register("title")} />
+        <p>
+          Article title:<span style={{ color: "red" }}> *</span>
+        </p>
+        <input placeholder="Title" required {...register("title")} />
 
         <p>Topics covered:</p>
         <StyledMultiselect values={topics} select={setTopicSelections} />
