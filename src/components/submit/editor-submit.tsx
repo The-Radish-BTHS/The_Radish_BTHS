@@ -38,7 +38,14 @@ const EditorSubmit: React.FC<{ article: ArticleType | null }> = ({
     watch,
     formState: { errors },
   } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = (inputData) => {
+    const data = {
+      ...inputData,
+      topicNames: topicSelections.map((topic) => topic.name),
+      authorNames: authorSelections.map((author) => author.name),
+    };
+    console.log(data);
+  };
 
   return (
     <Layout title="Submit an Article!">
