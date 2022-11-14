@@ -13,10 +13,12 @@ const Submit: NextPage<{ isEditing: boolean; article: ArticleType | null }> = ({
   const { data } = useSession();
   const isEditor = data?.user?.permission !== PersonPerms.NORMIE;
 
+  console.log(data);
+
   return isEditing && isEditor ? (
     <EditorSubmit article={article} />
   ) : (
-    <DefaultSubmit />
+    <DefaultSubmit name={data?.user?.name ?? ""} />
   );
 };
 

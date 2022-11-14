@@ -25,7 +25,7 @@ type Inputs = {
   title: string;
 };
 
-const DefaultSubmit: React.FC = () => {
+const DefaultSubmit: React.FC<{ name: string }> = ({ name }) => {
   const topics = [
     { name: "Option 1", id: 1 },
     { name: "Option 2", id: 2 },
@@ -47,7 +47,7 @@ const DefaultSubmit: React.FC = () => {
     const data = {
       ...inputData,
       topicNames: topicSelections.map((topic) => topic.name),
-      authorNames: [...partnerSelections.map((partner) => partner.name)],
+      authorNames: [...partnerSelections.map((partner) => partner.name), name],
     };
     console.log(data);
   };
