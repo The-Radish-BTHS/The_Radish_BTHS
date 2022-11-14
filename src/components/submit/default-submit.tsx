@@ -1,4 +1,4 @@
-import { Heading, Input, Text } from "@chakra-ui/react";
+import { Heading, Input, Text, useDisclosure } from "@chakra-ui/react";
 import Layout from "@components/layout/layout";
 import Button from "@components/shared/button";
 
@@ -7,6 +7,18 @@ import StyledMultiselect from "./styled-multiselect";
 
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useState } from "react";
+
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+} from "@chakra-ui/react";
+import { useRouter } from "next/router";
+import useSubmitModal from "./submit-modal";
 
 type Inputs = {
   link: string;
@@ -30,12 +42,7 @@ const DefaultSubmit: React.FC = () => {
     { name: string; id: number }[]
   >([]);
 
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm<Inputs>();
+  const { register } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = (inputData) => {
     const data = {
       ...inputData,
@@ -45,15 +52,22 @@ const DefaultSubmit: React.FC = () => {
     console.log(data);
   };
 
+  const { ModalComponent, onOpen } = useSubmitModal(onSubmit);
+
   return (
     <Layout title="Submit an Article!">
+      <ModalComponent />
+
       <Heading textAlign="center">So you want to submit an Article?</Heading>
       <Text textAlign="center" fontSize="1.25rem">
         Do it! Submit it! Go!
       </Text>
       <form
         autoComplete="off"
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={(e) => {
+          e.preventDefault();
+          onOpen();
+        }}
         className={styles["form-wrapper"]}>
         <p>
           Google Docs link:<span style={{ color: "red" }}> *</span>
