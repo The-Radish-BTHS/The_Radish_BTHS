@@ -42,7 +42,7 @@ const DefaultSubmit: React.FC<{ name: string }> = ({ name }) => {
     { name: string; id: number }[]
   >([]);
 
-  const { register } = useForm<Inputs>();
+  const { handleSubmit, register } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = (inputData) => {
     const data = {
       ...inputData,
@@ -52,11 +52,11 @@ const DefaultSubmit: React.FC<{ name: string }> = ({ name }) => {
     console.log(data);
   };
 
-  const { ModalComponent, onOpen } = useSubmitModal(onSubmit);
+  const { ModalComponent, onOpen } = useSubmitModal();
 
   return (
     <Layout title="Submit an Article!">
-      <ModalComponent />
+      <ModalComponent onClick={handleSubmit(onSubmit)} />
 
       <Heading textAlign="center">So you want to submit an Article?</Heading>
       <Text textAlign="center" fontSize="1.25rem">

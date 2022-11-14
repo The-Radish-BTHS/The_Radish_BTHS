@@ -13,12 +13,12 @@ import {
 import { useRouter } from "next/router";
 import Button from "@components/shared/button";
 
-const useSubmitModal = (onSubmit: any) => {
+const useSubmitModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const router = useRouter();
   const toast = useToast();
 
-  const ModalComponent: React.FC = () => (
+  const ModalComponent: React.FC<{ onClick: any }> = ({ onClick }) => (
     <Modal isOpen={isOpen} onClose={onClose} isCentered>
       <ModalOverlay />
       <ModalContent bg="#ebeae5" borderRadius="0.75rem">
@@ -31,7 +31,7 @@ const useSubmitModal = (onSubmit: any) => {
         <ModalFooter>
           <Button
             onClick={() => {
-              onSubmit();
+              onClick();
               router.push("/");
               toast({
                 title: "Article Submit Success!",
