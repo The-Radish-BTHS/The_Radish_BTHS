@@ -9,7 +9,6 @@ const StyledMultiselect: React.FC<{
   return (
     <Multiselect
       className={styles.multiselect}
-      onSearch={() => console.log("Hi")}
       onSelect={(_, item) => select((prev) => [...prev, item])}
       onRemove={(_, item) =>
         select((prev) => {

@@ -32,7 +32,6 @@ const useSubmitModal = (onSubmit: any) => {
           <Button
             onClick={() => {
               onSubmit();
-              console.log("hi");
               router.push("/");
               toast({
                 title: "Article Submit Success!",
