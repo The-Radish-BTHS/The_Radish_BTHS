@@ -83,6 +83,7 @@ model Session {
     userId       String
     expires      DateTime
     user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+    
 }
 
 model User {
@@ -94,7 +95,7 @@ model User {
     accounts      Account[]
     sessions      Session[]
 
-    permission    PersonPerms
+    permission    PersonPerms @default(NORMIE)
 }
 
 model VerificationToken {

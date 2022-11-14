@@ -11,10 +11,13 @@ export const authOptions: NextAuthOptions = {
     session({ session, user }) {
       if (session.user) {
         session.user.id = user.id;
+        // @ts-ignore
+        session.user.permission = user.permission;
       }
       return session;
     },
   },
+
   // Configure one or more authentication providers
   adapter: PrismaAdapter(prisma),
   providers: [

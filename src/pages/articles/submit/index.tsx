@@ -2,6 +2,7 @@ import ArticleType from "@/types/article";
 import DefaultSubmit from "@components/submit/default-submit";
 import EditorSubmit from "@components/submit/editor-submit";
 import { getArticle } from "@lib/getters/unique-getters.server";
+import { PersonPerms } from "@prisma/client";
 import { GetServerSideProps, NextPage } from "next";
 import { useSession } from "next-auth/react";
 
@@ -9,8 +10,8 @@ const Submit: NextPage<{ isEditing: boolean; article: ArticleType | null }> = ({
   isEditing,
   article,
 }) => {
-  const { status } = useSession();
-  const isEditor = status === "authenticated";
+  const { data } = useSession();
+  const isEditor = data?.user?.permission !== PersonPerms.NORMIE;
 
   return isEditing && isEditor ? (
     <EditorSubmit article={article} />
