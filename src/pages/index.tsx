@@ -14,6 +14,7 @@ import { IssueCardType } from "@/types/issue";
 import { Button, Flex } from "@chakra-ui/react";
 
 import { signIn, useSession } from "next-auth/react";
+import { getLastIssue } from "@lib/getters/unique-getters.server";
 
 const Home: NextPage<{
   topics: TopicCardType[];
@@ -40,7 +41,7 @@ export default Home;
 export const getStaticProps: GetStaticProps = async (context) => {
   const topics = await getTopics();
 
-  const lastIssue = await (await getIssues(false, undefined, 1))[0];
+  const lastIssue = await getLastIssue();
   const lastIssueArticles = await await getArticles(
     false,
     lastIssue?.slug,

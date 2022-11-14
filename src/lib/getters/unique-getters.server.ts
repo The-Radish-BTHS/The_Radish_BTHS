@@ -47,3 +47,13 @@ export const getIssue = async (slug: string) => {
 
   return issue;
 };
+
+export const getLastIssue = async () => {
+  const issue = await prisma.issue.findFirst({
+    where: { published: true },
+    orderBy: { publishedOn: "desc" },
+    take: 1,
+  });
+
+  return issue;
+};
