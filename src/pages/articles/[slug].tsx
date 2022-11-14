@@ -13,6 +13,7 @@ import prisma from "@lib/prisma.server";
 import { getArticle } from "@lib/getters/unique-getters.server";
 import { getArticles } from "@lib/getters/many-getters.server";
 import { slugsToPaths } from "@lib/helpers.server";
+import { ArticleStatus } from "@prisma/client";
 
 const Article: NextPage<ArticlePageType> = ({
   title,
@@ -101,7 +102,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const articles = await prisma.article.findMany({
-    where: { published: true },
+    where: { published: ArticleStatus.PUBLISHED },
     select: { slug: true },
   });
 

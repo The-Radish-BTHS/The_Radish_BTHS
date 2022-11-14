@@ -22,12 +22,12 @@ model Issue {
 }
 
 model Article {
-  slug        String @unique@default("") @id
+  slug        String @unique @id
   
   title       String
   excerpt     String?
   content     String
-  published   Boolean @default(false)
+  published   ArticleStatus @default(SUBMITTED)
   publishedOn DateTime @default(now())
 
   issue       Issue? @relation(fields: [issueSlug], references: [slug])   
@@ -109,4 +109,10 @@ enum PersonPerms {
   NORMIE
   EDITOR
   EXEC
+}
+
+enum ArticleStatus {
+  SUBMITTED
+  EDITED
+  PUBLISHED
 }
