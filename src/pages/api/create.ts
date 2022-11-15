@@ -7,6 +7,7 @@ import {
   getPerson,
   getTopic,
 } from "@lib/getters/unique-getters.server";
+import { ArticleStatus } from "@prisma/client";
 
 export default async function handler(
   req: NextApiRequest,
@@ -47,7 +48,10 @@ export default async function handler(
     ).forEach(async ({ slug }) => {
       pathsToRevalidate.push(`/issues/${slug}`);
     });
-  } else if (query.type === "person") {
+  } else if (
+    query.type === "person" &&
+    data.published === ArticleStatus.PUBLISHED
+  ) {
     result = await prisma.person.create({
       data,
     });

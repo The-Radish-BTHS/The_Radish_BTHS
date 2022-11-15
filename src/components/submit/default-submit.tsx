@@ -11,8 +11,8 @@ import useSubmitModal from "./submit-modal";
 import { Person, Topic } from "@prisma/client";
 
 type Inputs = {
-  link: string;
   title: string;
+  content: string;
 };
 
 const DefaultSubmit: React.FC<{
@@ -32,7 +32,7 @@ const DefaultSubmit: React.FC<{
     const data = {
       ...inputData,
       topics: topicSelections,
-      authors: [...partnerSelections, name],
+      authors: [...partnerSelections],
     };
     console.log(data);
   };
@@ -57,7 +57,11 @@ const DefaultSubmit: React.FC<{
         <p>
           Google Docs link:<span style={{ color: "red" }}> *</span>
         </p>
-        <input required placeholder="Google Docs Link" {...register("link")} />
+        <input
+          required
+          placeholder="Google Docs Link"
+          {...register("content")}
+        />
         <p>
           Article title:<span style={{ color: "red" }}> *</span>
         </p>
