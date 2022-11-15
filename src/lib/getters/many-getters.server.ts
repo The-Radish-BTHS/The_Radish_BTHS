@@ -108,3 +108,14 @@ export const getIssues = async (
 
   return issues;
 };
+
+export const getArticleSlugs = async () => {
+  const articleSlugs = await prisma.article.findMany({
+    orderBy: { publishedOn: "desc" },
+    select: {
+      slug: true,
+    },
+  });
+
+  return articleSlugs.map(({ slug }) => slug);
+};

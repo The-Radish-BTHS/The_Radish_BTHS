@@ -1,7 +1,11 @@
 import ArticleType from "@/types/article";
 import DefaultSubmit from "@components/submit/default-submit";
 import EditorSubmit from "@components/submit/editor-submit";
-import { getPeople, getTopics } from "@lib/getters/many-getters.server";
+import {
+  getArticleSlugs,
+  getPeople,
+  getTopics,
+} from "@lib/getters/many-getters.server";
 import { getArticle } from "@lib/getters/unique-getters.server";
 import { Person, PersonPerms, Topic } from "@prisma/client";
 import { GetServerSideProps, NextPage } from "next";
@@ -12,7 +16,8 @@ const Submit: NextPage<{
   article: ArticleType | null;
   topics: Topic[];
   people: Person[];
-}> = ({ isEditing, article, topics, people }) => {
+  articleSlugs: string[];
+}> = ({ isEditing, article, topics, people, articleSlugs }) => {
   const { data } = useSession();
   const isEditor = data?.user?.permission !== PersonPerms.NORMIE;
 
@@ -23,6 +28,7 @@ const Submit: NextPage<{
       name={data?.user?.name ?? ""}
       topics={topics}
       people={people}
+      articleSlugs={articleSlugs}
     />
   );
 };
@@ -37,8 +43,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const topics = await getTopics();
   const people = await getPeople();
+  const articleSlugs = await getArticleSlugs();
 
   return {
-    props: { isEditing: mode, article, topics, people },
+    props: { isEditing: mode, article, topics, people, articleSlugs },
   };
 };

@@ -12,11 +12,17 @@ import {
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import Button from "@components/shared/button";
+import { useState } from "react";
+import { Article, Person, Topic } from "@prisma/client";
 
 const useSubmitModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const router = useRouter();
   const toast = useToast();
+  const [inputData, setInputData] = useState<{
+    title: string;
+    content: string;
+  }>();
 
   const ModalComponent: React.FC<{ onClick: any }> = ({ onClick }) => (
     <Modal isOpen={isOpen} onClose={onClose} isCentered>
@@ -31,7 +37,7 @@ const useSubmitModal = () => {
         <ModalFooter>
           <Button
             onClick={() => {
-              onClick();
+              onClick(inputData);
               router.push("/");
               toast({
                 title: "Article Submit Success!",
@@ -48,7 +54,7 @@ const useSubmitModal = () => {
     </Modal>
   );
 
-  return { ModalComponent, onOpen };
+  return { ModalComponent, onOpen, setInputData };
 };
 
 export default useSubmitModal;
