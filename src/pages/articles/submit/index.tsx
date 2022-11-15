@@ -1,22 +1,29 @@
 import ArticleType from "@/types/article";
 import DefaultSubmit from "@components/submit/default-submit";
 import EditorSubmit from "@components/submit/editor-submit";
+import { getPeople, getTopics } from "@lib/getters/many-getters.server";
 import { getArticle } from "@lib/getters/unique-getters.server";
-import { PersonPerms } from "@prisma/client";
+import { Person, PersonPerms, Topic } from "@prisma/client";
 import { GetServerSideProps, NextPage } from "next";
 import { useSession } from "next-auth/react";
 
-const Submit: NextPage<{ isEditing: boolean; article: ArticleType | null }> = ({
-  isEditing,
-  article,
-}) => {
+const Submit: NextPage<{
+  isEditing: boolean;
+  article: ArticleType | null;
+  topics: Topic[];
+  people: Person[];
+}> = ({ isEditing, article, topics, people }) => {
   const { data } = useSession();
   const isEditor = data?.user?.permission !== PersonPerms.NORMIE;
 
   return isEditing && isEditor ? (
-    <EditorSubmit article={article} />
+    <EditorSubmit article={article} topics={topics} people={people} />
   ) : (
-    <DefaultSubmit name={data?.user?.name ?? ""} />
+    <DefaultSubmit
+      name={data?.user?.name ?? ""}
+      topics={topics}
+      people={people}
+    />
   );
 };
 
@@ -28,7 +35,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const slug = context.query.slug?.toString();
   const article = await (slug ? getArticle(slug) : null);
 
+  const topics = await getTopics();
+  const people = await getPeople();
+
   return {
-    props: { isEditing: mode, article },
+    props: { isEditing: mode, article, topics, people },
   };
 };

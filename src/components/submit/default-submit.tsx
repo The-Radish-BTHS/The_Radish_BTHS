@@ -7,47 +7,32 @@ import StyledMultiselect from "./styled-multiselect";
 
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useState } from "react";
-
-import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-} from "@chakra-ui/react";
-import { useRouter } from "next/router";
 import useSubmitModal from "./submit-modal";
+import { Person, Topic } from "@prisma/client";
 
 type Inputs = {
   link: string;
   title: string;
 };
 
-const DefaultSubmit: React.FC<{ name: string }> = ({ name }) => {
-  const topics = [
-    { name: "Option 1", id: 1 },
-    { name: "Option 2", id: 2 },
-  ];
-  const partners = [
-    { name: "Option 1", id: 1 },
-    { name: "Option 2", id: 2 },
-  ];
-
-  const [topicSelections, setTopicSelections] = useState<
-    { name: string; id: number }[]
-  >([]);
+const DefaultSubmit: React.FC<{
+  name: string;
+  topics: Topic[];
+  people: Person[];
+}> = ({ name, topics, people }) => {
+  const [topicSelections, setTopicSelections] = useState<Topic[] | Person[]>(
+    []
+  );
   const [partnerSelections, setPartnerSelections] = useState<
-    { name: string; id: number }[]
+    Topic[] | Person[]
   >([]);
 
   const { handleSubmit, register } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = (inputData) => {
     const data = {
       ...inputData,
-      topicNames: topicSelections.map((topic) => topic.name),
-      authorNames: [...partnerSelections.map((partner) => partner.name), name],
+      topics: topicSelections,
+      authors: [...partnerSelections, name],
     };
     console.log(data);
   };
@@ -82,7 +67,7 @@ const DefaultSubmit: React.FC<{ name: string }> = ({ name }) => {
         <StyledMultiselect values={topics} select={setTopicSelections} />
 
         <p>Partners:</p>
-        <StyledMultiselect values={partners} select={setPartnerSelections} />
+        <StyledMultiselect values={people} select={setPartnerSelections} />
 
         <Button type="submit" mt="1rem">
           Submit it!

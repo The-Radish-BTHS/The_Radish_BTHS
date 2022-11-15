@@ -2,6 +2,7 @@ import ArticleType from "@/types/article";
 import { Heading, Text } from "@chakra-ui/react";
 import Layout from "@components/layout/layout";
 import Button from "@components/shared/button";
+import { Person, Topic } from "@prisma/client";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import StyledMultiselect from "./styled-multiselect";
@@ -15,31 +16,24 @@ type Inputs = {
   content: string;
 };
 
-const EditorSubmit: React.FC<{ article: ArticleType | null }> = ({
-  article,
-}) => {
-  const topics = [
-    { name: "Option 1", id: 1 },
-    { name: "Option 2", id: 2 },
-  ];
-  const authors = [
-    { name: "Option 1", id: 1 },
-    { name: "Option 2", id: 2 },
-  ];
-
-  const [topicSelections, setTopicSelections] = useState<
-    { name: string; id: number }[]
-  >([]);
-  const [authorSelections, setAuthorSelections] = useState<
-    { name: string; id: number }[]
-  >([]);
+const EditorSubmit: React.FC<{
+  article: ArticleType | null;
+  topics: Topic[];
+  people: Person[];
+}> = ({ article, topics, people }) => {
+  const [topicSelections, setTopicSelections] = useState<Topic[] | Person[]>(
+    []
+  );
+  const [authorSelections, setAuthorSelections] = useState<Topic[] | Person[]>(
+    []
+  );
 
   const { register, handleSubmit } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = (inputData) => {
     const data = {
       ...inputData,
-      topicNames: topicSelections.map((topic) => topic.name),
-      authorNames: authorSelections.map((author) => author.name),
+      topics: topicSelections,
+      authors: authorSelections,
     };
     console.log(data);
   };
@@ -69,7 +63,7 @@ const EditorSubmit: React.FC<{ article: ArticleType | null }> = ({
         <StyledMultiselect values={topics} select={setTopicSelections} />
 
         <p>Authors:</p>
-        <StyledMultiselect values={authors} select={setAuthorSelections} />
+        <StyledMultiselect values={people} select={setAuthorSelections} />
 
         <p>
           Content:<span style={{ color: "red" }}> *</span>

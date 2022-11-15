@@ -1,10 +1,11 @@
 import { useTheme } from "@chakra-ui/react";
+import { Person, Topic } from "@prisma/client";
 import Multiselect from "multiselect-react-dropdown";
 import styles from "./styles.module.css";
 
 const StyledMultiselect: React.FC<{
-  values: { name: string; id: number }[];
-  select: React.Dispatch<React.SetStateAction<{ name: string; id: number }[]>>;
+  values: Topic[] | Person[];
+  select: React.Dispatch<React.SetStateAction<Topic[] | Person[]>>;
 }> = ({ values, select }) => {
   return (
     <Multiselect
