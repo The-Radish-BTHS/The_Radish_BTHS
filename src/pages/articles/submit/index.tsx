@@ -76,6 +76,9 @@ const Submit: NextPage<{
     formState: { errors },
   } = useForm<InputData>({
     criteriaMode: "all",
+    defaultValues: {
+      content: article?.content ?? "",
+    },
   });
 
   // Submit Functions
@@ -108,7 +111,7 @@ const Submit: NextPage<{
   const { ModalComponent, onOpen, setInputData } = useSubmitModal();
 
   // Props for forms
-  const contentData = { ...register("content"), value: article?.content ?? "" };
+  const contentData = register("content");
   const titleData = register("title", {
     required: true,
     validate: articleNameIsUnique,
