@@ -1,11 +1,4 @@
 import { SubmitFormProps } from "@/pages/articles/submit";
-import ArticleType from "@/types/article";
-import { Heading, Text } from "@chakra-ui/react";
-import Layout from "@components/layout/layout";
-import Button from "@components/shared/button";
-import { Person, Topic } from "@prisma/client";
-import { useState } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
 import StyledMultiselect from "./styled-multiselect";
 
 const EditorSubmit: React.FC<SubmitFormProps> = ({

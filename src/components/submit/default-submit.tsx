@@ -1,15 +1,4 @@
-import { Heading, Input, Text, useDisclosure } from "@chakra-ui/react";
-import Layout from "@components/layout/layout";
-import Button from "@components/shared/button";
-
-import styles from "./styles.module.css";
 import StyledMultiselect from "./styled-multiselect";
-
-import { useForm, SubmitHandler } from "react-hook-form";
-import { useState } from "react";
-import useSubmitModal from "./submit-modal";
-import { Person, Topic } from "@prisma/client";
-import slugify from "slugify";
 
 import { ErrorMessage } from "@hookform/error-message";
 import { SubmitFormProps } from "@/pages/articles/submit";

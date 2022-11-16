@@ -20,13 +20,11 @@ import {
 } from "react-hook-form";
 import slugify from "slugify";
 
-import styles from "./styles.module.css";
+import styles from "@components/submit/styles.module.css";
 
 import { Heading, Text } from "@chakra-ui/react";
 import Layout from "@components/layout/layout";
 import Button from "@components/shared/button";
-import StyledMultiselect from "@components/submit/styled-multiselect";
-import { ErrorMessage } from "@hookform/error-message";
 
 type InputData = {
   title: string;
@@ -57,8 +55,8 @@ const Submit: NextPage<{
   article: ArticleType | null;
   topics: Topic[];
   people: Person[];
-  articleNameIsUnique: (title: string) => boolean;
-}> = ({ editing, article, topics, people, articleNameIsUnique }) => {
+  articleSlugs: string[];
+}> = ({ editing, article, topics, people, articleSlugs }) => {
   // Get User Data
   const { data } = useSession();
   const isEditing = data?.user?.permission !== PersonPerms.NORMIE && editing;
@@ -81,6 +79,12 @@ const Submit: NextPage<{
   });
 
   // Submit Functions
+  const articleNameIsUnique = (title: string) => {
+    return (
+      articleSlugs.indexOf(slugify(title, { lower: true, remove: /"/g })) === -1
+    );
+  };
+
   const onDefaultSubmit: SubmitHandler<InputData> = (inputData) => {
     const data = {
       ...inputData,
@@ -166,19 +170,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const people = await getPeople();
   const articleSlugs = await getArticleSlugs();
 
-  const articleNameIsUnique = (title: string) => {
-    return (
-      articleSlugs.indexOf(slugify(title, { lower: true, remove: /"/g })) === -1
-    );
-  };
-
   return {
     props: {
       editing: context.query.m === "1",
       article,
       topics,
       people,
-      articleNameIsUnique,
+      articleSlugs,
     },
   };
 };
