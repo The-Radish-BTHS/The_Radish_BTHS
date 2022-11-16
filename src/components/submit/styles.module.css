@@ -12,7 +12,11 @@
   color: black;
   width: 60vw;
   padding: 0.5rem;
-  margin-bottom: 1.5rem;
+}
+
+.form-element-margin {
+  margin-top: 0.3rem;
+  margin-bottom: 1.5rem !important;
 }
 
 .form-wrapper p {
@@ -32,4 +36,9 @@
 
 .multiselect > div > ul > li:hover {
   background-color: rgba(0, 0, 0, 0.1);
+}
+
+.error-message {
+  color: #b00f04;
+  margin-left: 0.4rem;
 }

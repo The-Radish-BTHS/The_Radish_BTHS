@@ -13,7 +13,6 @@ import {
 import { useRouter } from "next/router";
 import Button from "@components/shared/button";
 import { useState } from "react";
-import { Article, Person, Topic } from "@prisma/client";
 
 const useSubmitModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();

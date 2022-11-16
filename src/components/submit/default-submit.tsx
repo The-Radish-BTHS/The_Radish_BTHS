@@ -3,10 +3,7 @@ import StyledMultiselect from "./styled-multiselect";
 import { ErrorMessage } from "@hookform/error-message";
 import { SubmitFormProps } from "@/pages/articles/submit";
 
-type Inputs = {
-  title: string;
-  content: string;
-};
+import styles from "@components/submit/styles.module.css";
 
 const DefaultSubmit: React.FC<SubmitFormProps> = ({
   contentData,
@@ -20,24 +17,35 @@ const DefaultSubmit: React.FC<SubmitFormProps> = ({
       <p>
         Google Docs link:<span style={{ color: "red" }}> *</span>
       </p>
-      <input required placeholder="Google Docs Link" {...contentData} />
+      <input
+        required
+        placeholder="Google Docs Link"
+        {...contentData}
+        className={styles["form-element-margin"]}
+      />
       <p>
         Article title:<span style={{ color: "red" }}> *</span>
       </p>
-      <input required placeholder="Title" {...titleData} aria-invalid="true" />
+      <input required placeholder="Title" {...titleData} />
 
-      <ErrorMessage
-        errors={errors}
-        name="title"
-        render={({ messages }) => {
-          console.log("messages", messages);
-          return messages
-            ? Object.entries(messages).map(([type, message]) => (
-                <p key={type}>{message}</p>
-              ))
-            : null;
-        }}
-      />
+      <p
+        className={`${styles["form-element-margin"]} ${styles["error-message"]}`}>
+        <ErrorMessage
+          errors={errors}
+          name="title"
+          render={({ messages }) => {
+            console.log("messages", messages);
+            return messages
+              ? Object.entries(messages).map(([type, message], i) => (
+                  <span key={i}>
+                    {message}
+                    <br />
+                  </span>
+                ))
+              : null;
+          }}
+        />
+      </p>
 
       <p>Topics covered:</p>
       <StyledMultiselect {...topicData} />

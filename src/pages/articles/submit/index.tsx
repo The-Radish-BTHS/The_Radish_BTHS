@@ -83,9 +83,10 @@ const Submit: NextPage<{
 
   // Submit Functions
   const articleNameIsUnique = (title: string) => {
-    return (
-      articleSlugs.indexOf(slugify(title, { lower: true, remove: /"/g })) === -1
-    );
+    const isUnique =
+      articleSlugs.indexOf(slugify(title, { lower: true, remove: /"/g })) ===
+      -1;
+    return isUnique || "An Article with that name already exists!";
   };
 
   const onDefaultSubmit: SubmitHandler<InputData> = (inputData) => {
