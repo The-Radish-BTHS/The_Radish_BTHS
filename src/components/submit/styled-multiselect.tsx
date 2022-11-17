@@ -20,12 +20,14 @@ const StyledMultiselect: React.FC<{
       style={{
         searchBox: {
           display: "flex",
+          flexWrap: "wrap",
           alignItems: "center",
           width: "60vw",
-          height: "2.6rem",
+          height: "fit-content",
           padding: "0.5rem",
           border: "1px solid black",
           borderRadius: "0.75rem",
+          gap: "0.4rem 0",
         },
         chips: {
           marginBottom: "0",
@@ -33,7 +35,6 @@ const StyledMultiselect: React.FC<{
           border: "1px solid black",
           borderRadius: "0.75rem",
           color: "black",
-          fill: "black",
         },
         optionContainer: {
           background: useTheme().styles.global.body.bg,
