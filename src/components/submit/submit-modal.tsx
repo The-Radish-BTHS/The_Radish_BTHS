@@ -9,6 +9,8 @@ import {
   useDisclosure,
   Text,
   useToast,
+  List,
+  ListItem,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import Button from "@components/shared/button";
@@ -31,6 +33,18 @@ const useSubmitModal = () => {
         <ModalCloseButton />
         <ModalBody>
           <Text>Are you sure you have checked all the things???</Text>
+          <ul style={{ marginTop: "1rem" }}>
+            <li style={{ marginLeft: "1rem" }}>
+              Is the doc shared with theradishbths@gmail.com?
+            </li>
+            <li style={{ marginLeft: "1rem" }}>Is your title correct?</li>
+            <li style={{ marginLeft: "1rem" }}>
+              Have you selected all of your topics?
+            </li>
+            <li style={{ marginLeft: "1rem" }}>
+              Have you added anyone you worked with?
+            </li>
+          </ul>
         </ModalBody>
 
         <ModalFooter>

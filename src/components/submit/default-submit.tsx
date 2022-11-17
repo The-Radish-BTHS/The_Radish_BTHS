@@ -17,12 +17,26 @@ const DefaultSubmit: React.FC<SubmitFormProps> = ({
       <p>
         Google Docs link:<span style={{ color: "red" }}> *</span>
       </p>
-      <input
-        required
-        placeholder="Google Docs Link"
-        {...contentData}
-        className={styles["form-element-margin"]}
-      />
+      <input required placeholder="Google Docs Link" {...contentData} />
+      <p
+        className={`${styles["form-element-margin"]} ${styles["error-message"]}`}>
+        <ErrorMessage
+          errors={errors}
+          name="content"
+          render={({ messages }) => {
+            console.log("messages", messages);
+            return messages
+              ? Object.entries(messages).map(([type, message], i) => (
+                  <span key={i}>
+                    {message}
+                    <br />
+                  </span>
+                ))
+              : null;
+          }}
+        />
+      </p>
+
       <p>
         Article title:<span style={{ color: "red" }}> *</span>
       </p>

@@ -133,7 +133,14 @@ const Submit: NextPage<{
   const { ModalComponent, onOpen, setInputData } = useSubmitModal();
 
   // Props for forms
-  const contentData = register("content");
+  const contentData = register("content", {
+    required: true,
+    pattern: {
+      value:
+        /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/gi,
+      message: "That doesn't seem like a valid link!!!",
+    },
+  });
   const titleData = register("title", {
     required: true,
     validate: articleNameIsUnique,
