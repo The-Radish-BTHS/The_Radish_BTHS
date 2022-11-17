@@ -56,7 +56,8 @@ const Submit: NextPage<{
   topics: Topic[];
   people: Person[];
   articleSlugs: string[];
-}> = ({ editing, article, topics, people, articleSlugs }) => {
+  apiPath: string;
+}> = ({ editing, article, topics, people, articleSlugs, apiPath }) => {
   // Get User Data
   const { data } = useSession();
   const isEditing = data?.user?.permission !== PersonPerms.NORMIE && editing;
@@ -89,17 +90,35 @@ const Submit: NextPage<{
     return isUnique || "An Article with that name already exists!";
   };
 
-  const onDefaultSubmit: SubmitHandler<InputData> = (inputData) => {
+  const onDefaultSubmit: SubmitHandler<InputData> = async (inputData) => {
     const data = {
       ...inputData,
       slug: slugify(inputData.title, { lower: true, remove: /"/g }),
       topics: topicSelections,
       authors: [...authorSelections],
     };
+
+    const response = await fetch(`${apiPath}/create?type=article`, {
+      method: "post",
+      mode: "no-cors",
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((e) => {
+        console.error(e);
+      });
+
     console.log(data);
   };
 
-  const onEditorSubmit: SubmitHandler<InputData> = (inputData) => {
+  const onEditorSubmit: SubmitHandler<InputData> = async (inputData) => {
     const data = {
       ...inputData,
       topics: topicSelections,
@@ -174,6 +193,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const people = await getPeople();
   const articleSlugs = await getArticleSlugs();
 
+  const apiPath = await process.env.API_PATH;
+  console.log(apiPath);
+
   return {
     props: {
       editing: context.query.m === "1",
@@ -181,6 +203,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       topics,
       people,
       articleSlugs,
+      apiPath,
     },
   };
 };

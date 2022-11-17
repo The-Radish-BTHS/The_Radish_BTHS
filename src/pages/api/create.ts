@@ -8,15 +8,23 @@ import {
   getTopic,
 } from "@lib/getters/unique-getters.server";
 import { ArticleStatus } from "@prisma/client";
+import { useSession } from "next-auth/react";
+import { unstable_getServerSession } from "next-auth";
+import { authOptions } from "./auth/[...nextauth]";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   let { body: data, query } = req;
+  const session = await unstable_getServerSession(req, res, authOptions);
 
-  if (query.secret !== process.env.SECRET) {
+  if (query.secret !== process.env.SECRET && !session) {
     return res.status(401).json({ message: "Invalid token" });
+  }
+
+  if (typeof data === "string") {
+    data = JSON.parse(data);
   }
 
   const pathsToRevalidate: string[] = ["/"];
@@ -48,10 +56,7 @@ export default async function handler(
     ).forEach(async ({ slug }) => {
       pathsToRevalidate.push(`/issues/${slug}`);
     });
-  } else if (
-    query.type === "person" &&
-    data.published === ArticleStatus.PUBLISHED
-  ) {
+  } else if (query.type === "person") {
     result = await prisma.person.create({
       data,
     });
@@ -77,16 +82,21 @@ export default async function handler(
     });
 
     // Revalidate realation fields
-    pathsToRevalidate.push(`issues/${getIssue(data.issue)}`);
-    data.topics.forEach((slug: string) =>
+    if (data.issue) {
+      pathsToRevalidate.push(`issues/${getIssue(data.issue)}`);
+    }
+    data.topics?.forEach((slug: string) =>
       pathsToRevalidate.push(`topics/${getTopic(slug)}`)
     );
-    data.authors.forEach((slug: string) =>
+    data.authors?.forEach((slug: string) =>
       pathsToRevalidate.push(`people/${getPerson(slug)}`)
     );
 
     // Format data and create article
-    const excerpt = prune(markdownToTxt(req.body.content));
+    const excerpt =
+      data.published === ArticleStatus.PUBLISHED
+        ? prune(markdownToTxt(req.body.content))
+        : "";
     data = {
       ...data,
       excerpt,

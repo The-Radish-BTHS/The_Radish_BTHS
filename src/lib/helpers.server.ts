@@ -25,12 +25,14 @@ export const articleInclude = {
 
 export const slugsToConnect = (slugs: string[]) => {
   return {
-    connect: slugs.map((slug) => ({ slug })),
+    connect: slugs?.map((slug) => ({ slug })),
   };
 };
 
-export const slugToConnect = (slug: string) => {
-  return {
-    connect: { slug },
-  };
+export const slugToConnect = (slug: string | null) => {
+  return slug
+    ? {
+        connect: { slug },
+      }
+    : undefined;
 };
