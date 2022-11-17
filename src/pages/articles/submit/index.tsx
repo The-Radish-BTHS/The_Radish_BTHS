@@ -94,8 +94,8 @@ const Submit: NextPage<{
     const data = {
       ...inputData,
       slug: slugify(inputData.title, { lower: true, remove: /"/g }),
-      topics: topicSelections,
-      authors: [...authorSelections],
+      topics: topicSelections.map((topic) => topic.slug),
+      authors: [...authorSelections].map((author) => author.slug),
     };
 
     const response = await fetch(`${apiPath}/create?type=article`, {
@@ -110,12 +110,14 @@ const Submit: NextPage<{
     })
       .then((response) => {
         console.log(response);
+        return response;
       })
       .catch((e) => {
         console.error(e);
+        return e;
       });
 
-    console.log(data);
+    return response;
   };
 
   const onEditorSubmit: SubmitHandler<InputData> = async (inputData) => {

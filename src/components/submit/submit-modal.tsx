@@ -35,16 +35,26 @@ const useSubmitModal = () => {
 
         <ModalFooter>
           <Button
-            onClick={() => {
-              onClick(inputData);
+            onClick={async () => {
+              const response = await onClick(inputData);
               router.push("/");
-              toast({
-                title: "Article Submit Success!",
-                status: "success",
-                duration: 4000,
-                position: "bottom-right",
-                isClosable: true,
-              });
+              if (response.status === 200) {
+                toast({
+                  title: "Article Submit Success!",
+                  status: "success",
+                  duration: 4000,
+                  position: "bottom-right",
+                  isClosable: true,
+                });
+              } else {
+                toast({
+                  title: `Article Submit Error ${response.status}: ${response.statusText}`,
+                  status: "error",
+                  duration: 4000,
+                  position: "bottom-right",
+                  isClosable: true,
+                });
+              }
             }}>
             Yes, I&apos;m sure!
           </Button>
