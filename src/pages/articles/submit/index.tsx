@@ -178,7 +178,8 @@ const Submit: NextPage<{
           onOpen();
           setInputData(data);
         })}
-        className={styles["form-wrapper"]}>
+        className={styles["form-wrapper"]}
+        onKeyDown={(e) => e.key != "Enter"}>
         {isEditing ? (
           <EditorSubmit {...submitFormProps} />
         ) : (

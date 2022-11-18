@@ -56,6 +56,7 @@ model Person {
   image       String?
 
   articles    Article[]
+  user        User?
 }
 
 
@@ -96,6 +97,8 @@ model User {
     sessions      Session[]
 
     permission    PersonPerms @default(NORMIE)
+    personSlug    String @unique
+    person        Person @relation(fields: [personSlug], references: [slug])
 }
 
 model VerificationToken {
