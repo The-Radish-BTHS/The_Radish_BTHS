@@ -60,7 +60,9 @@ const Submit: NextPage<{
 }> = ({ editing, article, topics, people, articleSlugs, apiPath }) => {
   // Get User Data
   const { data } = useSession();
-  const isEditing = data?.user?.permission !== PersonPerms.NORMIE && editing;
+  console.log(data);
+  const isEditing =
+    data && data?.user?.permission !== PersonPerms.NORMIE && editing;
 
   // State
   const [topicSelections, setTopicSelections] = useState<Topic[] | Person[]>(
@@ -163,7 +165,7 @@ const Submit: NextPage<{
   };
 
   return (
-    <Layout title="Submit an Article!">
+    <Layout title={`${isEditing ? "Edit" : "Submit"} an Article!`}>
       <ModalComponent onClick={isEditing ? onEditorSubmit : onDefaultSubmit} />
 
       <Heading textAlign="center">
