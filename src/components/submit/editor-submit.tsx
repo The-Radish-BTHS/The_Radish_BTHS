@@ -1,5 +1,8 @@
 import { SubmitFormProps } from "@/pages/articles/submit";
+import { ErrorMessage } from "@hookform/error-message";
+import { Markdown } from "./markdown";
 import StyledMultiselect from "./styled-multiselect";
+import styles from "./styles.module.css";
 
 const EditorSubmit: React.FC<SubmitFormProps> = ({
   contentData,
@@ -14,6 +17,24 @@ const EditorSubmit: React.FC<SubmitFormProps> = ({
         Article title:<span style={{ color: "red" }}> *</span>
       </p>
       <input placeholder="Title" required {...titleData} />
+      <p
+        className={`${styles["form-element-margin"]} ${styles["error-message"]}`}>
+        <ErrorMessage
+          errors={errors}
+          name="title"
+          render={({ messages }) => {
+            console.log("messages", messages);
+            return messages
+              ? Object.entries(messages).map(([type, message], i) => (
+                  <span key={i}>
+                    {message}
+                    <br />
+                  </span>
+                ))
+              : null;
+          }}
+        />
+      </p>
 
       <p>Topics covered:</p>
       <StyledMultiselect {...topicData} />
