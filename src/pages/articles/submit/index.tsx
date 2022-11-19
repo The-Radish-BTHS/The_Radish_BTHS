@@ -156,7 +156,9 @@ const Submit: NextPage<{
     select: setTopicSelections,
   };
   const authorData = {
-    values: people,
+    values: people.filter(
+      (person) => person.slug !== sessionData?.user?.person.slug
+    ),
     select: setAuthorSelections,
   };
 
