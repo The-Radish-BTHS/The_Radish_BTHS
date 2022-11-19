@@ -18,13 +18,13 @@ import {
   useForm,
   UseFormRegisterReturn,
 } from "react-hook-form";
-import slugify from "slugify";
 
 import styles from "@components/submit/styles.module.css";
 
 import { Heading, Text } from "@chakra-ui/react";
 import Layout from "@components/layout/layout";
 import Button from "@components/shared/button";
+import { customSlugify } from "@lib/helpers.server";
 
 type InputData = {
   title: string;
@@ -86,16 +86,14 @@ const Submit: NextPage<{
 
   // Submit Functions
   const articleNameIsUnique = (title: string) => {
-    const isUnique =
-      articleSlugs.indexOf(slugify(title, { lower: true, remove: /"/g })) ===
-      -1;
+    const isUnique = articleSlugs.indexOf(customSlugify(title)) === -1;
     return isUnique || "An Article with that name already exists!";
   };
 
   const onDefaultSubmit: SubmitHandler<InputData> = async (inputData) => {
     const data = {
       ...inputData,
-      slug: slugify(inputData.title, { lower: true, remove: /"/g }),
+      slug: customSlugify(inputData.title),
       topics: topicSelections.map((topic) => topic.slug),
       authors: [...authorSelections].map((author) => author.slug),
     };
@@ -176,12 +174,14 @@ const Submit: NextPage<{
       </Text>
       <form
         autoComplete="off"
+        onKeyDown={(e) => {
+          e.key === "Enter" && e.preventDefault();
+        }}
         onSubmit={handleSubmit((data) => {
           onOpen();
           setInputData(data);
         })}
-        className={styles["form-wrapper"]}
-        onKeyDown={(e) => e.key != "Enter"}>
+        className={styles["form-wrapper"]}>
         {isEditing ? (
           <EditorSubmit {...submitFormProps} />
         ) : (
@@ -206,7 +206,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const articleSlugs = await getArticleSlugs();
 
   const apiPath = await process.env.API_PATH;
-  console.log(apiPath);
+  console.log("slug", slug);
 
   return {
     props: {

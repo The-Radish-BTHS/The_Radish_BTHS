@@ -1,3 +1,5 @@
+import slugify from "slugify";
+
 export const prune = (text: string, n: number = 90) =>
   text[n] == " " || text.length < n
     ? text.slice(0, n)
@@ -36,3 +38,6 @@ export const slugToConnect = (slug: string | null) => {
       }
     : undefined;
 };
+
+export const customSlugify = (value: string) =>
+  slugify(value, { lower: true, remove: /"#/g });
