@@ -59,10 +59,12 @@ const Submit: NextPage<{
   apiPath: string;
 }> = ({ editing, article, topics, people, articleSlugs, apiPath }) => {
   // Get User Data
-  const { data } = useSession();
-  console.log(data);
+  const { data: sessionData } = useSession();
+
   const isEditing =
-    data && data?.user?.permission !== PersonPerms.NORMIE && editing;
+    sessionData &&
+    sessionData?.user?.permission !== PersonPerms.NORMIE &&
+    editing;
 
   // State
   const [topicSelections, setTopicSelections] = useState<Topic[] | Person[]>(
@@ -95,8 +97,12 @@ const Submit: NextPage<{
       ...inputData,
       slug: customSlugify(inputData.title),
       topics: topicSelections.map((topic) => topic.slug),
-      authors: [...authorSelections].map((author) => author.slug),
+      authors: [...authorSelections, sessionData?.user?.person].map(
+        (author) => author?.slug
+      ),
     };
+
+    console.log(data);
 
     const response = await fetch(`${apiPath}/create?type=article`, {
       method: "post",

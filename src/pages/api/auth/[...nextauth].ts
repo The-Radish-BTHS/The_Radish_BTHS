@@ -37,9 +37,11 @@ const createPerson = async (personData: Person) => {
 export const authOptions: NextAuthOptions = {
   // Include user.id on session
   callbacks: {
-    session({ session, user }) {
+    async session({ session, user }) {
       if (session.user) {
         session.user.id = user.id;
+        // @ts-ignore
+        session.user.person = await getPerson(user.personSlug);
         // @ts-ignore
         session.user.permission = user.permission;
       }
@@ -54,21 +56,17 @@ export const authOptions: NextAuthOptions = {
       clientId: process.env.GOOGLE_CLIENT_ID ?? "",
       clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? "",
       profile: async (profile, tokens) => {
+        const slug = customSlugify(profile.name);
         const personData = {
           name: profile.name,
           image: "",
           gradYear: 2024,
           description: "",
-          slug: customSlugify(profile.name),
+          slug: slug,
           articles: {},
           position: "writer",
           isExec: false,
         };
-
-        const person = await getPerson(customSlugify(profile.name));
-        if (person === null) {
-          await createPerson(personData);
-        }
 
         return {
           id: profile.sub,
@@ -77,8 +75,11 @@ export const authOptions: NextAuthOptions = {
           image: profile.picture,
           perms: profile.perms,
           person: {
-            connect: {
-              slug: customSlugify(profile.name),
+            connectOrCreate: {
+              where: {
+                slug: slug,
+              },
+              create: personData,
             },
           },
         };
