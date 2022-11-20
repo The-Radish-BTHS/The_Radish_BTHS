@@ -72,27 +72,34 @@ const Account: NextPage<{ apiPath: string; peopleSlugs: string[] }> = ({
     return isUnique;
   };
 
-  const onSubmit = () => {
+  const reloadSession = () => {
+    const event = new Event("visibilitychange");
+    document.dispatchEvent(event);
+  };
+
+  const onSubmit = async () => {
     if (!person?.slug) {
       return;
     }
 
     if (name !== person?.name && personSlugIsUnique(name!)) {
-      update(apiPath, person?.slug, {
+      await update(apiPath, person?.slug, {
         name: name,
         slug: customSlugify(name!),
       });
     }
     if (gradYear !== person?.gradYear) {
-      update(apiPath, person?.slug, {
+      await update(apiPath, person?.slug, {
         gradYear: gradYear,
       });
     }
     if (description !== person?.description) {
-      update(apiPath, person?.slug, {
+      await update(apiPath, person?.slug, {
         description: description,
       });
     }
+
+    reloadSession();
   };
 
   return (
