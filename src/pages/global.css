@@ -2,7 +2,8 @@
   background-color: rgba(0, 0, 0, 0.1) !important;
 }
 
-.accountSubmitButton {
+.accountSubmitButton,
+.accountRevertButton {
   background: transparent;
   border: 1px solid black;
   border-radius: 0.75rem;
@@ -11,6 +12,11 @@
   width: fit-content;
 }
 
-.accountSubmitButton:disabled {
+.accountRevertButton {
+  height: 2.625rem;
+}
+
+.accountSubmitButton:disabled,
+.accountRevertButton:disabled {
   display: none;
 }

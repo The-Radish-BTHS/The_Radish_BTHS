@@ -3,28 +3,39 @@ import Layout from "@components/layout/layout";
 import ExecStamp from "@components/shared/exec-stamp";
 import { NextPage } from "next";
 import { useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const DataInput: React.FC<{
   number?: boolean;
+  initialValue: string | number | undefined;
   value: string | number | undefined;
   setValue: React.Dispatch<React.SetStateAction<string | number | undefined>>;
-}> = ({ number, value, setValue }) => {
+}> = ({ number, initialValue, value, setValue }) => {
   return (
-    <input
-      type={number ? "number" : "text"}
-      value={value || (number ? 0 : "")}
-      style={{
-        background: "transparent",
-        border: "1px solid black",
-        borderRadius: "0.75rem",
-        marginBottom: "0.5rem",
-        padding: "0.5rem",
-      }}
-      onChange={(e) =>
-        setValue(number ? parseInt(e.target.value) : e.target.value)
-      }
-    />
+    <Flex>
+      <input
+        type={number ? "number" : "text"}
+        value={value || (number ? 0 : "")}
+        style={{
+          background: "transparent",
+          border: "1px solid black",
+          borderRadius: "0.75rem",
+          marginBottom: "0.5rem",
+          marginRight: "0.5rem",
+          padding: "0.5rem",
+          width: "50vw",
+        }}
+        onChange={(e) =>
+          setValue(number ? parseInt(e.target.value) : e.target.value)
+        }
+      />{" "}
+      <button
+        className="accountRevertButton"
+        disabled={value === initialValue}
+        onClick={() => setValue(initialValue)}>
+        Revert
+      </button>
+    </Flex>
   );
 };
 
@@ -76,10 +87,24 @@ const Account: NextPage = () => {
       <Text ml="1.5rem" fontSize="1.5rem">
         {description ? `"${description}"` : <br />}
       </Text>
-      <Flex flexDirection="column" w="60vw" mt="3rem">
-        <DataInput value={name} setValue={setName} />
-        <DataInput value={gradYear} setValue={setGradYear} number />
-        <DataInput value={description} setValue={setDescription} />
+      <Flex flexDirection="column" mt="3rem">
+        <Heading mb="1rem">Update your information</Heading>
+        <DataInput
+          initialValue={person?.name}
+          value={name}
+          setValue={setName}
+        />
+        <DataInput
+          initialValue={person?.gradYear}
+          value={gradYear}
+          setValue={setGradYear}
+          number
+        />
+        <DataInput
+          initialValue={person?.description}
+          value={description}
+          setValue={setDescription}
+        />
         <button
           className="accountSubmitButton"
           disabled={
