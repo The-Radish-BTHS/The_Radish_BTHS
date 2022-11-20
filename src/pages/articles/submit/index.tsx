@@ -7,11 +7,11 @@ import {
   getPeople,
   getTopics,
 } from "@lib/getters/many-getters.server";
-import { getArticle } from "@lib/getters/unique-getters.server";
+import prisma from "@lib/prisma.server";
 import { Person, PersonPerms, Topic } from "@prisma/client";
 import { GetServerSideProps, NextPage } from "next";
 import { useSession } from "next-auth/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   FieldErrorsImpl,
   SubmitHandler,
@@ -25,6 +25,8 @@ import { Heading, Text } from "@chakra-ui/react";
 import Layout from "@components/layout/layout";
 import Button from "@components/shared/button";
 import { customSlugify } from "@lib/helpers.server";
+import Multiselect from "multiselect-react-dropdown";
+import PersonType from "@/types/person";
 
 type InputData = {
   title: string;
@@ -41,12 +43,14 @@ export interface SubmitFormProps {
     }>
   >;
   topicData: {
-    values: Topic[];
+    options: Topic[];
     select: React.Dispatch<React.SetStateAction<Topic[] | Person[]>>;
+    selectedValues: Topic[];
   };
   authorData: {
-    values: Topic[];
+    options: Person[];
     select: React.Dispatch<React.SetStateAction<Topic[] | Person[]>>;
+    selectedValues: Person[] | PersonType[];
   };
 }
 
@@ -79,12 +83,27 @@ const Submit: NextPage<{
     handleSubmit,
     register,
     formState: { errors },
+    setValue,
   } = useForm<InputData>({
     criteriaMode: "all",
-    defaultValues: {
-      content: article?.content ?? "",
-    },
+    defaultValues: isEditing
+      ? {
+          title: article?.title || "",
+          content: article?.content || "",
+        }
+      : {},
   });
+
+  useEffect(() => {
+    if (
+      sessionData &&
+      sessionData?.user?.permission !== PersonPerms.NORMIE &&
+      editing
+    ) {
+      setValue("title", article?.title || "");
+      setValue("content", article?.content || "");
+    }
+  }, [sessionData, editing, article, setValue]);
 
   // Submit Functions
   const articleNameIsUnique = (title: string) => {
@@ -152,15 +171,25 @@ const Submit: NextPage<{
     validate: articleNameIsUnique,
   });
   const topicData = {
-    values: topics,
+    options: topics,
     select: setTopicSelections,
+    selectedValues: article?.topics || [],
   };
   const authorData = {
-    values: people.filter(
-      (person) => person.slug !== sessionData?.user?.person.slug
+    options: people.filter(
+      (person) => isEditing || person.slug !== sessionData?.user?.person.slug
     ),
     select: setAuthorSelections,
+    selectedValues: article?.authors || [],
   };
+
+  console.log(article?.authors || []);
+  console.log(
+    "people",
+    people.filter(
+      (person) => isEditing || person.slug !== sessionData?.user?.person.slug
+    )
+  );
 
   const submitFormProps = {
     contentData,
@@ -198,6 +227,49 @@ const Submit: NextPage<{
         <Button type="submit" mt="1rem">
           Submit it!
         </Button>
+        <Multiselect
+          displayValue="key"
+          options={[
+            {
+              cat: "Group 1",
+              key: "Option 1",
+            },
+            {
+              cat: "Group 1",
+              key: "Option 2",
+            },
+            {
+              cat: "Group 1",
+              key: "Option 3",
+            },
+            {
+              cat: "Group 2",
+              key: "Option 4",
+            },
+            {
+              cat: "Group 2",
+              key: "Option 5",
+            },
+            {
+              cat: "Group 2",
+              key: "Option 6",
+            },
+            {
+              cat: "Group 2",
+              key: "Option 7",
+            },
+          ]}
+          selectedValues={[
+            {
+              cat: "Group 1",
+              key: "Option 1",
+            },
+            {
+              cat: "Group 1",
+              key: "Option 2",
+            },
+          ]}
+        />
       </form>
     </Layout>
   );
@@ -207,14 +279,33 @@ export default Submit;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const slug = context.query.slug?.toString();
-  const article = await (slug ? getArticle(slug) : null);
+
+  const article = await prisma.article.findUnique({
+    where: {
+      slug,
+    },
+    include: {
+      authors: {
+        select: {
+          name: true,
+          slug: true,
+          position: true,
+          description: true,
+          gradYear: true,
+          isExec: true,
+          image: true,
+        },
+      },
+      issue: { select: { title: true, slug: true } },
+      topics: { select: { name: true, slug: true } },
+    },
+  });
 
   const topics = await getTopics();
-  const people = await getPeople();
+  const people = await getPeople(undefined, undefined, undefined, true);
   const articleSlugs = await getArticleSlugs();
 
   const apiPath = await process.env.API_PATH;
-  console.log("slug", slug);
 
   return {
     props: {

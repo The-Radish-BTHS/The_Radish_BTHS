@@ -1,12 +1,14 @@
+import PersonType from "@/types/person";
 import { useTheme } from "@chakra-ui/react";
 import { Person, Topic } from "@prisma/client";
 import Multiselect from "multiselect-react-dropdown";
 import styles from "./styles.module.css";
 
 const StyledMultiselect: React.FC<{
-  values: Topic[] | Person[];
+  options: Topic[] | Person[];
   select: React.Dispatch<React.SetStateAction<Topic[] | Person[]>>;
-}> = ({ values, select }) => {
+  selectedValues: Person[] | PersonType[] | Topic[];
+}> = ({ options, select, selectedValues }) => {
   return (
     <Multiselect
       className={styles.multiselect}
@@ -52,7 +54,8 @@ const StyledMultiselect: React.FC<{
       showArrow={true}
       closeOnSelect={true}
       placeholder="Select..."
-      options={values} // Options to display in the dropdown
+      selectedValues={selectedValues}
+      options={options} // Options to display in the dropdown
       displayValue="name" // Property name to display in the dropdown options
     />
   );

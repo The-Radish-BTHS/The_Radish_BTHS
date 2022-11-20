@@ -23,7 +23,7 @@ export const getTopic = async (slug: string) => {
   return topic;
 };
 
-export const getPerson = async (slug: string) => {
+export const getPerson = async (slug: string, excludeFormer?: boolean) => {
   const person = await prisma.person.findUnique({
     where: {
       slug,
@@ -32,10 +32,16 @@ export const getPerson = async (slug: string) => {
   });
 
   const today = new Date();
-  const former =
-    person && today.getMonth() > 6 && today.getFullYear() >= person.gradYear;
+  const former = excludeFormer
+    ? {}
+    : {
+        former:
+          person &&
+          today.getMonth() > 6 &&
+          today.getFullYear() >= person.gradYear,
+      };
 
-  return { ...person, former };
+  return { ...person, ...former };
 };
 
 export const getIssue = async (slug: string) => {

@@ -1,5 +1,5 @@
 import { articleInclude, excludeSlugs } from "@lib/helpers.server";
-import { ArticleStatus } from "@prisma/client";
+import { ArticleStatus, Person } from "@prisma/client";
 import prisma from "../prisma.server";
 
 export const getArticles = async (
@@ -52,7 +52,8 @@ export const getTopics = async (excluded?: string[], takeN?: number) => {
 export const getPeople = async (
   execs?: boolean,
   excluded?: string[],
-  takeN?: number
+  takeN?: number,
+  excludeFormer?: boolean
 ) => {
   const NOT = excludeSlugs(excluded);
   const take = takeN ? { take: takeN } : null;
@@ -66,9 +67,19 @@ export const getPeople = async (
     ...take,
   });
 
+  const former = (person: Person) =>
+    excludeFormer
+      ? {}
+      : {
+          former:
+            person &&
+            today.getMonth() > 6 &&
+            today.getFullYear() >= person.gradYear,
+        };
+
   return people.map((person) => ({
     ...person,
-    former: today.getMonth() > 6 && today.getFullYear() >= person.gradYear,
+    ...former(person),
   }));
 };
 
