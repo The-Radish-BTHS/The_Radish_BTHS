@@ -118,7 +118,7 @@ const Submit: NextPage<{
       ...inputData,
       slug: customSlugify(inputData.title),
       topics: topicSelections.map((topic) => topic.slug),
-      authors: [...authorSelections, sessionData?.user?.person].map(
+      authors: [sessionData?.user?.person, ...authorSelections].map(
         (author) => author?.slug
       ),
     };
