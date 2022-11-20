@@ -46,11 +46,13 @@ export interface SubmitFormProps {
     options: Topic[];
     select: React.Dispatch<React.SetStateAction<Topic[] | Person[]>>;
     selectedValues: Topic[];
+    keepFirst?: boolean;
   };
   authorData: {
     options: Person[];
     select: React.Dispatch<React.SetStateAction<Topic[] | Person[]>>;
     selectedValues: Person[] | PersonType[];
+    keepFirst?: boolean;
   };
 }
 
@@ -180,16 +182,13 @@ const Submit: NextPage<{
       (person) => isEditing || person.slug !== sessionData?.user?.person.slug
     ),
     select: setAuthorSelections,
-    selectedValues: article?.authors || [],
+    selectedValues: isEditing
+      ? article?.authors || []
+      : sessionData?.user?.person
+      ? [sessionData?.user?.person]
+      : [],
+    keepFirst: true,
   };
-
-  console.log(article?.authors || []);
-  console.log(
-    "people",
-    people.filter(
-      (person) => isEditing || person.slug !== sessionData?.user?.person.slug
-    )
-  );
 
   const submitFormProps = {
     contentData,
@@ -227,49 +226,6 @@ const Submit: NextPage<{
         <Button type="submit" mt="1rem">
           Submit it!
         </Button>
-        <Multiselect
-          displayValue="key"
-          options={[
-            {
-              cat: "Group 1",
-              key: "Option 1",
-            },
-            {
-              cat: "Group 1",
-              key: "Option 2",
-            },
-            {
-              cat: "Group 1",
-              key: "Option 3",
-            },
-            {
-              cat: "Group 2",
-              key: "Option 4",
-            },
-            {
-              cat: "Group 2",
-              key: "Option 5",
-            },
-            {
-              cat: "Group 2",
-              key: "Option 6",
-            },
-            {
-              cat: "Group 2",
-              key: "Option 7",
-            },
-          ]}
-          selectedValues={[
-            {
-              cat: "Group 1",
-              key: "Option 1",
-            },
-            {
-              cat: "Group 1",
-              key: "Option 2",
-            },
-          ]}
-        />
       </form>
     </Layout>
   );
@@ -280,26 +236,28 @@ export default Submit;
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const slug = context.query.slug?.toString();
 
-  const article = await prisma.article.findUnique({
-    where: {
-      slug,
-    },
-    include: {
-      authors: {
-        select: {
-          name: true,
-          slug: true,
-          position: true,
-          description: true,
-          gradYear: true,
-          isExec: true,
-          image: true,
+  const article = slug
+    ? await prisma.article.findUnique({
+        where: {
+          slug,
         },
-      },
-      issue: { select: { title: true, slug: true } },
-      topics: { select: { name: true, slug: true } },
-    },
-  });
+        include: {
+          authors: {
+            select: {
+              name: true,
+              slug: true,
+              position: true,
+              description: true,
+              gradYear: true,
+              isExec: true,
+              image: true,
+            },
+          },
+          issue: { select: { title: true, slug: true } },
+          topics: { select: { name: true, slug: true } },
+        },
+      })
+    : null;
 
   const topics = await getTopics();
   const people = await getPeople(undefined, undefined, undefined, true);

@@ -8,7 +8,8 @@ const StyledMultiselect: React.FC<{
   options: Topic[] | Person[];
   select: React.Dispatch<React.SetStateAction<Topic[] | Person[]>>;
   selectedValues: Person[] | PersonType[] | Topic[];
-}> = ({ options, select, selectedValues }) => {
+  keepFirst?: boolean;
+}> = ({ options, select, selectedValues, keepFirst }) => {
   return (
     <Multiselect
       className={styles.multiselect}
@@ -51,6 +52,7 @@ const StyledMultiselect: React.FC<{
       }}
       closeIcon="cancel"
       avoidHighlightFirstOption={true}
+      disablePreSelectedValues={keepFirst}
       showArrow={true}
       closeOnSelect={true}
       placeholder="Select..."
