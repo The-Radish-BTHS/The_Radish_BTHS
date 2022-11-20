@@ -4,8 +4,8 @@ import { ErrorMessage } from "@hookform/error-message";
 import { SubmitFormProps } from "@/pages/articles/submit";
 
 import styles from "@components/submit/styles.module.css";
-import { Flex, Tooltip } from "@chakra-ui/react";
-import { InfoOutlineIcon } from "@chakra-ui/icons";
+import { Flex } from "@chakra-ui/react";
+import InfoTooltip from "@components/shared/info-tooltip";
 
 const DefaultSubmit: React.FC<SubmitFormProps> = ({
   contentData,
@@ -21,15 +21,7 @@ const DefaultSubmit: React.FC<SubmitFormProps> = ({
           Google Docs link:<span style={{ color: "red" }}> *</span>
         </p>
 
-        <Tooltip
-          label="hello"
-          placement="top"
-          bg="#ebeae5"
-          border="1px solid black"
-          color="black"
-          borderRadius="0.25rem">
-          <InfoOutlineIcon />
-        </Tooltip>
+        <InfoTooltip text="Be sure to share this document with theradishbths@gmail.com!!! We can't edit it if you don't :(" />
       </Flex>
 
       <input required placeholder="Google Docs Link" {...contentData} />
@@ -81,17 +73,9 @@ const DefaultSubmit: React.FC<SubmitFormProps> = ({
       <StyledMultiselect {...topicData} />
 
       <Flex w="60vw" justifyContent="space-between">
-        <p>Partners:</p>
+        <p>Authors:</p>
 
-        <Tooltip
-          label="hello"
-          placement="top"
-          bg="#ebeae5"
-          border="1px solid black"
-          color="black"
-          borderRadius="0.25rem">
-          <InfoOutlineIcon />
-        </Tooltip>
+        <InfoTooltip text="Did you work with anyone on this article? Add them here! Don't worry, you're here by default" />
       </Flex>
       <StyledMultiselect {...authorData} />
     </>
