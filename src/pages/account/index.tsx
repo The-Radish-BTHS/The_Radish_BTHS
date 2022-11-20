@@ -1,60 +1,55 @@
 import { Flex, Heading, Text } from "@chakra-ui/react";
+import DataInput from "@components/account/data-input";
 import Layout from "@components/layout/layout";
 import ExecStamp from "@components/shared/exec-stamp";
-import { NextPage } from "next";
+import { getPeopleSlugs } from "@lib/getters/many-getters.server";
+import { customSlugify } from "@lib/helpers.server";
+import {
+  GetServerSideProps,
+  InferGetServerSidePropsType,
+  NextPage,
+} from "next";
 import { useSession } from "next-auth/react";
 import { useEffect, useRef, useState } from "react";
 
-const DataInput: React.FC<{
-  number?: boolean;
-  initialValue: string | number | undefined;
-  value: string | number | undefined;
-  setValue: React.Dispatch<React.SetStateAction<string | number | undefined>>;
-}> = ({ number, initialValue, value, setValue }) => {
-  return (
-    <Flex>
-      <input
-        type={number ? "number" : "text"}
-        value={value || (number ? 0 : "")}
-        style={{
-          background: "transparent",
-          border: "1px solid black",
-          borderRadius: "0.75rem",
-          marginBottom: "0.5rem",
-          marginRight: "0.5rem",
-          padding: "0.5rem",
-          width: "50vw",
-        }}
-        onChange={(e) =>
-          setValue(number ? parseInt(e.target.value) : e.target.value)
-        }
-      />{" "}
-      <button
-        className="accountRevertButton"
-        disabled={value === initialValue}
-        onClick={() => setValue(initialValue)}>
-        Revert
-      </button>
-    </Flex>
-  );
+const update = async (apiPath: string, slug: string, data: any) => {
+  const response = await fetch(`${apiPath}/update?type=person&&slug=${slug}`, {
+    method: "post",
+    mode: "no-cors",
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify(data),
+  })
+    .then((response) => {
+      console.log(response);
+      return response;
+    })
+    .catch((e) => {
+      console.error(e);
+      return e;
+    });
+
+  return response;
 };
 
-const Account: NextPage = () => {
+const Account: NextPage<{ apiPath: string; peopleSlugs: string[] }> = ({
+  apiPath,
+  peopleSlugs,
+}) => {
   const { data } = useSession();
   const person = data?.user?.person;
 
   const today = new Date();
 
-  const [name, setName] = useState<string | number | undefined>(person?.name);
-  const [gradYear, setGradYear] = useState<string | number | undefined>(
-    person?.gradYear
-  );
+  const [name, setName] = useState(person?.name);
+  const [gradYear, setGradYear] = useState(person?.gradYear);
   const [former, setFormer] = useState(
     person && today.getMonth() > 6 && today.getFullYear() >= person?.gradYear
   );
-  const [description, setDescription] = useState<string | number | undefined>(
-    person?.description
-  );
+  const [description, setDescription] = useState(person?.description);
 
   useEffect(() => {
     setName(person?.name);
@@ -71,6 +66,34 @@ const Account: NextPage = () => {
       );
     }
   }, [person, gradYear]);
+
+  const personSlugIsUnique = (name: string) => {
+    const isUnique = peopleSlugs.indexOf(customSlugify(name)) === -1;
+    return isUnique;
+  };
+
+  const onSubmit = () => {
+    if (!person?.slug) {
+      return;
+    }
+
+    if (name !== person?.name && personSlugIsUnique(name!)) {
+      update(apiPath, person?.slug, {
+        name: name,
+        slug: customSlugify(name!),
+      });
+    }
+    if (gradYear !== person?.gradYear) {
+      update(apiPath, person?.slug, {
+        gradYear: gradYear,
+      });
+    }
+    if (description !== person?.description) {
+      update(apiPath, person?.slug, {
+        description: description,
+      });
+    }
+  };
 
   return (
     <Layout title="My Account">
@@ -89,11 +112,17 @@ const Account: NextPage = () => {
       </Text>
       <Flex flexDirection="column" mt="3rem">
         <Heading mb="1rem">Update your information</Heading>
+
         <DataInput
           initialValue={person?.name}
           value={name}
           setValue={setName}
         />
+        {!personSlugIsUnique(name || "") && name !== person?.name && (
+          <p className={"form-element-margin error-message"}>
+            Someone with that name already exists!
+          </p>
+        )}
         <DataInput
           initialValue={person?.gradYear}
           value={gradYear}
@@ -107,10 +136,12 @@ const Account: NextPage = () => {
         />
         <button
           className="accountSubmitButton"
+          onClick={onSubmit}
           disabled={
-            name === person?.name &&
-            gradYear === person?.gradYear &&
-            description === person?.description
+            (name === person?.name &&
+              gradYear === person?.gradYear &&
+              description === person?.description) ||
+            (!personSlugIsUnique(name || "") && name !== person?.name)
           }>
           Save!
         </button>
@@ -120,3 +151,15 @@ const Account: NextPage = () => {
 };
 
 export default Account;
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const apiPath = await process.env.API_PATH;
+  const peopleSlugs = await getPeopleSlugs();
+
+  return {
+    props: {
+      apiPath,
+      peopleSlugs,
+    },
+  };
+};

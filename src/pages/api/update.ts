@@ -37,46 +37,45 @@ export default async function handler(
   let result;
 
   if (query.type === "topic") {
-    result = await prisma.topic.create({
+    result = await prisma.topic.update({
+      where: {
+        slug: query.slug?.toString(),
+      },
       data,
     });
 
     pathsToRevalidate = await revalidateTopics();
   } else if (query.type === "issue") {
-    result = await prisma.issue.create({
+    result = await prisma.issue.update({
+      where: {
+        slug: query.slug?.toString(),
+      },
       data,
     });
 
     pathsToRevalidate = await revalidateIssues();
   } else if (query.type === "person") {
-    result = await prisma.person.create({
+    result = await prisma.person.update({
+      where: {
+        slug: query.slug?.toString(),
+      },
       data,
     });
 
     pathsToRevalidate = await revalidatePeople(data.isExec);
   } else if (query.type === "article") {
+    result = await prisma.article.update({
+      where: {
+        slug: query.slug?.toString(),
+      },
+      data,
+    });
+
     pathsToRevalidate = await revalidateArticles(
       data.issue,
       data.topics,
       data.authors
     );
-
-    // Format data and create article
-    const excerpt =
-      data.published === ArticleStatus.PUBLISHED
-        ? prune(markdownToTxt(req.body.content))
-        : "";
-    data = {
-      ...data,
-      excerpt,
-      issue: slugToConnect(data.issue),
-      topics: slugsToConnect(data.topics),
-      authors: slugsToConnect(data.authors),
-    };
-
-    result = await prisma.article.create({
-      data,
-    });
   } else {
     return res.status(404).json({ message: "Invalid type" });
   }
