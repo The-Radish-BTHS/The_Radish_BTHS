@@ -2,7 +2,7 @@ import { Flex, Heading, Text } from "@chakra-ui/react";
 import TopicCard from "@components/cards/topic-card";
 import Layout from "@components/layout/layout";
 import Link from "@components/shared/link";
-import LatestArticles from "@components/Latest/latest-articles";
+import LatestArticles from "@components/latest/latest-articles";
 
 import Markdown from "@components/shared/markdown";
 
@@ -63,7 +63,8 @@ const Article: NextPage<ArticlePageType> = ({
         flexWrap="wrap"
         maxW="85vw"
         fontSize="1.2rem"
-        fontWeight="medium">
+        fontWeight="medium"
+      >
         {topics?.map((topic, i) => (
           <TopicCard name={topic.name} slug={topic.slug} key={i} />
         ))}

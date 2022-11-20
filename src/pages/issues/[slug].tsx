@@ -1,7 +1,7 @@
-import IssueType, { IssuePageType } from "@/types/issue";
+import { IssuePageType } from "@/types/issue";
 import { Flex, Heading, Text } from "@chakra-ui/react";
 import Articard from "@components/cards/articard";
-import LatestIssues from "@components/Latest/latest-issues";
+import LatestIssues from "@components/latest/latest-issues";
 import Layout from "@components/layout/layout";
 import Link from "@components/shared/link";
 import MasonryLayout from "@components/shared/masonry/masonry-layout";
@@ -10,7 +10,7 @@ import prisma from "@lib/prisma.server";
 import { getIssue } from "@lib/getters/unique-getters.server";
 import { slugsToPaths } from "@lib/helpers.server";
 import { getIssues } from "@lib/getters/many-getters.server";
-import NothingHereWrapper from "@components/Latest/nothing-here-wrapper";
+import NothingHereWrapper from "@components/latest/nothing-here-wrapper";
 
 const Issue: NextPage<IssuePageType> = ({
   title,
@@ -35,7 +35,8 @@ const Issue: NextPage<IssuePageType> = ({
           border="1px solid black"
           borderRadius="0.5rem"
           _hover={{ background: "rgba(222, 222, 222, 0.8)" }}
-          _active={{ background: "transparent" }}>
+          _active={{ background: "transparent" }}
+        >
           Read the PDF!!
         </Link>
       )}

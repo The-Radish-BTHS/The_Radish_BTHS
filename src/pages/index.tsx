@@ -1,6 +1,6 @@
-import LatestArticles from "@components/Latest/latest-articles";
-import LatestSection from "@components/Latest/latest-section";
-import TopicsSection from "@components/Latest/topics-section";
+import LatestArticles from "@components/latest/latest-articles";
+import LatestSection from "@components/latest/latest-section";
+import TopicsSection from "@components/latest/topics-section";
 import Layout from "@components/layout/layout";
 import type { GetStaticProps, NextPage } from "next";
 import { TopicCardType } from "@/types/topic";
