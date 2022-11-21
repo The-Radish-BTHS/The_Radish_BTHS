@@ -59,10 +59,10 @@ export const revalidateArticles = async (
 
   // Revalidate realation fields
   if (issue) {
-    pathsToRevalidate.push(`issues/${issue}`);
+    pathsToRevalidate.push(`/issues/${issue}`);
   }
-  topics?.forEach((slug: string) => pathsToRevalidate.push(`topics/${slug}`));
-  authors?.forEach((slug: string) => pathsToRevalidate.push(`people/${slug}`));
+  topics?.forEach((slug: string) => pathsToRevalidate.push(`/topics/${slug}`));
+  authors?.forEach((slug: string) => pathsToRevalidate.push(`/people/${slug}`));
 
   return pathsToRevalidate;
 };
