@@ -4,11 +4,7 @@ import Layout from "@components/layout/layout";
 import ExecStamp from "@components/exec-stamp";
 import { getPeopleSlugs } from "@lib/getters/many-getters.server";
 import { customSlugify } from "@lib/helpers.server";
-import {
-  GetServerSideProps,
-  InferGetServerSidePropsType,
-  NextPage,
-} from "next";
+import { GetServerSideProps, NextPage } from "next";
 import { useSession } from "next-auth/react";
 import { useEffect, useRef, useState } from "react";
 
