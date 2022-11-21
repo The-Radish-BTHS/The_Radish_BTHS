@@ -2,8 +2,6 @@ import { TopicReference } from "@/types/topic";
 import { Flex, Heading, Text } from "@chakra-ui/react";
 import TopicCard from "@components/cards/topic-card";
 
-import LinkButton from "@components/link-button";
-import { AiOutlineArrowRight } from "react-icons/ai";
 import NothingHereWrapper from "./nothing-here-wrapper";
 
 const TopicsSection: React.FC<{
