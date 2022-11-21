@@ -1,6 +1,6 @@
 import { Box, Flex, Image, Text } from "@chakra-ui/react";
 import Layout from "@components/layout/layout";
-import Link from "@components/shared/link";
+import Link from "@components/link";
 import { useIsMobile } from "@hooks/useIsMobile";
 
 const Error404: React.FC = () => {

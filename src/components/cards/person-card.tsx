@@ -1,7 +1,7 @@
 import { PersonCardType } from "@/types/person";
 import { Center, Flex, Heading, Image, Text } from "@chakra-ui/react";
-import ExecStamp from "@components/shared/exec-stamp";
-import Link from "@components/shared/link";
+import ExecStamp from "@components/exec-stamp";
+import Link from "@components/link";
 import CardWrapper from "./card-wrapper";
 
 const PersonCard: React.FC<PersonCardType> = ({

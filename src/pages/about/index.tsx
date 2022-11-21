@@ -1,8 +1,8 @@
 import client, { aboutSectionDataType } from "@/cms/cms-data";
 import { Flex, useTheme } from "@chakra-ui/react";
-import AboutSection from "@components/about/about-section";
-import { IconLink } from "@components/about/icon-link";
-import { SectionHeader } from "@components/about/section-header";
+import AboutSection from "@components/pages/about/about-section";
+import { IconLink } from "@components/pages/about/icon-link";
+import { SectionHeader } from "@components/pages/about/section-header";
 import Layout from "@components/layout/layout";
 import { GetStaticProps, NextPage } from "next";
 import {

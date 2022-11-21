@@ -1,5 +1,5 @@
 import { Flex, Text, useTheme } from "@chakra-ui/react";
-import Link from "@components/shared/link";
+import Link from "@components/link";
 import { ITab } from "./tabs";
 
 interface ITabProps {

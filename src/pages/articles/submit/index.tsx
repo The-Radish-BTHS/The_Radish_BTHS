@@ -1,7 +1,7 @@
 import ArticleType from "@/types/article";
-import DefaultSubmit from "@components/submit/default-submit";
-import EditorSubmit from "@components/submit/editor-submit";
-import useSubmitModal from "@components/submit/submit-modal";
+import DefaultSubmit from "@components/pages/submit/default-submit";
+import EditorSubmit from "@components/pages/submit/editor-submit";
+import useSubmitModal from "@components/pages/submit/submit-modal";
 import {
   getArticleSlugs,
   getPeople,
@@ -19,15 +19,14 @@ import {
   UseFormRegisterReturn,
 } from "react-hook-form";
 
-import styles from "@components/submit/styles.module.css";
+import styles from "@components/pages/submit/styles.module.css";
 
 import { Heading, Text } from "@chakra-ui/react";
 import Layout from "@components/layout/layout";
-import Button from "@components/shared/button";
+import Button from "@components/button";
 import { customSlugify } from "@lib/helpers.server";
-import Multiselect from "multiselect-react-dropdown";
 import PersonType from "@/types/person";
-import RequiredUserWrapper from "@components/shared/required-user-wrapper";
+import RequiredUserWrapper from "@components/required-user-wrapper";
 
 type InputData = {
   title: string;

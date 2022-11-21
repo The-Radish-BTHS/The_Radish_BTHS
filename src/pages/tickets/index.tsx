@@ -2,9 +2,9 @@ import client, { ticketDataType } from "@/cms/cms-data";
 import Layout from "@components/layout/layout";
 import { GetStaticProps, NextPage } from "next";
 
-import Row from "@components/tickets/row";
-import TicketTable from "@components/tickets/table";
-import Link from "@components/shared/link";
+import Row from "@components/pages/tickets/row";
+import TicketTable from "@components/pages/tickets/table";
+import Link from "@components/link";
 import { Flex, Text } from "@chakra-ui/react";
 
 const Tickets: NextPage<{ ticketData: ticketDataType }> = ({ ticketData }) => {

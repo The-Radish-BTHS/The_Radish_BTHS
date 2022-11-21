@@ -1,4 +1,4 @@
-import Link from "@components/shared/link";
+import Link from "@components/link";
 import { IconType } from "react-icons";
 
 export const IconLink: React.FC<{ Icon: IconType; href: string }> = ({

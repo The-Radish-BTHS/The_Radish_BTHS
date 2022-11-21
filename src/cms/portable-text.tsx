@@ -1,6 +1,6 @@
 import { PortableText } from "@portabletext/react";
 import { Code, Heading, ListItem, Text, UnorderedList } from "@chakra-ui/react";
-import Link from "@components/shared/link";
+import Link from "@components/link";
 
 export const PortableTextLayout: React.FC<{
   text: any[];

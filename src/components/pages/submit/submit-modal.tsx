@@ -9,11 +9,9 @@ import {
   useDisclosure,
   Text,
   useToast,
-  List,
-  ListItem,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import Button from "@components/shared/button";
+import Button from "@components/button";
 import { useState } from "react";
 
 const useSubmitModal = () => {

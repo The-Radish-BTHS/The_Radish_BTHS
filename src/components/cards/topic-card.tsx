@@ -1,6 +1,6 @@
 import { TopicCardType } from "@/types/topic";
 import { Flex, Text } from "@chakra-ui/react";
-import Link from "@components/shared/link";
+import Link from "@components/link";
 
 const TopicCard: React.FC<TopicCardType> = ({ name, slug }) => {
   return (

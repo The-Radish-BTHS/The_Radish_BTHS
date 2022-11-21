@@ -1,6 +1,6 @@
 import { IssueCardType } from "@/types/issue";
 import { Center, Heading, Image, Text } from "@chakra-ui/react";
-import Link from "@components/shared/link";
+import Link from "@components/link";
 import CardWrapper from "./card-wrapper";
 
 const IssueCard: React.FC<IssueCardType> = ({

@@ -3,7 +3,7 @@ import { Flex, Heading, Text } from "@chakra-ui/react";
 import Articard from "@components/cards/articard";
 import TopicsSection from "@components/latest/topics-section";
 import Layout from "@components/layout/layout";
-import MasonryLayout from "@components/shared/masonry/masonry-layout";
+import MasonryLayout from "@components/masonry/masonry-layout";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import prisma from "@lib/prisma.server";
 import { getTopic } from "@lib/getters/unique-getters.server";

@@ -1,7 +1,7 @@
 import { Flex, Heading, Text } from "@chakra-ui/react";
-import DataInput from "@components/account/data-input";
+import DataInput from "@components/pages/account/data-input";
 import Layout from "@components/layout/layout";
-import ExecStamp from "@components/shared/exec-stamp";
+import ExecStamp from "@components/exec-stamp";
 import { getPeopleSlugs } from "@lib/getters/many-getters.server";
 import { customSlugify } from "@lib/helpers.server";
 import {

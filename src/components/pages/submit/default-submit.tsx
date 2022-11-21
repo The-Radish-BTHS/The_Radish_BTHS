@@ -3,9 +3,9 @@ import StyledMultiselect from "./styled-multiselect";
 import { ErrorMessage } from "@hookform/error-message";
 import { SubmitFormProps } from "@/pages/articles/submit";
 
-import styles from "@components/submit/styles.module.css";
+import styles from "./styles.module.css";
 import { Flex } from "@chakra-ui/react";
-import InfoTooltip from "@components/shared/info-tooltip";
+import InfoTooltip from "@components/info-tooltip";
 
 const DefaultSubmit: React.FC<SubmitFormProps> = ({
   contentData,

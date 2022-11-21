@@ -2,7 +2,7 @@ import { IssueCardType } from "@/types/issue";
 import { Heading, Text } from "@chakra-ui/react";
 import IssueCard from "@components/cards/issue-card";
 import Layout from "@components/layout/layout";
-import MasonryLayout from "@components/shared/masonry/masonry-layout";
+import MasonryLayout from "@components/masonry/masonry-layout";
 import { GetStaticProps, NextPage } from "next";
 import { getIssues } from "@lib/getters/many-getters.server";
 

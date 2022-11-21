@@ -7,7 +7,7 @@ import {
   Image,
   useTheme,
 } from "@chakra-ui/react";
-import Link from "@components/shared/link";
+import Link from "@components/link";
 import { useIsMobile } from "@hooks/useIsMobile";
 import { useRef } from "react";
 import PfpSection from "./pfp-section";

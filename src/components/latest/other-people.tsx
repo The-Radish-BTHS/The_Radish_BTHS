@@ -2,7 +2,7 @@ import { PersonCardType } from "@/types/person";
 import { Flex, Heading, Text } from "@chakra-ui/react";
 import PersonCard from "@components/cards/person-card";
 import LinkButton from "@components/link-button";
-import MasonryLayout from "@components/shared/masonry/masonry-layout";
+import MasonryLayout from "@components/masonry/masonry-layout";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import NothingHereWrapper from "./nothing-here-wrapper";
 
