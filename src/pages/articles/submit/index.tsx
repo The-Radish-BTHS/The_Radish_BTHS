@@ -27,6 +27,7 @@ import Button from "@components/shared/button";
 import { customSlugify } from "@lib/helpers.server";
 import Multiselect from "multiselect-react-dropdown";
 import PersonType from "@/types/person";
+import RequiredUserWrapper from "@components/shared/required-user-wrapper";
 
 type InputData = {
   title: string;
@@ -200,33 +201,37 @@ const Submit: NextPage<{
 
   return (
     <Layout title={`${isEditing ? "Edit" : "Submit"} an Article!`}>
-      <ModalComponent onClick={isEditing ? onEditorSubmit : onDefaultSubmit} />
+      <RequiredUserWrapper>
+        <ModalComponent
+          onClick={isEditing ? onEditorSubmit : onDefaultSubmit}
+        />
 
-      <Heading textAlign="center">
-        So you want to {isEditing ? "edit" : "submit"} an Article?
-      </Heading>
-      <Text textAlign="center" fontSize="1.25rem">
-        {isEditing ? "Thanks!" : "Do it! Submit it! Go!"}
-      </Text>
-      <form
-        autoComplete="off"
-        onKeyDown={(e) => {
-          e.key === "Enter" && e.preventDefault();
-        }}
-        onSubmit={handleSubmit((data) => {
-          onOpen();
-          setInputData(data);
-        })}
-        className={styles["form-wrapper"]}>
-        {isEditing ? (
-          <EditorSubmit {...submitFormProps} />
-        ) : (
-          <DefaultSubmit {...submitFormProps} />
-        )}
-        <Button type="submit" mt="1rem">
-          Submit it!
-        </Button>
-      </form>
+        <Heading textAlign="center">
+          So you want to {isEditing ? "edit" : "submit"} an Article?
+        </Heading>
+        <Text textAlign="center" fontSize="1.25rem">
+          {isEditing ? "Thanks!" : "Do it! Submit it! Go!"}
+        </Text>
+        <form
+          autoComplete="off"
+          onKeyDown={(e) => {
+            e.key === "Enter" && e.preventDefault();
+          }}
+          onSubmit={handleSubmit((data) => {
+            onOpen();
+            setInputData(data);
+          })}
+          className={styles["form-wrapper"]}>
+          {isEditing ? (
+            <EditorSubmit {...submitFormProps} />
+          ) : (
+            <DefaultSubmit {...submitFormProps} />
+          )}
+          <Button type="submit" mt="1rem">
+            Submit it!
+          </Button>
+        </form>
+      </RequiredUserWrapper>
     </Layout>
   );
 };
