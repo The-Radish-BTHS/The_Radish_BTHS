@@ -3,7 +3,7 @@ import GoogleProvider from "next-auth/providers/google";
 
 // Prisma adapter for NextAuth, optional and can be removed
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import { prisma } from "@/server/db/client";
+import prisma from "@/lib/prisma.server";
 import { customSlugify } from "@lib/helpers.server";
 import { Person } from "@prisma/client";
 import { getPerson } from "@lib/getters/unique-getters.server";
