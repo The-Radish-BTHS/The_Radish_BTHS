@@ -6,6 +6,7 @@ import {
   getArticleSlugs,
   getPeople,
   getTopics,
+  getTopicSlugs,
 } from "@lib/getters/many-getters.server";
 import prisma from "@lib/prisma.server";
 import { Person, PersonPerms, Topic } from "@prisma/client";
@@ -54,6 +55,8 @@ export interface SubmitFormProps {
     selectedValues: Person[] | PersonType[];
     keepFirst?: boolean;
   };
+  topicSlugs: string[];
+  apiPath: string;
 }
 
 const Submit: NextPage<{
@@ -62,8 +65,17 @@ const Submit: NextPage<{
   topics: Topic[];
   people: Person[];
   articleSlugs: string[];
+  topicSlugs: string[];
   apiPath: string;
-}> = ({ editing, article, topics, people, articleSlugs, apiPath }) => {
+}> = ({
+  editing,
+  article,
+  topics,
+  people,
+  articleSlugs,
+  topicSlugs,
+  apiPath,
+}) => {
   // Get User Data
   const { data: sessionData } = useSession();
 
@@ -114,6 +126,7 @@ const Submit: NextPage<{
   };
 
   const onDefaultSubmit: SubmitHandler<InputData> = async (inputData) => {
+    console.log("bad");
     const data = {
       ...inputData,
       slug: customSlugify(inputData.title),
@@ -196,6 +209,8 @@ const Submit: NextPage<{
     errors,
     topicData,
     authorData,
+    topicSlugs,
+    apiPath,
   };
 
   return (
@@ -266,6 +281,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const topics = await getTopics();
   const people = await getPeople(undefined, undefined, undefined, true);
   const articleSlugs = await getArticleSlugs();
+  const topicSlugs = await getTopicSlugs();
 
   const apiPath = await process.env.API_PATH;
 
@@ -276,6 +292,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       topics,
       people,
       articleSlugs,
+      topicSlugs,
       apiPath,
     },
   };
