@@ -1,6 +1,7 @@
 import { SubmitFormProps } from "@/pages/articles/submit";
 import { ErrorMessage } from "@hookform/error-message";
 import { Markdown } from "./markdown";
+import useNewTopicModal from "./new-topic-modal";
 import StyledMultiselect from "./styled-multiselect";
 import styles from "./styles.module.css";
 
@@ -10,15 +11,20 @@ const EditorSubmit: React.FC<SubmitFormProps> = ({
   errors,
   topicData,
   authorData,
+  topicSlugs,
 }) => {
+  const { ModalComponent, onOpen } = useNewTopicModal(topicSlugs);
+
   return (
     <>
+      <ModalComponent />
       <p>
         Article title:<span style={{ color: "red" }}> *</span>
       </p>
       <input placeholder="Title" required {...titleData} />
       <p
-        className={`${styles["form-element-margin"]} ${styles["error-message"]}`}>
+        className={`${styles["form-element-margin"]} ${styles["error-message"]}`}
+      >
         <ErrorMessage
           errors={errors}
           name="title"
@@ -38,6 +44,10 @@ const EditorSubmit: React.FC<SubmitFormProps> = ({
 
       <p>Topics covered:</p>
       <StyledMultiselect {...topicData} />
+
+      <button onClick={onOpen} type="button">
+        + Add new topic
+      </button>
 
       <p>Authors:</p>
       <StyledMultiselect {...authorData} />

@@ -6,6 +6,7 @@ import {
   getArticleSlugs,
   getPeople,
   getTopics,
+  getTopicSlugs,
 } from "@lib/getters/many-getters.server";
 import prisma from "@lib/prisma.server";
 import { Person, PersonPerms, Topic } from "@prisma/client";
@@ -54,6 +55,7 @@ export interface SubmitFormProps {
     selectedValues: Person[] | PersonType[];
     keepFirst?: boolean;
   };
+  topicSlugs: string[];
 }
 
 const Submit: NextPage<{
@@ -62,7 +64,8 @@ const Submit: NextPage<{
   topics: Topic[];
   people: Person[];
   articleSlugs: string[];
-}> = ({ editing, article, topics, people, articleSlugs }) => {
+  topicSlugs: string[];
+}> = ({ editing, article, topics, people, articleSlugs, topicSlugs }) => {
   // Get User Data
   const { data: sessionData } = useSession();
 
@@ -113,6 +116,7 @@ const Submit: NextPage<{
   };
 
   const onDefaultSubmit: SubmitHandler<InputData> = async (inputData) => {
+    console.log("bad");
     const data = {
       ...inputData,
       slug: customSlugify(inputData.title),
@@ -195,6 +199,7 @@ const Submit: NextPage<{
     errors,
     topicData,
     authorData,
+    topicSlugs,
   };
 
   return (
@@ -266,6 +271,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const topics = await getTopics();
   const people = await getPeople(undefined, undefined, undefined, true);
   const articleSlugs = await getArticleSlugs();
+  const topicSlugs = await getTopicSlugs();
 
   return {
     props: {
@@ -274,6 +280,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       topics,
       people,
       articleSlugs,
+      topicSlugs,
     },
   };
 };

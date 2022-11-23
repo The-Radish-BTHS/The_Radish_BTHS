@@ -6,6 +6,7 @@ import { SubmitFormProps } from "@/pages/articles/submit";
 import styles from "./styles.module.css";
 import { Flex } from "@chakra-ui/react";
 import InfoTooltip from "@components/info-tooltip";
+import useNewTopicModal from "./new-topic-modal";
 
 const DefaultSubmit: React.FC<SubmitFormProps> = ({
   contentData,
@@ -13,9 +14,14 @@ const DefaultSubmit: React.FC<SubmitFormProps> = ({
   errors,
   topicData,
   authorData,
+  topicSlugs,
+  apiPath,
 }) => {
+  const { ModalComponent, onOpen } = useNewTopicModal(topicSlugs, apiPath);
+
   return (
     <>
+      <ModalComponent />
       <Flex w="60vw" justifyContent="space-between">
         <p>
           Google Docs link:<span style={{ color: "red" }}> *</span>
@@ -71,6 +77,9 @@ const DefaultSubmit: React.FC<SubmitFormProps> = ({
 
       <p>Topics covered:</p>
       <StyledMultiselect {...topicData} />
+      <button onClick={onOpen} type="button">
+        + Add new topic
+      </button>
 
       <Flex w="60vw" justifyContent="space-between">
         <p>Authors:</p>

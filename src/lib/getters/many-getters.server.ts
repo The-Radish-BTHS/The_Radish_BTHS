@@ -140,3 +140,13 @@ export const getPeopleSlugs = async () => {
 
   return peopleSlugs.map(({ slug }) => slug);
 };
+
+export const getTopicSlugs = async () => {
+  const topicSlugs = await prisma.topic.findMany({
+    select: {
+      slug: true,
+    },
+  });
+
+  return topicSlugs.map(({ slug }) => slug);
+};
