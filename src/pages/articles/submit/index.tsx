@@ -62,8 +62,7 @@ const Submit: NextPage<{
   topics: Topic[];
   people: Person[];
   articleSlugs: string[];
-  apiPath: string;
-}> = ({ editing, article, topics, people, articleSlugs, apiPath }) => {
+}> = ({ editing, article, topics, people, articleSlugs }) => {
   // Get User Data
   const { data: sessionData } = useSession();
 
@@ -125,7 +124,7 @@ const Submit: NextPage<{
 
     console.log(data);
 
-    const response = await fetch(`${apiPath}/create?type=article`, {
+    const response = await fetch(`/api/create?type=article`, {
       method: "post",
       mode: "no-cors",
       headers: {
@@ -220,7 +219,8 @@ const Submit: NextPage<{
             onOpen();
             setInputData(data);
           })}
-          className={styles["form-wrapper"]}>
+          className={styles["form-wrapper"]}
+        >
           {isEditing ? (
             <EditorSubmit {...submitFormProps} />
           ) : (
@@ -267,8 +267,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const people = await getPeople(undefined, undefined, undefined, true);
   const articleSlugs = await getArticleSlugs();
 
-  const apiPath = await process.env.API_PATH;
-
   return {
     props: {
       editing: context.query.m === "1",
@@ -276,7 +274,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       topics,
       people,
       articleSlugs,
-      apiPath,
     },
   };
 };

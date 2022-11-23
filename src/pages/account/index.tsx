@@ -8,8 +8,8 @@ import { GetServerSideProps, NextPage } from "next";
 import { useSession } from "next-auth/react";
 import { useEffect, useRef, useState } from "react";
 
-const update = async (apiPath: string, slug: string, data: any) => {
-  const response = await fetch(`${apiPath}/update?type=person&&slug=${slug}`, {
+const update = async (slug: string, data: any) => {
+  const response = await fetch(`/api/update?type=person&&slug=${slug}`, {
     method: "post",
     mode: "no-cors",
     headers: {
@@ -31,10 +31,7 @@ const update = async (apiPath: string, slug: string, data: any) => {
   return response;
 };
 
-const Account: NextPage<{ apiPath: string; peopleSlugs: string[] }> = ({
-  apiPath,
-  peopleSlugs,
-}) => {
+const Account: NextPage<{ peopleSlugs: string[] }> = ({ peopleSlugs }) => {
   const { data } = useSession();
   const person = data?.user?.person;
 
@@ -79,18 +76,18 @@ const Account: NextPage<{ apiPath: string; peopleSlugs: string[] }> = ({
     }
 
     if (name !== person?.name && personSlugIsUnique(name!)) {
-      await update(apiPath, person?.slug, {
+      await update(person?.slug, {
         name: name,
         slug: customSlugify(name!),
       });
     }
     if (gradYear !== person?.gradYear) {
-      await update(apiPath, person?.slug, {
+      await update(person?.slug, {
         gradYear: gradYear,
       });
     }
     if (description !== person?.description) {
-      await update(apiPath, person?.slug, {
+      await update(person?.slug, {
         description: description,
       });
     }
@@ -145,7 +142,8 @@ const Account: NextPage<{ apiPath: string; peopleSlugs: string[] }> = ({
               gradYear === person?.gradYear &&
               description === person?.description) ||
             (!personSlugIsUnique(name || "") && name !== person?.name)
-          }>
+          }
+        >
           Save!
         </button>
       </Flex>
@@ -156,12 +154,10 @@ const Account: NextPage<{ apiPath: string; peopleSlugs: string[] }> = ({
 export default Account;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const apiPath = await process.env.API_PATH;
   const peopleSlugs = await getPeopleSlugs();
 
   return {
     props: {
-      apiPath,
       peopleSlugs,
     },
   };

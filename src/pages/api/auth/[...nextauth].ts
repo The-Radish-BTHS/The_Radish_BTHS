@@ -10,7 +10,7 @@ import { getPerson } from "@lib/getters/unique-getters.server";
 
 const createPerson = async (personData: Person) => {
   const response = await fetch(
-    `${process.env.API_PATH}/create?type=person&&secret=${process.env.SECRET}`,
+    `/api/create?type=person&&secret=${process.env.SECRET}`,
     {
       method: "post",
       mode: "no-cors",
