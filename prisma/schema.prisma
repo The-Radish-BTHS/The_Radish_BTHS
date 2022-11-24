@@ -26,13 +26,20 @@ model Article {
   title       String
   excerpt     String?
   content     String
-  published   ArticleStatus @default(SUBMITTED)
-  publishedOn DateTime      @default(now())
+  published   Boolean  @default(false)
+  publishedOn DateTime @default(now())
 
   issue       Issue?   @relation(fields: [issueSlug], references: [slug])   
   issueSlug   String?
   authors     Person[]
   topics      Topic[]
+}
+
+model Submission {
+  id       String @id @default(cuid())
+  link     String
+  authorId String
+  author   User   @relation(fields: [authorId], references: [id])
 }
 
 model Topic {
@@ -95,7 +102,8 @@ model User {
     accounts      Account[]
     sessions      Session[]
 
-    permission UserPermission @default(NORMIE)
+    permission  UserPermission @default(NORMIE)
+    submissions Submission[]
 
     personSlug String @unique
     person     Person @relation(fields: [personSlug], references: [slug])
