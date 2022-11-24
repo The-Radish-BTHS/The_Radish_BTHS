@@ -25,6 +25,8 @@ export default Articles;
 export const getStaticProps: GetStaticProps = async (context) => {
   const articles = await getArticles();
 
+  console.log(articles);
+
   return {
     props: { articles },
   };

@@ -11,10 +11,11 @@ import {
   getTopics,
 } from "@lib/getters/many-getters.server";
 import { IssueCardType } from "@/types/issue";
-import { Button, Flex } from "@chakra-ui/react";
+import { Button, Flex, Text } from "@chakra-ui/react";
 
 import { signIn, useSession } from "next-auth/react";
 import { getLastIssue } from "@lib/getters/unique-getters.server";
+import { trpc } from "@lib/trpc";
 
 const Home: NextPage<{
   topics: TopicCardType[];
@@ -23,6 +24,8 @@ const Home: NextPage<{
   lastIssueArticles: ArticardType[];
 }> = ({ topics, articles, lastIssue, lastIssueArticles }) => {
   const session = useSession();
+  const testQuery = trpc.test.useQuery();
+  console.log(testQuery.data);
 
   return (
     <Layout alignItems="center" gap="2.5rem">
@@ -36,13 +39,11 @@ const Home: NextPage<{
   );
 };
 
-export default Home;
-
 export const getStaticProps: GetStaticProps = async (context) => {
   const topics = await getTopics();
 
   const lastIssue = await getLastIssue();
-  const lastIssueArticles = await await getArticles(
+  const lastIssueArticles = await getArticles(
     false,
     lastIssue?.slug,
     undefined,
@@ -58,10 +59,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   return {
     props: {
-      topics: topics ?? null,
-      articles: articles ?? null,
-      lastIssue: lastIssue ?? null,
-      lastIssueArticles: lastIssueArticles ?? null,
+      a: 20,
+      topics: topics,
+      articles: articles,
+      lastIssue: lastIssue,
+      lastIssueArticles: lastIssueArticles,
     },
   };
 };
+
+export default Home;

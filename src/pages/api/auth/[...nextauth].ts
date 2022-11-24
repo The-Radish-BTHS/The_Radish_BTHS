@@ -55,7 +55,7 @@ export const authOptions: NextAuthOptions = {
               },
               create: personData,
             },
-          },
+          } as any,
         };
       },
     }),
