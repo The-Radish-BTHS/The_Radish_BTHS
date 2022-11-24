@@ -1,7 +1,7 @@
-import { trpc } from "@lib/trpc";
 import { initTRPC, TRPCError } from "@trpc/server";
-import { z } from "zod";
+import { UserPermission } from "@prisma/client";
 import { Context } from "./context";
+import { articleRouter } from "./routers/article";
 
 export const t = initTRPC.context<Context>().create();
 
@@ -17,12 +17,23 @@ export const authedProcedure = t.procedure.use(({ ctx, next }) => {
   });
 });
 
+export const execProcedure = authedProcedure.use(({ ctx, next }) => {
+  if (ctx.user.perms !== UserPermission.EXEC)
+    throw new TRPCError({ code: "UNAUTHORIZED" });
+  return next({ ctx });
+});
+
+export const editorProcedure = authedProcedure.use(({ ctx, next }) => {
+  if (
+    ctx.user.perms !== UserPermission.EXEC ||
+    ctx.user.perms !== UserPermission.EDITOR
+  )
+    throw new TRPCError({ code: "UNAUTHORIZED" });
+  return next({ ctx });
+});
+
 export const appRouter = t.router({
-  test: authedProcedure.query(async () => {
-    return {
-      a: 120,
-    };
-  }),
+  article: articleRouter,
 });
 
 export type AppRouter = typeof appRouter;

@@ -1,5 +1,5 @@
 import { articleInclude, excludeSlugs } from "@lib/helpers.server";
-import { ArticleStatus, Person } from "@prisma/client";
+import { Person } from "@prisma/client";
 import prisma from "../prisma.server";
 
 export const getArticles = async (
@@ -14,7 +14,7 @@ export const getArticles = async (
 
   const articles = await prisma.article.findMany({
     where: {
-      published: ArticleStatus.PUBLISHED,
+      published: true,
       ...issue,
       NOT,
     },
