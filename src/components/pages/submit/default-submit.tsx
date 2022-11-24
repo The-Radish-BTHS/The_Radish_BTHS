@@ -31,7 +31,8 @@ const DefaultSubmit: React.FC<SubmitFormProps> = ({
 
       <input required placeholder="Google Docs Link" {...contentData} />
       <p
-        className={`${styles["form-element-margin"]} ${styles["error-message"]}`}>
+        className={`${styles["form-element-margin"]} ${styles["error-message"]}`}
+      >
         <ErrorMessage
           errors={errors}
           name="content"
@@ -56,7 +57,8 @@ const DefaultSubmit: React.FC<SubmitFormProps> = ({
       <input required placeholder="Title" {...titleData} />
 
       <p
-        className={`${styles["form-element-margin"]} ${styles["error-message"]}`}>
+        className={`${styles["form-element-margin"]} ${styles["error-message"]}`}
+      >
         <ErrorMessage
           errors={errors}
           name="title"

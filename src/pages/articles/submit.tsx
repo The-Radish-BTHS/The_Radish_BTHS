@@ -11,7 +11,7 @@ import {
 import prisma from "@lib/prisma.server";
 import { Person, UserPermission, Topic } from "@prisma/client";
 import { GetServerSideProps, NextPage } from "next";
-import { useSession } from "next-auth/react";
+import { SessionProvider, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import {
   FieldErrorsImpl,
@@ -22,12 +22,13 @@ import {
 
 import styles from "@components/pages/submit/styles.module.css";
 
-import { Heading, Text } from "@chakra-ui/react";
+import { Heading, Text, useToast } from "@chakra-ui/react";
 import Layout from "@components/layout/layout";
 import Button from "@components/button";
 import { customSlugify } from "@lib/helpers.server";
 import PersonType from "@/types/person";
 import RequiredUserWrapper from "@components/required-user-wrapper";
+import { trpc } from "@lib/trpc";
 
 type InputData = {
   title: string;
@@ -45,14 +46,14 @@ export interface SubmitFormProps {
   >;
   topicData: {
     options: Topic[];
-    select: React.Dispatch<React.SetStateAction<Topic[] | Person[]>>;
+    select: React.Dispatch<React.SetStateAction<Topic[]>>;
     selectedValues: Topic[];
     keepFirst?: boolean;
   };
   authorData: {
     options: Person[];
-    select: React.Dispatch<React.SetStateAction<Topic[] | Person[]>>;
-    selectedValues: Person[] | PersonType[];
+    select: React.Dispatch<React.SetStateAction<Person[]>>;
+    selectedValues: Person[];
     keepFirst?: boolean;
   };
   topicSlugs: string[];
@@ -68,6 +69,27 @@ const Submit: NextPage<{
 }> = ({ editing, article, topics, people, articleSlugs, topicSlugs }) => {
   // Get User Data
   const { data: sessionData } = useSession();
+  const toast = useToast();
+  const submitArticle = trpc.article.submit.useMutation({
+    onError(err) {
+      toast({
+        title: `Article Submit Error ${err.data?.httpStatus}: ${err.message}`,
+        status: "error",
+        duration: 4000,
+        position: "bottom-right",
+        isClosable: true,
+      });
+    },
+    onSuccess() {
+      toast({
+        title: "Article Submit Success!",
+        status: "success",
+        duration: 4000,
+        position: "bottom-right",
+        isClosable: true,
+      });
+    },
+  });
 
   const isEditing =
     sessionData &&
@@ -75,12 +97,8 @@ const Submit: NextPage<{
     editing;
 
   // State
-  const [topicSelections, setTopicSelections] = useState<Topic[] | Person[]>(
-    []
-  );
-  const [authorSelections, setAuthorSelections] = useState<Topic[] | Person[]>(
-    []
-  );
+  const [topicSelections, setTopicSelections] = useState<Topic[]>([]);
+  const [authorSelections, setAuthorSelections] = useState<Person[]>([]);
 
   // React Hook Form
   const {
@@ -116,37 +134,15 @@ const Submit: NextPage<{
   };
 
   const onDefaultSubmit: SubmitHandler<InputData> = async (inputData) => {
-    const data = {
-      ...inputData,
-      slug: customSlugify(inputData.title),
-      topics: topicSelections.map((topic) => topic.slug),
-      authors: [sessionData?.user?.person, ...authorSelections].map(
-        (author) => author?.slug
-      ),
-    };
-
-    console.log(data);
-
-    const response = await fetch(`/api/create?type=article`, {
-      method: "post",
-      mode: "no-cors",
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((response) => {
-        console.log(response);
-        return response;
+    if (!sessionData?.user?.person.slug) return;
+    await submitArticle
+      .mutateAsync({
+        title: inputData.title,
+        link: inputData.content,
+        authors: [{ slug: sessionData.user.person.slug }, ...authorSelections],
+        topics: topicSelections,
       })
-      .catch((e) => {
-        console.error(e);
-        return e;
-      });
-
-    return response;
+      .catch(() => 0);
   };
 
   const onEditorSubmit: SubmitHandler<InputData> = async (inputData) => {

@@ -13,11 +13,11 @@ import {
 import { useRouter } from "next/router";
 import Button from "@components/button";
 import { useState } from "react";
+import { trpc } from "@lib/trpc";
 
 const useSubmitModal = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const router = useRouter();
-  const toast = useToast();
   const [inputData, setInputData] = useState<{
     title: string;
     content: string;
@@ -48,26 +48,12 @@ const useSubmitModal = () => {
         <ModalFooter>
           <Button
             onClick={async () => {
-              const response = await onClick(inputData);
-              router.push("/");
-              if (response.status === 200) {
-                toast({
-                  title: "Article Submit Success!",
-                  status: "success",
-                  duration: 4000,
-                  position: "bottom-right",
-                  isClosable: true,
-                });
-              } else {
-                toast({
-                  title: `Article Submit Error ${response.status}: ${response.statusText}`,
-                  status: "error",
-                  duration: 4000,
-                  position: "bottom-right",
-                  isClosable: true,
-                });
-              }
-            }}>
+              onClick(inputData).then(() => {
+                onClose();
+                router.push("/");
+              });
+            }}
+          >
             Yes, I&apos;m sure!
           </Button>
         </ModalFooter>

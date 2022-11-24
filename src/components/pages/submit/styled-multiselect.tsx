@@ -4,12 +4,17 @@ import { Person, Topic } from "@prisma/client";
 import Multiselect from "multiselect-react-dropdown";
 import styles from "./styles.module.css";
 
-const StyledMultiselect: React.FC<{
-  options: Topic[] | Person[];
-  select: React.Dispatch<React.SetStateAction<Topic[] | Person[]>>;
-  selectedValues: Person[] | PersonType[] | Topic[];
+function StyledMultiselect<T>({
+  options,
+  select,
+  selectedValues,
+  keepFirst,
+}: {
+  options: T[];
+  select: React.Dispatch<React.SetStateAction<T[]>>;
+  selectedValues: T[];
   keepFirst?: boolean;
-}> = ({ options, select, selectedValues, keepFirst }) => {
+}) {
   return (
     <Multiselect
       className={styles.multiselect}
@@ -61,6 +66,6 @@ const StyledMultiselect: React.FC<{
       displayValue="name" // Property name to display in the dropdown options
     />
   );
-};
+}
 
 export default StyledMultiselect;
