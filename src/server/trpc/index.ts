@@ -18,16 +18,13 @@ export const authedProcedure = t.procedure.use(({ ctx, next }) => {
 });
 
 export const execProcedure = authedProcedure.use(({ ctx, next }) => {
-  if (ctx.user.perms !== UserPermission.EXEC)
+  if (ctx.user.permission !== UserPermission.EXEC)
     throw new TRPCError({ code: "UNAUTHORIZED" });
   return next({ ctx });
 });
 
 export const editorProcedure = authedProcedure.use(({ ctx, next }) => {
-  if (
-    ctx.user.perms !== UserPermission.EXEC ||
-    ctx.user.perms !== UserPermission.EDITOR
-  )
+  if (!["EXEC", "EDITOR"].includes(ctx.user.permission))
     throw new TRPCError({ code: "UNAUTHORIZED" });
   return next({ ctx });
 });

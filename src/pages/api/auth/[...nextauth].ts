@@ -29,6 +29,7 @@ export const authOptions: NextAuthOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID ?? "",
       clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? "",
+      // @ts-ignore
       profile: async (profile, _tokens) => {
         const slug = customSlugify(profile.name);
         const personData = {
@@ -47,7 +48,7 @@ export const authOptions: NextAuthOptions = {
           name: profile.name,
           email: profile.email,
           image: profile.picture,
-          perms: profile.perms,
+          permission: profile.perms,
           person: {
             connectOrCreate: {
               where: {

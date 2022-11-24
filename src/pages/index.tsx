@@ -23,10 +23,6 @@ const Home: NextPage<{
   lastIssue: IssueCardType;
   lastIssueArticles: ArticardType[];
 }> = ({ topics, articles, lastIssue, lastIssueArticles }) => {
-  const session = useSession();
-  const testQuery = trpc.test.useQuery();
-  console.log(testQuery.data);
-
   return (
     <Layout alignItems="center" gap="2.5rem">
       <LatestSection issue={lastIssue} articles={lastIssueArticles} />

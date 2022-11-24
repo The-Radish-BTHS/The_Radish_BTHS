@@ -1,6 +1,5 @@
 import prisma from "../prisma.server";
 import { articleInclude } from "@lib/helpers.server";
-import { ArticleStatus } from "@prisma/client";
 
 export const getArticle = async (slug: string) => {
   const article = await prisma.article.findUnique({
@@ -51,7 +50,7 @@ export const getIssue = async (slug: string) => {
     },
     include: {
       articles: {
-        where: { published: ArticleStatus.PUBLISHED },
+        where: { published: true },
         ...articleInclude,
       },
     },

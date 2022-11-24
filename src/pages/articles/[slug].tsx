@@ -13,7 +13,6 @@ import prisma from "@lib/prisma.server";
 import { getArticle } from "@lib/getters/unique-getters.server";
 import { getArticles } from "@lib/getters/many-getters.server";
 import { slugsToPaths } from "@lib/helpers.server";
-import { ArticleStatus } from "@prisma/client";
 
 const Article: NextPage<ArticlePageType> = ({
   title,
@@ -63,7 +62,8 @@ const Article: NextPage<ArticlePageType> = ({
         flexWrap="wrap"
         maxW="85vw"
         fontSize="1.2rem"
-        fontWeight="medium">
+        fontWeight="medium"
+      >
         {topics?.map((topic, i) => (
           <TopicCard name={topic.name} slug={topic.slug} key={i} />
         ))}
@@ -102,11 +102,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const articles = await prisma.article.findMany({
-    where: { published: ArticleStatus.PUBLISHED },
+    where: { published: true },
     select: { slug: true },
   });
 
-  const paths = await slugsToPaths(articles);
+  const paths = slugsToPaths(articles);
 
   return {
     paths,

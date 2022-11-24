@@ -1,4 +1,4 @@
-import { Person, PersonPerms } from "@prisma/client";
+import { Person, User as PrismaUser } from "@prisma/client";
 import { DefaultSession } from "next-auth";
 
 declare module "next-auth" {
@@ -9,8 +9,7 @@ declare module "next-auth" {
     user?: User;
   }
 
-  interface User extends DefaultSession["user"] {
-    perms: Permission;
+  interface User extends PrismaUser {
     person: Person;
   }
 }
