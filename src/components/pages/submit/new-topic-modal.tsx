@@ -18,6 +18,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import styles from "./styles.module.css";
 import { ErrorMessage } from "@hookform/error-message";
 import { customSlugify, topicNameIsUnique } from "@lib/helpers.server";
+import { trpc } from "@lib/trpc";
 
 interface NewTopicType {
   name: string;
@@ -29,6 +30,17 @@ const NewTopicModal: React.FC<{
   topicSlugs: string[];
 }> = ({ disclosure, topicSlugs }) => {
   const toast = useToast();
+  const createTopic = trpc.topic.create.useMutation({
+    onError(err) {
+      toast({
+        title: `Topic Creation Error ${err.data?.httpStatus}: ${err.message}`,
+        status: "error",
+        duration: 4000,
+        position: "bottom-right",
+        isClosable: true,
+      });
+    },
+  });
   const { isOpen, onClose } = disclosure;
 
   const {
@@ -61,7 +73,8 @@ const NewTopicModal: React.FC<{
               required
             />
             <p
-              className={`${styles["form-element-margin"]} ${styles["error-message"]}`}>
+              className={`${styles["form-element-margin"]} ${styles["error-message"]}`}
+            >
               <ErrorMessage
                 errors={errors}
                 name="name"
@@ -96,49 +109,23 @@ const NewTopicModal: React.FC<{
                 return;
               }
 
-              const response = await fetch(`/api/create?type=topic`, {
-                method: "post",
-                mode: "no-cors",
-                headers: {
-                  "Access-Control-Allow-Origin": "*",
-                  "Content-Type": "application/json",
-                  Accept: "application/json",
-                },
-                body: JSON.stringify({
-                  ...data,
-                  slug: customSlugify(data.name),
-                }),
-              })
-                .then((response) => {
-                  console.log(response);
-                  return response;
-                })
-                .catch((e) => {
-                  console.error(e);
-                  return e;
-                });
-              if (response.status === 200) {
-                toast({
-                  title: "Topic Creation Success!",
-                  status: "success",
-                  duration: 4000,
-                  position: "bottom-right",
-                  isClosable: true,
-                });
-              } else {
-                toast({
-                  title: `Topic Creation Error ${response.status}: ${response.statusText}`,
-                  status: "error",
-                  duration: 4000,
-                  position: "bottom-right",
-                  isClosable: true,
-                });
-              }
+              const response = await createTopic.mutateAsync({
+                name: data.name,
+                description: data.description,
+              });
+              toast({
+                title: "Topic Creation Success!",
+                status: "success",
+                duration: 4000,
+                position: "bottom-right",
+                isClosable: true,
+              });
 
               onClose();
               setValue("name", "");
               setValue("description", "");
-            })}>
+            })}
+          >
             Make!
           </Button>
         </ModalFooter>

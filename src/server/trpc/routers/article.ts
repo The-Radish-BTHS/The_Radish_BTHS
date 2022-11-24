@@ -7,13 +7,30 @@ export const articleRouter = t.router({
     .input(
       z.object({
         link: z.string(),
+        title: z.string(),
+        authors: z.array(
+          z.object({
+            slug: z.string(),
+          })
+        ),
+        topics: z.array(
+          z.object({
+            slug: z.string(),
+          })
+        ),
       })
     )
     .mutation(async ({ ctx, input }) => {
       await ctx.prisma.submission.create({
         data: {
           link: input.link,
-          authorId: ctx.user.id,
+          userId: ctx.user.id,
+          authors: {
+            connect: input.authors,
+          },
+          topics: {
+            connect: input.topics,
+          },
         },
       });
     }),
