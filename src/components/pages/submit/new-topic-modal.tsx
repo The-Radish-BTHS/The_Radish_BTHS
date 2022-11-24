@@ -109,10 +109,11 @@ const NewTopicModal: React.FC<{
                 return;
               }
 
-              const response = await createTopic.mutateAsync({
+              await createTopic.mutateAsync({
                 name: data.name,
                 description: data.description,
               });
+
               toast({
                 title: "Topic Creation Success!",
                 status: "success",
@@ -124,6 +125,9 @@ const NewTopicModal: React.FC<{
               onClose();
               setValue("name", "");
               setValue("description", "");
+
+              // TODO: creating a new topic doesnt invalidate the query for topics
+              window.location.reload();
             })}
           >
             Make!
