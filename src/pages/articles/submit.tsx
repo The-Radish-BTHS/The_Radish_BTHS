@@ -9,7 +9,7 @@ import {
   getTopicSlugs,
 } from "@lib/getters/many-getters.server";
 import prisma from "@lib/prisma.server";
-import { Person, PersonPerms, Topic } from "@prisma/client";
+import { Person, UserPerms, Topic } from "@prisma/client";
 import { GetServerSideProps, NextPage } from "next";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
@@ -71,7 +71,7 @@ const Submit: NextPage<{
 
   const isEditing =
     sessionData &&
-    sessionData?.user?.permission !== PersonPerms.NORMIE &&
+    sessionData?.user?.permission !== UserPerms.NORMIE &&
     editing;
 
   // State
@@ -101,7 +101,7 @@ const Submit: NextPage<{
   useEffect(() => {
     if (
       sessionData &&
-      sessionData?.user?.permission !== PersonPerms.NORMIE &&
+      sessionData?.user?.permission !== UserPerms.NORMIE &&
       editing
     ) {
       setValue("title", article?.title || "");
@@ -223,7 +223,8 @@ const Submit: NextPage<{
             onOpen();
             setInputData(data);
           })}
-          className={styles["form-wrapper"]}>
+          className={styles["form-wrapper"]}
+        >
           {isEditing ? (
             <EditorSubmit {...submitFormProps} />
           ) : (
