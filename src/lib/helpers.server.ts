@@ -1,4 +1,5 @@
 import slugify from "slugify";
+import { getTopicSlugs } from "./getters/many-getters.server";
 
 export const prune = (text: string, n: number = 90) =>
   text[n] == " " || text.length < n
@@ -41,3 +42,8 @@ export const slugToConnect = (slug: string | null) => {
 
 export const customSlugify = (value: string) =>
   slugify(value, { lower: true, remove: /"#/g });
+
+export const topicNameIsUnique = (name: string, slugs: string[]) => {
+  const isUnique = slugs.indexOf(customSlugify(name)) === -1;
+  return isUnique || "A Topic with that name already exists!";
+};

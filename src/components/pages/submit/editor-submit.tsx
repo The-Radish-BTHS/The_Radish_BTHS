@@ -1,7 +1,7 @@
 import { SubmitFormProps } from "@/pages/articles/submit";
+import { useDisclosure } from "@chakra-ui/react";
 import { ErrorMessage } from "@hookform/error-message";
-import { Markdown } from "./markdown";
-import useNewTopicModal from "./new-topic-modal";
+import NewTopicModal from "./new-topic-modal";
 import StyledMultiselect from "./styled-multiselect";
 import styles from "./styles.module.css";
 
@@ -13,18 +13,17 @@ const EditorSubmit: React.FC<SubmitFormProps> = ({
   authorData,
   topicSlugs,
 }) => {
-  const { ModalComponent, onOpen } = useNewTopicModal(topicSlugs);
+  const disclosure = useDisclosure();
 
   return (
     <>
-      <ModalComponent />
+      <NewTopicModal disclosure={disclosure} topicSlugs={topicSlugs} />
       <p>
         Article title:<span style={{ color: "red" }}> *</span>
       </p>
       <input placeholder="Title" required {...titleData} />
       <p
-        className={`${styles["form-element-margin"]} ${styles["error-message"]}`}
-      >
+        className={`${styles["form-element-margin"]} ${styles["error-message"]}`}>
         <ErrorMessage
           errors={errors}
           name="title"
@@ -45,7 +44,7 @@ const EditorSubmit: React.FC<SubmitFormProps> = ({
       <p>Topics covered:</p>
       <StyledMultiselect {...topicData} />
 
-      <button onClick={onOpen} type="button">
+      <button onClick={disclosure.onOpen} type="button">
         + Add new topic
       </button>
 

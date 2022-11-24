@@ -116,7 +116,6 @@ const Submit: NextPage<{
   };
 
   const onDefaultSubmit: SubmitHandler<InputData> = async (inputData) => {
-    console.log("bad");
     const data = {
       ...inputData,
       slug: customSlugify(inputData.title),
@@ -224,8 +223,7 @@ const Submit: NextPage<{
             onOpen();
             setInputData(data);
           })}
-          className={styles["form-wrapper"]}
-        >
+          className={styles["form-wrapper"]}>
           {isEditing ? (
             <EditorSubmit {...submitFormProps} />
           ) : (

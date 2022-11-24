@@ -9,6 +9,7 @@ import {
   useDisclosure,
   Text,
   useToast,
+  UseDisclosureReturn,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import Button from "@components/button";
@@ -16,17 +17,19 @@ import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import styles from "./styles.module.css";
 import { ErrorMessage } from "@hookform/error-message";
-import { customSlugify } from "@lib/helpers.server";
+import { customSlugify, topicNameIsUnique } from "@lib/helpers.server";
 
 interface NewTopicType {
   name: string;
   description?: string;
 }
 
-const useNewTopicModal = (topicSlugs: string[]) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const router = useRouter();
+const NewTopicModal: React.FC<{
+  disclosure: UseDisclosureReturn;
+  topicSlugs: string[];
+}> = ({ disclosure, topicSlugs }) => {
   const toast = useToast();
+  const { isOpen, onClose } = disclosure;
 
   const {
     handleSubmit,
@@ -37,12 +40,7 @@ const useNewTopicModal = (topicSlugs: string[]) => {
     criteriaMode: "all",
   });
 
-  const articleNameIsUnique = (name: string) => {
-    const isUnique = topicSlugs.indexOf(customSlugify(name)) === -1;
-    return isUnique || "A Topic with that name already exists!";
-  };
-
-  const ModalComponent: React.FC<{}> = ({}) => (
+  return (
     <Modal isOpen={isOpen} onClose={onClose} isCentered>
       <ModalOverlay />
       <ModalContent bg="#ebeae5" borderRadius="0.75rem">
@@ -58,13 +56,12 @@ const useNewTopicModal = (topicSlugs: string[]) => {
               placeholder="ex. Radishes"
               {...register("name", {
                 required: "A name is required!",
-                validate: articleNameIsUnique,
+                validate: (val) => topicNameIsUnique(val, topicSlugs),
               })}
               required
             />
             <p
-              className={`${styles["form-element-margin"]} ${styles["error-message"]}`}
-            >
+              className={`${styles["form-element-margin"]} ${styles["error-message"]}`}>
               <ErrorMessage
                 errors={errors}
                 name="name"
@@ -141,37 +138,13 @@ const useNewTopicModal = (topicSlugs: string[]) => {
               onClose();
               setValue("name", "");
               setValue("description", "");
-            })} //{async () => {
-            // console.log(errors.name);
-            // const response = await onClick(inputData);
-            // router.push("/");
-            // if (response.status === 200) {
-            //   toast({
-            //     title: "Article Submit Success!",
-            //     status: "success",
-            //     duration: 4000,
-            //     position: "bottom-right",
-            //     isClosable: true,
-            //   });
-            // } else {
-            //   toast({
-            //     title: `Article Submit Error ${response.status}: ${response.statusText}`,
-            //     status: "error",
-            //     duration: 4000,
-            //     position: "bottom-right",
-            //     isClosable: true,
-            //   });
-            // }
-            //}}
-          >
+            })}>
             Make!
           </Button>
         </ModalFooter>
       </ModalContent>
     </Modal>
   );
-
-  return { ModalComponent, onOpen };
 };
 
-export default useNewTopicModal;
+export default NewTopicModal;
