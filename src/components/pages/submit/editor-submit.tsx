@@ -12,12 +12,17 @@ const EditorSubmit: React.FC<SubmitFormProps> = ({
   topicData,
   authorData,
   topicSlugs,
+  addTopic,
 }) => {
   const disclosure = useDisclosure();
 
   return (
     <>
-      <NewTopicModal disclosure={disclosure} topicSlugs={topicSlugs} />
+      <NewTopicModal
+        disclosure={disclosure}
+        topicSlugs={topicSlugs}
+        addTopic={addTopic}
+      />
       <p>
         Article title:<span style={{ color: "red" }}> *</span>
       </p>

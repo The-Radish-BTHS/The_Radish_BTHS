@@ -6,18 +6,15 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
-  useDisclosure,
-  Text,
   useToast,
   UseDisclosureReturn,
 } from "@chakra-ui/react";
-import { useRouter } from "next/router";
 import Button from "@components/button";
-import { useState } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import styles from "./styles.module.css";
 import { ErrorMessage } from "@hookform/error-message";
 import { customSlugify, topicNameIsUnique } from "@lib/helpers.server";
+import { Topic } from "@prisma/client";
 
 interface NewTopicType {
   name: string;
@@ -27,7 +24,8 @@ interface NewTopicType {
 const NewTopicModal: React.FC<{
   disclosure: UseDisclosureReturn;
   topicSlugs: string[];
-}> = ({ disclosure, topicSlugs }) => {
+  addTopic: (topic: Topic) => void;
+}> = ({ disclosure, topicSlugs, addTopic }) => {
   const toast = useToast();
   const { isOpen, onClose } = disclosure;
 
@@ -118,6 +116,11 @@ const NewTopicModal: React.FC<{
                   return e;
                 });
               if (response.status === 200) {
+                addTopic({
+                  ...data,
+                  description: data.description ?? "",
+                  slug: customSlugify(data.name),
+                });
                 toast({
                   title: "Topic Creation Success!",
                   status: "success",

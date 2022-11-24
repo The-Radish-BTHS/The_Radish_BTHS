@@ -15,12 +15,17 @@ const DefaultSubmit: React.FC<SubmitFormProps> = ({
   topicData,
   authorData,
   topicSlugs,
+  addTopic,
 }) => {
   const disclosure = useDisclosure();
 
   return (
     <>
-      <NewTopicModal disclosure={disclosure} topicSlugs={topicSlugs} />
+      <NewTopicModal
+        disclosure={disclosure}
+        topicSlugs={topicSlugs}
+        addTopic={addTopic}
+      />
       <Flex w="60vw" justifyContent="space-between">
         <p>
           Google Docs link:<span style={{ color: "red" }}> *</span>

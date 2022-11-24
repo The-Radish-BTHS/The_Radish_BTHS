@@ -18,6 +18,7 @@ import {
   SubmitHandler,
   useForm,
   UseFormRegisterReturn,
+  UseFormSetValue,
 } from "react-hook-form";
 
 import styles from "@components/pages/submit/styles.module.css";
@@ -56,6 +57,7 @@ export interface SubmitFormProps {
     keepFirst?: boolean;
   };
   topicSlugs: string[];
+  addTopic: (topic: Topic) => void;
 }
 
 const Submit: NextPage<{
@@ -81,6 +83,8 @@ const Submit: NextPage<{
   const [authorSelections, setAuthorSelections] = useState<Topic[] | Person[]>(
     []
   );
+
+  useEffect(() => console.log(topicSelections), [topicSelections]);
 
   // React Hook Form
   const {
@@ -199,6 +203,8 @@ const Submit: NextPage<{
     topicData,
     authorData,
     topicSlugs,
+    addTopic: (topic: Topic) =>
+      setTopicSelections((topics) => [...topics, topic]),
   };
 
   return (
