@@ -53,7 +53,7 @@ model Issue {
   slug String @id
 
   title       String
-  cover       String
+  coverUrl    String
   description String
   pdf         String?
   published   Boolean  @default(false)

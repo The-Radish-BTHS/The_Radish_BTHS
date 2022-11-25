@@ -3,7 +3,7 @@ import ArticleType, { ArticardType } from "./article";
 
 export default interface IssueType {
   title: string;
-  cover: string;
+  coverUrl: string;
   description: string;
   pdf?: string;
   publishedOn: Date;

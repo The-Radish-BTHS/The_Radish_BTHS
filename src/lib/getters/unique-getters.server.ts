@@ -50,7 +50,7 @@ export const getIssue = async (slug: string) => {
     include: {
       articles: {
         where: { published: true },
-        ...articleInclude,
+        include: articleInclude,
       },
     },
   });

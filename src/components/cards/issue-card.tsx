@@ -4,7 +4,7 @@ import Link from "@components/link";
 import CardWrapper from "./card-wrapper";
 
 const IssueCard: React.FC<IssueCardType> = ({
-  cover,
+  coverUrl,
   description,
   title,
   slug,
@@ -16,8 +16,8 @@ const IssueCard: React.FC<IssueCardType> = ({
     <CardWrapper maxW={widths} {...styles}>
       <Link href={`/issues/${slug}`}>
         <Image
-          src={`data:image/png;base64,${cover}`}
-          alt="cover"
+          src={coverUrl}
+          alt="Oops! Santiago did something bad!"
           w="100%"
           borderBottom="1px solid"
           borderTopRadius="0.5rem"
@@ -30,7 +30,8 @@ const IssueCard: React.FC<IssueCardType> = ({
             fontSize="1.1rem"
             wordBreak="break-word"
             whiteSpace="pre-wrap"
-            w="100%">
+            w="100%"
+          >
             {description}
           </Text>
         </Center>
