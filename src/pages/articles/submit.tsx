@@ -47,13 +47,15 @@ export interface SubmitFormProps {
   >;
   topicData: {
     options: Topic[];
-    select: React.Dispatch<React.SetStateAction<Topic[]>>;
+    values: Topic[];
+    setValues: React.Dispatch<React.SetStateAction<Topic[]>>;
     selectedValues: Topic[];
     keepFirst?: boolean;
   };
   authorData: {
     options: Person[];
-    select: React.Dispatch<React.SetStateAction<Person[]>>;
+    values: Person[];
+    setValues: React.Dispatch<React.SetStateAction<Person[]>>;
     selectedValues: Person[];
     keepFirst?: boolean;
   };
@@ -176,14 +178,16 @@ const Submit: NextPage<{
   });
   const topicData = {
     options: topics,
-    select: setTopicSelections,
+    values: topicSelections,
+    setValues: setTopicSelections,
     selectedValues: article?.topics || [],
   };
   const authorData = {
     options: people.filter(
       (person) => isEditing || person.slug !== sessionData?.user?.person.slug
     ),
-    select: setAuthorSelections,
+    values: authorSelections,
+    setValues: setAuthorSelections,
     selectedValues: isEditing
       ? article?.authors || []
       : sessionData?.user?.person
@@ -225,8 +229,7 @@ const Submit: NextPage<{
             onOpen();
             setInputData(data);
           })}
-          className={styles["form-wrapper"]}
-        >
+          className={styles["form-wrapper"]}>
           {isEditing ? (
             <EditorSubmit {...submitFormProps} />
           ) : (

@@ -6,23 +6,28 @@ import styles from "./styles.module.css";
 
 function StyledMultiselect<T>({
   options,
-  select,
+  values,
+  setValues,
   selectedValues,
-  keepFirst,
 }: {
   options: T[];
-  select: React.Dispatch<React.SetStateAction<T[]>>;
+  values: T[];
+  setValues: React.Dispatch<React.SetStateAction<T[]>>;
   selectedValues: T[];
-  keepFirst?: boolean;
 }) {
   return (
     <Multiselect
       className={styles.multiselect}
-      onSelect={(_, item) => select((prev) => [...prev, item])}
-      onRemove={(_, item) =>
-        select((prev) => {
-          prev.splice(prev.indexOf(item), 1);
-          return prev;
+      onSelect={(_, selectedItem) =>
+        setValues((prev: T[]) => [...prev, selectedItem])
+      }
+      onRemove={(_, selectedItem) =>
+        setValues((prev: T[]) => {
+          const newArray: typeof selectedItem = prev.slice(
+            prev.indexOf(selectedItem),
+            1
+          );
+          return newArray;
         })
       }
       style={{
@@ -57,11 +62,10 @@ function StyledMultiselect<T>({
       }}
       closeIcon="cancel"
       avoidHighlightFirstOption={true}
-      disablePreSelectedValues={keepFirst}
       showArrow={true}
       closeOnSelect={true}
       placeholder="Select..."
-      selectedValues={selectedValues}
+      selectedValues={values}
       options={options} // Options to display in the dropdown
       displayValue="name" // Property name to display in the dropdown options
     />
