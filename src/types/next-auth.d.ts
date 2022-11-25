@@ -1,4 +1,4 @@
-import { Person, PersonPerms } from "@prisma/client";
+import { Person, User as PrismaUser } from "@prisma/client";
 import { DefaultSession } from "next-auth";
 
 declare module "next-auth" {
@@ -6,24 +6,10 @@ declare module "next-auth" {
    * Returned by `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context
    */
   interface Session {
-    user?: {
-      id: string;
-      permission: PersonPerms;
-      person: Person;
-    } & DefaultSession["user"];
+    user?: User;
   }
 
-  interface User extends DefaultSession["user"] {
-    perms: Permission;
-    person:
-      | Person
-      | {
-          connectOrCreate: {
-            where: {
-              slug: string;
-            };
-            create: Person;
-          };
-        };
+  interface User extends PrismaUser {
+    person: Person;
   }
 }

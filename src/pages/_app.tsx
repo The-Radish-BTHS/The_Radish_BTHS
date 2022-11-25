@@ -6,8 +6,9 @@ import { theme } from "@theme/index";
 import { SessionProvider } from "next-auth/react";
 
 import "./global.css";
+import { trpc } from "@lib/trpc";
 
-function MyApp({ Component, pageProps }: AppProps) {
+const MyApp = ({ Component, pageProps }: AppProps) => {
   useProgressBar();
 
   return (
@@ -19,6 +20,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       </JotaiProvider>
     </SessionProvider>
   );
-}
+};
 
-export default MyApp;
+export default trpc.withTRPC(MyApp);

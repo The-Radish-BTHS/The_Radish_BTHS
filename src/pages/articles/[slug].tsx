@@ -1,42 +1,46 @@
 import { Flex, Heading, Text } from "@chakra-ui/react";
 import TopicCard from "@components/cards/topic-card";
+import LatestArticles from "@components/latest/latest-articles";
 import Layout from "@components/layout/layout";
 import Link from "@components/link";
-import LatestArticles from "@components/latest/latest-articles";
 
 import Markdown from "@components/markdown";
-
-import { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import { ArticlePageType } from "@/types/article";
-
-import prisma from "@lib/prisma.server";
-import { getArticle } from "@lib/getters/unique-getters.server";
-import { getArticles } from "@lib/getters/many-getters.server";
+import type {
+  GetStaticPaths,
+  GetStaticProps,
+  InferGetStaticPropsType,
+  NextPage,
+} from "next";
 import { slugsToPaths } from "@lib/helpers.server";
-import { ArticleStatus } from "@prisma/client";
+import prisma from "@lib/prisma.server";
+import { getSsgCaller } from "@lib/ssg-helper";
+import { trpc } from "@lib/trpc";
 
-const Article: NextPage<ArticlePageType> = ({
-  title,
-  content,
-  authors,
-  issue,
-  topics,
-  latest,
-  publishedOn,
-}) => {
+const Article: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
+  props
+) => {
+  const article = trpc.article.get.useQuery({ slug: props.slug });
+  const latestArticles = trpc.article.getMany.useQuery({
+    sortOrder: "desc",
+    take: 6,
+    exclude: [props.slug],
+  });
+
+  const articleData = article.data!;
+
   const pubString = Intl.DateTimeFormat("en-us", {
     day: "2-digit",
     month: "2-digit",
     year: "numeric",
-  }).format(publishedOn);
+  }).format(articleData.publishedOn);
 
   return (
-    <Layout title={title} alignItems="center">
+    <Layout title={articleData.title} alignItems="center">
       <Heading textAlign="center" maxW="85vw">
-        {title}
+        {articleData.title}
       </Heading>
       <Flex fontSize="1.05rem" w="90vw" mt="0.5rem" justifyContent="center">
-        {authors?.map((author, i) => (
+        {articleData.authors?.map((author, i) => (
           <Link key={i} href={`/people/${author.slug}`} mr="0.2rem">
             {author.name}
           </Link>
@@ -47,13 +51,15 @@ const Article: NextPage<ArticlePageType> = ({
         </Text>
         <Text>{pubString}</Text>
 
-        {issue && (
+        {articleData.issue && (
           <>
             <Text fontWeight="bold" mx="0.2rem">
               {" "}
               ∙{" "}
             </Text>
-            <Link href={`/issues/${issue?.slug}`}>{issue?.title}</Link>
+            <Link href={`/issues/${articleData.issueSlug}`}>
+              {articleData.issue.title}
+            </Link>
           </>
         )}
       </Flex>
@@ -63,23 +69,22 @@ const Article: NextPage<ArticlePageType> = ({
         flexWrap="wrap"
         maxW="85vw"
         fontSize="1.2rem"
-        fontWeight="medium">
-        {topics?.map((topic, i) => (
+        fontWeight="medium"
+      >
+        {articleData.topics.map((topic, i) => (
           <TopicCard name={topic.name} slug={topic.slug} key={i} />
         ))}
       </Flex>
-      {/* <Flex
-        flexDir="column"
-        w="90vw"
-        wordBreak="break-word"
-        dangerouslySetInnerHTML={{ __html: content }}
-      /> */}
       <Flex px="12vw" flexDir="column">
-        <Markdown content={content} />
+        <Markdown content={articleData.content} />
       </Flex>
 
       <Flex mt="4rem" maxW={{ base: "95vw", md: "70vw", lg: "65vw" }}>
-        <LatestArticles title="More Articles" articles={latest} />
+        {/* TODO: Fix the type resolving properly...what is an Articard and why is it different from Articles */}
+        <LatestArticles
+          title="More Articles"
+          articles={latestArticles.data! as any}
+        />
       </Flex>
     </Layout>
   );
@@ -88,28 +93,39 @@ const Article: NextPage<ArticlePageType> = ({
 export default Article;
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const slug = String(context.params?.slug);
-  const article = await getArticle(slug);
-  const latest = await getArticles(false, undefined, [slug], 6);
+  const slug = context.params?.slug as string;
+
+  const ssg = await getSsgCaller();
+
+  await ssg.article.get.prefetch({ slug });
+  await ssg.article.getMany.prefetch({
+    sortOrder: "desc",
+    exclude: [slug],
+    take: 6,
+  });
+
+  console.log(ssg.dehydrate());
 
   return {
     props: {
-      ...article,
-      latest,
+      trpcState: ssg.dehydrate(),
+      slug,
     },
   };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const articles = await prisma.article.findMany({
-    where: { published: ArticleStatus.PUBLISHED },
+    where: {
+      published: true,
+    },
     select: { slug: true },
   });
 
-  const paths = await slugsToPaths(articles);
+  const paths = slugsToPaths(articles);
 
   return {
     paths,
-    fallback: true,
+    fallback: "blocking",
   };
 };

@@ -1,5 +1,5 @@
 import { articleInclude, excludeSlugs } from "@lib/helpers.server";
-import { ArticleStatus, Person } from "@prisma/client";
+import { Person } from "@prisma/client";
 import prisma from "../prisma.server";
 
 export const getArticles = async (
@@ -14,21 +14,11 @@ export const getArticles = async (
 
   const articles = await prisma.article.findMany({
     where: {
-      published: ArticleStatus.PUBLISHED,
+      published: true,
       ...issue,
       NOT,
     },
-    include: {
-      issue: {
-        select: { title: true, slug: true },
-      },
-      authors: {
-        select: { name: true, slug: true },
-      },
-      topics: {
-        select: { name: true, slug: true },
-      },
-    },
+    include: articleInclude,
     orderBy: { publishedOn: oldest ? "asc" : "desc" },
     ...take,
   });
@@ -94,7 +84,7 @@ export const getPeopleWithArticles = async (
 
   const people = await prisma.person.findMany({
     where: { ...where, NOT },
-    include: { articles: articleInclude },
+    include: { articles: { include: articleInclude } },
   });
 
   return people.map((person) => ({

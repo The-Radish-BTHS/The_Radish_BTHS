@@ -25,7 +25,7 @@ export interface ArticardType
     ArticleType,
     "authors" | "issue" | "topics" | "published" | "publishedOn" | "content"
   > {
-  excerpt: string;
+  excerpt: string | null;
   styles?: FlexProps;
 
   authors: PersonReference[];

@@ -3,17 +3,25 @@ import { Flex, Heading, Text } from "@chakra-ui/react";
 import Articard from "@components/cards/articard";
 import Layout from "@components/layout/layout";
 import MasonryLayout from "@components/masonry/masonry-layout";
-import { GetStaticProps, NextPage } from "next";
+import { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
 import { getArticles } from "@lib/getters/many-getters.server";
+import { getSsgCaller } from "@lib/ssg-helper";
+import { trpc } from "@lib/trpc";
 
-const Articles: NextPage<{ articles: ArticardType[] }> = ({ articles }) => {
+const Articles: NextPage<
+  InferGetStaticPropsType<typeof getStaticProps>
+> = () => {
+  const articles = trpc.article.getMany.useQuery({ sortOrder: "desc" });
+
+  const articleData = articles.data!;
+
   return (
     <Layout pageIndex={0} alignItems="center">
       <Heading>Allticles!</Heading>
       <Text mb="3rem">All the articles!!</Text>
-      <MasonryLayout numItems={articles?.length}>
-        {articles.map((article, i) => (
-          <Articard {...article} key={i} styles={{ mb: "2rem" }} />
+      <MasonryLayout numItems={articleData.length}>
+        {articleData.map((article, i) => (
+          <Articard {...(article as any)} key={i} styles={{ mb: "2rem" }} />
         ))}
       </MasonryLayout>
     </Layout>
@@ -23,9 +31,11 @@ const Articles: NextPage<{ articles: ArticardType[] }> = ({ articles }) => {
 export default Articles;
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const articles = await getArticles();
+  const ssg = await getSsgCaller();
+
+  await ssg.article.getMany.prefetch({ sortOrder: "desc" });
 
   return {
-    props: { articles },
+    props: { trpcState: ssg.dehydrate() },
   };
 };

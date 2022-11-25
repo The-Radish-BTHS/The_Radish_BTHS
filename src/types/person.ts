@@ -1,16 +1,10 @@
 import { FlexProps } from "@chakra-ui/react";
+import { Person } from "@prisma/client";
 import { MdOutlineBorderStyle } from "react-icons/md";
 import ArticleType, { ArticardType } from "./article";
 
-export default interface PersonType {
-  name: string;
-  position: string;
-  isExec?: boolean;
-  gradYear: number;
-  description?: string;
-  image?: string;
+export default interface PersonType extends Person {
   former: boolean;
-
   slug: string;
   articles: ArticleType[];
 }

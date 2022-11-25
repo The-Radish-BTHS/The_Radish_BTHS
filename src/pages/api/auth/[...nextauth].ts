@@ -8,32 +8,6 @@ import { customSlugify } from "@lib/helpers.server";
 import { Person } from "@prisma/client";
 import { getPerson } from "@lib/getters/unique-getters.server";
 
-const createPerson = async (personData: Person) => {
-  const response = await fetch(
-    `/api/create?type=person&&secret=${process.env.SECRET}`,
-    {
-      method: "post",
-      mode: "no-cors",
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify(personData),
-    }
-  )
-    .then((response) => {
-      console.log(response);
-      return response;
-    })
-    .catch((e) => {
-      console.error(e);
-      return e;
-    });
-
-  return response;
-};
-
 export const authOptions: NextAuthOptions = {
   // Include user.id on session
   callbacks: {
@@ -55,7 +29,8 @@ export const authOptions: NextAuthOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID ?? "",
       clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? "",
-      profile: async (profile, tokens) => {
+      // @ts-ignore
+      profile: async (profile, _tokens) => {
         const slug = customSlugify(profile.name);
         const personData = {
           name: profile.name,
@@ -73,7 +48,7 @@ export const authOptions: NextAuthOptions = {
           name: profile.name,
           email: profile.email,
           image: profile.picture,
-          perms: profile.perms,
+          permission: profile.perms,
           person: {
             connectOrCreate: {
               where: {
@@ -81,7 +56,7 @@ export const authOptions: NextAuthOptions = {
               },
               create: personData,
             },
-          },
+          } as any,
         };
       },
     }),
