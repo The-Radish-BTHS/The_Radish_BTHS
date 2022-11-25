@@ -1,0 +1,502 @@
+[
+  {
+    "position": "writer",
+    "description": "",
+    "name": "Carmen Tan",
+    "gradYear": 2022,
+    "image": "",
+    "isExec": false,
+    "slug": "carmen-tan",
+    "articles": {}
+  },
+  {
+    "position": "writer",
+    "description": " Hears a who? (^ Sorry for the slandering)",
+    "name": "Dylan Horton",
+    "gradYear": 2023,
+    "image": "",
+    "isExec": false,
+    "slug": "dylan-horton",
+    "articles": {}
+  },
+  {
+    "position": "writer",
+    "description": "",
+    "name": "Lincoln Strong",
+    "gradYear": 2022,
+    "image": "",
+    "isExec": false,
+    "slug": "lincoln-strong",
+    "articles": {}
+  },
+  {
+    "position": "Vice President",
+    "description": "Sometimes a little bit goofy",
+    "name": "Charlotte Rotlander",
+    "gradYear": 2023,
+    "image": "",
+    "isExec": true,
+    "slug": "charlotte-rotlander",
+    "articles": {}
+  },
+  {
+    "position": "writer",
+    "description": "",
+    "name": "Ivy",
+    "gradYear": 2022,
+    "image": "",
+    "isExec": false,
+    "slug": "ivy",
+    "articles": {}
+  },
+  {
+    "position": "writer",
+    "description": "",
+    "name": "George Lee",
+    "gradYear": 2022,
+    "image": "",
+    "isExec": false,
+    "slug": "george-lee",
+    "articles": {}
+  },
+  {
+    "position": "writer",
+    "description": "",
+    "name": "Shawn Hayden",
+    "gradYear": 2023,
+    "image": "",
+    "isExec": false,
+    "slug": "shawn-hayden",
+    "articles": {}
+  },
+  {
+    "position": "editor",
+    "description": ":)",
+    "name": "Naiar Islam",
+    "gradYear": 2022,
+    "image": "",
+    "isExec": false,
+    "slug": "naiar-islam",
+    "articles": {}
+  },
+  {
+    "position": "Secretary",
+    "description": "",
+    "name": "Zachary Thompson",
+    "gradYear": 2020,
+    "image": "",
+    "isExec": true,
+    "slug": "zachary-thompson",
+    "articles": {}
+  },
+  {
+    "position": "Social Media Manager",
+    "description": "If you could, if you could one time sandwich?",
+    "name": "Maxime Ennis",
+    "gradYear": 2024,
+    "image": "",
+    "isExec": true,
+    "slug": "maxime-ennis",
+    "articles": {}
+  },
+  {
+    "position": "President",
+    "description": "",
+    "name": "Kiran Berger",
+    "gradYear": 2021,
+    "image": "",
+    "isExec": true,
+    "slug": "kiran-berger",
+    "articles": {}
+  },
+  {
+    "position": "writer",
+    "description": " You may remember Arlo from the hit Broadway musical, Little Shop of Horrors (he was sitting in the audience).",
+    "name": "Arlo Neuwirth",
+    "gradYear": 2024,
+    "image": "",
+    "isExec": false,
+    "slug": "arlo-neuwirth",
+    "articles": {}
+  },
+  {
+    "position": "writer",
+    "description": "",
+    "name": "Victor Kotchev",
+    "gradYear": 2023,
+    "image": "",
+    "isExec": false,
+    "slug": "victor-kotchev",
+    "articles": {}
+  },
+  {
+    "position": "Treasurer",
+    "description": "In the unlikely chance you haven't heard of me, you've definitely heard my voice echoing among us and your mom jokes across the iron skeleton of Brooklyn Tech. Autograph signings will be held in the mezzanine! And before you ask, you can totally eat with me at lunch <3",
+    "name": "Phoenix Thorwall",
+    "gradYear": 2024,
+    "image": "",
+    "isExec": true,
+    "slug": "phoenix-thorwall",
+    "articles": {}
+  },
+  {
+    "position": "editor",
+    "description": "",
+    "name": "Eli Steingardt",
+    "gradYear": 2024,
+    "image": "",
+    "isExec": false,
+    "slug": "eli-steingardt",
+    "articles": {}
+  },
+  {
+    "position": "writer",
+    "description": "A freshman who still cannot find his 1st period class",
+    "name": "Bora Bromberg",
+    "gradYear": 2025,
+    "image": "",
+    "isExec": false,
+    "slug": "bora-bromberg",
+    "articles": {}
+  },
+  {
+    "position": "artist",
+    "description": "'The cheese'",
+    "name": "Santiago Vira",
+    "gradYear": 2024,
+    "image": "",
+    "isExec": false,
+    "slug": "santiago-vira",
+    "articles": {}
+  },
+  {
+    "position": "editor",
+    "description": "Some may say I'm in the Radish, some may say I'm an editor, some may say I'm strangely medium height. You get to choose what you want to believe.",
+    "name": "Imran Fazilov",
+    "gradYear": 2024,
+    "image": "",
+    "isExec": false,
+    "slug": "imran-fazilov",
+    "articles": {}
+  },
+  {
+    "position": "artist",
+    "description": "\u201cWhatsherface\u201d",
+    "name": "Sadie Allspaw",
+    "gradYear": 2024,
+    "image": "",
+    "isExec": false,
+    "slug": "sadie-allspaw",
+    "articles": {}
+  },
+  {
+    "position": "CEO (Chief Editing Officer)",
+    "description": "I live, breathe, think, and occasionally eat, radishes.",
+    "name": "Aramie Ewen",
+    "gradYear": 2023,
+    "image": "",
+    "isExec": true,
+    "slug": "aramie-ewen",
+    "articles": {}
+  },
+  {
+    "position": "writer",
+    "description": "I write words good I think. Uh am I supposed to put anything else here. Writing about myself is scary. I'm not gonna do it.",
+    "name": "Lawer Nyako",
+    "gradYear": 2023,
+    "image": "",
+    "isExec": false,
+    "slug": "lawer-nyako",
+    "articles": {}
+  },
+  {
+    "position": "writer",
+    "description": "",
+    "name": "Shai Chiapetta",
+    "gradYear": 2023,
+    "image": "",
+    "isExec": false,
+    "slug": "shai-chiapetta",
+    "articles": {}
+  },
+  {
+    "position": "writer",
+    "description": "apologies perhaps if the graduation date might be wrong o radish elder",
+    "name": "Noah Mack",
+    "gradYear": 2019,
+    "image": "",
+    "isExec": false,
+    "slug": "noah-mack",
+    "articles": {}
+  },
+  {
+    "position": "writer",
+    "description": "Naina Mukherjee is an unaccomplished writer and a freshman at Brooklyn Technical high school. She enjoys eating candy and hanging out with her friends in the hilly expanses of Fort Greene park.",
+    "name": "Naina Mukherjee",
+    "gradYear": 2025,
+    "image": "",
+    "isExec": false,
+    "slug": "naina-mukherjee",
+    "articles": {}
+  },
+  {
+    "position": "writer",
+    "description": "Enthusiasm enthusiast",
+    "name": "Matthieu De Robles",
+    "gradYear": 2023,
+    "image": "",
+    "isExec": false,
+    "slug": "matthieu-de-robles",
+    "articles": {}
+  },
+  {
+    "position": "writer",
+    "description": "",
+    "name": "Caylie Pacho",
+    "gradYear": 2023,
+    "image": "",
+    "isExec": false,
+    "slug": "caylie-pacho",
+    "articles": {}
+  },
+  {
+    "position": "writer",
+    "description": "",
+    "name": "Andrew Berman",
+    "gradYear": 2024,
+    "image": "",
+    "isExec": false,
+    "slug": "andrew-berman",
+    "articles": {}
+  },
+  {
+    "position": "writer",
+    "description": "The Wordsmith",
+    "name": "Daniel Williams",
+    "gradYear": 2023,
+    "image": "",
+    "isExec": false,
+    "slug": "daniel-williams",
+    "articles": {}
+  },
+  {
+    "position": "writer",
+    "description": "The cooking guy? No, but better.",
+    "name": "Joshua Weisman",
+    "gradYear": 2022,
+    "image": "",
+    "isExec": false,
+    "slug": "joshua-weisman",
+    "articles": {}
+  },
+  {
+    "position": "writer",
+    "description": "",
+    "name": "Joey Lu",
+    "gradYear": 2022,
+    "image": "",
+    "isExec": false,
+    "slug": "joey-lu",
+    "articles": {}
+  },
+  {
+    "position": "writer",
+    "description": "",
+    "name": "Gabrielle Greenblatt",
+    "gradYear": 2024,
+    "image": "",
+    "isExec": false,
+    "slug": "gabrielle-greenblatt",
+    "articles": {}
+  },
+  {
+    "position": "editor",
+    "description": "",
+    "name": "Jonathan Jiang",
+    "gradYear": 2023,
+    "image": "",
+    "isExec": false,
+    "slug": "jonathan-jiang",
+    "articles": {}
+  },
+  {
+    "position": "President",
+    "description": "Just a guy out there or whatever",
+    "name": "Jacob Schles",
+    "gradYear": 2022,
+    "image": "",
+    "isExec": true,
+    "slug": "jacob-schles",
+    "articles": {}
+  },
+  {
+    "position": "writer",
+    "description": "",
+    "name": "Ramon Li",
+    "gradYear": 2022,
+    "image": "",
+    "isExec": false,
+    "slug": "ramon-li",
+    "articles": {}
+  },
+  {
+    "position": "President",
+    "description": "",
+    "name": "Simon Gura",
+    "gradYear": 2021,
+    "image": "",
+    "isExec": true,
+    "slug": "simon-gura",
+    "articles": {}
+  },
+  {
+    "position": "Graphics Organizer",
+    "description": "",
+    "name": "Amara Chowdhury",
+    "gradYear": 2022,
+    "image": "",
+    "isExec": true,
+    "slug": "amara-chowdhury",
+    "articles": {}
+  },
+  {
+    "position": "writer",
+    "description": "",
+    "name": "Rawlins Collard",
+    "gradYear": 2024,
+    "image": "",
+    "isExec": false,
+    "slug": "rawlins-collard",
+    "articles": {}
+  },
+  {
+    "position": "writer",
+    "description": "",
+    "name": "Tobias Cen",
+    "gradYear": 2024,
+    "image": "",
+    "isExec": false,
+    "slug": "tobias-cen",
+    "articles": {}
+  },
+  {
+    "position": "writer",
+    "description": "Just a guy being a dude",
+    "name": "Domenic DiPietro",
+    "gradYear": 2024,
+    "image": "",
+    "isExec": false,
+    "slug": "domenic-dipietro",
+    "articles": {}
+  },
+  {
+    "position": "editor",
+    "description": "Biographer of Rasputin",
+    "name": "Vania von Ussar",
+    "gradYear": 2023,
+    "image": "",
+    "isExec": false,
+    "slug": "vania-von-ussar",
+    "articles": {}
+  },
+  {
+    "position": "artist",
+    "description": "",
+    "name": "Nicholas Di Girolamo",
+    "gradYear": 2022,
+    "image": "",
+    "isExec": false,
+    "slug": "nicholas-di-girolamo",
+    "articles": {}
+  },
+  {
+    "position": "writer",
+    "description": "Sea shanty guy",
+    "name": "Diego Curinga",
+    "gradYear": 2024,
+    "image": "",
+    "isExec": false,
+    "slug": "diego-curinga",
+    "articles": {}
+  },
+  {
+    "position": "writer",
+    "description": "",
+    "name": "Averie Michaelson",
+    "gradYear": 2022,
+    "image": "",
+    "isExec": false,
+    "slug": "averie-michaelson",
+    "articles": {}
+  },
+  {
+    "position": "writer",
+    "description": "idk when u graduated :/",
+    "name": "Kelly Hsu",
+    "gradYear": 1930,
+    "image": "",
+    "isExec": false,
+    "slug": "kelly-hsu",
+    "articles": {}
+  },
+  {
+    "position": "editor",
+    "description": "Chill Cool Guy",
+    "name": "Gordon Dewey",
+    "gradYear": 2023,
+    "image": "",
+    "isExec": false,
+    "slug": "gordon-dewey",
+    "articles": {}
+  },
+  {
+    "position": "writer",
+    "description": "am writerer",
+    "name": "Ilana Rahim Braden",
+    "gradYear": 2024,
+    "image": "",
+    "isExec": false,
+    "slug": "ilana-rahim-braden",
+    "articles": {}
+  },
+  {
+    "position": "writer",
+    "description": "",
+    "name": "Renee Ricevuto",
+    "gradYear": 2021,
+    "image": "",
+    "isExec": false,
+    "slug": "renee-ricevuto",
+    "articles": {}
+  },
+  {
+    "position": "Secretary",
+    "description": "the best and only good articles ever written are here",
+    "name": "Ethan Perkis",
+    "gradYear": 2023,
+    "image": "",
+    "isExec": true,
+    "slug": "ethan-perkis",
+    "articles": {}
+  },
+  {
+    "position": "writer",
+    "description": "Oops wrong one",
+    "name": "Otto Huntstein",
+    "gradYear": 2024,
+    "image": "",
+    "isExec": false,
+    "slug": "otto-huntstein",
+    "articles": {}
+  },
+  {
+    "position": "writer",
+    "description": "",
+    "name": "Brandon Guo",
+    "gradYear": 2023,
+    "image": "",
+    "isExec": false,
+    "slug": "brandon-guo",
+    "articles": {}
+  }
+]

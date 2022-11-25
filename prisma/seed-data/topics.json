@@ -1,0 +1,139 @@
+[
+  {
+    "description": "You wanna know how to do things correctly, right? Well, we'll tell you how.",
+    "slug": "how-to",
+    "articles": {},
+    "name": "How-to"
+  },
+  {
+    "description": "",
+    "slug": "vending-machines",
+    "articles": {},
+    "name": "Vending Machines"
+  },
+  {
+    "description": "Read up on all the latest festivities!",
+    "slug": "festive",
+    "articles": {},
+    "name": "Festive"
+  },
+  { "description": "bro.", "slug": "bro", "articles": {}, "name": "Bro" },
+  {
+    "description": "There are changes in the air",
+    "slug": "enviroment",
+    "articles": {},
+    "name": "Enviroment"
+  },
+  {
+    "description": "There is no science.",
+    "slug": "science",
+    "articles": {},
+    "name": "Science"
+  },
+  {
+    "description": "The news from yesterday",
+    "slug": "yesterday",
+    "articles": {},
+    "name": "Yesterday"
+  },
+  {
+    "description": "In case you weren't entertained enough by us, here's us talking",
+    "slug": "entertainment",
+    "articles": {},
+    "name": "Entertainment"
+  },
+  { "description": "", "slug": "fashion", "articles": {}, "name": "Fashion" },
+  {
+    "description": "It's like an article but a list",
+    "slug": "listicle",
+    "articles": {},
+    "name": "Listicle"
+  },
+  { "description": "", "slug": "eggs", "articles": {}, "name": "Eggs" },
+  { "description": "", "slug": "psa", "articles": {}, "name": "PSA" },
+  {
+    "description": "News from a certain time",
+    "slug": "news",
+    "articles": {},
+    "name": "News"
+  },
+  {
+    "description": "Get your most recent/oldest ??? updates!",
+    "slug": "timeless-news",
+    "articles": {},
+    "name": "Timeless news"
+  },
+  { "description": "", "slug": "history", "articles": {}, "name": "History" },
+  { "description": "", "slug": "opinion", "articles": {}, "name": "Opinion" },
+  {
+    "description": "Smart students do well",
+    "slug": "ap-advanced-placement",
+    "articles": {},
+    "name": "AP (Advanced Placement)"
+  },
+  {
+    "description": "",
+    "slug": "investigation",
+    "articles": {},
+    "name": "Investigation"
+  },
+  {
+    "description": "First-hand and first-person accounts",
+    "slug": "from-the-field",
+    "articles": {},
+    "name": "From the field"
+  },
+  { "description": "", "slug": "lore", "articles": {}, "name": "Lore" },
+  {
+    "description": "How dare they test us when the real test is life?",
+    "slug": "tests",
+    "articles": {},
+    "name": "Tests"
+  },
+  {
+    "description": "",
+    "slug": "thinkpads",
+    "articles": {},
+    "name": "Thinkpads"
+  },
+  {
+    "description": "Only the finest interviewees for your eyeballs",
+    "slug": "guest-interview",
+    "articles": {},
+    "name": "Guest interview"
+  },
+  {
+    "description": "Exclusively-found-online semi-secret articles sneaked in by *the editor*",
+    "slug": "online-exclusive",
+    "articles": {},
+    "name": "Online Exclusive"
+  },
+  {
+    "description": "",
+    "slug": "snack-time",
+    "articles": {},
+    "name": "Snack time"
+  },
+  { "description": "", "slug": "letters", "articles": {}, "name": "Letters" },
+  {
+    "description": "Find your true self 🥺",
+    "slug": "quiz",
+    "articles": {},
+    "name": "Quiz"
+  },
+  {
+    "description": "The Radish's author's official takes on all things things",
+    "slug": "review",
+    "articles": {},
+    "name": "Review"
+  },
+  { "description": "", "slug": "milk", "articles": {}, "name": "Milk" },
+  { "description": "", "slug": "meat", "articles": {}, "name": "Meat" },
+  { "description": "", "slug": "stairs", "articles": {}, "name": "Stairs" },
+  {
+    "description": "",
+    "slug": "horoscopes",
+    "articles": {},
+    "name": "Horoscopes"
+  }
+]
