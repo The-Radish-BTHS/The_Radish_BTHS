@@ -18,17 +18,7 @@ export const getArticles = async (
       ...issue,
       NOT,
     },
-    include: {
-      issue: {
-        select: { title: true, slug: true },
-      },
-      authors: {
-        select: { name: true, slug: true },
-      },
-      topics: {
-        select: { name: true, slug: true },
-      },
-    },
+    include: articleInclude,
     orderBy: { publishedOn: oldest ? "asc" : "desc" },
     ...take,
   });
@@ -94,7 +84,7 @@ export const getPeopleWithArticles = async (
 
   const people = await prisma.person.findMany({
     where: { ...where, NOT },
-    include: { articles: articleInclude },
+    include: { articles: { include: articleInclude } },
   });
 
   return people.map((person) => ({

@@ -8,49 +8,49 @@ generator client {
 }
 
 model Account {
-    id                String  @id @default(cuid())
-    userId            String
-    type              String
-    provider          String
-    providerAccountId String
-    refresh_token     String? @db.Text
-    access_token      String? @db.Text
-    expires_at        Int?
-    token_type        String?
-    scope             String?
-    id_token          String? @db.Text
-    session_state     String?
-    user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-    @@unique([provider, providerAccountId])
+  @@unique([provider, providerAccountId])
 }
 
 model Session {
-    id           String   @id @default(cuid())
-    sessionToken String   @unique
-    userId       String
-    expires      DateTime
-    user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model User {
-    id            String    @id @default(cuid())
-    name          String?
-    email         String?   @unique
-    emailVerified DateTime?
-    image         String?
-    accounts      Account[]
-    sessions      Session[]
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
 
-    permission  UserPermission @default(NORMIE)
-    submissions Submission[]
+  permission  UserPermission @default(NORMIE)
+  submissions Submission[]
 
-    personSlug String @unique
-    person     Person @relation(fields: [personSlug], references: [slug])
+  personSlug String @unique
+  person     Person @relation(fields: [personSlug], references: [slug])
 }
 
 model Issue {
-  slug        String @id
+  slug String @id
 
   title       String
   cover       String
@@ -59,35 +59,35 @@ model Issue {
   published   Boolean  @default(false)
   publishedOn DateTime @default(now())
 
-  articles    Article[]
+  articles Article[]
 }
 
 model Article {
-  slug        String @id
-  
+  slug String @id
+
   title       String
   excerpt     String?
   content     String
   published   Boolean  @default(false)
   publishedOn DateTime @default(now())
 
-  issue       Issue?   @relation(fields: [issueSlug], references: [slug])   
-  issueSlug   String?
-  authors     Person[]
-  topics      Topic[]
+  issue     Issue?   @relation(fields: [issueSlug], references: [slug])
+  issueSlug String?
+  authors   Person[]
+  topics    Topic[]
 }
 
 model Submission {
-  id        String   @id @default(cuid())
-  link      String
-  userId    String
-  user      User     @relation(fields: [userId], references: [id])
-  topics    Topic[]
-  authors   Person[]
+  id      String   @id @default(cuid())
+  link    String
+  userId  String
+  user    User     @relation(fields: [userId], references: [id])
+  topics  Topic[]
+  authors Person[]
 }
 
 model Topic {
-  slug        String @id
+  slug String @id
 
   name        String
   description String
@@ -97,7 +97,7 @@ model Topic {
 }
 
 model Person {
-  slug        String  @id
+  slug String @id
 
   name        String
   position    String

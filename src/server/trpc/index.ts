@@ -2,8 +2,11 @@ import { initTRPC, TRPCError } from "@trpc/server";
 import { UserPermission } from "@prisma/client";
 import { Context } from "./context";
 import { appRouter } from "./routers";
+import superjson from "superjson";
 
-export const t = initTRPC.context<Context>().create();
+export const t = initTRPC.context<Context>().create({
+  transformer: superjson,
+});
 
 export const authedProcedure = t.procedure.use(({ ctx, next }) => {
   if (!ctx.user) {

@@ -2,13 +2,12 @@ import prisma from "../prisma.server";
 import { articleInclude } from "@lib/helpers.server";
 
 export const getArticle = async (slug: string) => {
-  const article = await prisma.article.findUnique({
+  return prisma.article.findUnique({
     where: {
       slug,
     },
-    ...articleInclude,
+    include: articleInclude,
   });
-  return { ...article };
 };
 
 export const getTopic = async (slug: string) => {
@@ -16,7 +15,7 @@ export const getTopic = async (slug: string) => {
     where: {
       slug,
     },
-    include: { articles: articleInclude },
+    include: { articles: { include: articleInclude } },
   });
 
   return topic;
@@ -27,7 +26,7 @@ export const getPerson = async (slug: string, excludeFormer?: boolean) => {
     where: {
       slug,
     },
-    include: { articles: articleInclude },
+    include: { articles: { include: articleInclude } },
   });
 
   const today = new Date();

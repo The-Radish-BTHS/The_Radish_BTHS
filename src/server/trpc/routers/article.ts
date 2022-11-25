@@ -1,8 +1,41 @@
-import { customSlugify } from "@lib/helpers.server";
+import { articleInclude, customSlugify } from "@lib/helpers.server";
 import { z } from "zod";
 import { authedProcedure, editorProcedure, execProcedure, t } from "..";
 
 export const articleRouter = t.router({
+  get: t.procedure
+    .input(z.object({ slug: z.string() }))
+    .query(async ({ ctx, input }) => {
+      return ctx.prisma.article.findUnique({
+        where: {
+          slug: input.slug,
+        },
+        include: articleInclude,
+      });
+    }),
+
+  getMany: t.procedure
+    .input(
+      z.object({
+        issueSlug: z.string().optional(),
+        sortOrder: z.enum(["asc", "desc"]),
+        exclude: z.array(z.string()).optional().default([]),
+        take: z.number().optional(),
+      })
+    )
+    .query(async ({ ctx, input }) => {
+      return ctx.prisma.article.findMany({
+        where: {
+          published: true,
+          issueSlug: input.issueSlug,
+          NOT: input.exclude.map((slug) => ({ slug })),
+        },
+        include: articleInclude,
+        orderBy: { publishedOn: input.sortOrder },
+        take: input.take,
+      });
+    }),
+
   submit: authedProcedure
     .input(
       z.object({

@@ -1,3 +1,4 @@
+import { Prisma } from "@prisma/client";
 import slugify from "slugify";
 import { getTopicSlugs } from "./getters/many-getters.server";
 
@@ -18,13 +19,11 @@ export const excludeSlugs = (arr?: string[]) => {
   return [];
 };
 
-export const articleInclude = {
-  include: {
-    authors: { select: { name: true, slug: true } },
-    issue: { select: { title: true, slug: true } },
-    topics: { select: { name: true, slug: true } },
-  },
-};
+export const articleInclude = Prisma.validator<Prisma.ArticleInclude>()({
+  authors: { select: { name: true, slug: true } },
+  issue: { select: { title: true, slug: true } },
+  topics: { select: { name: true, slug: true } },
+});
 
 export const slugsToConnect = (slugs: string[]) => {
   return {
