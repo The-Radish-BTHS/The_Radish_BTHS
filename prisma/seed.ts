@@ -6,11 +6,11 @@ import topics from "./seed-data/topics.json";
 
 const prisma = new PrismaClient();
 
-const createIssues = () => {
-  issues.forEach(async (issue) => {
-    await prisma.issue.create({
+const createIssues = () =>
+  issues.map((issue) =>
+    prisma.issue.create({
       data: {
-        cover: issue.cover,
+        coverUrl: issue.cover,
         title: issue.title,
         slug: issue.slug,
         description: issue.description,
@@ -18,13 +18,12 @@ const createIssues = () => {
         publishedOn: new Date(issue.publishedOn),
         pdf: issue.pdf,
       },
-    });
-  });
-};
+    })
+  );
 
-const createPeople = () => {
-  people.forEach(async (person) => {
-    await prisma.person.create({
+const createPeople = () =>
+  people.map((person) =>
+    prisma.person.create({
       data: {
         name: person.name,
         description: person.description,
@@ -34,13 +33,12 @@ const createPeople = () => {
         slug: person.slug,
         isExec: person.isExec,
       },
-    });
-  });
-};
+    })
+  );
 
-const createArticles = () => {
-  articles.forEach(async (article) => {
-    await prisma.article.create({
+const createArticles = () =>
+  articles.map((article) =>
+    prisma.article.create({
       data: {
         title: article.title,
         content: article.content,
@@ -64,27 +62,27 @@ const createArticles = () => {
           })),
         },
       },
-    });
-  });
-};
+    })
+  );
 
-const createTopics = () => {
-  topics.forEach(async (topic) => {
-    await prisma.topic.create({
+const createTopics = () =>
+  topics.map((topic) =>
+    prisma.topic.create({
       data: {
         name: topic.name,
         slug: topic.slug,
         description: topic.description,
       },
-    });
-  });
-};
+    })
+  );
 
 export const seed = async () => {
-  await createIssues();
-  await createPeople();
-  await createTopics();
-  await createArticles();
+  await prisma.$transaction([
+    ...createPeople(),
+    ...createTopics(),
+    ...createIssues(),
+    ...createArticles(),
+  ]);
 };
 
 seed().catch((err) => console.error(err));
