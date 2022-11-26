@@ -2,7 +2,7 @@ import { Person, Topic } from "@prisma/client";
 import { NextPage } from "next";
 
 import { useSession } from "next-auth/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import styles from "@components/pages/submit/styles.module.css";
@@ -60,7 +60,15 @@ const ArticleSubmit: NextPage = () => {
 
   // State
   const [topicSelections, setTopicSelections] = useState<Topic[]>([]);
-  const [authorSelections, setAuthorSelections] = useState<Person[]>([]);
+  const [authorSelections, setAuthorSelections] = useState<Person[]>(
+    sessionData?.user?.person ? [sessionData?.user?.person] : []
+  );
+
+  useEffect(() => {
+    setAuthorSelections(
+      sessionData?.user?.person ? [sessionData?.user?.person] : []
+    );
+  }, [sessionData]);
 
   // React Hook Form
   const {
@@ -208,9 +216,7 @@ const ArticleSubmit: NextPage = () => {
             )}
             values={authorSelections}
             setValues={setAuthorSelections}
-            selectedValues={
-              sessionData?.user?.person ? [sessionData?.user?.person] : []
-            }
+            selectedValues={[]}
           />
           <Button type="submit" mt="1rem">
             Submit it!

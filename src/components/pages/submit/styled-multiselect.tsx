@@ -1,6 +1,4 @@
-import PersonType from "@/types/person";
 import { useTheme } from "@chakra-ui/react";
-import { Person, Topic } from "@prisma/client";
 import Multiselect from "multiselect-react-dropdown";
 import styles from "./styles.module.css";
 
