@@ -21,7 +21,7 @@ import InfoTooltip from "@components/info-tooltip";
 import useSubmitModal from "@components/pages/submit/submit-modal";
 import { InputData } from "@/pages/articles/submit";
 
-const Submit: NextPage = () => {
+const ArticleSubmit: NextPage = () => {
   // Get Data
   const { data: sessionData } = useSession();
   const toast = useToast();
@@ -221,4 +221,4 @@ const Submit: NextPage = () => {
   );
 };
 
-export default Submit;
+export default ArticleSubmit;
