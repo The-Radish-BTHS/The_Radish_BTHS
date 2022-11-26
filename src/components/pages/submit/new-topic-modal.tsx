@@ -16,7 +16,6 @@ import { ErrorMessage } from "@hookform/error-message";
 import { customSlugify, topicNameIsUnique } from "@lib/helpers.server";
 import { Topic } from "@prisma/client";
 import { trpc } from "@lib/trpc";
-import { MutationObserverErrorResult } from "react-query";
 
 interface NewTopicType {
   name: string;
@@ -107,51 +106,25 @@ const NewTopicModal: React.FC<{
                 return;
               }
 
-              const response = await fetch(`/api/create?type=topic`, {
-                method: "post",
-                mode: "no-cors",
-                headers: {
-                  "Access-Control-Allow-Origin": "*",
-                  "Content-Type": "application/json",
-                  Accept: "application/json",
-                },
-                body: JSON.stringify({
-                  ...data,
-                  slug: customSlugify(data.name),
-                }),
-              })
-                .then((response) => {
-                  console.log(response);
-                  return response;
-                })
-                .catch((e) => {
-                  console.error(e);
-                  return e;
-                });
-              if (response.status === 200) {
-                toast({
-                  title: "Topic Creation Success!",
-                  status: "success",
-                  duration: 4000,
-                  position: "bottom-right",
-                  isClosable: true,
-                });
-              } else {
-                toast({
-                  title: `Topic Creation Error ${response.status}: ${response.statusText}`,
-                  status: "error",
-                  duration: 4000,
-                  position: "bottom-right",
-                  isClosable: true,
-                });
-              }
+              await createTopic.mutateAsync({
+                name: data.name,
+                description: data.description,
+              });
+
+              toast({
+                title: "Topic Creation Success!",
+                status: "success",
+                duration: 4000,
+                position: "bottom-right",
+                isClosable: true,
+              });
 
               onClose();
               setValue("name", "");
               setValue("description", "");
 
               // TODO: creating a new topic doesnt invalidate the query for topics
-              window.location.reload();
+              // window.location.reload();
             })}>
             Make!
           </Button>

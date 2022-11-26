@@ -66,14 +66,16 @@ export interface SubmitFormProps {
 const Submit: NextPage<{
   editing: boolean;
   article: ArticleType | null;
-  topics: Topic[];
   people: Person[];
   articleSlugs: string[];
   topicSlugs: string[];
-}> = ({ editing, article, topics, people, articleSlugs, topicSlugs }) => {
+}> = ({ editing, people, article, articleSlugs, topicSlugs }) => {
   // Get User Data
   const { data: sessionData } = useSession();
   const toast = useToast();
+
+  const topics = trpc.topic.getMany.useQuery({});
+
   const submitArticle = trpc.article.submit.useMutation({
     onError(err) {
       toast({
