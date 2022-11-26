@@ -36,6 +36,17 @@ export const articleRouter = t.router({
       });
     }),
 
+  getSlugs: t.procedure.query(async ({ ctx }) => {
+    const articleSlugs = await ctx.prisma.article.findMany({
+      orderBy: { publishedOn: "desc" },
+      select: {
+        slug: true,
+      },
+    });
+
+    return articleSlugs.map(({ slug }) => slug);
+  }),
+
   submit: authedProcedure
     .input(
       z.object({

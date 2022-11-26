@@ -35,4 +35,15 @@ export const topicRouter = t.router({
   getAll: t.procedure.query(async ({ ctx }) => {
     return await ctx.prisma.topic.findMany();
   }),
+  getSlugs: t.procedure.query(async ({ ctx }) => {
+    const topicSlugs = await ctx.prisma.topic.findMany({
+      select: {
+        slug: true,
+      },
+    });
+
+    return topicSlugs.map(({ slug }) => slug);
+  }),
 });
+
+export type TopicRouter = typeof topicRouter;

@@ -30,8 +30,10 @@ import { customSlugify } from "@lib/helpers.server";
 import PersonType from "@/types/person";
 import RequiredUserWrapper from "@components/required-user-wrapper";
 import { trpc } from "@lib/trpc";
+import { inferRouterOutputs } from "@trpc/server";
+import type { TopicRouter } from "@server/trpc/routers/topic";
 
-type InputData = {
+export type InputData = {
   title: string;
   content: string;
 };
@@ -74,7 +76,8 @@ const Submit: NextPage<{
   const { data: sessionData } = useSession();
   const toast = useToast();
 
-  const topics = trpc.topic.getMany.useQuery({});
+  const topicQuery = trpc.topic.getAll.useQuery();
+  const topics = topicQuery.data!;
 
   const submitArticle = trpc.article.submit.useMutation({
     onError(err) {

@@ -46,3 +46,8 @@ export const topicNameIsUnique = (name: string, slugs: string[]) => {
   const isUnique = slugs.indexOf(customSlugify(name)) === -1;
   return isUnique || "A Topic with that name already exists!";
 };
+
+export const articleNameIsUnique = (title: string, slugs: string[]) => {
+  const isUnique = slugs.indexOf(customSlugify(title)) === -1;
+  return isUnique || "An Article with that name already exists!";
+};
