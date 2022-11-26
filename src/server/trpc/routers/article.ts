@@ -110,6 +110,7 @@ export const articleRouter = t.router({
     .input(
       z.object({
         slug: z.string(),
+        issueSlug: z.string(),
       })
     )
     .mutation(async ({ ctx, input }) => {
@@ -118,6 +119,7 @@ export const articleRouter = t.router({
         data: {
           published: true,
           publishedOn: new Date(),
+          issueSlug: input.issueSlug,
         },
       });
     }),

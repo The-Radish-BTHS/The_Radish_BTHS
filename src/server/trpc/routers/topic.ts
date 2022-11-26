@@ -19,4 +19,20 @@ export const topicRouter = t.router({
         },
       });
     }),
+
+  getBySlug: t.procedure
+    .input(
+      z.object({
+        slug: z.string(),
+      })
+    )
+    .query(async ({ ctx, input }) => {
+      return await ctx.prisma.topic.findUnique({
+        where: { slug: input.slug },
+      });
+    }),
+
+  getAll: t.procedure.query(async ({ ctx }) => {
+    return await ctx.prisma.topic.findMany();
+  }),
 });
