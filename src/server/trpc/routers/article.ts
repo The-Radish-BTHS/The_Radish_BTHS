@@ -1,16 +1,25 @@
-import { articleInclude, customSlugify } from "@lib/helpers.server";
+import {
+  articleInclude,
+  customSlugify,
+  deeperArticleInclude,
+} from "@lib/helpers.server";
 import { z } from "zod";
 import { authedProcedure, editorProcedure, execProcedure, t } from "..";
 
 export const articleRouter = t.router({
   get: t.procedure
-    .input(z.object({ slug: z.string() }))
+    .input(
+      z.object({
+        slug: z.string(),
+        getAllData: z.boolean().optional().default(false),
+      })
+    )
     .query(async ({ ctx, input }) => {
       return ctx.prisma.article.findUnique({
         where: {
           slug: input.slug,
         },
-        include: articleInclude,
+        include: input.getAllData ? deeperArticleInclude : articleInclude,
       });
     }),
 

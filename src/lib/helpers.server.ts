@@ -25,6 +25,12 @@ export const articleInclude = Prisma.validator<Prisma.ArticleInclude>()({
   topics: { select: { name: true, slug: true } },
 });
 
+export const deeperArticleInclude = Prisma.validator<Prisma.ArticleInclude>()({
+  authors: true,
+  issue: true,
+  topics: true,
+});
+
 export const slugsToConnect = (slugs: string[]) => {
   return {
     connect: slugs?.map((slug) => ({ slug })),
