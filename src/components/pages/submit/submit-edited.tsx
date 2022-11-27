@@ -18,13 +18,15 @@ import StyledMultiselect from "./styled-multiselect";
 import NewTopicModal from "./new-topic-modal";
 import { InputData } from "@/pages/articles/submit";
 import { ErrorMessage } from "@hookform/error-message";
+import SubmitModal from "@components/pages/submit/submit-modal";
 
 const SubmitEdited: NextPage = () => {
   // Get User Data
   const { data: sessionData } = useSession();
   const toast = useToast();
   const router = useRouter();
-  const disclosure = useDisclosure();
+  const newTopicDisclosure = useDisclosure();
+  const submitDisclosure = useDisclosure();
 
   const articleQuery = trpc.submission.get.useQuery({
     id: router.query.id?.toString() as string,
@@ -47,6 +49,10 @@ const SubmitEdited: NextPage = () => {
   const [authorSelections, setAuthorSelections] = useState<Person[]>(
     article?.authors || []
   );
+  const [formData, setFormData] = useState<InputData>({
+    title: "",
+    content: "",
+  });
 
   // React Hook Form
   const {
@@ -74,13 +80,12 @@ const SubmitEdited: NextPage = () => {
     }
   }, [sessionData, article, setValue]);
 
-  // Setup Modal
-  const { ModalComponent, onOpen, setInputData } = useSubmitModal();
-
   return (
     <Layout title="Edit an Article!">
       <RequiredUserWrapper>
-        <ModalComponent
+        <SubmitModal
+          disclosure={submitDisclosure}
+          data={formData}
           onClick={async (inputData: InputData) => {
             const data = {
               ...inputData,
@@ -100,12 +105,12 @@ const SubmitEdited: NextPage = () => {
             e.key === "Enter" && e.preventDefault();
           }}
           onSubmit={handleSubmit((data) => {
-            onOpen();
-            setInputData(data);
+            submitDisclosure.onOpen();
+            setFormData(data);
           })}
           className={styles["form-wrapper"]}>
           <NewTopicModal
-            disclosure={disclosure}
+            disclosure={newTopicDisclosure}
             topicSlugs={topicSlugs}
             addTopic={(topic: Topic) =>
               setTopicSelections((topics) => [...topics, topic])
@@ -149,7 +154,7 @@ const SubmitEdited: NextPage = () => {
             selectedValues={article?.topics || []}
           />
 
-          <button onClick={disclosure.onOpen} type="button">
+          <button onClick={newTopicDisclosure.onOpen} type="button">
             + Add new topic
           </button>
 

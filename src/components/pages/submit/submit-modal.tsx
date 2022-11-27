@@ -6,24 +6,22 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
-  useDisclosure,
   Text,
-  useToast,
+  UseDisclosureReturn,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import Button from "@components/button";
-import { useState } from "react";
-import { trpc } from "@lib/trpc";
+import { InputData } from "@/pages/articles/submit";
 
-const useSubmitModal = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+const SubmitModal: React.FC<{
+  disclosure: UseDisclosureReturn;
+  onClick: any;
+  data: InputData;
+}> = ({ disclosure, onClick, data }) => {
+  const { isOpen, onClose } = disclosure;
   const router = useRouter();
-  const [inputData, setInputData] = useState<{
-    title: string;
-    content: string;
-  }>();
 
-  const ModalComponent: React.FC<{ onClick: any }> = ({ onClick }) => (
+  return (
     <Modal isOpen={isOpen} onClose={onClose} isCentered>
       <ModalOverlay />
       <ModalContent bg="#ebeae5" borderRadius="0.75rem">
@@ -48,20 +46,17 @@ const useSubmitModal = () => {
         <ModalFooter>
           <Button
             onClick={async () => {
-              onClick(inputData).then(() => {
+              onClick(data).then(() => {
                 onClose();
                 router.push("/");
               });
-            }}
-          >
+            }}>
             Yes, I&apos;m sure!
           </Button>
         </ModalFooter>
       </ModalContent>
     </Modal>
   );
-
-  return { ModalComponent, onOpen, setInputData };
 };
 
-export default useSubmitModal;
+export default SubmitModal;

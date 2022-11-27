@@ -18,14 +18,15 @@ import RequiredUserWrapper from "@components/required-user-wrapper";
 import StyledMultiselect from "./styled-multiselect";
 import NewTopicModal from "./new-topic-modal";
 import InfoTooltip from "@components/info-tooltip";
-import useSubmitModal from "@components/pages/submit/submit-modal";
 import { InputData } from "@/pages/articles/submit";
+import SubmitModal from "@components/pages/submit/submit-modal";
 
 const ArticleSubmit: NextPage = () => {
   // Get Data
   const { data: sessionData } = useSession();
   const toast = useToast();
-  const disclosure = useDisclosure();
+  const newTopicDisclosure = useDisclosure();
+  const submitDisclosure = useDisclosure();
 
   const articleSlugsQuery = trpc.article.getSlugs.useQuery();
   const topicsQuery = trpc.topic.getAll.useQuery();
@@ -63,6 +64,10 @@ const ArticleSubmit: NextPage = () => {
   const [authorSelections, setAuthorSelections] = useState<Person[]>(
     sessionData?.user?.person ? [sessionData?.user?.person] : []
   );
+  const [formData, setFormData] = useState<InputData>({
+    title: "",
+    content: "",
+  });
 
   useEffect(() => {
     setAuthorSelections(
@@ -79,13 +84,12 @@ const ArticleSubmit: NextPage = () => {
     criteriaMode: "all",
   });
 
-  // Setup Modal
-  const { ModalComponent, onOpen, setInputData } = useSubmitModal();
-
   return (
     <Layout title="Submit an Article!">
       <RequiredUserWrapper>
-        <ModalComponent
+        <SubmitModal
+          disclosure={submitDisclosure}
+          data={formData}
           onClick={async (inputData: InputData) => {
             if (!sessionData?.user?.person.slug) return;
             await submitArticle
@@ -102,6 +106,17 @@ const ArticleSubmit: NextPage = () => {
           }}
         />
 
+        <NewTopicModal
+          disclosure={newTopicDisclosure}
+          topicSlugs={topicSlugs ?? []}
+          addTopic={(topic: Topic) =>
+            setTopicSelections((topics) => {
+              console.log("topics", [...topics, topic]);
+              return [...topics, topic];
+            })
+          }
+        />
+
         <Heading textAlign="center">So you want to submit an Article?</Heading>
         <Text textAlign="center" fontSize="1.25rem">
           Do it! Submit it! Go!
@@ -112,20 +127,10 @@ const ArticleSubmit: NextPage = () => {
             e.key === "Enter" && e.preventDefault();
           }}
           onSubmit={handleSubmit((data) => {
-            onOpen();
-            setInputData(data);
+            submitDisclosure.onOpen();
+            setFormData(data);
           })}
           className={styles["form-wrapper"]}>
-          <NewTopicModal
-            disclosure={disclosure}
-            topicSlugs={topicSlugs ?? []}
-            addTopic={(topic: Topic) =>
-              setTopicSelections((topics) => {
-                console.log("topics", [...topics, topic]);
-                return [...topics, topic];
-              })
-            }
-          />
           <Flex w="60vw" justifyContent="space-between">
             <p>
               Google Docs link:<span style={{ color: "red" }}> *</span>
@@ -204,7 +209,7 @@ const ArticleSubmit: NextPage = () => {
             setValues={setTopicSelections}
             selectedValues={[]}
           />
-          <button onClick={disclosure.onOpen} type="button">
+          <button onClick={newTopicDisclosure.onOpen} type="button">
             + Add new topic
           </button>
 
