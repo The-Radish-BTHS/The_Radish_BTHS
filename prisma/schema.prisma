@@ -42,6 +42,9 @@ model User {
   accounts      Account[]
   sessions      Session[]
 
+  lastArticleSubmission DateTime?
+  lastTopicCreation     DateTime?
+
   permission  UserPermission @default(NORMIE)
   submissions Submission[]
 

@@ -3,8 +3,11 @@ import {
   customSlugify,
   deeperArticleInclude,
 } from "@lib/helpers.server";
+import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { authedProcedure, editorProcedure, execProcedure, t } from "..";
+
+const ARTICLE_SUBMISSION_COOLDOWN = 5 * 60 * 1000; // 5 minutes, in milliseconds
 
 export const articleRouter = t.router({
   get: t.procedure
@@ -74,19 +77,33 @@ export const articleRouter = t.router({
       })
     )
     .mutation(async ({ ctx, input }) => {
-      await ctx.prisma.submission.create({
-        data: {
-          link: input.link,
-          title: input.title,
-          userId: ctx.user.id,
-          authors: {
-            connect: input.authors,
+      const articleSubmissionElapsed =
+        Date.now() - (ctx.user.lastArticleSubmission?.getTime() || 0);
+      if (articleSubmissionElapsed < ARTICLE_SUBMISSION_COOLDOWN)
+        throw new TRPCError({
+          code: "TOO_MANY_REQUESTS",
+          message: `You can only submit an article every ${ARTICLE_SUBMISSION_COOLDOWN} milliseconds`,
+        });
+
+      await ctx.prisma.$transaction([
+        ctx.prisma.submission.create({
+          data: {
+            link: input.link,
+            title: input.title,
+            userId: ctx.user.id,
+            authors: {
+              connect: input.authors,
+            },
+            topics: {
+              connect: input.topics,
+            },
           },
-          topics: {
-            connect: input.topics,
-          },
-        },
-      });
+        }),
+        ctx.prisma.user.update({
+          where: { id: ctx.user.id },
+          data: { lastArticleSubmission: new Date() },
+        }),
+      ]);
     }),
 
   editorSubmit: editorProcedure

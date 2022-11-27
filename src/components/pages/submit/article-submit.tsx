@@ -23,7 +23,6 @@ import SubmitModal from "@components/pages/submit/submit-modal";
 import { useIsMobile } from "@hooks/useIsMobile";
 
 const ArticleSubmit: NextPage = () => {
-  // Get Data
   const { data: sessionData } = useSession();
   const toast = useToast();
   const mobile = useIsMobile();
@@ -133,7 +132,8 @@ const ArticleSubmit: NextPage = () => {
             setFormData(data);
           })}
           className={styles["form-wrapper"]}
-          style={{ width: mobile ? "85vw" : "60vw" }}>
+          style={{ width: mobile ? "85vw" : "60vw" }}
+        >
           <Flex w="100%" justifyContent="space-between">
             <p>
               Google Docs link:<span style={{ color: "red" }}> *</span>
@@ -155,7 +155,8 @@ const ArticleSubmit: NextPage = () => {
             })}
           />
           <p
-            className={`${styles["form-element-margin"]} ${styles["error-message"]}`}>
+            className={`${styles["form-element-margin"]} ${styles["error-message"]}`}
+          >
             <ErrorMessage
               errors={errors}
               name="content"
@@ -187,7 +188,8 @@ const ArticleSubmit: NextPage = () => {
           />
 
           <p
-            className={`${styles["form-element-margin"]} ${styles["error-message"]}`}>
+            className={`${styles["form-element-margin"]} ${styles["error-message"]}`}
+          >
             <ErrorMessage
               errors={errors}
               name="title"
@@ -215,7 +217,8 @@ const ArticleSubmit: NextPage = () => {
           <button
             onClick={newTopicDisclosure.onOpen}
             type="button"
-            className={styles.bottomMargin}>
+            className={styles.bottomMargin}
+          >
             + Add new topic
           </button>
 

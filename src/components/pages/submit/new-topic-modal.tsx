@@ -71,7 +71,8 @@ const NewTopicModal: React.FC<{
               required
             />
             <p
-              className={`${styles["form-element-margin"]} ${styles["error-message"]}`}>
+              className={`${styles["form-element-margin"]} ${styles["error-message"]}`}
+            >
               <ErrorMessage
                 errors={errors}
                 name="name"
@@ -106,10 +107,14 @@ const NewTopicModal: React.FC<{
                 return;
               }
 
-              await createTopic.mutateAsync({
-                name: data.name,
-                description: data.description,
-              });
+              try {
+                await createTopic.mutateAsync({
+                  name: data.name,
+                  description: data.description,
+                });
+              } catch {
+                return;
+              }
 
               addTopic({
                 name: data.name,
@@ -131,7 +136,8 @@ const NewTopicModal: React.FC<{
 
               // TODO: creating a new topic doesnt invalidate the query for topics
               // window.location.reload();
-            })}>
+            })}
+          >
             Make!
           </Button>
         </ModalFooter>
