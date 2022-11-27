@@ -13,6 +13,7 @@ import {
 } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
 import Link from "next/link";
+import { UserPermission } from "@prisma/client";
 
 const PfpSection: React.FC = () => {
   const { data, status } = useSession();
@@ -38,6 +39,11 @@ const PfpSection: React.FC = () => {
         <MenuItem as={Link} href="/articles/submit">
           Submit an article
         </MenuItem>
+        {data?.user?.permission === UserPermission.EXEC && (
+          <MenuItem as={Link} href="/eggsex">
+            Exec Dashboard
+          </MenuItem>
+        )}
         <Divider />
         <MenuItem onClick={() => signOut()}>Sign Out</MenuItem>
       </MenuList>

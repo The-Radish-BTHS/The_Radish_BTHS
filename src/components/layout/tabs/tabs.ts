@@ -65,3 +65,10 @@ export const accountTabs: ITab[] = [
     route: "/articles/submit",
   },
 ];
+
+export const EggsexTab: ITab = {
+  name: "Exec Dashboard",
+  outlineIcon: MdOutlineArticle,
+  fillIcon: MdArticle,
+  route: "/eggsex",
+};

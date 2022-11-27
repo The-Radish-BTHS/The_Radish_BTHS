@@ -9,10 +9,10 @@ import {
   useTheme,
 } from "@chakra-ui/react";
 import { Tab } from "./tab";
-import { accountTabs, ITab, navigationTabs } from "./tabs";
+import { accountTabs, EggsexTab, ITab, navigationTabs } from "./tabs";
 import { Cross } from "hamburger-react";
-import PfpSection from "../pfp-section";
 import { signIn, signOut, useSession } from "next-auth/react";
+import { UserPermission } from "@prisma/client";
 
 const MobileNav: React.FC<{
   selectedTab: ITab | undefined;
@@ -21,7 +21,7 @@ const MobileNav: React.FC<{
   const controls = useDisclosure();
   const theme = useTheme();
   const bg = theme.styles.global.body.bg;
-  const { status } = useSession();
+  const { data: sessionData, status } = useSession();
   const authed = status === "authenticated";
 
   return (
@@ -51,6 +51,13 @@ const MobileNav: React.FC<{
                       selected={tab === selectedTab}
                     />
                   ))}
+                  {sessionData?.user?.permission === UserPermission.EXEC && (
+                    <Tab
+                      tab={EggsexTab}
+                      key={"eggsex"}
+                      selected={EggsexTab === selectedTab}
+                    />
+                  )}
                   <Text
                     fontSize={{ base: "1.2rem", md: "1rem" }}
                     fontWeight={400}
