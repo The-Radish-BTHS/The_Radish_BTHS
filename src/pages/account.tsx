@@ -7,6 +7,7 @@ import { customSlugify } from "@lib/helpers.server";
 import { GetServerSideProps, NextPage } from "next";
 import { useSession } from "next-auth/react";
 import { useEffect, useRef, useState } from "react";
+import RequiredUserWrapper from "@components/required-user-wrapper";
 
 const update = async (slug: string, data: any) => {
   const response = await fetch(`/api/update?type=person&&slug=${slug}`, {
@@ -97,58 +98,60 @@ const Account: NextPage<{ peopleSlugs: string[] }> = ({ peopleSlugs }) => {
 
   return (
     <Layout title="My Account">
-      <Flex gap="1.5rem">
-        <Heading fontSize="4rem" fontFamily={"times-new-roman"}>
-          {name}
-        </Heading>
-        {person?.isExec && <ExecStamp id="" size={80} />}
-      </Flex>
+      <RequiredUserWrapper>
+        <Flex gap="1.5rem">
+          <Heading fontSize="4rem" fontFamily={"times-new-roman"}>
+            {name}
+          </Heading>
+          {person?.isExec && <ExecStamp id="" size={80} />}
+        </Flex>
 
-      <Text fontSize="2.5rem" fontWeight={300} textTransform="capitalize">
-        {person?.position}, Graduat{former ? "ed" : "ing"} {gradYear}
-      </Text>
-      <Text ml="1.5rem" fontSize="1.5rem">
-        {description ? `"${description}"` : <br />}
-      </Text>
-      <Flex flexDirection="column" mt="3rem">
-        <Heading mb="1rem">Update your information</Heading>
+        <Text fontSize="2.5rem" fontWeight={300} textTransform="capitalize">
+          {person?.position}, Graduat{former ? "ed" : "ing"} {gradYear}
+        </Text>
+        <Text ml="1.5rem" fontSize="1.5rem">
+          {description ? `"${description}"` : <br />}
+        </Text>
+        <Flex flexDirection="column" mt="3rem">
+          <Heading mb="1rem">Update your information</Heading>
 
-        <DataInput
-          initialValue={person?.name}
-          value={name}
-          setValue={setName}
-          placeholder="Name"
-        />
-        {!personSlugIsUnique(name || "") && name !== person?.name && (
-          <p className={"form-element-margin error-message"}>
-            Someone with that name already exists!
-          </p>
-        )}
-        <DataInput
-          initialValue={person?.gradYear}
-          value={gradYear}
-          setValue={setGradYear}
-          placeholder="Graduation Year"
-          number
-        />
-        <DataInput
-          initialValue={person?.description}
-          value={description}
-          setValue={setDescription}
-          placeholder="Description"
-        />
-        <button
-          className="accountSubmitButton"
-          onClick={onSubmit}
-          disabled={
-            (name === person?.name &&
-              gradYear === person?.gradYear &&
-              description === person?.description) ||
-            (!personSlugIsUnique(name || "") && name !== person?.name)
-          }>
-          Save!
-        </button>
-      </Flex>
+          <DataInput
+            initialValue={person?.name}
+            value={name}
+            setValue={setName}
+            placeholder="Name"
+          />
+          {!personSlugIsUnique(name || "") && name !== person?.name && (
+            <p className={"form-element-margin error-message"}>
+              Someone with that name already exists!
+            </p>
+          )}
+          <DataInput
+            initialValue={person?.gradYear}
+            value={gradYear}
+            setValue={setGradYear}
+            placeholder="Graduation Year"
+            number
+          />
+          <DataInput
+            initialValue={person?.description}
+            value={description}
+            setValue={setDescription}
+            placeholder="Description"
+          />
+          <button
+            className="accountSubmitButton"
+            onClick={onSubmit}
+            disabled={
+              (name === person?.name &&
+                gradYear === person?.gradYear &&
+                description === person?.description) ||
+              (!personSlugIsUnique(name || "") && name !== person?.name)
+            }>
+            Save!
+          </button>
+        </Flex>
+      </RequiredUserWrapper>
     </Layout>
   );
 };

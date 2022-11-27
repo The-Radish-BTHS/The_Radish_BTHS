@@ -1,4 +1,4 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex, Input } from "@chakra-ui/react";
 
 const DataInput: React.FC<{
   number?: boolean;
@@ -9,7 +9,7 @@ const DataInput: React.FC<{
 }> = ({ number, initialValue, value, setValue, placeholder }) => {
   return (
     <Flex>
-      <input
+      <Input
         placeholder={placeholder}
         type={number ? "number" : "text"}
         value={value || (number ? 0 : "")}
@@ -20,8 +20,8 @@ const DataInput: React.FC<{
           marginBottom: "0.5rem",
           marginRight: "0.5rem",
           padding: "0.5rem",
-          width: "50vw",
         }}
+        width={{ base: "80vw", md: "50vw" }}
         onChange={(e) =>
           setValue(number ? parseInt(e.target.value) : e.target.value)
         }

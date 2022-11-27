@@ -20,11 +20,13 @@ import NewTopicModal from "./new-topic-modal";
 import InfoTooltip from "@components/info-tooltip";
 import { InputData } from "@/pages/articles/submit";
 import SubmitModal from "@components/pages/submit/submit-modal";
+import { useIsMobile } from "@hooks/useIsMobile";
 
 const ArticleSubmit: NextPage = () => {
   // Get Data
   const { data: sessionData } = useSession();
   const toast = useToast();
+  const mobile = useIsMobile();
   const newTopicDisclosure = useDisclosure();
   const submitDisclosure = useDisclosure();
 
@@ -85,8 +87,8 @@ const ArticleSubmit: NextPage = () => {
   });
 
   return (
-    <Layout title="Submit an Article!">
-      <RequiredUserWrapper>
+    <RequiredUserWrapper>
+      <Layout title="Submit an Article!" alignItems="center">
         <SubmitModal
           disclosure={submitDisclosure}
           data={formData}
@@ -130,8 +132,9 @@ const ArticleSubmit: NextPage = () => {
             submitDisclosure.onOpen();
             setFormData(data);
           })}
-          className={styles["form-wrapper"]}>
-          <Flex w="60vw" justifyContent="space-between">
+          className={styles["form-wrapper"]}
+          style={{ width: mobile ? "85vw" : "60vw" }}>
+          <Flex w="100%" justifyContent="space-between">
             <p>
               Google Docs link:<span style={{ color: "red" }}> *</span>
             </p>
@@ -216,7 +219,7 @@ const ArticleSubmit: NextPage = () => {
             + Add new topic
           </button>
 
-          <Flex w="60vw" justifyContent="space-between">
+          <Flex w="100%" justifyContent="space-between">
             <p>Authors:</p>
 
             <InfoTooltip text="Did you work with anyone on this article? Add them here! Don't worry, you're here by default" />
@@ -232,8 +235,8 @@ const ArticleSubmit: NextPage = () => {
             Submit it!
           </Button>
         </form>
-      </RequiredUserWrapper>
-    </Layout>
+      </Layout>
+    </RequiredUserWrapper>
   );
 };
 

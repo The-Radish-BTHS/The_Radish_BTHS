@@ -1,6 +1,7 @@
-import { useTheme } from "@chakra-ui/react";
+import { useBreakpoint, useTheme } from "@chakra-ui/react";
 import Multiselect from "multiselect-react-dropdown";
 import styles from "./styles.module.css";
+import { useIsMobile } from "@hooks/useIsMobile";
 
 function StyledMultiselect<T>({
   options,
@@ -13,6 +14,8 @@ function StyledMultiselect<T>({
   setValues: React.Dispatch<React.SetStateAction<T[]>>;
   marginBottom?: boolean;
 }) {
+  const mobile = useIsMobile();
+
   return (
     <Multiselect
       className={
@@ -37,7 +40,7 @@ function StyledMultiselect<T>({
           display: "flex",
           flexWrap: "wrap",
           alignItems: "center",
-          width: "60vw",
+          width: mobile ? "85vw" : "60vw",
           height: "fit-content",
           padding: "0.5rem",
           border: "1px solid black",

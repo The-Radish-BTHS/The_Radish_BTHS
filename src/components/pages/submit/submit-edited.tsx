@@ -19,11 +19,13 @@ import NewTopicModal from "./new-topic-modal";
 import { InputData } from "@/pages/articles/submit";
 import { ErrorMessage } from "@hookform/error-message";
 import SubmitModal from "@components/pages/submit/submit-modal";
+import { useIsMobile } from "@hooks/useIsMobile";
 
 const SubmitEdited: NextPage = () => {
   // Get User Data
   const { data: sessionData } = useSession();
   const toast = useToast();
+  const mobile = useIsMobile();
   const router = useRouter();
   const newTopicDisclosure = useDisclosure();
   const submitDisclosure = useDisclosure();
@@ -81,7 +83,7 @@ const SubmitEdited: NextPage = () => {
   }, [sessionData, article, setValue]);
 
   return (
-    <Layout title="Edit an Article!">
+    <Layout title="Edit an Article!" alignItems="center">
       <RequiredUserWrapper>
         <SubmitModal
           disclosure={submitDisclosure}
@@ -108,7 +110,8 @@ const SubmitEdited: NextPage = () => {
             submitDisclosure.onOpen();
             setFormData(data);
           })}
-          className={styles["form-wrapper"]}>
+          className={styles["form-wrapper"]}
+          style={{ width: mobile ? "85vw" : "60vw" }}>
           <NewTopicModal
             disclosure={newTopicDisclosure}
             topicSlugs={topicSlugs}
