@@ -5,10 +5,12 @@ const DataInput: React.FC<{
   initialValue: string | number | undefined;
   value: string | number | undefined;
   setValue: React.Dispatch<React.SetStateAction<any>>;
-}> = ({ number, initialValue, value, setValue }) => {
+  placeholder: string;
+}> = ({ number, initialValue, value, setValue, placeholder }) => {
   return (
     <Flex>
       <input
+        placeholder={placeholder}
         type={number ? "number" : "text"}
         value={value || (number ? 0 : "")}
         style={{

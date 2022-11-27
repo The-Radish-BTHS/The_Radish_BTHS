@@ -117,6 +117,7 @@ const Account: NextPage<{ peopleSlugs: string[] }> = ({ peopleSlugs }) => {
           initialValue={person?.name}
           value={name}
           setValue={setName}
+          placeholder="Name"
         />
         {!personSlugIsUnique(name || "") && name !== person?.name && (
           <p className={"form-element-margin error-message"}>
@@ -127,12 +128,14 @@ const Account: NextPage<{ peopleSlugs: string[] }> = ({ peopleSlugs }) => {
           initialValue={person?.gradYear}
           value={gradYear}
           setValue={setGradYear}
+          placeholder="Graduation Year"
           number
         />
         <DataInput
           initialValue={person?.description}
           value={description}
           setValue={setDescription}
+          placeholder="Description"
         />
         <button
           className="accountSubmitButton"
@@ -142,8 +145,7 @@ const Account: NextPage<{ peopleSlugs: string[] }> = ({ peopleSlugs }) => {
               gradYear === person?.gradYear &&
               description === person?.description) ||
             (!personSlugIsUnique(name || "") && name !== person?.name)
-          }
-        >
+          }>
           Save!
         </button>
       </Flex>
