@@ -29,6 +29,6 @@ export interface ArticardType
   styles?: FlexProps;
 
   authors: PersonReference[];
-  issue: IssueReference;
+  issue?: IssueReference | null;
   topics: TopicReference[];
 }
