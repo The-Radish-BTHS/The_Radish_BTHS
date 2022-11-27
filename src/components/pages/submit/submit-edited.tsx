@@ -151,10 +151,13 @@ const SubmitEdited: NextPage = () => {
             options={topics}
             values={topicSelections}
             setValues={setTopicSelections}
-            selectedValues={article?.topics || []}
+            marginBottom={false}
           />
 
-          <button onClick={newTopicDisclosure.onOpen} type="button">
+          <button
+            onClick={newTopicDisclosure.onOpen}
+            type="button"
+            className={styles.bottomMargin}>
             + Add new topic
           </button>
 
@@ -163,7 +166,6 @@ const SubmitEdited: NextPage = () => {
             options={people}
             values={authorSelections}
             setValues={setAuthorSelections}
-            selectedValues={article?.authors || []}
           />
 
           <p>

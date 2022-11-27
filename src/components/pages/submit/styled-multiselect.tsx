@@ -6,16 +6,19 @@ function StyledMultiselect<T>({
   options,
   values,
   setValues,
-  selectedValues,
+  marginBottom = true,
 }: {
   options: T[];
   values: T[];
   setValues: React.Dispatch<React.SetStateAction<T[]>>;
-  selectedValues: T[];
+  marginBottom?: boolean;
 }) {
   return (
     <Multiselect
-      className={styles.multiselect}
+      className={
+        (marginBottom ? styles.bottomMargin : styles.smallBottomMargin) +
+        " multiselect"
+      }
       onSelect={(_, selectedItem) =>
         setValues((prev: T[]) => [...prev, selectedItem])
       }

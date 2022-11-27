@@ -207,9 +207,12 @@ const ArticleSubmit: NextPage = () => {
             options={topics}
             values={topicSelections}
             setValues={setTopicSelections}
-            selectedValues={[]}
+            marginBottom={false}
           />
-          <button onClick={newTopicDisclosure.onOpen} type="button">
+          <button
+            onClick={newTopicDisclosure.onOpen}
+            type="button"
+            className={styles.bottomMargin}>
             + Add new topic
           </button>
 
@@ -224,7 +227,6 @@ const ArticleSubmit: NextPage = () => {
             )}
             values={authorSelections}
             setValues={setAuthorSelections}
-            selectedValues={[]}
           />
           <Button type="submit" mt="1rem">
             Submit it!
