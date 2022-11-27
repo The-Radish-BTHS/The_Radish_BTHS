@@ -26,8 +26,8 @@ const SubmitEdited: NextPage = () => {
   const router = useRouter();
   const disclosure = useDisclosure();
 
-  const articleQuery = trpc.article.get.useQuery({
-    slug: router.query.slug?.toString() as string,
+  const articleQuery = trpc.submission.get.useQuery({
+    id: router.query.id?.toString() as string,
   });
   const articleSlugsQuery = trpc.article.getSlugs.useQuery();
   const topicsQuery = trpc.topic.getAll.useQuery();
@@ -41,8 +41,12 @@ const SubmitEdited: NextPage = () => {
   const article = articleQuery.data;
 
   // State
-  const [topicSelections, setTopicSelections] = useState<Topic[]>([]);
-  const [authorSelections, setAuthorSelections] = useState<Person[]>([]);
+  const [topicSelections, setTopicSelections] = useState<Topic[]>(
+    article?.topics || []
+  );
+  const [authorSelections, setAuthorSelections] = useState<Person[]>(
+    article?.authors || []
+  );
 
   // React Hook Form
   const {
@@ -54,7 +58,7 @@ const SubmitEdited: NextPage = () => {
     criteriaMode: "all",
     defaultValues: {
       title: article?.title || "",
-      content: article?.content || "",
+      content: article?.link || "",
     },
   });
 
@@ -64,7 +68,9 @@ const SubmitEdited: NextPage = () => {
       sessionData?.user?.permission !== UserPermission.NORMIE
     ) {
       setValue("title", article?.title || "");
-      setValue("content", article?.content || "");
+      setValue("content", article?.link || "");
+      setTopicSelections(article?.topics || []);
+      setAuthorSelections(article?.authors || []);
     }
   }, [sessionData, article, setValue]);
 
@@ -81,7 +87,6 @@ const SubmitEdited: NextPage = () => {
               topics: topicSelections,
               authors: authorSelections,
             };
-            console.log(data);
           }}
         />
 
