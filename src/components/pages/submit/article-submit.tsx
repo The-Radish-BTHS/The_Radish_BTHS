@@ -120,7 +120,10 @@ const ArticleSubmit: NextPage = () => {
             disclosure={disclosure}
             topicSlugs={topicSlugs ?? []}
             addTopic={(topic: Topic) =>
-              setTopicSelections((topics) => [...topics, topic])
+              setTopicSelections((topics) => {
+                console.log("topics", [...topics, topic]);
+                return [...topics, topic];
+              })
             }
           />
           <Flex w="60vw" justifyContent="space-between">

@@ -111,6 +111,12 @@ const NewTopicModal: React.FC<{
                 description: data.description,
               });
 
+              addTopic({
+                name: data.name,
+                description: data.description || "",
+                slug: customSlugify(data.name),
+              });
+
               toast({
                 title: "Topic Creation Success!",
                 status: "success",
