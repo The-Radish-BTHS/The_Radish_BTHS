@@ -50,3 +50,18 @@ export const navigationTabs: ITab[] = [
     route: "/about",
   },
 ];
+
+export const accountTabs: ITab[] = [
+  {
+    name: "Account",
+    outlineIcon: MdOutlineArticle,
+    fillIcon: MdArticle,
+    route: "/account",
+  },
+  {
+    name: "Submit An Article",
+    outlineIcon: MdOutlineArticle,
+    fillIcon: MdArticle,
+    route: "/articles/submit",
+  },
+];

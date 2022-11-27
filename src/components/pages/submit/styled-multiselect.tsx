@@ -17,7 +17,8 @@ function StyledMultiselect<T>({
     <Multiselect
       className={
         (marginBottom ? styles.bottomMargin : styles.smallBottomMargin) +
-        " multiselect"
+        " " +
+        styles.multiselect
       }
       onSelect={(_, selectedItem) =>
         setValues((prev: T[]) => [...prev, selectedItem])

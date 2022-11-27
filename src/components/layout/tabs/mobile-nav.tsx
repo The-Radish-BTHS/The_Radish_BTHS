@@ -4,12 +4,15 @@ import {
   Divider,
   Flex,
   Portal,
+  Text,
   useDisclosure,
   useTheme,
 } from "@chakra-ui/react";
 import { Tab } from "./tab";
-import { ITab, navigationTabs } from "./tabs";
+import { accountTabs, ITab, navigationTabs } from "./tabs";
 import { Cross } from "hamburger-react";
+import PfpSection from "../pfp-section";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 const MobileNav: React.FC<{
   selectedTab: ITab | undefined;
@@ -18,6 +21,9 @@ const MobileNav: React.FC<{
   const controls = useDisclosure();
   const theme = useTheme();
   const bg = theme.styles.global.body.bg;
+  const { status } = useSession();
+  const authed = status === "authenticated";
+
   return (
     <Flex flexDirection="column">
       <Flex
@@ -35,6 +41,31 @@ const MobileNav: React.FC<{
               {navigationTabs.map((tab, index) => (
                 <Tab tab={tab} key={index} selected={tab === selectedTab} />
               ))}
+              <Divider borderColor="black" />
+              {authed ? (
+                <>
+                  {accountTabs.map((tab, index) => (
+                    <Tab
+                      tab={tab}
+                      key={"account" + index}
+                      selected={tab === selectedTab}
+                    />
+                  ))}
+                  <Text
+                    fontSize={{ base: "1.2rem", md: "1rem" }}
+                    fontWeight={400}
+                    onClick={() => signOut()}>
+                    Sign out
+                  </Text>
+                </>
+              ) : (
+                <Text
+                  fontSize={{ base: "1.2rem", md: "1rem" }}
+                  fontWeight={400}
+                  onClick={() => signIn("google")}>
+                  Sign in
+                </Text>
+              )}
             </Flex>
           </Box>
         </Collapse>
