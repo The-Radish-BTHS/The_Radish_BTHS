@@ -77,6 +77,7 @@ export const articleRouter = t.router({
       await ctx.prisma.submission.create({
         data: {
           link: input.link,
+          title: input.title,
           userId: ctx.user.id,
           authors: {
             connect: input.authors,

@@ -80,6 +80,7 @@ model Article {
 model Submission {
   id      String   @id @default(cuid())
   link    String
+  title   String
   userId  String
   user    User     @relation(fields: [userId], references: [id])
   topics  Topic[]
