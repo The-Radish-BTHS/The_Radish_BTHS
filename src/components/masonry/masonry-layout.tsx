@@ -11,14 +11,27 @@ const catchMins = (obj: any, min: number | undefined) => {
 };
 
 const MasonryLayout: React.FC<
-  React.PropsWithChildren<{ numItems?: number; breakpoints?: any }>
-> = ({ numItems, breakpoints = { default: 3, 990: 2, 767: 1 }, children }) => {
+  React.PropsWithChildren<{
+    numItems?: number;
+    breakpoints?: any;
+    staticCols?: boolean;
+  }>
+> = ({
+  numItems,
+  breakpoints = { default: 3, 990: 2, 767: 1 },
+  staticCols = false,
+  children,
+}) => {
   const breakpointColumnsObj = catchMins(breakpoints, numItems);
   return (
     <Masonry
       breakpointCols={breakpointColumnsObj}
       className={styles["my-masonry-grid"]}
-      columnClassName={styles["my-masonry-grid_column"]}>
+      columnClassName={
+        staticCols
+          ? styles["static-masonry-grid_column"]
+          : styles["my-masonry-grid_column"]
+      }>
       {children}
     </Masonry>
   );

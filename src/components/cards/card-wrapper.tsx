@@ -1,7 +1,7 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex, FlexProps } from "@chakra-ui/react";
 import React from "react";
 
-const CardWrapper: React.FC<React.PropsWithChildren> = ({
+const CardWrapper: React.FC<React.PropsWithChildren<FlexProps>> = ({
   children,
   ...rest
 }) => {

@@ -16,4 +16,10 @@ export const submissionRouter = t.router({
         include: { topics: true, authors: true },
       });
     }),
+
+  getAll: t.procedure.query(async ({ ctx }) => {
+    return await ctx.prisma.submission.findMany({
+      include: { topics: true, authors: true },
+    });
+  }),
 });
