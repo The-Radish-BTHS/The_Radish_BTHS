@@ -18,18 +18,16 @@ const EditorDashboard: NextPage = () => {
     <Layout title="Editor Dashboard">
       {sessionData && sessionData.user?.permission !== UserPermission.NORMIE ? (
         <>
-          <Heading
-            fontWeight={700}
-            borderBottom="4px dotted red"
-            w="fit-content">
-            Hay their editers!
-          </Heading>
-
-          <Flex mt="2rem" flexDir="column">
-            <Heading fontWeight={600}>Submittted artikles</Heading>
+          <Flex flexDir="column">
+            <Flex mb="1rem">
+              <Heading borderBottom="4px dotted red" w="fit-content">
+                Hay their editers!
+              </Heading>
+              <Heading ml="0.5rem">Submitteded art tickles</Heading>
+            </Flex>
             <Text>Thyme two edit them ardiculs!!!</Text>
             <Divider borderColor="black" my="1rem" />
-            <MasonryLayout staticCols>
+            <MasonryLayout>
               {submissions?.map((article, i) => (
                 <SubmissionCard {...article} key={i} />
               ))}

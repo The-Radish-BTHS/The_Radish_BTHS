@@ -25,11 +25,7 @@ const Eggsex: NextPage = () => {
         </Flex>
       ) : (
         <>
-          <Heading fontWeight={700} textDecor="underline">
-            Welcome, my chosen ones.
-          </Heading>
-
-          <Flex mt="2rem" flexDir="column">
+          <Flex flexDir="column">
             <Heading fontWeight={600}>Edited articles</Heading>
             <Text>They&apos;ve been edited. What now?</Text>
             <Divider borderColor="black" my="1rem" />
