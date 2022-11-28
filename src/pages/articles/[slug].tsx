@@ -110,6 +110,18 @@ const Article: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
               </ModalFooter>
             </ModalContent>
           </Modal>
+          {!articleData.published && (
+            <Flex
+              justifyContent="center"
+              gap="0.75rem"
+              w="101vw"
+              mb="1rem"
+              borderY="1px solid black">
+              {[...Array(30)].map((_, i) => (
+                <Text key={i}>UNPUBLISHED</Text>
+              ))}
+            </Flex>
+          )}
 
           <Flex w="100%">
             <Flex flex={1} />
