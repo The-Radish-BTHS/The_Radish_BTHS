@@ -21,12 +21,14 @@ export interface ArticlePageType
 }
 
 export interface ArticardType
-  extends Omit<
-    ArticleType,
-    "authors" | "issue" | "topics" | "published" | "publishedOn" | "content"
-  > {
+  extends FlexProps,
+    Omit<
+      ArticleType,
+      "authors" | "issue" | "topics" | "published" | "publishedOn" | "content"
+    > {
   excerpt: string | null;
   styles?: FlexProps;
+  title: string;
 
   authors: PersonReference[];
   issue?: IssueReference | null;

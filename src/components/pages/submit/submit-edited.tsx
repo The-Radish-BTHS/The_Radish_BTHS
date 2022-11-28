@@ -44,6 +44,27 @@ const SubmitEdited: NextPage = () => {
   const people = peopleQuery.data || [];
   const article = articleQuery.data;
 
+  const submitArticle = trpc.article.editorSubmit.useMutation({
+    onError(err) {
+      toast({
+        title: `Article Edit Error ${err.data?.httpStatus}: ${err.message}`,
+        status: "error",
+        duration: 4000,
+        position: "bottom-right",
+        isClosable: true,
+      });
+    },
+    onSuccess() {
+      toast({
+        title: "Article Edited Successfully!",
+        status: "success",
+        duration: 4000,
+        position: "bottom-right",
+        isClosable: true,
+      });
+    },
+  });
+
   // State
   const [topicSelections, setTopicSelections] = useState<Topic[]>(
     article?.topics || []
@@ -89,11 +110,14 @@ const SubmitEdited: NextPage = () => {
           disclosure={submitDisclosure}
           data={formData}
           onClick={async (inputData: InputData) => {
-            const data = {
-              ...inputData,
-              topics: topicSelections,
-              authors: authorSelections,
-            };
+            await submitArticle
+              .mutateAsync({
+                title: inputData.title,
+                content: inputData.content,
+                authors: authorSelections,
+                topics: topicSelections,
+              })
+              .catch(() => 0);
           }}
         />
 

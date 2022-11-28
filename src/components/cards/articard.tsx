@@ -4,11 +4,6 @@ import Link from "@components/link";
 import CardWrapper from "./card-wrapper";
 import TopicCard from "./topic-card";
 
-const prune = (text: string, n: number = 90) =>
-  text[n] == " " || text.length < n
-    ? text.slice(0, n)
-    : text.slice(0, n).slice(0, text.slice(0, n).lastIndexOf(" "));
-
 const Articard: React.FC<ArticardType> = ({
   title,
   excerpt,
@@ -17,9 +12,13 @@ const Articard: React.FC<ArticardType> = ({
   slug,
   styles,
   topics = [],
+  ...rest
 }) => {
   return (
-    <CardWrapper w={{ base: "94vw", md: "40vw", lg: "30vw" }} {...styles}>
+    <CardWrapper
+      w={{ base: "94vw", md: "40vw", lg: "30vw" }}
+      {...styles}
+      {...rest}>
       <Center flexDir="column" w="100%" p="0.75rem">
         <Link href={`/articles/${slug}`} w="100%">
           <Heading maxW="100%" fontSize="1.5rem" mb="0.5rem">
@@ -37,18 +36,20 @@ const Articard: React.FC<ArticardType> = ({
           )}
         </Link>
         <Flex fontSize="0.9rem" w="100%" mt="0.5rem">
-          <Link
-            href={`/people/${authors[0] ? authors[0].slug : ""}`}
-            mr="0.2rem">
+          <Link href={`/people/${authors[0] ? authors[0].slug : ""}`}>
             {authors[0] ? authors[0].name : ""}
           </Link>
           {authors?.length > 1 && `, ${authors.length - 1} more`}
 
-          <Text fontWeight="bold" mx="0.2rem">
-            {" "}
-            ∙{" "}
-          </Text>
-          <Link href={`/issues/${issue?.slug}`}>{issue?.title}</Link>
+          {issue && (
+            <>
+              <Text fontWeight="bold" mx="0.2rem">
+                {" "}
+                ∙{" "}
+              </Text>
+              <Link href={`/issues/${issue?.slug}`}>{issue?.title}</Link>
+            </>
+          )}
         </Flex>
       </Center>
       {topics && topics.length > 0 && (

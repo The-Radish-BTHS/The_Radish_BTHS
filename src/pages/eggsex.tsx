@@ -1,6 +1,7 @@
 import { Divider, Flex, Heading, Text } from "@chakra-ui/react";
 import Articard from "@components/cards/articard";
 import Layout from "@components/layout/layout";
+import MasonryLayout from "@components/masonry/masonry-layout";
 import { trpc } from "@lib/trpc";
 import { UserPermission } from "@prisma/client";
 import { NextPage } from "next";
@@ -24,16 +25,19 @@ const Eggsex: NextPage = () => {
         </Flex>
       ) : (
         <>
-          <Heading fontSize="2.3rem">Eggsex</Heading>
-          <Text fontSize="1.2rem">Welcome, my chosen ones.</Text>
+          <Heading fontWeight={700} textDecor="underline">
+            Welcome, my chosen ones.
+          </Heading>
 
-          <Flex mt="8rem" flexDir="column">
-            <Heading>Edited articles</Heading>
+          <Flex mt="2rem" flexDir="column">
+            <Heading fontWeight={600}>Edited articles</Heading>
             <Text>They&apos;ve been edited. What now?</Text>
             <Divider borderColor="black" my="1rem" />
-            {editedArticles?.map((article, i) => (
-              <Articard {...article} key={i} />
-            ))}
+            <MasonryLayout>
+              {editedArticles?.map((article, i) => (
+                <Articard {...article} key={i} mb="1.5rem" />
+              ))}
+            </MasonryLayout>
           </Flex>
         </>
       )}

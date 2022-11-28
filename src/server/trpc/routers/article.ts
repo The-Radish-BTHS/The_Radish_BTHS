@@ -105,7 +105,6 @@ export const articleRouter = t.router({
       z.object({
         title: z.string(),
         content: z.string(),
-        issueSlug: z.string(),
         topics: z.array(
           z.object({
             slug: z.string(),
@@ -133,7 +132,6 @@ export const articleRouter = t.router({
           topics: {
             connect: input.topics,
           },
-          issueSlug: input.issueSlug,
         },
       });
     }),
