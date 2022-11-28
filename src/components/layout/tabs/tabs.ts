@@ -72,3 +72,10 @@ export const EggsexTab: ITab = {
   fillIcon: MdArticle,
   route: "/eggsex",
 };
+
+export const EditorDashboardTab: ITab = {
+  name: "Editor Dashboard",
+  outlineIcon: MdOutlineArticle,
+  fillIcon: MdArticle,
+  route: "/editor-dashboard",
+};

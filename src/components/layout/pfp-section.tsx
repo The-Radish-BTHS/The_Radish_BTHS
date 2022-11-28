@@ -39,6 +39,12 @@ const PfpSection: React.FC = () => {
         <MenuItem as={Link} href="/articles/submit">
           Submit an article
         </MenuItem>
+        {(data?.user?.permission === UserPermission.EDITOR ||
+          data?.user?.permission === UserPermission.EXEC) && (
+          <MenuItem as={Link} href="/editor-dashboard">
+            Editor Dashboard
+          </MenuItem>
+        )}
         {data?.user?.permission === UserPermission.EXEC && (
           <MenuItem as={Link} href="/eggsex">
             Exec Dashboard

@@ -9,7 +9,13 @@ import {
   useTheme,
 } from "@chakra-ui/react";
 import { Tab } from "./tab";
-import { accountTabs, EggsexTab, ITab, navigationTabs } from "./tabs";
+import {
+  accountTabs,
+  EditorDashboardTab,
+  EggsexTab,
+  ITab,
+  navigationTabs,
+} from "./tabs";
 import { Cross } from "hamburger-react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { UserPermission } from "@prisma/client";
@@ -51,6 +57,14 @@ const MobileNav: React.FC<{
                       selected={tab === selectedTab}
                     />
                   ))}
+                  {(sessionData?.user?.permission === UserPermission.EDITOR ||
+                    sessionData?.user?.permission === UserPermission.EXEC) && (
+                    <Tab
+                      tab={EditorDashboardTab}
+                      key={"editorDashbaord"}
+                      selected={EditorDashboardTab === selectedTab}
+                    />
+                  )}
                   {sessionData?.user?.permission === UserPermission.EXEC && (
                     <Tab
                       tab={EggsexTab}
