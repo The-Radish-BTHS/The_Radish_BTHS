@@ -16,8 +16,10 @@ export const authOptions: NextAuthOptions = {
         session.user.id = user.id;
         // @ts-ignore
         session.user.person = await getPerson(user.personSlug);
-        // @ts-ignore
+
         session.user.permission = user.permission;
+        session.user.lastTopicCreation = user.lastTopicCreation;
+        session.user.lastArticleSubmission = user.lastArticleSubmission;
       }
       return session;
     },

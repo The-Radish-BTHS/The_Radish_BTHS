@@ -1,6 +1,9 @@
 import { customSlugify } from "@lib/helpers.server";
+import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { t, authedProcedure } from "..";
+
+const TOPIC_CREATION_COOLDOWN = 5 * 60 * 1000; // 5 minutes, in milliseconds
 
 export const topicRouter = t.router({
   create: authedProcedure
@@ -11,13 +14,28 @@ export const topicRouter = t.router({
       })
     )
     .mutation(async ({ ctx, input }) => {
-      await ctx.prisma.topic.create({
-        data: {
-          slug: customSlugify(input.name),
-          name: input.name,
-          description: input.description || "",
-        },
-      });
+      // check cooldown
+      const topicCreationElapsed =
+        Date.now() - (ctx.user.lastTopicCreation?.getTime() || 0);
+      if (topicCreationElapsed < TOPIC_CREATION_COOLDOWN)
+        throw new TRPCError({
+          code: "TOO_MANY_REQUESTS",
+          message: `You can only create a new topic every ${TOPIC_CREATION_COOLDOWN} milliseconds`,
+        });
+
+      await ctx.prisma.$transaction([
+        ctx.prisma.topic.create({
+          data: {
+            slug: customSlugify(input.name),
+            name: input.name,
+            description: input.description || "",
+          },
+        }),
+        ctx.prisma.user.update({
+          where: { id: ctx.user.id },
+          data: { lastTopicCreation: new Date() },
+        }),
+      ]);
     }),
 
   getBySlug: t.procedure
