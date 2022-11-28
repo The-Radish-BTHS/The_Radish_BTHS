@@ -30,7 +30,7 @@ const SubmissionCard: React.FC<{
         ))}
       </Flex>
 
-      <Flex gap="1rem" mt="1rem">
+      <Flex gap="1rem" mt="1rem" justifyContent="flex-end">
         <LinkButton href={link} external>
           Read Article
         </LinkButton>
