@@ -140,7 +140,7 @@ export const articleRouter = t.router({
     .input(
       z.object({
         slug: z.string(),
-        issueSlug: z.string(),
+        issueSlug: z.string().optional(),
       })
     )
     .mutation(async ({ ctx, input }) => {

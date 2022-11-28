@@ -1,10 +1,8 @@
-import { ArticardType } from "@/types/article";
-import { Flex, Heading, Text } from "@chakra-ui/react";
+import { Heading, Text } from "@chakra-ui/react";
 import Articard from "@components/cards/articard";
 import Layout from "@components/layout/layout";
 import MasonryLayout from "@components/masonry/masonry-layout";
 import { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
-import { getArticles } from "@lib/getters/many-getters.server";
 import { getSsgCaller } from "@lib/ssg-helper";
 import { trpc } from "@lib/trpc";
 
