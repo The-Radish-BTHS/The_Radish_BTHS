@@ -10,7 +10,7 @@
 }
 .static-masonry-grid_column {
   background-clip: padding-box;
-  width: fit-content !important;
+  width: 33.33%;
 }
 
 /* Style your items */
