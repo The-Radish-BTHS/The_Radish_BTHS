@@ -28,11 +28,10 @@ function StyledMultiselect<T>({
       }
       onRemove={(_, selectedItem) =>
         setValues((prev: T[]) => {
-          const newArray: typeof selectedItem = prev.slice(
-            prev.indexOf(selectedItem),
-            1
-          );
-          return newArray;
+          console.log(prev);
+          console.log(selectedItem);
+          prev.splice(prev.indexOf(selectedItem), 1);
+          return prev;
         })
       }
       style={{
