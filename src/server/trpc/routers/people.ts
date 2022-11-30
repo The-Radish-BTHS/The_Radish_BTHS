@@ -1,3 +1,4 @@
+import { customSlugify } from "@lib/helpers.server";
 import { Person } from "@prisma/client";
 import { z } from "zod";
 import { authedProcedure, t } from "..";
@@ -48,5 +49,27 @@ export const peopleRouter = t.router({
         ...person,
         ...former(person),
       }));
+    }),
+  update: t.procedure
+    .input(
+      z.object({
+        slug: z.string(),
+        name: z.string(),
+        gradYear: z.number(),
+        description: z.string(),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      return await ctx.prisma.person.update({
+        where: {
+          slug: input.slug,
+        },
+        data: {
+          name: input.name,
+          slug: customSlugify(input.name),
+          gradYear: input.gradYear,
+          description: input.description,
+        },
+      });
     }),
 });

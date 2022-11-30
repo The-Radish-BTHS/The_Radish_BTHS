@@ -8,6 +8,7 @@ import { GetServerSideProps, NextPage } from "next";
 import { useSession } from "next-auth/react";
 import { useEffect, useRef, useState } from "react";
 import RequiredUserWrapper from "@components/required-user-wrapper";
+import { trpc } from "@lib/trpc";
 
 const update = async (slug: string, data: any) => {
   const response = await fetch(`/api/update?type=person&&slug=${slug}`, {
@@ -37,6 +38,7 @@ const Account: NextPage<{ peopleSlugs: string[] }> = ({ peopleSlugs }) => {
   const person = data?.user?.person;
 
   const today = new Date();
+  const updateAccount = trpc.person.update.useMutation();
 
   const [name, setName] = useState(person?.name);
   const [gradYear, setGradYear] = useState(person?.gradYear);
@@ -76,24 +78,16 @@ const Account: NextPage<{ peopleSlugs: string[] }> = ({ peopleSlugs }) => {
       return;
     }
 
-    if (name !== person?.name && personSlugIsUnique(name!)) {
-      await update(person?.slug, {
-        name: name,
-        slug: customSlugify(name!),
-      });
+    if (name && gradYear && description !== undefined) {
+      await updateAccount
+        .mutateAsync({
+          slug: person.slug,
+          name: name,
+          gradYear: gradYear,
+          description: description,
+        })
+        .then(() => reloadSession());
     }
-    if (gradYear !== person?.gradYear) {
-      await update(person?.slug, {
-        gradYear: gradYear,
-      });
-    }
-    if (description !== person?.description) {
-      await update(person?.slug, {
-        description: description,
-      });
-    }
-
-    reloadSession();
   };
 
   return (
