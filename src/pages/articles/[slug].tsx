@@ -120,46 +120,46 @@ const Article: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
             </Flex>
           )}
 
-          <Flex w="100%">
-            <Flex flex={1} />
-            <Flex
-              flexDir="column"
-              justifyContent="center"
-              alignItems="center"
-              flex={1}>
-              <Heading textAlign="center" maxW="85vw">
-                {articleData.title}
-              </Heading>
-              <Flex fontSize="1.05rem" mt="0.5rem" justifyContent="center">
-                {articleData.authors?.map((author, i) => (
-                  <Link key={i} href={`/people/${author.slug}`} mr="0.2rem">
-                    {author.name}
-                  </Link>
-                ))}
-                <Text fontWeight="bold" mx="0.2rem">
-                  {" "}
-                  ∙{" "}
-                </Text>
-                <Text>{pubString}</Text>
+          <Flex
+            w="100%"
+            position="relative"
+            flexDir="column"
+            justifyContent="center"
+            alignItems="center"
+            flex={1}>
+            <Heading textAlign="center" maxW="85vw">
+              {articleData.title}
+            </Heading>
+            <Flex fontSize="1.05rem" mt="0.5rem" justifyContent="center">
+              {articleData.authors?.map((author, i) => (
+                <Link key={i} href={`/people/${author.slug}`} mr="0.2rem">
+                  {author.name}
+                  {i < articleData.authors.length - 1 && ", "}
+                </Link>
+              ))}
+              <Text fontWeight="bold" mx="0.2rem">
+                {" "}
+                ∙{" "}
+              </Text>
+              <Text>{pubString}</Text>
 
-                {articleData.issue && (
-                  <>
-                    <Text fontWeight="bold" mx="0.2rem">
-                      {" "}
-                      ∙{" "}
-                    </Text>
-                    <Link href={`/issues/${articleData.issueSlug}`}>
-                      {articleData.issue.title}
-                    </Link>
-                  </>
-                )}
-              </Flex>
-            </Flex>
-            <Flex flex={1} justifyContent="flex-end" mr="2rem">
-              {!articleData.published && (
-                <Button onClick={onOpen}>Publish</Button>
+              {articleData.issue && (
+                <>
+                  <Text fontWeight="bold" mx="0.2rem">
+                    {" "}
+                    ∙{" "}
+                  </Text>
+                  <Link href={`/issues/${articleData.issueSlug}`}>
+                    {articleData.issue.title}
+                  </Link>
+                </>
               )}
             </Flex>
+            {!articleData.published && (
+              <Button onClick={onOpen} position="absolute" right="2rem">
+                Publish
+              </Button>
+            )}
           </Flex>
 
           <Flex
