@@ -85,7 +85,8 @@ model Submission {
   link    String
   title   String
   userId  String
-  graphicsRequest String?
+  graphicsRequest   String?
+  graphicsComplete  Boolean @default(false)
   user    User     @relation(fields: [userId], references: [id])
   topics  Topic[]
   authors Person[]

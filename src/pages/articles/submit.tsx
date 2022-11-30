@@ -21,10 +21,11 @@ import InfoTooltip from "@components/info-tooltip";
 import SubmitModal from "@components/pages/submit/submit-modal";
 import { useIsMobile } from "@hooks/useIsMobile";
 
-export type InputData = {
+export interface InputData {
   title: string;
   content: string;
-};
+  graphics?: string;
+}
 
 const Submit: NextPage = () => {
   // Get Data
@@ -102,6 +103,7 @@ const Submit: NextPage = () => {
               .mutateAsync({
                 title: inputData.title,
                 link: inputData.content,
+                graphics: inputData.graphics,
                 authors: [
                   { slug: sessionData.user.person.slug },
                   ...authorSelections,
@@ -235,6 +237,13 @@ const Submit: NextPage = () => {
             values={authorSelections}
             setValues={setAuthorSelections}
           />
+          <Flex w="100%" justifyContent="space-between">
+            <p>Graphics Requests:</p>
+
+            <InfoTooltip text="Did you have any graphics in mind for your article? If not, our amazing graphics team will take care of it for you (threatening). Leave blank if no graphics are required :)" />
+          </Flex>
+
+          <input placeholder="Graphics Requests" {...register("graphics")} />
           <Button type="submit" mt="1rem">
             Submit it!
           </Button>
