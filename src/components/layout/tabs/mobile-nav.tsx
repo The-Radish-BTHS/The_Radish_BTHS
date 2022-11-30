@@ -9,28 +9,18 @@ import {
   useTheme,
 } from "@chakra-ui/react";
 import { Tab } from "./tab";
-import {
-  accountTabs,
-  ArtsyDashboardTab,
-  EditorDashboardTab,
-  EggsexTab,
-  ITab,
-  navigationTabs,
-} from "./tabs";
+import { accountTabs, navigationTabs } from "./tabs";
 import { Cross } from "hamburger-react";
 import { signIn, signOut, useSession } from "next-auth/react";
-import { useCanAccess } from "@hooks/useCanAccess";
 
 const MobileNav: React.FC<{
-  selectedTab: ITab | undefined;
   containerRef: React.MutableRefObject<HTMLDivElement>;
-}> = ({ selectedTab, containerRef }) => {
+}> = ({ containerRef }) => {
   const controls = useDisclosure();
   const theme = useTheme();
   const bg = theme.styles.global.body.bg;
   const { status } = useSession();
   const authed = status === "authenticated";
-  const { canAccess } = useCanAccess();
 
   return (
     <Flex flexDirection="column">
@@ -47,39 +37,14 @@ const MobileNav: React.FC<{
           <Box w="100vw" bgColor={bg}>
             <Flex flexDir="column" gap="1rem" px="1rem" py="1rem">
               {navigationTabs.map((tab, index) => (
-                <Tab tab={tab} key={index} selected={tab === selectedTab} />
+                <Tab tab={tab} key={index} />
               ))}
               <Divider borderColor="black" />
               {authed ? (
                 <>
                   {accountTabs.map((tab, index) => (
-                    <Tab
-                      tab={tab}
-                      key={"account" + index}
-                      selected={tab === selectedTab}
-                    />
+                    <Tab tab={tab} key={"account" + index} />
                   ))}
-                  {canAccess("editor") && (
-                    <Tab
-                      tab={EditorDashboardTab}
-                      key={"editorDashbaord"}
-                      selected={EditorDashboardTab === selectedTab}
-                    />
-                  )}
-                  {canAccess("artist") && (
-                    <Tab
-                      tab={ArtsyDashboardTab}
-                      key={"eggsex"}
-                      selected={ArtsyDashboardTab === selectedTab}
-                    />
-                  )}
-                  {canAccess("exec") && (
-                    <Tab
-                      tab={EggsexTab}
-                      key={"eggsex"}
-                      selected={EggsexTab === selectedTab}
-                    />
-                  )}
                   <Text
                     fontSize={{ base: "1.2rem", md: "1rem" }}
                     fontWeight={400}

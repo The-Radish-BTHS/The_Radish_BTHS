@@ -40,12 +40,7 @@ const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({
           pageIndex !== undefined ? navigationTabs[pageIndex].name : title ?? ""
         }
       />
-      <Topbar
-        image={image}
-        selectedTab={
-          pageIndex !== undefined ? navigationTabs[pageIndex] : undefined
-        }
-      />
+      <Topbar image={image} />
       <Flex w="100%" maxH="100%" flex={1} pt="4.35rem">
         <Flex
           flex={1}

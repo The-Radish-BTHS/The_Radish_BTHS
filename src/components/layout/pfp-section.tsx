@@ -12,6 +12,7 @@ import {
 import { BsChevronDown } from "react-icons/bs";
 import Link from "next/link";
 import { useCanAccess } from "@hooks/useCanAccess";
+import { accountTabs } from "./tabs/tabs";
 
 const PfpSection: React.FC = () => {
   const { data, status } = useSession();
@@ -32,26 +33,14 @@ const PfpSection: React.FC = () => {
         {data?.user?.name}
       </MenuButton>
       <MenuList bg={bg} border="1px solid black">
-        <MenuItem as={Link} href="/account">
-          Account
-        </MenuItem>
-        <MenuItem as={Link} href="/articles/submit">
-          Submit an article
-        </MenuItem>
-        {canAccess("editor") && (
-          <MenuItem as={Link} href="/editor-dashboard">
-            Editor Dashboard
-          </MenuItem>
-        )}
-        {canAccess("artist") && (
-          <MenuItem as={Link} href="/artsy-dashboard">
-            Artsy Dashboard
-          </MenuItem>
-        )}
-        {canAccess("exec") && (
-          <MenuItem as={Link} href="/eggsex">
-            Exec Dashboard
-          </MenuItem>
+        {accountTabs.map((tab, i) =>
+          canAccess(tab.perm || "") ? (
+            <MenuItem as={Link} href={tab.route} key={i}>
+              {tab.name}
+            </MenuItem>
+          ) : (
+            <></>
+          )
         )}
         <Divider />
         <MenuItem onClick={() => signOut()}>Sign Out</MenuItem>

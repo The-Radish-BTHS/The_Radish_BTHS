@@ -13,7 +13,7 @@ import { useRef } from "react";
 import PfpSection from "./pfp-section";
 import MobileNav from "./tabs/mobile-nav";
 import { Tab } from "./tabs/tab";
-import { ITab, navigationTabs } from "./tabs/tabs";
+import { navigationTabs } from "./tabs/tabs";
 
 const Wrapper: React.FC<React.PropsWithChildren<FlexProps>> = ({
   children,
@@ -24,10 +24,7 @@ const Wrapper: React.FC<React.PropsWithChildren<FlexProps>> = ({
   </Flex>
 );
 
-const Topbar: React.FC<{ selectedTab: ITab | undefined; image: string }> = ({
-  selectedTab,
-  image,
-}) => {
+const Topbar: React.FC<{ image: string }> = ({ image }) => {
   const isMobile = useIsMobile();
   const mobileDropdownRef = useRef() as React.MutableRefObject<HTMLDivElement>;
   const theme = useTheme();
@@ -58,15 +55,12 @@ const Topbar: React.FC<{ selectedTab: ITab | undefined; image: string }> = ({
           </Link>
         </Wrapper>
         {isMobile ? (
-          <MobileNav
-            selectedTab={selectedTab}
-            containerRef={mobileDropdownRef}
-          />
+          <MobileNav containerRef={mobileDropdownRef} />
         ) : (
           <>
             <Wrapper justifyContent="center" gap="1rem">
               {navigationTabs.map((tab, i) => (
-                <Tab key={i} tab={tab} selected={selectedTab === tab} />
+                <Tab key={i} tab={tab} />
               ))}
             </Wrapper>
             <Wrapper justifyContent="flex-end" pr="1.5rem">

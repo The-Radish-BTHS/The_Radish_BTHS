@@ -5,8 +5,8 @@ export const useCanAccess = () => {
   const { data } = useSession();
   const permission = data?.user?.permission;
 
-  const canAccess = (val: "exec" | "editor" | "artist" | "normie") => {
-    if (permission === UserPermission.EXEC) {
+  const canAccess = (val: "exec" | "editor" | "artist" | "normie" | "") => {
+    if (permission === UserPermission.EXEC || val === "") {
       return true;
     }
     if (val === "editor") {
