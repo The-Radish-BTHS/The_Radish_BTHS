@@ -1,7 +1,7 @@
 import { Flex, Heading, Text, useDisclosure, useToast } from "@chakra-ui/react";
 import Link from "next/link";
 
-import { Person, UserPermission, Topic } from "@prisma/client";
+import { Person, Topic } from "@prisma/client";
 import { NextPage } from "next";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
@@ -20,6 +20,7 @@ import NewTopicModal from "@components/pages/submit/new-topic-modal";
 import { ErrorMessage } from "@hookform/error-message";
 import SubmitModal from "@components/pages/submit/submit-modal";
 import { useIsMobile } from "@hooks/useIsMobile";
+import { useCanAccess } from "@hooks/useCanAccess";
 
 export type InputData = {
   title: string;
@@ -32,6 +33,7 @@ const Edit: NextPage = () => {
   const toast = useToast();
   const mobile = useIsMobile();
   const router = useRouter();
+  const { canAccess } = useCanAccess();
   const newTopicDisclosure = useDisclosure();
   const submitDisclosure = useDisclosure();
 
@@ -97,21 +99,17 @@ const Edit: NextPage = () => {
   });
 
   useEffect(() => {
-    if (
-      sessionData &&
-      sessionData?.user?.permission !== UserPermission.NORMIE
-    ) {
+    if (canAccess("editor")) {
       setValue("title", article?.title || "");
       setValue("content", article?.link || "");
       setTopicSelections(article?.topics || []);
       setAuthorSelections(article?.authors || []);
     }
-  }, [sessionData, article, setValue]);
+  }, [sessionData, article, setValue, canAccess]);
 
   return (
     <Layout title="Edit an Article!" alignItems="center">
-      {sessionData &&
-      sessionData?.user?.permission !== UserPermission.NORMIE ? (
+      {canAccess("editor") ? (
         <RequiredUserWrapper>
           <SubmitModal
             disclosure={submitDisclosure}

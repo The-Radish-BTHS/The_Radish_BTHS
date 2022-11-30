@@ -28,10 +28,9 @@ import { slugsToPaths } from "@lib/helpers.server";
 import prisma from "@lib/prisma.server";
 import { getSsgCaller } from "@lib/ssg-helper";
 import { trpc } from "@lib/trpc";
-import { useSession } from "next-auth/react";
-import { UserPermission } from "@prisma/client";
 import Button from "@components/button";
 import { useRouter } from "next/router";
+import { useCanAccess } from "@hooks/useCanAccess";
 
 const Article: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
   props
@@ -45,10 +44,10 @@ const Article: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
 
   const articleData = article.data!;
 
-  const { data: sessionData } = useSession();
   const { isOpen, onClose, onOpen } = useDisclosure();
   const router = useRouter();
   const toast = useToast();
+  const { canAccess } = useCanAccess();
   const publishArticle = trpc.article.publish.useMutation({
     onError(err) {
       toast({
@@ -78,9 +77,7 @@ const Article: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
 
   return (
     <Layout title={articleData.title} alignItems="center">
-      {articleData.published ||
-      (sessionData &&
-        sessionData?.user?.permission !== UserPermission.NORMIE) ? (
+      {articleData.published || canAccess("editor") ? (
         <>
           <Modal isOpen={isOpen} onClose={onClose} isCentered>
             <ModalOverlay />

@@ -2,21 +2,19 @@ import { Divider, Flex, Heading, Text } from "@chakra-ui/react";
 import SubmissionCard from "@components/cards/submission-card";
 import Layout from "@components/layout/layout";
 import MasonryLayout from "@components/masonry/masonry-layout";
+import { useCanAccess } from "@hooks/useCanAccess";
 import { trpc } from "@lib/trpc";
-import { UserPermission } from "@prisma/client";
 import { NextPage } from "next";
-import { useSession } from "next-auth/react";
 import Link from "next/link";
 
 const EditorDashboard: NextPage = () => {
-  const { data: sessionData } = useSession();
-
   const submissionsQuery = trpc.submission.getAll.useQuery();
   const submissions = submissionsQuery.data;
+  const { canAccess } = useCanAccess();
 
   return (
     <Layout title="Editor Dashboard">
-      {sessionData && sessionData.user?.permission !== UserPermission.NORMIE ? (
+      {canAccess("editor") ? (
         <>
           <Flex flexDir="column">
             <Flex mb="1rem">

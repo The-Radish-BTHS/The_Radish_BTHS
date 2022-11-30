@@ -5,21 +5,20 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
-  Flex,
-  Text,
   Button,
   useTheme,
   Divider,
 } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
 import Link from "next/link";
-import { UserPermission } from "@prisma/client";
+import { useCanAccess } from "@hooks/useCanAccess";
 
 const PfpSection: React.FC = () => {
   const { data, status } = useSession();
   const authed = status === "authenticated";
   const theme = useTheme();
   const bg = theme.styles.global.body.bg;
+  const { canAccess } = useCanAccess();
 
   return authed ? (
     <Menu>
@@ -39,13 +38,12 @@ const PfpSection: React.FC = () => {
         <MenuItem as={Link} href="/articles/submit">
           Submit an article
         </MenuItem>
-        {(data?.user?.permission === UserPermission.EDITOR ||
-          data?.user?.permission === UserPermission.EXEC) && (
+        {canAccess("editor") && (
           <MenuItem as={Link} href="/editor-dashboard">
             Editor Dashboard
           </MenuItem>
         )}
-        {data?.user?.permission === UserPermission.EXEC && (
+        {canAccess("exec") && (
           <MenuItem as={Link} href="/eggsex">
             Exec Dashboard
           </MenuItem>

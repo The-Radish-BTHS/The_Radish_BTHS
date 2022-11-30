@@ -18,7 +18,7 @@ import {
 } from "./tabs";
 import { Cross } from "hamburger-react";
 import { signIn, signOut, useSession } from "next-auth/react";
-import { UserPermission } from "@prisma/client";
+import { useCanAccess } from "@hooks/useCanAccess";
 
 const MobileNav: React.FC<{
   selectedTab: ITab | undefined;
@@ -27,8 +27,9 @@ const MobileNav: React.FC<{
   const controls = useDisclosure();
   const theme = useTheme();
   const bg = theme.styles.global.body.bg;
-  const { data: sessionData, status } = useSession();
+  const { status } = useSession();
   const authed = status === "authenticated";
+  const { canAccess } = useCanAccess();
 
   return (
     <Flex flexDirection="column">
@@ -57,15 +58,14 @@ const MobileNav: React.FC<{
                       selected={tab === selectedTab}
                     />
                   ))}
-                  {(sessionData?.user?.permission === UserPermission.EDITOR ||
-                    sessionData?.user?.permission === UserPermission.EXEC) && (
+                  {canAccess("editor") && (
                     <Tab
                       tab={EditorDashboardTab}
                       key={"editorDashbaord"}
                       selected={EditorDashboardTab === selectedTab}
                     />
                   )}
-                  {sessionData?.user?.permission === UserPermission.EXEC && (
+                  {canAccess("exec") && (
                     <Tab
                       tab={EggsexTab}
                       key={"eggsex"}

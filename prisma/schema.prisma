@@ -120,6 +120,8 @@ model Person {
 enum UserPermission {
   NORMIE
   EDITOR
+  ARTIST
+  TEAMS_MEMBER
   EXEC
 }
 
