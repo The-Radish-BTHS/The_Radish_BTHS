@@ -1,5 +1,5 @@
-import { InfoOutlineIcon } from "@chakra-ui/icons";
 import { Tooltip } from "@chakra-ui/react";
+import { AiOutlineInfoCircle } from "react-icons/ai";
 
 const InfoTooltip: React.FC<{ text: string }> = ({ text }) => (
   <Tooltip
@@ -9,7 +9,7 @@ const InfoTooltip: React.FC<{ text: string }> = ({ text }) => (
     border="1px solid black"
     color="black"
     borderRadius="0.25rem">
-    <InfoOutlineIcon />
+    <AiOutlineInfoCircle />
   </Tooltip>
 );
 

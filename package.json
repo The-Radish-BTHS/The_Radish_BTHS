@@ -13,7 +13,6 @@
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
   "dependencies": {
-    "@chakra-ui/icons": "^2.0.12",
     "@chakra-ui/react": "^2.2.1",
     "@emotion/is-prop-valid": "^1.2.0",
     "@emotion/react": "^11.9.3",
@@ -34,7 +33,6 @@
     "formik": "^2.2.9",
     "framer-motion": "^6.4.3",
     "hamburger-react": "^2.5.0",
-    "jotai": "^1.7.4",
     "lodash": "^4.17.21",
     "markdown-to-txt": "^2.0.1",
     "multiselect-react-dropdown": "^2.0.25",
