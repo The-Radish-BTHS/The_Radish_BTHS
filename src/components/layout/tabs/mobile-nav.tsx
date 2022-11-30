@@ -11,6 +11,7 @@ import {
 import { Tab } from "./tab";
 import {
   accountTabs,
+  ArtsyDashboardTab,
   EditorDashboardTab,
   EggsexTab,
   ITab,
@@ -63,6 +64,13 @@ const MobileNav: React.FC<{
                       tab={EditorDashboardTab}
                       key={"editorDashbaord"}
                       selected={EditorDashboardTab === selectedTab}
+                    />
+                  )}
+                  {canAccess("artist") && (
+                    <Tab
+                      tab={ArtsyDashboardTab}
+                      key={"eggsex"}
+                      selected={ArtsyDashboardTab === selectedTab}
                     />
                   )}
                   {canAccess("exec") && (

@@ -43,6 +43,11 @@ const PfpSection: React.FC = () => {
             Editor Dashboard
           </MenuItem>
         )}
+        {canAccess("artist") && (
+          <MenuItem as={Link} href="/artsy-dashboard">
+            Artsy Dashboard
+          </MenuItem>
+        )}
         {canAccess("exec") && (
           <MenuItem as={Link} href="/eggsex">
             Exec Dashboard

@@ -79,3 +79,10 @@ export const EditorDashboardTab: ITab = {
   fillIcon: MdArticle,
   route: "/editor-dashboard",
 };
+
+export const ArtsyDashboardTab: ITab = {
+  name: "Artsy Dashboard",
+  outlineIcon: MdOutlineArticle,
+  fillIcon: MdArticle,
+  route: "/artsy-dashboard",
+};
