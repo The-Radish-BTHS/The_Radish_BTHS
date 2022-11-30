@@ -25,6 +25,7 @@ export interface InputData {
   title: string;
   content: string;
   graphics?: string;
+  timeFrame?: string;
 }
 
 const Submit: NextPage = () => {
@@ -104,6 +105,7 @@ const Submit: NextPage = () => {
                 title: inputData.title,
                 link: inputData.content,
                 graphics: inputData.graphics,
+                timeFrame: inputData.timeFrame,
                 authors: [
                   { slug: sessionData.user.person.slug },
                   ...authorSelections,
@@ -243,7 +245,18 @@ const Submit: NextPage = () => {
             <InfoTooltip text="Did you have any graphics in mind for your article? If not, our amazing graphics team will take care of it for you (threatening). Leave blank if no graphics are required :)" />
           </Flex>
 
-          <input placeholder="Graphics Requests" {...register("graphics")} />
+          <input
+            placeholder="Graphics Requests"
+            {...register("graphics")}
+            className={styles["form-element-margin"]}
+          />
+          <Flex w="100%" justifyContent="space-between">
+            <p>Time Frame:</p>
+
+            <InfoTooltip text="Is your article super topical? Would you like it published within a certain amount of time? Let us know right here! Otherwise, leave it blank and press submit!!!" />
+          </Flex>
+
+          <input placeholder="Time frame" {...register("timeFrame")} />
           <Button type="submit" mt="1rem">
             Submit it!
           </Button>

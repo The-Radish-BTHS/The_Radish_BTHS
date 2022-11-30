@@ -8,9 +8,10 @@ const SubmissionCard: React.FC<{
   id: string;
   link: string;
   title: string;
+  timeFrame: string | null;
   topics: Topic[];
   authors: Person[];
-}> = ({ id, link, title, topics, authors }) => {
+}> = ({ id, link, title, timeFrame, topics, authors }) => {
   return (
     <CardWrapper p="1rem" mb="1.5rem" width="100%">
       <Heading fontSize="1.5rem" mb="0.25rem">
@@ -29,6 +30,7 @@ const SubmissionCard: React.FC<{
           <TopicCard {...topic} key={i} />
         ))}
       </Flex>
+      <Text>{timeFrame}</Text>
 
       <Flex gap="1rem" mt="1rem" justifyContent="flex-end">
         <LinkButton href={link} external>

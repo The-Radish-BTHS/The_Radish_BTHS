@@ -87,6 +87,7 @@ model Submission {
   userId  String
   graphicsRequest   String?
   graphicsComplete  Boolean @default(false)
+  timeFrame         String?
   user    User     @relation(fields: [userId], references: [id])
   topics  Topic[]
   authors Person[]

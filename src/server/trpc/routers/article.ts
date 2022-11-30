@@ -76,6 +76,7 @@ export const articleRouter = t.router({
         link: z.string(),
         title: z.string(),
         graphics: z.string().optional(),
+        timeFrame: z.string().optional(),
         authors: z.array(
           z.object({
             slug: z.string(),
@@ -103,6 +104,7 @@ export const articleRouter = t.router({
             link: input.link,
             title: input.title,
             graphicsRequest: input.graphics,
+            timeFrame: input.timeFrame,
             userId: ctx.user.id,
             authors: {
               connect: input.authors,

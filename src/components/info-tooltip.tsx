@@ -9,7 +9,9 @@ const InfoTooltip: React.FC<{ text: string }> = ({ text }) => (
     border="1px solid black"
     color="black"
     borderRadius="0.25rem">
-    <AiOutlineInfoCircle />
+    <div>
+      <AiOutlineInfoCircle />
+    </div>
   </Tooltip>
 );
 
