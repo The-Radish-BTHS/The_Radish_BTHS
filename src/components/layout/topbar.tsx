@@ -1,5 +1,6 @@
 import {
   Box,
+  Center,
   Divider,
   Flex,
   FlexProps,
@@ -36,19 +37,24 @@ const Topbar: React.FC<{ image: string }> = ({ image }) => {
       position="absolute"
       w="100%"
       bgColor={bg}
-      zIndex={999}>
+      zIndex={999}
+    >
       <Flex alignItems="center" p="0.8rem 0.75rem" w="100%">
         <Wrapper>
           <Link href="/">
             <Flex alignItems="center" gap="1rem">
-              <Image src={image} alt="icon" maxW="2.75rem" maxH="2.75rem" />
+              {/* 3.25rem to prevent the height change from displaying the hamburger menu initally */}
+              <Center w="3.5rem" h="3.25rem">
+                <Image src={image} alt="icon" maxH="2.75rem" />
+              </Center>
               <Heading
                 fontSize={{
                   base: "1.75rem",
                   sm: "2.5rem",
                   md: "1.75rem",
                   lg: "2.5rem",
-                }}>
+                }}
+              >
                 The Radish
               </Heading>
             </Flex>
