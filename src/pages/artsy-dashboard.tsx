@@ -1,4 +1,5 @@
 import { Divider, Flex, Heading, Text } from "@chakra-ui/react";
+import GraphicsCard from "@components/cards/graphics-card";
 import SubmissionCard from "@components/cards/submission-card";
 import Layout from "@components/layout/layout";
 import MasonryLayout from "@components/masonry/masonry-layout";
@@ -20,9 +21,13 @@ const ArtsyDashboard: NextPage = () => {
             <Heading>Hey artists!!!!!</Heading>
             <Text>Thanks for being better than the editors :)</Text>
             <Divider borderColor="black" my="1rem" />
-            <MasonryLayout>
+            <MasonryLayout staticCols>
               {submissions?.map((article, i) => (
-                <SubmissionCard {...article} key={i} />
+                <GraphicsCard
+                  title={article.title}
+                  request={article.graphicsRequest}
+                  key={i}
+                />
               ))}
             </MasonryLayout>
           </Flex>
