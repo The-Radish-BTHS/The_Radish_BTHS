@@ -22,4 +22,16 @@ export const submissionRouter = t.router({
       include: { topics: true, authors: true },
     });
   }),
+  getAllWithEdited: t.procedure
+    .input(
+      z.object({
+        edited: z.boolean().default(false),
+      })
+    )
+    .query(async ({ ctx, input }) => {
+      return await ctx.prisma.submission.findMany({
+        where: { beenEdited: input.edited },
+        include: { topics: true, authors: true },
+      });
+    }),
 });

@@ -33,12 +33,13 @@ const Edit: NextPage = () => {
   const toast = useToast();
   const mobile = useIsMobile();
   const router = useRouter();
+  const submissionId = router.query.id?.toString() as string;
   const { canAccess } = useCanAccess();
   const newTopicDisclosure = useDisclosure();
   const submitDisclosure = useDisclosure();
 
   const articleQuery = trpc.submission.get.useQuery({
-    id: router.query.id?.toString() as string,
+    id: submissionId,
   });
   const articleSlugsQuery = trpc.article.getSlugs.useQuery();
   const topicsQuery = trpc.topic.getAll.useQuery();
@@ -121,6 +122,7 @@ const Edit: NextPage = () => {
                   content: inputData.content,
                   authors: authorSelections,
                   topics: topicSelections,
+                  id: submissionId,
                 })
                 .catch(() => 0);
             }}

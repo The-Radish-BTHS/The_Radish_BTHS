@@ -136,25 +136,36 @@ export const articleRouter = t.router({
             slug: z.string(),
           })
         ),
+        id: z.string(),
       })
     )
     .mutation(async ({ ctx, input }) => {
       const slug = customSlugify(input.title);
 
-      await ctx.prisma.article.create({
-        data: {
-          authors: {
-            connect: input.authors,
+      await ctx.prisma.$transaction([
+        ctx.prisma.article.create({
+          data: {
+            authors: {
+              connect: input.authors,
+            },
+            title: input.title,
+            slug,
+            content: input.content,
+            excerpt: input.content.substring(0, 100),
+            topics: {
+              connect: input.topics,
+            },
           },
-          title: input.title,
-          slug,
-          content: input.content,
-          excerpt: input.content.substring(0, 100),
-          topics: {
-            connect: input.topics,
+        }),
+        ctx.prisma.submission.update({
+          where: {
+            id: input.id,
           },
-        },
-      });
+          data: {
+            beenEdited: true,
+          },
+        }),
+      ]);
     }),
 
   publish: execProcedure
