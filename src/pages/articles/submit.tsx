@@ -113,8 +113,27 @@ const Submit: NextPage = () => {
                 topics: topicSelections,
               })
               .catch(() => 0);
-          }}
-        />
+          }}>
+          <Text>Are you sure you have checked all the things???</Text>
+          <ul style={{ marginTop: "1rem" }}>
+            <li style={{ marginLeft: "1rem" }}>
+              Is the doc shared with theradishbths@gmail.com?
+            </li>
+            <li style={{ marginLeft: "1rem" }}>Is your title correct?</li>
+            <li style={{ marginLeft: "1rem" }}>
+              Have you selected all of your topics?
+            </li>
+            <li style={{ marginLeft: "1rem" }}>
+              Have you added anyone you worked with?
+            </li>
+            <li style={{ marginLeft: "1rem" }}>
+              Have you requested any graphics you may need?
+            </li>
+            <li style={{ marginLeft: "1rem" }}>
+              Have you set a time frame if your article is time sensitive?
+            </li>
+          </ul>
+        </SubmitModal>
 
         <NewTopicModal
           disclosure={newTopicDisclosure}

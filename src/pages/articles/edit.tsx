@@ -125,8 +125,13 @@ const Edit: NextPage = () => {
                   id: submissionId,
                 })
                 .catch(() => 0);
-            }}
-          />
+            }}>
+            <Text>Are you sure you have edited all the things???</Text>
+            <ul style={{ marginTop: "1rem" }}>
+              <li style={{ marginLeft: "1rem" }}>Is the title all good?</li>
+              <li style={{ marginLeft: "1rem" }}>Are the topics perfect?</li>
+            </ul>
+          </SubmitModal>
 
           <Heading textAlign="center">So you want to edit an Article?</Heading>
           <Text textAlign="center" fontSize="1.25rem">
