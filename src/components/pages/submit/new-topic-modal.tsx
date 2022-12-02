@@ -40,6 +40,7 @@ const NewTopicModal: React.FC<{
     },
   });
   const { isOpen, onClose } = disclosure;
+  const utils = trpc.useContext();
 
   const {
     handleSubmit,
@@ -71,8 +72,7 @@ const NewTopicModal: React.FC<{
               required
             />
             <p
-              className={`${styles["form-element-margin"]} ${styles["error-message"]}`}
-            >
+              className={`${styles["form-element-margin"]} ${styles["error-message"]}`}>
               <ErrorMessage
                 errors={errors}
                 name="name"
@@ -133,11 +133,8 @@ const NewTopicModal: React.FC<{
               onClose();
               setValue("name", "");
               setValue("description", "");
-
-              // TODO: creating a new topic doesnt invalidate the query for topics
-              // window.location.reload();
-            })}
-          >
+              utils.topic.getAll.invalidate();
+            })}>
             Make!
           </Button>
         </ModalFooter>

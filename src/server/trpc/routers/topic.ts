@@ -3,7 +3,7 @@ import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { t, authedProcedure } from "..";
 
-const TOPIC_CREATION_COOLDOWN = 5 * 60 * 1000; // 5 minutes, in milliseconds
+const TOPIC_CREATION_COOLDOWN = 60 * 1000; // 1 minute, in milliseconds
 
 export const topicRouter = t.router({
   create: authedProcedure
@@ -20,7 +20,11 @@ export const topicRouter = t.router({
       if (topicCreationElapsed < TOPIC_CREATION_COOLDOWN)
         throw new TRPCError({
           code: "TOO_MANY_REQUESTS",
-          message: `You can only create a new topic every ${TOPIC_CREATION_COOLDOWN} milliseconds`,
+          message: `You can only create a new topic ${
+            TOPIC_CREATION_COOLDOWN === 60 * 1000
+              ? "once every minute"
+              : `every ${TOPIC_CREATION_COOLDOWN / 1000 / 60} minutes`
+          }`,
         });
 
       await ctx.prisma.$transaction([

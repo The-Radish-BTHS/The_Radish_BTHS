@@ -7,7 +7,7 @@ import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { authedProcedure, editorProcedure, execProcedure, t } from "..";
 
-const ARTICLE_SUBMISSION_COOLDOWN = 5 * 60 * 1000; // 5 minutes, in milliseconds
+const ARTICLE_SUBMISSION_COOLDOWN = 3 * 60 * 1000; // 3 minutes, in milliseconds
 
 export const articleRouter = t.router({
   get: t.procedure
@@ -95,7 +95,9 @@ export const articleRouter = t.router({
       if (articleSubmissionElapsed < ARTICLE_SUBMISSION_COOLDOWN)
         throw new TRPCError({
           code: "TOO_MANY_REQUESTS",
-          message: `You can only submit an article every ${ARTICLE_SUBMISSION_COOLDOWN} milliseconds`,
+          message: `You can only submit an article every ${
+            ARTICLE_SUBMISSION_COOLDOWN / 1000 / 60
+          } minutes`,
         });
 
       await ctx.prisma.$transaction([
