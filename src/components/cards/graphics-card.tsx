@@ -12,6 +12,7 @@ import {
   ModalCloseButton,
 } from "@chakra-ui/react";
 import Button from "@components/button";
+import { ImageUpload } from "@components/image-upload";
 import LinkButton from "@components/link-button";
 import { Person, Topic, User } from "@prisma/client";
 import CardWrapper from "./card-wrapper";
@@ -33,7 +34,9 @@ const GraphicsCard: React.FC<{
           maxW="min(40rem, 100%)">
           <ModalHeader>Thanks for making some dope art!</ModalHeader>
           <ModalCloseButton />
-          <ModalBody></ModalBody>
+          <ModalBody>
+            <ImageUpload name="thumbnail" />
+          </ModalBody>
 
           <ModalFooter>
             <Button
