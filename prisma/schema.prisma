@@ -81,14 +81,16 @@ model Article {
 }
 
 model Submission {
-  id      String   @id @default(cuid())
-  link    String
-  title   String
-  userId  String
+  id                String   @id @default(cuid())
+  link              String
+  title             String
+  userId            String
   graphicsRequest   String?
-  graphicsComplete  Boolean @default(false)
+  graphicsComplete  Boolean  @default(false)
+  imageUrls         String[] @default([])
   timeFrame         String?
-  beenEdited        Boolean @default(false)
+  beenEdited        Boolean  @default(false)
+
   user    User     @relation(fields: [userId], references: [id])
   topics  Topic[]
   authors Person[]

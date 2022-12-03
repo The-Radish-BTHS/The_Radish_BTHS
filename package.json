@@ -36,6 +36,7 @@
     "lodash": "^4.17.21",
     "markdown-to-txt": "^2.0.1",
     "multiselect-react-dropdown": "^2.0.25",
+    "nanoid": "^4.0.0",
     "next": "^13.0.5",
     "next-auth": "^4.16.4",
     "next-sanity": "^0.8.4",

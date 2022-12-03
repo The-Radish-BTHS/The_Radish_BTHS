@@ -21,6 +21,10 @@ const uploadPublic = async (key: string, data: string) => {
     .save(Buffer.from(data, "base64"), { private: false, public: true });
 };
 
+const deleteFile = async (key: string) => {
+  await bucket.file(key).delete();
+};
+
 const clone = async (from: string, to: string) => {
   await bucket.file(from).copy(to);
 };
@@ -30,6 +34,7 @@ const unkey = (url: string) => url.replace(`${BASE_URL}/`, "");
 
 export const storage = {
   uploadPublic,
+  deleteFile,
   clone,
   key,
   unkey,
