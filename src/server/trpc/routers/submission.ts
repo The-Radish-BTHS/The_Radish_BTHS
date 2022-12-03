@@ -5,7 +5,7 @@ import { z } from "zod";
 import { authedProcedure, t } from "..";
 
 // 1MB in base64 string
-const GRAPHICS_MAX_PER = 1024 * 1024 * (4 / 3);
+const GRAPHICS_MAX_PER = 4 * 1024 * 1024 * (4 / 3);
 
 export const submissionRouter = t.router({
   get: t.procedure
@@ -53,7 +53,7 @@ export const submissionRouter = t.router({
     .input(
       z.object({
         id: z.string(),
-        files: z.array(z.string().max(GRAPHICS_MAX_PER)).max(5),
+        files: z.array(z.string().max(GRAPHICS_MAX_PER)).max(10),
       })
     )
     .mutation(async ({ ctx, input }) => {
