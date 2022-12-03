@@ -4,11 +4,12 @@ import html from "remark-html";
 import remarkGfm from "remark-gfm";
 import remarkToc from "remark-toc";
 import rehypeRaw from "rehype-raw";
+import rehypeSanitize from "rehype-sanitize";
 import { Image } from "@chakra-ui/react";
 
 const Markdown: React.FC<{ content: string }> = ({ content }) => (
   <ReactMarkdown
-    rehypePlugins={[rehypeRaw]}
+    rehypePlugins={[rehypeRaw, rehypeSanitize]}
     remarkPlugins={[remarkGfm, html, remarkToc]}
     components={{
       ul: (props) => <ul style={{ width: "100%" }} {...props} />,
