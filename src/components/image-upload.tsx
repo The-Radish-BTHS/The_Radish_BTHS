@@ -4,11 +4,16 @@ import { useRef, useState } from "react";
 
 interface IImageUploadProps {
   name: string;
+  files: File[];
+  setFiles: React.Dispatch<React.SetStateAction<File[]>>;
 }
 
-export const ImageUpload: React.FC<IImageUploadProps> = ({ name }) => {
+export const ImageUpload: React.FC<IImageUploadProps> = ({
+  name,
+  files,
+  setFiles,
+}) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const [files, setFiles] = useState<FileList>();
 
   return (
     <>
@@ -24,7 +29,7 @@ export const ImageUpload: React.FC<IImageUploadProps> = ({ name }) => {
         onChange={(evt) => {
           if (evt.target.files && evt.target.files[0]) {
             console.log(evt.target.files);
-            setFiles(evt.target.files);
+            setFiles(Array.from(evt.target.files));
           }
         }}
       />
@@ -40,7 +45,8 @@ export const ImageUpload: React.FC<IImageUploadProps> = ({ name }) => {
           "&:hover .overlay": {
             opacity: 1,
           },
-        }}>
+        }}
+      >
         <Flex
           border="1px solid black"
           w="100%"
@@ -48,7 +54,8 @@ export const ImageUpload: React.FC<IImageUploadProps> = ({ name }) => {
           borderRadius="0.75rem"
           flexDirection="column"
           alignItems="center"
-          justifyContent="center">
+          justifyContent="center"
+        >
           <Heading>
             {files?.length ? "Change your Graphics?" : "Upload Your Art!!!!"}
           </Heading>

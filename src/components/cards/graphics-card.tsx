@@ -14,14 +14,21 @@ import {
 import Button from "@components/button";
 import { ImageUpload } from "@components/image-upload";
 import LinkButton from "@components/link-button";
+import { trpc } from "@lib/trpc";
 import { Person, Topic, User } from "@prisma/client";
+import { useState } from "react";
 import CardWrapper from "./card-wrapper";
 import TopicCard from "./topic-card";
 
 const GraphicsCard: React.FC<{
   title: string;
   request: string | null;
-}> = ({ title, request }) => {
+  submissionId: string;
+}> = ({ submissionId, title, request }) => {
+  // TODO: SANTIAGO UI!!!!!!!!!!!!!!!!!!!!
+  const submitGraphics = trpc.submission.submitGraphics.useMutation();
+  const trpcContext = trpc.useContext();
+  const [files, setFiles] = useState<File[]>([]);
   const { onOpen, isOpen, onClose } = useDisclosure();
 
   return (
@@ -31,18 +38,30 @@ const GraphicsCard: React.FC<{
         <ModalContent
           bg="#ebeae5"
           borderRadius="0.75rem"
-          maxW="min(40rem, 100%)">
+          maxW="min(40rem, 100%)"
+        >
           <ModalHeader>Thanks for making some dope art!</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <ImageUpload name="thumbnail" />
+            <ImageUpload name="thumbnail" files={files} setFiles={setFiles} />
           </ModalBody>
 
           <ModalFooter>
             <Button
+              isLoading={submitGraphics.isLoading}
               onClick={async () => {
-                // TODO: gilbert make the images happen
-              }}>
+                await submitGraphics
+                  .mutateAsync({
+                    id: submissionId,
+                    files: await Promise.all(files.map(toBase64)),
+                  })
+                  .catch(() => 0);
+
+                await trpcContext.submission.getGraphicsRequests.invalidate();
+
+                onClose();
+              }}
+            >
               Submit my images!
             </Button>
           </ModalFooter>
@@ -58,5 +77,14 @@ const GraphicsCard: React.FC<{
     </CardWrapper>
   );
 };
+
+const toBase64 = (file: File) =>
+  new Promise<string>((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () =>
+      resolve((reader.result as string).replace("data:image/png;base64,", ""));
+    reader.onerror = (error) => reject(error);
+  });
 
 export default GraphicsCard;

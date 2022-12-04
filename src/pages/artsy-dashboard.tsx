@@ -9,7 +9,7 @@ import { NextPage } from "next";
 import Link from "next/link";
 
 const ArtsyDashboard: NextPage = () => {
-  const submissionsQuery = trpc.submission.getAll.useQuery();
+  const submissionsQuery = trpc.submission.getGraphicsRequests.useQuery();
   const submissions = submissionsQuery.data;
   const { canAccess } = useCanAccess();
 
@@ -26,6 +26,7 @@ const ArtsyDashboard: NextPage = () => {
                 <GraphicsCard
                   title={article.title}
                   request={article.graphicsRequest}
+                  submissionId={article.id}
                   key={i}
                 />
               ))}
@@ -37,7 +38,8 @@ const ArtsyDashboard: NextPage = () => {
           h="100%"
           flexDir="column"
           alignItems="center"
-          justifyContent="center">
+          justifyContent="center"
+        >
           <Heading>Ur not an editor fam...</Heading>
           <Link href="/about">Apply to join the editing team!</Link>
         </Flex>
