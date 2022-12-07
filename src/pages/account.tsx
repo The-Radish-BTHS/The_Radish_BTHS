@@ -119,7 +119,7 @@ const Account: NextPage<{ peopleSlugs: string[] }> = ({ peopleSlugs }) => {
             value={gradYear}
             setValue={setGradYear}
             placeholder="Graduation Year"
-            len={4}
+            max={4}
             number
           />
           <DataInput
