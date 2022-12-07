@@ -35,6 +35,12 @@ export const submissionRouter = t.router({
       where: { graphicsComplete: false },
     });
   }),
+  getCompletedGraphicsRequests: t.procedure.query(async ({ ctx }) => {
+    return await ctx.prisma.submission.findMany({
+      include: { topics: true, authors: true },
+      where: { graphicsComplete: true },
+    });
+  }),
 
   getAllWithEdited: t.procedure
     .input(

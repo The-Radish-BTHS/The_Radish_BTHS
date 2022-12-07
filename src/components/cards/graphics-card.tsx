@@ -13,12 +13,9 @@ import {
 } from "@chakra-ui/react";
 import Button from "@components/button";
 import { ImageUpload } from "@components/image-upload";
-import LinkButton from "@components/link-button";
 import { trpc } from "@lib/trpc";
-import { Person, Topic, User } from "@prisma/client";
 import { useState } from "react";
 import CardWrapper from "./card-wrapper";
-import TopicCard from "./topic-card";
 
 const GraphicsCard: React.FC<{
   title: string;
@@ -38,8 +35,7 @@ const GraphicsCard: React.FC<{
         <ModalContent
           bg="#ebeae5"
           borderRadius="0.75rem"
-          maxW="min(40rem, 100%)"
-        >
+          maxW="min(40rem, 100%)">
           <ModalHeader>Thanks for making some dope art!</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
@@ -60,8 +56,7 @@ const GraphicsCard: React.FC<{
                 await trpcContext.submission.getGraphicsRequests.invalidate();
 
                 onClose();
-              }}
-            >
+              }}>
               Submit my images!
             </Button>
           </ModalFooter>
