@@ -103,47 +103,57 @@ const Account: NextPage<{ peopleSlugs: string[] }> = ({ peopleSlugs }) => {
         <Text fontSize="2.5rem" fontWeight={300} textTransform="capitalize">
           {person?.position}, Graduat{former ? "ed" : "ing"} {gradYear}
         </Text>
-        <Text ml="1.5rem" fontSize="1.5rem">
+        <Text fontSize="1.5rem">
           {description ? `"${description}"` : <br />}
         </Text>
         <Flex flexDirection="column" mt="3rem">
           <Heading mb="1rem">Update your information</Heading>
 
-          <DataInput
-            initialValue={person?.name}
-            value={name}
-            setValue={setName}
-            placeholder="Name"
-          />
+          <DataInput value={name} setValue={setName} placeholder="Name" />
           {!personSlugIsUnique(name || "") && name !== person?.name && (
             <p className={"form-element-margin error-message"}>
               Someone with that name already exists!
             </p>
           )}
           <DataInput
-            initialValue={person?.gradYear}
             value={gradYear}
             setValue={setGradYear}
             placeholder="Graduation Year"
+            len={4}
             number
           />
           <DataInput
-            initialValue={person?.description}
             value={description}
             setValue={setDescription}
             placeholder="Description"
           />
-          <button
-            className="accountSubmitButton"
-            onClick={onSubmit}
-            disabled={
-              (name === person?.name &&
+          <Flex gap="1rem">
+            <button
+              className="accountSubmitButton"
+              onClick={onSubmit}
+              disabled={
+                (name === person?.name &&
+                  gradYear === person?.gradYear &&
+                  description === person?.description) ||
+                (!personSlugIsUnique(name || "") && name !== person?.name)
+              }>
+              Save!
+            </button>
+            <button
+              className="accountRevertButton"
+              disabled={
+                description === person?.description &&
                 gradYear === person?.gradYear &&
-                description === person?.description) ||
-              (!personSlugIsUnique(name || "") && name !== person?.name)
-            }>
-            Save!
-          </button>
+                name === person?.name
+              }
+              onClick={() => {
+                setDescription(person?.description);
+                setGradYear(person?.gradYear);
+                setName(person?.name);
+              }}>
+              Revert
+            </button>
+          </Flex>
         </Flex>
       </RequiredUserWrapper>
     </Layout>

@@ -2,37 +2,30 @@ import { Flex, Input } from "@chakra-ui/react";
 
 const DataInput: React.FC<{
   number?: boolean;
-  initialValue: string | number | undefined;
   value: string | number | undefined;
   setValue: React.Dispatch<React.SetStateAction<any>>;
+  max?: number;
   placeholder: string;
-}> = ({ number, initialValue, value, setValue, placeholder }) => {
+}> = ({ number, value, setValue, max, placeholder }) => {
   return (
-    <Flex>
-      <Input
-        placeholder={placeholder}
-        type={number ? "number" : "text"}
-        value={value || (number ? 0 : "")}
-        style={{
-          background: "transparent",
-          border: "1px solid black",
-          borderRadius: "0.75rem",
-          marginBottom: "0.5rem",
-          marginRight: "0.5rem",
-          padding: "0.5rem",
-        }}
-        width={{ base: "80vw", md: "50vw" }}
-        onChange={(e) =>
-          setValue(number ? parseInt(e.target.value) : e.target.value)
-        }
-      />{" "}
-      <button
-        className="accountRevertButton"
-        disabled={value === initialValue}
-        onClick={() => setValue(initialValue)}>
-        Revert
-      </button>
-    </Flex>
+    <Input
+      placeholder={placeholder}
+      pattern={number ? "d*" : "*"}
+      value={value || (number ? 0 : "")}
+      style={{
+        background: "transparent",
+        border: "1px solid black",
+        borderRadius: "0.75rem",
+        marginBottom: "0.5rem",
+        marginRight: "0.5rem",
+        padding: "0.5rem",
+      }}
+      width={{ base: "80vw", md: "50vw" }}
+      maxLength={max}
+      onChange={(e) =>
+        setValue(number ? parseInt(e.target.value) : e.target.value)
+      }
+    />
   );
 };
 
