@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import Layout from "@components/layout/layout";
 import Link from "@components/link";
+import { useIsMobile } from "@hooks/useIsMobile";
 import { getPeopleWithArticles } from "@lib/getters/many-getters.server";
 import { GetStaticProps } from "next";
 
@@ -23,7 +24,10 @@ interface Stats {
   topicsUsed: number;
 }
 
-const Row: React.FC<{ stats: Stats }> = ({ stats }) => {
+const Row: React.FC<{ stats: Stats; isMobile?: boolean }> = ({
+  stats,
+  isMobile,
+}) => {
   return (
     <Tr
       fontWeight={stats.isExec ? (stats.former ? "medium" : "bold") : "light"}
@@ -32,19 +36,21 @@ const Row: React.FC<{ stats: Stats }> = ({ stats }) => {
         <Link href={`/people/${stats.slug}`}>{stats.name}</Link>
       </Td>
       <Td isNumeric>{stats.articles}</Td>
-      <Td isNumeric>{stats.collabs}</Td>
-      <Td isNumeric>{stats.topicsUsed}</Td>
+      {!isMobile && (
+        <>
+          <Td isNumeric>{stats.collabs}</Td>
+          <Td isNumeric>{stats.topicsUsed}</Td>
+        </>
+      )}
     </Tr>
   );
 };
 
 const Rankings: React.FC<{ authorStats: Stats[] }> = ({ authorStats }) => {
-  authorStats.sort((a, b) => {
-    // Compare the 2 dates
-    if (a.articles < b.articles) return 1;
-    if (a.articles > b.articles) return -1;
-    return 0;
-  });
+  authorStats.sort((a, b) =>
+    a.articles < b.articles ? 1 : a.articles === b.articles ? 0 : -1
+  );
+  const isMobile = useIsMobile();
 
   return (
     <Layout title="Rankings" alignItems="center">
@@ -56,7 +62,8 @@ const Rankings: React.FC<{ authorStats: Stats[] }> = ({ authorStats }) => {
         width="90vw"
         minW="fit-content"
         overflowY="visible"
-        overflowX="visible">
+        overflowX="visible"
+        whiteSpace="pre-wrap">
         <Table variant="simple" colorScheme="grey">
           <Thead>
             <Tr>
@@ -66,17 +73,21 @@ const Rankings: React.FC<{ authorStats: Stats[] }> = ({ authorStats }) => {
               <Th fontWeight="bold" color="black" isNumeric>
                 Articles
               </Th>
-              <Th fontWeight="bold" color="black" isNumeric>
-                Number of Collaborations
-              </Th>
-              <Th fontWeight="bold" color="black" isNumeric>
-                Topics Used
-              </Th>
+              {!isMobile && (
+                <>
+                  <Th fontWeight="bold" color="black" isNumeric>
+                    Number of Collaborations
+                  </Th>
+                  <Th fontWeight="bold" color="black" isNumeric>
+                    Topics Used
+                  </Th>
+                </>
+              )}
             </Tr>
           </Thead>
           <Tbody>
             {authorStats.map((stats, i) => (
-              <Row stats={stats} key={i} />
+              <Row stats={stats} isMobile={isMobile} key={i} />
             ))}
           </Tbody>
         </Table>
