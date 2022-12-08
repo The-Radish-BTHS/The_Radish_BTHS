@@ -10,12 +10,13 @@ import { Flex, Text } from "@chakra-ui/react";
 const Tickets: NextPage<{ ticketData: ticketDataType }> = ({ ticketData }) => {
   return (
     <Layout title="Tickonomy" alignItems="center">
-      <Flex my="0.5rem">
-        <Text mr="0.25rem">If you wanna see your role models, look </Text>
+      <Text mr="0.25rem" my="0.5rem">
+        If you wanna see your role models, look{" "}
         <Link href="/rankings" textDecor="underline">
-          here.
+          here
         </Link>
-      </Flex>
+        .
+      </Text>
       <TicketTable textHeader="Action" numericHeader="Reward">
         {ticketData.actions.map(({ action, description, reward }, i) => (
           <Row
