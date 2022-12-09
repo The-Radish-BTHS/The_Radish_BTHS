@@ -30,13 +30,17 @@ const GraphicsCard: React.FC<{
 
   return (
     <CardWrapper p="1rem" mb="1.5rem" width="100%">
-      <Modal isOpen={isOpen} onClose={onClose} isCentered>
+      <Modal
+        isOpen={isOpen}
+        onClose={onClose}
+        size={{ base: "full", md: "md" }}
+        isCentered>
         <ModalOverlay />
         <ModalContent
           bg="#ebeae5"
-          borderRadius="0.75rem"
+          borderRadius={{ base: 0, md: "0.75rem" }}
           maxW="min(40rem, 100%)">
-          <ModalHeader>Thanks for making some dope art!</ModalHeader>
+          <ModalHeader w="75vw">Thanks for making some dope art!</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <ImageUpload name="thumbnail" files={files} setFiles={setFiles} />

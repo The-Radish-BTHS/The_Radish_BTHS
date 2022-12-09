@@ -1,6 +1,5 @@
 import { Accordion, Divider, Flex, Heading, Text } from "@chakra-ui/react";
 import GraphicsCard from "@components/cards/graphics-card";
-import SubmissionCard from "@components/cards/submission-card";
 import Collapse from "@components/collapse";
 import Layout from "@components/layout/layout";
 import MasonryLayout from "@components/masonry/masonry-layout";

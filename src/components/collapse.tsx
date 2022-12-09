@@ -23,8 +23,8 @@ const Collapse: React.FC<
         <AccordionIcon boxSize="1.8rem" />
       </AccordionButton>
       <Divider borderColor="#636363" />
-      <AccordionPanel p="1.5rem 2.5rem 0 2.5rem">
-        <Box ml="1rem">{children}</Box>
+      <AccordionPanel pt="1.5rem" px={{ base: "0.5rem", md: "2.5rem" }}>
+        <Box>{children}</Box>
       </AccordionPanel>
     </AccordionItem>
   );
