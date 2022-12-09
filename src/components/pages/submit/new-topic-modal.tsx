@@ -16,6 +16,7 @@ import { ErrorMessage } from "@hookform/error-message";
 import { customSlugify, topicNameIsUnique } from "@lib/helpers.server";
 import { Topic } from "@prisma/client";
 import { trpc } from "@lib/trpc";
+import { useIsMobile } from "@hooks/useIsMobile";
 
 interface NewTopicType {
   name: string;
@@ -28,6 +29,7 @@ const NewTopicModal: React.FC<{
   addTopic: (topic: Topic) => void;
 }> = ({ disclosure, topicSlugs, addTopic }) => {
   const toast = useToast();
+  const isMobile = useIsMobile();
   const createTopic = trpc.topic.create.useMutation({
     onError(err: any) {
       toast({
@@ -52,9 +54,13 @@ const NewTopicModal: React.FC<{
   });
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} isCentered>
+    <Modal
+      isOpen={isOpen}
+      onClose={onClose}
+      size={isMobile ? "full" : "md"}
+      isCentered>
       <ModalOverlay />
-      <ModalContent bg="#ebeae5" borderRadius="0.75rem">
+      <ModalContent bg="#ebeae5" borderRadius={isMobile ? "0" : "0.75rem"}>
         <ModalHeader>New Topic Alert!!!</ModalHeader>
         <ModalCloseButton />
         <ModalBody>

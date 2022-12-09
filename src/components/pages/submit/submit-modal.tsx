@@ -13,6 +13,7 @@ import { useRouter } from "next/router";
 import Button from "@components/button";
 import { InputData } from "@/pages/articles/submit";
 import React from "react";
+import { useIsMobile } from "@hooks/useIsMobile";
 
 const SubmitModal: React.FC<
   React.PropsWithChildren<{
@@ -23,9 +24,14 @@ const SubmitModal: React.FC<
 > = ({ children, disclosure, onClick, data }) => {
   const { isOpen, onClose } = disclosure;
   const router = useRouter();
+  const isMobile = useIsMobile();
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} isCentered>
+    <Modal
+      isOpen={isOpen}
+      onClose={onClose}
+      size={isMobile ? "full" : "md"}
+      isCentered>
       <ModalOverlay />
       <ModalContent bg="#ebeae5" borderRadius="0.75rem">
         <ModalHeader>Are you sure?</ModalHeader>
