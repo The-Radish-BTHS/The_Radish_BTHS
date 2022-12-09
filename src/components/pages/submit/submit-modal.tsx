@@ -30,7 +30,7 @@ const SubmitModal: React.FC<
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      size={isMobile ? "full" : "md"}
+      size={{ base: "full", md: "md" }}
       isCentered>
       <ModalOverlay />
       <ModalContent bg="#ebeae5" borderRadius={{ base: 0, md: "0.75rem" }}>

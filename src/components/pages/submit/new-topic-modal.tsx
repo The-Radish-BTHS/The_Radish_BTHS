@@ -57,10 +57,10 @@ const NewTopicModal: React.FC<{
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      size={isMobile ? "full" : "md"}
+      size={{ base: "full", md: "md" }}
       isCentered>
       <ModalOverlay />
-      <ModalContent bg="#ebeae5" borderRadius={isMobile ? "0" : "0.75rem"}>
+      <ModalContent bg="#ebeae5" borderRadius={{ base: 0, md: "0.75rem" }}>
         <ModalHeader>New Topic Alert!!!</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
