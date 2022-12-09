@@ -5,17 +5,9 @@ import Layout from "@components/layout/layout";
 import type { GetStaticProps, NextPage } from "next";
 import { TopicCardType } from "@/types/topic";
 import { ArticardType } from "@/types/article";
-import {
-  getArticles,
-  getIssues,
-  getTopics,
-} from "@lib/getters/many-getters.server";
+import { getArticles, getTopics } from "@lib/getters/many-getters.server";
 import { IssueCardType } from "@/types/issue";
-import { Button, Flex, Text } from "@chakra-ui/react";
-
-import { signIn, useSession } from "next-auth/react";
 import { getLastIssue } from "@lib/getters/unique-getters.server";
-import { trpc } from "@lib/trpc";
 
 const Home: NextPage<{
   topics: TopicCardType[];
@@ -26,9 +18,7 @@ const Home: NextPage<{
   return (
     <Layout alignItems="center" gap="2.5rem">
       <LatestSection issue={lastIssue} articles={lastIssueArticles} />
-      <Flex maxW="80vw">
-        <LatestArticles articles={articles} />
-      </Flex>
+      <LatestArticles articles={articles} />
 
       <TopicsSection topics={topics} />
     </Layout>

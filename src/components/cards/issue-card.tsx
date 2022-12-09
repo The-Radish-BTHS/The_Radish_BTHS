@@ -1,6 +1,7 @@
 import { IssueCardType } from "@/types/issue";
 import { Center, Heading, Image, Text } from "@chakra-ui/react";
 import Link from "@components/link";
+import { useIsMobile } from "@hooks/useIsMobile";
 import CardWrapper from "./card-wrapper";
 
 const IssueCard: React.FC<IssueCardType> = ({
@@ -10,10 +11,14 @@ const IssueCard: React.FC<IssueCardType> = ({
   slug,
   styles,
 }) => {
-  const widths = { base: "94vw", sm: "70vw", md: "40vw", lg: "33vw" };
+  const widths = { base: "90vw", sm: "70vw", md: "40vw", lg: "33vw" };
+  const isMobile = useIsMobile();
 
   return (
-    <CardWrapper maxW={widths} {...styles}>
+    <CardWrapper
+      w={isMobile ? widths : "fit-content"}
+      maxW={widths}
+      {...styles}>
       <Link href={`/issues/${slug}`}>
         <Image
           src={coverUrl}
@@ -30,8 +35,7 @@ const IssueCard: React.FC<IssueCardType> = ({
             fontSize="1.1rem"
             wordBreak="break-word"
             whiteSpace="pre-wrap"
-            w="100%"
-          >
+            w="100%">
             {description}
           </Text>
         </Center>

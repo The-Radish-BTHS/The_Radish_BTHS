@@ -173,17 +173,15 @@ const Article: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
               <TopicCard name={topic.name} slug={topic.slug} key={i} />
             ))}
           </Flex>
-          <Flex px="12vw" flexDir="column">
+          <Flex px="12vw" flexDir="column" mb="4rem">
             <Markdown content={articleData.content} />
           </Flex>
 
-          <Flex mt="4rem" maxW={{ base: "95vw", md: "70vw", lg: "65vw" }}>
-            {/* TODO: Fix the type resolving properly...what is an Articard and why is it different from Articles */}
-            <LatestArticles
-              title="More Articles"
-              articles={latestArticles.data! as any}
-            />
-          </Flex>
+          {/* TODO: Fix the type resolving properly...what is an Articard and why is it different from Articles */}
+          <LatestArticles
+            title="More Articles"
+            articles={latestArticles.data! as any}
+          />
         </>
       ) : (
         <>

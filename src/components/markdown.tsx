@@ -43,8 +43,7 @@ const Markdown: React.FC<{ content: string }> = ({ content }) => (
           {...props}
         />
       ),
-    }}
-  >
+    }}>
     {content}
   </ReactMarkdown>
 );

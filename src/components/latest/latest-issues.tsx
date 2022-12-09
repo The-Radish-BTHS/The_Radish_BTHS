@@ -9,7 +9,10 @@ const LatestIssues: React.FC<{ issues: IssueCardType[] }> = ({ issues }) => {
   const numIssues = useBreakpointValue({ base: 1, md: 2, xl: 3 });
 
   return (
-    <Flex flexDirection="column" alignItems="center" maxW="100%">
+    <Flex
+      flexDirection="column"
+      alignItems="center"
+      w={{ base: "90vw", md: "60vw" }}>
       <Heading fontSize="2rem" textAlign="center" mb="1rem">
         More Issues:{" "}
         <span style={{ fontWeight: "normal" }}>Ingest them fast!</span>

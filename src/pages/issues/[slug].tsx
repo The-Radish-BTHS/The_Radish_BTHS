@@ -1,5 +1,5 @@
 import { IssuePageType } from "@/types/issue";
-import { Flex, Heading, Text } from "@chakra-ui/react";
+import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 import Articard from "@components/cards/articard";
 import LatestIssues from "@components/latest/latest-issues";
 import Layout from "@components/layout/layout";
@@ -40,21 +40,21 @@ const Issue: NextPage<IssuePageType> = ({
         </Link>
       )}
 
-      <NothingHereWrapper valid={articles?.length > 0} py="20vh">
-        <MasonryLayout numItems={articles?.length}>
-          {articles?.map((article, i) => (
-            <Articard
-              {...article}
-              key={i}
-              styles={{ h: "fit-content", my: "1rem" }}
-            />
-          ))}
-        </MasonryLayout>
-      </NothingHereWrapper>
+      <Box mb="4rem">
+        <NothingHereWrapper valid={articles?.length > 0} py="20vh">
+          <MasonryLayout numItems={articles?.length}>
+            {articles?.map((article, i) => (
+              <Articard
+                {...article}
+                key={i}
+                styles={{ h: "fit-content", my: "1rem" }}
+              />
+            ))}
+          </MasonryLayout>
+        </NothingHereWrapper>
+      </Box>
 
-      <Flex mt="4rem" w="60vw" justifyContent="center">
-        <LatestIssues issues={latest} />
-      </Flex>
+      <LatestIssues issues={latest} />
     </Layout>
   );
 };
