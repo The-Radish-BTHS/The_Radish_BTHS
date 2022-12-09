@@ -54,6 +54,7 @@ const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({
           pb="10rem"
           flexDirection="column"
           overflowY="scroll"
+          overflowX="hidden"
           {...rest}>
           {children}
         </Flex>
