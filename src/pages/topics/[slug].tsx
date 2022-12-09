@@ -19,7 +19,7 @@ const Topic: NextPage<TopicPageType> = ({
 }) => {
   return (
     <Layout title={name} alignItems="center" gap="0.5rem">
-      <Heading color="#bb3300" fontWeight="600">
+      <Heading color="#bb3300" fontWeight="600" textAlign="center">
         #{name}
       </Heading>
       <Text fontSize="1.05rem" mb="2rem">

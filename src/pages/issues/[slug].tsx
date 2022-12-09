@@ -22,7 +22,9 @@ const Issue: NextPage<IssuePageType> = ({
   return (
     <Layout title={title} alignItems="center">
       <Heading>{title}</Heading>
-      <Text mb="3rem">{description}</Text>
+      <Text mb="3rem" textAlign="center">
+        {description}
+      </Text>
 
       {pdf && (
         <Link

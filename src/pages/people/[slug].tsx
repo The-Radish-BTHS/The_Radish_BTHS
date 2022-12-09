@@ -28,22 +28,15 @@ const Person: NextPage<PersonPageType> = ({
         <Heading>{name}</Heading>
         {isExec && <ExecStamp id={name} size={40} />}
       </Flex>
-      <Flex mb="0.75rem" mt="0.25rem">
-        <Text>
-          {former ? "Former " : ""} {position}
-        </Text>
-        <Text fontWeight="bold" mx="0.2rem">
-          {" "}
-          ∙{" "}
-        </Text>
-        <Text>
-          Graduat{former ? "ed" : "ing"} {gradYear}
-        </Text>
-      </Flex>
+      <Text mb="0.75rem" mt="0.25rem" textAlign="center">
+        {former ? "Former " : ""} {position}
+        <span style={{ fontWeight: "bold" }}>{" ∙ "}</span>
+        Graduat{former ? "ed" : "ing"} {gradYear}
+      </Text>
 
       {description && (
         <Text
-          w="40vw"
+          w={{ base: "90vw", md: "40vw" }}
           textAlign="center"
           fontStyle="italic"
           mb="3rem"

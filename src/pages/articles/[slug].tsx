@@ -130,31 +130,24 @@ const Article: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
             <Heading textAlign="center" maxW="85vw">
               {articleData.title}
             </Heading>
-            <Flex fontSize="1.05rem" mt="0.5rem" justifyContent="center">
+            <Text fontSize="1.05rem" mt="0.5rem" w="100%" textAlign="center">
               {articleData.authors?.map((author, i) => (
                 <Link key={i} href={`/people/${author.slug}`} mr="0.2rem">
                   {author.name}
                   {i < articleData.authors.length - 1 && ", "}
                 </Link>
               ))}
-              <Text fontWeight="bold" mx="0.2rem">
-                {" "}
-                ∙{" "}
-              </Text>
-              <Text>{pubString}</Text>
-
+              <span style={{ fontWeight: "bold" }}>{" ∙ "}</span>
+              {pubString}
               {articleData.issue && (
                 <>
-                  <Text fontWeight="bold" mx="0.2rem">
-                    {" "}
-                    ∙{" "}
-                  </Text>
+                  <span style={{ fontWeight: "bold" }}>{" ∙ "}</span>
                   <Link href={`/issues/${articleData.issueSlug}`}>
                     {articleData.issue.title}
                   </Link>
                 </>
               )}
-            </Flex>
+            </Text>
             {!articleData.published && (
               <Button onClick={onOpen} position="absolute" right="2rem">
                 Publish
@@ -173,7 +166,7 @@ const Article: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
               <TopicCard name={topic.name} slug={topic.slug} key={i} />
             ))}
           </Flex>
-          <Flex px="12vw" flexDir="column" mb="4rem">
+          <Flex px={{ base: "2vw", md: "12vw" }} flexDir="column" mb="4rem">
             <Markdown content={articleData.content} />
           </Flex>
 
