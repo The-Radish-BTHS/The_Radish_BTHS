@@ -1,5 +1,6 @@
 import { Flex, Heading, Text } from "@chakra-ui/react";
 import LinkButton from "@components/link-button";
+import { useIsMobile } from "@hooks/useIsMobile";
 import { Person, Topic, User } from "@prisma/client";
 import CardWrapper from "./card-wrapper";
 import TopicCard from "./topic-card";
@@ -12,6 +13,7 @@ const SubmissionCard: React.FC<{
   topics: Topic[];
   authors: Person[];
 }> = ({ id, link, title, timeFrame, topics, authors }) => {
+  const isMobile = useIsMobile();
   return (
     <CardWrapper p="1rem" mb="1.5rem" width="100%">
       <Heading fontSize="1.5rem" mb="0.25rem">
@@ -34,10 +36,10 @@ const SubmissionCard: React.FC<{
 
       <Flex gap="1rem" mt="1rem" justifyContent="flex-end">
         <LinkButton href={link} external>
-          Read Article
+          Read{isMobile ? "" : " Article"}
         </LinkButton>
         <LinkButton href={`/articles/edit?id=${id}`} external>
-          Submit Edited
+          Submit{isMobile ? "" : " Edited"}
         </LinkButton>
       </Flex>
     </CardWrapper>

@@ -33,10 +33,12 @@ const EditorDashboard: NextPage = () => {
         <>
           <Flex flexDir="column">
             <Flex mb="1rem">
-              <Heading borderBottom="4px dotted red" w="fit-content">
-                Hay their editers!
+              <Heading>
+                <span style={{ borderBottom: "4px dotted red" }}>
+                  Hay their editers!
+                </span>{" "}
+                Hear are the submitteded art tickles
               </Heading>
-              <Heading ml="0.5rem">Submitteded art tickles</Heading>
             </Flex>
             <Text>Thyme two edit them ardiculs!!!</Text>
             <Divider borderColor="black" my="1rem" />
