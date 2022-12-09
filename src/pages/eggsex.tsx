@@ -21,7 +21,7 @@ const Eggsex: NextPage = () => {
             <Divider borderColor="black" my="1rem" />
             <MasonryLayout>
               {editedArticles?.map((article, i) => (
-                <Articard {...article} key={i} mb="1.5rem" />
+                <Articard {...article} key={i} mb="1.5rem" w="100%" />
               ))}
             </MasonryLayout>
           </Flex>

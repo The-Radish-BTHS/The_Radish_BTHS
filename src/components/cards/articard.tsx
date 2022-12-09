@@ -16,7 +16,7 @@ const Articard: React.FC<ArticardType> = ({
 }) => {
   return (
     <CardWrapper
-      w={{ base: "94vw", md: "40vw", lg: "30vw" }}
+      w={{ base: "90vw", md: "40vw", lg: "30vw" }}
       {...styles}
       {...rest}>
       <Center flexDir="column" w="100%" p="0.75rem">

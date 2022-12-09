@@ -79,9 +79,15 @@ const Article: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
     <Layout title={articleData.title} alignItems="center">
       {articleData.published || canAccess("editor") ? (
         <>
-          <Modal isOpen={isOpen} onClose={onClose} isCentered>
+          <Modal
+            isOpen={isOpen}
+            onClose={onClose}
+            size={{ base: "full", md: "md" }}
+            isCentered>
             <ModalOverlay />
-            <ModalContent bg="#ebeae5" borderRadius="0.75rem">
+            <ModalContent
+              bg="#ebeae5"
+              borderRadius={{ base: 0, md: "0.75rem" }}>
               <ModalHeader>Are you sure?</ModalHeader>
               <ModalCloseButton />
               <ModalBody>
@@ -127,6 +133,15 @@ const Article: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
             justifyContent="center"
             alignItems="center"
             flex={1}>
+            {!articleData.published && (
+              <Button
+                w={{ base: "90vw", md: "fit-content" }}
+                ml={{ base: 0, md: "auto" }}
+                mb={{ base: "2rem", md: 0 }}
+                onClick={onOpen}>
+                Publish
+              </Button>
+            )}
             <Heading textAlign="center" maxW="85vw">
               {articleData.title}
             </Heading>
@@ -148,11 +163,6 @@ const Article: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
                 </>
               )}
             </Text>
-            {!articleData.published && (
-              <Button onClick={onOpen} position="absolute" right="2rem">
-                Publish
-              </Button>
-            )}
           </Flex>
 
           <Flex
