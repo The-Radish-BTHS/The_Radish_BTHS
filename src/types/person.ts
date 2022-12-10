@@ -3,7 +3,7 @@ import { Person } from "@prisma/client";
 import ArticleType, { ArticardType } from "./article";
 
 export default interface PersonType extends Person {
-  former: boolean;
+  former?: boolean;
   slug: string;
   articles: ArticleType[];
 }

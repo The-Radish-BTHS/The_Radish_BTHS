@@ -11,6 +11,7 @@ import { slugsToPaths } from "@lib/helpers.server";
 import { getPeople } from "@lib/getters/many-getters.server";
 import ExecStamp from "@components/exec-stamp";
 import NothingHereWrapper from "@components/latest/nothing-here-wrapper";
+import { useRouter } from "next/router";
 
 const Person: NextPage<PersonPageType> = ({
   name,
@@ -20,8 +21,9 @@ const Person: NextPage<PersonPageType> = ({
   description,
   former,
   articles,
-  people,
 }) => {
+  const router = useRouter();
+  const slug = router.query.slug;
   return (
     <Layout title={name} alignItems="center">
       <Flex gap="0.5rem" alignItems="flex-start" ml="40px">
@@ -56,7 +58,7 @@ const Person: NextPage<PersonPageType> = ({
         </MasonryLayout>
       </NothingHereWrapper>
       <Flex mt="4rem" w="100%">
-        <OtherPeople people={people} />
+        <OtherPeople exclude={[slug?.toString()]} />
       </Flex>
     </Layout>
   );

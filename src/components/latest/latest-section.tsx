@@ -1,5 +1,3 @@
-import { ArticardType } from "@/types/article";
-import { IssueCardType } from "@/types/issue";
 import {
   Flex,
   Heading,
@@ -10,17 +8,16 @@ import {
 import Articard from "@components/cards/articard";
 import IssueCard from "@components/cards/issue-card";
 import LinkButton from "@components/link-button";
+import { trpc } from "@lib/trpc";
 import { AiOutlineArrowRight } from "react-icons/ai";
 
 import NothingHereWrapper from "./nothing-here-wrapper";
 
-interface ILatestProps {
-  issue: IssueCardType;
-  articles: ArticardType[];
-}
-
-const LatestSection: React.FC<ILatestProps> = ({ issue, articles }) => {
+const LatestSection: React.FC = ({}) => {
   const numArticles = useBreakpointValue({ base: 3, md: 2, xl: 3 });
+  const issueQuery = trpc.issue.getAll.useQuery({ take: 1 });
+  const issue = issueQuery.data && issueQuery.data[0];
+  const articles = issue?.articles;
 
   return (
     <Flex flexDirection="column" alignItems="center">
@@ -38,7 +35,7 @@ const LatestSection: React.FC<ILatestProps> = ({ issue, articles }) => {
           alignItems="center">
           <Flex flexDir="column" h="100%">
             {" "}
-            <IssueCard {...issue} styles={{ flex: 1 }} />
+            {issue && <IssueCard {...issue} styles={{ flex: 1 }} />}
           </Flex>
 
           <SimpleGrid
@@ -48,7 +45,7 @@ const LatestSection: React.FC<ILatestProps> = ({ issue, articles }) => {
             gap="2rem"
             pl={{ base: "0", md: "1rem" }}
             h="100%">
-            {articles.slice(0, numArticles).map((article, i) => (
+            {articles?.slice(0, numArticles).map((article, i) => (
               <Articard {...article} styles={{ flex: 1 }} key={i} />
             ))}
           </SimpleGrid>
