@@ -59,7 +59,7 @@ const GraphicsCard: React.FC<{
         <ModalOverlay />
         <ModalContent
           bg="#ebeae5"
-          borderRadius="0.75rem"
+          borderRadius={{ base: 0, sm: "0.75rem" }}
           minW="min(35rem, 100%)">
           <ModalHeader w="75vw">Thanks for making some dope art!</ModalHeader>
           <ModalCloseButton />

@@ -87,7 +87,7 @@ const Article: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
             <ModalOverlay />
             <ModalContent
               bg="#ebeae5"
-              borderRadius={{ base: 0, md: "0.75rem" }}>
+              borderRadius={{ base: 0, sm: "0.75rem" }}>
               <ModalHeader>Are you sure?</ModalHeader>
               <ModalCloseButton />
               <ModalBody>
