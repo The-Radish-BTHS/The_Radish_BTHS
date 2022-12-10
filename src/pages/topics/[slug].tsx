@@ -10,6 +10,8 @@ import { getTopic } from "@lib/getters/unique-getters.server";
 import { getTopics } from "@lib/getters/many-getters.server";
 import { slugsToPaths } from "@lib/helpers.server";
 import NothingHereWrapper from "@components/latest/nothing-here-wrapper";
+import { useRouter } from "next/router";
+import { trpc } from "@lib/trpc";
 
 const Topic: NextPage<TopicPageType> = ({
   name,
@@ -17,6 +19,14 @@ const Topic: NextPage<TopicPageType> = ({
   articles,
   topics,
 }) => {
+  const router = useRouter();
+  const slug = router.query.slug;
+
+  const topicQuery = trpc.topic.getBySlug.useQuery({
+    slug: slug?.toString() ?? "",
+  });
+  const topic = topicQuery.data;
+
   return (
     <Layout title={name} alignItems="center" gap="0.5rem">
       <Heading color="#bb3300" fontWeight="600" textAlign="center">
@@ -27,7 +37,7 @@ const Topic: NextPage<TopicPageType> = ({
       </Text>
       <NothingHereWrapper valid={articles?.length > 0} py="20vh">
         <MasonryLayout numItems={articles?.length}>
-          {articles?.map((article, i) => (
+          {topic?.articles?.map((article, i) => (
             <Articard
               {...article}
               key={i}

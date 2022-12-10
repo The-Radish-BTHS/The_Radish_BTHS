@@ -21,7 +21,7 @@ const SubmissionCard: React.FC<{
   timeFrame: string | null;
   topics: Topic[];
   authors: Person[];
-  graphicsRequest?: string;
+  graphicsRequest: string | null;
   graphicsComplete: boolean;
   imageUrls: string[];
 }> = ({

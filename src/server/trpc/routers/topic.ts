@@ -1,4 +1,4 @@
-import { customSlugify } from "@lib/helpers.server";
+import { articleInclude, customSlugify } from "@lib/helpers.server";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { t, authedProcedure } from "..";
@@ -51,6 +51,7 @@ export const topicRouter = t.router({
     .query(async ({ ctx, input }) => {
       return await ctx.prisma.topic.findUnique({
         where: { slug: input.slug },
+        include: { articles: { include: articleInclude } },
       });
     }),
 
