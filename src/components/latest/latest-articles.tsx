@@ -10,13 +10,15 @@ import NothingHereWrapper from "./nothing-here-wrapper";
 
 const LatestArticles: React.FC<{
   title?: string;
-}> = ({ title = "New Articles" }) => {
+  exclude?: string[];
+}> = ({ title = "New Articles", exclude = [] }) => {
   const isMobile = useIsMobile();
   const numItems = isMobile ? 3 : 6;
 
   const articlesQuery = trpc.article.getMany.useQuery({
     sortOrder: "desc",
     take: numItems,
+    exclude: exclude,
   });
   const articles = articlesQuery.data;
 

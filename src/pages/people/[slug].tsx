@@ -23,7 +23,7 @@ const Person: NextPage<PersonPageType> = ({
   articles,
 }) => {
   const router = useRouter();
-  const slug = router.query.slug;
+  const slug = router.query.slug?.toString() ?? "";
   return (
     <Layout title={name} alignItems="center">
       <Flex gap="0.5rem" alignItems="flex-start" ml="40px">
@@ -58,7 +58,7 @@ const Person: NextPage<PersonPageType> = ({
         </MasonryLayout>
       </NothingHereWrapper>
       <Flex mt="4rem" w="100%">
-        <OtherPeople exclude={[slug?.toString()]} />
+        <OtherPeople exclude={[slug]} />
       </Flex>
     </Layout>
   );

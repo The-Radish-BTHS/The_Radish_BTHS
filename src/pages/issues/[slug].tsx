@@ -11,6 +11,7 @@ import { getIssue } from "@lib/getters/unique-getters.server";
 import { slugsToPaths } from "@lib/helpers.server";
 import { getIssues } from "@lib/getters/many-getters.server";
 import NothingHereWrapper from "@components/latest/nothing-here-wrapper";
+import { useRouter } from "next/router";
 
 const Issue: NextPage<IssuePageType> = ({
   title,
@@ -19,6 +20,8 @@ const Issue: NextPage<IssuePageType> = ({
   articles,
   latest,
 }) => {
+  const router = useRouter();
+  const slug = router.query.slug?.toString() ?? "";
   return (
     <Layout title={title} alignItems="center">
       <Heading>{title}</Heading>
@@ -56,7 +59,7 @@ const Issue: NextPage<IssuePageType> = ({
         </NothingHereWrapper>
       </Box>
 
-      <LatestIssues issues={latest} />
+      <LatestIssues exclude={[slug]} />
     </Layout>
   );
 };

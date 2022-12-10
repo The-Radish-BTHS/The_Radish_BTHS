@@ -47,7 +47,7 @@ const Topic: NextPage<TopicPageType> = ({
         </MasonryLayout>
       </NothingHereWrapper>
       <Flex mt="4rem">
-        <TopicsSection title="More Topics" topics={topics} />
+        <TopicsSection title="More Topics" />
       </Flex>
     </Layout>
   );

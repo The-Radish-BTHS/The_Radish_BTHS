@@ -32,20 +32,17 @@ import Button from "@components/button";
 import { useRouter } from "next/router";
 import { useCanAccess } from "@hooks/useCanAccess";
 
-const Article: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
-  props
-) => {
-  const article = trpc.article.get.useQuery({ slug: props.slug });
-  const latestArticles = trpc.article.getMany.useQuery({
-    sortOrder: "desc",
-    take: 6,
-    exclude: [props.slug],
-  });
+const Article: NextPage<
+  InferGetStaticPropsType<typeof getStaticProps>
+> = () => {
+  const router = useRouter();
+  const slug = router.query.slug?.toString() ?? "";
 
+  const article = trpc.article.get.useQuery({ slug });
   const articleData = article.data!;
 
   const { isOpen, onClose, onOpen } = useDisclosure();
-  const router = useRouter();
+
   const toast = useToast();
   const { canAccess } = useCanAccess();
   const publishArticle = trpc.article.publish.useMutation({
@@ -181,10 +178,7 @@ const Article: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
           </Flex>
 
           {/* TODO: Fix the type resolving properly...what is an Articard and why is it different from Articles */}
-          <LatestArticles
-            title="More Articles"
-            articles={latestArticles.data! as any}
-          />
+          <LatestArticles title="More Articles" exclude={[slug]} />
         </>
       ) : (
         <>

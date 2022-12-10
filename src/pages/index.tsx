@@ -17,10 +17,10 @@ const Home: NextPage<{
 }> = ({ topics, articles, lastIssue, lastIssueArticles }) => {
   return (
     <Layout alignItems="center" gap="2.5rem">
-      <LatestSection issue={lastIssue} articles={lastIssueArticles} />
-      <LatestArticles articles={articles} />
+      <LatestSection />
+      <LatestArticles />
 
-      <TopicsSection topics={topics} />
+      <TopicsSection />
     </Layout>
   );
 };
