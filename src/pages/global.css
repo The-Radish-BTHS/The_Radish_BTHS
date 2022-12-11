@@ -7,16 +7,15 @@
   background: transparent;
   border: 1px solid black;
   border-radius: 0.75rem;
-  margin-left: 0.5rem;
   padding: 0.3rem 0.5rem;
   width: fit-content;
-}
-
-.accountRevertButton {
-  height: 2.625rem;
 }
 
 .accountSubmitButton:disabled,
 .accountRevertButton:disabled {
   display: none;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
 }

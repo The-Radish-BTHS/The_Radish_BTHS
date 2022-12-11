@@ -1,6 +1,5 @@
-import { Box, Center, Flex, Heading, Image, Text } from "@chakra-ui/react";
-import { useIsMobile } from "@hooks/useIsMobile";
-import { useRef, useState } from "react";
+import { Box, Flex, Heading, Text } from "@chakra-ui/react";
+import { useRef } from "react";
 
 interface IImageUploadProps {
   name: string;
@@ -33,11 +32,6 @@ export const ImageUpload: React.FC<IImageUploadProps> = ({
           }
         }}
       />
-      {files?.length && (
-        <Text mb="0.5rem" fontWeight={700}>
-          {files.length} Files Uploaded
-        </Text>
-      )}
       <Box
         position="relative"
         onClick={() => fileInputRef.current?.click()}
@@ -45,8 +39,7 @@ export const ImageUpload: React.FC<IImageUploadProps> = ({
           "&:hover .overlay": {
             opacity: 1,
           },
-        }}
-      >
+        }}>
         <Flex
           border="1px solid black"
           w="100%"
@@ -54,10 +47,11 @@ export const ImageUpload: React.FC<IImageUploadProps> = ({
           borderRadius="0.75rem"
           flexDirection="column"
           alignItems="center"
-          justifyContent="center"
-        >
+          justifyContent="center">
           <Heading>
-            {files?.length ? "Change your Graphics?" : "Upload Your Art!!!!"}
+            {files?.length
+              ? `${files.length} File${files.length > 1 ? "s" : ""} Uploaded`
+              : "Upload Your Art!!!!"}
           </Heading>
           <Text>
             {files?.length ? "Need to switch it up?" : "1-877-Art-For-Toby"}

@@ -10,7 +10,6 @@ const Articles: NextPage<
   InferGetStaticPropsType<typeof getStaticProps>
 > = () => {
   const articles = trpc.article.getMany.useQuery({ sortOrder: "desc" });
-
   const articleData = articles.data!;
 
   return (

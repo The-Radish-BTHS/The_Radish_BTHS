@@ -34,7 +34,13 @@ const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({
   }, []);
 
   return (
-    <Flex flexDirection="column" maxW="100vw" w="100vw" maxH="100vh" h="100vh">
+    <Flex
+      flexDirection="column"
+      maxW="100vw"
+      w="100vw"
+      maxH="100vh"
+      h="100vh"
+      overflowX="hidden">
       <Title
         page={
           pageIndex !== undefined ? navigationTabs[pageIndex].name : title ?? ""
@@ -48,6 +54,7 @@ const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({
           pb="10rem"
           flexDirection="column"
           overflowY="scroll"
+          overflowX="hidden"
           {...rest}>
           {children}
         </Flex>

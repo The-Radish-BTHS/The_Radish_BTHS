@@ -1,12 +1,18 @@
-import { PersonCardType } from "@/types/person";
 import { Flex, Heading, Text } from "@chakra-ui/react";
 import PersonCard from "@components/cards/person-card";
 import LinkButton from "@components/link-button";
 import MasonryLayout from "@components/masonry/masonry-layout";
+import { trpc } from "@lib/trpc";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import NothingHereWrapper from "./nothing-here-wrapper";
 
-const OtherPeople: React.FC<{ people: PersonCardType[] }> = ({ people }) => {
+const OtherPeople: React.FC<{ exclude: string[] }> = ({ exclude }) => {
+  const peopleQuery = trpc.person.getAll.useQuery({
+    take: 6,
+    exclude: exclude,
+    includeIsFormer: true,
+  });
+  const people = peopleQuery.data || [];
   return (
     <Flex flexDirection="column" alignItems="center" w="100%">
       <Heading fontSize="2rem" textAlign="center" mb="1rem">

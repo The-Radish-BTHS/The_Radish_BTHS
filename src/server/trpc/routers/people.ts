@@ -1,4 +1,4 @@
-import { customSlugify } from "@lib/helpers.server";
+import { articleInclude, customSlugify } from "@lib/helpers.server";
 import { Person } from "@prisma/client";
 import { z } from "zod";
 import { authedProcedure, t } from "..";
@@ -13,13 +13,14 @@ export const peopleRouter = t.router({
     .query(async ({ ctx, input }) => {
       return await ctx.prisma.person.findUnique({
         where: { slug: input.slug },
+        include: { articles: { include: articleInclude } },
       });
     }),
 
   getAll: authedProcedure
     .input(
       z.object({
-        onlyExecs: z.boolean().optional(),
+        who: z.enum(["execs", "normies", "all"]).default("all"),
         exclude: z.array(z.string()).optional().default([]),
         take: z.number().optional(),
         includeIsFormer: z.boolean().optional().default(true),
@@ -31,7 +32,7 @@ export const peopleRouter = t.router({
       const people = await ctx.prisma.person.findMany({
         where: {
           NOT: input.exclude.map((slug) => ({ slug })),
-          ...(input.onlyExecs && { isExec: true }),
+          ...(input.who === "all" ? {} : { isExec: input.who === "execs" }),
         },
         orderBy: { gradYear: "desc" },
         take: input.take,

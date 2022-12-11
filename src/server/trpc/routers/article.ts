@@ -30,7 +30,7 @@ export const articleRouter = t.router({
     .input(
       z.object({
         issueSlug: z.string().optional(),
-        sortOrder: z.enum(["asc", "desc"]),
+        sortOrder: z.enum(["asc", "desc"]).default("desc"),
         exclude: z.array(z.string()).optional().default([]),
         take: z.number().optional(),
       })

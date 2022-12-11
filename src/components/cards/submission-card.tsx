@@ -1,8 +1,18 @@
-import { Flex, Heading, Text } from "@chakra-ui/react";
+import {
+  Flex,
+  Heading,
+  List,
+  ListItem,
+  Text,
+  UnorderedList,
+} from "@chakra-ui/react";
 import LinkButton from "@components/link-button";
+import { useIsMobile } from "@hooks/useIsMobile";
 import { Person, Topic, User } from "@prisma/client";
 import CardWrapper from "./card-wrapper";
 import TopicCard from "./topic-card";
+import { FcCheckmark, FcCancel } from "react-icons/fc";
+import Link from "next/link";
 
 const SubmissionCard: React.FC<{
   id: string;
@@ -11,7 +21,33 @@ const SubmissionCard: React.FC<{
   timeFrame: string | null;
   topics: Topic[];
   authors: Person[];
-}> = ({ id, link, title, timeFrame, topics, authors }) => {
+  graphicsRequest: string | null;
+  graphicsComplete: boolean;
+  imageUrls: string[];
+}> = ({
+  id,
+  link,
+  title,
+  timeFrame,
+  topics,
+  authors,
+  graphicsRequest,
+  graphicsComplete,
+  imageUrls,
+}) => {
+  const isMobile = useIsMobile();
+  const linkWords = [
+    "Somebody",
+    "once",
+    "told",
+    "me",
+    "the",
+    "world",
+    "is",
+    "gonna",
+    "roll",
+    "me",
+  ];
   return (
     <CardWrapper p="1rem" mb="1.5rem" width="100%">
       <Heading fontSize="1.5rem" mb="0.25rem">
@@ -31,13 +67,36 @@ const SubmissionCard: React.FC<{
         ))}
       </Flex>
       <Text>{timeFrame}</Text>
+      {graphicsRequest && (
+        <>
+          <Text mt="0.25rem">
+            <span style={{ fontWeight: "bold" }}>Graphics: </span>
+            {graphicsRequest}
+          </Text>
+          <Flex alignItems="center">
+            <Text fontWeight="bold">Completed:</Text>
+            {graphicsComplete ? <FcCheckmark /> : <FcCancel />}
+          </Flex>
+          {graphicsComplete && (
+            <UnorderedList>
+              {imageUrls.map((url, i) => (
+                <ListItem key={i} textDecoration="underline">
+                  <Link href={url} target="_blank">
+                    {linkWords[i]}
+                  </Link>
+                </ListItem>
+              ))}
+            </UnorderedList>
+          )}
+        </>
+      )}
 
       <Flex gap="1rem" mt="1rem" justifyContent="flex-end">
         <LinkButton href={link} external>
-          Read Article
+          Read{isMobile ? "" : " Article"}
         </LinkButton>
         <LinkButton href={`/articles/edit?id=${id}`} external>
-          Submit Edited
+          Submit{isMobile ? "" : " Edited"}
         </LinkButton>
       </Flex>
     </CardWrapper>

@@ -14,7 +14,7 @@ const PersonCard: React.FC<PersonCardType> = ({
   image = "",
   styles,
 }) => {
-  const widths = { base: "85vw", sm: "70vw", md: "40vw", lg: "30vw" };
+  const widths = { base: "90vw", sm: "70vw", md: "40vw", lg: "30vw" };
 
   return (
     <CardWrapper w={widths} {...styles}>

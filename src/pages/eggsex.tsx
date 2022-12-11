@@ -19,9 +19,9 @@ const Eggsex: NextPage = () => {
             <Heading fontWeight={600}>Edited articles</Heading>
             <Text>They&apos;ve been edited. What now?</Text>
             <Divider borderColor="black" my="1rem" />
-            <MasonryLayout>
+            <MasonryLayout staticCols>
               {editedArticles?.map((article, i) => (
-                <Articard {...article} key={i} mb="1.5rem" />
+                <Articard {...article} key={i} mb="1.5rem" w="100%" />
               ))}
             </MasonryLayout>
           </Flex>

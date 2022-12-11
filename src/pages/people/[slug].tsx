@@ -11,49 +11,46 @@ import { slugsToPaths } from "@lib/helpers.server";
 import { getPeople } from "@lib/getters/many-getters.server";
 import ExecStamp from "@components/exec-stamp";
 import NothingHereWrapper from "@components/latest/nothing-here-wrapper";
+import { useRouter } from "next/router";
+import { trpc } from "@lib/trpc";
 
-const Person: NextPage<PersonPageType> = ({
-  name,
-  position,
-  isExec,
-  gradYear,
-  description,
-  former,
-  articles,
-  people,
-}) => {
+const Person: NextPage = () => {
+  const router = useRouter();
+  const slug = router.query.slug?.toString() ?? "";
+
+  const today = new Date();
+
+  const personQuery = trpc.person.getBySlug.useQuery({ slug });
+  const person = personQuery.data;
+
+  const former =
+    person && today.getMonth() > 6 && today.getFullYear() >= person.gradYear;
+
   return (
-    <Layout title={name} alignItems="center">
+    <Layout title={person?.name} alignItems="center">
       <Flex gap="0.5rem" alignItems="flex-start" ml="40px">
-        <Heading>{name}</Heading>
-        {isExec && <ExecStamp id={name} size={40} />}
+        <Heading>{person?.name}</Heading>
+        {person?.isExec && <ExecStamp id={person?.name} size={40} />}
       </Flex>
-      <Flex mb="0.75rem" mt="0.25rem">
-        <Text>
-          {former ? "Former " : ""} {position}
-        </Text>
-        <Text fontWeight="bold" mx="0.2rem">
-          {" "}
-          ∙{" "}
-        </Text>
-        <Text>
-          Graduat{former ? "ed" : "ing"} {gradYear}
-        </Text>
-      </Flex>
+      <Text mb="0.75rem" mt="0.25rem" textAlign="center">
+        {former ? "Former " : ""} {person?.position}
+        <span style={{ fontWeight: "bold" }}>{" ∙ "}</span>
+        Graduat{former ? "ed" : "ing"} {person?.gradYear}
+      </Text>
 
-      {description && (
+      {person?.description && (
         <Text
-          w="40vw"
+          w={{ base: "90vw", md: "40vw" }}
           textAlign="center"
           fontStyle="italic"
           mb="3rem"
           fontWeight="medium">
-          &quot;{description}&quot;
+          &quot;{person?.description}&quot;
         </Text>
       )}
-      <NothingHereWrapper valid={articles?.length > 0} py="20vh">
-        <MasonryLayout numItems={articles?.length}>
-          {articles?.map((article, i) => (
+      <NothingHereWrapper valid={(person?.articles?.length ?? 0) > 0} py="20vh">
+        <MasonryLayout numItems={person?.articles?.length}>
+          {person?.articles?.map((article, i) => (
             <Articard
               {...article}
               key={i}
@@ -63,33 +60,10 @@ const Person: NextPage<PersonPageType> = ({
         </MasonryLayout>
       </NothingHereWrapper>
       <Flex mt="4rem" w="100%">
-        <OtherPeople people={people} />
+        <OtherPeople exclude={[slug]} />
       </Flex>
     </Layout>
   );
 };
 
 export default Person;
-
-export const getStaticProps: GetStaticProps = async (context) => {
-  const slug = String(context.params?.slug);
-  const person = await getPerson(slug);
-  const people = await getPeople(undefined, [slug], 6);
-
-  return {
-    props: { ...person, people },
-  };
-};
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  const people = await prisma.person.findMany({
-    select: { slug: true },
-  });
-
-  const paths = await slugsToPaths(people);
-
-  return {
-    paths,
-    fallback: true,
-  };
-};

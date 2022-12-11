@@ -51,15 +51,45 @@ export const issueRouter = t.router({
       });
     }),
 
-  getAll: t.procedure.query(async ({ ctx }) => {
-    return await ctx.prisma.issue.findMany({
-      include: {
-        articles: {
-          include: {
-            authors: true,
+  getAll: t.procedure
+    .input(
+      z.object({
+        exclude: z.array(z.string()).optional().default([]),
+        take: z.number().optional(),
+      })
+    )
+    .query(async ({ ctx }) => {
+      return await ctx.prisma.issue.findMany({
+        orderBy: {
+          publishedOn: "desc",
+        },
+        include: {
+          articles: {
+            include: {
+              authors: true,
+              topics: true,
+            },
           },
         },
-      },
-    });
+      });
+    }),
+
+  getLast: t.procedure.query(async ({ ctx }) => {
+    return await (
+      await ctx.prisma.issue.findMany({
+        orderBy: {
+          publishedOn: "desc",
+        },
+        take: 1,
+        include: {
+          articles: {
+            include: {
+              authors: true,
+              topics: true,
+            },
+          },
+        },
+      })
+    )[0];
   }),
 });

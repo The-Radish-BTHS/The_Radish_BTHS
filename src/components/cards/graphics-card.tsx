@@ -10,15 +10,13 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
+  useToast,
 } from "@chakra-ui/react";
 import Button from "@components/button";
 import { ImageUpload } from "@components/image-upload";
-import LinkButton from "@components/link-button";
 import { trpc } from "@lib/trpc";
-import { Person, Topic, User } from "@prisma/client";
 import { useState } from "react";
 import CardWrapper from "./card-wrapper";
-import TopicCard from "./topic-card";
 
 const GraphicsCard: React.FC<{
   title: string;
@@ -26,21 +24,44 @@ const GraphicsCard: React.FC<{
   submissionId: string;
 }> = ({ submissionId, title, request }) => {
   // TODO: SANTIAGO UI!!!!!!!!!!!!!!!!!!!!
-  const submitGraphics = trpc.submission.submitGraphics.useMutation();
+  const toast = useToast();
+  const submitGraphics = trpc.submission.submitGraphics.useMutation({
+    onError(err) {
+      toast({
+        title: `Graphics Error ${err.data?.httpStatus}: ${err.message}`,
+        status: "error",
+        duration: 4000,
+        position: "bottom-right",
+        isClosable: true,
+      });
+    },
+    onSuccess() {
+      toast({
+        title: "Graphics Graphicsed Successfully!",
+        status: "success",
+        duration: 4000,
+        position: "bottom-right",
+        isClosable: true,
+      });
+    },
+  });
   const trpcContext = trpc.useContext();
   const [files, setFiles] = useState<File[]>([]);
   const { onOpen, isOpen, onClose } = useDisclosure();
 
   return (
     <CardWrapper p="1rem" mb="1.5rem" width="100%">
-      <Modal isOpen={isOpen} onClose={onClose} isCentered>
+      <Modal
+        isOpen={isOpen}
+        onClose={onClose}
+        size={{ base: "full", md: "md" }}
+        isCentered>
         <ModalOverlay />
         <ModalContent
           bg="#ebeae5"
-          borderRadius="0.75rem"
-          maxW="min(40rem, 100%)"
-        >
-          <ModalHeader>Thanks for making some dope art!</ModalHeader>
+          borderRadius={{ base: 0, sm: "0.75rem" }}
+          minW="min(35rem, 100%)">
+          <ModalHeader w="75vw">Thanks for making some dope art!</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <ImageUpload name="thumbnail" files={files} setFiles={setFiles} />
@@ -60,8 +81,7 @@ const GraphicsCard: React.FC<{
                 await trpcContext.submission.getGraphicsRequests.invalidate();
 
                 onClose();
-              }}
-            >
+              }}>
               Submit my images!
             </Button>
           </ModalFooter>

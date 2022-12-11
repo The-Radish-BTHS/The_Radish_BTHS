@@ -32,20 +32,17 @@ import Button from "@components/button";
 import { useRouter } from "next/router";
 import { useCanAccess } from "@hooks/useCanAccess";
 
-const Article: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
-  props
-) => {
-  const article = trpc.article.get.useQuery({ slug: props.slug });
-  const latestArticles = trpc.article.getMany.useQuery({
-    sortOrder: "desc",
-    take: 6,
-    exclude: [props.slug],
-  });
+const Article: NextPage<
+  InferGetStaticPropsType<typeof getStaticProps>
+> = () => {
+  const router = useRouter();
+  const slug = router.query.slug?.toString() ?? "";
 
+  const article = trpc.article.get.useQuery({ slug });
   const articleData = article.data!;
 
   const { isOpen, onClose, onOpen } = useDisclosure();
-  const router = useRouter();
+
   const toast = useToast();
   const { canAccess } = useCanAccess();
   const publishArticle = trpc.article.publish.useMutation({
@@ -79,9 +76,15 @@ const Article: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
     <Layout title={articleData.title} alignItems="center">
       {articleData.published || canAccess("editor") ? (
         <>
-          <Modal isOpen={isOpen} onClose={onClose} isCentered>
+          <Modal
+            isOpen={isOpen}
+            onClose={onClose}
+            size={{ base: "full", md: "md" }}
+            isCentered>
             <ModalOverlay />
-            <ModalContent bg="#ebeae5" borderRadius="0.75rem">
+            <ModalContent
+              bg="#ebeae5"
+              borderRadius={{ base: 0, sm: "0.75rem" }}>
               <ModalHeader>Are you sure?</ModalHeader>
               <ModalCloseButton />
               <ModalBody>
@@ -127,39 +130,36 @@ const Article: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
             justifyContent="center"
             alignItems="center"
             flex={1}>
+            {!articleData.published && (
+              <Button
+                w={{ base: "90vw", md: "fit-content" }}
+                ml={{ base: 0, md: "auto" }}
+                mb={{ base: "2rem", md: 0 }}
+                onClick={onOpen}>
+                Publish
+              </Button>
+            )}
             <Heading textAlign="center" maxW="85vw">
               {articleData.title}
             </Heading>
-            <Flex fontSize="1.05rem" mt="0.5rem" justifyContent="center">
+            <Text fontSize="1.05rem" mt="0.5rem" w="100%" textAlign="center">
               {articleData.authors?.map((author, i) => (
                 <Link key={i} href={`/people/${author.slug}`} mr="0.2rem">
                   {author.name}
                   {i < articleData.authors.length - 1 && ", "}
                 </Link>
               ))}
-              <Text fontWeight="bold" mx="0.2rem">
-                {" "}
-                ∙{" "}
-              </Text>
-              <Text>{pubString}</Text>
-
+              <span style={{ fontWeight: "bold" }}>{" ∙ "}</span>
+              {pubString}
               {articleData.issue && (
                 <>
-                  <Text fontWeight="bold" mx="0.2rem">
-                    {" "}
-                    ∙{" "}
-                  </Text>
+                  <span style={{ fontWeight: "bold" }}>{" ∙ "}</span>
                   <Link href={`/issues/${articleData.issueSlug}`}>
                     {articleData.issue.title}
                   </Link>
                 </>
               )}
-            </Flex>
-            {!articleData.published && (
-              <Button onClick={onOpen} position="absolute" right="2rem">
-                Publish
-              </Button>
-            )}
+            </Text>
           </Flex>
 
           <Flex
@@ -173,17 +173,12 @@ const Article: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
               <TopicCard name={topic.name} slug={topic.slug} key={i} />
             ))}
           </Flex>
-          <Flex px="12vw" flexDir="column">
+          <Flex px={{ base: "2vw", md: "12vw" }} flexDir="column" mb="4rem">
             <Markdown content={articleData.content} />
           </Flex>
 
-          <Flex mt="4rem" maxW={{ base: "95vw", md: "70vw", lg: "65vw" }}>
-            {/* TODO: Fix the type resolving properly...what is an Articard and why is it different from Articles */}
-            <LatestArticles
-              title="More Articles"
-              articles={latestArticles.data! as any}
-            />
-          </Flex>
+          {/* TODO: Fix the type resolving properly...what is an Articard and why is it different from Articles */}
+          <LatestArticles title="More Articles" exclude={[slug]} />
         </>
       ) : (
         <>
