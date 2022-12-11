@@ -3,18 +3,10 @@ import LatestSection from "@components/latest/latest-section";
 import TopicsSection from "@components/latest/topics-section";
 import Layout from "@components/layout/layout";
 import type { GetStaticProps, NextPage } from "next";
-import { TopicCardType } from "@/types/topic";
-import { ArticardType } from "@/types/article";
 import { getArticles, getTopics } from "@lib/getters/many-getters.server";
-import { IssueCardType } from "@/types/issue";
 import { getLastIssue } from "@lib/getters/unique-getters.server";
 
-const Home: NextPage<{
-  topics: TopicCardType[];
-  articles: ArticardType[];
-  lastIssue: IssueCardType;
-  lastIssueArticles: ArticardType[];
-}> = ({ topics, articles, lastIssue, lastIssueArticles }) => {
+const Home: NextPage = () => {
   return (
     <Layout alignItems="center" gap="2.5rem">
       <LatestSection />

@@ -5,8 +5,11 @@ import Layout from "@components/layout/layout";
 import MasonryLayout from "@components/masonry/masonry-layout";
 import { GetStaticProps, NextPage } from "next";
 import { getIssues } from "@lib/getters/many-getters.server";
+import { trpc } from "@lib/trpc";
 
-const Issues: NextPage<{ issues: IssueCardType[] }> = ({ issues }) => {
+const Issues: NextPage = () => {
+  const issueQuery = trpc.issue.getAll.useQuery({});
+  const issues = issueQuery.data ?? [];
   return (
     <Layout pageIndex={1} textAlign="center" alignItems="center">
       <Heading>We&apos;ve got issues</Heading>

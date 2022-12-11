@@ -7,8 +7,11 @@ import MasonryLayout from "@components/masonry/masonry-layout";
 import { GetStaticProps, NextPage } from "next";
 import { getPeople } from "@lib/getters/many-getters.server";
 import NothingHereWrapper from "@components/latest/nothing-here-wrapper";
+import { trpc } from "@lib/trpc";
 
-const People: NextPage<{ people: PersonCardType[] }> = ({ people }) => {
+const People: NextPage = () => {
+  const peopleQuery = trpc.person.getAll.useQuery({ who: "normies" });
+  const people = peopleQuery.data ?? [];
   return (
     <Layout pageIndex={2} alignItems="center">
       <Heading>Normal People</Heading>

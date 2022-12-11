@@ -20,7 +20,7 @@ export const peopleRouter = t.router({
   getAll: authedProcedure
     .input(
       z.object({
-        onlyExecs: z.boolean().optional(),
+        who: z.enum(["execs", "normies", "all"]).default("all"),
         exclude: z.array(z.string()).optional().default([]),
         take: z.number().optional(),
         includeIsFormer: z.boolean().optional().default(true),
@@ -32,7 +32,7 @@ export const peopleRouter = t.router({
       const people = await ctx.prisma.person.findMany({
         where: {
           NOT: input.exclude.map((slug) => ({ slug })),
-          ...(input.onlyExecs && { isExec: true }),
+          ...(input.who === "all" ? {} : { isExec: input.who === "execs" }),
         },
         orderBy: { gradYear: "desc" },
         take: input.take,
