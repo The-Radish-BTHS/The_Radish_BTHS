@@ -1,7 +1,7 @@
 import { articleInclude, customSlugify } from "@lib/helpers.server";
 import { Person } from "@prisma/client";
 import { z } from "zod";
-import { authedProcedure, t } from "..";
+import { authedProcedure, execProcedure, t } from "..";
 
 export const peopleRouter = t.router({
   getBySlug: t.procedure
@@ -80,5 +80,24 @@ export const peopleRouter = t.router({
             : undefined,
         },
       });
+    }),
+
+  linkUserToExistingPerson: execProcedure
+    .input(
+      z.object({
+        currentPersonSlug: z.string(),
+        oldPersonSlug: z.string(),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      await ctx.prisma.$transaction([
+        ctx.prisma.user.update({
+          where: { personSlug: input.currentPersonSlug },
+          data: { personSlug: input.oldPersonSlug },
+        }),
+        ctx.prisma.person.deleteMany({
+          where: { slug: input.currentPersonSlug },
+        }),
+      ]);
     }),
 });
