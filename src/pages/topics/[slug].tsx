@@ -13,12 +13,7 @@ import NothingHereWrapper from "@components/latest/nothing-here-wrapper";
 import { useRouter } from "next/router";
 import { trpc } from "@lib/trpc";
 
-const Topic: NextPage<TopicPageType> = ({
-  name,
-  description,
-  articles,
-  topics,
-}) => {
+const Topic: NextPage<TopicPageType> = () => {
   const router = useRouter();
   const slug = router.query.slug;
 
@@ -28,15 +23,15 @@ const Topic: NextPage<TopicPageType> = ({
   const topic = topicQuery.data;
 
   return (
-    <Layout title={name} alignItems="center" gap="0.5rem">
+    <Layout title={topic?.name} alignItems="center" gap="0.5rem">
       <Heading color="#bb3300" fontWeight="600" textAlign="center">
-        #{name}
+        #{topic?.name}
       </Heading>
       <Text fontSize="1.05rem" mb="2rem">
-        {description}
+        {topic?.description}
       </Text>
-      <NothingHereWrapper valid={articles?.length > 0} py="20vh">
-        <MasonryLayout numItems={articles?.length}>
+      <NothingHereWrapper valid={(topic?.articles?.length ?? 0) > 0} py="20vh">
+        <MasonryLayout numItems={topic?.articles?.length}>
           {topic?.articles?.map((article, i) => (
             <Articard
               {...article}

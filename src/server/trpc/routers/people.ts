@@ -1,4 +1,4 @@
-import { customSlugify } from "@lib/helpers.server";
+import { articleInclude, customSlugify } from "@lib/helpers.server";
 import { Person } from "@prisma/client";
 import { z } from "zod";
 import { authedProcedure, t } from "..";
@@ -13,6 +13,7 @@ export const peopleRouter = t.router({
     .query(async ({ ctx, input }) => {
       return await ctx.prisma.person.findUnique({
         where: { slug: input.slug },
+        include: { articles: { include: articleInclude } },
       });
     }),
 

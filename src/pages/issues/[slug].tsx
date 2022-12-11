@@ -12,27 +12,28 @@ import { slugsToPaths } from "@lib/helpers.server";
 import { getIssues } from "@lib/getters/many-getters.server";
 import NothingHereWrapper from "@components/latest/nothing-here-wrapper";
 import { useRouter } from "next/router";
+import { trpc } from "@lib/trpc";
 
-const Issue: NextPage<IssuePageType> = ({
-  title,
-  description,
-  pdf,
-  articles,
-  latest,
-}) => {
+const Issue: NextPage<IssuePageType> = () => {
   const router = useRouter();
   const slug = router.query.slug?.toString() ?? "";
+
+  const articleQuery = trpc.article.getMany.useQuery({ issueSlug: slug });
+  const issueQuery = trpc.issue.getLast.useQuery();
+  const articles = articleQuery.data ?? [];
+  const issue = issueQuery.data;
+
   return (
-    <Layout title={title} alignItems="center">
-      <Heading>{title}</Heading>
+    <Layout title={issue?.title} alignItems="center">
+      <Heading>{issue?.title}</Heading>
       <Text mb="3rem" textAlign="center">
-        {description}
+        {issue?.description}
       </Text>
 
-      {pdf && (
+      {issue?.pdf && (
         <Link
           external
-          href={pdf}
+          href={issue?.pdf}
           p="0.25rem 1.25rem"
           mb="2rem"
           fontWeight="600"

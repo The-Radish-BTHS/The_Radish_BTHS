@@ -73,4 +73,23 @@ export const issueRouter = t.router({
         },
       });
     }),
+
+  getLast: t.procedure.query(async ({ ctx }) => {
+    return await (
+      await ctx.prisma.issue.findMany({
+        orderBy: {
+          publishedOn: "desc",
+        },
+        take: 1,
+        include: {
+          articles: {
+            include: {
+              authors: true,
+              topics: true,
+            },
+          },
+        },
+      })
+    )[0];
+  }),
 });
