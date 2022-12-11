@@ -50,7 +50,8 @@ export const peopleRouter = t.router({
         ...former(person),
       }));
     }),
-  update: t.procedure
+
+  update: authedProcedure
     .input(
       z.object({
         slug: z.string(),
@@ -62,7 +63,7 @@ export const peopleRouter = t.router({
     .mutation(async ({ ctx, input }) => {
       return await ctx.prisma.person.update({
         where: {
-          slug: input.slug,
+          slug: ctx.user.personSlug,
         },
         data: {
           name: input.name,

@@ -10,29 +10,6 @@ import { useEffect, useRef, useState } from "react";
 import RequiredUserWrapper from "@components/required-user-wrapper";
 import { trpc } from "@lib/trpc";
 
-const update = async (slug: string, data: any) => {
-  const response = await fetch(`/api/update?type=person&&slug=${slug}`, {
-    method: "post",
-    mode: "no-cors",
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-    body: JSON.stringify(data),
-  })
-    .then((response) => {
-      console.log(response);
-      return response;
-    })
-    .catch((e) => {
-      console.error(e);
-      return e;
-    });
-
-  return response;
-};
-
 const Account: NextPage<{ peopleSlugs: string[] }> = ({ peopleSlugs }) => {
   const { data } = useSession();
   const person = data?.user?.person;
@@ -141,7 +118,8 @@ const Account: NextPage<{ peopleSlugs: string[] }> = ({ peopleSlugs }) => {
                 gradYear === person?.gradYear &&
                 description === person?.description) ||
               (!personSlugIsUnique(name || "") && name !== person?.name)
-            }>
+            }
+          >
             Save!
           </button>
         </Flex>
