@@ -58,6 +58,8 @@ description: z.string(),
               ...JSON.parse(input),
               completeSignUp: true,
             });
+            // TODO: callback urls
+            router.push("/");
           }}
         >
           Sign up
