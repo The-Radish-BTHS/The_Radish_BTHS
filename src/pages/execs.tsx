@@ -1,14 +1,15 @@
-import { PersonCardType } from "@/types/person";
 import { Heading, Text } from "@chakra-ui/react";
 import PersonCard from "@components/cards/person-card";
 import Layout from "@components/layout/layout";
 import Link from "@components/link";
 import MasonryLayout from "@components/masonry/masonry-layout";
-import { GetStaticProps, NextPage } from "next";
-import { getPeople } from "@lib/getters/many-getters.server";
+import { NextPage } from "next";
 import NothingHereWrapper from "@components/latest/nothing-here-wrapper";
+import { trpc } from "@lib/trpc";
 
-const Execs: NextPage<{ execs: PersonCardType[] }> = ({ execs }) => {
+const Execs: NextPage = () => {
+  const execsQuery = trpc.person.getAll.useQuery({ who: "execs" });
+  const execs = execsQuery.data ?? [];
   return (
     <Layout pageIndex={3} alignItems="center">
       <Heading>Hall of Execs</Heading>
@@ -30,11 +31,3 @@ const Execs: NextPage<{ execs: PersonCardType[] }> = ({ execs }) => {
 };
 
 export default Execs;
-
-export const getStaticProps: GetStaticProps = async (context) => {
-  const execs = await getPeople(true);
-
-  return {
-    props: { execs },
-  };
-};

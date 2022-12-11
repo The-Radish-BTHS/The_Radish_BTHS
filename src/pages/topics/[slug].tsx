@@ -13,7 +13,7 @@ import NothingHereWrapper from "@components/latest/nothing-here-wrapper";
 import { useRouter } from "next/router";
 import { trpc } from "@lib/trpc";
 
-const Topic: NextPage<TopicPageType> = () => {
+const Topic: NextPage = () => {
   const router = useRouter();
   const slug = router.query.slug;
 
@@ -49,26 +49,3 @@ const Topic: NextPage<TopicPageType> = () => {
 };
 
 export default Topic;
-
-export const getStaticProps: GetStaticProps = async (context) => {
-  const slug = String(context.params?.slug);
-  const topic = await getTopic(slug);
-  const topics = await getTopics([slug]);
-
-  return {
-    props: { ...topic, topics },
-  };
-};
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  const topics = await prisma.topic.findMany({
-    select: { slug: true },
-  });
-
-  const paths = await slugsToPaths(topics);
-
-  return {
-    paths,
-    fallback: true,
-  };
-};

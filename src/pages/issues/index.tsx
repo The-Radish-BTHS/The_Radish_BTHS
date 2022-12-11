@@ -24,11 +24,3 @@ const Issues: NextPage = () => {
 };
 
 export default Issues;
-
-export const getStaticProps: GetStaticProps = async (context) => {
-  const issues = await getIssues();
-
-  return {
-    props: { issues },
-  };
-};

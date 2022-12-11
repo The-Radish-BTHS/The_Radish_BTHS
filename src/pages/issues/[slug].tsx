@@ -1,4 +1,3 @@
-import { IssuePageType } from "@/types/issue";
 import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 import Articard from "@components/cards/articard";
 import LatestIssues from "@components/latest/latest-issues";
@@ -14,7 +13,7 @@ import NothingHereWrapper from "@components/latest/nothing-here-wrapper";
 import { useRouter } from "next/router";
 import { trpc } from "@lib/trpc";
 
-const Issue: NextPage<IssuePageType> = () => {
+const Issue: NextPage = () => {
   const router = useRouter();
   const slug = router.query.slug?.toString() ?? "";
 
@@ -66,27 +65,3 @@ const Issue: NextPage<IssuePageType> = () => {
 };
 
 export default Issue;
-
-export const getStaticProps: GetStaticProps = async (context) => {
-  const slug = String(context.params?.slug);
-  const issue = await getIssue(slug);
-  const latest = await getIssues(false, [slug]);
-
-  return {
-    props: { ...issue, latest },
-  };
-};
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  const issues = await prisma.issue.findMany({
-    where: { published: true },
-    select: { slug: true },
-  });
-
-  const paths = await slugsToPaths(issues);
-
-  return {
-    paths,
-    fallback: true,
-  };
-};

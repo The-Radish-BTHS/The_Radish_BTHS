@@ -1,11 +1,9 @@
-import { PersonCardType } from "@/types/person";
 import { Heading, Text } from "@chakra-ui/react";
 import PersonCard from "@components/cards/person-card";
 import Layout from "@components/layout/layout";
 import Link from "@components/link";
 import MasonryLayout from "@components/masonry/masonry-layout";
-import { GetStaticProps, NextPage } from "next";
-import { getPeople } from "@lib/getters/many-getters.server";
+import { NextPage } from "next";
 import NothingHereWrapper from "@components/latest/nothing-here-wrapper";
 import { trpc } from "@lib/trpc";
 
@@ -33,11 +31,3 @@ const People: NextPage = () => {
 };
 
 export default People;
-
-export const getStaticProps: GetStaticProps = async (context) => {
-  const people = await getPeople(false);
-
-  return {
-    props: { people },
-  };
-};
