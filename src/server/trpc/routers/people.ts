@@ -63,14 +63,13 @@ export const peopleRouter = t.router({
       })
     )
     .mutation(async ({ ctx, input }) => {
-      console.log(ctx.user);
       return await ctx.prisma.person.update({
         where: {
           slug: ctx.user.person.slug,
         },
         data: {
           name: input.name,
-          slug: customSlugify(input.name),
+          // TODO: changing slugs
           gradYear: input.gradYear,
           description: input.description,
           user: input.completeSignUp
