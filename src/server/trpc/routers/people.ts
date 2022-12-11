@@ -55,7 +55,6 @@ export const peopleRouter = t.router({
   update: authedProcedure
     .input(
       z.object({
-        slug: z.string(),
         name: z.string(),
         gradYear: z.number(),
         description: z.string(),

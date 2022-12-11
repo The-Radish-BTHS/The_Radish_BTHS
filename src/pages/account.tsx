@@ -58,7 +58,6 @@ const Account: NextPage<{ peopleSlugs: string[] }> = ({ peopleSlugs }) => {
     if (name && gradYear && description !== undefined) {
       await updateAccount
         .mutateAsync({
-          slug: person.slug,
           name: name,
           gradYear: gradYear,
           description: description,

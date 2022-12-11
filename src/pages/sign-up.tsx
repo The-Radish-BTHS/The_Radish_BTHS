@@ -29,7 +29,6 @@ const SignUpPage: NextPage = () => {
         <Text fontFamily="monospace">
           {`Enter valid JSON in the form of: 
 {
-slug: z.string(),
 name: z.string(),
 gradYear: z.number(),
 description: z.string(),
