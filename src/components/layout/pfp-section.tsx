@@ -29,7 +29,8 @@ const PfpSection: React.FC = () => {
         bg="transparent"
         color="black"
         _hover={{ background: "rgba(222, 222, 222, 0.8)" }}
-        _active={{ background: "transparent" }}>
+        _active={{ background: "transparent" }}
+      >
         {data?.user?.name}
       </MenuButton>
       <MenuList bg={bg} border="1px solid black">
@@ -49,7 +50,12 @@ const PfpSection: React.FC = () => {
   ) : (
     <button
       style={{ textDecoration: "underline" }}
-      onClick={() => signIn("google")}>
+      onClick={() =>
+        signIn("google", {
+          callbackUrl: "/sign-up",
+        })
+      }
+    >
       Login
     </button>
   );

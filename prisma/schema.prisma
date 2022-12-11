@@ -41,6 +41,7 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  hasSignedUp   Boolean   @default(false)
 
   lastArticleSubmission DateTime?
   lastTopicCreation     DateTime?

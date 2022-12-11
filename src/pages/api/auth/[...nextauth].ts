@@ -20,6 +20,7 @@ export const authOptions: NextAuthOptions = {
         session.user.permission = user.permission;
         session.user.lastTopicCreation = user.lastTopicCreation;
         session.user.lastArticleSubmission = user.lastArticleSubmission;
+        session.user.hasSignedUp = user.hasSignedUp;
       }
       return session;
     },
