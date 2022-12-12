@@ -4,11 +4,7 @@ import LatestIssues from "@components/latest/latest-issues";
 import Layout from "@components/layout/layout";
 import Link from "@components/link";
 import MasonryLayout from "@components/masonry/masonry-layout";
-import { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import prisma from "@lib/prisma.server";
-import { getIssue } from "@lib/getters/unique-getters.server";
-import { slugsToPaths } from "@lib/helpers.server";
-import { getIssues } from "@lib/getters/many-getters.server";
+import { NextPage } from "next";
 import NothingHereWrapper from "@components/latest/nothing-here-wrapper";
 import { useRouter } from "next/router";
 import { trpc } from "@lib/trpc";
@@ -18,16 +14,18 @@ const Issue: NextPage = () => {
   const slug = router.query.slug?.toString() ?? "";
 
   const articleQuery = trpc.article.getMany.useQuery({ issueSlug: slug });
-  const issueQuery = trpc.issue.getLast.useQuery();
+  const issueQuery = trpc.issue.getBySlug.useQuery({ slug: slug });
   const articles = articleQuery.data ?? [];
   const issue = issueQuery.data;
 
   return (
     <Layout title={issue?.title} alignItems="center">
       <Heading>{issue?.title}</Heading>
-      <Text mb="3rem" textAlign="center">
-        {issue?.description}
-      </Text>
+      <Text
+        mb="3rem"
+        textAlign="center"
+        dangerouslySetInnerHTML={{ __html: issue?.description ?? "" }}
+      />
 
       {issue?.pdf && (
         <Link

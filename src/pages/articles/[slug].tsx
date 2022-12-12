@@ -149,7 +149,9 @@ const Article: NextPage<
                   {i < articleData.authors.length - 1 && ", "}
                 </Link>
               ))}
-              <span style={{ fontWeight: "bold" }}>{" ∙ "}</span>
+              {articleData.authors.length && (
+                <span style={{ fontWeight: "bold" }}>{" ∙ "}</span>
+              )}
               {pubString}
               {articleData.issue && (
                 <>

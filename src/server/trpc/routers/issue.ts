@@ -74,6 +74,28 @@ export const issueRouter = t.router({
       });
     }),
 
+  getBySlug: t.procedure
+    .input(
+      z.object({
+        slug: z.string(),
+      })
+    )
+    .query(async ({ ctx, input }) => {
+      return await ctx.prisma.issue.findUnique({
+        where: {
+          slug: input.slug,
+        },
+        include: {
+          articles: {
+            include: {
+              authors: true,
+              topics: true,
+            },
+          },
+        },
+      });
+    }),
+
   getLast: t.procedure.query(async ({ ctx }) => {
     return await (
       await ctx.prisma.issue.findMany({
