@@ -93,8 +93,8 @@ const Submit: NextPage = () => {
   });
 
   return (
-    <RequiredUserWrapper>
-      <Layout title="Submit an Article!" alignItems="center">
+    <Layout title="Submit an Article!" alignItems="center">
+      <RequiredUserWrapper>
         <SubmitModal
           disclosure={submitDisclosure}
           data={formData}
@@ -280,8 +280,8 @@ const Submit: NextPage = () => {
             Submit it!
           </Button>
         </form>
-      </Layout>
-    </RequiredUserWrapper>
+      </RequiredUserWrapper>
+    </Layout>
   );
 };
 

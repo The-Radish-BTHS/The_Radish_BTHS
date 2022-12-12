@@ -96,9 +96,7 @@ const SignUpPage: NextPage = () => {
 
         <input
           placeholder="Description"
-          {...register("description", {
-            required: true,
-          })}
+          {...register("description")}
           className={styles["form-element-margin"]}
         />
 
