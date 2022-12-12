@@ -13,7 +13,12 @@ export const peopleRouter = t.router({
     .query(async ({ ctx, input }) => {
       return await ctx.prisma.person.findUnique({
         where: { slug: input.slug },
-        include: { articles: { include: articleInclude } },
+        include: {
+          articles: {
+            include: articleInclude,
+            orderBy: { publishedOn: "desc" },
+          },
+        },
       });
     }),
 

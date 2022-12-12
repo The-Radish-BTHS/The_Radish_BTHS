@@ -26,7 +26,7 @@ const ArtsyDashboard: NextPage = () => {
             <Divider borderColor="black" my="1rem" />
             <Accordion defaultIndex={[0]} allowMultiple>
               <Collapse title="Incomplete!!">
-                <MasonryLayout staticCols>
+                <MasonryLayout>
                   {submissions?.map((article, i) => (
                     <GraphicsCard
                       title={article.title}
@@ -38,7 +38,7 @@ const ArtsyDashboard: NextPage = () => {
                 </MasonryLayout>
               </Collapse>
               <Collapse title="All Good">
-                <MasonryLayout staticCols>
+                <MasonryLayout>
                   {completed?.map((article, i) => (
                     <GraphicsCard
                       title={article.title}

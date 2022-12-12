@@ -3,6 +3,7 @@ import {
   customSlugify,
   deeperArticleInclude,
 } from "@lib/helpers.server";
+import { UserPermission } from "@prisma/client";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { authedProcedure, editorProcedure, execProcedure, t } from "..";
@@ -92,7 +93,10 @@ export const articleRouter = t.router({
     .mutation(async ({ ctx, input }) => {
       const articleSubmissionElapsed =
         Date.now() - (ctx.user.lastArticleSubmission?.getTime() || 0);
-      if (articleSubmissionElapsed < ARTICLE_SUBMISSION_COOLDOWN)
+      if (
+        articleSubmissionElapsed < ARTICLE_SUBMISSION_COOLDOWN &&
+        ctx.user.permission !== UserPermission.EXEC
+      )
         throw new TRPCError({
           code: "TOO_MANY_REQUESTS",
           message: `You can only submit an article every ${

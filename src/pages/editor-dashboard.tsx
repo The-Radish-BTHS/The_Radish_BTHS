@@ -44,14 +44,14 @@ const EditorDashboard: NextPage = () => {
             <Divider borderColor="black" my="1rem" />
             <Accordion defaultIndex={[0]} allowMultiple>
               <Collapse title="Unedited">
-                <MasonryLayout staticCols>
+                <MasonryLayout>
                   {uneditedSubmissions?.map((article, i) => (
                     <SubmissionCard {...article} key={i} />
                   ))}
                 </MasonryLayout>
               </Collapse>
               <Collapse title="Edited">
-                <MasonryLayout staticCols>
+                <MasonryLayout>
                   {editedSubmissions?.map((article, i) => (
                     <SubmissionCard {...article} key={i} />
                   ))}
