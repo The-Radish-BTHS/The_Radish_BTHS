@@ -43,10 +43,14 @@ const Articard: React.FC<ArticardType> = ({
 
           {issue && (
             <>
-              <Text fontWeight="bold" mx="0.2rem">
-                {" "}
-                ∙{" "}
-              </Text>
+              {authors?.length ? (
+                <Text fontWeight="bold" mx="0.2rem">
+                  {" "}
+                  ∙{" "}
+                </Text>
+              ) : (
+                <></>
+              )}
               <Link href={`/issues/${issue?.slug}`}>{issue?.title}</Link>
             </>
           )}

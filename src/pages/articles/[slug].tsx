@@ -71,6 +71,7 @@ const Article: NextPage<
     month: "2-digit",
     year: "numeric",
   }).format(articleData.publishedOn);
+  console.log(pubString);
 
   return (
     <Layout title={articleData.title} alignItems="center">
@@ -149,8 +150,10 @@ const Article: NextPage<
                   {i < articleData.authors.length - 1 && ", "}
                 </Link>
               ))}
-              {articleData.authors.length && (
+              {articleData.authors.length ? (
                 <span style={{ fontWeight: "bold" }}>{" ∙ "}</span>
+              ) : (
+                <></>
               )}
               {pubString}
               {articleData.issue && (
