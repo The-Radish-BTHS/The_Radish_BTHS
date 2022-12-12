@@ -30,12 +30,12 @@
     "articles": {}
   },
   {
-    "position": "Vice President",
+    "position": "writer",
     "description": "Sometimes a little bit goofy",
     "name": "Charlotte Rotlander",
     "gradYear": 2023,
     "image": "",
-    "isExec": true,
+    "isExec": false,
     "slug": "charlotte-rotlander",
     "articles": {}
   },
@@ -90,7 +90,7 @@
     "articles": {}
   },
   {
-    "position": "Social Media Manager",
+    "position": "CEO (Chief Editing Officer)",
     "description": "If you could, if you could one time sandwich?",
     "name": "Maxime Ennis",
     "gradYear": 2024,
@@ -130,7 +130,7 @@
     "articles": {}
   },
   {
-    "position": "Treasurer",
+    "position": "Secretary",
     "description": "In the unlikely chance you haven't heard of me, you've definitely heard my voice echoing among us and your mom jokes across the iron skeleton of Brooklyn Tech. Autograph signings will be held in the mezzanine! And before you ask, you can totally eat with me at lunch <3",
     "name": "Phoenix Thorwall",
     "gradYear": 2024,
@@ -160,12 +160,12 @@
     "articles": {}
   },
   {
-    "position": "artist",
-    "description": "'The cheese'",
+    "position": "Website Manager",
+    "description": "The cheese",
     "name": "Santiago Vira",
     "gradYear": 2024,
     "image": "",
-    "isExec": false,
+    "isExec": true,
     "slug": "santiago-vira",
     "articles": {}
   },
@@ -190,7 +190,7 @@
     "articles": {}
   },
   {
-    "position": "CEO (Chief Editing Officer)",
+    "position": "President",
     "description": "I live, breathe, think, and occasionally eat, radishes.",
     "name": "Aramie Ewen",
     "gradYear": 2023,
@@ -370,12 +370,12 @@
     "articles": {}
   },
   {
-    "position": "writer",
+    "position": "Graphics Organizer",
     "description": "",
     "name": "Tobias Cen",
     "gradYear": 2024,
     "image": "",
-    "isExec": false,
+    "isExec": true,
     "slug": "tobias-cen",
     "articles": {}
   },
@@ -440,12 +440,12 @@
     "articles": {}
   },
   {
-    "position": "editor",
+    "position": "Treasurer",
     "description": "Chill Cool Guy",
     "name": "Gordon Dewey",
     "gradYear": 2023,
     "image": "",
-    "isExec": false,
+    "isExec": true,
     "slug": "gordon-dewey",
     "articles": {}
   },
@@ -470,7 +470,7 @@
     "articles": {}
   },
   {
-    "position": "Secretary",
+    "position": "Vice President",
     "description": "the best and only good articles ever written are here",
     "name": "Ethan Perkis",
     "gradYear": 2023,
