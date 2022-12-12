@@ -32,7 +32,7 @@ const Submit: NextPage = () => {
   // Get Data
   const { data: sessionData } = useSession();
   const toast = useToast();
-  const mobile = useIsMobile();
+  const isMobile = useIsMobile();
   const newTopicDisclosure = useDisclosure();
   const submitDisclosure = useDisclosure();
 
@@ -160,7 +160,7 @@ const Submit: NextPage = () => {
             setFormData(data);
           })}
           className={styles["form-wrapper"]}
-          style={{ width: mobile ? "85vw" : "60vw" }}>
+          style={{ width: isMobile ? "85vw" : "60vw" }}>
           <Flex w="100%" justifyContent="space-between">
             <p>
               Google Docs link:<span style={{ color: "red" }}> *</span>
