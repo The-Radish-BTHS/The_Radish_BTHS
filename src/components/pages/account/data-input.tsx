@@ -1,4 +1,4 @@
-import { Flex, Input } from "@chakra-ui/react";
+import { Flex, Input, Text } from "@chakra-ui/react";
 
 const DataInput: React.FC<{
   number?: boolean;
@@ -8,24 +8,33 @@ const DataInput: React.FC<{
   placeholder: string;
 }> = ({ number, value, setValue, max, placeholder }) => {
   return (
-    <Input
-      placeholder={placeholder}
-      pattern={number ? "d*" : "*"}
-      value={value || (number ? 0 : "")}
-      style={{
-        background: "transparent",
-        border: "1px solid black",
-        borderRadius: "0.75rem",
-        marginBottom: "0.5rem",
-        marginRight: "0.5rem",
-        padding: "0.5rem",
-      }}
-      width={{ base: "80vw", md: "50vw" }}
-      maxLength={max}
-      onChange={(e) =>
-        setValue(number ? parseInt(e.target.value) : e.target.value)
-      }
-    />
+    <>
+      <Text
+        textAlign="left"
+        width={{ base: "80vw", md: "50vw" }}
+        mt="1rem"
+        fontWeight={600}>
+        {placeholder}:
+      </Text>
+      <Input
+        placeholder={placeholder}
+        pattern={number ? "d*" : "*"}
+        value={value || (number ? 0 : "")}
+        style={{
+          background: "transparent",
+          border: "1px solid black",
+          borderRadius: "0.75rem",
+          marginBottom: "0.5rem",
+          marginRight: "0.5rem",
+          padding: "0.5rem",
+        }}
+        width={{ base: "80vw", md: "50vw" }}
+        maxLength={max}
+        onChange={(e) =>
+          setValue(number ? parseInt(e.target.value) : e.target.value)
+        }
+      />
+    </>
   );
 };
 
