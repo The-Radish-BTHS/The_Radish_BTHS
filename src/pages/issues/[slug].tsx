@@ -39,7 +39,7 @@ const Issue: NextPage = () => {
           borderRadius="0.5rem"
           _hover={{ background: "rgba(222, 222, 222, 0.8)" }}
           _active={{ background: "transparent" }}>
-          Read the PDF!!
+          Read the PDF
         </Link>
       )}
 

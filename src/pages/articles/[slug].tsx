@@ -71,7 +71,6 @@ const Article: NextPage<
     month: "2-digit",
     year: "numeric",
   }).format(articleData.publishedOn);
-  console.log(pubString);
 
   return (
     <Layout title={articleData.title} alignItems="center">

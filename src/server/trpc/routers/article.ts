@@ -7,6 +7,7 @@ import { UserPermission } from "@prisma/client";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { authedProcedure, editorProcedure, execProcedure, t } from "..";
+import { markdownToTxt } from "markdown-to-txt";
 
 const ARTICLE_SUBMISSION_COOLDOWN = 3 * 60 * 1000; // 3 minutes, in milliseconds
 
@@ -157,7 +158,7 @@ export const articleRouter = t.router({
             title: input.title,
             slug,
             content: input.content,
-            excerpt: input.content.substring(0, 100),
+            excerpt: markdownToTxt(input.content).substring(0, 100),
             topics: {
               connect: input.topics,
             },
