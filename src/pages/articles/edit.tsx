@@ -21,6 +21,11 @@ import { ErrorMessage } from "@hookform/error-message";
 import SubmitModal from "@components/pages/submit/submit-modal";
 import { useIsMobile } from "@hooks/useIsMobile";
 import { useCanAccess } from "@hooks/useCanAccess";
+import dynamic from "next/dynamic";
+
+// const DynamicEditor = dynamic(() => import("@components/MdEditor"), {
+//   ssr: false,
+// });
 
 export type InputData = {
   title: string;
@@ -207,6 +212,8 @@ const Edit: NextPage = () => {
               values={authorSelections}
               setValues={setAuthorSelections}
             />
+
+            {/* <DynamicEditor /> */}
 
             <p>
               Content:<span style={{ color: "red" }}> *</span>
