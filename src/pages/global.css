@@ -24,6 +24,10 @@ p a {
   text-decoration: underline;
 }
 
+hr {
+  border-color: black;
+}
+
 /* Toast UI Markdown Editor */
 .toastui-editor-defaultUI {
   width: 85vw;
@@ -71,6 +75,10 @@ label:where(.scroll-sync)::after {
 
 .toastui-editor-md-splitter {
   border: 0.5px solid black !important;
+}
+
+.toastui-editor-contents hr {
+  border-color: black !important;
 }
 
 @media only screen and (min-width: 712px) {

@@ -19,24 +19,69 @@ const Markdown: React.FC<{ content: string }> = ({ content }) => (
       ),
       h1: (props) => (
         <h1
-          style={{ width: "100%", marginTop: "1rem", fontWeight: "bold" }}
+          style={{
+            width: "100%",
+            marginTop: "1rem",
+            fontWeight: "bolder",
+            fontSize: "2em",
+          }}
           {...props}
         />
       ),
       h2: (props) => (
-        <h2 style={{ width: "100%", marginTop: "1rem" }} {...props} />
+        <h2
+          style={{
+            width: "100%",
+            marginTop: "1rem",
+            fontWeight: "bolder",
+            fontSize: "1.5em",
+          }}
+          {...props}
+        />
       ),
       h3: (props) => (
-        <h3 style={{ width: "100%", marginTop: "1rem" }} {...props} />
+        <h3
+          style={{
+            width: "100%",
+            marginTop: "1rem",
+            fontWeight: "bolder",
+            fontSize: "1.17em",
+          }}
+          {...props}
+        />
       ),
       h4: (props) => (
-        <h4 style={{ width: "100%", marginTop: "1rem" }} {...props} />
+        <h4
+          style={{
+            width: "100%",
+            marginTop: "1rem",
+            fontWeight: "bolder",
+            fontSize: "1em",
+          }}
+          {...props}
+        />
       ),
       h5: (props) => (
-        <h5 style={{ width: "100%", marginTop: "1rem" }} {...props} />
+        <h5
+          style={{
+            width: "100%",
+            marginTop: "1rem",
+            fontWeight: "bolder",
+            fontSize: "0.83em",
+          }}
+          {...props}
+        />
       ),
       h6: (props) => (
-        <h6 style={{ width: "100%", marginTop: "1rem" }} {...props} />
+        <h6
+          style={{
+            width: "100%",
+            marginTop: "1rem",
+            fontWeight: "bolder",
+            fontSize: "0.67em",
+          }}
+          {...props}
+        />
       ),
       a: (props) => <a style={{ textDecoration: "underline" }} {...props} />,
       img: (props) => (
