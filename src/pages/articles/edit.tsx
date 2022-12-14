@@ -29,7 +29,6 @@ const DynamicEditor = dynamic(() => import("@components/MdEditor"), {
 
 export type InputData = {
   title: string;
-  content: string;
 };
 
 const Edit: NextPage = () => {
@@ -88,8 +87,8 @@ const Edit: NextPage = () => {
   );
   const [formData, setFormData] = useState<InputData>({
     title: "",
-    content: "",
   });
+  const [content, setContent] = useState("");
 
   // React Hook Form
   const {
@@ -101,14 +100,12 @@ const Edit: NextPage = () => {
     criteriaMode: "all",
     defaultValues: {
       title: article?.title || "",
-      content: article?.link || "",
     },
   });
 
   useEffect(() => {
     if (canEdit) {
       setValue("title", article?.title || "");
-      setValue("content", article?.link || "");
       setTopicSelections(article?.topics || []);
       setAuthorSelections(article?.authors || []);
     }
@@ -120,13 +117,13 @@ const Edit: NextPage = () => {
         <RequiredUserWrapper>
           <SubmitModal
             disclosure={submitDisclosure}
-            data={formData}
+            data={{ ...formData, content }}
             onClick={async (inputData: InputData) => {
               console.log(topicSelections);
               await submitArticle
                 .mutateAsync({
                   title: inputData.title,
-                  content: inputData.content,
+                  content: content,
                   authors: authorSelections,
                   topics: topicSelections,
                   id: submissionId,
@@ -218,7 +215,7 @@ const Edit: NextPage = () => {
             <p>
               Content:<span style={{ color: "red" }}> *</span>
             </p>
-            <DynamicEditor />
+            <DynamicEditor content={content} setContent={setContent} />
             {/* <input
               placeholder="Add the articul!"
               required

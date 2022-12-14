@@ -18,7 +18,10 @@ const Markdown: React.FC<{ content: string }> = ({ content }) => (
         <p style={{ marginBottom: "0.5rem", width: "100%" }} {...props} />
       ),
       h1: (props) => (
-        <h1 style={{ width: "100%", marginTop: "1rem" }} {...props} />
+        <h1
+          style={{ width: "100%", marginTop: "1rem", fontWeight: "bold" }}
+          {...props}
+        />
       ),
       h2: (props) => (
         <h2 style={{ width: "100%", marginTop: "1rem" }} {...props} />
