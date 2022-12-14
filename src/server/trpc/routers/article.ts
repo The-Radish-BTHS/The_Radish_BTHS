@@ -41,7 +41,9 @@ export const articleRouter = t.router({
       return ctx.prisma.article.findMany({
         where: {
           published: true,
-          issueSlug: input.issueSlug,
+          issue: {
+            slug: input.issueSlug,
+          },
           NOT: input.exclude.map((slug) => ({ slug })),
         },
         include: articleInclude,
@@ -190,7 +192,11 @@ export const articleRouter = t.router({
         data: {
           published: true,
           publishedOn: new Date(),
-          issueSlug: input.issueSlug,
+          issue: {
+            connect: {
+              slug: input.issueSlug,
+            },
+          },
         },
       });
     }),

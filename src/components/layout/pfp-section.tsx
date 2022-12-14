@@ -13,13 +13,15 @@ import { BsChevronDown } from "react-icons/bs";
 import Link from "next/link";
 import { useCanAccess } from "@hooks/useCanAccess";
 import { accountTabs } from "./tabs/tabs";
+import { useRouter } from "next/router";
 
 const PfpSection: React.FC = () => {
   const { data, status } = useSession();
-  const authed = status === "authenticated";
   const theme = useTheme();
-  const bg = theme.styles.global.body.bg;
   const { canAccess } = useCanAccess();
+  const router = useRouter();
+  const bg = theme.styles.global.body.bg;
+  const authed = status === "authenticated";
 
   return authed ? (
     <Menu>
@@ -52,7 +54,7 @@ const PfpSection: React.FC = () => {
       style={{ textDecoration: "underline" }}
       onClick={() =>
         signIn("google", {
-          callbackUrl: "/sign-up",
+          callbackUrl: `/sign-up?redirect=${encodeURIComponent(router.asPath)}`,
         })
       }
     >

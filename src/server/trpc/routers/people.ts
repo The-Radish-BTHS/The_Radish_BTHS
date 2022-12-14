@@ -90,18 +90,22 @@ export const peopleRouter = t.router({
   linkUserToExistingPerson: execProcedure
     .input(
       z.object({
-        currentPersonSlug: z.string(),
-        oldPersonSlug: z.string(),
+        currentUserId: z.string(),
+        newPersonId: z.string(),
       })
     )
     .mutation(async ({ ctx, input }) => {
       await ctx.prisma.$transaction([
         ctx.prisma.user.update({
-          where: { personSlug: input.currentPersonSlug },
-          data: { personSlug: input.oldPersonSlug },
+          where: { id: input.currentUserId },
+          data: { personId: input.newPersonId },
         }),
         ctx.prisma.person.deleteMany({
-          where: { slug: input.currentPersonSlug },
+          where: {
+            user: {
+              id: input.currentUserId,
+            },
+          },
         }),
       ]);
     }),
