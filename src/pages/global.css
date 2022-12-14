@@ -69,6 +69,10 @@ label:where(.scroll-sync)::after {
   background-color: #c31f3b !important;
 }
 
+.toastui-editor-md-splitter {
+  border: 0.5px solid black !important;
+}
+
 @media only screen and (min-width: 712px) {
   .toastui-editor-defaultUI {
     width: 60vw;
