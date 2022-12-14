@@ -177,7 +177,12 @@ const Article: NextPage<
               <TopicCard name={topic.name} slug={topic.slug} key={i} />
             ))}
           </Flex>
-          <Flex px={{ base: "2vw", md: "12vw" }} flexDir="column" mb="4rem">
+          <Flex
+            mx={{ base: "2vw", md: "12vw" }}
+            w="min(100%, 60rem)"
+            flexDir="column"
+            mb="4rem"
+            fontSize="clamp(16px,12px + .5vw,1.25rem)">
             <Markdown content={articleData.content} />
           </Flex>
 
