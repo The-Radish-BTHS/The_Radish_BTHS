@@ -158,7 +158,7 @@ const Article: NextPage<
               {articleData.issue && (
                 <>
                   <span style={{ fontWeight: "bold" }}>{" ∙ "}</span>
-                  <Link href={`/issues/${articleData.issueSlug}`}>
+                  <Link href={`/issues/${articleData.issue.slug}`}>
                     {articleData.issue.title}
                   </Link>
                 </>

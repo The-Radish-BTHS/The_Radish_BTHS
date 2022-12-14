@@ -29,8 +29,7 @@ const Articard: React.FC<ArticardType> = ({
               fontSize="1.1rem"
               wordBreak="break-word"
               textAlign="left"
-              w="75%"
-              ml="2.5%">
+              w="75%">
               {excerpt}...
             </Text>
           )}
