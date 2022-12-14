@@ -40,6 +40,7 @@ const Edit: NextPage = () => {
   const router = useRouter();
   const submissionId = router.query.id?.toString() as string;
   const { canAccess } = useCanAccess();
+  const canEdit = canAccess("editor");
   const newTopicDisclosure = useDisclosure();
   const submitDisclosure = useDisclosure();
 
@@ -105,13 +106,13 @@ const Edit: NextPage = () => {
   });
 
   useEffect(() => {
-    if (canAccess("editor")) {
+    if (canEdit) {
       setValue("title", article?.title || "");
       setValue("content", article?.link || "");
       setTopicSelections(article?.topics || []);
       setAuthorSelections(article?.authors || []);
     }
-  }, [sessionData, article, setValue, canAccess]);
+  }, [sessionData, article, setValue, canEdit]); // Can access is changing
 
   return (
     <Layout title="Edit an Article!" alignItems="center">
@@ -121,6 +122,7 @@ const Edit: NextPage = () => {
             disclosure={submitDisclosure}
             data={formData}
             onClick={async (inputData: InputData) => {
+              console.log(topicSelections);
               await submitArticle
                 .mutateAsync({
                   title: inputData.title,
