@@ -23,9 +23,9 @@ import { useIsMobile } from "@hooks/useIsMobile";
 import { useCanAccess } from "@hooks/useCanAccess";
 import dynamic from "next/dynamic";
 
-// const DynamicEditor = dynamic(() => import("@components/MdEditor"), {
-//   ssr: false,
-// });
+const DynamicEditor = dynamic(() => import("@components/MdEditor"), {
+  ssr: false,
+});
 
 export type InputData = {
   title: string;
@@ -215,18 +215,17 @@ const Edit: NextPage = () => {
               setValues={setAuthorSelections}
             />
 
-            {/* <DynamicEditor /> */}
-
             <p>
               Content:<span style={{ color: "red" }}> *</span>
             </p>
-            <input
+            <DynamicEditor />
+            {/* <input
               placeholder="Add the articul!"
               required
               {...register("content", {
                 required: true,
               })}
-            />
+            /> */}
             <Button type="submit" mt="1rem">
               Submit it!
             </Button>

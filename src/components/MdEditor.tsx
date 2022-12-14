@@ -4,11 +4,12 @@ import "@toast-ui/editor/dist/toastui-editor.css";
 const MdEditor: React.FC = () => {
   return (
     <Editor
-      initialValue="hello react editor world!"
+      placeholder="Hello the Radish!"
       previewStyle="vertical"
       height="600px"
       initialEditType="markdown"
       useCommandShortcut={true}
+      hideModeSwitch
     />
   );
 };

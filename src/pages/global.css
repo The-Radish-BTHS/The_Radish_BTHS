@@ -23,3 +23,54 @@ tbody tr:last-child td {
 p a {
   text-decoration: underline;
 }
+
+/* Toast UI Markdown Editor */
+.toastui-editor-defaultUI {
+  width: 85vw;
+}
+.toastui-editor-defaultUI-toolbar {
+  background-color: transparent !important;
+}
+
+.toastui-editor-dropdown-toolbar {
+  background-color: #ebeae5 !important;
+}
+.toastui-editor-toolbar {
+  border: 1px solid;
+  border-top-left-radius: 0.75rem;
+  border-top-right-radius: 0.75rem;
+}
+
+.toastui-editor-main {
+  border: 1px solid;
+  border-bottom-left-radius: 0.75rem;
+  border-bottom-right-radius: 0.75rem;
+}
+
+.toastui-editor-toolbar-icons {
+  border: 1px solid black !important;
+}
+
+.toastui-editor-dropdown-toolbar {
+  border: 1px solid black !important;
+  border-radius: 0.75rem;
+}
+
+label:where(.scroll-sync)::before,
+label:where(.scroll-sync)::after {
+  color: black !important;
+}
+
+.toastui-editor-defaultUI-toolbar input:checked + .switch {
+  background-color: #ff000041 !important;
+}
+
+.toastui-editor-defaultUI-toolbar input:checked + .switch::before {
+  background-color: #c31f3b !important;
+}
+
+@media only screen and (min-width: 712px) {
+  .toastui-editor-defaultUI {
+    width: 60vw;
+  }
+}
