@@ -90,6 +90,7 @@ model Submission {
   graphicsComplete  Boolean  @default(false)
   imageUrls         String[] @default([])
   timeFrame         String?
+  otherTopics       String?
   beenEdited        Boolean  @default(false)
 
   user    User     @relation(fields: [userId], references: [id])

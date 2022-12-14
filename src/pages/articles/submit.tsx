@@ -1,7 +1,6 @@
-import { UserPermission, Person, Topic } from "@prisma/client";
+import { Person, Topic } from "@prisma/client";
 import { NextPage } from "next";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
@@ -16,7 +15,6 @@ import Layout from "@components/layout/layout";
 import Button from "@components/button";
 import RequiredUserWrapper from "@components/required-user-wrapper";
 import StyledMultiselect from "@components/pages/submit/styled-multiselect";
-import NewTopicModal from "@components/pages/submit/new-topic-modal";
 import InfoTooltip from "@components/info-tooltip";
 import SubmitModal from "@components/pages/submit/submit-modal";
 import { useIsMobile } from "@hooks/useIsMobile";
@@ -26,6 +24,7 @@ export interface InputData {
   content: string;
   graphics?: string;
   timeFrame?: string;
+  otherTopics?: string;
 }
 
 const Submit: NextPage = () => {
@@ -33,17 +32,14 @@ const Submit: NextPage = () => {
   const { data: sessionData } = useSession();
   const toast = useToast();
   const isMobile = useIsMobile();
-  const newTopicDisclosure = useDisclosure();
   const submitDisclosure = useDisclosure();
 
   const articleSlugsQuery = trpc.article.getSlugs.useQuery();
   const topicsQuery = trpc.topic.getAll.useQuery();
-  const topicSlugsQuery = trpc.topic.getSlugs.useQuery();
   const peopleQuery = trpc.person.getAll.useQuery({ includeIsFormer: false });
 
   const articleSlugs = articleSlugsQuery.data || [];
   const topics = topicsQuery.data || [];
-  const topicSlugs = topicSlugsQuery.data || [];
   const people = peopleQuery.data || [];
 
   const submitArticle = trpc.article.submit.useMutation({
@@ -106,6 +102,7 @@ const Submit: NextPage = () => {
                 link: inputData.content,
                 graphics: inputData.graphics,
                 timeFrame: inputData.timeFrame,
+                otherTopics: inputData.otherTopics,
                 authors: [
                   { slug: sessionData.user.person.slug },
                   ...authorSelections,
@@ -134,17 +131,6 @@ const Submit: NextPage = () => {
             </li>
           </ul>
         </SubmitModal>
-
-        <NewTopicModal
-          disclosure={newTopicDisclosure}
-          topicSlugs={topicSlugs ?? []}
-          addTopic={(topic: Topic) =>
-            setTopicSelections((topics) => {
-              console.log("topics", [...topics, topic]);
-              return [...topics, topic];
-            })
-          }
-        />
 
         <Heading textAlign="center">So you want to submit an Article?</Heading>
         <Text textAlign="center" fontSize="1.25rem">
@@ -237,14 +223,7 @@ const Submit: NextPage = () => {
             options={topics}
             values={topicSelections}
             setValues={setTopicSelections}
-            marginBottom={false}
           />
-          <button
-            onClick={newTopicDisclosure.onOpen}
-            type="button"
-            className={styles.bottomMargin}>
-            + Add new topic
-          </button>
 
           <Flex w="100%" justifyContent="space-between">
             <p>Authors:</p>
@@ -275,7 +254,18 @@ const Submit: NextPage = () => {
             <InfoTooltip text="Is your article super topical? Would you like it published within a certain amount of time? Let us know right here! Otherwise, leave it blank and press submit!!!" />
           </Flex>
 
-          <input placeholder="Time frame" {...register("timeFrame")} />
+          <input
+            placeholder="Time frame"
+            {...register("timeFrame")}
+            className={styles["form-element-margin"]}
+          />
+          <Flex w="100%" justifyContent="space-between">
+            <p>Other topics requests:</p>
+
+            <InfoTooltip text="Do you feel like your article could be categorized as a topic that doesn't exist yet? Let us know what topics you think we should add and our handy editors will see to it!" />
+          </Flex>
+
+          <input placeholder="Other Topics" {...register("otherTopics")} />
           <Button type="submit" mt="1rem">
             Submit it!
           </Button>
