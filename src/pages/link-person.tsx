@@ -15,9 +15,9 @@ const LinkPerson: NextPage = () => {
         // (SANTIAGO WHY DID YOU MAKE THE FUCKING SLUG THE FOREIGN KEY)
         linkUserToExistingPerson.mutate({
           // FROM
-          currentPersonSlug: "gilbert-zhang",
-          // TO
-          oldPersonSlug: "aramie-ewen",
+          currentUserId: "asdsad",
+          // TO, the existing one
+          newPersonId: "asdsd",
         });
       }}
     >

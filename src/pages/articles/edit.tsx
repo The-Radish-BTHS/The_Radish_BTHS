@@ -79,7 +79,7 @@ const Edit: NextPage = () => {
   });
 
   // State
-  const [topicSelections, setTopicSelections] = useState<Topic[]>(
+  const [topicSelections, setTopicSelections] = useState<Omit<Topic, "id">[]>(
     article?.topics || []
   );
   const [authorSelections, setAuthorSelections] = useState<Person[]>(
@@ -129,7 +129,8 @@ const Edit: NextPage = () => {
                   id: submissionId,
                 })
                 .catch(() => 0);
-            }}>
+            }}
+          >
             <Text>Are you sure you have edited all the things???</Text>
             <ul style={{ marginTop: "1rem" }}>
               <li style={{ marginLeft: "1rem" }}>Is the title all good?</li>
@@ -151,11 +152,12 @@ const Edit: NextPage = () => {
               setFormData(data);
             })}
             className={styles["form-wrapper"]}
-            style={{ width: mobile ? "85vw" : "60vw" }}>
+            style={{ width: mobile ? "85vw" : "60vw" }}
+          >
             <NewTopicModal
               disclosure={newTopicDisclosure}
               topicSlugs={topicSlugs}
-              addTopic={(topic: Topic) =>
+              addTopic={(topic) =>
                 setTopicSelections((topics) => [...topics, topic])
               }
             />
@@ -172,7 +174,8 @@ const Edit: NextPage = () => {
               })}
             />
             <p
-              className={`${styles["form-element-margin"]} ${styles["error-message"]}`}>
+              className={`${styles["form-element-margin"]} ${styles["error-message"]}`}
+            >
               <ErrorMessage
                 errors={errors}
                 name="title"
@@ -201,7 +204,8 @@ const Edit: NextPage = () => {
             <button
               onClick={newTopicDisclosure.onOpen}
               type="button"
-              className={styles.bottomMargin}>
+              className={styles.bottomMargin}
+            >
               + Add new topic
             </button>
 
@@ -233,7 +237,8 @@ const Edit: NextPage = () => {
           h="100%"
           justifyContent="center"
           alignItems="center"
-          flexDir="column">
+          flexDir="column"
+        >
           <Heading>You can&apos;t edit!</Heading>
           <Link href="/about">Apply to join the editing team!</Link>
         </Flex>

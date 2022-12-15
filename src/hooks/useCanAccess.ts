@@ -1,9 +1,18 @@
 import { UserPermission } from "@prisma/client";
 import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 export const useCanAccess = () => {
-  const { data } = useSession();
+  const { data, status } = useSession();
+  const router = useRouter();
   const permission = data?.user?.permission;
+
+  if (
+    !data?.user?.hasSignedUp &&
+    status === "authenticated" &&
+    router.pathname !== "/sign-up"
+  )
+    router.push(`/sign-up?redirect=${encodeURIComponent(router.asPath)}`);
 
   const canAccess = (val: "exec" | "editor" | "artist" | "normie" | "") => {
     if (permission === UserPermission.EXEC || val === "") {

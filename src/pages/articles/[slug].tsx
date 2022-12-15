@@ -39,6 +39,7 @@ const Article: NextPage<
   const slug = router.query.slug?.toString() ?? "";
 
   const article = trpc.article.get.useQuery({ slug });
+  // non null since the data is fetched during SSG
   const articleData = article.data!;
 
   const { isOpen, onClose, onOpen } = useDisclosure();
@@ -80,11 +81,13 @@ const Article: NextPage<
             isOpen={isOpen}
             onClose={onClose}
             size={{ base: "full", md: "md" }}
-            isCentered>
+            isCentered
+          >
             <ModalOverlay />
             <ModalContent
               bg="#ebeae5"
-              borderRadius={{ base: 0, sm: "0.75rem" }}>
+              borderRadius={{ base: 0, sm: "0.75rem" }}
+            >
               <ModalHeader>Are you sure?</ModalHeader>
               <ModalCloseButton />
               <ModalBody>
@@ -104,7 +107,8 @@ const Article: NextPage<
                         onClose();
                         router.push("/eggsex");
                       });
-                  }}>
+                  }}
+                >
                   Yes, I&apos;m sure!
                 </Button>
               </ModalFooter>
@@ -116,7 +120,8 @@ const Article: NextPage<
               gap="0.75rem"
               w="101vw"
               mb="1rem"
-              borderY="1px solid black">
+              borderY="1px solid black"
+            >
               {[...Array(30)].map((_, i) => (
                 <Text key={i}>UNPUBLISHED</Text>
               ))}
@@ -129,13 +134,15 @@ const Article: NextPage<
             flexDir="column"
             justifyContent="center"
             alignItems="center"
-            flex={1}>
+            flex={1}
+          >
             {!articleData.published && (
               <Button
                 w={{ base: "90vw", md: "fit-content" }}
                 ml={{ base: 0, md: "auto" }}
                 mb={{ base: "2rem", md: 0 }}
-                onClick={onOpen}>
+                onClick={onOpen}
+              >
                 Publish
               </Button>
             )}
@@ -172,7 +179,8 @@ const Article: NextPage<
             flexWrap="wrap"
             maxW="85vw"
             fontSize="1.2rem"
-            fontWeight="medium">
+            fontWeight="medium"
+          >
             {articleData.topics.map((topic, i) => (
               <TopicCard name={topic.name} slug={topic.slug} key={i} />
             ))}
