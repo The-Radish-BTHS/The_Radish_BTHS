@@ -192,11 +192,13 @@ export const articleRouter = t.router({
         data: {
           published: true,
           publishedOn: new Date(),
-          issue: {
-            connect: {
-              slug: input.issueSlug,
-            },
-          },
+          issue: input.issueSlug
+            ? {
+                connect: {
+                  slug: input.issueSlug,
+                },
+              }
+            : undefined,
         },
       });
     }),
