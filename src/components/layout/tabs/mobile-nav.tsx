@@ -12,15 +12,18 @@ import { Tab } from "./tab";
 import { accountTabs, navigationTabs } from "./tabs";
 import { Cross } from "hamburger-react";
 import { signIn, signOut, useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 const MobileNav: React.FC<{
   containerRef: React.MutableRefObject<HTMLDivElement>;
 }> = ({ containerRef }) => {
   const controls = useDisclosure();
   const theme = useTheme();
-  const bg = theme.styles.global.body.bg;
+  const router = useRouter();
   const { status } = useSession();
+
   const authed = status === "authenticated";
+  const bg = theme.styles.global.body.bg;
 
   return (
     <Flex flexDirection="column">
@@ -29,7 +32,8 @@ const MobileNav: React.FC<{
         transition="background-color 0.25s ease-in-out"
         bgColor={bg}
         justifyContent="space-between"
-        alignItems="center">
+        alignItems="center"
+      >
         <Cross onToggle={controls.onToggle} />
       </Flex>
       <Portal containerRef={containerRef}>
@@ -48,7 +52,8 @@ const MobileNav: React.FC<{
                   <Text
                     fontSize={{ base: "1.2rem", md: "1rem" }}
                     fontWeight={400}
-                    onClick={() => signOut()}>
+                    onClick={() => signOut()}
+                  >
                     Sign out
                   </Text>
                 </>
@@ -56,7 +61,14 @@ const MobileNav: React.FC<{
                 <Text
                   fontSize={{ base: "1.2rem", md: "1rem" }}
                   fontWeight={400}
-                  onClick={() => signIn("google")}>
+                  onClick={() =>
+                    signIn("google", {
+                      callbackUrl: `/sign-up?redirect=${encodeURIComponent(
+                        router.asPath
+                      )}`,
+                    })
+                  }
+                >
                   Sign in
                 </Text>
               )}

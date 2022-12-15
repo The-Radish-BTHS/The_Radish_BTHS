@@ -37,11 +37,22 @@ const SignUpPage: NextPage = () => {
     setValue("name", session?.user?.name ?? "");
   }, [session, setValue]);
 
-  if (!session?.user) return <Text>Loading</Text>;
-  // TODO: callback urls
-  if (session?.user.hasSignedUp) router.push("/");
+  if (!session?.user)
+    return (
+      <Center h="100vh">
+        <Text>Loading...</Text>
+      </Center>
+    );
 
-  // TOOD: UI
+  if (session?.user.hasSignedUp) {
+    router.push((router.query.redirect || "/") as string);
+    return (
+      <Center h="100vh">
+        <Text>One moment please...</Text>
+      </Center>
+    );
+  }
+
   return (
     <Layout title="Sign Up!" alignItems="center">
       <Heading fontSize="3rem">Hello Newfound Radishian!</Heading>
@@ -60,11 +71,15 @@ const SignUpPage: NextPage = () => {
             gradYear: parseInt(data.gradYear.toString()),
             completeSignUp: true,
           });
-          // TODO: callback urls
-          router.push("/");
+
+          const event = new Event("visibilitychange");
+          document.dispatchEvent(event);
+
+          router.push((router.query.redirect || "/") as string);
         })}
         className={styles["form-wrapper"]}
-        style={{ width: isMobile ? "85vw" : "60vw" }}>
+        style={{ width: isMobile ? "85vw" : "60vw" }}
+      >
         <p>
           Your Name:<span style={{ color: "red" }}> *</span>
         </p>

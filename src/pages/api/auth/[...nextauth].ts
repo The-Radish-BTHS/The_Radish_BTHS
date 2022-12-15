@@ -5,8 +5,6 @@ import GoogleProvider from "next-auth/providers/google";
 // Prisma adapter for NextAuth, optional and can be removed
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { customSlugify } from "@lib/helpers.server";
-import { Person } from "@prisma/client";
-import { getPerson } from "@lib/getters/unique-getters.server";
 
 export const authOptions: NextAuthOptions = {
   // Include user.id on session
@@ -14,8 +12,12 @@ export const authOptions: NextAuthOptions = {
     async session({ session, user }) {
       if (session.user) {
         session.user.id = user.id;
-        // @ts-ignore
-        session.user.person = await getPerson(user.personSlug);
+
+        const person = await prisma.person.findUnique({
+          where: { id: user.personId },
+        });
+        if (!person) throw Error("User does not have a person.");
+        session.user.person = person;
 
         session.user.permission = user.permission;
         session.user.lastTopicCreation = user.lastTopicCreation;
