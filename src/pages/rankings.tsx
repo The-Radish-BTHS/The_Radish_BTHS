@@ -54,7 +54,7 @@ const Rankings: React.FC<{ authorStats: Stats[] }> = ({ authorStats }) => {
 
   return (
     <Layout title="Rankings" alignItems="center">
-      <Image src="/images/aramabel.png" alt="aramabel" w="60vw" mb="4rem" />
+      <Image src="/images/Aramabel.png" alt="aramabel" w="60vw" mb="4rem" />
       <TableContainer
         mb="3rem"
         border="1px solid"

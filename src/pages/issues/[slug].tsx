@@ -20,7 +20,7 @@ const Issue: NextPage = () => {
 
   return (
     <Layout title={issue?.title} alignItems="center">
-      <Heading>{issue?.title}</Heading>
+      <Heading mt="1rem">{issue?.title}</Heading>
       <Text
         mb="3rem"
         textAlign="center"

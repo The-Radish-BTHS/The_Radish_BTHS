@@ -20,8 +20,15 @@ const Articard: React.FC<ArticardType> = ({
       {...styles}
       {...rest}>
       <Center flexDir="column" w="100%" p="0.75rem">
-        <Link href={`/articles/${slug}`} w="100%">
-          <Heading maxW="100%" fontSize="1.5rem" mb="0.5rem">
+        <Link
+          href={`/articles/${slug}`}
+          w="100%"
+          _hover={{ textDecoration: "none" }}>
+          <Heading
+            maxW="100%"
+            fontSize="1.5rem"
+            mb="0.5rem"
+            _hover={{ textDecoration: "underline" }}>
             {title}
           </Heading>
           {excerpt && (
