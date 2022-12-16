@@ -22,7 +22,7 @@ export const peopleRouter = t.router({
       });
     }),
 
-  getAll: authedProcedure
+  getAll: t.procedure
     .input(
       z.object({
         who: z.enum(["execs", "normies", "all"]).default("all"),
