@@ -190,7 +190,8 @@ const Article: NextPage<
             w="min(100%, 60rem)"
             flexDir="column"
             mb="4rem"
-            fontSize="clamp(16px,12px + .5vw,1.25rem)">
+            fontSize="clamp(16px,12px + .5vw,1.25rem)"
+          >
             <Markdown content={articleData.content} />
           </Flex>
 
@@ -220,8 +221,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
     exclude: [slug],
     take: 6,
   });
-
-  console.log(ssg.dehydrate());
 
   return {
     props: {
