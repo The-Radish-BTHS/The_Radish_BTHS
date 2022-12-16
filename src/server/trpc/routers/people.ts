@@ -89,7 +89,7 @@ export const peopleRouter = t.router({
       });
     }),
 
-  linkUserToExistingPerson: authedProcedure
+  linkUserToExistingPerson: execProcedure
     .input(
       z.object({
         currentUserId: z.string(),
