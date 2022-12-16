@@ -1,5 +1,6 @@
 import { articleInclude, customSlugify } from "@lib/helpers.server";
 import { Person } from "@prisma/client";
+import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { authedProcedure, execProcedure, t } from "..";
 
@@ -87,7 +88,7 @@ export const peopleRouter = t.router({
       });
     }),
 
-  linkUserToExistingPerson: execProcedure
+  linkUserToExistingPerson: authedProcedure
     .input(
       z.object({
         currentUserId: z.string(),
@@ -95,18 +96,32 @@ export const peopleRouter = t.router({
       })
     )
     .mutation(async ({ ctx, input }) => {
-      await ctx.prisma.$transaction([
-        ctx.prisma.user.update({
-          where: { id: input.currentUserId },
-          data: { personId: input.newPersonId },
-        }),
-        ctx.prisma.person.deleteMany({
-          where: {
-            user: {
-              id: input.currentUserId,
+      const currentUser = await ctx.prisma.user.findUnique({
+        where: {
+          id: input.currentUserId,
+        },
+        include: { person: true },
+      });
+
+      if (!currentUser) throw new TRPCError({ code: "UNAUTHORIZED" });
+
+      try {
+        await ctx.prisma.$transaction([
+          ctx.prisma.user.update({
+            where: { id: currentUser.id },
+            data: { personId: input.newPersonId },
+          }),
+          ctx.prisma.person.delete({
+            where: {
+              id: currentUser.person.id,
             },
-          },
-        }),
-      ]);
+          }),
+        ]);
+      } catch {
+        throw new TRPCError({
+          code: "CONFLICT",
+          message: "User already has this person.",
+        });
+      }
     }),
 });

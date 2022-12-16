@@ -35,94 +35,99 @@ const LinkPerson: NextPage = () => {
     userPersonId?: string;
     personId?: string;
   }>();
+
   return (
     <Layout title="Link A Person!">
-      <RequiredUserWrapper roleNeeded="exec">
-        <Modal isOpen={isOpen} onClose={onClose}>
-          <ModalOverlay />
-          <ModalContent>
-            <ModalHeader>Are you sure?</ModalHeader>
-            <ModalCloseButton />
-            <ModalBody>
-              <Text>This change is irreversible!</Text>
-            </ModalBody>
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Are you sure?</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <Text>This change is irreversible!</Text>
+          </ModalBody>
 
-            <ModalFooter>
-              <Button
-                onClick={() => {
-                  if (!(data?.userId && data.personId)) return;
-                  // NOTE: THE CURRENT PERSON GOES POOF
-                  // THIS WILL FAIL IF THERE ARE ARTICLES ASSOCIATED THE CURRENT PERSON SLUG
-                  //
-                  // (SANTIAGO WHY DID YOU MAKE THE FUCKING SLUG THE FOREIGN KEY)
-                  linkUserToExistingPerson.mutate({
-                    // FROM
-                    currentUserId: data?.userId,
-                    // TO, the existing one
-                    newPersonId: data.personId,
-                  });
-                  onClose();
-                }}>
-                I am sure!
-              </Button>
-            </ModalFooter>
-          </ModalContent>
-        </Modal>
-        <Flex
-          alignItems="center"
-          gap="1rem"
-          w="25rem"
-          justifyContent="space-between">
-          <Text>User to change: </Text>
-          <Select
-            placeholder="Choose a User"
-            variant="flushed"
-            borderColor="black"
-            w="15rem"
-            onChange={(e) => {
-              const data = JSON.parse(e.target.value);
-              setData({
-                ...data,
-                userId: data.id,
-                userPersonId: data.personId,
-              });
-            }}>
-            {users.map((user, i) => (
-              <option
-                value={JSON.stringify({ id: user.id, personId: user.personId })}
-                key={i}>
-                {user.name}
+          <ModalFooter>
+            <Button
+              onClick={() => {
+                if (!(data?.userId && data.personId)) return;
+                // NOTE: THE CURRENT PERSON GOES POOF
+                // THIS WILL FAIL IF THERE ARE ARTICLES ASSOCIATED THE CURRENT PERSON SLUG
+                //
+                // (SANTIAGO WHY DID YOU MAKE THE FUCKING SLUG THE FOREIGN KEY)
+                linkUserToExistingPerson.mutate({
+                  // FROM
+                  currentUserId: data?.userId,
+                  // TO, the existing one
+                  newPersonId: data.personId,
+                });
+                onClose();
+              }}
+            >
+              I am sure!
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+      <Flex
+        alignItems="center"
+        gap="1rem"
+        w="25rem"
+        justifyContent="space-between"
+      >
+        <Text>User to change: </Text>
+        <Select
+          placeholder="Choose a User"
+          variant="flushed"
+          borderColor="black"
+          w="15rem"
+          onChange={(e) => {
+            const data = JSON.parse(e.target.value);
+            setData({
+              ...data,
+              userId: data.id,
+              userPersonId: data.personId,
+            });
+          }}
+        >
+          {users.map((user, i) => (
+            <option
+              value={JSON.stringify({ id: user.id, personId: user.personId })}
+              key={i}
+            >
+              {user.name}
+            </option>
+          ))}
+        </Select>
+      </Flex>
+      <Flex
+        alignItems="center"
+        gap="1rem"
+        mt="1rem"
+        w="25rem"
+        justifyContent="space-between"
+      >
+        <Text>Who are they? </Text>
+        <Select
+          placeholder="Choose their account"
+          variant="flushed"
+          borderColor="black"
+          w="15rem"
+          onChange={(e) => setData({ ...data, personId: e.target.value })}
+        >
+          {people
+            .filter((person) => person.id !== data?.userPersonId)
+            .map((person, i) => (
+              <option value={person.id} key={i}>
+                {person.name}
               </option>
             ))}
-          </Select>
-        </Flex>
-        <Flex
-          alignItems="center"
-          gap="1rem"
-          mt="1rem"
-          w="25rem"
-          justifyContent="space-between">
-          <Text>Who are they? </Text>
-          <Select
-            placeholder="Choose their account"
-            variant="flushed"
-            borderColor="black"
-            w="15rem"
-            onChange={(e) => setData({ ...data, personId: e.target.value })}>
-            {people
-              .filter((person) => person.id !== data?.userPersonId)
-              .map((user, i) => (
-                <option value={user.id} key={i}>
-                  {user.name}
-                </option>
-              ))}
-          </Select>
-        </Flex>
+        </Select>
+      </Flex>
 
-        <Button mt="3rem" width="20rem" onClick={() => onOpen()}>
-          Connect
-        </Button>
-      </RequiredUserWrapper>
+      <Button mt="3rem" width="20rem" onClick={() => onOpen()}>
+        Connect
+      </Button>
     </Layout>
   );
 };
