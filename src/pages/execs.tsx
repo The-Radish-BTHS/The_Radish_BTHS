@@ -13,22 +13,20 @@ const Execs: NextPage = () => {
   const execs = execsQuery.data ?? [];
   return (
     <Layout pageIndex={3} alignItems="center">
-      <RequiredUserWrapper>
-        <Heading>Hall of Execs</Heading>
-        <Text mb="3rem">
-          Holier than{" "}
-          <Link href="/people" textDecor="underline">
-            thou
-          </Link>
-        </Text>
-        <NothingHereWrapper valid={execs?.length > 0}>
-          <MasonryLayout numItems={execs?.length}>
-            {execs.map((exec, i) => (
-              <PersonCard {...exec} key={i} styles={{ mb: "2rem" }} />
-            ))}
-          </MasonryLayout>
-        </NothingHereWrapper>
-      </RequiredUserWrapper>
+      <Heading>Hall of Execs</Heading>
+      <Text mb="3rem">
+        Holier than{" "}
+        <Link href="/people" textDecor="underline">
+          thou
+        </Link>
+      </Text>
+      <NothingHereWrapper valid={execs?.length > 0}>
+        <MasonryLayout numItems={execs?.length}>
+          {execs.map((exec, i) => (
+            <PersonCard {...exec} key={i} styles={{ mb: "2rem" }} />
+          ))}
+        </MasonryLayout>
+      </NothingHereWrapper>
     </Layout>
   );
 };
