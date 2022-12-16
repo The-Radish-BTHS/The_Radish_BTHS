@@ -40,6 +40,7 @@ export const peopleRouter = t.router({
           NOT: input.exclude.map((slug) => ({ slug })),
           ...(input.who === "all" ? {} : { isExec: input.who === "execs" }),
         },
+        include: { user: true },
         orderBy: { gradYear: "desc" },
         take: input.take,
       });
