@@ -6,31 +6,26 @@ import MasonryLayout from "@components/masonry/masonry-layout";
 import { NextPage } from "next";
 import NothingHereWrapper from "@components/latest/nothing-here-wrapper";
 import { trpc } from "@lib/trpc";
-import RequiredUserWrapper from "@components/required-user-wrapper";
 
 const People: NextPage = () => {
   const peopleQuery = trpc.person.getAll.useQuery({ who: "normies" });
   const people = peopleQuery.data ?? [];
   return (
     <Layout pageIndex={2} alignItems="center">
-      <RequiredUserWrapper>
-        <>
-          <Heading>Normal People</Heading>
-          <Text mb="3rem">
-            Also see{" "}
-            <Link href="/execs" textDecor="underline">
-              the special ones
-            </Link>
-          </Text>
-          <NothingHereWrapper valid={people?.length > 0}>
-            <MasonryLayout numItems={people?.length}>
-              {people.map((person, i) => (
-                <PersonCard {...person} key={i} styles={{ mb: "2rem" }} />
-              ))}
-            </MasonryLayout>
-          </NothingHereWrapper>
-        </>
-      </RequiredUserWrapper>
+      <Heading>Normal People</Heading>
+      <Text mb="3rem">
+        Also see{" "}
+        <Link href="/execs" textDecor="underline">
+          the special ones
+        </Link>
+      </Text>
+      <NothingHereWrapper valid={people?.length > 0}>
+        <MasonryLayout numItems={people?.length}>
+          {people.map((person, i) => (
+            <PersonCard {...person} key={i} styles={{ mb: "2rem" }} />
+          ))}
+        </MasonryLayout>
+      </NothingHereWrapper>
     </Layout>
   );
 };
