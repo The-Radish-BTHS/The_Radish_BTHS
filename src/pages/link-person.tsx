@@ -115,7 +115,7 @@ const LinkPerson: NextPage = () => {
               <option
                 value={JSON.stringify({ id: user.id, personId: user.personId })}
                 key={i}>
-                {user.name}
+                {user.name} - {user.email}
               </option>
             ))}
           </Select>
