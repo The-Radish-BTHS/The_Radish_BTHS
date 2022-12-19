@@ -73,14 +73,18 @@ const Account: NextPage<{ peopleSlugs: string[] }> = ({ peopleSlugs }) => {
     <Layout title="My Account">
       <RequiredUserWrapper>
         <Flex gap="1.5rem">
+          <Flex flex={1} />
           <Heading
             fontSize="3.5rem"
             w="100%"
+            flex={1}
             fontWeight={600}
             textAlign="center">
             {name}
           </Heading>
-          {person?.isExec && <ExecStamp id="" size={80} />}
+          <Flex flex={1} justifyContent="flex-end">
+            {person?.isExec && <ExecStamp id="" size={80} />}
+          </Flex>
         </Flex>
 
         <Text

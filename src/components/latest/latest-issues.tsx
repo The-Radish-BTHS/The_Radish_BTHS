@@ -15,7 +15,7 @@ const LatestIssues: React.FC<{ exclude: string[] }> = ({ exclude }) => {
   const issues = issuesQuery.data || [];
 
   return (
-    <Flex flexDirection="column" alignItems="center" w="90vw">
+    <Flex flexDirection="column" alignItems="center" w="100%">
       <Heading fontSize="2rem" textAlign="center" mb="1rem">
         More Issues:{" "}
         <span style={{ fontWeight: "normal" }}>Ingest them fast!</span>

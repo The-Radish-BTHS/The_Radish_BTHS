@@ -23,10 +23,7 @@ const LatestArticles: React.FC<{
   const articles = articlesQuery.data;
 
   return (
-    <Flex
-      flexDirection="column"
-      alignItems="center"
-      width={{ base: "90vw", md: "70vw" }}>
+    <Flex flexDirection="column" alignItems="center" width="100%">
       <Heading fontSize="2rem" textAlign="center" mb="1rem">
         {title}: <span style={{ fontWeight: "normal" }}>Feast on these!</span>
       </Heading>
