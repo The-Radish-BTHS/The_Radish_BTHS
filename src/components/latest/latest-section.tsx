@@ -44,7 +44,8 @@ const LatestSection: React.FC = ({}) => {
             autoFlow="row"
             gap="2rem"
             pl={{ base: "0", md: "1rem" }}
-            h="100%">
+            h="100%"
+            w={{ base: "90vw", md: "40vw", lg: "30vw" }}>
             {articles?.slice(0, numArticles).map((article, i) => (
               <Articard {...article} styles={{ flex: 1 }} key={i} />
             ))}

@@ -15,10 +15,7 @@ const Articard: React.FC<ArticardType> = ({
   ...rest
 }) => {
   return (
-    <CardWrapper
-      w={{ base: "90vw", md: "40vw", lg: "30vw" }}
-      {...styles}
-      {...rest}>
+    <CardWrapper {...styles} {...rest}>
       <Center flexDir="column" w="100%" p="0.75rem">
         <Link
           href={`/articles/${slug}`}

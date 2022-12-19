@@ -52,6 +52,7 @@ const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({
         maxH="100%"
         flex={1}
         padding="6rem 2rem 5rem 2rem"
+        px="10rem"
         flexDirection="column"
         overflowY="scroll"
         overflowX="hidden"
