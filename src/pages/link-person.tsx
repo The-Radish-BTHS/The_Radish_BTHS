@@ -137,6 +137,14 @@ const LinkPerson: NextPage = () => {
               .filter(
                 (person) => person.id !== data?.userPersonId && !person.user
               )
+              .sort(function (a, b) {
+                const keyA = a.name;
+                const keyB = b.name;
+                // Compare the 2 dates
+                if (keyA < keyB) return -1;
+                if (keyA > keyB) return 1;
+                return 0;
+              })
               .map((person, i) => (
                 <option value={person.id} key={i}>
                   {person.name}

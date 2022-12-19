@@ -47,17 +47,16 @@ const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({
         }
       />
       <Topbar image={image} />
-      <Flex w="100%" maxH="100%" flex={1} pt="4.35rem">
-        <Flex
-          flex={1}
-          p="1.5rem 2rem"
-          pb="10rem"
-          flexDirection="column"
-          overflowY="scroll"
-          overflowX="hidden"
-          {...rest}>
-          {children}
-        </Flex>
+      <Flex
+        w="100%"
+        maxH="100%"
+        flex={1}
+        padding="6rem 2rem 5rem 2rem"
+        flexDirection="column"
+        overflowY="scroll"
+        overflowX="hidden"
+        {...rest}>
+        {children}
       </Flex>
     </Flex>
   );
