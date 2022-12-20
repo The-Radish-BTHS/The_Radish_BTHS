@@ -206,7 +206,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const ssg = await getSsgCaller();
 
   await ssg.article.get.prefetch({ slug });
-  await ssg.article.getMany.prefetch({
+  await ssg.article.getAll.prefetch({
     sortOrder: "desc",
     exclude: [slug],
     take: 6,

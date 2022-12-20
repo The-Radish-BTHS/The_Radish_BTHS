@@ -28,7 +28,8 @@ export const articleRouter = t.router({
       });
     }),
 
-  getMany: t.procedure
+  // the use of this procedure is discouraged, use getInfinite instead
+  getAll: t.procedure
     .input(
       z.object({
         issueSlug: z.string().optional(),
@@ -201,5 +202,35 @@ export const articleRouter = t.router({
             : undefined,
         },
       });
+    }),
+
+  getInfinite: t.procedure
+    .input(
+      z.object({
+        cursor: z.string().nullish(),
+      })
+    )
+    .query(async ({ ctx, input }) => {
+      const TAKE = 20;
+
+      const articles = await ctx.prisma.article.findMany({
+        take: TAKE + 1,
+        orderBy: {
+          publishedOn: "desc",
+        },
+        cursor: input.cursor ? { id: input.cursor } : undefined,
+        include: articleInclude,
+      });
+
+      let nextCursor: typeof input.cursor | undefined = undefined;
+      if (articles.length > TAKE) {
+        const nextItem = articles.pop();
+        nextCursor = nextItem!.id;
+      }
+
+      return {
+        articles,
+        nextCursor,
+      };
     }),
 });

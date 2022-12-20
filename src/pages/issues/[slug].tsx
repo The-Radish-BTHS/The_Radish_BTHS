@@ -13,7 +13,7 @@ const Issue: NextPage = () => {
   const router = useRouter();
   const slug = router.query.slug?.toString() ?? "";
 
-  const articleQuery = trpc.article.getMany.useQuery({ issueSlug: slug });
+  const articleQuery = trpc.article.getAll.useQuery({ issueSlug: slug });
   const issueQuery = trpc.issue.getBySlug.useQuery({ slug: slug });
   const articles = articleQuery.data ?? [];
   const issue = issueQuery.data;
@@ -38,7 +38,8 @@ const Issue: NextPage = () => {
           border="1px solid black"
           borderRadius="0.5rem"
           _hover={{ background: "rgba(222, 222, 222, 0.8)" }}
-          _active={{ background: "transparent" }}>
+          _active={{ background: "transparent" }}
+        >
           Read the PDF
         </Link>
       )}
