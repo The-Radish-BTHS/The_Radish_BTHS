@@ -36,10 +36,12 @@ const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({
   return (
     <Flex
       flexDirection="column"
+      alignItems="center"
       maxW="100vw"
       w="100vw"
       maxH="100vh"
       h="100vh"
+      overflowY="scroll"
       overflowX="hidden">
       <Title
         page={
@@ -48,14 +50,12 @@ const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({
       />
       <Topbar image={image} />
       <Flex
-        w="100%"
+        w={{ base: "100%", lg: "65rem" }}
         maxH="100%"
         flex={1}
         py="6rem"
-        px={{ base: "2rem", sm: "3rem", md: "5rem", lg: "10rem" }}
+        px={{ base: "2rem", sm: "3rem", md: "5rem", lg: "0" }}
         flexDirection="column"
-        overflowY="scroll"
-        overflowX="hidden"
         {...rest}>
         {children}
       </Flex>
