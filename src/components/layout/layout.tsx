@@ -53,7 +53,13 @@ const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({
         w={{ base: "100%", lg: "65rem" }}
         flex={1}
         py="6rem"
-        px={{ base: "2rem", sm: "3rem", md: "5rem", lg: "0" }}
+        px={{
+          base: "2rem",
+          sm: "3rem",
+          md: "5rem",
+          lg: "2rem",
+          xl: "0",
+        }}
         flexDirection="column"
         {...rest}>
         {children}
