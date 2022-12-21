@@ -28,11 +28,14 @@ const Articles: NextPage<
       <OnBottom
         onBottom={() => {
           articlesQuery.fetchNextPage();
-        }}
-      >
+        }}>
         <MasonryLayout numItems={articles?.length}>
           {articles?.map((article) => (
-            <Articard {...article} key={article.id} styles={{ mb: "2rem" }} />
+            <Articard
+              {...article}
+              key={article.id}
+              styles={{ mb: "2rem", w: "100%" }}
+            />
           ))}
         </MasonryLayout>
 
