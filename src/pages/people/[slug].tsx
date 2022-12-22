@@ -24,44 +24,40 @@ const Person: NextPage = () => {
 
   return (
     <Layout title={person?.name} alignItems="center">
-      <RequiredUserWrapper>
-        <Flex gap="0.5rem" alignItems="flex-start" ml="40px">
-          <Heading>{person?.name}</Heading>
-          {person?.isExec && <ExecStamp id={person?.name} size={40} />}
-        </Flex>
-        <Text mb="0.75rem" mt="0.25rem" textAlign="center">
-          {former ? "Former " : ""} {person?.position}
-          <span style={{ fontWeight: "bold" }}>{" ∙ "}</span>
-          Graduat{former ? "ed" : "ing"} {person?.gradYear}
-        </Text>
+      <Flex gap="0.5rem" alignItems="flex-start" ml="40px">
+        <Heading>{person?.name}</Heading>
+        {person?.isExec && <ExecStamp id={person?.name} size={40} />}
+      </Flex>
+      <Text mb="0.75rem" mt="0.25rem" textAlign="center">
+        {former ? "Former " : ""} {person?.position}
+        <span style={{ fontWeight: "bold" }}>{" ∙ "}</span>
+        Graduat{former ? "ed" : "ing"} {person?.gradYear}
+      </Text>
 
-        {person?.description && (
-          <Text
-            w={{ base: "90vw", md: "40vw" }}
-            textAlign="center"
-            fontStyle="italic"
-            mb="3rem"
-            fontWeight="medium">
-            &quot;{person?.description}&quot;
-          </Text>
-        )}
-        <NothingHereWrapper
-          valid={(person?.articles?.length ?? 0) > 0}
-          py="20vh">
-          <MasonryLayout numItems={person?.articles?.length}>
-            {person?.articles?.map((article, i) => (
-              <Articard
-                {...article}
-                key={i}
-                styles={{ h: "fit-content", my: "1rem" }}
-              />
-            ))}
-          </MasonryLayout>
-        </NothingHereWrapper>
-        <Flex mt="4rem" w="100%">
-          <OtherPeople exclude={[slug]} />
-        </Flex>
-      </RequiredUserWrapper>
+      {person?.description && (
+        <Text
+          w={{ base: "90vw", md: "40vw" }}
+          textAlign="center"
+          fontStyle="italic"
+          mb="3rem"
+          fontWeight="medium">
+          &quot;{person?.description}&quot;
+        </Text>
+      )}
+      <NothingHereWrapper valid={(person?.articles?.length ?? 0) > 0} py="20vh">
+        <MasonryLayout numItems={person?.articles?.length}>
+          {person?.articles?.map((article, i) => (
+            <Articard
+              {...article}
+              key={i}
+              styles={{ h: "fit-content", my: "1rem" }}
+            />
+          ))}
+        </MasonryLayout>
+      </NothingHereWrapper>
+      <Flex mt="4rem" w="100%">
+        <OtherPeople exclude={[slug]} />
+      </Flex>
     </Layout>
   );
 };
