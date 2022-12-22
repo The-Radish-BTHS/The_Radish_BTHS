@@ -1,0 +1,43 @@
+{
+  "redirects": [
+    {
+      "source": "/github",
+      "destination": "https://github.com/The-Radish-BTHS/The_Radish_BTHS"
+    },
+
+    {
+      "source": "/signup",
+      "destination": "https://docs.google.com/forms/d/e/1FAIpQLScfhiwteouLAMkJ0YOgSQ8-IiYzIlInRZr7ImOgpxwKZvFvFg/viewform"
+    },
+    {
+      "source": "/sign-up",
+      "destination": "https://docs.google.com/forms/d/e/1FAIpQLScfhiwteouLAMkJ0YOgSQ8-IiYzIlInRZr7ImOgpxwKZvFvFg/viewform"
+    },
+    {
+      "source": "/join",
+      "destination": "https://docs.google.com/forms/d/e/1FAIpQLScfhiwteouLAMkJ0YOgSQ8-IiYzIlInRZr7ImOgpxwKZvFvFg/viewform"
+    },
+    {
+      "source": "/merge-with-the-collective",
+      "destination": "https://docs.google.com/forms/d/e/1FAIpQLScfhiwteouLAMkJ0YOgSQ8-IiYzIlInRZr7ImOgpxwKZvFvFg/viewform"
+    },
+
+    {
+      "source": "/instagram",
+      "destination": "https://www.instagram.com/theradishbths/"
+    },
+    {
+      "source": "/insta",
+      "destination": "https://www.instagram.com/theradishbths/"
+    },
+    {
+      "source": "/ig",
+      "destination": "https://www.instagram.com/theradishbths/"
+    },
+
+    {
+      "source": "/join-the-silly-server",
+      "destination": "https://discord.gg/qwad7x9V6c"
+    }
+  ]
+}
