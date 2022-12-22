@@ -1,4 +1,13 @@
-import { Center, Flex, Heading, Text, Textarea } from "@chakra-ui/react";
+import {
+  Center,
+  Flex,
+  Heading,
+  List,
+  ListItem,
+  Text,
+  Textarea,
+  UnorderedList,
+} from "@chakra-ui/react";
 import Button from "@components/button";
 import { trpc } from "@lib/trpc";
 import { NextPage } from "next";
@@ -78,8 +87,7 @@ const SignUpPage: NextPage = () => {
           router.push((router.query.redirect || "/") as string);
         })}
         className={styles["form-wrapper"]}
-        style={{ width: isMobile ? "85vw" : "60vw" }}
-      >
+        style={{ width: isMobile ? "85vw" : "60vw" }}>
         <p>
           Your Name:<span style={{ color: "red" }}> *</span>
         </p>
@@ -119,6 +127,27 @@ const SignUpPage: NextPage = () => {
           Join Now!
         </Button>
       </form>
+      <Text my="2rem">***IF YOU HAVE SUBMITTED ARTICLES IN THE PAST**</Text>
+      <UnorderedList>
+        <ListItem>
+          <Text>
+            Please don&apos;t submit anything before linking with your old
+            account!
+          </Text>
+        </ListItem>
+        <ListItem>
+          <Text>
+            Message us on the discord or talk to us in a meeting to link your
+            account!
+          </Text>
+        </ListItem>
+        <ListItem>
+          <Text>
+            Ignore this message if your articles were never published yall r
+            good
+          </Text>
+        </ListItem>
+      </UnorderedList>
     </Layout>
   );
 };
