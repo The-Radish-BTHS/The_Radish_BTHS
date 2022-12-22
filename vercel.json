@@ -6,14 +6,6 @@
     },
 
     {
-      "source": "/signup",
-      "destination": "https://docs.google.com/forms/d/e/1FAIpQLScfhiwteouLAMkJ0YOgSQ8-IiYzIlInRZr7ImOgpxwKZvFvFg/viewform"
-    },
-    {
-      "source": "/sign-up",
-      "destination": "https://docs.google.com/forms/d/e/1FAIpQLScfhiwteouLAMkJ0YOgSQ8-IiYzIlInRZr7ImOgpxwKZvFvFg/viewform"
-    },
-    {
       "source": "/join",
       "destination": "https://docs.google.com/forms/d/e/1FAIpQLScfhiwteouLAMkJ0YOgSQ8-IiYzIlInRZr7ImOgpxwKZvFvFg/viewform"
     },
