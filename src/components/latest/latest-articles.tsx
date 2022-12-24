@@ -13,11 +13,10 @@ const LatestArticles: React.FC<{
   exclude?: string[];
 }> = ({ title = "New Articles", exclude = [] }) => {
   const isMobile = useIsMobile();
-  const numItems = isMobile ? 3 : 6;
 
   const articlesQuery = trpc.article.getAll.useQuery({
     sortOrder: "desc",
-    take: numItems,
+    take: 6,
     exclude: exclude,
   });
   const articles = articlesQuery.data;
@@ -29,10 +28,10 @@ const LatestArticles: React.FC<{
       </Heading>
       <NothingHereWrapper valid={!!articles?.length} h="45vh">
         <MasonryLayout
-          numItems={numItems}
+          numItems={4}
           breakpoints={{ default: 3, 1200: 2, 850: 1 }}
         >
-          {articles?.slice(0, numItems).map((article, i) => (
+          {articles?.slice(0, !isMobile ? 6 : 3).map((article, i) => (
             <Articard
               {...article}
               styles={{

@@ -51,6 +51,7 @@ export const issueRouter = t.router({
       });
     }),
 
+  // use getInfinite instead
   getAll: t.procedure
     .input(
       z.object({
@@ -97,12 +98,36 @@ export const issueRouter = t.router({
     }),
 
   getLast: t.procedure.query(async ({ ctx }) => {
-    return await (
-      await ctx.prisma.issue.findMany({
+    return await ctx.prisma.issue.findFirst({
+      orderBy: {
+        publishedOn: "desc",
+      },
+      include: {
+        articles: {
+          include: {
+            authors: true,
+            topics: true,
+          },
+        },
+      },
+    })!;
+  }),
+
+  getInfinite: t.procedure
+    .input(
+      z.object({
+        cursor: z.string().nullish(),
+      })
+    )
+    .query(async ({ ctx, input }) => {
+      const TAKE = 10;
+
+      const issues = await ctx.prisma.issue.findMany({
+        take: TAKE + 1,
         orderBy: {
           publishedOn: "desc",
         },
-        take: 1,
+        cursor: input.cursor ? { id: input.cursor } : undefined,
         include: {
           articles: {
             include: {
@@ -111,7 +136,17 @@ export const issueRouter = t.router({
             },
           },
         },
-      })
-    )[0];
-  }),
+      });
+
+      let nextCursor: typeof input.cursor | undefined = undefined;
+      if (issues.length > TAKE) {
+        const nextItem = issues.pop();
+        nextCursor = nextItem!.id;
+      }
+
+      return {
+        issues,
+        nextCursor,
+      };
+    }),
 });
