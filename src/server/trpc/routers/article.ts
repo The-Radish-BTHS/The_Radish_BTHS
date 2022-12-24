@@ -208,6 +208,7 @@ export const articleRouter = t.router({
     .input(
       z.object({
         withTopic: z.string().nullish(),
+        withIssue: z.string().nullish(),
         cursor: z.string().nullish(),
       })
     )
@@ -215,15 +216,23 @@ export const articleRouter = t.router({
       const TAKE = 10;
 
       const articles = await ctx.prisma.article.findMany({
-        where: input.withTopic
-          ? {
-              topics: {
-                some: {
-                  slug: input.withTopic,
-                },
-              },
-            }
-          : undefined,
+        where:
+          input.withTopic || input.withIssue
+            ? {
+                topics: input.withTopic
+                  ? {
+                      some: {
+                        slug: input.withTopic,
+                      },
+                    }
+                  : undefined,
+                issue: input.withIssue
+                  ? {
+                      slug: input.withIssue,
+                    }
+                  : undefined,
+              }
+            : undefined,
         take: TAKE + 1,
         orderBy: {
           publishedOn: "desc",
