@@ -92,7 +92,7 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
 
   return {
     paths: (await trpc.topic.getSlugs()).map((slug) => `/topics/${slug}`),
-    fallback: true,
+    fallback: "blocking",
   };
 };
 
