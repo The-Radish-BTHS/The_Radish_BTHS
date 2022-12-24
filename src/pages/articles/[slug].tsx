@@ -32,9 +32,7 @@ import Button from "@components/button";
 import { useRouter } from "next/router";
 import { useCanAccess } from "@hooks/useCanAccess";
 
-const Article: NextPage<
-  InferGetStaticPropsType<typeof getStaticProps>
-> = () => {
+const Article: NextPage = () => {
   const router = useRouter();
   const slug = router.query.slug?.toString() ?? "";
 
@@ -236,10 +234,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
     select: { slug: true },
   });
 
-  const paths = slugsToPaths(articles);
-
   return {
-    paths,
-    fallback: true,
+    paths: articles.map(({ slug }) => `/articles/${slug}`),
+    fallback: "blocking",
   };
 };
