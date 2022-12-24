@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "yarn prisma generate && next build",
+    "postbuild": "next-sitemap --config next-sitemap.config.js",
     "start": "next start",
     "lint": "next lint",
     "seed": "prisma db seed"
@@ -33,6 +34,7 @@
     "@trpc/react-query": "^10.1.0",
     "@trpc/server": "^10.1.0",
     "@types/nprogress": "^0.2.0",
+    "add": "^2.0.6",
     "formik": "^2.2.9",
     "framer-motion": "^6.4.3",
     "hamburger-react": "^2.5.0",
@@ -43,6 +45,7 @@
     "next": "^13.0.5",
     "next-auth": "^4.16.4",
     "next-sanity": "^0.8.4",
+    "next-sitemap": "^3.1.43",
     "next-superjson-plugin": "^0.4.9",
     "nprogress": "^0.2.0",
     "prisma": "^4.5.0",
@@ -62,6 +65,7 @@
     "remirror": "^2.0.16",
     "slugify": "^1.6.5",
     "superjson": "^1.11.0",
+    "yarn": "^1.22.19",
     "yup": "^0.32.11",
     "zod": "^3.19.1"
   },
