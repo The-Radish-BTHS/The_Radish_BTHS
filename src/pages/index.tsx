@@ -8,8 +8,9 @@ import type { GetStaticProps, NextPage } from "next";
 const Home: NextPage = () => {
   return (
     <Layout alignItems="center" gap="2.5rem">
-      <LatestSection />
       <LatestArticles />
+      <LatestSection />
+
       <TopicsSection />
     </Layout>
   );
