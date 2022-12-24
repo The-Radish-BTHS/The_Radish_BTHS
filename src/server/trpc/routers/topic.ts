@@ -51,7 +51,6 @@ export const topicRouter = t.router({
     .query(async ({ ctx, input }) => {
       return await ctx.prisma.topic.findUnique({
         where: { slug: input.slug },
-        include: { articles: { include: articleInclude } },
       });
     }),
 
