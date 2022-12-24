@@ -128,14 +128,6 @@ export const issueRouter = t.router({
           publishedOn: "desc",
         },
         cursor: input.cursor ? { id: input.cursor } : undefined,
-        include: {
-          articles: {
-            include: {
-              authors: true,
-              topics: true,
-            },
-          },
-        },
       });
 
       let nextCursor: typeof input.cursor | undefined = undefined;
