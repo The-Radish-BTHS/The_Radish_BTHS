@@ -127,4 +127,37 @@ export const peopleRouter = t.router({
       })
     ).map(({ slug }) => slug);
   }),
+
+  getInfinite: t.procedure
+    .input(
+      z.object({
+        who: z.enum(["execs", "normies", "all"]).default("all"),
+        cursor: z.string().nullish(),
+      })
+    )
+    .query(async ({ ctx, input }) => {
+      const TAKE = 15;
+
+      const people = await ctx.prisma.person.findMany({
+        take: TAKE + 1,
+        where: {
+          ...(input.who === "all" ? {} : { isExec: input.who === "execs" }),
+        },
+        orderBy: {
+          gradYear: "desc",
+        },
+        cursor: input.cursor ? { id: input.cursor } : undefined,
+      });
+
+      let nextCursor: typeof input.cursor | undefined = undefined;
+      if (people.length > TAKE) {
+        const nextItem = people.pop();
+        nextCursor = nextItem!.id;
+      }
+
+      return {
+        people,
+        nextCursor,
+      };
+    }),
 });
