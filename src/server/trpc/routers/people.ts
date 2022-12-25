@@ -14,12 +14,6 @@ export const peopleRouter = t.router({
     .query(async ({ ctx, input }) => {
       return await ctx.prisma.person.findUnique({
         where: { slug: input.slug },
-        include: {
-          articles: {
-            include: articleInclude,
-            orderBy: { publishedOn: "desc" },
-          },
-        },
       });
     }),
 
@@ -125,4 +119,12 @@ export const peopleRouter = t.router({
         });
       }
     }),
+
+  getAllSlugs: t.procedure.query(async ({ ctx }) => {
+    return (
+      await ctx.prisma.person.findMany({
+        select: { slug: true },
+      })
+    ).map(({ slug }) => slug);
+  }),
 });
