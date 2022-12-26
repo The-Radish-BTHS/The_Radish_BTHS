@@ -4,18 +4,31 @@ import LatestIssues from "@components/latest/latest-issues";
 import Layout from "@components/layout/layout";
 import Link from "@components/link";
 import MasonryLayout from "@components/masonry/masonry-layout";
-import { NextPage } from "next";
+import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import NothingHereWrapper from "@components/latest/nothing-here-wrapper";
 import { useRouter } from "next/router";
 import { trpc } from "@lib/trpc";
+import { OnBottom } from "@components/on-bottom";
+import { getSsgCaller } from "@lib/ssg-helper";
+import { createPublicCaller } from "@server/trpc";
 
 const Issue: NextPage = () => {
   const router = useRouter();
   const slug = router.query.slug?.toString() ?? "";
 
-  const articleQuery = trpc.article.getAll.useQuery({ issueSlug: slug });
+  const articlesQuery = trpc.article.getInfinite.useInfiniteQuery(
+    {
+      withIssue: slug,
+    },
+    {
+      getNextPageParam: (current) => current.nextCursor,
+    }
+  );
   const issueQuery = trpc.issue.getBySlug.useQuery({ slug: slug });
-  const articles = articleQuery.data ?? [];
+
+  const articles = articlesQuery.data?.pages
+    .map((page) => page.articles)
+    .flat();
   const issue = issueQuery.data;
 
   return (
@@ -45,22 +58,59 @@ const Issue: NextPage = () => {
       )}
 
       <Box mb="4rem">
-        <NothingHereWrapper valid={articles?.length > 0} py="20vh">
-          <MasonryLayout numItems={articles?.length}>
-            {articles?.map((article, i) => (
-              <Articard
-                {...article}
-                key={i}
-                styles={{ h: "fit-content", my: "1rem" }}
-              />
-            ))}
-          </MasonryLayout>
+        <NothingHereWrapper valid={(articles || []).length > 0} py="20vh">
+          <OnBottom
+            onBottom={() => {
+              articlesQuery.fetchNextPage();
+            }}
+          >
+            <MasonryLayout numItems={articles?.length}>
+              {articles?.map((article, i) => (
+                <Articard
+                  {...article}
+                  key={i}
+                  styles={{ h: "fit-content", my: "1rem" }}
+                />
+              ))}
+            </MasonryLayout>
+          </OnBottom>
+
+          {articlesQuery.hasNextPage ? (
+            <Text>Loading more articles...</Text>
+          ) : (
+            <Text>You reached the end.</Text>
+          )}
         </NothingHereWrapper>
       </Box>
 
       <LatestIssues exclude={[slug]} />
     </Layout>
   );
+};
+
+export const getStaticProps: GetStaticProps = async (ctx) => {
+  const ssg = await getSsgCaller();
+
+  const slug = ctx.params?.slug as string;
+
+  await ssg.issue.getBySlug.prefetch({ slug });
+  await ssg.article.getInfinite.prefetchInfinite({
+    withIssue: slug,
+  });
+
+  return {
+    props: { trpcState: ssg.dehydrate() },
+    revalidate: 60,
+  };
+};
+
+export const getStaticPaths: GetStaticPaths = async (ctx) => {
+  const trpc = createPublicCaller();
+
+  return {
+    paths: (await trpc.issue.getAllSlugs()).map((slug) => `/issues/${slug}`),
+    fallback: "blocking",
+  };
 };
 
 export default Issue;

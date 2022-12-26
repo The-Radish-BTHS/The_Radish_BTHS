@@ -207,13 +207,40 @@ export const articleRouter = t.router({
   getInfinite: t.procedure
     .input(
       z.object({
+        withTopic: z.string().nullish(),
+        withIssue: z.string().nullish(),
+        withAuthor: z.string().nullish(),
         cursor: z.string().nullish(),
       })
     )
     .query(async ({ ctx, input }) => {
-      const TAKE = 20;
+      const TAKE = 10;
 
       const articles = await ctx.prisma.article.findMany({
+        where:
+          input.withTopic || input.withIssue || input.withAuthor
+            ? {
+                topics: input.withTopic
+                  ? {
+                      some: {
+                        slug: input.withTopic,
+                      },
+                    }
+                  : undefined,
+                issue: input.withIssue
+                  ? {
+                      slug: input.withIssue,
+                    }
+                  : undefined,
+                authors: input.withAuthor
+                  ? {
+                      some: {
+                        slug: input.withAuthor,
+                      },
+                    }
+                  : undefined,
+              }
+            : undefined,
         take: TAKE + 1,
         orderBy: {
           publishedOn: "desc",

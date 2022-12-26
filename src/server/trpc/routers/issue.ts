@@ -75,6 +75,14 @@ export const issueRouter = t.router({
       });
     }),
 
+  getAllSlugs: t.procedure.query(async ({ ctx }) => {
+    return (
+      await ctx.prisma.issue.findMany({
+        select: { slug: true },
+      })
+    ).map(({ slug }) => slug);
+  }),
+
   getBySlug: t.procedure
     .input(
       z.object({
@@ -85,14 +93,6 @@ export const issueRouter = t.router({
       return await ctx.prisma.issue.findUnique({
         where: {
           slug: input.slug,
-        },
-        include: {
-          articles: {
-            include: {
-              authors: true,
-              topics: true,
-            },
-          },
         },
       });
     }),
@@ -128,14 +128,6 @@ export const issueRouter = t.router({
           publishedOn: "desc",
         },
         cursor: input.cursor ? { id: input.cursor } : undefined,
-        include: {
-          articles: {
-            include: {
-              authors: true,
-              topics: true,
-            },
-          },
-        },
       });
 
       let nextCursor: typeof input.cursor | undefined = undefined;

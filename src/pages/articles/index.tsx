@@ -28,7 +28,8 @@ const Articles: NextPage<
       <OnBottom
         onBottom={() => {
           articlesQuery.fetchNextPage();
-        }}>
+        }}
+      >
         <MasonryLayout numItems={articles?.length}>
           {articles?.map((article) => (
             <Articard
@@ -58,5 +59,6 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: { trpcState: ssg.dehydrate() },
+    revalidate: 60,
   };
 };

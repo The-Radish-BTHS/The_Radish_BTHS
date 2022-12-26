@@ -14,12 +14,6 @@ export const peopleRouter = t.router({
     .query(async ({ ctx, input }) => {
       return await ctx.prisma.person.findUnique({
         where: { slug: input.slug },
-        include: {
-          articles: {
-            include: articleInclude,
-            orderBy: { publishedOn: "desc" },
-          },
-        },
       });
     }),
 
@@ -133,5 +127,46 @@ export const peopleRouter = t.router({
           message: "User already has this person.",
         });
       }
+    }),
+
+  getAllSlugs: t.procedure.query(async ({ ctx }) => {
+    return (
+      await ctx.prisma.person.findMany({
+        select: { slug: true },
+      })
+    ).map(({ slug }) => slug);
+  }),
+
+  getInfinite: t.procedure
+    .input(
+      z.object({
+        who: z.enum(["execs", "normies", "all"]).default("all"),
+        cursor: z.string().nullish(),
+      })
+    )
+    .query(async ({ ctx, input }) => {
+      const TAKE = 15;
+
+      const people = await ctx.prisma.person.findMany({
+        take: TAKE + 1,
+        where: {
+          ...(input.who === "all" ? {} : { isExec: input.who === "execs" }),
+        },
+        orderBy: {
+          gradYear: "desc",
+        },
+        cursor: input.cursor ? { id: input.cursor } : undefined,
+      });
+
+      let nextCursor: typeof input.cursor | undefined = undefined;
+      if (people.length > TAKE) {
+        const nextItem = people.pop();
+        nextCursor = nextItem!.id;
+      }
+
+      return {
+        people,
+        nextCursor,
+      };
     }),
 });

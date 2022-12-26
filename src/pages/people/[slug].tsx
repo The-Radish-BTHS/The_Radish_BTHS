@@ -3,21 +3,36 @@ import Articard from "@components/cards/articard";
 import OtherPeople from "@components/latest/other-people";
 import Layout from "@components/layout/layout";
 import MasonryLayout from "@components/masonry/masonry-layout";
-import { NextPage } from "next";
+import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import ExecStamp from "@components/exec-stamp";
 import NothingHereWrapper from "@components/latest/nothing-here-wrapper";
 import { useRouter } from "next/router";
 import { trpc } from "@lib/trpc";
 import RequiredUserWrapper from "@components/required-user-wrapper";
+import { getSsgCaller } from "@lib/ssg-helper";
+import { createPublicCaller } from "@server/trpc";
+import { OnBottom } from "@components/on-bottom";
 
 const Person: NextPage = () => {
   const router = useRouter();
-  const slug = router.query.slug?.toString() ?? "";
-
   const today = new Date();
 
-  const personQuery = trpc.person.getBySlug.useQuery({ slug });
+  const personQuery = trpc.person.getBySlug.useQuery({
+    slug: router.query.slug as string,
+  });
   const person = personQuery.data;
+
+  const articlesQuery = trpc.article.getInfinite.useInfiniteQuery(
+    {
+      withAuthor: router.query.slug as string,
+    },
+    {
+      getNextPageParam: (current) => current.nextCursor,
+    }
+  );
+  const articles = articlesQuery.data?.pages
+    .map((page) => page.articles)
+    .flat();
 
   const former =
     person && today.getMonth() > 6 && today.getFullYear() >= person.gradYear;
@@ -40,26 +55,63 @@ const Person: NextPage = () => {
           textAlign="center"
           fontStyle="italic"
           mb="3rem"
-          fontWeight="medium">
+          fontWeight="medium"
+        >
           &quot;{person?.description}&quot;
         </Text>
       )}
-      <NothingHereWrapper valid={(person?.articles?.length ?? 0) > 0} py="20vh">
-        <MasonryLayout numItems={person?.articles?.length}>
-          {person?.articles?.map((article, i) => (
-            <Articard
-              {...article}
-              key={i}
-              styles={{ h: "fit-content", my: "1rem" }}
-            />
-          ))}
-        </MasonryLayout>
+      <NothingHereWrapper valid={(articles?.length ?? 0) > 0} py="20vh">
+        <OnBottom onBottom={() => articlesQuery.fetchNextPage()}>
+          <MasonryLayout numItems={articles?.length}>
+            {articles?.map((article, i) => (
+              <Articard
+                {...article}
+                key={i}
+                styles={{ h: "fit-content", my: "1rem" }}
+              />
+            ))}
+          </MasonryLayout>
+        </OnBottom>
+
+        {articlesQuery.hasNextPage ? (
+          <Text>Loading more articles...</Text>
+        ) : (
+          <Text>You reached the end.</Text>
+        )}
       </NothingHereWrapper>
       <Flex mt="4rem" w="100%">
-        <OtherPeople exclude={[slug]} />
+        <OtherPeople exclude={[router.query.slug as string]} />
       </Flex>
     </Layout>
   );
+};
+
+export const getStaticProps: GetStaticProps = async (ctx) => {
+  const ssg = await getSsgCaller();
+
+  await ssg.person.getBySlug.prefetch({
+    slug: ctx.params?.slug as string,
+  });
+
+  await ssg.article.getInfinite.prefetchInfinite({
+    withAuthor: ctx.params?.slug as string,
+  });
+
+  return {
+    props: {
+      trpcState: ssg.dehydrate(),
+    },
+    revalidate: 60,
+  };
+};
+
+export const getStaticPaths: GetStaticPaths = async (ctx) => {
+  const trpc = createPublicCaller();
+
+  return {
+    paths: (await trpc.person.getAllSlugs()).map((slug) => `/people/${slug}`),
+    fallback: "blocking",
+  };
 };
 
 export default Person;
