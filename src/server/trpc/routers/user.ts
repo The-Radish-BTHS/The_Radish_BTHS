@@ -1,16 +1,21 @@
-import {
-  articleInclude,
-  customSlugify,
-  deeperArticleInclude,
-} from "@lib/helpers.server";
 import { UserPermission } from "@prisma/client";
-import { TRPCError } from "@trpc/server";
 import { z } from "zod";
-import { authedProcedure, editorProcedure, execProcedure, t } from "..";
-import { markdownToTxt } from "markdown-to-txt";
+import { execProcedure, t } from "..";
 
 export const userRouter = t.router({
-  getAll: t.procedure.query(async ({ ctx }) => {
-    return ctx.prisma.user.findMany();
-  }),
+  changePermission: execProcedure
+    .input(
+      z.object({
+        userId: z.string(),
+        permission: z.nativeEnum(UserPermission),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      await ctx.prisma.user.update({
+        where: { id: input.userId },
+        data: {
+          permission: input.permission,
+        },
+      });
+    }),
 });
