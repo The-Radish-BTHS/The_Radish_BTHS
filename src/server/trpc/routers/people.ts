@@ -155,9 +155,7 @@ export const peopleRouter = t.router({
         where: {
           ...(input.who === "all" ? {} : { isExec: input.who === "execs" }),
         },
-        orderBy: {
-          gradYear: "desc",
-        },
+        orderBy: [{ position: "desc" }, { name: "asc" }, { gradYear: "desc" }],
         cursor: input.cursor ? { id: input.cursor } : undefined,
       });
 
