@@ -10,6 +10,7 @@ import { trpc } from "@lib/trpc";
 const People: NextPage = () => {
   const peopleQuery = trpc.person.getAll.useQuery({ who: "normies" });
   const people = peopleQuery.data ?? [];
+
   return (
     <Layout pageIndex={2} alignItems="center">
       <Heading>Normal People</Heading>

@@ -35,8 +35,8 @@ const PersonCard: React.FC<PersonCardType> = ({
                 {name}
               </Heading>
               <Text fontWeight="bold" fontStyle="italic" w="100%">
-                {former ? "Former " : ""}
                 {position}
+                {former ? " (Former)" : ""}
               </Text>
             </Flex>
             {isExec && <ExecStamp id={slug} size={60} />}
@@ -48,7 +48,8 @@ const PersonCard: React.FC<PersonCardType> = ({
               textAlign="center"
               fontStyle="italic"
               my="1rem"
-              fontWeight="medium">
+              fontWeight="medium"
+            >
               &quot;{description}&quot;
             </Text>
           )}

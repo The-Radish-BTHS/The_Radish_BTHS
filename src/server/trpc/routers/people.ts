@@ -17,7 +17,7 @@ export const peopleRouter = t.router({
       });
     }),
 
-  getAll: authedProcedure
+  getAll: t.procedure
     .input(
       z.object({
         who: z.enum(["execs", "normies", "all"]).default("all"),
@@ -34,16 +34,19 @@ export const peopleRouter = t.router({
           NOT: input.exclude.map((slug) => ({ slug })),
           ...(input.who === "all" ? {} : { isExec: input.who === "execs" }),
         },
-        orderBy: { gradYear: "desc" },
+        orderBy: [{ position: "desc" }, { name: "asc" }, { gradYear: "desc" }],
         take: input.take,
       });
+
+      console.log(people);
 
       const former = (person: Person) =>
         input.includeIsFormer && {
           former:
             person &&
             today.getMonth() > 6 &&
-            today.getFullYear() >= person.gradYear,
+            today.getFullYear() >= person.gradYear &&
+            person.gradYear > 1980,
         };
 
       return people.map((person) => ({
