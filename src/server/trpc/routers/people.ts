@@ -1,5 +1,5 @@
 import { articleInclude, customSlugify } from "@lib/helpers.server";
-import { Person } from "@prisma/client";
+import { Person, UserPermission } from "@prisma/client";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { authedProcedure, execProcedure, t } from "..";
@@ -100,11 +100,20 @@ export const peopleRouter = t.router({
 
       if (!currentUser) throw new TRPCError({ code: "UNAUTHORIZED" });
 
+      const newPerson = await ctx.prisma.person.findUnique({
+        where: { id: input.newPersonId },
+        select: { isExec: true },
+      });
+
+      const data = newPerson?.isExec
+        ? { personId: input.newPersonId, permission: UserPermission.EXEC }
+        : { personId: input.newPersonId };
+
       try {
         await ctx.prisma.$transaction([
           ctx.prisma.user.update({
             where: { id: currentUser.id },
-            data: { personId: input.newPersonId },
+            data,
           }),
           ctx.prisma.person.delete({
             where: {
