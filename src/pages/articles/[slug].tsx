@@ -32,13 +32,12 @@ import Button from "@components/button";
 import { useRouter } from "next/router";
 import { useCanAccess } from "@hooks/useCanAccess";
 
-const Article: NextPage<
-  InferGetStaticPropsType<typeof getStaticProps>
-> = () => {
+const Article: NextPage = () => {
   const router = useRouter();
   const slug = router.query.slug?.toString() ?? "";
 
   const article = trpc.article.get.useQuery({ slug });
+  // non null since the data is fetched during SSG
   const articleData = article.data!;
 
   const { isOpen, onClose, onOpen } = useDisclosure();
@@ -80,11 +79,13 @@ const Article: NextPage<
             isOpen={isOpen}
             onClose={onClose}
             size={{ base: "full", md: "md" }}
-            isCentered>
+            isCentered
+          >
             <ModalOverlay />
             <ModalContent
               bg="#ebeae5"
-              borderRadius={{ base: 0, sm: "0.75rem" }}>
+              borderRadius={{ base: 0, sm: "0.75rem" }}
+            >
               <ModalHeader>Are you sure?</ModalHeader>
               <ModalCloseButton />
               <ModalBody>
@@ -104,7 +105,8 @@ const Article: NextPage<
                         onClose();
                         router.push("/eggsex");
                       });
-                  }}>
+                  }}
+                >
                   Yes, I&apos;m sure!
                 </Button>
               </ModalFooter>
@@ -116,7 +118,8 @@ const Article: NextPage<
               gap="0.75rem"
               w="101vw"
               mb="1rem"
-              borderY="1px solid black">
+              borderY="1px solid black"
+            >
               {[...Array(30)].map((_, i) => (
                 <Text key={i}>UNPUBLISHED</Text>
               ))}
@@ -129,17 +132,19 @@ const Article: NextPage<
             flexDir="column"
             justifyContent="center"
             alignItems="center"
-            flex={1}>
+            flex={1}
+          >
             {!articleData.published && (
               <Button
                 w={{ base: "90vw", md: "fit-content" }}
                 ml={{ base: 0, md: "auto" }}
                 mb={{ base: "2rem", md: 0 }}
-                onClick={onOpen}>
+                onClick={onOpen}
+              >
                 Publish
               </Button>
             )}
-            <Heading textAlign="center" maxW="85vw">
+            <Heading textAlign="center" w="100%">
               {articleData.title}
             </Heading>
             <Text fontSize="1.05rem" mt="0.5rem" w="100%" textAlign="center">
@@ -149,12 +154,16 @@ const Article: NextPage<
                   {i < articleData.authors.length - 1 && ", "}
                 </Link>
               ))}
-              <span style={{ fontWeight: "bold" }}>{" ∙ "}</span>
+              {articleData.authors.length ? (
+                <span style={{ fontWeight: "bold" }}>{" ∙ "}</span>
+              ) : (
+                <></>
+              )}
               {pubString}
               {articleData.issue && (
                 <>
                   <span style={{ fontWeight: "bold" }}>{" ∙ "}</span>
-                  <Link href={`/issues/${articleData.issueSlug}`}>
+                  <Link href={`/issues/${articleData.issue.slug}`}>
                     {articleData.issue.title}
                   </Link>
                 </>
@@ -166,14 +175,19 @@ const Article: NextPage<
             mt="0.4rem"
             mb="1rem"
             flexWrap="wrap"
-            maxW="85vw"
             fontSize="1.2rem"
-            fontWeight="medium">
+            fontWeight="medium"
+          >
             {articleData.topics.map((topic, i) => (
               <TopicCard name={topic.name} slug={topic.slug} key={i} />
             ))}
           </Flex>
-          <Flex px={{ base: "2vw", md: "12vw" }} flexDir="column" mb="4rem">
+          <Flex
+            w="100%"
+            flexDir="column"
+            mb="4rem"
+            fontSize="clamp(16px,12px + .5vw,1.25rem)"
+          >
             <Markdown content={articleData.content} />
           </Flex>
 
@@ -198,19 +212,18 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const ssg = await getSsgCaller();
 
   await ssg.article.get.prefetch({ slug });
-  await ssg.article.getMany.prefetch({
+  await ssg.article.getAll.prefetch({
     sortOrder: "desc",
     exclude: [slug],
     take: 6,
   });
-
-  console.log(ssg.dehydrate());
 
   return {
     props: {
       trpcState: ssg.dehydrate(),
       slug,
     },
+    revalidate: 60,
   };
 };
 
@@ -222,10 +235,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
     select: { slug: true },
   });
 
-  const paths = slugsToPaths(articles);
-
   return {
-    paths,
+    paths: articles.map(({ slug }) => `/articles/${slug}`),
     fallback: "blocking",
   };
 };

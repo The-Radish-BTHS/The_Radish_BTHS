@@ -21,10 +21,14 @@ import { ErrorMessage } from "@hookform/error-message";
 import SubmitModal from "@components/pages/submit/submit-modal";
 import { useIsMobile } from "@hooks/useIsMobile";
 import { useCanAccess } from "@hooks/useCanAccess";
+import dynamic from "next/dynamic";
+
+const DynamicEditor = dynamic(() => import("@components/MdEditor"), {
+  ssr: false,
+});
 
 export type InputData = {
   title: string;
-  content: string;
 };
 
 const Edit: NextPage = () => {
@@ -35,6 +39,7 @@ const Edit: NextPage = () => {
   const router = useRouter();
   const submissionId = router.query.id?.toString() as string;
   const { canAccess } = useCanAccess();
+  const canEdit = canAccess("editor");
   const newTopicDisclosure = useDisclosure();
   const submitDisclosure = useDisclosure();
 
@@ -74,7 +79,7 @@ const Edit: NextPage = () => {
   });
 
   // State
-  const [topicSelections, setTopicSelections] = useState<Topic[]>(
+  const [topicSelections, setTopicSelections] = useState<Omit<Topic, "id">[]>(
     article?.topics || []
   );
   const [authorSelections, setAuthorSelections] = useState<Person[]>(
@@ -82,8 +87,8 @@ const Edit: NextPage = () => {
   );
   const [formData, setFormData] = useState<InputData>({
     title: "",
-    content: "",
   });
+  const [content, setContent] = useState("");
 
   // React Hook Form
   const {
@@ -95,18 +100,16 @@ const Edit: NextPage = () => {
     criteriaMode: "all",
     defaultValues: {
       title: article?.title || "",
-      content: article?.link || "",
     },
   });
 
   useEffect(() => {
-    if (canAccess("editor")) {
+    if (canEdit) {
       setValue("title", article?.title || "");
-      setValue("content", article?.link || "");
       setTopicSelections(article?.topics || []);
       setAuthorSelections(article?.authors || []);
     }
-  }, [sessionData, article, setValue, canAccess]);
+  }, [sessionData, article, setValue, canEdit]); // Can access is changing
 
   return (
     <Layout title="Edit an Article!" alignItems="center">
@@ -114,18 +117,20 @@ const Edit: NextPage = () => {
         <RequiredUserWrapper>
           <SubmitModal
             disclosure={submitDisclosure}
-            data={formData}
+            data={{ ...formData, content }}
             onClick={async (inputData: InputData) => {
+              console.log(topicSelections);
               await submitArticle
                 .mutateAsync({
                   title: inputData.title,
-                  content: inputData.content,
+                  content: content,
                   authors: authorSelections,
                   topics: topicSelections,
                   id: submissionId,
                 })
                 .catch(() => 0);
-            }}>
+            }}
+          >
             <Text>Are you sure you have edited all the things???</Text>
             <ul style={{ marginTop: "1rem" }}>
               <li style={{ marginLeft: "1rem" }}>Is the title all good?</li>
@@ -147,11 +152,12 @@ const Edit: NextPage = () => {
               setFormData(data);
             })}
             className={styles["form-wrapper"]}
-            style={{ width: mobile ? "85vw" : "60vw" }}>
+            style={{ width: mobile ? "85vw" : "60vw" }}
+          >
             <NewTopicModal
               disclosure={newTopicDisclosure}
               topicSlugs={topicSlugs}
-              addTopic={(topic: Topic) =>
+              addTopic={(topic) =>
                 setTopicSelections((topics) => [...topics, topic])
               }
             />
@@ -168,7 +174,8 @@ const Edit: NextPage = () => {
               })}
             />
             <p
-              className={`${styles["form-element-margin"]} ${styles["error-message"]}`}>
+              className={`${styles["form-element-margin"]} ${styles["error-message"]}`}
+            >
               <ErrorMessage
                 errors={errors}
                 name="title"
@@ -197,7 +204,8 @@ const Edit: NextPage = () => {
             <button
               onClick={newTopicDisclosure.onOpen}
               type="button"
-              className={styles.bottomMargin}>
+              className={styles.bottomMargin}
+            >
               + Add new topic
             </button>
 
@@ -211,13 +219,14 @@ const Edit: NextPage = () => {
             <p>
               Content:<span style={{ color: "red" }}> *</span>
             </p>
-            <input
+            <DynamicEditor content={content} setContent={setContent} />
+            {/* <input
               placeholder="Add the articul!"
               required
               {...register("content", {
                 required: true,
               })}
-            />
+            /> */}
             <Button type="submit" mt="1rem">
               Submit it!
             </Button>
@@ -228,7 +237,8 @@ const Edit: NextPage = () => {
           h="100%"
           justifyContent="center"
           alignItems="center"
-          flexDir="column">
+          flexDir="column"
+        >
           <Heading>You can&apos;t edit!</Heading>
           <Link href="/about">Apply to join the editing team!</Link>
         </Flex>

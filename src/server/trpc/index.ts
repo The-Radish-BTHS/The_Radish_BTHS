@@ -1,4 +1,5 @@
 import { initTRPC, TRPCError } from "@trpc/server";
+import prisma from "@/server/db/prisma.server";
 import { UserPermission } from "@prisma/client";
 import { Context } from "./context";
 import { appRouter } from "./routers";
@@ -31,5 +32,9 @@ export const editorProcedure = authedProcedure.use(({ ctx, next }) => {
     throw new TRPCError({ code: "UNAUTHORIZED" });
   return next({ ctx });
 });
+
+export const createPublicCaller = () => {
+  return appRouter.createCaller({ prisma, user: undefined });
+};
 
 export type AppRouter = typeof appRouter;

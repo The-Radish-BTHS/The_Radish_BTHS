@@ -31,7 +31,8 @@ const Row: React.FC<{ stats: Stats; isMobile?: boolean }> = ({
   return (
     <Tr
       fontWeight={stats.isExec ? (stats.former ? "medium" : "bold") : "light"}
-      color={stats.former ? "black" : "black"}>
+      color={stats.former ? "black" : "black"}
+    >
       <Td>
         <Link href={`/people/${stats.slug}`}>{stats.name}</Link>
       </Td>
@@ -54,7 +55,7 @@ const Rankings: React.FC<{ authorStats: Stats[] }> = ({ authorStats }) => {
 
   return (
     <Layout title="Rankings" alignItems="center">
-      <Image src="/images/aramabel.png" alt="aramabel" w="60vw" mb="4rem" />
+      <Image src="/images/Aramabel.png" alt="aramabel" w="60vw" mb="4rem" />
       <TableContainer
         mb="3rem"
         border="1px solid"
@@ -63,7 +64,8 @@ const Rankings: React.FC<{ authorStats: Stats[] }> = ({ authorStats }) => {
         minW="fit-content"
         overflowY="visible"
         overflowX="visible"
-        whiteSpace="pre-wrap">
+        whiteSpace="pre-wrap"
+      >
         <Table variant="simple" colorScheme="grey">
           <Thead>
             <Tr>
@@ -128,5 +130,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props: {
       authorStats,
     },
+    revalidate: 60,
   };
 };

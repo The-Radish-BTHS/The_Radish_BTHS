@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+import markdownToTxt from "markdown-to-txt";
 import articles from "./seed-data/articles.json";
 import issues from "./seed-data/issues.json";
 import people from "./seed-data/people.json";
@@ -50,7 +51,7 @@ const createArticles = () =>
             slug: article.issue,
           },
         },
-        excerpt: article.content.substring(0, 100),
+        excerpt: markdownToTxt(article.content).substring(0, 100),
         authors: {
           connect: article.authors.map((author) => ({
             slug: author,

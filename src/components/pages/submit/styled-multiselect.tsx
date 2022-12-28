@@ -28,8 +28,6 @@ function StyledMultiselect<T>({
       }
       onRemove={(_, selectedItem) =>
         setValues((prev: T[]) => {
-          console.log(prev);
-          console.log(selectedItem);
           prev.splice(prev.indexOf(selectedItem), 1);
           return prev;
         })

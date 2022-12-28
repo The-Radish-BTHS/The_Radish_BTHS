@@ -21,15 +21,17 @@ const ArtsyDashboard: NextPage = () => {
       {canAccess("artist") ? (
         <>
           <Flex flexDir="column">
-            <Heading>Hey artists!!!!!</Heading>
-            <Text>Thanks for being better than the editors :)</Text>
-            <Divider borderColor="black" my="1rem" />
+            <Heading textAlign="center">Hey artists!!!!!</Heading>
+            <Text textAlign="center" mb="2rem">
+              Thanks for being better than the editors :)
+            </Text>
             <Accordion defaultIndex={[0]} allowMultiple>
-              <Collapse title="Incomplete!!">
-                <MasonryLayout staticCols>
+              <Collapse title="Incomplete!!" empty={submissions?.length === 0}>
+                <MasonryLayout>
                   {submissions?.map((article, i) => (
                     <GraphicsCard
                       title={article.title}
+                      link={article.link}
                       request={article.graphicsRequest}
                       submissionId={article.id}
                       key={i}
@@ -37,11 +39,12 @@ const ArtsyDashboard: NextPage = () => {
                   ))}
                 </MasonryLayout>
               </Collapse>
-              <Collapse title="All Good">
-                <MasonryLayout staticCols>
+              <Collapse title="All Good" empty={completed?.length === 0}>
+                <MasonryLayout>
                   {completed?.map((article, i) => (
                     <GraphicsCard
                       title={article.title}
+                      link={article.link}
                       request={article.graphicsRequest}
                       submissionId={article.id}
                       key={i}

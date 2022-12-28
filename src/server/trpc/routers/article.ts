@@ -3,9 +3,11 @@ import {
   customSlugify,
   deeperArticleInclude,
 } from "@lib/helpers.server";
+import { UserPermission } from "@prisma/client";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { authedProcedure, editorProcedure, execProcedure, t } from "..";
+import { markdownToTxt } from "markdown-to-txt";
 
 const ARTICLE_SUBMISSION_COOLDOWN = 3 * 60 * 1000; // 3 minutes, in milliseconds
 
@@ -26,7 +28,8 @@ export const articleRouter = t.router({
       });
     }),
 
-  getMany: t.procedure
+  // the use of this procedure is discouraged, use getInfinite instead
+  getAll: t.procedure
     .input(
       z.object({
         issueSlug: z.string().optional(),
@@ -39,7 +42,9 @@ export const articleRouter = t.router({
       return ctx.prisma.article.findMany({
         where: {
           published: true,
-          issueSlug: input.issueSlug,
+          issue: {
+            slug: input.issueSlug,
+          },
           NOT: input.exclude.map((slug) => ({ slug })),
         },
         include: articleInclude,
@@ -77,6 +82,7 @@ export const articleRouter = t.router({
         title: z.string(),
         graphics: z.string().optional(),
         timeFrame: z.string().optional(),
+        otherTopics: z.string().optional(),
         authors: z.array(
           z.object({
             slug: z.string(),
@@ -92,7 +98,10 @@ export const articleRouter = t.router({
     .mutation(async ({ ctx, input }) => {
       const articleSubmissionElapsed =
         Date.now() - (ctx.user.lastArticleSubmission?.getTime() || 0);
-      if (articleSubmissionElapsed < ARTICLE_SUBMISSION_COOLDOWN)
+      if (
+        articleSubmissionElapsed < ARTICLE_SUBMISSION_COOLDOWN &&
+        ctx.user.permission !== UserPermission.EXEC
+      )
         throw new TRPCError({
           code: "TOO_MANY_REQUESTS",
           message: `You can only submit an article every ${
@@ -107,6 +116,7 @@ export const articleRouter = t.router({
             title: input.title,
             graphicsRequest: input.graphics,
             timeFrame: input.timeFrame,
+            otherTopics: input.otherTopics,
             userId: ctx.user.id,
             authors: {
               connect: input.authors,
@@ -153,7 +163,7 @@ export const articleRouter = t.router({
             title: input.title,
             slug,
             content: input.content,
-            excerpt: input.content.substring(0, 100),
+            excerpt: markdownToTxt(input.content).substring(0, 100),
             topics: {
               connect: input.topics,
             },
@@ -183,8 +193,71 @@ export const articleRouter = t.router({
         data: {
           published: true,
           publishedOn: new Date(),
-          issueSlug: input.issueSlug,
+          issue: input.issueSlug
+            ? {
+                connect: {
+                  slug: input.issueSlug,
+                },
+              }
+            : undefined,
         },
       });
+    }),
+
+  getInfinite: t.procedure
+    .input(
+      z.object({
+        withTopic: z.string().nullish(),
+        withIssue: z.string().nullish(),
+        withAuthor: z.string().nullish(),
+        cursor: z.string().nullish(),
+      })
+    )
+    .query(async ({ ctx, input }) => {
+      const TAKE = 10;
+
+      const articles = await ctx.prisma.article.findMany({
+        where:
+          input.withTopic || input.withIssue || input.withAuthor
+            ? {
+                topics: input.withTopic
+                  ? {
+                      some: {
+                        slug: input.withTopic,
+                      },
+                    }
+                  : undefined,
+                issue: input.withIssue
+                  ? {
+                      slug: input.withIssue,
+                    }
+                  : undefined,
+                authors: input.withAuthor
+                  ? {
+                      some: {
+                        slug: input.withAuthor,
+                      },
+                    }
+                  : undefined,
+              }
+            : undefined,
+        take: TAKE + 1,
+        orderBy: {
+          publishedOn: "desc",
+        },
+        cursor: input.cursor ? { id: input.cursor } : undefined,
+        include: articleInclude,
+      });
+
+      let nextCursor: typeof input.cursor | undefined = undefined;
+      if (articles.length > TAKE) {
+        const nextItem = articles.pop();
+        nextCursor = nextItem!.id;
+      }
+
+      return {
+        articles,
+        nextCursor,
+      };
     }),
 });

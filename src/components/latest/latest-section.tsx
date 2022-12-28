@@ -15,8 +15,8 @@ import NothingHereWrapper from "./nothing-here-wrapper";
 
 const LatestSection: React.FC = ({}) => {
   const numArticles = useBreakpointValue({ base: 3, md: 2, xl: 3 });
-  const issueQuery = trpc.issue.getAll.useQuery({ take: 1 });
-  const issue = issueQuery.data && issueQuery.data[0];
+  const issueQuery = trpc.issue.getLast.useQuery();
+  const issue = issueQuery.data;
   const articles = issue?.articles;
 
   return (
@@ -32,7 +32,8 @@ const LatestSection: React.FC = ({}) => {
           gap="1rem"
           mt="2rem"
           flexDir={{ base: "column", md: "row" }}
-          alignItems="center">
+          alignItems="center"
+        >
           <Flex flexDir="column" h="100%">
             {" "}
             {issue && <IssueCard {...issue} styles={{ flex: 1 }} />}
@@ -44,7 +45,9 @@ const LatestSection: React.FC = ({}) => {
             autoFlow="row"
             gap="2rem"
             pl={{ base: "0", md: "1rem" }}
-            h="100%">
+            h="100%"
+            w={{ base: "90vw", md: "40vw", lg: "30vw" }}
+          >
             {articles?.slice(0, numArticles).map((article, i) => (
               <Articard {...article} styles={{ flex: 1 }} key={i} />
             ))}

@@ -14,15 +14,17 @@ import {
 } from "@chakra-ui/react";
 import Button from "@components/button";
 import { ImageUpload } from "@components/image-upload";
+import LinkButton from "@components/link-button";
 import { trpc } from "@lib/trpc";
 import { useState } from "react";
 import CardWrapper from "./card-wrapper";
 
 const GraphicsCard: React.FC<{
   title: string;
+  link: string;
   request: string | null;
   submissionId: string;
-}> = ({ submissionId, title, request }) => {
+}> = ({ submissionId, title, link, request }) => {
   // TODO: SANTIAGO UI!!!!!!!!!!!!!!!!!!!!
   const toast = useToast();
   const submitGraphics = trpc.submission.submitGraphics.useMutation({
@@ -91,7 +93,8 @@ const GraphicsCard: React.FC<{
         {title}
       </Heading>
       <Text>{request}</Text>
-      <Flex w="100%" justifyContent="flex-end">
+      <Flex w="100%" justifyContent="flex-end" gap="1rem">
+        <LinkButton href={link}>Read</LinkButton>
         <Button onClick={onOpen}>Complete</Button>
       </Flex>
     </CardWrapper>

@@ -9,29 +9,9 @@ import { useSession } from "next-auth/react";
 import { useEffect, useRef, useState } from "react";
 import RequiredUserWrapper from "@components/required-user-wrapper";
 import { trpc } from "@lib/trpc";
-
-const update = async (slug: string, data: any) => {
-  const response = await fetch(`/api/update?type=person&&slug=${slug}`, {
-    method: "post",
-    mode: "no-cors",
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-    body: JSON.stringify(data),
-  })
-    .then((response) => {
-      console.log(response);
-      return response;
-    })
-    .catch((e) => {
-      console.error(e);
-      return e;
-    });
-
-  return response;
-};
+import Button from "@components/button";
+import { BiSave } from "react-icons/bi";
+import { GrRevert } from "react-icons/gr";
 
 const Account: NextPage<{ peopleSlugs: string[] }> = ({ peopleSlugs }) => {
   const { data } = useSession();
@@ -81,7 +61,6 @@ const Account: NextPage<{ peopleSlugs: string[] }> = ({ peopleSlugs }) => {
     if (name && gradYear && description !== undefined) {
       await updateAccount
         .mutateAsync({
-          slug: person.slug,
           name: name,
           gradYear: gradYear,
           description: description,
@@ -94,20 +73,39 @@ const Account: NextPage<{ peopleSlugs: string[] }> = ({ peopleSlugs }) => {
     <Layout title="My Account">
       <RequiredUserWrapper>
         <Flex gap="1.5rem">
-          <Heading fontSize="4rem" fontFamily={"times-new-roman"}>
+          <Flex flex={1} />
+          <Heading
+            fontSize="3.5rem"
+            w="100%"
+            flex={1}
+            fontWeight={600}
+            textAlign="center">
             {name}
           </Heading>
-          {person?.isExec && <ExecStamp id="" size={80} />}
+          <Flex flex={1} justifyContent="flex-end">
+            {person?.isExec && <ExecStamp id="" size={80} />}
+          </Flex>
         </Flex>
 
-        <Text fontSize="2.5rem" fontWeight={300} textTransform="capitalize">
+        <Text
+          fontSize="2rem"
+          fontWeight={300}
+          w="100%"
+          textAlign="center"
+          textTransform="capitalize">
           {person?.position}, Graduat{former ? "ed" : "ing"} {gradYear}
         </Text>
-        <Text fontSize="1.5rem">
+        <Text fontSize="2rem" fontWeight={300} w="100%" textAlign="center">
           {description ? `"${description}"` : <br />}
         </Text>
-        <Flex flexDirection="column" mt="3rem">
-          <Heading mb="1rem">Update your information</Heading>
+        <Flex flexDirection="column" alignItems="center" mt="3rem">
+          <Heading
+            mb="1rem"
+            fontWeight={600}
+            fontSize="2.5rem"
+            textAlign="center">
+            Update your information
+          </Heading>
 
           <DataInput value={name} setValue={setName} placeholder="Name" />
           {!personSlugIsUnique(name || "") && name !== person?.name && (
@@ -127,9 +125,10 @@ const Account: NextPage<{ peopleSlugs: string[] }> = ({ peopleSlugs }) => {
             setValue={setDescription}
             placeholder="Description"
           />
-          <Flex gap="1rem">
-            <button
-              className="accountSubmitButton"
+          <Flex gap="1.5rem" mt="1rem">
+            <Button
+              leftIcon={<BiSave />}
+              _disabled={{ display: "none" }}
               onClick={onSubmit}
               disabled={
                 (name === person?.name &&
@@ -137,22 +136,23 @@ const Account: NextPage<{ peopleSlugs: string[] }> = ({ peopleSlugs }) => {
                   description === person?.description) ||
                 (!personSlugIsUnique(name || "") && name !== person?.name)
               }>
-              Save!
-            </button>
-            <button
-              className="accountRevertButton"
-              disabled={
-                description === person?.description &&
-                gradYear === person?.gradYear &&
-                name === person?.name
-              }
+              Save
+            </Button>
+            <Button
+              leftIcon={<GrRevert />}
+              _disabled={{ display: "none" }}
               onClick={() => {
                 setDescription(person?.description);
                 setGradYear(person?.gradYear);
                 setName(person?.name);
-              }}>
+              }}
+              disabled={
+                description === person?.description &&
+                gradYear === person?.gradYear &&
+                name === person?.name
+              }>
               Revert
-            </button>
+            </Button>
           </Flex>
         </Flex>
       </RequiredUserWrapper>

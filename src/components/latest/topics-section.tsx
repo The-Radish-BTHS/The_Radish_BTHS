@@ -9,6 +9,7 @@ const TopicsSection: React.FC<{
 }> = ({ title = "Topics", ...rest }) => {
   const topicQuery = trpc.topic.getAll.useQuery();
   const topics = topicQuery.data || [];
+
   return (
     <Flex flexDir="column" alignItems="center" {...rest}>
       <Heading fontSize="2rem" textAlign="center" mb="1rem">
@@ -20,7 +21,8 @@ const TopicsSection: React.FC<{
           justifyContent="center"
           gap="0.5rem"
           fontWeight="600"
-          fontSize="1.2rem">
+          fontSize="1.2rem"
+        >
           {topics?.map((topic, i) => (
             <TopicCard {...topic} key={i} />
           ))}

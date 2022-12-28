@@ -35,9 +35,9 @@ const IssueCard: React.FC<IssueCardType> = ({
             fontSize="1.1rem"
             wordBreak="break-word"
             whiteSpace="pre-wrap"
-            w="100%">
-            {description}
-          </Text>
+            w="100%"
+            dangerouslySetInnerHTML={{ __html: description }}
+          />
         </Center>
       </Link>
     </CardWrapper>

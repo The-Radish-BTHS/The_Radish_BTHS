@@ -14,24 +14,14 @@ const MasonryLayout: React.FC<
   React.PropsWithChildren<{
     numItems?: number;
     breakpoints?: any;
-    staticCols?: boolean;
   }>
-> = ({
-  numItems,
-  breakpoints = { default: 3, 990: 2, 767: 1 },
-  staticCols = false,
-  children,
-}) => {
+> = ({ numItems, breakpoints = { default: 3, 990: 2, 767: 1 }, children }) => {
   const breakpointColumnsObj = catchMins(breakpoints, numItems);
   return (
     <Masonry
       breakpointCols={breakpointColumnsObj}
       className={styles["my-masonry-grid"]}
-      columnClassName={
-        staticCols
-          ? styles["static-masonry-grid_column"]
-          : styles["my-masonry-grid_column"]
-      }>
+      columnClassName={styles["static-masonry-grid_column"]}>
       {children}
     </Masonry>
   );

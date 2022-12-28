@@ -15,13 +15,17 @@ const Articard: React.FC<ArticardType> = ({
   ...rest
 }) => {
   return (
-    <CardWrapper
-      w={{ base: "90vw", md: "40vw", lg: "30vw" }}
-      {...styles}
-      {...rest}>
+    <CardWrapper {...styles} {...rest}>
       <Center flexDir="column" w="100%" p="0.75rem">
-        <Link href={`/articles/${slug}`} w="100%">
-          <Heading maxW="100%" fontSize="1.5rem" mb="0.5rem">
+        <Link
+          href={`/articles/${slug}`}
+          w="100%"
+          _hover={{ textDecoration: "none" }}>
+          <Heading
+            maxW="100%"
+            fontSize="1.5rem"
+            mb="0.5rem"
+            _hover={{ textDecoration: "underline" }}>
             {title}
           </Heading>
           {excerpt && (
@@ -29,8 +33,7 @@ const Articard: React.FC<ArticardType> = ({
               fontSize="1.1rem"
               wordBreak="break-word"
               textAlign="left"
-              w="75%"
-              ml="2.5%">
+              w="75%">
               {excerpt}...
             </Text>
           )}
@@ -43,10 +46,14 @@ const Articard: React.FC<ArticardType> = ({
 
           {issue && (
             <>
-              <Text fontWeight="bold" mx="0.2rem">
-                {" "}
-                ∙{" "}
-              </Text>
+              {authors?.length ? (
+                <Text fontWeight="bold" mx="0.2rem">
+                  {" "}
+                  ∙{" "}
+                </Text>
+              ) : (
+                <></>
+              )}
               <Link href={`/issues/${issue?.slug}`}>{issue?.title}</Link>
             </>
           )}

@@ -23,6 +23,7 @@ const SubmissionCard: React.FC<{
   authors: Person[];
   graphicsRequest: string | null;
   graphicsComplete: boolean;
+  otherTopics: string | null;
   imageUrls: string[];
 }> = ({
   id,
@@ -33,6 +34,7 @@ const SubmissionCard: React.FC<{
   authors,
   graphicsRequest,
   graphicsComplete,
+  otherTopics,
   imageUrls,
 }) => {
   const isMobile = useIsMobile();
@@ -66,14 +68,13 @@ const SubmissionCard: React.FC<{
           <TopicCard {...topic} key={i} />
         ))}
       </Flex>
-      <Text>{timeFrame}</Text>
       {graphicsRequest && (
         <>
           <Text mt="0.25rem">
             <span style={{ fontWeight: "bold" }}>Graphics: </span>
             {graphicsRequest}
           </Text>
-          <Flex alignItems="center">
+          <Flex alignItems="center" gap="0.2rem">
             <Text fontWeight="bold">Completed:</Text>
             {graphicsComplete ? <FcCheckmark /> : <FcCancel />}
           </Flex>
@@ -91,7 +92,20 @@ const SubmissionCard: React.FC<{
         </>
       )}
 
-      <Flex gap="1rem" mt="1rem" justifyContent="flex-end">
+      {otherTopics && (
+        <Text mt="0.25rem">
+          <span style={{ fontWeight: "bold" }}>Topics Request: </span>
+          {otherTopics}
+        </Text>
+      )}
+      {timeFrame && (
+        <Text mt={otherTopics ? 0 : "0.25rem"}>
+          <span style={{ fontWeight: "bold" }}>Time Frame: </span>
+          {timeFrame}
+        </Text>
+      )}
+
+      <Flex gap="1rem" mt="1rem" justifyContent="center">
         <LinkButton href={link} external>
           Read{isMobile ? "" : " Article"}
         </LinkButton>

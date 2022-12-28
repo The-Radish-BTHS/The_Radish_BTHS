@@ -15,17 +15,14 @@ const LatestIssues: React.FC<{ exclude: string[] }> = ({ exclude }) => {
   const issues = issuesQuery.data || [];
 
   return (
-    <Flex
-      flexDirection="column"
-      alignItems="center"
-      w={{ base: "90vw", md: "60vw" }}>
+    <Flex flexDirection="column" alignItems="center" w="100%">
       <Heading fontSize="2rem" textAlign="center" mb="1rem">
         More Issues:{" "}
         <span style={{ fontWeight: "normal" }}>Ingest them fast!</span>
       </Heading>
       <NothingHereWrapper valid={issues?.length > 0} height="40vh">
         <Flex w="100%" gap="2rem" justifyContent="center" margin="auto">
-          {issues?.map((issue, i) => (
+          {issues?.slice(0, numIssues).map((issue, i) => (
             <IssueCard {...issue} styles={{ flex: 1 }} key={i} />
           ))}
         </Flex>

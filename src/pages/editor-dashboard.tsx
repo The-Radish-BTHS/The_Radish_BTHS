@@ -33,25 +33,28 @@ const EditorDashboard: NextPage = () => {
         <>
           <Flex flexDir="column">
             <Flex mb="1rem">
-              <Heading>
+              <Heading textAlign="center" w="100%">
                 <span style={{ borderBottom: "4px dotted red" }}>
                   Hay their editers!
                 </span>{" "}
                 Hear are the submitteded art tickles
               </Heading>
             </Flex>
-            <Text>Thyme two edit them ardiculs!!!</Text>
-            <Divider borderColor="black" my="1rem" />
+            <Text textAlign="center" mb="2rem">
+              Thyme two edit them ardiculs!!!
+            </Text>
             <Accordion defaultIndex={[0]} allowMultiple>
-              <Collapse title="Unedited">
-                <MasonryLayout staticCols>
+              <Collapse
+                title="Unedited"
+                empty={uneditedSubmissions?.length === 0}>
+                <MasonryLayout>
                   {uneditedSubmissions?.map((article, i) => (
                     <SubmissionCard {...article} key={i} />
                   ))}
                 </MasonryLayout>
               </Collapse>
-              <Collapse title="Edited">
-                <MasonryLayout staticCols>
+              <Collapse title="Edited" empty={editedSubmissions?.length === 0}>
+                <MasonryLayout>
                   {editedSubmissions?.map((article, i) => (
                     <SubmissionCard {...article} key={i} />
                   ))}

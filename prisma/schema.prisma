@@ -41,6 +41,7 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  hasSignedUp   Boolean   @default(false)
 
   lastArticleSubmission DateTime?
   lastTopicCreation     DateTime?
@@ -48,12 +49,13 @@ model User {
   permission  UserPermission @default(NORMIE)
   submissions Submission[]
 
-  personSlug String @unique
-  person     Person @relation(fields: [personSlug], references: [slug])
+  personId   String @unique
+  person     Person @relation(fields: [personId], references: [id])
 }
 
 model Issue {
-  slug String @id
+  id   String @id @default(cuid())
+  slug String @unique
 
   title       String
   coverUrl    String
@@ -66,7 +68,8 @@ model Issue {
 }
 
 model Article {
-  slug String @id
+  id   String @id @default(cuid())
+  slug String @unique
 
   title       String
   excerpt     String?
@@ -74,8 +77,8 @@ model Article {
   published   Boolean  @default(false)
   publishedOn DateTime @default(now())
 
-  issue     Issue?   @relation(fields: [issueSlug], references: [slug])
-  issueSlug String?
+  issue     Issue?   @relation(fields: [issueId], references: [id])
+  issueId   String?
   authors   Person[]
   topics    Topic[]
 }
@@ -89,6 +92,7 @@ model Submission {
   graphicsComplete  Boolean  @default(false)
   imageUrls         String[] @default([])
   timeFrame         String?
+  otherTopics       String?
   beenEdited        Boolean  @default(false)
 
   user    User     @relation(fields: [userId], references: [id])
@@ -97,7 +101,8 @@ model Submission {
 }
 
 model Topic {
-  slug String @id
+  id   String @id @default(cuid())
+  slug String @unique
 
   name        String
   description String
@@ -107,7 +112,8 @@ model Topic {
 }
 
 model Person {
-  slug String @id
+  id  String  @id @default(cuid())
+  slug String @unique
 
   name        String
   position    String

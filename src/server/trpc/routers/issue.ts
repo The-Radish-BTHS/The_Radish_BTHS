@@ -51,6 +51,7 @@ export const issueRouter = t.router({
       });
     }),
 
+  // use getInfinite instead
   getAll: t.procedure
     .input(
       z.object({
@@ -74,22 +75,70 @@ export const issueRouter = t.router({
       });
     }),
 
-  getLast: t.procedure.query(async ({ ctx }) => {
-    return await (
+  getAllSlugs: t.procedure.query(async ({ ctx }) => {
+    return (
       await ctx.prisma.issue.findMany({
+        select: { slug: true },
+      })
+    ).map(({ slug }) => slug);
+  }),
+
+  getBySlug: t.procedure
+    .input(
+      z.object({
+        slug: z.string(),
+      })
+    )
+    .query(async ({ ctx, input }) => {
+      return await ctx.prisma.issue.findUnique({
+        where: {
+          slug: input.slug,
+        },
+      });
+    }),
+
+  getLast: t.procedure.query(async ({ ctx }) => {
+    return await ctx.prisma.issue.findFirst({
+      orderBy: {
+        publishedOn: "desc",
+      },
+      include: {
+        articles: {
+          include: {
+            authors: true,
+            topics: true,
+          },
+        },
+      },
+    })!;
+  }),
+
+  getInfinite: t.procedure
+    .input(
+      z.object({
+        cursor: z.string().nullish(),
+      })
+    )
+    .query(async ({ ctx, input }) => {
+      const TAKE = 10;
+
+      const issues = await ctx.prisma.issue.findMany({
+        take: TAKE + 1,
         orderBy: {
           publishedOn: "desc",
         },
-        take: 1,
-        include: {
-          articles: {
-            include: {
-              authors: true,
-              topics: true,
-            },
-          },
-        },
-      })
-    )[0];
-  }),
+        cursor: input.cursor ? { id: input.cursor } : undefined,
+      });
+
+      let nextCursor: typeof input.cursor | undefined = undefined;
+      if (issues.length > TAKE) {
+        const nextItem = issues.pop();
+        nextCursor = nextItem!.id;
+      }
+
+      return {
+        issues,
+        nextCursor,
+      };
+    }),
 });
