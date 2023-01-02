@@ -38,26 +38,24 @@ const Articard: React.FC<ArticardType> = ({
             </Text>
           )}
         </Link>
-        <Flex fontSize="0.9rem" w="100%" mt="0.5rem">
+        <Text fontSize="0.9rem" w="100%" mt="0.5rem">
           <Link href={`/people/${authors[0] ? authors[0].slug : ""}`}>
             {authors[0] ? authors[0].name : ""}
           </Link>
           {authors?.length > 1 && `, ${authors.length - 1} more`}
-
-          {issue && (
-            <>
-              {authors?.length ? (
-                <Text fontWeight="bold" mx="0.2rem">
-                  {" "}
-                  ∙{" "}
-                </Text>
-              ) : (
-                <></>
-              )}
-              <Link href={`/issues/${issue?.slug}`}>{issue?.title}</Link>
-            </>
+          {authors?.length && issue && (
+            <span
+              style={{
+                fontWeight: "bold",
+                marginLeft: "0.2rem",
+                marginRight: "0.2rem",
+              }}>
+              {" "}
+              ∙{" "}
+            </span>
           )}
-        </Flex>
+          {issue && <Link href={`/issues/${issue?.slug}`}>{issue?.title}</Link>}
+        </Text>
       </Center>
       {topics && topics.length > 0 && (
         <Flex flexDir="column">
