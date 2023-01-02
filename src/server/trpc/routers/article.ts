@@ -237,7 +237,6 @@ export const articleRouter = t.router({
             ? {
                 topics: input.withTopic
                   ? {
-                      published: true,
                       some: {
                         slug: input.withTopic,
                       },
@@ -245,13 +244,11 @@ export const articleRouter = t.router({
                   : undefined,
                 issue: input.withIssue
                   ? {
-                      published: true,
                       slug: input.withIssue,
                     }
                   : undefined,
                 authors: input.withAuthor
                   ? {
-                      published: true,
                       some: {
                         slug: input.withAuthor,
                       },
