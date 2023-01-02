@@ -204,6 +204,21 @@ export const articleRouter = t.router({
       });
     }),
 
+  unpublish: execProcedure
+    .input(
+      z.object({
+        slug: z.string(),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      await ctx.prisma.article.update({
+        where: { slug: input.slug },
+        data: {
+          published: false,
+        },
+      });
+    }),
+
   getInfinite: t.procedure
     .input(
       z.object({

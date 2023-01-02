@@ -64,6 +64,26 @@ const Article: NextPage = () => {
       });
     },
   });
+  const unpublishArticle = trpc.article.unpublish.useMutation({
+    onError(err) {
+      toast({
+        title: `Article Unpublish Error ${err.data?.httpStatus}: ${err.message}`,
+        status: "error",
+        duration: 4000,
+        position: "bottom-right",
+        isClosable: true,
+      });
+    },
+    onSuccess() {
+      toast({
+        title: "Article Unpublished Successfully!",
+        status: "success",
+        duration: 4000,
+        position: "bottom-right",
+        isClosable: true,
+      });
+    },
+  });
 
   const pubString = Intl.DateTimeFormat("en-us", {
     day: "2-digit",
@@ -79,34 +99,46 @@ const Article: NextPage = () => {
             isOpen={isOpen}
             onClose={onClose}
             size={{ base: "full", md: "md" }}
-            isCentered
-          >
+            isCentered>
             <ModalOverlay />
             <ModalContent
               bg="#ebeae5"
-              borderRadius={{ base: 0, sm: "0.75rem" }}
-            >
+              borderRadius={{ base: 0, sm: "0.75rem" }}>
               <ModalHeader>Are you sure?</ModalHeader>
               <ModalCloseButton />
               <ModalBody>
                 <Text>
-                  Are you sure you want to actually publish this article?
+                  Are you sure you want to actually{" "}
+                  {!articleData.published ? "publish" : "unpublish"} this
+                  article?
                 </Text>
               </ModalBody>
 
               <ModalFooter>
                 <Button
                   onClick={async () => {
-                    await publishArticle
-                      .mutateAsync({
-                        slug: articleData.slug,
-                      })
-                      .then(() => {
-                        onClose();
-                        router.push("/eggsex");
-                      });
-                  }}
-                >
+                    if (articleData.published) {
+                      // UNpublishing
+                      await unpublishArticle
+                        .mutateAsync({
+                          slug: articleData.slug,
+                        })
+                        .then(() => {
+                          onClose();
+                          router.push("/eggsex");
+                        });
+                    } else {
+                      // Publishing
+                      await publishArticle
+                        .mutateAsync({
+                          slug: articleData.slug,
+                        })
+                        .then(() => {
+                          onClose();
+                          router.push("/eggsex");
+                        });
+                    }
+                  }}>
                   Yes, I&apos;m sure!
                 </Button>
               </ModalFooter>
@@ -118,8 +150,7 @@ const Article: NextPage = () => {
               gap="0.75rem"
               w="101vw"
               mb="1rem"
-              borderY="1px solid black"
-            >
+              borderY="1px solid black">
               {[...Array(30)].map((_, i) => (
                 <Text key={i}>UNPUBLISHED</Text>
               ))}
@@ -132,16 +163,14 @@ const Article: NextPage = () => {
             flexDir="column"
             justifyContent="center"
             alignItems="center"
-            flex={1}
-          >
-            {!articleData.published && (
+            flex={1}>
+            {canAccess("exec") && (
               <Button
                 w={{ base: "90vw", md: "fit-content" }}
                 ml={{ base: 0, md: "auto" }}
                 mb={{ base: "2rem", md: 0 }}
-                onClick={onOpen}
-              >
-                Publish
+                onClick={onOpen}>
+                {!articleData.published ? "Publish" : "Unpublish"}
               </Button>
             )}
             <Heading textAlign="center" w="100%">
@@ -176,8 +205,7 @@ const Article: NextPage = () => {
             mb="1rem"
             flexWrap="wrap"
             fontSize="1.2rem"
-            fontWeight="medium"
-          >
+            fontWeight="medium">
             {articleData.topics.map((topic, i) => (
               <TopicCard name={topic.name} slug={topic.slug} key={i} />
             ))}
@@ -186,8 +214,7 @@ const Article: NextPage = () => {
             w="100%"
             flexDir="column"
             mb="4rem"
-            fontSize="clamp(16px,12px + .5vw,1.25rem)"
-          >
+            fontSize="clamp(16px,12px + .5vw,1.25rem)">
             <Markdown content={articleData.content} />
           </Flex>
 
