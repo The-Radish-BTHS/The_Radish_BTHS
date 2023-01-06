@@ -62,9 +62,8 @@ export const getPeople = async (
       ? {}
       : {
           former:
-            person &&
-            today.getMonth() > 6 &&
-            today.getFullYear() >= person.gradYear,
+            today.getFullYear() > person.gradYear ||
+            (today.getFullYear() === person.gradYear && today.getMonth() > 6),
         };
 
   return people.map((person) => ({

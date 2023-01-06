@@ -12,10 +12,11 @@ import RequiredUserWrapper from "@components/required-user-wrapper";
 import { getSsgCaller } from "@lib/ssg-helper";
 import { createPublicCaller } from "@server/trpc";
 import { OnBottom } from "@components/on-bottom";
+import { useIsFormer } from "@hooks/useIsFormer";
 
 const Person: NextPage = () => {
   const router = useRouter();
-  const today = new Date();
+  const { isFormer } = useIsFormer();
 
   const personQuery = trpc.person.getBySlug.useQuery({
     slug: router.query.slug as string,
@@ -34,8 +35,7 @@ const Person: NextPage = () => {
     .map((page) => page.articles)
     .flat();
 
-  const former =
-    person && today.getMonth() > 6 && today.getFullYear() >= person.gradYear;
+  const former = isFormer(person?.gradYear);
 
   return (
     <Layout title={person?.name} alignItems="center">
@@ -55,8 +55,7 @@ const Person: NextPage = () => {
           textAlign="center"
           fontStyle="italic"
           mb="3rem"
-          fontWeight="medium"
-        >
+          fontWeight="medium">
           &quot;{person?.description}&quot;
         </Text>
       )}

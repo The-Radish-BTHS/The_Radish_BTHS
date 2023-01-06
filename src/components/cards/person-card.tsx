@@ -2,6 +2,7 @@ import { PersonCardType } from "@/types/person";
 import { Center, Flex, Heading, Image, Text } from "@chakra-ui/react";
 import ExecStamp from "@components/exec-stamp";
 import Link from "@components/link";
+import { useIsFormer } from "@hooks/useIsFormer";
 import CardWrapper from "./card-wrapper";
 
 const PersonCard: React.FC<PersonCardType> = ({
@@ -9,11 +10,13 @@ const PersonCard: React.FC<PersonCardType> = ({
   name,
   position,
   description,
-  former,
   slug,
+  gradYear,
   image = "",
   styles,
 }) => {
+  const { isFormer } = useIsFormer();
+
   return (
     <CardWrapper w="100%" {...styles}>
       <Link href={`/people/${slug}`}>
@@ -34,7 +37,7 @@ const PersonCard: React.FC<PersonCardType> = ({
               </Heading>
               <Text fontWeight="bold" fontStyle="italic" w="100%">
                 {position}
-                {former ? " (Former)" : ""}
+                {isFormer(gradYear) ? " (Former)" : ""}
               </Text>
             </Flex>
             {isExec && <ExecStamp id={slug} size={60} />}
@@ -46,8 +49,7 @@ const PersonCard: React.FC<PersonCardType> = ({
               textAlign="center"
               fontStyle="italic"
               my="1rem"
-              fontWeight="medium"
-            >
+              fontWeight="medium">
               &quot;{description}&quot;
             </Text>
           )}

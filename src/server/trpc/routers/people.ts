@@ -39,15 +39,11 @@ export const peopleRouter = t.router({
         take: input.take,
       });
 
-      console.log(people);
-
       const former = (person: Person) =>
         input.includeIsFormer && {
           former:
-            person &&
-            today.getMonth() > 6 &&
-            today.getFullYear() >= person.gradYear &&
-            person.gradYear > 1980,
+            (person && today.getFullYear() > person.gradYear) ||
+            (today.getFullYear() === person.gradYear && today.getMonth() > 6),
         };
 
       return people.map((person) => ({

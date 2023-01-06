@@ -12,9 +12,11 @@ import { trpc } from "@lib/trpc";
 import Button from "@components/button";
 import { BiSave } from "react-icons/bi";
 import { GrRevert } from "react-icons/gr";
+import { useIsFormer } from "@hooks/useIsFormer";
 
 const Account: NextPage<{ peopleSlugs: string[] }> = ({ peopleSlugs }) => {
   const { data } = useSession();
+  const { isFormer } = useIsFormer();
   const person = data?.user?.person;
 
   const today = new Date();
@@ -22,9 +24,7 @@ const Account: NextPage<{ peopleSlugs: string[] }> = ({ peopleSlugs }) => {
 
   const [name, setName] = useState(person?.name);
   const [gradYear, setGradYear] = useState(person?.gradYear);
-  const [former, setFormer] = useState(
-    person && today.getMonth() > 6 && today.getFullYear() >= person?.gradYear
-  );
+  const [former, setFormer] = useState(person && isFormer(person?.gradYear));
   const [description, setDescription] = useState(person?.description);
 
   useEffect(() => {
@@ -37,11 +37,9 @@ const Account: NextPage<{ peopleSlugs: string[] }> = ({ peopleSlugs }) => {
     const today = new Date();
 
     if (gradYear) {
-      setFormer(
-        person && today.getMonth() > 6 && today.getFullYear() >= gradYear
-      );
+      setFormer(person && isFormer(gradYear));
     }
-  }, [person, gradYear]);
+  }, [person, gradYear, isFormer]);
 
   const personSlugIsUnique = (name: string) => {
     const isUnique = peopleSlugs.indexOf(customSlugify(name)) === -1;

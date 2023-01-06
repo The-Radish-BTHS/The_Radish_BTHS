@@ -231,33 +231,6 @@ export const articleRouter = t.router({
     .query(async ({ ctx, input }) => {
       const TAKE = 10;
 
-      console.log(
-        input.withTopic || input.withIssue || input.withAuthor
-          ? {
-              published: true,
-              topics: input.withTopic
-                ? {
-                    some: {
-                      slug: input.withTopic,
-                    },
-                  }
-                : undefined,
-              issue: input.withIssue
-                ? {
-                    slug: input.withIssue,
-                  }
-                : undefined,
-              authors: input.withAuthor
-                ? {
-                    some: {
-                      slug: input.withAuthor,
-                    },
-                  }
-                : undefined,
-            }
-          : undefined
-      );
-
       const articles = await ctx.prisma.article.findMany({
         where:
           input.withTopic || input.withIssue || input.withAuthor

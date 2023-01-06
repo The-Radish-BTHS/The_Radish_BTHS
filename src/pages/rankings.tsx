@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import Layout from "@components/layout/layout";
 import Link from "@components/link";
+import { useIsFormer } from "@hooks/useIsFormer";
 import { useIsMobile } from "@hooks/useIsMobile";
 import { getPeopleWithArticles } from "@lib/getters/many-getters.server";
 import { GetStaticProps } from "next";
@@ -31,8 +32,7 @@ const Row: React.FC<{ stats: Stats; isMobile?: boolean }> = ({
   return (
     <Tr
       fontWeight={stats.isExec ? (stats.former ? "medium" : "bold") : "light"}
-      color={stats.former ? "black" : "black"}
-    >
+      color={stats.former ? "black" : "black"}>
       <Td>
         <Link href={`/people/${stats.slug}`}>{stats.name}</Link>
       </Td>
@@ -64,8 +64,7 @@ const Rankings: React.FC<{ authorStats: Stats[] }> = ({ authorStats }) => {
         minW="fit-content"
         overflowY="visible"
         overflowX="visible"
-        whiteSpace="pre-wrap"
-      >
+        whiteSpace="pre-wrap">
         <Table variant="simple" colorScheme="grey">
           <Thead>
             <Tr>
@@ -115,10 +114,15 @@ export const getStaticProps: GetStaticProps = async (context) => {
       return topics.indexOf(item) == pos;
     }).length;
 
+    const today = new Date();
+    const former =
+      today.getFullYear() > person.gradYear ||
+      (today.getFullYear() === person.gradYear && today.getMonth() > 6);
+
     return {
       name: person.name,
       slug: person.slug,
-      former: person.former,
+      former: former,
       isExec: person.isExec,
       articles: person.articles.length,
       collabs,
