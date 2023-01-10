@@ -167,6 +167,11 @@ export const articleRouter = t.router({
             topics: {
               connect: input.topics,
             },
+            submission: {
+              connect: {
+                id: input.id,
+              },
+            },
           },
         }),
         ctx.prisma.submission.update({
@@ -275,5 +280,23 @@ export const articleRouter = t.router({
         articles,
         nextCursor,
       };
+    }),
+
+  unEdit: execProcedure
+    .input(
+      z.object({
+        articleId: z.string(),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      await ctx.prisma.$transaction([
+        ctx.prisma.submission.update({
+          where: { articleId: input.articleId },
+          data: { articleId: null, beenEdited: false },
+        }),
+        ctx.prisma.article.delete({
+          where: { id: input.articleId },
+        }),
+      ]);
     }),
 });

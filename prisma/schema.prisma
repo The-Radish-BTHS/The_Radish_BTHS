@@ -77,10 +77,11 @@ model Article {
   published   Boolean  @default(false)
   publishedOn DateTime @default(now())
 
-  issue     Issue?   @relation(fields: [issueId], references: [id])
-  issueId   String?
-  authors   Person[]
-  topics    Topic[]
+  issue      Issue?   @relation(fields: [issueId], references: [id])
+  issueId    String?
+  authors    Person[]
+  topics     Topic[]
+  submission Submission?
 }
 
 model Submission {
@@ -98,6 +99,9 @@ model Submission {
   user    User     @relation(fields: [userId], references: [id])
   topics  Topic[]
   authors Person[]
+
+  articleId String?  @unique
+  article   Article? @relation(fields: [articleId], references: [id])
 }
 
 model Topic {

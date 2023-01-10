@@ -11,6 +11,7 @@ import {
   ModalCloseButton,
   useDisclosure,
   useToast,
+  HStack,
 } from "@chakra-ui/react";
 import TopicCard from "@components/cards/topic-card";
 import LatestArticles from "@components/latest/latest-articles";
@@ -64,6 +65,27 @@ const Article: NextPage = () => {
       });
     },
   });
+
+  const unEditArticle = trpc.article.unEdit.useMutation({
+    onError(err) {
+      toast({
+        title: `Article UnEdit Error ${err.data?.httpStatus}: ${err.message}`,
+        status: "error",
+        duration: 4000,
+        position: "bottom-right",
+        isClosable: true,
+      });
+    },
+    onSuccess() {
+      toast({
+        title: "Article UnEdited Successfully!",
+        status: "success",
+        duration: 4000,
+        position: "bottom-right",
+        isClosable: true,
+      });
+    },
+  });
   const unpublishArticle = trpc.article.unpublish.useMutation({
     onError(err) {
       toast({
@@ -99,11 +121,13 @@ const Article: NextPage = () => {
             isOpen={isOpen}
             onClose={onClose}
             size={{ base: "full", md: "md" }}
-            isCentered>
+            isCentered
+          >
             <ModalOverlay />
             <ModalContent
               bg="#ebeae5"
-              borderRadius={{ base: 0, sm: "0.75rem" }}>
+              borderRadius={{ base: 0, sm: "0.75rem" }}
+            >
               <ModalHeader>Are you sure?</ModalHeader>
               <ModalCloseButton />
               <ModalBody>
@@ -138,7 +162,8 @@ const Article: NextPage = () => {
                           router.push("/eggsex");
                         });
                     }
-                  }}>
+                  }}
+                >
                   Yes, I&apos;m sure!
                 </Button>
               </ModalFooter>
@@ -150,7 +175,8 @@ const Article: NextPage = () => {
               gap="0.75rem"
               w="101vw"
               mb="1rem"
-              borderY="1px solid black">
+              borderY="1px solid black"
+            >
               {[...Array(30)].map((_, i) => (
                 <Text key={i}>UNPUBLISHED</Text>
               ))}
@@ -163,15 +189,31 @@ const Article: NextPage = () => {
             flexDir="column"
             justifyContent="center"
             alignItems="center"
-            flex={1}>
+            flex={1}
+          >
             {canAccess("exec") && (
-              <Button
-                w={{ base: "90vw", md: "fit-content" }}
-                ml={{ base: 0, md: "auto" }}
-                mb={{ base: "2rem", md: 0 }}
-                onClick={onOpen}>
-                {!articleData.published ? "Publish" : "Unpublish"}
-              </Button>
+              <HStack w="100%">
+                <Button onClick={onOpen} ml="auto !important">
+                  {!articleData.published ? "Publish" : "Unpublish"}
+                </Button>
+
+                {!articleData.published && (
+                  <Button
+                    onClick={async () => {
+                      await unEditArticle
+                        .mutateAsync({
+                          articleId: articleData.id,
+                        })
+                        .catch(() => 0)
+                        .then(() => {
+                          router.push("/editor-dashboard");
+                        });
+                    }}
+                  >
+                    Send back to editor
+                  </Button>
+                )}
+              </HStack>
             )}
             <Heading textAlign="center" w="100%">
               {articleData.title}
@@ -205,7 +247,8 @@ const Article: NextPage = () => {
             mb="1rem"
             flexWrap="wrap"
             fontSize="1.2rem"
-            fontWeight="medium">
+            fontWeight="medium"
+          >
             {articleData.topics.map((topic, i) => (
               <TopicCard name={topic.name} slug={topic.slug} key={i} />
             ))}
@@ -214,7 +257,8 @@ const Article: NextPage = () => {
             w="100%"
             flexDir="column"
             mb="4rem"
-            fontSize="clamp(16px,12px + .5vw,1.25rem)">
+            fontSize="clamp(16px,12px + .5vw,1.25rem)"
+          >
             <Markdown content={articleData.content} />
           </Flex>
 
