@@ -16,51 +16,48 @@ import Button from "@components/button";
 import Layout from "@components/layout/layout";
 import RequiredUserWrapper from "@components/required-user-wrapper";
 import { trpc } from "@lib/trpc";
-import { Person, User } from "@prisma/client";
+import { Person, User, UserPermission } from "@prisma/client";
 import { NextPage } from "next";
 import { useState } from "react";
 
-const LinkPerson: NextPage = () => {
+const ChangeRole: NextPage = () => {
   const toast = useToast();
-  const linkUserToExistingPerson =
-    trpc.person.linkUserToExistingPerson.useMutation({
-      onError(err) {
-        toast({
-          title: `Person Link errror ${err.data?.httpStatus}: ${err.message}`,
-          status: "error",
-          duration: 4000,
-          position: "bottom-right",
-          isClosable: true,
-        });
-      },
-      onSuccess() {
-        toast({
-          title: "People connected successfully!",
-          status: "success",
-          duration: 4000,
-          position: "bottom-right",
-          isClosable: true,
-        });
-      },
-    });
+  const changePermission = trpc.user.changePermission.useMutation({
+    onError(err) {
+      toast({
+        title: `User Change Role errror ${err.data?.httpStatus}: ${err.message}`,
+        status: "error",
+        duration: 4000,
+        position: "bottom-right",
+        isClosable: true,
+      });
+    },
+    onSuccess() {
+      toast({
+        title: "Role changed successfully!",
+        status: "success",
+        duration: 4000,
+        position: "bottom-right",
+        isClosable: true,
+      });
+    },
+  });
 
   const usersQuery = trpc.user.getAll.useQuery();
   const users = usersQuery.data || [];
-  const peopleQuery = trpc.person.getAll.useQuery({});
-  const people = peopleQuery.data || [];
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const [data, setData] = useState<{
     userId?: string;
-    userPersonId?: string;
-    personId?: string;
+    currentRole?: string;
+    newRole?: string;
   }>();
 
   console.log(data);
 
   return (
-    <Layout title="Link A Person!">
+    <Layout title="Change a role!">
       <RequiredUserWrapper roleNeeded="exec">
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
@@ -68,22 +65,32 @@ const LinkPerson: NextPage = () => {
             <ModalHeader>Are you sure?</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
-              <Text>This change is irreversible!</Text>
+              <Text>This better be the right person!</Text>
             </ModalBody>
 
             <ModalFooter>
               <Button
                 onClick={() => {
-                  if (!(data?.userId && data.personId)) return;
-                  // NOTE: THE CURRENT PERSON GOES POOF
-                  // THIS WILL FAIL IF THERE ARE ARTICLES ASSOCIATED THE CURRENT PERSON SLUG
-                  //
-                  // (SANTIAGO WHY DID YOU MAKE THE FUCKING SLUG THE FOREIGN KEY)
-                  linkUserToExistingPerson.mutate({
-                    // FROM
-                    currentUserId: data?.userId,
-                    // TO, the existing one
-                    newPersonId: data.personId,
+                  if (!(data?.userId && data.newRole)) return;
+                  if (
+                    ![
+                      "NORMIE",
+                      "EDITOR",
+                      "ARTIST",
+                      "TEAMS_MEMBER",
+                      "EXEC",
+                    ].includes(data.newRole)
+                  )
+                    return;
+
+                  changePermission.mutate({
+                    userId: data?.userId,
+                    permission: data.newRole as
+                      | "NORMIE"
+                      | "EDITOR"
+                      | "ARTIST"
+                      | "TEAMS_MEMBER"
+                      | "EXEC",
                   });
                   onClose();
                 }}>
@@ -95,7 +102,7 @@ const LinkPerson: NextPage = () => {
         <Flex
           alignItems="center"
           gap="1rem"
-          w="25rem"
+          w="30rem"
           justifyContent="space-between">
           <Text>User to change: </Text>
           <Select
@@ -108,7 +115,7 @@ const LinkPerson: NextPage = () => {
               setData({
                 ...data,
                 userId: new_data.id,
-                userPersonId: new_data.personId,
+                currentRole: new_data.role,
               });
             }}>
             {users
@@ -124,7 +131,7 @@ const LinkPerson: NextPage = () => {
                 <option
                   value={JSON.stringify({
                     id: user.id,
-                    personId: user.personId,
+                    role: user.permission,
                   })}
                   key={i}>
                   {user.name} - {user.email}
@@ -136,32 +143,20 @@ const LinkPerson: NextPage = () => {
           alignItems="center"
           gap="1rem"
           mt="1rem"
-          w="25rem"
+          w="30rem"
           justifyContent="space-between">
-          <Text>Who are they? </Text>
+          <Text>What should they be? </Text>
           <Select
-            placeholder="Choose their account"
+            placeholder="Choose their role"
             variant="flushed"
             borderColor="black"
             w="15rem"
-            onChange={(e) => setData({ ...data, personId: e.target.value })}>
-            {people
-              .filter(
-                (person) => person.id !== data?.userPersonId && !person.user
-              )
-              .sort(function (a, b) {
-                const keyA = a.name;
-                const keyB = b.name;
-                // Compare the 2 dates
-                if (keyA < keyB) return -1;
-                if (keyA > keyB) return 1;
-                return 0;
-              })
-              .map((person, i) => (
-                <option value={person.id} key={i}>
-                  {person.name}
-                </option>
-              ))}
+            onChange={(e) => setData({ ...data, newRole: e.target.value })}>
+            <option value={UserPermission.NORMIE}>Normie (lame)</option>
+            <option value={UserPermission.ARTIST}>Graphics Team</option>
+            <option value={UserPermission.EDITOR}>Editing Team</option>
+            <option value={UserPermission.TEAMS_MEMBER}>Both Teams</option>
+            <option value={UserPermission.EXEC}>Executive</option>
           </Select>
         </Flex>
 
@@ -169,12 +164,12 @@ const LinkPerson: NextPage = () => {
           mt="3rem"
           width="20rem"
           onClick={() => onOpen()}
-          disabled={!(data?.userId && data.personId)}>
-          Connect
+          disabled={!(data?.userId && data.newRole)}>
+          Change
         </Button>
       </RequiredUserWrapper>
     </Layout>
   );
 };
 
-export default LinkPerson;
+export default ChangeRole;
