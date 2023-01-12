@@ -14,18 +14,20 @@ import {
 } from "@chakra-ui/react";
 import Button from "@components/button";
 import { ImageUpload } from "@components/image-upload";
+import Link from "@components/link";
 import LinkButton from "@components/link-button";
 import { trpc } from "@lib/trpc";
+import { Person } from "@prisma/client";
 import { useState } from "react";
 import CardWrapper from "./card-wrapper";
 
 const GraphicsCard: React.FC<{
   title: string;
+  authors: Person[];
   link: string;
   request: string | null;
   submissionId: string;
-}> = ({ submissionId, title, link, request }) => {
-  // TODO: SANTIAGO UI!!!!!!!!!!!!!!!!!!!!
+}> = ({ title, authors, link, request, submissionId }) => {
   const toast = useToast();
   const submitGraphics = trpc.submission.submitGraphics.useMutation({
     onError(err) {
@@ -92,8 +94,33 @@ const GraphicsCard: React.FC<{
       <Heading fontSize="1.5rem" mb="0.25rem">
         {title}
       </Heading>
+      <Text>
+        {authors.length &&
+          authors.map((author, i) => (
+            <>
+              <Link
+                key={i}
+                href={`/people/${author.slug}`}
+                textDecor="underline">
+                {author.name}
+              </Link>
+              {i + 1 < authors.length && (
+                <span
+                  style={{
+                    fontWeight: "bold",
+                    marginLeft: "0.2rem",
+                    marginRight: "0.2rem",
+                  }}>
+                  {" "}
+                  ∙{" "}
+                </span>
+              )}
+            </>
+          ))}
+      </Text>
+
       <Text>{request}</Text>
-      <Flex w="100%" justifyContent="flex-end" gap="1rem">
+      <Flex w="100%" justifyContent="flex-end" gap="1rem" mt="1rem">
         <LinkButton href={link}>Read</LinkButton>
         <Button onClick={onOpen}>Complete</Button>
       </Flex>

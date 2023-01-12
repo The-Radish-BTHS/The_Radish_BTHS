@@ -31,6 +31,7 @@ const ArtsyDashboard: NextPage = () => {
                   {submissions?.map((article, i) => (
                     <GraphicsCard
                       title={article.title}
+                      authors={article.authors}
                       link={article.link}
                       request={article.graphicsRequest}
                       submissionId={article.id}
@@ -44,6 +45,7 @@ const ArtsyDashboard: NextPage = () => {
                   {completed?.map((article, i) => (
                     <GraphicsCard
                       title={article.title}
+                      authors={article.authors}
                       link={article.link}
                       request={article.graphicsRequest}
                       submissionId={article.id}
