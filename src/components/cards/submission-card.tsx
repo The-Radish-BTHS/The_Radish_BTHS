@@ -106,11 +106,15 @@ const SubmissionCard: React.FC<{
       )}
 
       <Flex gap="1rem" mt="1rem" justifyContent="center">
-        <LinkButton href={link} external>
-          Read{isMobile ? "" : " Article"}
+        <LinkButton href={link} flex={1} justifyContent="center" external>
+          Read
         </LinkButton>
-        <LinkButton href={`/articles/edit?id=${id}`} external>
-          Submit{isMobile ? "" : " Edited"}
+        <LinkButton
+          href={`/articles/edit?id=${id}`}
+          flex={1}
+          justifyContent="center"
+          external>
+          Submit
         </LinkButton>
       </Flex>
     </CardWrapper>
