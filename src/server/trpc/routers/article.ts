@@ -247,6 +247,11 @@ export const articleRouter = t.router({
                       search: input.query.replaceAll(" ", "_"),
                     }
                   : undefined,
+                content: input.query
+                  ? {
+                      search: input.query.replaceAll(" ", "_"),
+                    }
+                  : undefined,
                 topics: input.withTopic
                   ? {
                       some: {
@@ -270,6 +275,11 @@ export const articleRouter = t.router({
             : {
                 published: true,
                 title: input.query
+                  ? {
+                      search: input.query.replaceAll(" ", "_"),
+                    }
+                  : undefined,
+                content: input.query
                   ? {
                       search: input.query.replaceAll(" ", "_"),
                     }
