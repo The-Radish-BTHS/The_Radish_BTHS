@@ -8,6 +8,7 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
+  SimpleGrid,
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
@@ -84,40 +85,60 @@ const Account: NextPage<{ peopleSlugs: string[] }> = ({ peopleSlugs }) => {
   return (
     <Layout title="My Account">
       <RequiredUserWrapper>
-        <Flex gap="1.5rem">
-          <Flex flex={1} />
-          <Heading
-            fontSize="3.5rem"
-            w="100%"
-            flex={1}
-            fontWeight={600}
-            textAlign="center"
+        {person?.isExec ? (
+          <SimpleGrid
+            gridTemplateColumns={["0px auto 80px", "80px auto 80px"]}
+            alignItems="center"
           >
+            <Box />
+
+            <Heading
+              fontSize={["2rem", "2.5rem", "3.5rem"]}
+              w="100%"
+              fontWeight={600}
+              textAlign="center"
+            >
+              {name}
+            </Heading>
+
+            <ExecStamp id="" size={80} />
+          </SimpleGrid>
+        ) : (
+          <Heading fontSize={["2rem", "2.5rem", "3.5rem"]} textAlign="center">
             {name}
           </Heading>
-          <Flex flex={1} justifyContent="flex-end">
-            {person?.isExec && <ExecStamp id="" size={80} />}
-          </Flex>
-        </Flex>
+        )}
 
         <Text
-          fontSize="2rem"
           fontWeight={300}
           w="100%"
           textAlign="center"
           textTransform="capitalize"
+          fontSize={["1rem", "1.5rem", "1.75rem"]}
         >
           {person?.position}, Graduat{former ? "ed" : "ing"} {gradYear}
         </Text>
-        <Text fontSize="2rem" fontWeight={300} w="100%" textAlign="center">
+        <Text
+          fontSize={["1rem", "1.5rem", "2rem"]}
+          fontWeight={300}
+          w="100%"
+          textAlign="center"
+        >
           {description ? `"${description}"` : <br />}
         </Text>
 
-        <Flex flexDirection="column" alignItems="center" mt="3rem">
+        <hr
+          style={{
+            borderColor: "#888",
+            margin: "1rem 2rem",
+          }}
+        />
+
+        <Flex flexDirection="column" alignItems="center" mt="4">
           <Heading
             mb="1rem"
             fontWeight={600}
-            fontSize="2.5rem"
+            fontSize={["1.5rem", "2rem"]}
             textAlign="center"
           >
             Update your information
@@ -222,7 +243,7 @@ const Account: NextPage<{ peopleSlugs: string[] }> = ({ peopleSlugs }) => {
             confirmationDisclosure.onOpen();
           }}
         >
-          I want to delete my account.
+          Delete my account
         </Button>
       </RequiredUserWrapper>
     </Layout>
