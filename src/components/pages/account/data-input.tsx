@@ -13,12 +13,13 @@ const DataInput: React.FC<{
         textAlign="left"
         width={{ base: "80vw", md: "50vw" }}
         mt="1rem"
-        fontWeight={600}>
+        fontWeight={600}
+      >
         {placeholder}:
       </Text>
       <Input
         placeholder={placeholder}
-        pattern={number ? "d*" : "*"}
+        pattern={number ? "d*" : ".*"}
         value={value || (number ? 0 : "")}
         style={{
           background: "transparent",

@@ -227,6 +227,7 @@ export const articleRouter = t.router({
   getInfinite: t.procedure
     .input(
       z.object({
+        query: z.string().nullish(),
         withTopic: z.string().nullish(),
         withIssue: z.string().nullish(),
         withAuthor: z.string().nullish(),
@@ -241,6 +242,16 @@ export const articleRouter = t.router({
           input.withTopic || input.withIssue || input.withAuthor
             ? {
                 published: true,
+                title: input.query
+                  ? {
+                      search: input.query.replaceAll(" ", "_"),
+                    }
+                  : undefined,
+                content: input.query
+                  ? {
+                      search: input.query.replaceAll(" ", "_"),
+                    }
+                  : undefined,
                 topics: input.withTopic
                   ? {
                       some: {
@@ -261,7 +272,19 @@ export const articleRouter = t.router({
                     }
                   : undefined,
               }
-            : { published: true },
+            : {
+                published: true,
+                title: input.query
+                  ? {
+                      search: input.query.replaceAll(" ", "_"),
+                    }
+                  : undefined,
+                content: input.query
+                  ? {
+                      search: input.query.replaceAll(" ", "_"),
+                    }
+                  : undefined,
+              },
         take: TAKE + 1,
         orderBy: {
           publishedOn: "desc",

@@ -1,6 +1,6 @@
 import { UserPermission } from "@prisma/client";
 import { z } from "zod";
-import { execProcedure, t } from "..";
+import { authedProcedure, execProcedure, t } from "..";
 
 export const userRouter = t.router({
   getAll: t.procedure.query(async ({ ctx }) => {
@@ -21,4 +21,25 @@ export const userRouter = t.router({
         },
       });
     }),
+
+  deleteMyAccount: authedProcedure.mutation(async ({ ctx }) => {
+    await ctx.prisma.$transaction([
+      // delete associated submissions
+      ctx.prisma.submission.deleteMany({
+        where: {
+          userId: ctx.user.id,
+        },
+      }),
+      // delete the user
+      ctx.prisma.user.delete({
+        where: {
+          id: ctx.user.id,
+        },
+      }),
+      // delete person
+      ctx.prisma.person.delete({
+        where: { id: ctx.user.person.id },
+      }),
+    ]);
+  }),
 });
