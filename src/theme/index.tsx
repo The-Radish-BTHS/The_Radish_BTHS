@@ -18,6 +18,6 @@ export const theme = extendTheme(
       },
     },
   },
-  withDefaultColorScheme({ colorScheme: "pink" }),
+  withDefaultColorScheme({ colorScheme: "gray" }),
   withDefaultVariant({ variant: "filled", components: ["Input", "Textarea"] })
 );

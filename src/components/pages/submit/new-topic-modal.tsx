@@ -58,10 +58,9 @@ const NewTopicModal: React.FC<{
       isOpen={isOpen}
       onClose={onClose}
       size={{ base: "full", md: "md" }}
-      isCentered
-    >
+      isCentered>
       <ModalOverlay />
-      <ModalContent bg="#ebeae5" borderRadius={{ base: 0, sm: "0.75rem" }}>
+      <ModalContent bg="custom.bg" borderRadius={{ base: 0, sm: "0.75rem" }}>
         <ModalHeader>New Topic Alert!!!</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
@@ -79,8 +78,7 @@ const NewTopicModal: React.FC<{
               required
             />
             <p
-              className={`${styles["form-element-margin"]} ${styles["error-message"]}`}
-            >
+              className={`${styles["form-element-margin"]} ${styles["error-message"]}`}>
               <ErrorMessage
                 errors={errors}
                 name="name"
@@ -142,8 +140,7 @@ const NewTopicModal: React.FC<{
               setValue("name", "");
               setValue("description", "");
               utils.topic.getAll.invalidate();
-            })}
-          >
+            })}>
             Make!
           </Button>
         </ModalFooter>

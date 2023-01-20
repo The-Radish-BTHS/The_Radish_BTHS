@@ -5,7 +5,7 @@ const InfoTooltip: React.FC<{ text: string }> = ({ text }) => (
   <Tooltip
     label={text}
     placement="top"
-    bg="#ebeae5"
+    bg="custom.bg"
     border="1px solid black"
     color="black"
     borderRadius="0.25rem">

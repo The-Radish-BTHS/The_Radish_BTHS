@@ -33,7 +33,7 @@ const SubmitModal: React.FC<
       size={{ base: "full", md: "md" }}
       isCentered>
       <ModalOverlay />
-      <ModalContent bg="#ebeae5" borderRadius={{ base: 0, sm: "0.75rem" }}>
+      <ModalContent bg="custom.bg" borderRadius={{ base: 0, sm: "0.75rem" }}>
         <ModalHeader>Are you sure?</ModalHeader>
         <ModalCloseButton />
         <ModalBody>{children}</ModalBody>

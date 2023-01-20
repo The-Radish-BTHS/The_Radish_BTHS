@@ -9,7 +9,7 @@ export const SectionHeader: React.FC<{
     <Heading fontWeight={700} mt={noSep ? "0" : "2rem"}>
       {title}
     </Heading>
-    <Text fontWeight={600} color="radamir.red">
+    <Text fontWeight={600} color="custom.red">
       {subtitle}
     </Text>
   </>
