@@ -46,7 +46,7 @@ export const slugToConnect = (slug: string | null) => {
 };
 
 export const customSlugify = (value: string) =>
-  slugify(value, { lower: true, remove: /"#/g });
+  slugify(value, { lower: true, remove: /[^a-zA-Z]/g });
 
 export const topicNameIsUnique = (name: string, slugs: string[]) => {
   const isUnique = slugs.indexOf(customSlugify(name)) === -1;
