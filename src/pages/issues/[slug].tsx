@@ -31,8 +31,24 @@ const Issue: NextPage = () => {
     .flat();
   const issue = issueQuery.data;
 
+  const searchParams = new URLSearchParams();
+
+  searchParams.set("img", issue?.coverUrl ?? "");
+  searchParams.set("name", issue?.title ?? "");
+  searchParams.set("description", issue?.description ?? "");
+  searchParams.set(
+    "excerpts",
+    JSON.stringify(articles?.map((a) => a.title)) ?? ""
+  );
+
+  console.log("/api/og/issue?" + searchParams.toString());
+
   return (
-    <Layout title={issue?.title} alignItems="center">
+    <Layout
+      title={issue?.title}
+      alignItems="center"
+      imgUrl={"/api/og/issue?" + searchParams.toString()}
+    >
       <Heading mt="1rem">{issue?.title}</Heading>
       <Text
         mb="3rem"

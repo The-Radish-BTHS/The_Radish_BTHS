@@ -1,6 +1,9 @@
 import Head from "next/head";
 
-const Title: React.FC<{ page?: string }> = ({ page = "" }) => {
+const Title: React.FC<{ page?: string; imgUrl?: string }> = ({
+  page = "",
+  imgUrl,
+}) => {
   const title = `${page && `${page} | `}Radish`;
   return (
     <Head>
@@ -13,8 +16,8 @@ const Title: React.FC<{ page?: string }> = ({ page = "" }) => {
         content="The Radish BTHS is Brooklyn Tech's first, worst, and only monthly satirical newspaper. Every month, The Radish delivers a fresh batch of articles to the hungry mouths of Brooklyn Technical High School students everywhere."
       />
       <meta name="theme-color" content="#ad1507" />
-      {/* <meta content="summary_large_image" property="twitter:card" />
-      <meta content="/cover.png" property="og:image" /> */}
+      <meta content={imgUrl} property="twitter:card" />
+      <meta content={imgUrl} property="og:image" />
     </Head>
   );
 };

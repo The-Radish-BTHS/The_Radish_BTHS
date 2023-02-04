@@ -30,8 +30,20 @@ const Topic: NextPage = () => {
   });
   const topic = topicQuery.data;
 
+  const searchParams = new URLSearchParams();
+
+  searchParams.set("name", topic?.name ?? "");
+  searchParams.set("description", topic?.description ?? "");
+
+  console.log("/api/og/topic?" + searchParams.toString());
+
   return (
-    <Layout title={topic?.name} alignItems="center" gap="0.5rem">
+    <Layout
+      title={topic?.name}
+      alignItems="center"
+      gap="0.5rem"
+      imgUrl={"/api/og/topic?" + searchParams.toString()}
+    >
       <Heading color="#bb3300" fontWeight="600" textAlign="center">
         #{topic?.name}
       </Heading>

@@ -37,8 +37,19 @@ const Person: NextPage = () => {
 
   const former = isFormer(person?.gradYear);
 
+  const searchParams = new URLSearchParams();
+
+  searchParams.set("grad_year", person?.gradYear.toString() ?? "");
+  searchParams.set("name", person?.name ?? "");
+  searchParams.set("role", person?.position ?? "");
+  searchParams.set("quote", person?.description ?? "");
+
   return (
-    <Layout title={person?.name} alignItems="center">
+    <Layout
+      title={person?.name}
+      alignItems="center"
+      imgUrl={"/api/og/person?" + searchParams.toString()}
+    >
       <Flex gap="0.5rem" alignItems="flex-start" ml="40px">
         <Heading>{person?.name}</Heading>
         {person?.isExec && <ExecStamp id={person?.name} size={40} />}
@@ -55,7 +66,8 @@ const Person: NextPage = () => {
           textAlign="center"
           fontStyle="italic"
           mb="3rem"
-          fontWeight="medium">
+          fontWeight="medium"
+        >
           &quot;{person?.description}&quot;
         </Text>
       )}
