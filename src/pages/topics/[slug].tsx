@@ -35,8 +35,6 @@ const Topic: NextPage = () => {
   searchParams.set("name", topic?.name ?? "");
   searchParams.set("description", topic?.description ?? "");
 
-  console.log("/api/og/topic?" + searchParams.toString());
-
   return (
     <Layout
       title={topic?.name}
