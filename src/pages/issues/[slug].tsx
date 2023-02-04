@@ -41,8 +41,6 @@ const Issue: NextPage = () => {
     JSON.stringify(articles?.map((a) => a.title)) ?? ""
   );
 
-  console.log("/api/og/issue?" + searchParams.toString());
-
   return (
     <Layout
       title={issue?.title}
