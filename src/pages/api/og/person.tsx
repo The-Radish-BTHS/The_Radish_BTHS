@@ -27,7 +27,7 @@ export default async function handler(req: NextRequest) {
         }}
       >
         <img
-          src="https://theradishbths.com/images/sadish.png"
+          src="https://theradishbths.com/images/happyish.png"
           alt="Radish Logo"
           width={250}
           height={400}
