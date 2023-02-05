@@ -12,7 +12,7 @@ const Title: React.FC<{ page?: string; imgUrl?: string }> = ({
     <Head>
       <title>{title}</title>
       <meta name="theme-color" content="#ad1507" />
-      <meta property="og:site_name" content="Nirjhor Nath" />
+      <meta property="og:site_name" content="The Radish" />
       <meta property="og:title" content="The Radish" />
       <meta property="og:type" content="website" />
       <meta property="og:url" content=" " />
