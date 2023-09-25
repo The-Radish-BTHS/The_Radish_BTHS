@@ -113,19 +113,39 @@ const Article: NextPage = () => {
     year: "numeric",
   }).format(articleData.publishedOn);
 
+  const searchParams = new URLSearchParams();
+
+  searchParams.set("date", pubString ?? "");
+  searchParams.set("name", articleData.title ?? "");
+  searchParams.set(
+    "author",
+    articleData.authors.map((p) => p.name).join(", ") ?? ""
+  );
+  searchParams.set("description", articleData.excerpt ?? "");
+  searchParams.set(
+    "topics",
+    articleData.topics.map((t) => `#${t.name}`).join(" ") ?? ""
+  );
+
   return (
-    <Layout title={articleData.title} alignItems="center">
+    <Layout
+      title={articleData.title}
+      alignItems="center"
+      imgUrl={"/api/og/article?" + searchParams.toString()}
+    >
       {articleData.published || canAccess("editor") ? (
         <>
           <Modal
             isOpen={isOpen}
             onClose={onClose}
             size={{ base: "full", md: "md" }}
-            isCentered>
+            isCentered
+          >
             <ModalOverlay />
             <ModalContent
               bg="custom.bg"
-              borderRadius={{ base: 0, sm: "0.75rem" }}>
+              borderRadius={{ base: 0, sm: "0.75rem" }}
+            >
               <ModalHeader>Are you sure?</ModalHeader>
               <ModalCloseButton />
               <ModalBody>
@@ -160,7 +180,8 @@ const Article: NextPage = () => {
                           router.push("/eggsex");
                         });
                     }
-                  }}>
+                  }}
+                >
                   Yes, I&apos;m sure!
                 </Button>
               </ModalFooter>
@@ -172,7 +193,8 @@ const Article: NextPage = () => {
               gap="0.75rem"
               w="101vw"
               mb="1rem"
-              borderY="1px solid black">
+              borderY="1px solid black"
+            >
               {[...Array(30)].map((_, i) => (
                 <Text key={i}>UNPUBLISHED</Text>
               ))}
@@ -185,7 +207,8 @@ const Article: NextPage = () => {
             flexDir="column"
             justifyContent="center"
             alignItems="center"
-            flex={1}>
+            flex={1}
+          >
             {canAccess("exec") && (
               <HStack w="100%">
                 <Button onClick={onOpen} ml="auto !important">
@@ -203,7 +226,8 @@ const Article: NextPage = () => {
                         .then(() => {
                           router.push("/editor-dashboard");
                         });
-                    }}>
+                    }}
+                  >
                     Send back to editor
                   </Button>
                 )}
@@ -241,7 +265,8 @@ const Article: NextPage = () => {
             mb="1rem"
             flexWrap="wrap"
             fontSize="1.2rem"
-            fontWeight="medium">
+            fontWeight="medium"
+          >
             {articleData.topics.map((topic, i) => (
               <TopicCard name={topic.name} slug={topic.slug} key={i} />
             ))}
@@ -250,7 +275,8 @@ const Article: NextPage = () => {
             w="100%"
             flexDir="column"
             mb="4rem"
-            fontSize="clamp(16px,12px + .5vw,1.25rem)">
+            fontSize="clamp(16px,12px + .5vw,1.25rem)"
+          >
             <Markdown content={articleData.content} />
           </Flex>
 

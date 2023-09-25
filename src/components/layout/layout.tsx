@@ -9,11 +9,13 @@ interface LayoutProps extends FlexProps {
   pageIndex?: number;
   title?: string;
   header?: string;
+  imgUrl?: string;
 }
 
 const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({
   pageIndex,
   title,
+  imgUrl,
   header,
   children,
   ...rest
@@ -48,6 +50,7 @@ const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({
         page={
           pageIndex !== undefined ? navigationTabs[pageIndex].name : title ?? ""
         }
+        imgUrl={imgUrl}
       />
       <Topbar image={image} />
       <Flex

@@ -6,7 +6,7 @@ import { SessionProvider } from "next-auth/react";
 
 import "./global.css";
 import { trpc } from "@lib/trpc";
-import { Analytics } from "@vercel/analytics/react";
+import { Analytics } from '@vercel/analytics/react';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   useProgressBar();
