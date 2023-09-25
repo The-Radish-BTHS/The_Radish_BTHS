@@ -1,4 +1,5 @@
 import ReactMarkdown from "react-markdown";
+import { PluggableList } from "react-markdown/lib/react-markdown";
 
 import html from "remark-html";
 import remarkGfm from "remark-gfm";
@@ -9,8 +10,8 @@ import { Image } from "@chakra-ui/react";
 
 const Markdown: React.FC<{ content: string }> = ({ content }) => (
   <ReactMarkdown
-    rehypePlugins={[rehypeRaw, rehypeSanitize]}
-    remarkPlugins={[remarkGfm, html, remarkToc]}
+    rehypePlugins={[rehypeRaw, rehypeSanitize] as PluggableList}
+    remarkPlugins={[remarkGfm, html, remarkToc] as PluggableList}
     components={{
       ul: (props) => <ul style={{ width: "100%" }} {...props} />,
       li: (props) => <li style={{ marginLeft: "1rem" }} {...props} />,
