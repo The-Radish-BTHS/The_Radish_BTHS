@@ -9,7 +9,9 @@ if (
   );
 
 export const rawStorage = new Storage({
-  credentials: JSON.parse(process.env.GOOGLE_CLOUD_SERVICE_CREDENTIALS),
+  credentials: JSON.parse(
+    process.env.GOOGLE_CLOUD_SERVICE_CREDENTIALS.replaceAll("\n", "\\n")
+  ),
 });
 const bucket = rawStorage.bucket(process.env.GOOGLE_CLOUD_STORAGE_BUCKET_NAME);
 const BASE_URL = `https://storage.googleapis.com/${process.env.GOOGLE_CLOUD_STORAGE_BUCKET_NAME}`;
