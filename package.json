@@ -35,6 +35,8 @@
     "@trpc/server": "^10.1.0",
     "@types/nprogress": "^0.2.0",
     "@vercel/analytics": "^1.0.2",
+    "@vercel/edge": "^1.1.0",
+    "@vercel/edge-config": "^0.4.1",
     "@vercel/og": "^0.5.17",
     "add": "^2.0.6",
     "formik": "^2.2.9",
