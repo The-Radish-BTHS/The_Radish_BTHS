@@ -145,13 +145,30 @@ export const peopleRouter = t.router({
     )
     .query(async ({ ctx, input }) => {
       const TAKE = 15;
+      let order: (
+        | {
+            gradYear: "asc" | "desc" | undefined;
+          }
+        | {}
+        | {
+            position: "asc" | "desc" | undefined;
+          }
+        | {
+            name: "asc" | "desc" | undefined;
+          }
+      )[] = [{ position: "desc" }, { name: "asc" }];
+      if (input.who === "execs") {
+        order.splice(0, 0, { gradYear: "desc" });
+      } else {
+        order.push({ gradYear: "desc" });
+      }
 
       const people = await ctx.prisma.person.findMany({
         take: TAKE + 1,
         where: {
           ...(input.who === "all" ? {} : { isExec: input.who === "execs" }),
         },
-        orderBy: [{ position: "desc" }, { name: "asc" }, { gradYear: "desc" }],
+        orderBy: order,
         cursor: input.cursor ? { id: input.cursor } : undefined,
       });
 

@@ -9,7 +9,6 @@ import { trpc } from "@lib/trpc";
 import RequiredUserWrapper from "@components/required-user-wrapper";
 import { getSsgCaller } from "@lib/ssg-helper";
 import { OnBottom } from "@components/on-bottom";
-import { useIsFormer } from "@hooks/useIsFormer";
 
 const Execs: NextPage = () => {
   const execsQuery = trpc.person.getInfinite.useInfiniteQuery(
@@ -20,11 +19,7 @@ const Execs: NextPage = () => {
       getNextPageParam: (current) => current.nextCursor,
     }
   );
-  const { isFormer } = useIsFormer();
-  const execs = execsQuery.data?.pages
-    .map((page) => page.people)
-    .flat()
-    .sort((a, b) => b.gradYear - a.gradYear);
+  const execs = execsQuery.data?.pages.map((page) => page.people).flat();
 
   return (
     <Layout pageIndex={3} alignItems="center">
