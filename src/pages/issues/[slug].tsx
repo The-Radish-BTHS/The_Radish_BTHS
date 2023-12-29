@@ -45,8 +45,7 @@ const Issue: NextPage = () => {
     <Layout
       title={issue?.title}
       alignItems="center"
-      imgUrl={"/api/og/issue?" + searchParams.toString()}
-    >
+      imgUrl={"/api/og/issue?" + searchParams.toString()}>
       <Heading mt="1rem">{issue?.title}</Heading>
       <Text
         mb="3rem"
@@ -65,8 +64,7 @@ const Issue: NextPage = () => {
           border="1px solid black"
           borderRadius="0.5rem"
           _hover={{ background: "rgba(222, 222, 222, 0.8)" }}
-          _active={{ background: "transparent" }}
-        >
+          _active={{ background: "transparent" }}>
           Read the PDF
         </Link>
       )}
@@ -76,8 +74,7 @@ const Issue: NextPage = () => {
           <OnBottom
             onBottom={() => {
               articlesQuery.fetchNextPage();
-            }}
-          >
+            }}>
             <MasonryLayout numItems={articles?.length}>
               {articles?.map((article, i) => (
                 <Articard
@@ -92,7 +89,7 @@ const Issue: NextPage = () => {
           {articlesQuery.hasNextPage ? (
             <Text>Loading more articles...</Text>
           ) : (
-            <Text>You reached the end.</Text>
+            <></>
           )}
         </NothingHereWrapper>
       </Box>

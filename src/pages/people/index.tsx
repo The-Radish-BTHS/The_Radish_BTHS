@@ -41,7 +41,7 @@ const People: NextPage = () => {
         {peopleQuery.hasNextPage ? (
           <Text>Loading more articles...</Text>
         ) : (
-          <Text>You reached the end.</Text>
+          <></>
         )}
       </NothingHereWrapper>
     </Layout>

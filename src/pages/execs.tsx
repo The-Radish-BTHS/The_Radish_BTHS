@@ -39,11 +39,7 @@ const Execs: NextPage = () => {
           </MasonryLayout>
         </OnBottom>
 
-        {execsQuery.hasNextPage ? (
-          <Text>Loading more articles...</Text>
-        ) : (
-          <Text>You reached the end.</Text>
-        )}
+        {execsQuery.hasNextPage ? <Text>Loading more articles...</Text> : <></>}
       </NothingHereWrapper>
     </Layout>
   );

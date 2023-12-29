@@ -49,8 +49,7 @@ const Articles: NextPage<
       <OnBottom
         onBottom={() => {
           articlesQuery.fetchNextPage();
-        }}
-      >
+        }}>
         <MasonryLayout numItems={articles?.length}>
           {articles?.map((article) => (
             <Articard
@@ -64,7 +63,7 @@ const Articles: NextPage<
         {articlesQuery.hasNextPage ? (
           <Text>Loading more articles...</Text>
         ) : (
-          <Text>You reached the end.</Text>
+          <></>
         )}
       </OnBottom>
     </Layout>

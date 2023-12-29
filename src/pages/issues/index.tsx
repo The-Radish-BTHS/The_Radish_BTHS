@@ -25,8 +25,7 @@ const Issues: NextPage = () => {
       <OnBottom
         onBottom={() => {
           issuesQuery.fetchNextPage();
-        }}
-      >
+        }}>
         <MasonryLayout numItems={issues?.length}>
           {issues?.map((issue, i) => (
             <IssueCard {...issue} key={i} styles={{ mb: "2rem" }} />
@@ -34,11 +33,7 @@ const Issues: NextPage = () => {
         </MasonryLayout>
       </OnBottom>
 
-      {issuesQuery.hasNextPage ? (
-        <Text>Loading more issues...</Text>
-      ) : (
-        <Text>You reached the end.</Text>
-      )}
+      {issuesQuery.hasNextPage ? <Text>Loading more issues...</Text> : <></>}
     </Layout>
   );
 };

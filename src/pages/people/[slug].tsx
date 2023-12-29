@@ -48,8 +48,7 @@ const Person: NextPage = () => {
     <Layout
       title={person?.name}
       alignItems="center"
-      imgUrl={"/api/og/person?" + searchParams.toString()}
-    >
+      imgUrl={"/api/og/person?" + searchParams.toString()}>
       <Flex gap="0.5rem" alignItems="flex-start" ml="40px">
         <Heading>{person?.name}</Heading>
         {person?.isExec && <ExecStamp id={person?.name} size={40} />}
@@ -66,8 +65,7 @@ const Person: NextPage = () => {
           textAlign="center"
           fontStyle="italic"
           mb="3rem"
-          fontWeight="medium"
-        >
+          fontWeight="medium">
           &quot;{person?.description}&quot;
         </Text>
       )}
@@ -87,7 +85,7 @@ const Person: NextPage = () => {
         {articlesQuery.hasNextPage ? (
           <Text>Loading more articles...</Text>
         ) : (
-          <Text>You reached the end.</Text>
+          <></>
         )}
       </NothingHereWrapper>
       <Flex mt="4rem" w="100%">
