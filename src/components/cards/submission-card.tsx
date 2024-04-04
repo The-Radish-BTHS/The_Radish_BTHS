@@ -40,6 +40,7 @@ const SubmissionCard: React.FC<{
   imageUrls,
 }) => {
   const deleteMutation = trpc.submission.delete.useMutation();
+  const trpcContext = trpc.useContext();
   const isMobile = useIsMobile();
   const linkWords = [
     "Somebody",
@@ -112,6 +113,7 @@ const SubmissionCard: React.FC<{
         <Button
           onClick={async () => {
             await deleteMutation.mutateAsync({ submissionId: id });
+            await trpcContext.invalidate();
           }}
           isLoading={deleteMutation.isLoading}
         >
