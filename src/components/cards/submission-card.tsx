@@ -13,6 +13,8 @@ import CardWrapper from "./card-wrapper";
 import TopicCard from "./topic-card";
 import { FcCheckmark, FcCancel } from "react-icons/fc";
 import Link from "next/link";
+import Button from "@components/button";
+import { trpc } from "@lib/trpc";
 
 const SubmissionCard: React.FC<{
   id: string;
@@ -37,6 +39,7 @@ const SubmissionCard: React.FC<{
   otherTopics,
   imageUrls,
 }) => {
+  const deleteMutation = trpc.submission.delete.useMutation();
   const isMobile = useIsMobile();
   const linkWords = [
     "Somebody",
@@ -106,6 +109,14 @@ const SubmissionCard: React.FC<{
       )}
 
       <Flex gap="1rem" mt="1rem" justifyContent="center">
+        <Button
+          onClick={async () => {
+            await deleteMutation.mutateAsync({ articleId: id });
+          }}
+          isLoading={deleteMutation.isLoading}
+        >
+          Delete
+        </Button>
         <LinkButton href={link} flex={1} justifyContent="center" external>
           Read
         </LinkButton>
@@ -113,7 +124,8 @@ const SubmissionCard: React.FC<{
           href={`/articles/edit?id=${id}`}
           flex={1}
           justifyContent="center"
-          external>
+          external
+        >
           Submit
         </LinkButton>
       </Flex>

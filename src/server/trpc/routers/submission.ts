@@ -2,7 +2,7 @@ import { storage } from "@server/utils/storage";
 import { TRPCError } from "@trpc/server";
 import { nanoid } from "nanoid";
 import { z } from "zod";
-import { authedProcedure, t } from "..";
+import { authedProcedure, editorProcedure, t } from "..";
 
 // 1MB in base64 string
 const GRAPHICS_MAX_PER = 4 * 1024 * 1024 * (4 / 3);
@@ -52,6 +52,7 @@ export const submissionRouter = t.router({
       return await ctx.prisma.submission.findMany({
         where: { beenEdited: input.edited },
         include: { topics: true, authors: true },
+        orderBy: { submittedAt: "desc" },
       });
     }),
 
@@ -101,5 +102,19 @@ export const submissionRouter = t.router({
         );
         throw new TRPCError({ code: "INTERNAL_SERVER_ERROR" });
       }
+    }),
+
+  delete: editorProcedure
+    .input(
+      z.object({
+        articleId: z.string(),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      await ctx.prisma.submission.delete({
+        where: {
+          articleId: input.articleId,
+        },
+      });
     }),
 });

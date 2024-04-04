@@ -4,7 +4,7 @@ datasource db {
 }
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
   previewFeatures = ["fullTextSearch"]
 }
 
@@ -50,8 +50,8 @@ model User {
   permission  UserPermission @default(NORMIE)
   submissions Submission[]
 
-  personId   String @unique
-  person     Person @relation(fields: [personId], references: [id])
+  personId String @unique
+  person   Person @relation(fields: [personId], references: [id])
 }
 
 model Issue {
@@ -78,7 +78,7 @@ model Article {
   published   Boolean  @default(false)
   publishedOn DateTime @default(now())
 
-  issue      Issue?   @relation(fields: [issueId], references: [id])
+  issue      Issue?      @relation(fields: [issueId], references: [id])
   issueId    String?
   authors    Person[]
   topics     Topic[]
@@ -86,16 +86,17 @@ model Article {
 }
 
 model Submission {
-  id                String   @id @default(cuid())
-  link              String
-  title             String
-  userId            String
-  graphicsRequest   String?
-  graphicsComplete  Boolean  @default(false)
-  imageUrls         String[] @default([])
-  timeFrame         String?
-  otherTopics       String?
-  beenEdited        Boolean  @default(false)
+  id               String   @id @default(cuid())
+  link             String
+  title            String
+  userId           String
+  graphicsRequest  String?
+  graphicsComplete Boolean  @default(false)
+  imageUrls        String[] @default([])
+  timeFrame        String?
+  otherTopics      String?
+  beenEdited       Boolean  @default(false)
+  submittedAt      DateTime @default(now())
 
   user    User     @relation(fields: [userId], references: [id])
   topics  Topic[]
@@ -117,7 +118,7 @@ model Topic {
 }
 
 model Person {
-  id  String  @id @default(cuid())
+  id   String @id @default(cuid())
   slug String @unique
 
   name        String
