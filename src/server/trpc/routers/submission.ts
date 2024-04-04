@@ -107,13 +107,13 @@ export const submissionRouter = t.router({
   delete: editorProcedure
     .input(
       z.object({
-        articleId: z.string(),
+        submissionId: z.string(),
       })
     )
     .mutation(async ({ ctx, input }) => {
       await ctx.prisma.submission.delete({
         where: {
-          articleId: input.articleId,
+          id: input.submissionId,
         },
       });
     }),

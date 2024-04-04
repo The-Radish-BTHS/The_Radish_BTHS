@@ -108,10 +108,10 @@ const SubmissionCard: React.FC<{
         </Text>
       )}
 
-      <Flex gap="1rem" mt="1rem" justifyContent="center">
+      <Flex gap="0.2rem" mt="1rem" justifyContent="center">
         <Button
           onClick={async () => {
-            await deleteMutation.mutateAsync({ articleId: id });
+            await deleteMutation.mutateAsync({ submissionId: id });
           }}
           isLoading={deleteMutation.isLoading}
         >

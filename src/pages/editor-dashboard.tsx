@@ -46,7 +46,8 @@ const EditorDashboard: NextPage = () => {
             <Accordion defaultIndex={[0]} allowMultiple>
               <Collapse
                 title="Unedited"
-                empty={uneditedSubmissions?.length === 0}>
+                empty={uneditedSubmissions?.length === 0}
+              >
                 <MasonryLayout>
                   {uneditedSubmissions?.map((article, i) => (
                     <SubmissionCard {...article} key={i} />
@@ -68,7 +69,8 @@ const EditorDashboard: NextPage = () => {
           h="100%"
           flexDir="column"
           alignItems="center"
-          justifyContent="center">
+          justifyContent="center"
+        >
           <Heading>Ur not an editor fam...</Heading>
           <Link href="/about">Apply to join the editing team!</Link>
         </Flex>
