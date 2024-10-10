@@ -25,7 +25,8 @@ const Issues: NextPage = () => {
       <OnBottom
         onBottom={() => {
           issuesQuery.fetchNextPage();
-        }}>
+        }}
+      >
         <MasonryLayout numItems={issues?.length}>
           {issues?.map((issue, i) => (
             <IssueCard {...issue} key={i} styles={{ mb: "2rem" }} />
@@ -47,6 +48,6 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: { trpcState: ssg.dehydrate() },
-    revalidate: 60,
+    revalidate: 600,
   };
 };

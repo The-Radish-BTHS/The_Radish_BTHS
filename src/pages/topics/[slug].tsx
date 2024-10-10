@@ -40,7 +40,8 @@ const Topic: NextPage = () => {
       title={topic?.name}
       alignItems="center"
       gap="0.5rem"
-      imgUrl={"/api/og/topic?" + searchParams.toString()}>
+      imgUrl={"/api/og/topic?" + searchParams.toString()}
+    >
       <Heading color="#bb3300" fontWeight="600" textAlign="center">
         #{topic?.name}
       </Heading>
@@ -51,7 +52,8 @@ const Topic: NextPage = () => {
         <OnBottom
           onBottom={() => {
             articlesQuery.fetchNextPage();
-          }}>
+          }}
+        >
           <MasonryLayout numItems={articles?.length}>
             {articles?.map((article, i) => (
               <Articard
@@ -92,7 +94,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     props: {
       trpcState: ssg.dehydrate(),
     },
-    revalidate: 60,
+    revalidate: 600,
   };
 };
 
