@@ -17,9 +17,35 @@ const About: NextPage<{ sectionsData: aboutSectionDataType[] }> = ({
 }) => {
   return (
     <Layout pageIndex={4} header={"/images/about_header.jpeg"}>
-      {sectionsData.map((section, i) => (
-        <AboutSection key={i} {...section} />
-      ))}
+      {/* TODO: get rid of this hack (edit the cms) */}
+      <AboutSection
+        title="We are The Radish"
+        subtitle="Bum-Ba-Dum Bum-Bum-Bum-Bum"
+        body={[
+          {
+            _key: "e0-k7",
+            children: [
+              {
+                _type: "span",
+                marks: [],
+                text: "We are Brooklyn Technical High School's first, worst, and only satirical newspaper. We probably started around the 1980s—definitely before The Onion, our fierce rival.\n\nInterested in joining us? Find us in school on Wednesdays in room 2N3 after 10th period. Also, join our email list for updates.",
+                _key: "bee1effad54f0",
+              },
+            ],
+            markDefs: [],
+            _type: "block",
+            style: "normal",
+          },
+        ]}
+        linkName="Sign Up Now!"
+        link="https://docs.google.com/forms/d/e/1FAIpQLScfhiwteouLAMkJ0YOgSQ8-IiYzIlInRZr7ImOgpxwKZvFvFg/viewform?usp=sf_link"
+        index={0}
+      />
+      {sectionsData.map((section, i) =>
+        section.title === "We are The Radish" ? null : (
+          <AboutSection key={i} {...section} />
+        )
+      )}
       <SectionHeader
         title="Say Hi!"
         subtitle="I think we'd make great friends!"
