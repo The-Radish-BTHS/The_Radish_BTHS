@@ -114,7 +114,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 
   return {
     props: { trpcState: ssg.dehydrate() },
-    revalidate: 600,
+    revalidate: 86400, // a day
   };
 };
 

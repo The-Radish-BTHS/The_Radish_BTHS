@@ -312,7 +312,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       trpcState: ssg.dehydrate(),
       slug,
     },
-    revalidate: 600,
+    revalidate: 86400, // a day
   };
 };
 

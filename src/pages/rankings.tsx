@@ -136,6 +136,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props: {
       authorStats,
     },
-    revalidate: 600,
+    revalidate: 3600,
   };
 };

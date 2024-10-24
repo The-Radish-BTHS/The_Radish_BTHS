@@ -31,7 +31,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props: {
       trpcState: ssg.dehydrate(),
     },
-    revalidate: 600, // try to regenerate the index page to be fresh with content every ten minutes, on request
+    revalidate: 3600, // try to regenerate the index page to be fresh with content every hour, on request
   };
 };
 
