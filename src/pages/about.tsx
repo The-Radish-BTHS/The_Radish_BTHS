@@ -38,7 +38,7 @@ const About: NextPage<{ sectionsData: aboutSectionDataType[] }> = ({
           },
         ]}
         linkName="Sign Up Now!"
-        link="https://docs.google.com/forms/d/e/1FAIpQLScfhiwteouLAMkJ0YOgSQ8-IiYzIlInRZr7ImOgpxwKZvFvFg/viewform?usp=sf_link"
+        link="https://forms.gle/5QMrVPo9ABwyUi4v6"
         index={0}
       />
       {sectionsData.map((section, i) =>
