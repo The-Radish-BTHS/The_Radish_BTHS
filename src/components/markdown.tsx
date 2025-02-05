@@ -8,15 +8,59 @@ import rehypeRaw from "rehype-raw";
 import rehypeSanitize from "rehype-sanitize";
 import { Image } from "@chakra-ui/react";
 
+const formatStringToCamelCase = (str: string) => {
+  const splitted = str.split("-");
+  if (splitted.length === 1) return splitted[0];
+  return (
+    splitted[0] +
+    splitted
+      .slice(1)
+      .map((word) => word[0].toUpperCase() + word.slice(1))
+      .join("")
+  );
+};
+
+export const getStyleObjectFromString = (str: string) => {
+  const style: Record<string, string> = {};
+  str.split(";").forEach((el) => {
+    const [property, value] = el.split(":");
+    if (!property) return;
+
+    const formattedProperty = formatStringToCamelCase(property.trim());
+    style[formattedProperty] = value.trim();
+  });
+
+  return style;
+};
+
 const Markdown: React.FC<{ content: string }> = ({ content }) => (
   <ReactMarkdown
-    rehypePlugins={[rehypeRaw, rehypeSanitize] as PluggableList}
+    rehypePlugins={
+      [
+        rehypeRaw,
+        rehypeSanitize({
+          attributes: {
+            "*": ["style"],
+          },
+        }),
+      ] as PluggableList
+    }
     remarkPlugins={[remarkGfm, html, remarkToc] as PluggableList}
     components={{
-      ul: (props) => <ul style={{ width: "100%" }} {...props} />,
-      li: (props) => <li style={{ marginLeft: "1rem" }} {...props} />,
+      ul: (props) => <ul style={{ width: "100%" }}>{props.children}</ul>,
+      li: (props) => <li style={{ marginLeft: "1rem" }}>{props.children}</li>,
       p: (props) => (
-        <p style={{ marginBottom: "0.5rem", width: "100%" }} {...props} />
+        <p
+          style={{
+            marginBottom: "0.5rem",
+            width: "100%",
+            ...(typeof props.style === "string"
+              ? getStyleObjectFromString(props.style)
+              : props.style),
+          }}
+        >
+          {props.children}
+        </p>
       ),
       h1: (props) => (
         <h1
@@ -26,8 +70,9 @@ const Markdown: React.FC<{ content: string }> = ({ content }) => (
             fontWeight: "bolder",
             fontSize: "2em",
           }}
-          {...props}
-        />
+        >
+          {props.children}
+        </h1>
       ),
       h2: (props) => (
         <h2
@@ -37,8 +82,9 @@ const Markdown: React.FC<{ content: string }> = ({ content }) => (
             fontWeight: "bolder",
             fontSize: "1.5em",
           }}
-          {...props}
-        />
+        >
+          {props.children}
+        </h2>
       ),
       h3: (props) => (
         <h3
@@ -48,8 +94,9 @@ const Markdown: React.FC<{ content: string }> = ({ content }) => (
             fontWeight: "bolder",
             fontSize: "1.17em",
           }}
-          {...props}
-        />
+        >
+          {props.children}
+        </h3>
       ),
       h4: (props) => (
         <h4
@@ -59,8 +106,9 @@ const Markdown: React.FC<{ content: string }> = ({ content }) => (
             fontWeight: "bolder",
             fontSize: "1em",
           }}
-          {...props}
-        />
+        >
+          {props.children}
+        </h4>
       ),
       h5: (props) => (
         <h5
@@ -70,8 +118,9 @@ const Markdown: React.FC<{ content: string }> = ({ content }) => (
             fontWeight: "bolder",
             fontSize: "0.83em",
           }}
-          {...props}
-        />
+        >
+          {props.children}
+        </h5>
       ),
       h6: (props) => (
         <h6
@@ -81,8 +130,9 @@ const Markdown: React.FC<{ content: string }> = ({ content }) => (
             fontWeight: "bolder",
             fontSize: "0.67em",
           }}
-          {...props}
-        />
+        >
+          {props.children}
+        </h6>
       ),
       a: (props) => <a style={{ textDecoration: "underline" }} {...props} />,
       img: (props) => (
@@ -92,7 +142,19 @@ const Markdown: React.FC<{ content: string }> = ({ content }) => (
           {...props}
         />
       ),
-    }}>
+      span: (props) => (
+        <span
+          style={{
+            ...(typeof props.style === "string"
+              ? getStyleObjectFromString(props.style)
+              : props.style),
+          }}
+        >
+          {props.children}
+        </span>
+      ),
+    }}
+  >
     {content}
   </ReactMarkdown>
 );

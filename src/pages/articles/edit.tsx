@@ -135,6 +135,9 @@ const Edit: NextPage = () => {
             <ul style={{ marginTop: "1rem" }}>
               <li style={{ marginLeft: "1rem" }}>Is the title all good?</li>
               <li style={{ marginLeft: "1rem" }}>Are the topics perfect?</li>
+              <li style={{ marginLeft: "1rem" }}>
+                Have you checked that there aren&apos;t any &lt;html&gt; tags?
+              </li>
             </ul>
           </SubmitModal>
 

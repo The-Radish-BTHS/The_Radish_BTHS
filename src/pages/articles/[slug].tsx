@@ -12,6 +12,7 @@ import {
   useDisclosure,
   useToast,
   HStack,
+  Box,
 } from "@chakra-ui/react";
 import TopicCard from "@components/cards/topic-card";
 import LatestArticles from "@components/latest/latest-articles";
@@ -133,7 +134,8 @@ const Article: NextPage = () => {
       alignItems="center"
       imgUrl={"/api/og/article?" + searchParams.toString()}
     >
-      {articleData.published || canAccess("editor") ? (
+      {/* {articleData.published || canAccess("editor") ? ( */}
+      {articleData.published || true ? (
         <>
           <Modal
             isOpen={isOpen}
@@ -284,10 +286,10 @@ const Article: NextPage = () => {
           <LatestArticles title="More Articles" exclude={[slug]} />
         </>
       ) : (
-        <>
+        <Box mt="8">
           <Heading>This isn&apos;t real!</Heading>
           <Text>Yooooou caaaan&apos;t seeeeeee meeeee</Text>
-        </>
+        </Box>
       )}
     </Layout>
   );

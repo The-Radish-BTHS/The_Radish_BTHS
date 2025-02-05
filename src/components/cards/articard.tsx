@@ -14,18 +14,24 @@ const Articard: React.FC<ArticardType> = ({
   topics = [],
   ...rest
 }) => {
+  delete (rest as any).publishedOn;
+  delete (rest as any).published;
+  delete (rest as any).issueId;
+
   return (
     <CardWrapper {...styles} {...rest}>
       <Center flexDir="column" w="100%" p="0.75rem">
         <Link
           href={`/articles/${slug}`}
           w="100%"
-          _hover={{ textDecoration: "none" }}>
+          _hover={{ textDecoration: "none" }}
+        >
           <Heading
             maxW="100%"
             fontSize="1.5rem"
             mb="0.5rem"
-            _hover={{ textDecoration: "underline" }}>
+            _hover={{ textDecoration: "underline" }}
+          >
             {title}
           </Heading>
           {excerpt && (
@@ -33,7 +39,8 @@ const Articard: React.FC<ArticardType> = ({
               fontSize="1.1rem"
               wordBreak="break-word"
               textAlign="left"
-              w="75%">
+              w="75%"
+            >
               {excerpt}...
             </Text>
           )}
@@ -49,7 +56,8 @@ const Articard: React.FC<ArticardType> = ({
                 fontWeight: "bold",
                 marginLeft: "0.2rem",
                 marginRight: "0.2rem",
-              }}>
+              }}
+            >
               {" "}
               ∙{" "}
             </span>
@@ -65,7 +73,8 @@ const Articard: React.FC<ArticardType> = ({
           <Flex
             p="0.75rem"
             flexWrap="wrap"
-            maxW={{ base: "94vw", md: "40vw", lg: "25vw" }}>
+            maxW={{ base: "94vw", md: "40vw", lg: "25vw" }}
+          >
             {topics?.map((topic, i) => (
               <TopicCard {...topic} key={i} />
             ))}
