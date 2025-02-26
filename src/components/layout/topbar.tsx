@@ -48,6 +48,7 @@ const Topbar: React.FC<{ image: string }> = ({ image }) => {
                 <Image src={image} alt="icon" maxH="2.75rem" />
               </Center>
               <Heading
+                mt="3"
                 fontSize={{
                   base: "1.75rem",
                   sm: "2.5rem",
