@@ -26,13 +26,14 @@ import type {
   InferGetStaticPropsType,
   NextPage,
 } from "next";
-import { slugsToPaths } from "@lib/helpers.server";
+import { customSlugify, slugsToPaths } from "@lib/helpers.server";
 import prisma from "@lib/prisma.server";
 import { getSsgCaller } from "@lib/ssg-helper";
 import { trpc } from "@lib/trpc";
 import Button from "@components/button";
 import { useRouter } from "next/router";
 import { useCanAccess } from "@hooks/useCanAccess";
+import slugify from "slugify";
 
 const Article: NextPage = () => {
   const router = useRouter();
