@@ -52,7 +52,7 @@ const Topbar: React.FC<{ image: string }> = ({ image }) => {
                   base: "1.75rem",
                   sm: "2.5rem",
                   md: "1.75rem",
-                  lg: "2.5rem",
+                  lg: "2.4rem",
                 }}
               >
                 The Radish

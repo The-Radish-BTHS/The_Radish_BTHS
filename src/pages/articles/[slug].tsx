@@ -132,7 +132,7 @@ const Article: NextPage = () => {
   return (
     <Layout
       title={articleData.title}
-      alignItems="center"
+      alignItems={{ lg: "center" }}
       imgUrl={"/api/og/article?" + searchParams.toString()}
     >
       {/* {articleData.published || canAccess("editor") ? ( */}
@@ -236,10 +236,15 @@ const Article: NextPage = () => {
                 )}
               </HStack>
             )}
-            <Heading textAlign="center" w="100%">
+            <Heading textAlign={{ lg: "center" }} w="100%">
               {articleData.title}
             </Heading>
-            <Text fontSize="1.05rem" mt="0.5rem" w="100%" textAlign="center">
+            <Text
+              fontSize="1.05rem"
+              mt="0.5rem"
+              w="100%"
+              textAlign={{ lg: "center" }}
+            >
               {articleData.authors?.map((author, i) => (
                 <Link key={i} href={`/people/${author.slug}`} mr="0.2rem">
                   {author.name}
@@ -269,16 +274,21 @@ const Article: NextPage = () => {
             flexWrap="wrap"
             fontSize="1.2rem"
             fontWeight="medium"
+            gap="2"
+            justifyContent={{ base: "flex-start", lg: "center" }}
           >
             {articleData.topics.map((topic, i) => (
               <TopicCard name={topic.name} slug={topic.slug} key={i} />
             ))}
           </Flex>
+
           <Flex
             w="100%"
+            maxW="52rem"
             flexDir="column"
             mb="4rem"
-            fontSize="clamp(16px,12px + .5vw,1.25rem)"
+            lineHeight="2"
+            fontSize={{ base: "20px", md: "22px", lg: "24px" }}
           >
             <Markdown content={articleData.content} />
           </Flex>

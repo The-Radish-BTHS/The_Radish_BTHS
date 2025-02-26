@@ -65,6 +65,7 @@ const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({
           xl: "0",
         }}
         flexDirection="column"
+        mt="6"
         {...rest}
       >
         {children}
