@@ -27,6 +27,7 @@ const SubmissionCard: React.FC<{
   graphicsComplete: boolean;
   otherTopics: string | null;
   imageUrls: string[];
+  isEdited: boolean;
 }> = ({
   id,
   link,
@@ -38,6 +39,7 @@ const SubmissionCard: React.FC<{
   graphicsComplete,
   otherTopics,
   imageUrls,
+  isEdited,
 }) => {
   const deleteMutation = trpc.submission.delete.useMutation();
   const trpcContext = trpc.useContext();
@@ -122,14 +124,16 @@ const SubmissionCard: React.FC<{
         <LinkButton href={link} flex={1} justifyContent="center" external>
           Read
         </LinkButton>
-        <LinkButton
-          href={`/articles/edit?id=${id}`}
-          flex={1}
-          justifyContent="center"
-          external
-        >
-          Submit
-        </LinkButton>
+        {!isEdited && (
+          <LinkButton
+            href={`/articles/edit?id=${id}`}
+            flex={1}
+            justifyContent="center"
+            external
+          >
+            Move to Edited
+          </LinkButton>
+        )}
       </Flex>
     </CardWrapper>
   );

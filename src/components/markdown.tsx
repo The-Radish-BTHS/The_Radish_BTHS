@@ -48,7 +48,7 @@ const Markdown: React.FC<{ content: string }> = ({ content }) => (
     remarkPlugins={[remarkGfm, html, remarkToc] as PluggableList}
     components={{
       ul: (props) => <ul style={{ width: "100%" }}>{props.children}</ul>,
-      li: (props) => <li style={{ marginLeft: "1rem" }}>{props.children}</li>,
+      li: (props) => <li>{props.children}</li>,
       p: (props) => (
         <p
           style={{

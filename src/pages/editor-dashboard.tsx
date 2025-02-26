@@ -50,14 +50,14 @@ const EditorDashboard: NextPage = () => {
               >
                 <MasonryLayout>
                   {uneditedSubmissions?.map((article, i) => (
-                    <SubmissionCard {...article} key={i} />
+                    <SubmissionCard {...article} key={i} isEdited={false} />
                   ))}
                 </MasonryLayout>
               </Collapse>
               <Collapse title="Edited" empty={editedSubmissions?.length === 0}>
                 <MasonryLayout>
                   {editedSubmissions?.map((article, i) => (
-                    <SubmissionCard {...article} key={i} />
+                    <SubmissionCard {...article} key={i} isEdited />
                   ))}
                 </MasonryLayout>
               </Collapse>
