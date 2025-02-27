@@ -52,7 +52,7 @@ const Markdown: React.FC<{ content: string }> = ({ content }) => (
       p: (props) => (
         <p
           style={{
-            marginBottom: "1.5rem",
+            marginBottom: "1.1rem",
             width: "100%",
             ...(typeof props.style === "string"
               ? getStyleObjectFromString(props.style)
@@ -134,7 +134,9 @@ const Markdown: React.FC<{ content: string }> = ({ content }) => (
           {props.children}
         </h6>
       ),
-      hr: (props) => <hr style={{ width: "100%", margin: "20px 0px" }} />,
+      hr: (props) => (
+        <hr style={{ width: "100%", margin: "00px 0px 25px 0px" }} />
+      ),
       a: (props) => <a style={{ textDecoration: "underline" }} {...props} />,
       img: (props) => (
         <Image

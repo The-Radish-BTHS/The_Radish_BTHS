@@ -1,9 +1,12 @@
-import { Flex, FlexProps } from "@chakra-ui/react";
+import { Flex, FlexProps, Heading, HStack, Text } from "@chakra-ui/react";
 import Title from "./title";
 import Topbar from "./topbar";
 import { navigationTabs } from "./tabs/tabs";
 import client from "@/cms/cms-data";
 import { useEffect, useState } from "react";
+import { SX_PRINT_ONLY } from "@theme/printing";
+import Image from "next/image";
+import { useRadishLogoImage } from "@hooks/useRadishLogoImage";
 
 interface LayoutProps extends FlexProps {
   pageIndex?: number;
@@ -20,31 +23,18 @@ const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({
   children,
   ...rest
 }) => {
-  const [image, setImage] = useState("/images/happyish.png");
-
-  useEffect(() => {
-    const getImage = async () => {
-      const iconData =
-        await client.fetch(`*[_type == 'fileData' && title == 'Icon'] {
-        "image": file.asset->url
-      }`);
-
-      setImage(iconData[0].image);
-    };
-
-    getImage();
-  }, []);
+  const image = useRadishLogoImage();
 
   return (
     <Flex
       flexDirection="column"
       alignItems="center"
-      maxW="100vw"
-      w="100vw"
-      maxH="100vh"
-      h="100vh"
-      overflowY="scroll"
-      overflowX="hidden"
+      // maxW="100vw"
+      // w="100vw"
+      // maxH="100vh"
+      // h="100vh"
+      // overflowY="scroll"
+      // overflowX="hidden"
     >
       <Title
         page={
@@ -66,6 +56,12 @@ const Layout: React.FC<React.PropsWithChildren<LayoutProps>> = ({
         }}
         flexDirection="column"
         mt="6"
+        sx={{
+          "@media print": {
+            px: 0,
+            py: 0,
+          },
+        }}
         {...rest}
       >
         {children}

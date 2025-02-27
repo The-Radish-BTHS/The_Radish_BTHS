@@ -34,6 +34,9 @@ import Button from "@components/button";
 import { useRouter } from "next/router";
 import { useCanAccess } from "@hooks/useCanAccess";
 import slugify from "slugify";
+import { SX_HIDE_FROM_PRINT, SX_PRINT_ONLY } from "@theme/printing";
+import { useRadishLogoImage } from "@hooks/useRadishLogoImage";
+import { useLayoutEffect, useState } from "react";
 
 const Article: NextPage = () => {
   const router = useRouter();
@@ -108,6 +111,12 @@ const Article: NextPage = () => {
       });
     },
   });
+  const image = useRadishLogoImage();
+  const [path, setPath] = useState("");
+
+  useLayoutEffect(() => {
+    setPath(window.location.hostname);
+  }, []);
 
   const pubString = Intl.DateTimeFormat("en-us", {
     day: "2-digit",
@@ -135,6 +144,28 @@ const Article: NextPage = () => {
       alignItems={{ lg: "center" }}
       imgUrl={"/api/og/article?" + searchParams.toString()}
     >
+      <Flex
+        alignItems="center"
+        mb="2rem"
+        gap="2"
+        sx={{
+          "@media print": {
+            display: "flex",
+          },
+          display: "none",
+        }}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={image} width={32} height={32} alt="" />
+        <Heading size="md" mt="2">
+          The Radish
+        </Heading>
+
+        <Text fontSize="sm" mt="2">
+          — {path}
+        </Text>
+      </Flex>
+
       {/* {articleData.published || canAccess("editor") ? ( */}
       {articleData.published || true ? (
         <>
@@ -289,12 +320,19 @@ const Article: NextPage = () => {
             mb="4rem"
             lineHeight="2"
             fontSize={{ base: "20px", md: "22px", lg: "24px" }}
+            sx={{
+              "@media print": {
+                fontSize: "17px",
+              },
+            }}
           >
             <Markdown content={articleData.content} />
           </Flex>
 
           {/* TODO: Fix the type resolving properly...what is an Articard and why is it different from Articles */}
-          <LatestArticles title="More Articles" exclude={[slug]} />
+          <Box sx={SX_HIDE_FROM_PRINT}>
+            <LatestArticles title="More Articles" exclude={[slug]} />
+          </Box>
         </>
       ) : (
         <Box mt="8">

@@ -15,6 +15,7 @@ import PfpSection from "./pfp-section";
 import MobileNav from "./tabs/mobile-nav";
 import { Tab } from "./tabs/tab";
 import { navigationTabs } from "./tabs/tabs";
+import { SX_HIDE_FROM_PRINT } from "@theme/printing";
 
 const Wrapper: React.FC<React.PropsWithChildren<FlexProps>> = ({
   children,
@@ -34,10 +35,11 @@ const Topbar: React.FC<{ image: string }> = ({ image }) => {
   return (
     <Flex
       flexDirection="column"
-      position="absolute"
+      position="fixed"
       w="100%"
       bgColor={bg}
       zIndex={999}
+      sx={SX_HIDE_FROM_PRINT}
     >
       <Flex alignItems="center" p="0.8rem 0.75rem" w="100%">
         <Wrapper>

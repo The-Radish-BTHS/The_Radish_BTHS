@@ -38,7 +38,7 @@ const PfpSection: React.FC = () => {
       <MenuList bg={bg} border="1px solid black">
         {accountTabs.map((tab, i) =>
           canAccess(tab.perm || "") ? (
-            <MenuItem as={Link} href={tab.route} key={i}>
+            <MenuItem bg={bg} as={Link} href={tab.route} key={i}>
               {tab.name}
             </MenuItem>
           ) : (
