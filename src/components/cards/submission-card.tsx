@@ -5,6 +5,7 @@ import {
   ListItem,
   Text,
   UnorderedList,
+  VStack,
 } from "@chakra-ui/react";
 import LinkButton from "@components/link-button";
 import { useIsMobile } from "@hooks/useIsMobile";
@@ -111,7 +112,7 @@ const SubmissionCard: React.FC<{
         </Text>
       )}
 
-      <Flex gap="0.2rem" mt="1rem" justifyContent="center">
+      <VStack gap="0.2rem" mt="1rem">
         <Button
           onClick={async () => {
             await deleteMutation.mutateAsync({ submissionId: id });
@@ -134,7 +135,7 @@ const SubmissionCard: React.FC<{
             Move to Edited
           </LinkButton>
         )}
-      </Flex>
+      </VStack>
     </CardWrapper>
   );
 };
