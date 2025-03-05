@@ -3,6 +3,7 @@ import { Center, Divider, Flex, Heading, Image, Text } from "@chakra-ui/react";
 import Link from "@components/link";
 import CardWrapper from "./card-wrapper";
 import TopicCard from "./topic-card";
+import markdownToTxt from "markdown-to-txt";
 
 const Articard: React.FC<ArticardType> = ({
   title,
@@ -41,7 +42,7 @@ const Articard: React.FC<ArticardType> = ({
               textAlign="left"
               w="75%"
             >
-              {excerpt}...
+              {markdownToTxt(excerpt)}...
             </Text>
           )}
         </Link>
