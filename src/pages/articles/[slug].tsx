@@ -319,10 +319,10 @@ const Article: NextPage = () => {
             flexDir="column"
             mb="4rem"
             lineHeight="2"
-            fontSize={{ base: "20px", md: "22px", lg: "24px" }}
+            fontSize={{ base: "17px", md: "20px" }}
             sx={{
               "@media print": {
-                fontSize: "17px",
+                fontSize: "16px",
               },
             }}
           >
