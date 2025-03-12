@@ -42,7 +42,7 @@ const Articard: React.FC<ArticardType> = ({
               textAlign="left"
               w="75%"
             >
-              {markdownToTxt(excerpt)}...
+              {markdownToTxt(excerpt).replaceAll("&nbsp;", "")}...
             </Text>
           )}
         </Link>
