@@ -12,7 +12,7 @@ import { OnBottom } from "@components/on-bottom";
 const People: NextPage = () => {
   const peopleQuery = trpc.person.getInfinite.useInfiniteQuery(
     {
-      who: "normies",
+      who: "all",
     },
     {
       getNextPageParam: (current) => current.nextCursor,
